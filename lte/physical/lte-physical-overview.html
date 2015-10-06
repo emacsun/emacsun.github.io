@@ -10,7 +10,6 @@
 <meta  name="description" content="本文描述LTE-FDD和TDD的频带资源"
  />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
-<script type="text/x-mathjax-config">     MathJax.Hub.Config({        TeX: {equationNumbers: {autoNumber: ["AMS"], useLabelIds: true}},        "HTML-CSS": {linebreaks: {automatic: true}},        SVG: {linebreaks: {automatic: true}}    });</script>
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="part"  href="../index.html"><img src="../../img/assets/lte2.png"></a>
 <script type="text/javascript">
@@ -61,16 +60,16 @@ for the JavaScript code in this tag.
 </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
+        displayAlign: "left",
+        displayIndent: "5em",
 
         "HTML-CSS": { scale: 100,
                         linebreaks: { automatic: "false" },
-                        webFont: "TeX"
+                        webFont: "Neo-Euler"
                        },
         SVG: {scale: 100,
               linebreaks: { automatic: "false" },
-              font: "TeX"},
+              font: "Neo-Euler"},
         NativeMML: {scale: 100},
         TeX: { equationNumbers: {autoNumber: "AMS"},
                MultLineWidth: "85%",
@@ -80,7 +79,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="../../MathJax/MathJax.js"></script>
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -95,7 +94,11 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline4">4. 带宽划分</a></li>
 <li><a href="#orgheadline5">5. 时域帧格式</a></li>
 <li><a href="#orgheadline6">6. 信号的时频表示</a></li>
-<li><a href="#orgheadline7">7. OFDM 多载波传输</a></li>
+<li><a href="#orgheadline8">7. OFDM 多载波传输</a>
+<ul>
+<li><a href="#orgheadline7">7.1. 循环前缀</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -252,16 +255,68 @@ LTE的时频资源栅格图横轴表示时域OFDM符号，纵轴表示频域OFDM
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">7</span> OFDM 多载波传输</h2>
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8"><span class="section-number-2">7</span> OFDM 多载波传输</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 
 </p>
 
 <p>
-在LTE标准中，上下行传输都是基于OFDM来完成的。通过OFDM技术，宽带信号由多个窄带信号完成。我们称每个窄带为一个子载波。生成OFDM符号时，首先映射复数符号到每个子载波上。这些子载波沿着时频资源栅格图的频率轴（也就是纵轴）分布开来。假设每个子载波上的符号为\(a_{k}\)，则每个子载波上映射的符号为\(a_{k}\)。假设带宽内有\(N\)个子载波，子载波间隔为\(\Delta f\)。 \(a_{k}\)
+在LTE标准中，上下行传输都是基于OFDM来完成的。通过OFDM技术，宽带信号由多个窄带信号完成。我们称每个窄带为一个子载波。生成OFDM符号时，首先映射复数符号到每个子载波上。这些子载波沿着时频资源栅格图的频率轴（也就是纵轴）分布开来。假设每个子载波上的符号为\(a_{k}\)，则每个子载波上映射的符号为\(a_{k}\)。假设带宽内有\(N\)个子载波，子载波间隔为\(\Delta f\)，则带宽可以表示为：
 </p>
+\begin{equation}
+\label{eq:1}
+BW = N\Delta f
+\end{equation}
+<p>
+每一个子载波的位置都可以看做子载波间隔 \(\Delta f\)的整数倍，即
+</p>
+\begin{equation}
+\label{eq:2}
+f_{k} = k \Delta f
+\end{equation}
+<p>
+OFDM调制器内涵\(N\)个复数信号调制器，每一个调制器对应一个子载波，具体实现过程为：
+</p>
+\begin{equation}
+\label{eq:3}
+x(t) = \sum_{k = 1}^{N} a_{k} e^{j2\pi f_{k} t} = \sum_{k = 1}^{N} a_{k} e^{j2\pi k\Delta f t}
+\end{equation}
+<p>
+假设信道采样率为\(F_{s}\)，则信道采样间隔为\(T_{s} = 1/F_{s}\)，则发射信号的离散表示为：
+</p>
+\begin{equation}
+\label{eq:4}
+x(n) = \sum_{k = 1}^{N} a_{k} e^{j2\pi f_{k} n/N}
+\end{equation}
+<p>
+其中\(N\)为采样点数，也是OFDM调制过程中IFFT的点数。
+</p>
+</div>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">7.1</span> 循环前缀</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+
+</p>
+
+<p>
+在基于OFDM技术的通信系统中，循环前缀的添加时非常重要的。其作用在于：1） 消除多径信道的影响，2）保证OFDM信号子载波之间的正交性。
+</p>
+
+<p>
+我们知道在无线信道环境中，无线信号通过多条路径或反射，或折射，或衍射到达接收端。并不熟所有的路径都一样长，因此信号到达的时间也有早有晚。考虑到无线信道环境的多样性，实际系统中的传输路径是千差万别的。如果真有两路信号同时出发同时到达，这两路信号也真是够有缘分的。大多数信号都是有缘无分：同时从发射机出发，却无法同时到达接收机。之所以同一个信号却在不同时刻到达，就是因为无线信道传输环境的多样性造成信号经历了不同的路径，这就是多径。
+</p>
+
+<p>
+无线通信之所以如此迷人就是因为有信道多样新的存在。曾经有一段时间，人们认为多径效应是不好的，它会增加接收机接收信号的难度，但是三十年河东三十年河西，三十年还不到人们就发现在MIMO系统中，多径效应反倒是一件好事。通过引入多天线，把原来的单输入单输出系统（Single Input Single Output, SISO）系统转换为多输入多输出系统（Multiple Input Multiple Output, MIMO）系统，多径效应反而带来系统容量的提升。关于MIMO系统是如何利用信道的多径效应，会在另外的文章中展开。
+</p>
+
+<p>
+现在让我们回到循环前缀。
+</p>
+</div>
 </div>
 </div>
 </div>

@@ -10,7 +10,6 @@
 <meta  name="description" content="本文探讨《具体数学》第一章递归问题中的第三个问题：约瑟夫问题"
  />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css" />
-<script type="text/x-mathjax-config">     MathJax.Hub.Config({        TeX: {equationNumbers: {autoNumber: ["AMS"], useLabelIds: true}},        "HTML-CSS": {linebreaks: {automatic: true}},        SVG: {linebreaks: {automatic: true}}    });</script>
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="part"  href="../index.html"><img src="../../img/assets/math2.png"></a>
 <script type="text/javascript">
@@ -61,8 +60,8 @@ for the JavaScript code in this tag.
 </script>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
+        displayAlign: "left",
+        displayIndent: "5em",
 
         "HTML-CSS": { scale: 100,
                         linebreaks: { automatic: "false" },
@@ -80,7 +79,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="../../MathJax/MathJax.js"></script>
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -135,6 +134,7 @@ for the JavaScript code in this tag.
 因为有 \(J(10)=5\)，所以我们猜测有 \(J(n)= \frac{n}{2}\)，但是一些简单的如同下表的例子否定了这个猜测。
 </p>
 
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -153,17 +153,18 @@ for the JavaScript code in this tag.
 
 <col  class="org-right" />
 </colgroup>
-<tbody>
+<thead>
 <tr>
-<td class="org-left">\(n\)</td>
-<td class="org-right">1</td>
-<td class="org-right">2</td>
-<td class="org-right">3</td>
-<td class="org-right">4</td>
-<td class="org-right">5</td>
-<td class="org-right">6</td>
+<th scope="col" class="org-left">\(n\)</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
+<th scope="col" class="org-right">3</th>
+<th scope="col" class="org-right">4</th>
+<th scope="col" class="org-right">5</th>
+<th scope="col" class="org-right">6</th>
 </tr>
-
+</thead>
+<tbody>
 <tr>
 <td class="org-left">\({J_{n}}\)</td>
 <td class="org-right">1</td>
@@ -248,6 +249,7 @@ J(2n+1)&=2J(n)+1
 有了递归式，我们计算一些较小的值
 </p>
 
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -330,6 +332,7 @@ J(2n+1)&=2J(n)+1
 </tbody>
 </table>
 
+
 <p>
 显然，从上面的表格中可以看出，将 \(n\) 按照 2的幂次进行分组或许会出现一些转机。每一组开始的 \(J(n)\) 总是等于1。仔细观察上表，如果将 \(n\) 写作 \(2^{m}+l\)，则 \(J(n)=J(2^{m}+l) = 2l +1, m\ge 0\le l < 2^{m}\). 其中 \(2^{m}\)是不超过 \(n\) 的 \(2\)的最大幂，而 \(l=n-2^{m}\)。事实上，可以对 \(m\) 使用数学归纳法证明：
 </p>
@@ -409,6 +412,7 @@ J((b_{m}b_{m-1}\ldots b_{1}b_{0})_{2}) = (b_{m-1}b_{m-2}\ldots b_{1}b_{0}b_{m})_
 <p>
 可以看出在约瑟夫问题中， \(\alpha=1,\beta=-1,\gamma=1\)。接下来，我们依然从小入手，得出下表
 </p>
+
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -474,7 +478,7 @@ J((b_{m}b_{m-1}\ldots b_{1}b_{0})_{2}) = (b_{m-1}b_{m-2}\ldots b_{1}b_{0}b_{m})_
 </table>
 
 <p>
-从上表我们可以看出， &alpha; 的系数是2的幂，且不超过n。 &beta; 的系数则从2的幂减一递减到0，&gamma; 的系数则从0开始递增直到2的幂减一。于是式(\ref{eq:8})的解可以表示为：
+从上表我们可以看出， &alpha; 的系数是2的幂，且不超过n。 &beta; 的系数则从2的幂减一递减到0，&gamma; 的系数则从0开始递增直到2的幂减一。于是式(\ref{eq:1})的解可以表示为：
 </p>
 \begin{equation}
 \label{eq:9}
@@ -494,7 +498,7 @@ C(n) & = l
 \end{equation}
 
 <p>
-其中， \(n = 2^{m}+l, 0\le l < 2^{m},n\ge 1\). 对式(\ref{eq:10})用数学归纳法可以证明。
+其中， \(n = 2^{m}+l, 0\le l < 2^{m},n\ge 1\). 对式(\ref{eq:9})用数学归纳法可以证明。
 </p>
 
 <p>
@@ -506,7 +510,7 @@ J((b_{m}b_{m-1}\ldots b_{1}b_{0})_{2}) = (b_{m-1}b_{m-2}\ldots b_{1}b_{0}b_{m})_
 \end{equation}
 
 <p>
-\(n\) 的循环左移即是 \(J(n)\) 的解。那么对于式(\ref{eq:8}) 这个更一般的推广，有没有二进制表示呢？ 当然有！ 首先式（\ref{eq:8}） 可以改写为：
+\(n\) 的循环左移即是 \(J(n)\) 的解。那么对于式(\ref{eq:11}) 这个更一般的推广，有没有二进制表示呢？ 当然有！ 首先式（\ref{eq:11}） 可以改写为：
 </p>
 \begin{equation}
 \label{eq:12}
@@ -666,7 +670,7 @@ J(n) = J(2^{m} +l) =  2l +1
 \end{equation}
 
 <p>
-此时有： \(2l +1 = n-1 \rightarrow  n=2l +2\) ，满足此式的 \(n\) 总是倒数第二个位置上的人获救。 \(n\)
+此时有： \(2l +1 = n-1 \rightarrow  n=2l +2\) ，满足此式的 \(n\) 总是倒数第二个位置上的人获救。\(a_{k}\)
 </p>
 </div>
 </div>
