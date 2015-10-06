@@ -1,0 +1,32 @@
+%<TpX v="5" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3">
+%  <line x1="94.0395" y1="356.777" x2="75.9941" y2="351.588"/>
+%  <text x="75" y="356" t="$4$" tex="$4$" h="5" li="dot"/>
+%  <line x1="91" y1="342" x2="76" y2="352"/>
+%  <line x1="59.9078" y1="347.107" x2="78.013" y2="352.083" li="dot"/>
+%  <line x1="63.1209" y1="360.847" x2="78.0023" y2="350.671" li="dot"/>
+%  <text x="73" y="343" t="$2$" tex="$2$" h="5" li="dot"/>
+%  <text x="85" y="348" t="$1$" tex="$1$" h="5" li="dot"/>
+%  <text x="64" y="352" t="$3$" tex="$3$" h="5" li="dot"/>
+%</TpX>
+\begin{figure}
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(108.09, 64.99)(0,0)
+  \put(0,0){\includegraphics{20140622zigzag.pdf}}
+  \put(48.45,45.58){\fontsize{14.23}{17.07}\selectfont $4$}
+  \put(42.78,8.73){\fontsize{14.23}{17.07}\selectfont $2$}
+  \put(76.80,22.90){\fontsize{14.23}{17.07}\selectfont $1$}
+  \put(17.27,34.24){\fontsize{14.23}{17.07}\selectfont $3$}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(108.09, 64.99)(0,0)
+  \put(0,0){\includegraphics{20140622zigzag}}
+  \put(48.45,45.58){\fontsize{14.23}{17.07}\selectfont $4$}
+  \put(42.78,8.73){\fontsize{14.23}{17.07}\selectfont $2$}
+  \put(76.80,22.90){\fontsize{14.23}{17.07}\selectfont $1$}
+  \put(17.27,34.24){\fontsize{14.23}{17.07}\selectfont $3$}
+  \end{picture}%
+\fi
+\end{figure}

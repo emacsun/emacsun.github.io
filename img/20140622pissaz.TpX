@@ -1,0 +1,52 @@
+%<TpX v="5" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3">
+%  <text x="45" y="352" t="$1$" tex="$1$" h="3"/>
+%  <polyline>60,360 46,347 63,343</polyline>
+%  <text x="54" y="349" t="$2$" tex="$2$" h="3"/>
+%  <polyline>110,358 86,351 116,345</polyline>
+%  <polyline>106,342 99,366 94,343</polyline>
+%  <text x="87" y="346" t="$1$" tex="$1$" h="3"/>
+%  <text x="97" y="345" t="$2$" tex="$2$" h="3"/>
+%  <text x="106" y="343" t="$3$" tex="$3$" h="3"/>
+%  <text x="106" y="350" t="$4$" tex="$4$" h="3"/>
+%  <text x="97" y="350" t="$5$" tex="$5$" h="3"/>
+%  <text x="91" y="350" t="$6$" tex="$6$" h="3"/>
+%  <text x="99" y="356" t="$7$" tex="$7$" h="3" halign="c"/>
+%  <text x="47" y="336" t="$Z_1=2$" tex="$Z_1=2$" h="5"/>
+%  <text x="92" y="336" t="$Z_2=7$" tex="$Z_2=7$" h="5"/>
+%</TpX>
+\begin{figure}
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(212.60, 99.44)(0,0)
+  \put(0,0){\includegraphics{20140622pissaz.pdf}}
+  \put(5.67,54.08){\fontsize{8.54}{10.24}\selectfont $1$}
+  \put(31.18,45.58){\fontsize{8.54}{10.24}\selectfont $2$}
+  \put(124.72,37.08){\fontsize{8.54}{10.24}\selectfont $1$}
+  \put(153.07,34.24){\fontsize{8.54}{10.24}\selectfont $2$}
+  \put(178.58,28.57){\fontsize{8.54}{10.24}\selectfont $3$}
+  \put(178.58,48.42){\fontsize{8.54}{10.24}\selectfont $4$}
+  \put(153.07,48.42){\fontsize{8.54}{10.24}\selectfont $5$}
+  \put(136.06,48.42){\fontsize{8.54}{10.24}\selectfont $6$}
+  \put(158.74,65.42){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{$7$}}
+  \put(11.34,8.73){\fontsize{14.23}{17.07}\selectfont $Z_1=2$}
+  \put(138.90,8.73){\fontsize{14.23}{17.07}\selectfont $Z_2=7$}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(212.60, 99.44)(0,0)
+  \put(0,0){\includegraphics{20140622pissaz}}
+  \put(5.67,54.08){\fontsize{8.54}{10.24}\selectfont $1$}
+  \put(31.18,45.58){\fontsize{8.54}{10.24}\selectfont $2$}
+  \put(124.72,37.08){\fontsize{8.54}{10.24}\selectfont $1$}
+  \put(153.07,34.24){\fontsize{8.54}{10.24}\selectfont $2$}
+  \put(178.58,28.57){\fontsize{8.54}{10.24}\selectfont $3$}
+  \put(178.58,48.42){\fontsize{8.54}{10.24}\selectfont $4$}
+  \put(153.07,48.42){\fontsize{8.54}{10.24}\selectfont $5$}
+  \put(136.06,48.42){\fontsize{8.54}{10.24}\selectfont $6$}
+  \put(158.74,65.42){\fontsize{8.54}{10.24}\selectfont \makebox[0pt]{$7$}}
+  \put(11.34,8.73){\fontsize{14.23}{17.07}\selectfont $Z_1=2$}
+  \put(138.90,8.73){\fontsize{14.23}{17.07}\selectfont $Z_2=7$}
+  \end{picture}%
+\fi
+\end{figure}

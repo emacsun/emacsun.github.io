@@ -1,0 +1,76 @@
+%<TpX v="5" ArrowsSize="0.7" StarsSize="1" DefaultFontHeight="5" DefaultSymbolSize="30" ApproximationPrecision="0.01" PicScale="1" Border="2" BitmapRes="20000" HatchingStep="2" DottedSize="0.5" DashSize="1" LineWidth="0.3">
+%  <line x1="60" y1="345" x2="85" y2="355"/>
+%  <text x="40" y="345" t="$1$" tex="$1$" h="3"/>
+%  <text x="65" y="355" t="$1$" tex="$1$" h="3"/>
+%  <text x="30" y="330" t="$L_{n}=1$" tex="$L_{0}=1$" h="5"/>
+%  <text x="70" y="340" t="$2$" tex="$2$" h="3"/>
+%  <text x="65" y="330" t="$L_{n}=2$" tex="$L_{1}=2$" h="5"/>
+%  <line x1="95" y1="345" x2="120" y2="355"/>
+%  <text x="100" y="355" t="$1$" tex="$1$" h="3"/>
+%  <text x="110" y="355" t="$2$" tex="$2$" h="3"/>
+%  <text x="100" y="330" t="$L_{n}=4$" tex="$L_{2}=4$" h="5"/>
+%  <line x1="112.5" y1="337.5" x2="102.5" y2="362.5"/>
+%  <text x="100" y="340" t="$3$" tex="$3$" h="3"/>
+%  <text x="115" y="345" t="$4$" tex="$4$" h="3"/>
+%  <line x1="124" y1="339" x2="160" y2="355"/>
+%  <text x="137" y="352" t="$1a$" tex="$1a$" h="3"/>
+%  <text x="150" y="355" t="$2$" tex="$2$" h="3"/>
+%  <text x="140" y="330" t="$L_{n}=4$" tex="$L_{3}=4$" h="5"/>
+%  <text x="140" y="340" t="$3b$" tex="$3b$" h="3"/>
+%  <text x="153" y="344" t="$4a$" tex="$4a$" h="3"/>
+%  <line x1="153" y1="335" x2="142.5" y2="362.5"/>
+%  <line x1="130" y1="349" x2="160" y2="339"/>
+%  <text x="127" y="344" t="$1b$" tex="$1b$" h="3"/>
+%  <text x="143" y="345" t="$3a$" tex="$3a$" h="3"/>
+%  <text x="153" y="338" t="$4b$" tex="$4b$" h="3"/>
+%</TpX>
+\begin{figure}
+\centering
+\ifpdf
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(388.84, 106.53)(0,0)
+  \put(0,0){\includegraphics{20140622pissa.pdf}}
+  \put(34.02,51.25){\fontsize{8.54}{10.24}\selectfont $1$}
+  \put(104.88,79.60){\fontsize{8.54}{10.24}\selectfont $1$}
+  \put(5.67,8.73){\fontsize{14.23}{17.07}\selectfont $L_{0}=1$}
+  \put(119.06,37.08){\fontsize{8.54}{10.24}\selectfont $2$}
+  \put(104.88,8.73){\fontsize{14.23}{17.07}\selectfont $L_{1}=2$}
+  \put(204.09,79.60){\fontsize{8.54}{10.24}\selectfont $1$}
+  \put(232.44,79.60){\fontsize{8.54}{10.24}\selectfont $2$}
+  \put(204.09,8.73){\fontsize{14.23}{17.07}\selectfont $L_{2}=4$}
+  \put(204.09,37.08){\fontsize{8.54}{10.24}\selectfont $3$}
+  \put(246.61,51.25){\fontsize{8.54}{10.24}\selectfont $4$}
+  \put(308.98,71.09){\fontsize{8.54}{10.24}\selectfont $1a$}
+  \put(345.83,79.60){\fontsize{8.54}{10.24}\selectfont $2$}
+  \put(317.48,8.73){\fontsize{14.23}{17.07}\selectfont $L_{3}=4$}
+  \put(317.48,37.08){\fontsize{8.54}{10.24}\selectfont $3b$}
+  \put(354.33,48.42){\fontsize{8.54}{10.24}\selectfont $4a$}
+  \put(280.63,48.42){\fontsize{8.54}{10.24}\selectfont $1b$}
+  \put(325.98,51.25){\fontsize{8.54}{10.24}\selectfont $3a$}
+  \put(354.33,31.41){\fontsize{8.54}{10.24}\selectfont $4b$}
+  \end{picture}%
+\else
+  \setlength{\unitlength}{1bp}%
+  \begin{picture}(388.84, 106.53)(0,0)
+  \put(0,0){\includegraphics{20140622pissa}}
+  \put(34.02,51.25){\fontsize{8.54}{10.24}\selectfont $1$}
+  \put(104.88,79.60){\fontsize{8.54}{10.24}\selectfont $1$}
+  \put(5.67,8.73){\fontsize{14.23}{17.07}\selectfont $L_{0}=1$}
+  \put(119.06,37.08){\fontsize{8.54}{10.24}\selectfont $2$}
+  \put(104.88,8.73){\fontsize{14.23}{17.07}\selectfont $L_{1}=2$}
+  \put(204.09,79.60){\fontsize{8.54}{10.24}\selectfont $1$}
+  \put(232.44,79.60){\fontsize{8.54}{10.24}\selectfont $2$}
+  \put(204.09,8.73){\fontsize{14.23}{17.07}\selectfont $L_{2}=4$}
+  \put(204.09,37.08){\fontsize{8.54}{10.24}\selectfont $3$}
+  \put(246.61,51.25){\fontsize{8.54}{10.24}\selectfont $4$}
+  \put(308.98,71.09){\fontsize{8.54}{10.24}\selectfont $1a$}
+  \put(345.83,79.60){\fontsize{8.54}{10.24}\selectfont $2$}
+  \put(317.48,8.73){\fontsize{14.23}{17.07}\selectfont $L_{3}=4$}
+  \put(317.48,37.08){\fontsize{8.54}{10.24}\selectfont $3b$}
+  \put(354.33,48.42){\fontsize{8.54}{10.24}\selectfont $4a$}
+  \put(280.63,48.42){\fontsize{8.54}{10.24}\selectfont $1b$}
+  \put(325.98,51.25){\fontsize{8.54}{10.24}\selectfont $3a$}
+  \put(354.33,31.41){\fontsize{8.54}{10.24}\selectfont $4b$}
+  \end{picture}%
+\fi
+\end{figure}

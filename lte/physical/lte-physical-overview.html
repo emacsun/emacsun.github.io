@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>LTE 物理层技术概要</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="emacsun" />
+<meta  name="description" content="本文描述LTE-FDD和TDD的频带资源"
+ />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<script type="text/x-mathjax-config">     MathJax.Hub.Config({        TeX: {equationNumbers: {autoNumber: ["AMS"], useLabelIds: true}},        "HTML-CSS": {linebreaks: {automatic: true}},        SVG: {linebreaks: {automatic: true}}    });</script>
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="part"  href="../index.html"><img src="../../img/assets/lte2.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="../../MathJax/MathJax.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">LTE 物理层技术概要</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. 空口（Air Interface）</a></li>
+<li><a href="#orgheadline2">2. 频谱资源</a></li>
+<li><a href="#orgheadline3">3. 单播和多播</a></li>
+<li><a href="#orgheadline4">4. 带宽划分</a></li>
+<li><a href="#orgheadline5">5. 时域帧格式</a></li>
+<li><a href="#orgheadline6">6. 信号的时频表示</a></li>
+<li><a href="#orgheadline7">7. OFDM 多载波传输</a></li>
+</ul>
+</div>
+</div>
+<p>
+本文总结LTE系统的无线接入技术尤其是其物理层的一些核心技术。正是在其空口（Air Interface）中采用了这些核心技术，LTE系统才有相对于之前无线通信协议的巨大飞跃。围绕这些技术，我们逐步讨论LTE系统的优缺点。本文中涉及的几个主题包括：1）LTE所使用的无线频谱，2）TDD和FDD双工模式，3）带宽分配，4）帧格式，5）LTE的时频资源表示，6）LTE的上下行数据处理过程，7）自适应编码调制。总之内容比较广泛，并不会在某一个主题上逗留过多篇幅。但是，感谢知识电子化带来的便利：在每一个主题上都实时的加入了更深入的链接跳转，读者完全可以根据自己的兴趣选择是否调到自己想要了解的主题（感谢万能的Internet）。
+</p>
+
+<p>
+光说不练那是假把式，配合本文提供的框架式的描述以及所给链接的帮助，我们完全可以使用Matlab仿真LTE系统的物理层。事实上，我在另外的文章中描述了LTE物理层信号处理过程的Matlab仿真。
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><a id="ID-a695fa1d-2fd7-4d4a-a66c-a436737ef4ec"></a><span class="section-number-2">1</span> 空口（Air Interface）</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+如果妇孺皆知有点过分的话，用众所周知就差不多：LTE系统的下行链路空口基于OFDM技术，上行链路空口基于SC-OFDM技术。无论是上行还是下行都与OFDM紧密相关。采用OFDM技术的最重要的优点有：1）有效的对抗多径效应引起的码间干扰，2）允许相邻子载波之间有一半重叠（大大提高了频谱效率），3）使用FFT技术快速实现，4）OFDM技术天然与MIMO技术完美的结合，5）把宽带转换成多个窄带从而避免频率选择性衰落，6）灵活的资源分配。正是这些优点让OFDM技术成了LTE系统的十全大补丸。
+</p>
+
+<p>
+由于采用了OFDM技术，LTE系统不仅可以灵活的分配时频资源还可以方便的支持多种物理带宽。在LTE系统中，频谱资源的划分与使用非常的灵活，这要归功于OFDM技术和MIMO技术的默契配合。另外，为了降低延迟，LTE系统的帧长为10ms，较短的帧长使得信道估计以及终端与基站之间反馈变得更加可靠，值得一提的是在下一代移动通信系统中，即即将到来的5G帧长会进一步被缩短，有可能实现1ms短帧。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> 频谱资源</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+LTE协议为该系统指定了不同物理频带的可用频谱资源。LTE系统的一个特性就是与之前的无线系统兼容，所以3GPP之前为3G划分的频谱可以用于LTE系统中。当然，除了之前3GPP划分的3G频带，LTE系统额外指定了新的频谱资源。不同的国家为LTE划分的频带也不同，这样LTE系统支持所有的频带保证了一部手机走天下（当然，有些运营商会对手机添加软件锁或者电信设备制造商会故意阉割对某些频带的支持，这些都是出于利益考虑。技术上，支持LTE全频带的手机可以做到一机走天下）。
+</p>
+
+<p>
+同之前的3GPP标准一样，LTE系统支持FDD和TDD双工传输模式。在FDD系统中，频谱是成对划分的，分别用于上行和下行数据传输。FDD的频谱就像双向车道一样，你来我往在不同的道路上，互不干扰。在TDD系统中，上下行传输在不同的时间使用相同的频谱。TDD的频谱就像有些地方的潮汐车道一样，你来我往在同一车道，但是不同的时间。比较而言，TDD双工模式更有利于零碎频谱的使用。毕竟，频谱资源是有限且不可再生的。所以向FDD那样划分成对频谱并不是那么容易。
+</p>
+
+<p>
+3GPP的Release 11标准为LTE的FDD模式划分了25对频带，如下图所示：
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/20150719lte-fdd.jpg" alt="cat/spider image" align="center" width="400" />
+</p>
+<p><span class="figure-number">Figure 1:</span> Release 11 LTE FDD频带划分</p>
+</div>
+
+<p>
+3GPP的Release 11标准为LTE的TDD模式划分了11对频带，编号为33到43，如下图所示：
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/20150719lte-tdd.jpg" alt="cat/spider image" align="center" width="400" />
+</p>
+<p><span class="figure-number">Figure 2:</span> Release 11 LTE TDD频带划分</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> 单播和多播</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+什么是单播？单播就是点对点，基站向单个用户发送数据，就像打电话这种服务，就是单播服务。什么是多播？多播就是点对多，基站向多个用户发送数据，就像电视台向多个用户发送电视节目。在LTE系统中，除了支持单播外，还支持多媒体广播多播服务（Multimedia Broadcast/Multicast Service, MBMS）。MBMS可以高速的广播/多播语音和视频服务。
+</p>
+
+<p>
+MBMS基于多小区传输模式，有专用的传输和控制信道。我们称MBMS的网络叫做多媒体广播单频网络（Multimedia Broadcast Single-Frequency Network, MBSFN）。多媒体信号在MBSFN网络的多个小区内发送给用户。由于是多个小区广播相同的信号到终端，可以大大提高终端接收信号的SNR，同时可以大大提高多媒体信号的传输速率。单播网络和多播网络在数据传输的过程中采用风格迥异的控制信息，网络参数也不尽相同。当然，本文会更多的关注单播过程所采用的技术。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> 带宽划分</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+IMT-Advanced要求LTE标准必须能够灵活划分带宽。LTE标准规定了六种带宽：从1.4MHz到20MHz。下图给出了LTE标准规定的五种带宽模式。在LTE系统中带宽的分配是以RB为单位的，1个RB占用的带宽是180KHz，每个RB共有12个子载波，每个子载波宽度为15KHz。五种带宽模式的RB数从6到100不等，或许你会疑惑180K*6 =1.08MHz 不是1.4MHz，这是因为每一种带宽还需要和旁边的频带之间有保护带宽，从而避免干扰。从下图可以看出，3M-20M带宽系统的频谱利用率大约90%左右，而不是100%。1.4MHz带宽的频谱利用率仅仅有77%左右。
+</p>
+
+
+<div id="orgparagraph1" class="figure">
+<p><img src="../../img/20151004lte_channel_allocation.jpg" alt="cat/spider image" align="center" width="400" />
+</p>
+<p><span class="figure-number">Figure 3:</span> LTE标准规定的5中带宽模式</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">5</span> 时域帧格式</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+LTE的时域帧格式如下图所示。要理解LTE，首先要理解LTE信号的时频表示。在时域，LTE的发射信号以10ms一帧的方式向外发射。每个帧又被分为10个1ms的子帧。每一个子帧包括两个0.5ms的时隙。每个时隙包含六到七个OFDM符号。一个时隙中到底是六个还是七个OFDM符号依赖于循环前缀的长度。
+</p>
+
+
+<div id="orgparagraph2" class="figure">
+<p><img src="../../img/20150719lte-time-framing.jpg" alt="cat/spider image" align="center" width="600" />
+</p>
+<p><span class="figure-number">Figure 4:</span> LTE 时间帧格式</p>
+</div>
+
+<p>
+接下来，讨论LTE空口信号的时频表示。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6"><span class="section-number-2">6</span> 信号的时频表示</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<p>
+LTE空口的一个显著特征是其信号的时频映射。原始信息比特经过编码与调制，映射为复数信号，最终按照一定的规则映射到时频资源栅格上。LTE系统系统的时频资源栅格如下图所示。
+</p>
+
+
+<div id="orgparagraph3" class="figure">
+<p><img src="../../img/20151005lte_time_frequency_grid.jpg" alt="cat/spider image" align="center" width="600" />
+</p>
+<p><span class="figure-number">Figure 5:</span> LTE 时频资源栅格图</p>
+</div>
+
+<p>
+LTE的时频资源栅格图横轴表示时域OFDM符号，纵轴表示频域OFDM子载波。上图给出的是正常循环前缀（normal cyclic prefix，记得么还有扩展循环前缀）的时频资源栅格图：每个时隙有7个OFDM符号。每一个Resource Block(RB)在频域上是180KHz，在时域上是0.5ms。所以一个RB包含的RE数量是12*7=84。在包含扩展循环前缀的时频资源栅格图中，一个时隙有6个OFDM符号。因此，一个RB包含的RE数量是72。RB的单位非常重要，因为它是资源调度的最小单元。
+</p>
+
+<p>
+我们之前提到过，LTE系统中允许调度的RB数量从6到100不等，带宽从1.4MHz到20MHz。在上行和下行传输链路上，RB的概念几乎是一样的，唯一的区别在于中心频率的位置。在上行链路中，中心频率位于两个子载波之间，所有的子载波都用于数据传输；在下行链路中，零频周围的15KHz（一个子载波的宽度）不用于数据传输。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7"><span class="section-number-2">7</span> OFDM 多载波传输</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+
+</p>
+
+<p>
+在LTE标准中，上下行传输都是基于OFDM来完成的。通过OFDM技术，宽带信号由多个窄带信号完成。我们称每个窄带为一个子载波。生成OFDM符号时，首先映射复数符号到每个子载波上。这些子载波沿着时频资源栅格图的频率轴（也就是纵轴）分布开来。假设每个子载波上的符号为\(a_{k}\)，则每个子载波上映射的符号为\(a_{k}\)。假设带宽内有\(N\)个子载波，子载波间隔为\(\Delta f\)。 \(a_{k}\)
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'emacsungithubio';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>

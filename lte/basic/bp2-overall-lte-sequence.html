@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>基本流程之二：LTE基本流程</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="emacsun （所有文章遵循GPL协议）" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<script type="text/x-mathjax-config">     MathJax.Hub.Config({        TeX: {equationNumbers: {autoNumber: ["AMS"], useLabelIds: true}},        "HTML-CSS": {linebreaks: {automatic: true}},        SVG: {linebreaks: {automatic: true}}    });</script>
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="part"  href="../index.html"><img src="../../img/assets/lte2.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">基本流程之二：LTE基本流程</h1>
+<p>
+作为一个工程师，我们中的大多数都会擅长某一个或者几个特别的领域，没有人能无所不通。对于自己不熟悉的领域，如何快速的切入？我的建议是先从该领域的轮廓框架入手，不要上来就陷入人民战争（细节）的汪洋大海中。无论何时，面对问题，首先问问自己这个问题应定位在哪个大致的方向？
+</p>
+
+<p>
+你不必记住整个轮廓框架，但是如果你能够把当前的问题定位到整个框架的某一个部分，整个解决方案会自然从记忆深处冒出来。 我经常告诫自己，不要刻意记忆，只需重复使用。（貌似这两个是相同的哈：)）
+</p>
+
+<p>
+下文是我的LTE系统流程，但是如果你试图描述LTE系统流程，可能会是另外一个不同的版本。但是，我认为整个逻辑会大体相似。为了更全面的掌握LTE，需要把这张蓝图放于脑海，并时不时尽可能回忆每一步的细节。事实上，每一个细节牵涉的“知识”都可拓展为一本厚书。
+</p>
+
+<ol class="org-ol">
+<li>UE处于关闭状态</li>
+<li>UE上电</li>
+<li>搜索频点</li>
+<li>小区搜索，通常一个UE在该步会找到多个小区</li>
+<li>小区选择</li>
+<li>译码MIB</li>
+<li>译码SIB</li>
+<li>初始RACH过程</li>
+<li>注册-&gt; 认证 -&gt; 链接（Attach）</li>
+<li>缺省EPS Bearer建立</li>
+<li>UE处于IDLE状态</li>
+<li>如果当前小区的信号变弱或者UE移动到另一个小区，UE重新选择小区</li>
+<li>当寻呼消息到达或者用户要打电话，进行RACH过程</li>
+<li>设置专用的EPS Bearer</li>
+<li>接收数据</li>
+<li>发送数据</li>
+<li>如果网络检测到UE功率太小，网络发送TPC指令增大UE Tx功率</li>
+<li>如果网络检测到UE功率太大，网络发送TPC指令降低UE Tx功率</li>
+<li>如果UE移动到另一个小区，BS和UE执行握手流程</li>
+<li>UE停止呼叫，进入IDLE状态</li>
+</ol>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'emacsungithubio';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>

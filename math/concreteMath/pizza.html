@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>递归问题：瑞士披萨</title>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="emacsun" />
+<meta  name="description" content="本文探讨具体数学第一章递归问题中的第二个问题：瑞士披萨"
+ />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<script type="text/x-mathjax-config">     MathJax.Hub.Config({        TeX: {equationNumbers: {autoNumber: ["AMS"], useLabelIds: true}},        "HTML-CSS": {linebreaks: {automatic: true}},        SVG: {linebreaks: {automatic: true}}    });</script>
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="part"  href="../index.html"><img src="../../img/assets/math2.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="../../MathJax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">递归问题：瑞士披萨</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 问题描述</a></li>
+<li><a href="#sec-2">2. 从小入手</a></li>
+<li><a href="#sec-3">3. 披萨递归式</a></li>
+<li><a href="#sec-4">4. 拓展1：锯齿刀</a></li>
+<li><a href="#sec-5">5. 拓展2：Z形刀</a></li>
+<li><a href="#sec-6">6. 拓展3: 三维奶酪问题</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 问题描述</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+用一把披萨刀直直的切 \(n\)刀，可以最多获得多少块披萨(不要求每块披萨形状一样)。更学术一点的表述为：平面上 \(n\)条直线所能界定的区域的最大个数 \(L_{n}\)是多少？
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 从小入手</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+按照我们探讨汉诺塔的思路，先从小入手。
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/pissa.jpg" alt="cat/spider image" align="center" width="600" />
+</p>
+<p><span class="figure-number">Figure 1:</span> 切1,2,3刀的结果</p>
+</div>
+
+<p>
+可以看出第三条直线对原有的三个区域（ 区域1,3,4）进行了分割，使得区域个数增加了三个，而第三条直线与原来的两条直线有交点。推而广之，第 \(n\)条直线可以使得区域个数增加 \(k\)个，当前仅当第 \(n\)条直线对已有的 \(k\)个区域进行了分割；第 \(n\)条直线对已有的 \(k\)个区域进行分割，当前仅当它与已有的 \(k-1\) 条直线有交点。两条直线之多有一个交点，因此这条新的直线与已经存在的 \(n-1\) 条直线至多有 \(n-1\) 个交点，故必有 \(k\le n\)。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 披萨递归式</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+通过上节分析，有：
+</p>
+
+\begin{equation}
+\label{eq:1}
+L_{n} \le L_{n-1} + n, n>0
+\end{equation}
+
+<p>
+另外，很容易分析，上式中的等号可以达到。只需要在纺织第 \(n\) 条直线时，使得其不予其他直线中的任何一条平行，且新的直线不经过任何已经存在的交点。于是，披萨递归式演变为：
+</p>
+
+\begin{equation}
+\label{eq:2}
+L_{n} = L_{n-1} + n, n>0
+\end{equation}
+
+<p>
+对于该递归式，我们需要一个闭式的解（关于什么样的解才是闭式解，请参考《具体数学》第6页的部分论述，此处省略若干字）。通过把披萨递归式展开，我们发现：
+</p>
+
+\begin{eqnarray}
+\label{eq:3}
+L_{n} &=& L_{n-1} +n \\
+&=& L_{n-2} + (n-1) + n \\
+&=& L_{n-3} + (n-2) + (n-1) + n \\
+&\vdots& \vdots \\
+&=& L_{0} + 1 + 2 + \ldots + n \\
+\end{eqnarray}
+
+<p>
+显然：
+</p>
+
+\begin{equation}
+\label{eq:4}
+L_{n} = 1 + \frac{n(n+1)}{2} ,n > 0
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 拓展1：锯齿刀</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+现在考虑切割披萨问题的一个变形。假设我们用折线代替直线，每一条折现包含一个锯齿，就像等腰三角形去掉底一样。如下图所示，平面上由 \(n\) 条这样的折线所界定的区域数 \(Z_{n}\) 最多是多少？
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/pissaz.jpg" alt="cat/spider image" align="center" width="300" />
+</p>
+<p><span class="figure-number">Figure 2:</span> 折形曲线划分平面</p>
+</div>
+
+<p>
+从上图的小规模实现可以发现，除了两条直线不经过它们的交点延伸出去外，一条折线和两条直线相同：
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/zigzag.jpg" alt="cat/spider image" align="center" width="300" />
+</p>
+<p><span class="figure-number">Figure 3:</span> 一条折线和两条直线</p>
+</div>
+
+<p>
+区域2,3,4对于两条直线来说是不同的区域，但是在一条折线的情况下是单独的一个区域，于是一条折线相对于两条直线减少了两个区域。如果每条折线的顶点都位于它与其他直线交点之外，每一条折线损失两个区域是固定不变的，于是有：
+</p>
+\begin{equation}
+\label{eq:5}
+Z_{n} = L_{2n} -2n = \frac{2n(2n+1)}{2} +1 -2n = 2n^{2} -n +1, n\ge 0
+\end{equation}
+
+<p>
+相比较而言，如果 \(n\) 足够大，则 \(L_{n}\)和 \(Z_{n}\) 有如下关系：
+</p>
+\begin{eqnarray}
+\label{eq:6}
+L_{n} &\sim & \frac{1}{2}n^{2} \\
+Z_{n} &\sim & 2n^{2}
+\end{eqnarray}
+
+<p>
+即，有 当 \( n \rightarrow \infty\)，\(Z_{n} = 4 L_{n}\)
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 拓展2：Z形刀</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+假设有 \(n\) 条Z行曲线所定义的区域最大个数是多少？如图所示。 每条Z行线由两条平行的无线半直线和一条直线段组成。
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/pissazz.jpg" alt="cat/spider image" align="center" width="500" />
+</p>
+<p><span class="figure-number">Figure 4:</span> 一条折线和两条直线</p>
+</div>
+
+<p>
+如图所示，分析知： 一条Z线划分生成的区域相当于三条曲线，只是Z形曲线划分的区域比三条曲线要少了5个，其中四个区域是因为直线的不完整造成的，一个区域是因为Z型曲线的两条平行线造成的。所以:
+</p>
+
+\begin{equation*}
+Z_{n} = L_{3n} - 5n = \frac{3n(3n+1)}{2} + 1 - 5n =  \frac{9n^{2}}{2} - \frac{7n}{2} +1
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> 拓展3: 三维奶酪问题</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<p>
+在一块后奶酪上画出五道直的刀痕，可以得到多少块奶酪？（ 在划奶酪时，奶酪必须保持在它原来的位置上，且每道切痕必定与三维空间中的一个平面相对应。） 求 \(P_{n}\) 的一个递归关系，这里 \(P_{n}\) 表示 \(n\) 个不同的平面所能定义的三维区域的最大个数。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'emacsungithubio';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
