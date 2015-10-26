@@ -314,8 +314,55 @@ x(n) = \sum_{k = 1}^{N} a_{k} e^{j2\pi f_{k} n/N}
 </p>
 
 <p>
-现在让我们回到循环前缀。
+现在让我们回到循环前缀。循环前缀是多载波系统的重要参数。首先循环前缀的长度必须比多径信道的最长时延扩展长才能避免符号间干扰。其次，在一个OFDM符号前添加循环前缀会造成传输资源的浪费，引入了系统冗余。因此必须尽可能的缩短循环前缀的长度，并且保证没有符号间干扰。为此，LTE针对不同的业务场景规定了两种不同的循环前缀，如下表所示：
 </p>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-center" />
+
+<col  class="org-center" />
+
+<col  class="org-center" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">循环前缀</th>
+<th scope="col" class="org-center">子载波间隔（kHz）</th>
+<th scope="col" class="org-center">每个RB子载波数</th>
+<th scope="col" class="org-center">每个RBOFDM符号数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">正常循环前缀</td>
+<td class="org-center">15</td>
+<td class="org-center">12</td>
+<td class="org-center">7</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">扩展循环前缀</td>
+<td class="org-center">15</td>
+<td class="org-center">12</td>
+<td class="org-center">6</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">扩展循环前缀</td>
+<td class="org-center">7.5</td>
+<td class="org-center">24</td>
+<td class="org-center">3</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
