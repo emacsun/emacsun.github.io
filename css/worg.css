@@ -222,17 +222,19 @@
 	margin: .4em;
     }
 
-    table {
-	border: none;
+    table,td,th {
+	border: 1px solid #ccc;
+	border-collapse: collapse;
+	text-align:center;	
     }
 
-    td {
-	border: none;
-    }
+    /* td { */
+    /* 	border: none; */
+    /* } */
 
-    th {
-	border: none;
-    }
+    /* th { */
+    /* 	border: none; */
+    /* } */
 
     code {
 	font-size: 80%;

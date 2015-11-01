@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="part"  href="../index.html"><img src="../../img/assets/lte2.png"></a>
+<a id="pdf"  href="./lte-physical-overview.pdf"><img src="../../img/assets/pdf.png"></a>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -61,7 +62,7 @@ for the JavaScript code in this tag.
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "left",
-        displayIndent: "5em",
+        displayIndent: "7em",
 
         "HTML-CSS": { scale: 100,
                         linebreaks: { automatic: "false" },
@@ -88,20 +89,42 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. 空口（Air Interface）</a></li>
-<li><a href="#orgheadline2">2. 频谱资源</a></li>
-<li><a href="#orgheadline3">3. 单播和多播</a></li>
-<li><a href="#orgheadline4">4. 带宽划分</a></li>
-<li><a href="#orgheadline5">5. 时域帧格式</a></li>
-<li><a href="#orgheadline6">6. 信号的时频表示</a></li>
-<li><a href="#orgheadline8">7. OFDM 多载波传输</a>
+<li><a href="#orgheadline1">1. 引言</a></li>
+<li><a href="#orgheadline2">2. 空口（Air Interface）</a></li>
+<li><a href="#orgheadline3">3. 频谱资源</a></li>
+<li><a href="#orgheadline4">4. 单播和多播</a></li>
+<li><a href="#orgheadline5">5. 带宽划分</a></li>
+<li><a href="#orgheadline6">6. 时域帧格式</a></li>
+<li><a href="#orgheadline7">7. 信号的时频表示</a></li>
+<li><a href="#orgheadline13">8. OFDM 多载波传输</a>
 <ul>
-<li><a href="#orgheadline7">7.1. 循环前缀</a></li>
+<li><a href="#orgheadline8">8.1. 循环前缀</a></li>
+<li><a href="#orgheadline9">8.2. 子载波间隔</a></li>
+<li><a href="#orgheadline10">8.3. RB大小</a></li>
+<li><a href="#orgheadline11">8.4. 频率域划分</a></li>
+<li><a href="#orgheadline12">8.5. 接收过程</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline14">9. 单载波频分复用</a></li>
+<li><a href="#orgheadline15">10. LTE系统的资源栅格内容</a></li>
+<li><a href="#orgheadline18">11. 物理信道</a>
+<ul>
+<li><a href="#orgheadline16">11.1. 下行物理信道</a></li>
+<li><a href="#orgheadline17">11.2. 下行物理信道的作用</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> 引言</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+
 <p>
 本文总结LTE系统的无线接入技术尤其是其物理层的一些核心技术。正是在其空口（Air Interface）中采用了这些核心技术，LTE系统才有相对于之前无线通信协议的巨大飞跃。围绕这些技术，我们逐步讨论LTE系统的优缺点。本文中涉及的几个主题包括：1）LTE所使用的无线频谱，2）TDD和FDD双工模式，3）带宽分配，4）帧格式，5）LTE的时频资源表示，6）LTE的上下行数据处理过程，7）自适应编码调制。总之内容比较广泛，并不会在某一个主题上逗留过多篇幅。但是，感谢知识电子化带来的便利：在每一个主题上都实时的加入了更深入的链接跳转，读者完全可以根据自己的兴趣选择是否调到自己想要了解的主题（感谢万能的Internet）。
 </p>
@@ -109,10 +132,12 @@ for the JavaScript code in this tag.
 <p>
 光说不练那是假把式，配合本文提供的框架式的描述以及所给链接的帮助，我们完全可以使用Matlab仿真LTE系统的物理层。事实上，我在另外的文章中描述了LTE物理层信号处理过程的Matlab仿真。
 </p>
+</div>
+</div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><a id="ID-a695fa1d-2fd7-4d4a-a66c-a436737ef4ec"></a><span class="section-number-2">1</span> 空口（Air Interface）</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><a id="ID-a695fa1d-2fd7-4d4a-a66c-a436737ef4ec"></a><span class="section-number-2">2</span> 空口（Air Interface）</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 
 </p>
@@ -127,9 +152,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> 频谱资源</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> 频谱资源</h2>
+<div class="outline-text-2" id="text-3">
 <p>
 
 </p>
@@ -148,7 +173,7 @@ LTE协议为该系统指定了不同物理频带的可用频谱资源。LTE系�
 
 
 <div class="figure">
-<p><img src="../../img/20150719lte-fdd.jpg" alt="cat/spider image" align="center" width="400" />
+<p><img src="../../img/20150719lte-fdd.jpg" alt="cat/spider image" align="center" width="700" />
 </p>
 <p><span class="figure-number">图 1:</span> Release 11 LTE FDD频带划分</p>
 </div>
@@ -159,16 +184,16 @@ LTE协议为该系统指定了不同物理频带的可用频谱资源。LTE系�
 
 
 <div class="figure">
-<p><img src="../../img/20150719lte-tdd.jpg" alt="cat/spider image" align="center" width="400" />
+<p><img src="../../img/20150719lte-tdd.jpg" alt="cat/spider image" align="center" width="700" />
 </p>
 <p><span class="figure-number">图 2:</span> Release 11 LTE TDD频带划分</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> 单播和多播</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> 单播和多播</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 
 </p>
@@ -183,9 +208,9 @@ MBMS基于多小区传输模式，有专用的传输和控制信道。我们称M
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> 带宽划分</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">5</span> 带宽划分</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 
 </p>
@@ -196,16 +221,16 @@ IMT-Advanced要求LTE标准必须能够灵活划分带宽。LTE标准规定了�
 
 
 <div id="orgparagraph1" class="figure">
-<p><img src="../../img/20151004lte_channel_allocation.jpg" alt="cat/spider image" align="center" width="400" />
+<p><img src="../../img/20151004lte_channel_allocation.jpg" alt="cat/spider image" align="center" width="700" />
 </p>
 <p><span class="figure-number">图 3:</span> LTE标准规定的5中带宽模式</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">5</span> 时域帧格式</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6"><span class="section-number-2">6</span> 时域帧格式</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 
 </p>
@@ -216,7 +241,7 @@ LTE的时域帧格式如下图所示。要理解LTE，首先要理解LTE信号�
 
 
 <div id="orgparagraph2" class="figure">
-<p><img src="../../img/20150719lte-time-framing.jpg" alt="cat/spider image" align="center" width="600" />
+<p><img src="../../img/20150719lte-time-framing.jpg" alt="cat/spider image" align="center" width="700" />
 </p>
 <p><span class="figure-number">图 4:</span> LTE 时间帧格式</p>
 </div>
@@ -227,9 +252,9 @@ LTE的时域帧格式如下图所示。要理解LTE，首先要理解LTE信号�
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">6</span> 信号的时频表示</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7"><span class="section-number-2">7</span> 信号的时频表示</h2>
+<div class="outline-text-2" id="text-7">
 <p>
 
 </p>
@@ -255,9 +280,9 @@ LTE的时频资源栅格图横轴表示时域OFDM符号，纵轴表示频域OFDM
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8"><span class="section-number-2">7</span> OFDM 多载波传输</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13"><span class="section-number-2">8</span> OFDM 多载波传输</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 
 </p>
@@ -294,9 +319,9 @@ x(n) = \sum_{k = 1}^{N} a_{k} e^{j2\pi f_{k} n/N}
 其中\(N\)为采样点数，也是OFDM调制过程中IFFT的点数。
 </p>
 </div>
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">7.1</span> 循环前缀</h3>
-<div class="outline-text-3" id="text-7-1">
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">8.1</span> 循环前缀</h3>
+<div class="outline-text-3" id="text-8-1">
 <p>
 
 </p>
@@ -314,12 +339,10 @@ x(n) = \sum_{k = 1}^{N} a_{k} e^{j2\pi f_{k} n/N}
 </p>
 
 <p>
-现在让我们回到循环前缀。循环前缀是多载波系统的重要参数。首先循环前缀的长度必须比多径信道的最长时延扩展长才能避免符号间干扰。其次，在一个OFDM符号前添加循环前缀会造成传输资源的浪费，引入了系统冗余。因此必须尽可能的缩短循环前缀的长度，并且保证没有符号间干扰。为此，LTE针对不同的业务场景规定了两种不同的循环前缀，如下表所示：
+现在让我们回到循环前缀。循环前缀是多载波系统的重要参数。首先循环前缀的长度必须比多径信道的最长时延扩展长才能避免符号间干扰。其次，在一个OFDM符号前添加循环前缀会造成传输资源的浪费，引入了系统冗余。因此必须尽可能的缩短循环前缀的长度，并且保证没有符号间干扰。为此，LTE针对不同的业务场景规定了两种不同的循环前缀，如表<a href="#orgtable1">1</a>所示：
 </p>
-
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
+<table id="orgtable1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">表 1:</span> LTE系统循环前缀</caption>
 
 <colgroup>
 <col  class="org-left" />
@@ -363,6 +386,322 @@ x(n) = \sum_{k = 1}^{N} a_{k} e^{j2\pi f_{k} n/N}
 </tr>
 </tbody>
 </table>
+<p>
+在LTE系统中，规定了三种循环前缀，子载波宽度为15KHz的常规的循环前缀长4.7 \(\mu s\)，子载波宽度为15KHz的扩展循环前缀长为16.6 \(\mu s\)，子载波宽度为7.5KHz的循环前缀为33 \(\mu s\)。7.5KHz子载波宽度仅用于多播和广播的场景中。 4.7 \(\mu s \)的循环前缀足够应付大多数城市和郊区通信环境。考虑到OFDM符号长度为66.7\(\mu s\)，循环前缀占用了7%的通信资源。对于16.6\(\mu s\)的循环前缀，则占用了大约25%的通信资源。对于农村通信环境而言，需要较长的循环前缀。
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><span class="section-number-3">8.2</span> 子载波间隔</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+
+</p>
+
+<p>
+较小的子载波间隔保证每个子载波经历频率平坦衰落。然而，子载波的宽度不可能无限小，其受多普勒频移，相位噪声的影响。移动终端的移动会带来多普勒频移，移动速度越快多普勒频移越大，多普勒频移会带来子载波间干扰。相位噪声来源于晶振的波动，同样也会带来子载波间干扰。权衡信道环境和实现成本，LTE系统规定常规子载波宽度为15KHz。
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><span class="section-number-3">8.3</span> RB大小</h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+
+</p>
+
+<p>
+在LTE系统中，一个资源元素块被称为一个资源块（有点废话），英文是Resource Block，我们简称为一个RB。RB是资源调度的基本单位，RB大小的选择受几个因素的影响。首先，RB要足够小，这样才能RB内的信道相近，方便为用户分配信道状态好的RB资源。另一方面，基站并不知道哪一块RB的信道好，需要UE反馈信道状态，而UE的反馈带来额外的开销。因此，RB块也不能太小，否则会带来较大的反馈开销。在LTE系统中，1ms子帧保证了低延迟，180KHz宽度的RB保证对小包的支持。
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">8.4</span> 频率域划分</h3>
+<div class="outline-text-3" id="text-8-4">
+<p>
+
+</p>
+
+<p>
+LTE支持不同的系统带宽。OFDM和SC-FDM通过FFT实现，因此我们可以通过选择FFT的点数来实现对不同带宽的支持。不管系统中支持的带宽为多少，LTE的一个OFDM符号都为66.7\(\mu s\)，这也保证了在不同带宽系统中，子载波宽度都为15KHz。固定的子载波宽度也保证了同样的均衡技术可以用于不同带宽的通信模式。在LTE系统中不同的带宽对应的相关参数如表<a href="#orgtable2">2</a>所示。
+</p>
+<table id="orgtable2" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">表 2:</span> LTE系统带宽和相关参数</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">带宽（MHz）</th>
+<th scope="col" class="org-right">1.4</th>
+<th scope="col" class="org-right">3</th>
+<th scope="col" class="org-right">5</th>
+<th scope="col" class="org-right">10</th>
+<th scope="col" class="org-right">15</th>
+<th scope="col" class="org-right">20</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">采样率（MHz）</td>
+<td class="org-right">1.92</td>
+<td class="org-right">3.84</td>
+<td class="org-right">7.68</td>
+<td class="org-right">15.36</td>
+<td class="org-right">23.04</td>
+<td class="org-right">30.72</td>
+</tr>
+
+<tr>
+<td class="org-left">FFT大小</td>
+<td class="org-right">128</td>
+<td class="org-right">256</td>
+<td class="org-right">512</td>
+<td class="org-right">1024</td>
+<td class="org-right">1536</td>
+<td class="org-right">2048</td>
+</tr>
+
+<tr>
+<td class="org-left">RB数</td>
+<td class="org-right">6</td>
+<td class="org-right">15</td>
+<td class="org-right">25</td>
+<td class="org-right">50</td>
+<td class="org-right">75</td>
+<td class="org-right">100</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">8.5</span> 接收过程</h3>
+<div class="outline-text-3" id="text-8-5">
+<p>
+
+</p>
+
+<p>
+尽管LTE系统没有规定接收机的设计细节，但是讨论接收过程也可以让我们更清楚发射端的设计原因。整体而言，接收过程是发射过程的逆过程。首先从接收到的OFDM符号中移除循环前缀，接着进行OFDM解调（使用FFT来完成）。通常，由于信道的衰落特性，我们需要对接收符号进行均衡操作，去除信道带来的影响。为了执行符号均衡，我们首先要估计信道。估计信道要用到参考信号，具体而言是小区参考信号（Cell Specific Reference, CSR）。CSR是收发端都知道的信号，接收端通过经历了信道畸变的CSR来估计信道。通常，我们只在少数的时频资源上发送CSR，然后估算这几个CSR对应的时频资源上的信道，然后根据有限的估计，通过插值的方式得出其他资源栅格上对应的信道。对接收的信号除以其对应的信道，就算是完成了符号均衡。当然实际系统中可能不是除以这么简单，或许会考虑前后两个符号之间的关系，或许会使用维纳滤波等比较高级的信号处理方式。采用何种信号处理算法取决于对性能的要求和对计算复杂度的容忍度。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline14" class="outline-2">
+<h2 id="orgheadline14"><span class="section-number-2">9</span> 单载波频分复用</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+
+</p>
+
+<p>
+LTE上行采用一种叫做单载波频分复用（SC-FDM）的接入方式。这种方式是OFDM的一种变形，主要目的是保留OFDM优点的前提下，降低峰均功率比。降低峰均功率比对射频功放器件的线性工作范围要求降低，从而降低终端的制造成本。SC-FDM的实现很简单：在OFDM调制器之前使用DFT做一次预编码，就像使用DFT来做扩频一样。所以SC-FDM有时候也叫做基于DFT扩频的OFDM，即DFTS-OFDM。之所以叫做基于DFT的扩频，是因为一个符号通过DFT之后其频谱被扩展到整个频域。而OFDM系统的每一个符号仅仅占用一个子载波。通过将符号的能量扩频到整个频域保证发射信号的功率动态范围变化不大，至少比基于OFDM的多载波系统变化缓慢。
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline15" class="outline-2">
+<h2 id="orgheadline15"><span class="section-number-2">10</span> LTE系统的资源栅格内容</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+
+</p>
+
+<p>
+根据循环前缀长度不同，LTE系统在一个1ms的子帧中可以传输12到14个OFDM符号。根据带宽不同，LTE系统提供了6到100可选的RB数。接下来，我们关心的是这些时频资源是怎么分配的？在每个RE中传输的内容都是什么？
+</p>
+
+<p>
+图<a href="#orgparagraph4">6</a>给出了单播系统中用户数据，小区参考信号，控制信号的分配情况。
+</p>
+
+<div id="orgparagraph4" class="figure">
+<p><img src="../../img/20151101lteunicast.jpg" alt="20151101lteunicast.jpg" width="800" align="center" />
+</p>
+<p><span class="figure-number">图 6:</span> LTE单播系统时频资源传输内容</p>
+</div>
+
+<p>
+讨论每个RE中传输的内容需要了解LTE系统中物理层信道，传输信道和逻辑信道之间的关系。相对于UMTS系统和3GPP其他的标准，LTE大大削减了专用信道的作用，更加倾向于使用共享信道。因此，LTE系统大量的传输信道和逻辑信道合并到物理共享信道。除了传输数据信号，在物理信道中还传输了两种信号：参考信号和同步信号。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-2">
+<h2 id="orgheadline18"><span class="section-number-2">11</span> 物理信道</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+
+</p>
+
+<p>
+制定LTE协议的一个目标是构建更加高效和平坦的协议架构。许多3GPP协议中存在的专用信道被共享信道替代，物理信道的数量大为减少。图给出了LTE无线接入层的结构以及对应的信道名称。
+</p>
+
+
+<div id="orgparagraph5" class="figure">
+<p><img src="../../img/20151101ltechannel.jpg" alt="20151101ltechannel.jpg" width="800" align="center" />
+</p>
+<p><span class="figure-number">图 7:</span> LTE无线接入层的划分及信道名称</p>
+</div>
+
+<p>
+逻辑信道（logical channel）用于连接无线链接控制层（Radio Link Control，RLC）和MAC层。LTE定义了两种逻辑信道：1）数据业务逻辑信道，2）控制逻辑信道。数据业务逻辑信道传输用户数据，控制逻辑信道传输控制信息。
+</p>
+
+<p>
+传输信道（Transport channels）链接MAC层和PHY层，物理信道（physical channels）由PHY的收发机实现。每一个物理信道都由一些RE承担，在这些RE上传输了来自高层协议的数据。下行和上行的数据传输使用下行共享传输信道DL-SCH和上行共享传输信道完成。一个物理信道使用分配的RE来发送特定传输信道上的数据。每一个传输信道都映射到指定的物理信道上。但是物理信道和传输信道并不存在一一对应的关系，有一些物理信道并没有对应的传输信道。L1/L2之间的控制信道用于传输下行控制信息（Downlink Control Information, DCI）。终端利用这些控制信息进行下行数据的接收和译码。上行控制信息UCI被用来提供资源分配和实现HARQ。上下行链路的逻辑信道，传输信道和物理信道之间的关系不尽相同。
+</p>
+</div>
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16"><span class="section-number-3">11.1</span> 下行物理信道</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+
+</p>
+
+<p>
+表<a href="#orgtable3">3</a>给出了LTE下行物理信道的名称和各自的任务：
+</p>
+<table id="orgtable3" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">表 3:</span> LTE下行链路物理信道</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">物理信道名称</th>
+<th scope="col" class="org-left">缩写</th>
+<th scope="col" class="org-left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Pyhsical Downlink Shared Channel</td>
+<td class="org-left">PDSCH</td>
+<td class="org-left">传输单播用户数据信息和寻呼信息</td>
+</tr>
+
+<tr>
+<td class="org-left">Physical Downlink Control Channel</td>
+<td class="org-left">PDCCH</td>
+<td class="org-left">下行控制信息（DCI）</td>
+</tr>
+
+<tr>
+<td class="org-left">Physical Hybrid-ARQ Indicator Channel</td>
+<td class="org-left">PHICH</td>
+<td class="org-left">HARQ指示和上行数据包的ACK/NACK</td>
+</tr>
+
+<tr>
+<td class="org-left">Physical Control Format Indicator Channel</td>
+<td class="org-left">PCFICH</td>
+<td class="org-left">控制格式信息，用于解调PDCCH</td>
+</tr>
+
+<tr>
+<td class="org-left">Physical Multicast Channel</td>
+<td class="org-left">PMCH</td>
+<td class="org-left">多媒体广播单频网络操作</td>
+</tr>
+
+<tr>
+<td class="org-left">Physical Broadcast Channel</td>
+<td class="org-left">PBCH</td>
+<td class="org-left">终端进行小区接入需要的系统信息</td>
+</tr>
+</tbody>
+</table>
+<p>
+其中PMCH信道用于MBMS业务，其余的物理信道用户传统的单播传输。
+</p>
+
+<p>
+图<a href="#orgparagraph6">8</a>给出了LTE下行链路结构中逻辑信道，传输信道和物理信道之间的关系。
+</p>
+
+<div id="orgparagraph6" class="figure">
+<p><img src="../../img/20151101ltephysicalchannel.jpg" alt="20151101ltephysicalchannel.jpg" width="700" align="center" />
+</p>
+<p><span class="figure-number">图 8:</span> LTE下行链路逻辑信道，传输信道和物理信道之间的关系</p>
+</div>
+
+<p>
+在单播网络中，我们只有一种数据业务逻辑信道DTCH（Dedicated Traffic Channel），有四种控制逻辑信道：广播控制信道BCCH（Broadcast Control Channel）,寻呼控制信道PCCH（Paging Control Channel）,公用控制信道CCCH（Common Control Channel）和专用控制信道（Dedicated Control Channel）。除了PCCH之外的逻辑控制信道和专用逻辑业务信道都形成了传输信道中的下行共享信道DLSCH。PCCH信道映射为传输信道中的寻呼信道PCH。传输信道中的DLSCH信道和PCH映射为PDSCH信道。物理信道中的PDSCH信道和其他的四种物理信道PDCCH，PHICH，PCFICH，PBCH提供了单播网络中所需要的数据信息，控制信息和系统信息。
+</p>
+
+<p>
+在多播和广播网络中，业务逻辑信道为多播业务信道MTCH（Multicast Traffic Channel）,其对应的逻辑控制信道为MCCH（Multicast Control Channel）。这两个信道构成了传输信道中的多播信道MCH（Multicast Channel）。最后PMCH构成了MBMS业务的物理信道。
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17"><span class="section-number-3">11.2</span> 下行物理信道的作用</h3>
+<div class="outline-text-3" id="text-11-2">
+<p>
+
+</p>
+
+<p>
+PDSCH携带用户来自MAC的传输块。传输块通常在一个子帧中传输完毕（在MIMO的空分复用模式中，一个子帧可以传输多个传输块）。自适应调制编码结束后，得到的调制符号被映射到时频资源栅格上，最终映射到发射天线上发射出去。在LTE系统中采用自适应调制编码，这意味着基站根据终端反馈的信道状态决定发送信息的调制编码方式和MIMO模式。因此终端对信道的测量信息必须反馈回基站，帮助基站生成下一次传输符号。在每一子帧中，基站告诉终端调度信息，方便终端进行符号映射。基站需要告诉终端的信息包括：使用的RB数，传输块的大小，调制方式，码率和MIMO模式。
+</p>
+
+<p>
+为了方便基站和终端之间的传输，伴随PDSCH信道定义了PDCCH信道。PDCCH信道主要传输终端恢复数据需要的信息，数据恢复过程包括接收，均衡，解调和姨妈。因为PDCCH信息必须在PDSCH开始之前被正确译码，下行链路中的PDCCH占用了每一子帧的前几个OFDM符号。具体PDCCH占用多少个OFDM符号（可能是一个，两个，三个或者四个）依赖于多个参数，包括带宽，子帧号，单播业务还是多播业务。
+</p>
+
+<p>
+在PDCCH中的信息被称为下行控制信息DCI。系统占用的RE数依DCI的格式而变化。如图<a href="#orgparagraph7">9</a>所示，LTE系统中定义了10中DCI格式（LTE-A中定义了更多）。
+</p>
+
+
+<div id="orgparagraph7" class="figure">
+<p><img src="../../img/20151101ltetenDCI.jpg" alt="20151101ltetenDCI.jpg" width="700" align="center" />
+</p>
+<p><span class="figure-number">图 9:</span> LTE系统中的10中DCI</p>
+</div>
+
+<p>
+每一种DCI携带的控制信息包括RB大小，多天线结构，调制方式，码率和传输块大小，HARQ信息（包括线程数，冗余版本，是否存在新数据的标志位），图<a href="#orgparagraph8">10</a>给出了DCI1包含的信息。
+</p>
+
+
+<div id="orgparagraph8" class="figure">
+<p><img src="../../img/20151101lteDCI1.jpg" alt="20151101lteDCI1.jpg" width="700" align="center" />
+</p>
+<p><span class="figure-number">图 10:</span> LTE系统中DCI 1的内容</p>
+</div>
+
+<p>
+PCFICH用于指定DCI占用的OFDM符号数。PCFICH映射到每一个子帧第一个OFDM符号的特定RE上。PCFICH的值（1,2,3,4）取决于带宽，帧结构和子帧序号。对于大于1.4MHz的系统，PCFICH的值最多为3。对于1.4MHz的系统，PCFICH的值最多为4。
+</p>
+
+<p>
+除了PDCCH和PCFICH信道，LTE定义了另外的控制信道PHICH，该信道用于携带物理层HARQ传输的相关信息。PHICH携带上行数据包的应答信息。UE上行传输一个数据包之后，会在一个预先规定的时间间隔内在PHICH中寻找对应的应答信息。这个预先规定的时间间隔由上层决定。在一次常规循环前缀的传输过程中，PHICH位于第一个子帧的第一个OFDM符号，在扩展的循环前缀传输过程中，PHICH位于前三个子帧中。
+</p>
+
+<p>
+PBCH携带主要的控制信息，包括PHY系统信息和小区搜索过程中用到的小区信息。正确译码MIB之后，UE可以解读下行控制信息和数据信道，从而执行相关的操作接入系统。MIB在PBCH上传输，以40ms为周期，对应4个无线帧。MIB在每一个无线帧的第一个子帧上传输。MIB包括四个信息域：前两个信息与包含下行系统带宽和PHICH结构的信息。下行系统带宽单位是RB（可选6种：6,15,25,50,75,100，分别对应1.4MHz，3MHz，5MHz，10MHz，15MHz，20MHz带宽）。MIB中PHICH结构域的信息指定PHICH的市场和大小。PBCH总是在一个无线帧中的第一个子帧第一个时隙的前4个OFDM符号中。在频率域，PBCH占用零频周围的72个子载波。
+</p>
 </div>
 </div>
 </div>
