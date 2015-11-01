@@ -50,12 +50,12 @@
     a#home:hover {
 	text-decoration: underline;
 	color: blue;
-	background:#F0f8ff;
+	background:#00FF00;
     }
     a#part:hover {
 	text-decoration: underline;
 	color: blue;
-	background:#F0f8ff;
+	background:#0000FF;
     }	    
     #part{
 	font-size: 15pt;
@@ -63,10 +63,21 @@
 	right:0em;
 	top: 4em;
     }
+    #pdf{
+	font-size: 15pt;
+	position: fixed;
+	right:0em;
+	top: 8em;
+    }
+    a#pdf:hover {
+	text-decoration: underline;
+	color: blue;
+	background:#FF0000;
+    }
     /* TOC inspired by http://jashkenas.github.com/coffee-script */
     #table-of-contents {
-	font-size: 1.2em;
-	line-height: 110%;
+	font-size: 1.4em;
+	line-height: 100%;
 	position: fixed;
 	left:0em;
 	top: 0em;
@@ -82,8 +93,8 @@
 	/* ensure doesn't flow off the screen when expanded */
 	max-height: 100%;
 	overflow: auto;
-	padding-left: -1em;
-	padding-right: -1em;
+	padding-left: 0.25em;
+	padding-right: 0.25em;
     }
     #table-of-contents h2 {
 	font-size: 0.7em;
