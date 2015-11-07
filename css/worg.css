@@ -3,7 +3,8 @@
     body {
 	font-family: STFangSong,Helvetica,Arial,Vernada,Tahoma,STXihei,"Microsoft YaHei","Songti SC",SimSun,Heiti,sans-serif;
 	/*line-height:150%;*/
-	background-color:#ffffff;
+	/*background-color:#ffffff;*/
+	background-color:white;
 	border: 1px solid LightGrey;
 	line-height: 150%;
 	margin: 0% 0% 0% 10%;
@@ -45,7 +46,7 @@
 	font-size: 15pt;
 	position: fixed;
 	right:0em;
-	top: 0em;
+	bottom: 8em;
     }
     a#home:hover {
 	text-decoration: underline;
@@ -61,13 +62,13 @@
 	font-size: 15pt;
 	position: fixed;
 	right:0em;
-	top: 4em;
+	bottom: 4em;
     }
     #pdf{
 	font-size: 15pt;
 	position: fixed;
 	right:0em;
-	top: 8em;
+	bottom: 0em;
     }
     a#pdf:hover {
 	text-decoration: underline;
@@ -76,10 +77,10 @@
     }
     /* TOC inspired by http://jashkenas.github.com/coffee-script */
     #table-of-contents {
-	font-size: 1.4em;
+	font-size: 1em;
 	line-height: 100%;
 	position: fixed;
-	left:0em;
+	right:0em;
 	top: 0em;
 	background: #00eeee;
 	color:black;
@@ -93,24 +94,26 @@
 	/* ensure doesn't flow off the screen when expanded */
 	max-height: 100%;
 	overflow: auto;
+	padding-top:-1em;
+	pading-bottom:-1em;
 	padding-left: 0.25em;
 	padding-right: 0.25em;
     }
     #table-of-contents h2 {
-	font-size: 0.7em;
+	font-size: 1em;
 	max-width: 9em;  
-	color:white; 
+	color:black; 
 	font-weight: bold;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-	/*padding-top: 0.05em;*/
-	/*padding-bottom: 0.05em;*/
+	padding-left: 0.07em;
+	padding-right: 0.07em;
+	padding-top: -1em;
+	padding-bottom: -1em;
 	border-bottom:3px solid #d4d4d4;
 	border-top:3px solid #d4d4d4;		
     }
     #table-of-contents #text-table-of-contents {
 	display: none;
-	font-size: 0.7em;
+	font-size: 0.9em;
 	text-align: left; }
     #table-of-contents:hover #text-table-of-contents {
 	display: block;
