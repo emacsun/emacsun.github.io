@@ -132,12 +132,10 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-因为有 \(J(10)=5\)，所以我们猜测有 \(J(n)= \frac{n}{2}\)，但是一些简单的如同下表的例子否定了这个猜测。
+因为有 \(J(10)=5\)，所以我们猜测有 \(J(n)= \frac{n}{2}\)，但是一些简单的如同表<a href="#orgtable1">1</a>的例子否定了这个猜测。
 </p>
-
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
+<table id="orgtable1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">表 1:</span> 猜测</caption>
 
 <colgroup>
 <col  class="org-left" />
@@ -180,10 +178,10 @@ for the JavaScript code in this tag.
 
 
 <p>
-不过我们可以大胆猜测， \(J(n)\)一定是奇数，因为绕圈走一圈就消去了全部的偶数。如果 \(n\) 是偶数，则走一圈后除了仅剩下一半人口并且他们的号码有变化外，我们面临的情形是与刚开始相同的情形，如下图所示：
+不过我们可以大胆猜测， \(J(n)\)一定是奇数，因为绕圈走一圈就消去了全部的偶数。如果 \(n\) 是偶数，则走一圈后除了仅剩下一半人口并且他们的号码有变化外，我们面临的情形是与刚开始相同的情形，如图<a href="#orgparagraph2">2</a>所示：
 </p>
 
-<div class="figure">
+<div id="orgparagraph2" class="figure">
 <p><img src="../../img/josephus-n-even.jpg" alt="cat/spider image" align="center" width="200" />
 </p>
 <p><span class="figure-number">图 2:</span> n为偶数时的约瑟夫问题</p>
@@ -247,12 +245,10 @@ J(2n+1)&=2J(n)+1
 </p>
 
 <p>
-有了递归式，我们计算一些较小的值
+有了递归式，我们计算一些较小的值，如表<a href="#orgtable2">2</a>所示。
 </p>
-
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
+<table id="orgtable2" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">表 2:</span> 递归式得出的一些解</caption>
 
 <colgroup>
 <col  class="org-left" />
@@ -335,7 +331,7 @@ J(2n+1)&=2J(n)+1
 
 
 <p>
-显然，从上面的表格中可以看出，将 \(n\) 按照 2的幂次进行分组或许会出现一些转机。每一组开始的 \(J(n)\) 总是等于1。仔细观察上表，如果将 \(n\) 写作 \(2^{m}+l\)，则 \(J(n)=J(2^{m}+l) = 2l +1, m\ge 0\le l < 2^{m}\). 其中 \(2^{m}\)是不超过 \(n\) 的 \(2\)的最大幂，而 \(l=n-2^{m}\)。事实上，可以对 \(m\) 使用数学归纳法证明：
+显然，从表<a href="#orgtable2">2</a>可以看出，将 \(n\) 按照 2的幂次进行分组或许会出现一些转机。每一组开始的 \(J(n)\) 总是等于1。仔细观察上表，如果将 \(n\) 写作 \(2^{m}+l\)，则 \(J(n)=J(2^{m}+l) = 2l +1, m\ge 0\le l < 2^{m}\). 其中 \(2^{m}\)是不超过 \(n\) 的 \(2\)的最大幂，而 \(l=n-2^{m}\)。事实上，可以对 \(m\) 使用数学归纳法证明：
 </p>
 \begin{equation}
 \label{eq:4}
@@ -411,11 +407,11 @@ J((b_{m}b_{m-1}\ldots b_{1}b_{0})_{2}) = (b_{m-1}b_{m-2}\ldots b_{1}b_{0}b_{m})_
 \end{equation}
 
 <p>
-可以看出在约瑟夫问题中， \(\alpha=1,\beta=-1,\gamma=1\)。接下来，我们依然从小入手，得出下表
+可以看出在约瑟夫问题中， \(\alpha=1,\beta=-1,\gamma=1\)。接下来，我们依然从小入手，得出表<a href="#orgtable3">3</a>。
 </p>
 
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
+<table id="orgtable3" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">表 3:</span> 约瑟夫推广的解</caption>
 
 <colgroup>
 <col  class="org-right" />
@@ -545,7 +541,7 @@ f((b_{m}b_{m-1}\ldots b_{1}b_{0})_{2}) = (\alpha\beta_{b_{m-1}}\beta_{b_{m-2}}\l
 \end{equation}
 
 <p>
-事实上我们对 \(f(n)\)的前几个解稍加整理即可看出式 (\ref{eq:14}) 的精妙。如下表
+事实上我们对 \(f(n)\)的前几个解稍加整理即可看出式 (\ref{eq:14}) 的精妙。
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -631,10 +627,10 @@ f((b_{m}b_{m-1}\ldots b_{1}b_{0})_{2}) = (\alpha\beta_{b_{m-1}}\beta_{b_{m-2}}\l
 </p>
 
 <p>
-可以沿着推广2的思路走的更远，我们对式(\ref{eq:12}) 做更进一步修改：
+可以沿着推广2的思路走的更远，我们对式12做更进一步修改：
 </p>
 \begin{equation}
-\label{eq:17}
+\label{eq:88}
 \begin{split}
 f(j) &=  \alpha_{j}, 1\le j < d \\
 f(dn+j)&= c f(n) +\beta_{j}, 0\le j < d 
@@ -642,7 +638,7 @@ f(dn+j)&= c f(n) +\beta_{j}, 0\le j < d
 \end{equation}
 
 <p>
-式(\ref{eq:17})有变动基数的解：
+式21有变动基数的解：
 </p>
 \begin{equation}
 \label{eq:18}

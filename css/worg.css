@@ -94,8 +94,8 @@
 	/* ensure doesn't flow off the screen when expanded */
 	max-height: 100%;
 	overflow: auto;
-	padding-top:-1em;
-	pading-bottom:-1em;
+	padding-top:0em;
+	pading-bottom:0em;
 	padding-left: 0.25em;
 	padding-right: 0.25em;
     }
@@ -106,10 +106,10 @@
 	font-weight: bold;
 	padding-left: 0.07em;
 	padding-right: 0.07em;
-	padding-top: -1em;
-	padding-bottom: -1em;
-	border-bottom:3px solid #d4d4d4;
-	border-top:3px solid #d4d4d4;		
+	padding-top: 0.125em;
+	padding-bottom: 0.125em;
+	border-bottom:0px solid #d4d4d4;
+	border-top:0px solid #d4d4d4;		
     }
     #table-of-contents #text-table-of-contents {
 	display: none;
@@ -195,7 +195,7 @@
     }
 
     /*a {text-decoration: none; color: #537d7b}*/
-    a {text-decoration: none; color: black	}
+    a {text-decoration: none; color: blue	}
     /* a:visited {text-decoration: none; color: #224444} */ /* Taken out because color too similar to text. */
     a:visited {text-decoration: none; color: #ff0000}  /* this is now the color of the Unicorns horn */
     /*   a:visited {text-decoration: none; color: #98855b}  /* this is now the color of the Unicorns horn */
