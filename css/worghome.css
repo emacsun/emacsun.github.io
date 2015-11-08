@@ -1,32 +1,32 @@
 @media all
-{ 
+{
     body {
-	font-family: STFangSong,Helvetica,Arial,Vernada,Tahoma,STXihei,"Microsoft YaHei","Songti SC",SimSun,Heiti,sans-serif;	
-	font-size: 1.5em; 
+	font-family: STFangSong,Helvetica,Arial,Vernada,Tahoma,STXihei,"Microsoft YaHei","Songti SC",SimSun,Heiti,sans-serif;
+	font-size: 1.5em;
 	padding: 2% 5% 5% 5%;
 	border: 0px solid #888888;
 	margin:5% 10%;
-	background-color: orange;
+	background-color: #Fff0f5;
 	max-width: 80%;
-    } 
+    }
     body #content {
 	padding-top:10px;
 	padding-bottom:0em;
 	line-height:120%;
 	font-size: 1em;
     }
-    
+
     body .main{
 	border: 0px solid #888888;
 	/*padding: 1em 1em 1em 1em;*/
 	display:flex;
-	font-size: 20px; 	
+	font-size: 20px;
 	/*flex-flow:column;*/
 	/*flex-wrap:wrap;*/
 	overflow:hidden;
 	margin-left:auto;
 	margin-right:auto;
-    }  
+    }
    .info {
 	/*text-indent: 2em;*/
 	text-align:left;
@@ -51,7 +51,7 @@
 	right: 0;
 	top: 4em;
     }
-    
+
     .left-column
     { float:left;
       width:48%;
@@ -76,7 +76,7 @@
 	border: 5px solid #CCC;
 	max-width: 50%;
 	overflow: auto;
-	color:white; 
+	color:white;
 	font-weight: bold;
 	padding-left: 0.11em;
 	padding-right: 0.11em;
@@ -86,11 +86,11 @@
 	/* TOC inspired by http://jashkenas.github.com/coffee-script */
     #table-of-contents {
 	font-size: 1em;
-	line-height: 120%;	
+	line-height: 120%;
 	position: fixed;
 	right:0em;
 	top: 0em;
-	background: #00eeee;
+	background: #87ceeb;
 	color:black;
 	-webkit-box-shadow: 0 0 1em #777777;
 	-moz-box-shadow: 0 0 1em #777777;
@@ -100,22 +100,22 @@
 	boder:0px solid #ccc;
 	/*boder-shadow:0 0 1em #777777;*/
 	/* ensure doesn't flow off the screen when expanded */
-	max-height: 80%;
-	overflow: auto;
+	max-height: 100%;
+	overflow: scroll;
 	padding-left: 0.11em;
 	padding-right: 0.11em;
     }
     #table-of-contents h2 {
 	font-size: 1em;
-	max-width: 9em;  
-	color:white; 
+	max-width: 12em;
+	color:white;
 	font-weight: bold;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 	border-bottom:3px solid #d4d4d4;
-	border-top:3px solid #d4d4d4;	
+	border-top:3px solid #d4d4d4;
     }
     #table-of-contents #text-table-of-contents {
 	display: none;
@@ -159,14 +159,16 @@
 	margin-left: 0.1em
     }
     .title {
-
+	font-size:2.3em;
+	float:center;
+	color: #6C5D4F;
     }
 
     h3 {
 	font-family: "Helvetica Neue", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif !important;
-	font-size:1.3em;
+	font-size:1.2em;
 	color: #A34D32;
-	margin-left: 0.6em;
+	margin-left: 0.5em;
     }
     .info h3{
 	margin:0px;
@@ -186,10 +188,9 @@
     .outline-text-4 {
 	margin-left: 1.45em;
     }
-
-    a {text-decoration: none; color: blue; padding:2px;
-       border-bottom: 1px dashed Red; }
-    a:visited {text-decoration: none; color: #ff0000}  
+    a {text-decoration: none; color: #4169e1; padding:2px;
+       border-bottom: 1px dashed blue; }
+    a:visited {text-decoration: underline; color: #0000ff}
     a:hover {
 	text-decoration: none;
 	color: blue;
@@ -211,7 +212,8 @@
     }
 
     li {
-	margin: .4em;
+	margin-bottom: 10px;
+	margin-right: 10px;
     }
 
     table {
@@ -916,7 +918,7 @@
     }
     .org-tool-bar {
 	/* tool-bar */
-	color: #000000;  
+	color: #000000;
 	background-color: #bfbfbf;
     }
     .org-tooltip {
@@ -935,8 +937,15 @@
     .org-ul {
 	padding-left:-5px;
 	padding-top:10px;
-	padding-bottom:1px;
-	background-color: NavajoWhite;
+	padding-bottom:5px;
+	/*background-color: NavajoWhite;*/
+	background: #87ceeb;
+	column-count: 2;
+	-moz-column-count:2; /* Firefox */
+	-webkit-column-count:2; /* Safari and Chrome */
+	-moz-column-gap:30px; /* Firefox */
+	-webkit-column-gap:30px; /* Safari and Chrome */
+	column-gap:30px;
     }
     .org-underline {
 	/* underline */
@@ -970,7 +979,7 @@
     }
 
     #show_source {float: right; margin: .7em;}
-    
+
 
 } /* END OF @media all */
 

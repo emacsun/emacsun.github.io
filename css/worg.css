@@ -1,5 +1,5 @@
 @media all
-{ 
+{
     body {
 	font-family: STFangSong,Helvetica,Arial,Vernada,Tahoma,STXihei,"Microsoft YaHei","Songti SC",SimSun,Heiti,sans-serif;
 	/*line-height:150%;*/
@@ -8,14 +8,14 @@
 	border: 1px solid LightGrey;
 	line-height: 150%;
 	margin: 0% 0% 0% 10%;
-	padding: 1em; 
+	padding: 1em;
 	width: 75%;
-    } 
+    }
     body #content {
 	padding-top:10px;
 	padding-bottom:0em;
 	line-height:150%;
-	font-size: 1.5em;	
+	font-size: 1.5em;
     }
 
     body .title {
@@ -57,7 +57,7 @@
 	text-decoration: underline;
 	color: blue;
 	background:#0000FF;
-    }	    
+    }
     #part{
 	font-size: 15pt;
 	position: fixed;
@@ -82,8 +82,8 @@
 	position: fixed;
 	right:0em;
 	top: 0em;
-	background: #00eeee;
-	color:black;
+	background: #87ceeb;
+	color:white;
 	-webkit-box-shadow: 0 0 1em #777777;
 	-moz-box-shadow: 0 0 1em #777777;
 	-webkit-border-bottom-left-radius: 0px;
@@ -101,15 +101,15 @@
     }
     #table-of-contents h2 {
 	font-size: 1em;
-	max-width: 9em;  
-	color:black; 
+	max-width: 9em;
+	color:black;
 	font-weight: bold;
 	padding-left: 0.07em;
 	padding-right: 0.07em;
 	padding-top: 0.125em;
 	padding-bottom: 0.125em;
 	border-bottom:0px solid #d4d4d4;
-	border-top:0px solid #d4d4d4;		
+	border-top:0px solid #d4d4d4;
     }
     #table-of-contents #text-table-of-contents {
 	display: none;
@@ -195,7 +195,7 @@
     }
 
     /*a {text-decoration: none; color: #537d7b}*/
-    a {text-decoration: none; color: blue	}
+    a {text-decoration: none; color: #4169e1;	}
     /* a:visited {text-decoration: none; color: #224444} */ /* Taken out because color too similar to text. */
     a:visited {text-decoration: none; color: #ff0000}  /* this is now the color of the Unicorns horn */
     /*   a:visited {text-decoration: none; color: #98855b}  /* this is now the color of the Unicorns horn */
@@ -228,15 +228,15 @@
     table,td,th {
 	border: 1px solid #ccc;
 	border-collapse: collapse;
-	text-align:center;	
+	text-align:center;
     }
 
     /* td { */
-    /* 	border: none; */
+    /*	border: none; */
     /* } */
 
     /* th { */
-    /* 	border: none; */
+    /*	border: none; */
     /* } */
 
     code {
@@ -950,7 +950,7 @@
     }
     .org-tool-bar {
 	/* tool-bar */
-	color: #000000;  
+	color: #000000;
 	background-color: #bfbfbf;
     }
     .org-tooltip {
@@ -974,10 +974,10 @@
 	column-count: 2;
 	-moz-column-count:2; /* Firefox */
 	-webkit-column-count:2; /* Safari and Chrome */
-	column-count:2;
 	-moz-column-gap:30px; /* Firefox */
 	-webkit-column-gap:30px; /* Safari and Chrome */
-	column-gap:30px;		
+	column-gap:30px;
+	background: #87ceeb;
     }
     .org-underline {
 	/* underline */
@@ -1011,7 +1011,7 @@
     }
 
     #show_source {float: right; margin: .7em;}
-    
+
 
 } /* END OF @media all */
 
