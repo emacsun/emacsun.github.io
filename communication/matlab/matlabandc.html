@@ -9,6 +9,7 @@
 <meta  name="author" content="Eastern(ZCL)" />
 <meta  name="description" content="本文描述LTE-FDD和TDD的频带资源"
  />
+<meta  name="keywords" content="matlab communication simulation C" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="part"  href="../index.html"><img src="../../img/assets/matlab2.png"></a>
@@ -99,7 +100,13 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline6">2.5. 调用 <code>MEX</code> 文件</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline8">3. 尾声</a></li>
+<li><a href="#orgheadline10">3. Mex文件的数据流</a>
+<ul>
+<li><a href="#orgheadline8">3.1. 输入和输出</a></li>
+<li><a href="#orgheadline9">3.2. <code>mexFunction</code> 的数据流动</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline11">4. 尾声</a></li>
 </ul>
 </div>
 </div>
@@ -198,7 +205,7 @@ matlab是Mathworks公司推出的一款强大的仿真软件。由于其简单�
 </div>
 </div>
 <div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">2.3</span> 创建桥梁变量</h3>
+<h3 id="orgheadline4"><span class="section-number-3">2.3</span> 创建桥梁变量<a id="orgtarget1"></a></h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 
@@ -406,10 +413,81 @@ Z = arrayProduct(x,Y)
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8"><span class="section-number-2">3</span> 尾声</h2>
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10"><span class="section-number-2">3</span> Mex文件的数据流</h2>
 <div class="outline-text-2" id="text-3">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2015-11-10 Tue 20:17&gt;</span></span>
+通过前面的例子，我觉得有必要总结一下matla调用mexFunction的数据流。
+</p>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">3.1</span> 输入和输出</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+
+</p>
+
+<p>
+假设我们的MEX文件名字是 <code>func.c</code> ，该函数有两个输入和一个输出。则matlab调用该MEX文件的语法是
+</p>
+<div class="org-src-container">
+
+<pre class="src src-matlab">[C,D] = func(Y,Z)
+</pre>
+</div>
+<p>
+则 <code>mexFunction</code> 的四个输入参数解释如图<a href="#orgparagraph1">1</a>所示。
+</p>
+
+<div id="orgparagraph1" class="figure">
+<p><img src="../../img/20151110mexinputoutput.jpg" alt="20151110mexinputoutput.jpg" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 1:</span> mexFunction输入输出参数</p>
+</div>
+
+<p>
+由于输入参数是两个，所以 <code>mexFunction</code> 的 <code>nrhs=2</code> ; 由于输出参数是2个， 所以 <code>mexFunction</code> 的 <code>nlhs=2</code> 。输入参数通过指针数组 <code>prhs</code> 来索引： <code>prhs[0]</code> 指向 <code>Y</code> ； <code>prhs[1]</code> 指向 <code>Z</code> 。输出参数通过指针 <code>plhs</code> 来获取，调用 <code>mexFunction</code> 时，该指针为空指针，我们需要在 <code>myFunction.c</code> 里面为其申请空间，并赋予 <code>plhs[0]</code> 和 <code>plhs[1]</code> 申请的内存空间地址（这一步是很重要的，再说一遍：在我们编写 <code>myFunction.c</code> 时需要在 <code>mexFunction</code> 函数体内为 <code>plhs[0]</code> 和 <code>plhs[1]</code> 赋予一个地址，指向存放输出的内存地址）。
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><span class="section-number-3">3.2</span> <code>mexFunction</code> 的数据流动</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+
+</p>
+
+<p>
+当我们调用 <code>[C,D]=func[A,B]</code> 时， 图<a href="#orgparagraph2">2</a>给出了输入输出的转换过程。
+</p>
+
+<div id="orgparagraph2" class="figure">
+<p><img src="../../img/20151110mexdataflow.jpg" alt="20151110mexdataflow.jpg" width="700" align="center" />
+</p>
+<p><span class="figure-number">图 2:</span> 调用[C,D]=func[A,B]对应的数据流程</p>
+</div>
+
+<p>
+整个过程大致可以用以下步骤描述：
+</p>
+<ol class="org-ol">
+<li>matlab脚本调用 <code>[C,D]=func[A,B]</code> ,把 <code>A,B</code> 作为输入传送给 MEX文件， <code>C,D</code> 未赋值。 （ 注意这一步是matlab自动为我们完成的。）</li>
+<li>在 <code>mexFunction</code> 函数里， 通过 <code>A=prhs[0]</code> 和 <code>B=prhs[1]</code> 获取指向输入的地址。（ 注意这一步是需要我们自己完成的）</li>
+<li>使用 <code>mxCreate</code> 函数创建用于保存输出的数组，并把这些数组的地址赋给 <code>plhs[0]</code> 和 <code>plhs[1]</code> （ 注意这一步是需要我们自己完成的）</li>
+<li>在matlab脚本中， MEX文件的返回值通过 <code>plhs[0]</code> 和 <code>plhs[1]</code> 赋给 <code>C,D</code> 。（注意这一步是matlab自动为我们完成的。）</li>
+</ol>
+
+<p>
+在上述步骤2和步骤2中，matlab为我们提供了很多API方便我们对输入和输出进行操作，比如<a href="#orgtarget1">创建桥梁变量</a> 一节用到的 <code>mxGetN</code> 等函数，还有这一节用到的 <code>mxCreate</code> 函数。这些API是matlab提供的。通过 <code>#include “mex.h”</code> 我们可以在自己的C文件中使用，就像使用C语言自带的函数库一样。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="orgheadline11"><span class="section-number-2">4</span> 尾声</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 
 </p>
