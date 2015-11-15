@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Matlab与C混合编程API之mxCreateStructMatrix</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="zcl.space" />
+<meta  name="description" content="mxCreateNumericMatrix创建结构体数组"
+ />
+<meta  name="keywords" content="matlab communication simulation C" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="part"  href="../index.html"><img src="../../img/assets/matlab2.png"></a>
+<a id="pdf"  href="./matlabmxCreateStructMatrix.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Matlab与C混合编程API之mxCreateStructMatrix</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. 引言</a></li>
+<li><a href="#orgheadline2">2. 调用语法</a></li>
+<li><a href="#orgheadline3">3. 一个例子</a></li>
+<li><a href="#orgheadline4">4. 尾声</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> 引言</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+在matlab中创建和操作结构体非常便捷，mathwork公司把这种便捷延伸到了桥梁函数中。matlab为桥梁函数定义了创建结构体的API: <code>mxCreateStructMatrix</code> 。
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> 调用语法</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+<code>mxCreateStructMatrix</code> 的调用语法如下
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"matrix.h"</span>
+mxArray *mxCreateStructMatrix(<span style="color: #b58900;">mwSize</span> <span style="color: #268bd2;">m</span>, <span style="color: #b58900;">mwSize</span> <span style="color: #268bd2;">n</span>,
+     <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nfields</span>, <span style="color: #859900;">const</span> <span style="color: #b58900;">char</span> **<span style="color: #268bd2;">fieldnames</span>);
+</pre>
+</div>
+
+<p>
+输入参数表如下：
+</p>
+<table id="orgtable1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> <code>mxCreateStructMatrix</code> 输入参数对照表</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">参数名</th>
+<th scope="col" class="org-left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">m</td>
+<td class="org-left">结构体矩阵的行数</td>
+</tr>
+
+<tr>
+<td class="org-left">n</td>
+<td class="org-left">结构体矩阵的列数</td>
+</tr>
+
+<tr>
+<td class="org-left">nfields</td>
+<td class="org-left">结构体矩阵中每个结构体域的个数</td>
+</tr>
+
+<tr>
+<td class="org-left">fieldnames</td>
+<td class="org-left">结构体矩阵中每个结构体的域名</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<code>mxCreateStructMatrix</code> 的返回值是一个指向 <code>mxArray</code> 的指针。我们还是通过一个例子来说明 <code>mxCreateStructMatrix</code> 的使用。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> 一个例子</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+这个例子实现了电话本功能，是目前为止用到的最复杂的例子。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span class="linenr">  1: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"mex.h"</span>
+<span class="linenr">  2: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"string.h"</span>
+<span class="linenr">  3: </span>
+<span class="linenr">  4: </span><span style="color: #cb4b16;">#define</span> <span style="color: #268bd2;">MAXCHARS</span> 80   <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">max length of string contained in</span>
+<span class="linenr">  5: </span><span style="color: #586e75; font-style: italic;">                     each field </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr">  6: </span>
+<span class="linenr">  7: </span><span style="color: #586e75; font-style: italic;">/*  </span><span style="color: #586e75; font-style: italic;">the gateway routine.  </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr">  8: </span><span style="color: #b58900;">void</span> mexFunction( <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nlhs</span>, mxArray *plhs[],
+<span class="linenr">  9: </span>          <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nrhs</span>, <span style="color: #859900;">const</span> <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">prhs</span>[] )
+<span class="linenr"> 10: </span>{
+<span class="linenr"> 11: </span>     <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">pointers to field names </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr"> 12: </span>    <span style="color: #859900;">const</span> <span style="color: #b58900;">char</span> **<span style="color: #268bd2;">fnames</span>;
+<span class="linenr"> 13: </span>    <span style="color: #859900;">const</span> <span style="color: #b58900;">mwSize</span> *<span style="color: #268bd2;">dims</span>;
+<span class="linenr"> 14: </span>    <span style="color: #b58900;">mxArray</span>    *<span style="color: #268bd2;">tmp</span>, *<span style="color: #268bd2;">fout</span>;
+<span class="linenr"> 15: </span>    <span style="color: #b58900;">char</span>       *<span style="color: #268bd2;">pdata</span>=<span style="color: #2aa198;">NULL</span>;
+<span class="linenr"> 16: </span>    <span style="color: #b58900;">int</span>        <span style="color: #268bd2;">ifield</span>, <span style="color: #268bd2;">nfields</span>;
+<span class="linenr"> 17: </span>    <span style="color: #b58900;">mxClassID</span>  *<span style="color: #268bd2;">classIDflags</span>;
+<span class="linenr"> 18: </span>    <span style="color: #b58900;">mwIndex</span>    <span style="color: #268bd2;">jstruct</span>;
+<span class="linenr"> 19: </span>    <span style="color: #b58900;">mwSize</span>     <span style="color: #268bd2;">NStructElems</span>;
+<span class="linenr"> 20: </span>    <span style="color: #b58900;">mwSize</span>     <span style="color: #268bd2;">ndim</span>;
+<span class="linenr"> 21: </span>
+<span class="linenr"> 22: </span>    <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">check proper input and output </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr"> 23: </span>    <span style="color: #859900;">if</span>(nrhs!=1)
+<span class="linenr"> 24: </span>    mexErrMsgIdAndTxt(
+<span class="linenr"> 25: </span>        <span style="color: #2aa198;">"MATLAB:phonebook:invalidNumInputs"</span>,
+<span class="linenr"> 26: </span>        <span style="color: #2aa198;">"One input required."</span>);
+<span class="linenr"> 27: </span>    <span style="color: #859900;">else</span> <span style="color: #859900;">if</span>(nlhs &gt; 1)
+<span class="linenr"> 28: </span>    mexErrMsgIdAndTxt(
+<span class="linenr"> 29: </span>        <span style="color: #2aa198;">"MATLAB:phonebook:maxlhs"</span>,
+<span class="linenr"> 30: </span>        <span style="color: #2aa198;">"Too many output arguments."</span>);
+<span class="linenr"> 31: </span>    <span style="color: #859900;">else</span> <span style="color: #859900;">if</span>(<span style="color: #dc322f;">!</span>mxIsStruct(prhs[0]))
+<span class="linenr"> 32: </span>    mexErrMsgIdAndTxt(
+<span class="linenr"> 33: </span>        <span style="color: #2aa198;">"MATLAB:phonebook:inputNotStruct"</span>,
+<span class="linenr"> 34: </span>        <span style="color: #2aa198;">"Input must be a structure."</span>);
+<span class="linenr"> 35: </span>    <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">get input arguments </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr"> 36: </span>    nfields = mxGetNumberOfFields(prhs[0]);
+<span class="linenr"> 37: </span>    NStructElems = mxGetNumberOfElements(prhs[0]);
+<span class="linenr"> 38: </span>    <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">allocate memory  for storing classIDflags </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr"> 39: </span>    classIDflags = mxCalloc(nfields, <span style="color: #859900;">sizeof</span>(mxClassID));
+<span class="linenr"> 40: </span>
+<span class="linenr"> 41: </span>    <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">check empty field, proper data type,</span>
+<span class="linenr"> 42: </span><span style="color: #586e75; font-style: italic;">     * and data type consistency;</span>
+<span class="linenr"> 43: </span><span style="color: #586e75; font-style: italic;">     * and get classID for each field. </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr"> 44: </span>    <span style="color: #859900;">for</span>(ifield=0; ifield&lt;nfields; ifield++) {
+<span class="linenr"> 45: </span>    <span style="color: #859900;">for</span>(jstruct = 0; jstruct &lt; NStructElems; jstruct++) {
+<span class="linenr"> 46: </span>        tmp = mxGetFieldByNumber(prhs[0], jstruct, ifield);
+<span class="linenr"> 47: </span>        <span style="color: #859900;">if</span>(tmp == <span style="color: #2aa198;">NULL</span>) {
+<span class="linenr"> 48: </span>        mexPrintf(<span style="color: #2aa198;">"%s%d\t%s%d\n"</span>, <span style="color: #2aa198;">"FIELD: "</span>,
+<span class="linenr"> 49: </span>               ifield+1, <span style="color: #2aa198;">"STRUCT INDEX :"</span>, jstruct+1);
+<span class="linenr"> 50: </span>        mexErrMsgIdAndTxt( <span style="color: #2aa198;">"MATLAB:phonebook:fieldEmpty"</span>,
+<span class="linenr"> 51: </span>            <span style="color: #2aa198;">"Above field is empty!"</span>);
+<span class="linenr"> 52: </span>        }
+<span class="linenr"> 53: </span>        <span style="color: #859900;">if</span>(jstruct==0) {
+<span class="linenr"> 54: </span>        <span style="color: #859900;">if</span>( (<span style="color: #dc322f;">!</span>mxIsChar(tmp) &amp;&amp; <span style="color: #dc322f;">!</span>mxIsNumeric(tmp))
+<span class="linenr"> 55: </span>             || mxIsSparse(tmp)) {
+<span class="linenr"> 56: </span>            mexPrintf(<span style="color: #2aa198;">"%s%d\t%s%d\n"</span>, <span style="color: #2aa198;">"FIELD: "</span>, ifield+1,
+<span class="linenr"> 57: </span>                  <span style="color: #2aa198;">"STRUCT INDEX :"</span>, jstruct+1);
+<span class="linenr"> 58: </span>            mexErrMsgIdAndTxt( <span style="color: #2aa198;">"MATLAB:phonebook:invalidField"</span>,
+<span class="linenr"> 59: </span>                <span style="color: #dc322f; font-weight: bold;">"</span><span style="color: #2aa198;">Above field must have either string or</span>
+<span class="linenr"> 60: </span><span style="color: #2aa198;">                 numeric non-sparse data."</span>);
+<span class="linenr"> 61: </span>        }
+<span class="linenr"> 62: </span>        classIDflags[ifield]=mxGetClassID(tmp);
+<span class="linenr"> 63: </span>        } <span style="color: #859900;">else</span> {
+<span class="linenr"> 64: </span>        <span style="color: #859900;">if</span> (mxGetClassID(tmp) != classIDflags[ifield]) {
+<span class="linenr"> 65: </span>            mexPrintf(<span style="color: #2aa198;">"%s%d\t%s%d\n"</span>, <span style="color: #2aa198;">"FIELD: "</span>, ifield+1,
+<span class="linenr"> 66: </span>            <span style="color: #2aa198;">"STRUCT INDEX :"</span>, jstruct+1);
+<span class="linenr"> 67: </span>            mexErrMsgIdAndTxt( <span style="color: #2aa198;">"MATLAB:phonebook:invalidFieldType"</span>,
+<span class="linenr"> 68: </span>                <span style="color: #2aa198;">"Inconsistent data type in above field!"</span>);
+<span class="linenr"> 69: </span>        } <span style="color: #859900;">else</span> <span style="color: #859900;">if</span>(<span style="color: #dc322f;">!</span>mxIsChar(tmp) &amp;&amp;
+<span class="linenr"> 70: </span>            ((mxIsComplex(tmp) || mxGetNumberOfElements(tmp)!=1))){
+<span class="linenr"> 71: </span>            mexPrintf(<span style="color: #2aa198;">"%s%d\t%s%d\n"</span>, <span style="color: #2aa198;">"FIELD: "</span>, ifield+1,
+<span class="linenr"> 72: </span>            <span style="color: #2aa198;">"STRUCT INDEX :"</span>, jstruct+1);
+<span class="linenr"> 73: </span>            mexErrMsgIdAndTxt( <span style="color: #2aa198;">"MATLAB:phonebook:fieldNotRealScalar"</span>,
+<span class="linenr"> 74: </span>                <span style="color: #dc322f; font-weight: bold;">"</span><span style="color: #2aa198;">Numeric data in above field must be scalar</span>
+<span class="linenr"> 75: </span><span style="color: #2aa198;">                and noncomplex!"</span>);
+<span class="linenr"> 76: </span>        }
+<span class="linenr"> 77: </span>        }
+<span class="linenr"> 78: </span>    }
+<span class="linenr"> 79: </span>    }
+<span class="linenr"> 80: </span>
+<span class="linenr"> 81: </span>    <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">allocate memory  for storing pointers </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr"> 82: </span>    fnames = mxCalloc(nfields, <span style="color: #859900;">sizeof</span>(*fnames));
+<span class="linenr"> 83: </span>    <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">get field name pointers </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr"> 84: </span>    <span style="color: #859900;">for</span> (ifield=0; ifield&lt; nfields; ifield++){
+<span class="linenr"> 85: </span>    fnames[ifield] = mxGetFieldNameByNumber(prhs[0],ifield);
+<span class="linenr"> 86: </span>    }
+<span class="linenr"> 87: </span>    <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">create a 1x1 struct matrix for output  </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr"> 88: </span>    plhs[0] = mxCreateStructMatrix(1, 1, nfields, fnames);
+<span class="linenr"> 89: </span>    mxFree((<span style="color: #b58900;">void</span> *)fnames);
+<span class="linenr"> 90: </span>    ndim = mxGetNumberOfDimensions(prhs[0]);
+<span class="linenr"> 91: </span>    dims = mxGetDimensions(prhs[0]);
+<span class="linenr"> 92: </span>    <span style="color: #859900;">for</span>(ifield=0; ifield&lt;nfields; ifield++) {
+<span class="linenr"> 93: </span>    <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">create cell/numeric array </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr"> 94: </span>    <span style="color: #859900;">if</span>(classIDflags[ifield] == mxCHAR_CLASS) {
+<span class="linenr"> 95: </span>        fout = mxCreateCellArray(ndim, dims);
+<span class="linenr"> 96: </span>    }<span style="color: #859900;">else</span> {
+<span class="linenr"> 97: </span>        fout = mxCreateNumericArray(ndim, dims,
+<span class="linenr"> 98: </span>           classIDflags[ifield], mxREAL);
+<span class="linenr"> 99: </span>        pdata = mxGetData(fout);
+<span class="linenr">100: </span>    }
+<span class="linenr">101: </span>    <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">copy data from input structure array </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr">102: </span>    <span style="color: #859900;">for</span> (jstruct=0; jstruct&lt;NStructElems; jstruct++) {
+<span class="linenr">103: </span>        tmp = mxGetFieldByNumber(prhs[0],jstruct,ifield);
+<span class="linenr">104: </span>        <span style="color: #859900;">if</span>( mxIsChar(tmp)) {
+<span class="linenr">105: </span>        mxSetCell(fout, jstruct, mxDuplicateArray(tmp));
+<span class="linenr">106: </span>        }<span style="color: #859900;">else</span> {
+<span class="linenr">107: </span>        <span style="color: #b58900;">mwSize</span>     <span style="color: #268bd2;">sizebuf</span>;
+<span class="linenr">108: </span>        sizebuf = mxGetElementSize(tmp);
+<span class="linenr">109: </span>        memcpy(pdata, mxGetData(tmp), sizebuf);
+<span class="linenr">110: </span>        pdata += sizebuf;
+<span class="linenr">111: </span>        }
+<span class="linenr">112: </span>    }
+<span class="linenr">113: </span>    <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">set each field in output structure </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr">114: </span>    mxSetFieldByNumber(plhs[0], 0, ifield, fout);
+<span class="linenr">115: </span>    }
+<span class="linenr">116: </span>    mxFree(classIDflags);
+<span class="linenr">117: </span>    <span style="color: #859900;">return</span>;
+<span class="linenr">118: </span>}
+</pre>
+</div>
+<p>
+代码中使用 <code>mxGetNumOfFields</code> 获得输入的结构体矩阵中每个结构体域的个数，使用 <code>mxGetNumberOfElements</code> 来获得输入结构体矩阵中结构体的个数。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">plhs[0] = mxCreateStructMatrix(1, 1, nfields, fnames);
+</pre>
+</div>
+<p>
+创建一个结构体保存输出。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c">mxSetFieldByNumber(plhs[0], 0, ifield, fout);
+</pre>
+</div>
+<p>
+为输出结构体的每个域赋值。
+</p>
+
+<p>
+假设我们的输入是
+</p>
+<pre class="example">
+a.a =1;
+a.b =4;
+a.c = 'hello world'
+</pre>
+
+<p>
+调用 <code>phonebook</code>
+</p>
+<pre class="example">
+n=phonebook(a);
+</pre>
+<p>
+则 <code>n</code> 的值为：
+</p>
+<pre class="example">
+n.a =1;
+n.b =4;
+n.c ='hello world'
+</pre>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> 尾声</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+<code>mxCreateStructMatrix</code> 是matlab中创建结构体的API，方便了matlab和C之间结构体类型数据的传递。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'emacsungithubio';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>

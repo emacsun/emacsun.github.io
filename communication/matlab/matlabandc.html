@@ -4,7 +4,7 @@
 <head>
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Matlab与C混合编程</title>
+<title>Matlab与C混合编程之一：基本原理</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Eastern(ZCL)" />
 <meta  name="description" content="本文描述LTE-FDD和TDD的频带资源"
@@ -85,7 +85,7 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Matlab与C混合编程</h1>
+<h1 class="title">Matlab与C混合编程之一：基本原理</h1>
 <div id="table-of-contents">
 <h2>目录</h2>
 <div id="text-table-of-contents">
@@ -417,8 +417,11 @@ Z = arrayProduct(x,Y)
 <h2 id="orgheadline10"><span class="section-number-2">3</span> Mex文件的数据流</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-<span class="timestamp-wrapper"><span class="timestamp">&lt;2015-11-10 Tue 20:17&gt;</span></span>
-通过前面的例子，我觉得有必要总结一下matla调用mexFunction的数据流。
+
+</p>
+
+<p>
+通过前面的例子，我觉得有必要总结一下matlab调用mexFunction的数据流。
 </p>
 </div>
 
@@ -480,11 +483,12 @@ Z = arrayProduct(x,Y)
 </ol>
 
 <p>
-在上述步骤2和步骤2中，matlab为我们提供了很多API方便我们对输入和输出进行操作，比如<a href="#orgtarget1">创建桥梁变量</a> 一节用到的 <code>mxGetN</code> 等函数，还有这一节用到的 <code>mxCreate</code> 函数。这些API是matlab提供的。通过 <code>#include “mex.h”</code> 我们可以在自己的C文件中使用，就像使用C语言自带的函数库一样。
+在上述步骤2和步骤3中，matlab为我们提供了很多API方便我们对输入和输出进行操作，比如<a href="#orgtarget1">创建桥梁变量</a> 一节用到的 <code>mxGetN</code> 等函数，还有这一节用到的 <code>mxCreate</code> 函数。这些API是matlab提供的。通过 <code>#include “mex.h”</code> 我们可以在自己的C文件中使用，就像使用C语言自带的函数库一样。
 </p>
 </div>
 </div>
 </div>
+
 <div id="outline-container-orgheadline11" class="outline-2">
 <h2 id="orgheadline11"><span class="section-number-2">4</span> 尾声</h2>
 <div class="outline-text-2" id="text-4">

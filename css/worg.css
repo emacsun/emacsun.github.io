@@ -46,7 +46,7 @@
 	font-size: 15pt;
 	position: fixed;
 	right:0em;
-	bottom: 8em;
+	bottom: 4em;
     }
     a#home:hover {
 	text-decoration: underline;
@@ -228,7 +228,7 @@
     table,td,th {
 	border: 1px solid #ccc;
 	border-collapse: collapse;
-	text-align:center;
+	text-align:left;
     }
 
     /* td { */

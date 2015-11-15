@@ -4,13 +4,16 @@
 <head>
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>通信&#x2013;数学与工程的完美结合</title>
+<title>Matlab与C混合编程: 数据类型之 <code>mxArray</code></title>
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="emacsun （所有文章遵循GPL协议）" />
-<meta  name="keywords" content="communication" />
-<link rel="stylesheet" type="text/css" href="./css/ihover.css"  />
-<link rel="stylesheet" type="text/css" href="../css/worgpart.css"  />
-<a id="home" href="../index.html"><img src="../img/assets/home.png" ></a>
+<meta  name="author" content="zcl.space" />
+<meta  name="description" content="本文描述matlab与C编程过程中要用到的的基本数据类型 =mxArray="
+ />
+<meta  name="keywords" content="matlab communication simulation C" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="part"  href="../index.html"><img src="../../img/assets/matlab2.png"></a>
+<a id="pdf"  href="./matlabCMexAPI.pdf"><img src="../../img/assets/pdf.png"></a>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -60,50 +63,39 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">通信&#x2013;数学与工程的完美结合</h1>
+<h1 class="title">Matlab与C混合编程: 数据类型之 <code>mxArray</code></h1>
 <div id="table-of-contents">
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. 通信的开始</a></li>
-<li><a href="#orgheadline2">2. 我学通信</a></li>
+<li><a href="#orgheadline1">1. 引言</a></li>
+<li><a href="#orgheadline2">2. 一个例子</a></li>
 </ul>
 </div>
 </div>
-<p>
-“烽火连三月，家书抵万金。”&#x2014;杜甫《春望》
-</p>
-
-<p>
-“此时相望不相闻，愿逐月华流照君”&#x2014;张若虚《春江花月夜》
-</p>
-
-<p>
-杜甫倘若能在烽火连三月发一条短信给家中妻儿一定欣喜若狂；张若虚倘若能与自己的爱人facetime，必定喜不自禁。 通信工程正在以超乎想象的速度在这个蓝色星球催生翻天覆地的变化。我很高兴我是一名通信工程师，因为我参与其中：make the difference.
-</p>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> 通信的开始</h2>
+<h2 id="orgheadline1"><span class="section-number-2">1</span> 引言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
 </p>
 
 <p>
-通信从古至今都存在与人们的生活当中，或许这是人是群居动物的最佳佐证。从驿站到物流集散中心，从烽烟缆到光纤，通信的速度越来越快，然而不变的是信息的交流。最早的通信或许是原始智人打猎时的口哨声，或许是从这个山头到那个山头的呼喊。现代通信人们大都愿意从1905年马可尼发明跨大西洋电报系统算起。但我觉得现代通信更为恰当的起点是：麦克斯韦于1865年预言电磁波存在或者赫兹1888年证实电磁波的存在。从马可尼开始到1948年香农发表《通信的数学原理》一文，通信还都停留在混沌阶段。香农开启了信息理论的新时代，通信人有了自己的理论的基础。我觉得到1993年Turbo码的发明和LDPC码的重新发现，现代通信可以说到了一个阶段：AWGN下的通信系统性能距离香农极限只有0.0045dB。新的技术比如massive MIMO和非正交接入技术出现，通信技术又会以新的面孔示人。每一次通信系统的升级换代背后都包含着通信技术的更新。之所以通信技术会有如此迅速的发展，我觉得最重要的一点是：通信技术实现了与数学的完美结合，数学为通信技术提供理论支撑，通信工程又为数学提供新的问题，两者就像DNA的双螺旋结构一样，缺一不可。
+<code>mxArray</code> 是matlab的基本数据类型，对于C语言是一种透明的数据类型。所有的基于C的MEX文件都始于桥梁函数，名为 <code>mexFunction</code> ,在这个桥梁函数中输入输出的类型就是 <code>mxArray</code> 。在编写MEX函数过程中，需要传入matlab的数据时，使用matlab的 Matrix 库来处理这些数据，使用MEX库来完成一些matlab环境中才有的操作。在使用Matrix库和MEX库的过程中，我们使用 <code>mxArray</code> 作为传入传出数据的数据类型。包含 <code>mxArray</code> 定义的头文件是 <code>matrix.h</code> ,所以定义 <code>mxArray</code> 需要使用 <code>#include  “matrixx.h”</code> 。
+</p>
+
+<p>
+另外，我们使用 <code>mxCreate*</code> 类的函数来创建数据，使用对应的 <code>mxDestroyArray</code> 来释放内存。
 </p>
 </div>
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> 我学通信</h2>
+<h2 id="orgheadline2"><span class="section-number-2">2</span> 一个例子</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
-</p>
-
-<p>
-我学通信是从大学开始的，我只偶尔见过几次大哥大，第一个手机是诺基亚。
 </p>
 </div>
 </div>
