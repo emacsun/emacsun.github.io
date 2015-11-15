@@ -12,7 +12,6 @@
 <meta  name="keywords" content="matlab communication simulation C" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
-<a id="part"  href="../index.html"><img src="../../img/assets/matlab2.png"></a>
 <a id="pdf"  href="./matlabmxCreateNumericMatrix.pdf"><img src="../../img/assets/pdf.png"></a>
 <script type="text/javascript">
 /*
@@ -136,7 +135,7 @@ mxArray *mxCreateNumericMatrix(<span style="color: #b58900;">mwSize</span> <span
 输入参数 <code>m</code> <code>n</code> 和 <code>ComplexFlag</code> 就不做过多的介绍，请见<a href="matlabmxCreateDoulbeMatrix.html">Matlab与C混合编程API之mxCreateDoubleMatrix</a> 一文。这里着重介绍一下 <code>mxClassID</code> 。这个参数表示了矩阵中元素的类型，matlab根据这个类型解释内存中二进制比特的值。比如在C中设置这个值为 <code>mxINT16_CLASS</code> 表示矩阵元素都是16位整型。桥梁函数中的类型与matlab中类型对照表如下：
 </p>
 <table id="orgtable1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption class="t-above"><span class="table-number">Table 1:</span> matlab和C类型对照表</caption>
+<caption class="t-above"><span class="table-number">表 1:</span> matlab和C类型对照表</caption>
 
 <colgroup>
 <col  class="org-left" />
@@ -209,6 +208,7 @@ mxArray *mxCreateNumericMatrix(<span style="color: #b58900;">mwSize</span> <span
 <p>
 
 </p>
+
 
 <p>
 在学习新东西的过程中，我比较喜欢例子。在和别人交流新概念的时候，我也比较喜欢使用例子。接下来，用一个小例子来阐述 <code>mxCreateNumericMatrix</code> 的使用。这个例子使用C创建一个矩阵被matlab使用。代码如下：
