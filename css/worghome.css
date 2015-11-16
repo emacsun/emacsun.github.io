@@ -88,7 +88,7 @@
 	/* TOC inspired by http://jashkenas.github.com/coffee-script */
     #table-of-contents {
 	font-size: 1em;
-	line-height: 120%;
+	line-height: 110%;
 	position: fixed;
 	right:0em;
 	top: 0em;
@@ -98,11 +98,14 @@
 	-moz-box-shadow: 0 0 1em #777777;
 	-webkit-border-bottom-left-radius: 5px;
 	-moz-border-radius-bottomleft: 5px;
-	text-align: center;
+	text-align: left;
 	boder:0px solid #ccc;
 	/*boder-shadow:0 0 1em #777777;*/
 	/* ensure doesn't flow off the screen when expanded */
-	max-width: 80%;
+	max-width: 400%;
+	width:auto;
+	display: inline-block !important;
+	display:inline;
 	max-height: 100%;
 	overflow: scroll;
 	padding-left: 0.11em;
@@ -124,8 +127,11 @@
 	display: none;
 	text-align: left; }
     #table-of-contents:hover #text-table-of-contents {
-	display: block;
 	padding: 0em;
+	max-width: 200%;
+	width:auto;
+	display: inline-block !important;
+	display:inline;
 	margin-top: 0em; }
     a {text-decoration: none; color: #4169e1; padding:2px;
        border-bottom: 1px dashed blue; }
