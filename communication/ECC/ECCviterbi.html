@@ -4,15 +4,15 @@
 <head>
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>我用Emacs做什么</title>
+<title>卷积编码和Viterbi译码</title>
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="emacsun" />
-<meta  name="description" content="总结了我使用Emacs做的事情"
+<meta  name="author" content="zcl.space" />
+<meta  name="description" content="本文描述卷积编码和viterbi译码原理。"
  />
+<meta  name="keywords" content="communication viterbi ECC" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
-<a id="part"  href="../index.html"><img src="../../img/assets/emacs2.png"></a>
-<a id="pdf"  href="./emacs-do-what.pdf"><img src="../../img/assets/pdf.png"></a>
+<a id="pdf"  href="./ECCviterbi.pdf"><img src="../../img/assets/pdf.png"></a>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -59,29 +59,59 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "7em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "Neo-Euler"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "Neo-Euler"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
-<h1 class="title">我用Emacs做什么</h1>
-<p>
-Emacs已经是我工作和生活的瑞士军刀，我用Emacs做这些事情：
-</p>
-
-<ul class="org-ul">
-<li>用Emacs做C编程IDE</li>
-<li>用Emacs做matlab编程IDE</li>
-<li>用Emacs做我的资源管理器</li>
-<li>用Emacs控制firefox,查看css，js效果</li>
-<li>用Emacs做git前端，magit就是神器</li>
-<li>用Emacs收发邮件</li>
-<li>用Org管理待办事项和日程，org是神器中的战斗器</li>
-<li>用Org写博客并发表博客</li>
-<li>用Org进行文学编程，文档和代码一气呵成</li>
+<h1 class="title">卷积编码和Viterbi译码</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. 引言</a></li>
 </ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> 引言</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
 
 <p>
-Emacs为我的工作流提供了一站式的解决方案。
+Viterbi译码器可能是当前应用最广泛的一种译码器。2005年，G. David Forney在南加州大学的Viterbi Conference上提到：每一秒钟，全世界的Viterbi译码器恢复的的二进制比特数是 \(10^{15}\)。1967年，Andrew J. Viterbi（没错，就是高通的创始人）发明了一种高效的卷积码译码算法，就是Viterbi算法。至今，Viterbi算法也是一位老人家了。今天，我们跟随先人的脚步，探寻viterbi译码过程。
 </p>
+
+<p>
+*
+  <span class="timestamp-wrapper"><span class="timestamp">&lt;2015-11-15 Sun 22:27&gt;</span></span>
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>

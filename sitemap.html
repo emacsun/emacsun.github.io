@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-15 Sun 20:19 -->
+<!-- 2015-11-25 Wed 21:34 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>站点地图</title>
@@ -60,6 +60,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -72,6 +94,7 @@ for the JavaScript code in this tag.
 <li><a href="communication/index.html">通信&#x2013;数学与工程的完美结合</a></li>
 <li>ECC
 <ul class="org-ul">
+<li><a href="communication/ECC/ECCviterbi.html">卷积编码和Viterbi译码</a></li>
 <li><a href="communication/ECC/index.html">差错控制编码的说明</a></li>
 </ul></li>
 <li>channel
@@ -113,6 +136,10 @@ for the JavaScript code in this tag.
 <ul class="org-ul">
 <li><a href="math/math-map.html">math地图</a></li>
 <li><a href="math/index.html">数学</a></li>
+<li>PMA
+<ul class="org-ul">
+<li><a href="math/PMA/PMAsqrt2.html">证明 \(\sqrt{2}\) 是无理数</a></li>
+</ul></li>
 <li>concreteMath
 <ul class="org-ul">
 <li><a href="math/concreteMath/index.html">《具体数学》读后感</a></li>
