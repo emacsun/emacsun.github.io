@@ -125,57 +125,57 @@ for the JavaScript code in this tag.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>mxArray</code></td>
+<th scope="row" class="org-left"><code>mxArray</code></th>
 <td class="org-left">matlab array，是的在C中可以定义matlab array</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mwSize</code></td>
+<th scope="row" class="org-left"><code>mwSize</code></th>
 <td class="org-left">专门为描述matlab的矩阵大小定义的类型，主要是为了方便代码跨平台，大多数情况 <code>int</code> 也可以</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIndex</code></td>
+<th scope="row" class="org-left"><code>mxIndex</code></th>
 <td class="org-left">为索引变量定义的类型，与 <code>mwSize</code> 差不多</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mwSignedIndex</code></td>
+<th scope="row" class="org-left"><code>mwSignedIndex</code></th>
 <td class="org-left">有符号整型，主要为描述矩阵大小定义</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mwChar</code></td>
+<th scope="row" class="org-left"><code>mwChar</code></th>
 <td class="org-left">为 string 数组定义的类型</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxLogical</code></td>
+<th scope="row" class="org-left"><code>mxLogical</code></th>
 <td class="org-left">为 logical 数组定义的类型</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxClassID</code></td>
+<th scope="row" class="org-left"><code>mxClassID</code></th>
 <td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxComplexity</code></td>
+<th scope="row" class="org-left"><code>mxComplexity</code></th>
 <td class="org-left">指示数组元素是否包含复数的旗标（flag ）</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetEps</code></td>
+<th scope="row" class="org-left"><code>mxGetEps</code></th>
 <td class="org-left">EPS</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetInf</code></td>
+<th scope="row" class="org-left"><code>mxGetInf</code></th>
 <td class="org-left">无穷大</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetNaN</code></td>
+<th scope="row" class="org-left"><code>mxGetNaN</code></th>
 <td class="org-left">NaN</td>
 </tr>
 </tbody>
@@ -230,122 +230,122 @@ matlab为C编程提供了丰富的API。根据其功能，这些API主要可以�
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>mxCreateDoubleMatrix</code></td>
+<th scope="row" class="org-left"><code>mxCreateDoubleMatrix</code></th>
 <td class="org-left">创建二维双精度浮点矩阵！</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateDoubleScalar</code></td>
+<th scope="row" class="org-left"><code>mxCreateDoubleScalar</code></th>
 <td class="org-left">标量，双精度矩阵（初始化为特定值）</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateNumericMatrix</code></td>
+<th scope="row" class="org-left"><code>mxCreateNumericMatrix</code></th>
 <td class="org-left">创建二维数值矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateNumericArray</code></td>
+<th scope="row" class="org-left"><code>mxCreateNumericArray</code></th>
 <td class="org-left">创建N维数值矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateUnitintNumericMatrix</code></td>
+<th scope="row" class="org-left"><code>mxCreateUnitintNumericMatrix</code></th>
 <td class="org-left">创建未初始化的2维矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateUninintNumericArray</code></td>
+<th scope="row" class="org-left"><code>mxCreateUninintNumericArray</code></th>
 <td class="org-left">创建未初始化的N维矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateString</code></td>
+<th scope="row" class="org-left"><code>mxCreateString</code></th>
 <td class="org-left">一维符号矩阵，字符串</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateCharMatrixFromStrings</code></td>
+<th scope="row" class="org-left"><code>mxCreateCharMatrixFromStrings</code></th>
 <td class="org-left">二维字符串矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxStringCharArray</code></td>
+<th scope="row" class="org-left"><code>mxStringCharArray</code></th>
 <td class="org-left">N维字符串矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateLogicalScalar</code></td>
+<th scope="row" class="org-left"><code>mxCreateLogicalScalar</code></th>
 <td class="org-left">标量或者逻辑变量矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreatelogicalMatrix</code></td>
+<th scope="row" class="org-left"><code>mxCreatelogicalMatrix</code></th>
 <td class="org-left">二维逻辑矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateLogicalArray</code></td>
+<th scope="row" class="org-left"><code>mxCreateLogicalArray</code></th>
 <td class="org-left">N维逻辑矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateSparseLogicalMatrix</code></td>
+<th scope="row" class="org-left"><code>mxCreateSparseLogicalMatrix</code></th>
 <td class="org-left">二维稀疏逻辑矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateSparse</code></td>
+<th scope="row" class="org-left"><code>mxCreateSparse</code></th>
 <td class="org-left">二维稀疏矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateStructMatrix</code></td>
+<th scope="row" class="org-left"><code>mxCreateStructMatrix</code></th>
 <td class="org-left">二维structure矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateStructArray</code></td>
+<th scope="row" class="org-left"><code>mxCreateStructArray</code></th>
 <td class="org-left">N维structure矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateCellMatrix</code></td>
+<th scope="row" class="org-left"><code>mxCreateCellMatrix</code></th>
 <td class="org-left">二维cell矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCreateCellArray</code></td>
+<th scope="row" class="org-left"><code>mxCreateCellArray</code></th>
 <td class="org-left">N维structure矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxDestroyArray</code></td>
+<th scope="row" class="org-left"><code>mxDestroyArray</code></th>
 <td class="org-left">释放分配的内存空间</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxDuplicateArray</code></td>
+<th scope="row" class="org-left"><code>mxDuplicateArray</code></th>
 <td class="org-left">复制矩阵空间</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCalloc</code></td>
+<th scope="row" class="org-left"><code>mxCalloc</code></th>
 <td class="org-left">使用matlab的内存管理器分配矩阵，初始化为0</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxMalloc</code></td>
+<th scope="row" class="org-left"><code>mxMalloc</code></th>
 <td class="org-left">使用matlab的内存管理器分配未初始化的矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxRealloc</code></td>
+<th scope="row" class="org-left"><code>mxRealloc</code></th>
 <td class="org-left">使用matlab的内存管理器再次动态分配内存</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxFree</code></td>
+<th scope="row" class="org-left"><code>mxFree</code></th>
 <td class="org-left">释放使用matlab内存管理器分配的内存</td>
 </tr>
 </tbody>
@@ -378,142 +378,142 @@ matlab为验证数据也提供了一些API，这些API的主要作用是判断�
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>mxIsDoulbe</code></td>
+<th scope="row" class="org-left"><code>mxIsDoulbe</code></th>
 <td class="org-left">判断mxArray是不是双精度浮点数</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsSingle</code></td>
+<th scope="row" class="org-left"><code>mxIsSingle</code></th>
 <td class="org-left">判断mxArray是不是单精度浮点数</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsComplex</code></td>
+<th scope="row" class="org-left"><code>mxIsComplex</code></th>
 <td class="org-left">判断是否为复数</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsNumeric</code></td>
+<th scope="row" class="org-left"><code>mxIsNumeric</code></th>
 <td class="org-left">判断是否为numeric</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsInt64</code></td>
+<th scope="row" class="org-left"><code>mxIsInt64</code></th>
 <td class="org-left">判断是不是64bit整型</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsUint64</code></td>
+<th scope="row" class="org-left"><code>mxIsUint64</code></th>
 <td class="org-left">判断是不是无符号64bit整型</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsInt32</code></td>
+<th scope="row" class="org-left"><code>mxIsInt32</code></th>
 <td class="org-left">判断是不是32位整型</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsUint32</code></td>
+<th scope="row" class="org-left"><code>mxIsUint32</code></th>
 <td class="org-left">判断是不是无符号32位整型</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsInt16</code></td>
+<th scope="row" class="org-left"><code>mxIsInt16</code></th>
 <td class="org-left">判断是不是16位整型</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsUint16</code></td>
+<th scope="row" class="org-left"><code>mxIsUint16</code></th>
 <td class="org-left">判断是不是无符号16位整型</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsInt8</code></td>
+<th scope="row" class="org-left"><code>mxIsInt8</code></th>
 <td class="org-left">判断是不是16位整型</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsUint8</code></td>
+<th scope="row" class="org-left"><code>mxIsUint8</code></th>
 <td class="org-left">判断是不是无符号16位整型</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsScalar</code></td>
+<th scope="row" class="org-left"><code>mxIsScalar</code></th>
 <td class="org-left">判断是不是scalar矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsChar</code></td>
+<th scope="row" class="org-left"><code>mxIsChar</code></th>
 <td class="org-left">判断是不是符号矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsLogical</code></td>
+<th scope="row" class="org-left"><code>mxIsLogical</code></th>
 <td class="org-left">判断是不是逻辑</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsLogicalScalar</code></td>
+<th scope="row" class="org-left"><code>mxIsLogicalScalar</code></th>
 <td class="org-left">判断是不是逻辑矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsLogicalScalarTrue</code></td>
+<th scope="row" class="org-left"><code>mxIsLogicalScalarTrue</code></th>
 <td class="org-left">判断逻辑矩阵是不是真</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsStruct</code></td>
+<th scope="row" class="org-left"><code>mxIsStruct</code></th>
 <td class="org-left">判断是否为sturcture矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsCell</code></td>
+<th scope="row" class="org-left"><code>mxIsCell</code></th>
 <td class="org-left">判断是不是cell矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsClass</code></td>
+<th scope="row" class="org-left"><code>mxIsClass</code></th>
 <td class="org-left">判断是不是特定的类型</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsInf</code></td>
+<th scope="row" class="org-left"><code>mxIsInf</code></th>
 <td class="org-left">判断输入是不是无穷大</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsFinite</code></td>
+<th scope="row" class="org-left"><code>mxIsFinite</code></th>
 <td class="org-left">判断输入是不是有限大</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsNaN</code></td>
+<th scope="row" class="org-left"><code>mxIsNaN</code></th>
 <td class="org-left">判断输入是不是NaN</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsEmpty</code></td>
+<th scope="row" class="org-left"><code>mxIsEmpty</code></th>
 <td class="org-left">判断矩阵是否为空</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsSparse</code></td>
+<th scope="row" class="org-left"><code>mxIsSparse</code></th>
 <td class="org-left">判断输入是否为稀疏矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxIsFromGlobalWS</code></td>
+<th scope="row" class="org-left"><code>mxIsFromGlobalWS</code></th>
 <td class="org-left">判断矩阵是否从matlab全局空间传入</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxAssert</code></td>
+<th scope="row" class="org-left"><code>mxAssert</code></th>
 <td class="org-left">判断assertion值（用于debug）</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxAssertS</code></td>
+<th scope="row" class="org-left"><code>mxAssertS</code></th>
 <td class="org-left">判断assertion值，不打印assertion文本</td>
 </tr>
 </tbody>
@@ -548,217 +548,217 @@ matlab为数据读写定义了一些API。这些API在 <code>mexFunction</code> 
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>mxGetNumberOfDimensions</code></td>
+<th scope="row" class="org-left"><code>mxGetNumberOfDimensions</code></th>
 <td class="org-left">获取矩阵的维度</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetElementSize</code></td>
+<th scope="row" class="org-left"><code>mxGetElementSize</code></th>
 <td class="org-left">每一个数据元素需要的字节数</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetDimensions</code></td>
+<th scope="row" class="org-left"><code>mxGetDimensions</code></th>
 <td class="org-left">指向矩阵维度的指针</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetDimensions</code></td>
+<th scope="row" class="org-left"><code>mxSetDimensions</code></th>
 <td class="org-left">修改维度和每一维的大小</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetNumberOfElements</code></td>
+<th scope="row" class="org-left"><code>mxGetNumberOfElements</code></th>
 <td class="org-left">矩阵中元素的个数</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxCalcSingleSubscript</code></td>
+<th scope="row" class="org-left"><code>mxCalcSingleSubscript</code></th>
 <td class="org-left">相对于起始元素的偏移量</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetM</code></td>
+<th scope="row" class="org-left"><code>mxGetM</code></th>
 <td class="org-left">矩阵元素的行数</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetN</code></td>
+<th scope="row" class="org-left"><code>mxGetN</code></th>
 <td class="org-left">矩阵元素的列数</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetM</code></td>
+<th scope="row" class="org-left"><code>mxSetM</code></th>
 <td class="org-left">设置矩阵元素的行数</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetN</code></td>
+<th scope="row" class="org-left"><code>mxSetN</code></th>
 <td class="org-left">设置矩阵元素的列数</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetScalsr</code></td>
+<th scope="row" class="org-left"><code>mxGetScalsr</code></th>
 <td class="org-left">第一个数据元素的实部</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetPr</code></td>
+<th scope="row" class="org-left"><code>mxGetPr</code></th>
 <td class="org-left">矩阵的实部</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetPr</code></td>
+<th scope="row" class="org-left"><code>mxSetPr</code></th>
 <td class="org-left">设置矩阵的实部</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetPi</code></td>
+<th scope="row" class="org-left"><code>mxGetPi</code></th>
 <td class="org-left">矩阵的虚部</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetPi</code></td>
+<th scope="row" class="org-left"><code>mxSetPi</code></th>
 <td class="org-left">设置矩阵的虚部</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetData</code></td>
+<th scope="row" class="org-left"><code>mxGetData</code></th>
 <td class="org-left">指向矩阵中实部的指针</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetData</code></td>
+<th scope="row" class="org-left"><code>mxSetData</code></th>
 <td class="org-left">设置指向矩阵中实部的指针</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetImagData</code></td>
+<th scope="row" class="org-left"><code>mxGetImagData</code></th>
 <td class="org-left">指向矩阵中虚部的指针</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetImagData</code></td>
+<th scope="row" class="org-left"><code>mxSetImagData</code></th>
 <td class="org-left">设置指向矩阵中虚部的指针</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetChars</code></td>
+<th scope="row" class="org-left"><code>mxGetChars</code></th>
 <td class="org-left">指向字符矩阵的指针</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetLogicals</code></td>
+<th scope="row" class="org-left"><code>mxGetLogicals</code></th>
 <td class="org-left">指向逻辑类型矩阵的指针</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetClassID</code></td>
+<th scope="row" class="org-left"><code>mxGetClassID</code></th>
 <td class="org-left">矩阵的类型</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetClassName</code></td>
+<th scope="row" class="org-left"><code>mxGetClassName</code></th>
 <td class="org-left">矩阵的类型（以字符串返回）</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetClassName</code></td>
+<th scope="row" class="org-left"><code>mxSetClassName</code></th>
 <td class="org-left">把C中的Array指定为matlab中的array</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetProperty</code></td>
+<th scope="row" class="org-left"><code>mxGetProperty</code></th>
 <td class="org-left">matlab对象的公共值</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetProperty</code></td>
+<th scope="row" class="org-left"><code>mxSetProperty</code></th>
 <td class="org-left">设置matlab对象的公共值</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetField</code></td>
+<th scope="row" class="org-left"><code>mxGetField</code></th>
 <td class="org-left">获取structure的域（给定index和name）</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetField</code></td>
+<th scope="row" class="org-left"><code>mxSetField</code></th>
 <td class="org-left">设置structure的域</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetNumberOfFields</code></td>
+<th scope="row" class="org-left"><code>mxGetNumberOfFields</code></th>
 <td class="org-left">structure中的域个数</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetFieldNameByNumber</code></td>
+<th scope="row" class="org-left"><code>mxGetFieldNameByNumber</code></th>
 <td class="org-left">给定域编号获得域的名字</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetFieldNumber</code></td>
+<th scope="row" class="org-left"><code>mxGetFieldNumber</code></th>
 <td class="org-left">给定域名字获得域编号</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetFieldByNumber</code></td>
+<th scope="row" class="org-left"><code>mxGetFieldByNumber</code></th>
 <td class="org-left">给定域索引和域数值获得域值</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetFieldByNumber</code></td>
+<th scope="row" class="org-left"><code>mxSetFieldByNumber</code></th>
 <td class="org-left">给定索引和域数值，设置域值</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxAddField</code></td>
+<th scope="row" class="org-left"><code>mxAddField</code></th>
 <td class="org-left">在结构体中添加域</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxRemoveField</code></td>
+<th scope="row" class="org-left"><code>mxRemoveField</code></th>
 <td class="org-left">在结构体中去除域</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetCell</code></td>
+<th scope="row" class="org-left"><code>mxGetCell</code></th>
 <td class="org-left">获取Cell矩阵的值</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetCell</code></td>
+<th scope="row" class="org-left"><code>mxSetCell</code></th>
 <td class="org-left">设置Cell矩阵的值</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetNzmax</code></td>
+<th scope="row" class="org-left"><code>mxGetNzmax</code></th>
 <td class="org-left">IR，PR，PI矩阵的元素个数</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetNzmax</code></td>
+<th scope="row" class="org-left"><code>mxSetNzmax</code></th>
 <td class="org-left">为非零元素设置空间数</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetIr</code></td>
+<th scope="row" class="org-left"><code>mxGetIr</code></th>
 <td class="org-left">稀疏IR矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetIr</code></td>
+<th scope="row" class="org-left"><code>mxSetIr</code></th>
 <td class="org-left">稀疏矩阵的IR矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetJc</code></td>
+<th scope="row" class="org-left"><code>mxGetJc</code></th>
 <td class="org-left">稀疏JC矩阵</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetJc</code></td>
+<th scope="row" class="org-left"><code>mxSetJc</code></th>
 <td class="org-left">JC矩阵的稀疏矩阵</td>
 </tr>
 </tbody>
@@ -792,22 +792,22 @@ matlab为字符和矩阵之间的数据类型转换提供了API，如表<a href=
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>mxArrayToString</code></td>
+<th scope="row" class="org-left"><code>mxArrayToString</code></th>
 <td class="org-left">array向字符串转化</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxArrayToUTF8String</code></td>
+<th scope="row" class="org-left"><code>mxArrayToUTF8String</code></th>
 <td class="org-left">array向字符串转化（用UTF8编码）</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxGetString</code></td>
+<th scope="row" class="org-left"><code>mxGetString</code></th>
 <td class="org-left">把string矩阵转化为C-style字符串</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>mxSetClassName</code></td>
+<th scope="row" class="org-left"><code>mxSetClassName</code></th>
 <td class="org-left">结构体矩阵转向matlab对象矩阵</td>
 </tr>
 </tbody>

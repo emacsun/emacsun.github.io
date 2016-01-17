@@ -248,6 +248,10 @@
 
     img {
 	border: none;
+	vertical:middle;
+	vertical-align:middle;
+	dispaly:block;
+	margin:0 auto;
     }
 
     .share img {
