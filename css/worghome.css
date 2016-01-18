@@ -991,8 +991,8 @@
     #postamble {
 	padding: .3em;
 	margin-bottom: 1em;
-	border: 1px solid gray;
-	background-color: #eeeeee;
+	border: 0px solid gray;
+	background-color: #FFFFFF;
     }
 
     #show_source {float: right; margin: .7em;}
