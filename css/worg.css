@@ -22,9 +22,7 @@
 	margin-left: 10px;
 	line-height:100%;
     }
-   #t-above{
-        width: 50%;
-    } 
+
     #org-div-home-and-up{
 	position: fixed;
 	right: 0;
@@ -228,9 +226,9 @@
     }
 
     table,td,th {
-	border: 1px solid #ccc;
-	border-collapse: collapse;
-	text-align:left;
+	      /*border: 1px solid #ccc;*/
+	/*border-collapse: collapse;*/
+	/*text-align:left;*/
     }
 
     /* td { */

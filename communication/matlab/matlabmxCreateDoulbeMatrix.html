@@ -104,9 +104,9 @@ for the JavaScript code in this tag.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"matrix.h"</span>
-mxArray *mxCreateDoubleMatrix(<span style="color: #b58900;">mwSize</span> <span style="color: #268bd2;">m</span>, <span style="color: #b58900;">mwSize</span> <span style="color: #268bd2;">n</span>,
-  <span style="color: #b58900;">mxComplexity</span> <span style="color: #268bd2;">ComplexFlag</span>);
+<pre class="src src-c"><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">"matrix.h"</span>
+mxArray *mxCreateDoubleMatrix<span style="color: #2aa198;">(</span><span style="color: #b58900;">mwSize</span> <span style="color: #268bd2;">m</span>, <span style="color: #b58900;">mwSize</span> <span style="color: #268bd2;">n</span>,
+  <span style="color: #b58900;">mxComplexity</span> <span style="color: #268bd2;">ComplexFlag</span><span style="color: #2aa198;">)</span>;
 </pre>
 </div>
 </div>
@@ -205,48 +205,48 @@ mxArray *mxCreateDoubleMatrix(<span style="color: #b58900;">mwSize</span> <span 
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"mex.h"</span>
-<span class="linenr"> 2: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">timestwo</span>(<span style="color: #b58900;">double</span> <span style="color: #268bd2;">y</span>[], <span style="color: #b58900;">double</span> <span style="color: #268bd2;">x</span>[])
-<span class="linenr"> 3: </span>{
-<span class="linenr"> 4: </span>  y[0] = 2.0*x[0];
-<span class="linenr"> 5: </span>}
+<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">"mex.h"</span>
+<span class="linenr"> 2: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">timestwo</span><span style="color: #2aa198;">(</span><span style="color: #b58900;">double</span> <span style="color: #268bd2;">y</span><span style="color: #b58900;">[]</span>, <span style="color: #b58900;">double</span> <span style="color: #268bd2;">x</span><span style="color: #b58900;">[]</span><span style="color: #2aa198;">)</span>
+<span class="linenr"> 3: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 4: </span>  y<span style="color: #b58900;">[</span><span style="color: #6c71c4;">0</span><span style="color: #b58900;">]</span> = <span style="color: #6c71c4;">2.0</span>*x<span style="color: #b58900;">[</span><span style="color: #6c71c4;">0</span><span style="color: #b58900;">]</span>;
+<span class="linenr"> 5: </span><span style="color: #2aa198;">}</span>
 <span class="linenr"> 6: </span>
-<span class="linenr"> 7: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">mexFunction</span>( <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nlhs</span>, <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">plhs</span>[],
-<span class="linenr"> 8: </span>          <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nrhs</span>, <span style="color: #859900;">const</span> <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">prhs</span>[] )
-<span class="linenr"> 9: </span>{
+<span class="linenr"> 7: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">mexFunction</span><span style="color: #2aa198;">(</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nlhs</span>, <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">plhs</span><span style="color: #b58900;">[]</span>,
+<span class="linenr"> 8: </span>      <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nrhs</span>, <span style="color: #859900; font-weight: bold;">const</span> <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">prhs</span><span style="color: #b58900;">[]</span> <span style="color: #2aa198;">)</span>
+<span class="linenr"> 9: </span><span style="color: #2aa198;">{</span>
 <span class="linenr">10: </span>  <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">x</span>,*<span style="color: #268bd2;">y</span>;
 <span class="linenr">11: </span>  <span style="color: #b58900;">size_t</span> <span style="color: #268bd2;">mrows</span>,<span style="color: #268bd2;">ncols</span>;
 <span class="linenr">12: </span>
-<span class="linenr">13: </span>  <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">Check for proper number of arguments. </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">14: </span>  <span style="color: #859900;">if</span>(nrhs!=1) {
-<span class="linenr">15: </span>    mexErrMsgIdAndTxt( <span style="color: #2aa198;">"MATLAB:timestwo:invalidNumInputs"</span>,
-<span class="linenr">16: </span>        <span style="color: #2aa198;">"One input required."</span>);
-<span class="linenr">17: </span>  } <span style="color: #859900;">else</span> <span style="color: #859900;">if</span>(nlhs&gt;1) {
-<span class="linenr">18: </span>    mexErrMsgIdAndTxt( <span style="color: #2aa198;">"MATLAB:timestwo:maxlhs"</span>,
-<span class="linenr">19: </span>        <span style="color: #2aa198;">"Too many output arguments."</span>);
-<span class="linenr">20: </span>  }
+<span class="linenr">13: </span>  <span style="color: #586e75;">/* </span><span style="color: #586e75;">Check for proper number of arguments. </span><span style="color: #586e75;">*/</span>
+<span class="linenr">14: </span>  <span style="color: #859900; font-weight: bold;">if</span><span style="color: #b58900;">(</span>nrhs!=<span style="color: #6c71c4;">1</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+<span class="linenr">15: </span>    mexErrMsgIdAndTxt<span style="color: #268bd2;">(</span> <span style="color: #2aa198;">"MATLAB:timestwo:invalidNumInputs"</span>,
+<span class="linenr">16: </span>      <span style="color: #2aa198;">"One input required."</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">17: </span>  <span style="color: #b58900;">}</span> <span style="color: #859900; font-weight: bold;">else</span> <span style="color: #859900; font-weight: bold;">if</span><span style="color: #b58900;">(</span>nlhs&gt;<span style="color: #6c71c4;">1</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+<span class="linenr">18: </span>    mexErrMsgIdAndTxt<span style="color: #268bd2;">(</span> <span style="color: #2aa198;">"MATLAB:timestwo:maxlhs"</span>,
+<span class="linenr">19: </span>      <span style="color: #2aa198;">"Too many output arguments."</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">20: </span>  <span style="color: #b58900;">}</span>
 <span class="linenr">21: </span>
-<span class="linenr">22: </span>  <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">The input must be a noncomplex scalar double.</span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">23: </span>  mrows = mxGetM(prhs[0]);
-<span class="linenr">24: </span>  ncols = mxGetN(prhs[0]);
-<span class="linenr">25: </span>  <span style="color: #859900;">if</span>( <span style="color: #dc322f;">!</span>mxIsDouble(prhs[0]) || mxIsComplex(prhs[0]) ||
-<span class="linenr">26: </span>      <span style="color: #dc322f;">!</span>(mrows==1 &amp;&amp; ncols==1) ) {
-<span class="linenr">27: </span>    mexErrMsgIdAndTxt(
+<span class="linenr">22: </span>  <span style="color: #586e75;">/* </span><span style="color: #586e75;">The input must be a noncomplex scalar double.</span><span style="color: #586e75;">*/</span>
+<span class="linenr">23: </span>  mrows = mxGetM<span style="color: #b58900;">(</span>prhs<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">0</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span>;
+<span class="linenr">24: </span>  ncols = mxGetN<span style="color: #b58900;">(</span>prhs<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">0</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span>;
+<span class="linenr">25: </span>  <span style="color: #859900; font-weight: bold;">if</span><span style="color: #b58900;">(</span> <span style="color: #b58900; font-weight: bold;">!</span>mxIsDouble<span style="color: #268bd2;">(</span>prhs<span style="color: #6c71c4;">[</span><span style="color: #6c71c4;">0</span><span style="color: #6c71c4;">]</span><span style="color: #268bd2;">)</span> || mxIsComplex<span style="color: #268bd2;">(</span>prhs<span style="color: #6c71c4;">[</span><span style="color: #6c71c4;">0</span><span style="color: #6c71c4;">]</span><span style="color: #268bd2;">)</span> ||
+<span class="linenr">26: </span>      <span style="color: #b58900; font-weight: bold;">!</span><span style="color: #268bd2;">(</span>mrows==<span style="color: #6c71c4;">1</span> &amp;&amp; ncols==<span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span> <span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+<span class="linenr">27: </span>    mexErrMsgIdAndTxt<span style="color: #268bd2;">(</span>
 <span class="linenr">28: </span>    <span style="color: #2aa198;">"MATLAB:timestwo:inputNotRealScalarDouble"</span>,
-<span class="linenr">29: </span>    <span style="color: #2aa198;">"Input must be a noncomplex scalar double."</span>);
-<span class="linenr">30: </span>  }
+<span class="linenr">29: </span>    <span style="color: #2aa198;">"Input must be a noncomplex scalar double."</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">30: </span>  <span style="color: #b58900;">}</span>
 <span class="linenr">31: </span>
-<span class="linenr">32: </span>  <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">Create matrix for the return argument. </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">33: </span>  plhs[0] = mxCreateDoubleMatrix((<span style="color: #b58900;">mwSize</span>)mrows,
-<span class="linenr">34: </span>               (<span style="color: #b58900;">mwSize</span>)ncols, mxREAL);
+<span class="linenr">32: </span>  <span style="color: #586e75;">/* </span><span style="color: #586e75;">Create matrix for the return argument. </span><span style="color: #586e75;">*/</span>
+<span class="linenr">33: </span>  plhs<span style="color: #b58900;">[</span><span style="color: #6c71c4;">0</span><span style="color: #b58900;">]</span> = mxCreateDoubleMatrix<span style="color: #b58900;">(</span><span style="color: #268bd2;">(</span><span style="color: #b58900;">mwSize</span><span style="color: #268bd2;">)</span>mrows,
+<span class="linenr">34: </span>         <span style="color: #268bd2;">(</span><span style="color: #b58900;">mwSize</span><span style="color: #268bd2;">)</span>ncols, mxREAL<span style="color: #b58900;">)</span>;
 <span class="linenr">35: </span>
-<span class="linenr">36: </span>  <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">Assign pointers to each input and output. </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">37: </span>  x = mxGetPr(prhs[0]);
-<span class="linenr">38: </span>  y = mxGetPr(plhs[0]);
+<span class="linenr">36: </span>  <span style="color: #586e75;">/* </span><span style="color: #586e75;">Assign pointers to each input and output. </span><span style="color: #586e75;">*/</span>
+<span class="linenr">37: </span>  x = mxGetPr<span style="color: #b58900;">(</span>prhs<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">0</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span>;
+<span class="linenr">38: </span>  y = mxGetPr<span style="color: #b58900;">(</span>plhs<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">0</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span>;
 <span class="linenr">39: </span>
-<span class="linenr">40: </span>  <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">Call the timestwo subroutine. </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">41: </span>  timestwo(y,x);
-<span class="linenr">42: </span>}
+<span class="linenr">40: </span>  <span style="color: #586e75;">/* </span><span style="color: #586e75;">Call the timestwo subroutine. </span><span style="color: #586e75;">*/</span>
+<span class="linenr">41: </span>  timestwo<span style="color: #b58900;">(</span>y,x<span style="color: #b58900;">)</span>;
+<span class="linenr">42: </span><span style="color: #2aa198;">}</span>
 </pre>
 </div>
 
@@ -272,75 +272,75 @@ mxArray *mxCreateDoubleMatrix(<span style="color: #b58900;">mwSize</span> <span 
 
 <div class="org-src-container">
 
-<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"mex.h"</span>
-<span class="linenr"> 2: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">xtimesy</span>(<span style="color: #b58900;">double</span> <span style="color: #268bd2;">x</span>, <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">y</span>,
-<span class="linenr"> 3: </span>         <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">z</span>, <span style="color: #b58900;">size_t</span> <span style="color: #268bd2;">m</span>, <span style="color: #b58900;">size_t</span> <span style="color: #268bd2;">n</span>)
-<span class="linenr"> 4: </span>{
-<span class="linenr"> 5: </span>  <span style="color: #b58900;">mwSize</span> <span style="color: #268bd2;">i</span>,<span style="color: #268bd2;">j</span>,<span style="color: #268bd2;">count</span>=0;
+<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">"mex.h"</span>
+<span class="linenr"> 2: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">xtimesy</span><span style="color: #2aa198;">(</span><span style="color: #b58900;">double</span> <span style="color: #268bd2;">x</span>, <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">y</span>,
+<span class="linenr"> 3: </span>       <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">z</span>, <span style="color: #b58900;">size_t</span> <span style="color: #268bd2;">m</span>, <span style="color: #b58900;">size_t</span> <span style="color: #268bd2;">n</span><span style="color: #2aa198;">)</span>
+<span class="linenr"> 4: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 5: </span>  <span style="color: #b58900;">mwSize</span> <span style="color: #268bd2;">i</span>,<span style="color: #268bd2;">j</span>,<span style="color: #268bd2;">count</span>=<span style="color: #6c71c4;">0</span>;
 <span class="linenr"> 6: </span>
-<span class="linenr"> 7: </span>  <span style="color: #859900;">for</span> (i=0; i&lt;n; i++) {
-<span class="linenr"> 8: </span>    <span style="color: #859900;">for</span> (j=0; j&lt;m; j++) {
-<span class="linenr"> 9: </span>      *(z+count) = x * *(y+count);
+<span class="linenr"> 7: </span>  <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #b58900;">(</span>i=<span style="color: #6c71c4;">0</span>; i&lt;n; i++<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+<span class="linenr"> 8: </span>    <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">(</span>j=<span style="color: #6c71c4;">0</span>; j&lt;m; j++<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
+<span class="linenr"> 9: </span>      *<span style="color: #6c71c4;">(</span>z+count<span style="color: #6c71c4;">)</span> = x * *<span style="color: #6c71c4;">(</span>y+count<span style="color: #6c71c4;">)</span>;
 <span class="linenr">10: </span>      count++;
-<span class="linenr">11: </span>    }
-<span class="linenr">12: </span>  }
-<span class="linenr">13: </span>}
+<span class="linenr">11: </span>    <span style="color: #268bd2;">}</span>
+<span class="linenr">12: </span>  <span style="color: #b58900;">}</span>
+<span class="linenr">13: </span><span style="color: #2aa198;">}</span>
 <span class="linenr">14: </span>
-<span class="linenr">15: </span><span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">the gateway function </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">16: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">mexFunction</span>( <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nlhs</span>, <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">plhs</span>[],
-<span class="linenr">17: </span>          <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nrhs</span>, <span style="color: #859900;">const</span> <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">prhs</span>[])
-<span class="linenr">18: </span>{
+<span class="linenr">15: </span><span style="color: #586e75;">/* </span><span style="color: #586e75;">the gateway function </span><span style="color: #586e75;">*/</span>
+<span class="linenr">16: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">mexFunction</span><span style="color: #2aa198;">(</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nlhs</span>, <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">plhs</span><span style="color: #b58900;">[]</span>,
+<span class="linenr">17: </span>      <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nrhs</span>, <span style="color: #859900; font-weight: bold;">const</span> <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">prhs</span><span style="color: #b58900;">[]</span><span style="color: #2aa198;">)</span>
+<span class="linenr">18: </span><span style="color: #2aa198;">{</span>
 <span class="linenr">19: </span>  <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">y</span>,*<span style="color: #268bd2;">z</span>;
 <span class="linenr">20: </span>  <span style="color: #b58900;">double</span>  <span style="color: #268bd2;">x</span>;
 <span class="linenr">21: </span>  <span style="color: #b58900;">size_t</span> <span style="color: #268bd2;">mrows</span>,<span style="color: #268bd2;">ncols</span>;
 <span class="linenr">22: </span>
-<span class="linenr">23: </span>  <span style="color: #586e75; font-style: italic;">/*  </span><span style="color: #586e75; font-style: italic;">check for proper number of arguments </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">24: </span>  <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">NOTE: You do not need an else statement when</span>
-<span class="linenr">25: </span><span style="color: #586e75; font-style: italic;">     using mexErrMsgIdAndTxt within an if statement,</span>
-<span class="linenr">26: </span><span style="color: #586e75; font-style: italic;">     because it will never get to the else statement</span>
-<span class="linenr">27: </span><span style="color: #586e75; font-style: italic;">     if mexErrMsgIdAndTxt is executed.</span>
-<span class="linenr">28: </span><span style="color: #586e75; font-style: italic;">     (mexErrMsgIdAndTxt breaks you out of the</span>
-<span class="linenr">29: </span><span style="color: #586e75; font-style: italic;">    MEX-file) </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">30: </span>  <span style="color: #859900;">if</span>(nrhs!=2)
-<span class="linenr">31: </span>    mexErrMsgIdAndTxt(
-<span class="linenr">32: </span>        <span style="color: #2aa198;">"MATLAB:xtimesy:invalidNumInputs"</span>,
-<span class="linenr">33: </span>        <span style="color: #2aa198;">"Two inputs required."</span>);
-<span class="linenr">34: </span>  <span style="color: #859900;">if</span>(nlhs!=1)
-<span class="linenr">35: </span>    mexErrMsgIdAndTxt(
-<span class="linenr">36: </span>        <span style="color: #2aa198;">"MATLAB:xtimesy:invalidNumOutputs"</span>,
-<span class="linenr">37: </span>        <span style="color: #2aa198;">"One output required."</span>);
+<span class="linenr">23: </span>  <span style="color: #586e75;">/*  </span><span style="color: #586e75;">check for proper number of arguments </span><span style="color: #586e75;">*/</span>
+<span class="linenr">24: </span>  <span style="color: #586e75;">/* </span><span style="color: #d0bf8f;">NOTE</span><span style="color: #586e75;">: You do not need an else statement when</span>
+<span class="linenr">25: </span><span style="color: #586e75;">     using mexErrMsgIdAndTxt within an if statement,</span>
+<span class="linenr">26: </span><span style="color: #586e75;">     because it will never get to the else statement</span>
+<span class="linenr">27: </span><span style="color: #586e75;">     if mexErrMsgIdAndTxt is executed.</span>
+<span class="linenr">28: </span><span style="color: #586e75;">     (mexErrMsgIdAndTxt breaks you out of the</span>
+<span class="linenr">29: </span><span style="color: #586e75;">    MEX-file) </span><span style="color: #586e75;">*/</span>
+<span class="linenr">30: </span>  <span style="color: #859900; font-weight: bold;">if</span><span style="color: #b58900;">(</span>nrhs!=<span style="color: #6c71c4;">2</span><span style="color: #b58900;">)</span>
+<span class="linenr">31: </span>    mexErrMsgIdAndTxt<span style="color: #b58900;">(</span>
+<span class="linenr">32: </span>      <span style="color: #2aa198;">"MATLAB:xtimesy:invalidNumInputs"</span>,
+<span class="linenr">33: </span>      <span style="color: #2aa198;">"Two inputs required."</span><span style="color: #b58900;">)</span>;
+<span class="linenr">34: </span>  <span style="color: #859900; font-weight: bold;">if</span><span style="color: #b58900;">(</span>nlhs!=<span style="color: #6c71c4;">1</span><span style="color: #b58900;">)</span>
+<span class="linenr">35: </span>    mexErrMsgIdAndTxt<span style="color: #b58900;">(</span>
+<span class="linenr">36: </span>      <span style="color: #2aa198;">"MATLAB:xtimesy:invalidNumOutputs"</span>,
+<span class="linenr">37: </span>      <span style="color: #2aa198;">"One output required."</span><span style="color: #b58900;">)</span>;
 <span class="linenr">38: </span>
-<span class="linenr">39: </span>  <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">check to make sure the first input argument is</span>
-<span class="linenr">40: </span><span style="color: #586e75; font-style: italic;">     a scalar </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">41: </span>  <span style="color: #859900;">if</span>( <span style="color: #dc322f;">!</span>mxIsDouble(prhs[0]) ||
-<span class="linenr">42: </span>      mxIsComplex(prhs[0]) ||
-<span class="linenr">43: </span>      mxGetN(prhs[0])*mxGetM(prhs[0])!=1 ) {
-<span class="linenr">44: </span>    mexErrMsgIdAndTxt( <span style="color: #2aa198;">"MATLAB:xtimesy:xNotScalar"</span>,
-<span class="linenr">45: </span>        <span style="color: #2aa198;">"Input x must be a scalar."</span>);
-<span class="linenr">46: </span>  }
+<span class="linenr">39: </span>  <span style="color: #586e75;">/* </span><span style="color: #586e75;">check to make sure the first input argument is</span>
+<span class="linenr">40: </span><span style="color: #586e75;">     a scalar </span><span style="color: #586e75;">*/</span>
+<span class="linenr">41: </span>  <span style="color: #859900; font-weight: bold;">if</span><span style="color: #b58900;">(</span> <span style="color: #b58900; font-weight: bold;">!</span>mxIsDouble<span style="color: #268bd2;">(</span>prhs<span style="color: #6c71c4;">[</span><span style="color: #6c71c4;">0</span><span style="color: #6c71c4;">]</span><span style="color: #268bd2;">)</span> ||
+<span class="linenr">42: </span>      mxIsComplex<span style="color: #268bd2;">(</span>prhs<span style="color: #6c71c4;">[</span><span style="color: #6c71c4;">0</span><span style="color: #6c71c4;">]</span><span style="color: #268bd2;">)</span> ||
+<span class="linenr">43: </span>      mxGetN<span style="color: #268bd2;">(</span>prhs<span style="color: #6c71c4;">[</span><span style="color: #6c71c4;">0</span><span style="color: #6c71c4;">]</span><span style="color: #268bd2;">)</span>*mxGetM<span style="color: #268bd2;">(</span>prhs<span style="color: #6c71c4;">[</span><span style="color: #6c71c4;">0</span><span style="color: #6c71c4;">]</span><span style="color: #268bd2;">)</span>!=<span style="color: #6c71c4;">1</span> <span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+<span class="linenr">44: </span>    mexErrMsgIdAndTxt<span style="color: #268bd2;">(</span> <span style="color: #2aa198;">"MATLAB:xtimesy:xNotScalar"</span>,
+<span class="linenr">45: </span>      <span style="color: #2aa198;">"Input x must be a scalar."</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">46: </span>  <span style="color: #b58900;">}</span>
 <span class="linenr">47: </span>
-<span class="linenr">48: </span>  <span style="color: #586e75; font-style: italic;">/*  </span><span style="color: #586e75; font-style: italic;">get the scalar input x </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">49: </span>  x = mxGetScalar(prhs[0]);
+<span class="linenr">48: </span>  <span style="color: #586e75;">/*  </span><span style="color: #586e75;">get the scalar input x </span><span style="color: #586e75;">*/</span>
+<span class="linenr">49: </span>  x = mxGetScalar<span style="color: #b58900;">(</span>prhs<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">0</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span>;
 <span class="linenr">50: </span>
-<span class="linenr">51: </span>  <span style="color: #586e75; font-style: italic;">/*  </span><span style="color: #586e75; font-style: italic;">create a pointer to the input matrix y </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">52: </span>  y = mxGetPr(prhs[1]);
+<span class="linenr">51: </span>  <span style="color: #586e75;">/*  </span><span style="color: #586e75;">create a pointer to the input matrix y </span><span style="color: #586e75;">*/</span>
+<span class="linenr">52: </span>  y = mxGetPr<span style="color: #b58900;">(</span>prhs<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span>;
 <span class="linenr">53: </span>
-<span class="linenr">54: </span>  <span style="color: #586e75; font-style: italic;">/*  </span><span style="color: #586e75; font-style: italic;">get the dimensions of the matrix input y </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">55: </span>  mrows = mxGetM(prhs[1]);
-<span class="linenr">56: </span>  ncols = mxGetN(prhs[1]);
+<span class="linenr">54: </span>  <span style="color: #586e75;">/*  </span><span style="color: #586e75;">get the dimensions of the matrix input y </span><span style="color: #586e75;">*/</span>
+<span class="linenr">55: </span>  mrows = mxGetM<span style="color: #b58900;">(</span>prhs<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span>;
+<span class="linenr">56: </span>  ncols = mxGetN<span style="color: #b58900;">(</span>prhs<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span>;
 <span class="linenr">57: </span>
-<span class="linenr">58: </span>  <span style="color: #586e75; font-style: italic;">/*  </span><span style="color: #586e75; font-style: italic;">set the output pointer to the output matrix </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">59: </span>  plhs[0] = mxCreateDoubleMatrix( (<span style="color: #b58900;">mwSize</span>)mrows,
-<span class="linenr">60: </span>                (<span style="color: #b58900;">mwSize</span>)ncols, mxREAL);
+<span class="linenr">58: </span>  <span style="color: #586e75;">/*  </span><span style="color: #586e75;">set the output pointer to the output matrix </span><span style="color: #586e75;">*/</span>
+<span class="linenr">59: </span>  plhs<span style="color: #b58900;">[</span><span style="color: #6c71c4;">0</span><span style="color: #b58900;">]</span> = mxCreateDoubleMatrix<span style="color: #b58900;">(</span> <span style="color: #268bd2;">(</span><span style="color: #b58900;">mwSize</span><span style="color: #268bd2;">)</span>mrows,
+<span class="linenr">60: </span>          <span style="color: #268bd2;">(</span><span style="color: #b58900;">mwSize</span><span style="color: #268bd2;">)</span>ncols, mxREAL<span style="color: #b58900;">)</span>;
 <span class="linenr">61: </span>
-<span class="linenr">62: </span>  <span style="color: #586e75; font-style: italic;">/*  </span><span style="color: #586e75; font-style: italic;">create a C pointer to a copy of the</span>
-<span class="linenr">63: </span><span style="color: #586e75; font-style: italic;">      output matrix </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">64: </span>  z = mxGetPr(plhs[0]);
+<span class="linenr">62: </span>  <span style="color: #586e75;">/*  </span><span style="color: #586e75;">create a C pointer to a copy of the</span>
+<span class="linenr">63: </span><span style="color: #586e75;">      output matrix </span><span style="color: #586e75;">*/</span>
+<span class="linenr">64: </span>  z = mxGetPr<span style="color: #b58900;">(</span>plhs<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">0</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span>;
 <span class="linenr">65: </span>
-<span class="linenr">66: </span>  <span style="color: #586e75; font-style: italic;">/*  </span><span style="color: #586e75; font-style: italic;">call the C subroutine </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">67: </span>  xtimesy(x,y,z,mrows,ncols);
+<span class="linenr">66: </span>  <span style="color: #586e75;">/*  </span><span style="color: #586e75;">call the C subroutine </span><span style="color: #586e75;">*/</span>
+<span class="linenr">67: </span>  xtimesy<span style="color: #b58900;">(</span>x,y,z,mrows,ncols<span style="color: #b58900;">)</span>;
 <span class="linenr">68: </span>
-<span class="linenr">69: </span>}
+<span class="linenr">69: </span><span style="color: #2aa198;">}</span>
 </pre>
 </div>
 
@@ -349,7 +349,7 @@ mxArray *mxCreateDoubleMatrix(<span style="color: #b58900;">mwSize</span> <span 
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c">y = mxGetPr(prhs[1]);
+<pre class="src src-c">y = mxGetPr<span style="color: #2aa198;">(</span>prhs<span style="color: #b58900;">[</span><span style="color: #6c71c4;">1</span><span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>;
 </pre>
 </div>
 
@@ -375,7 +375,7 @@ mxArray *mxCreateDoubleMatrix(<span style="color: #b58900;">mwSize</span> <span 
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c">pa = mxCreateDoubleScalar(value);
+<pre class="src src-c">pa = mxCreateDoubleScalar<span style="color: #2aa198;">(</span>value<span style="color: #2aa198;">)</span>;
 </pre>
 </div>
 <p>
@@ -387,8 +387,8 @@ pa是个地址指向一个doulbe值，大小为 <code>value</code> 。
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c">pa = mxCreateDoubleMatrix(1, 1, mxREAL);
-*mxGetPr(pa) = value;
+<pre class="src src-c">pa = mxCreateDoubleMatrix<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">1</span>, mxREAL<span style="color: #2aa198;">)</span>;
+*mxGetPr<span style="color: #2aa198;">(</span>pa<span style="color: #2aa198;">)</span> = value;
 </pre>
 </div>
 

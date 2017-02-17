@@ -158,14 +158,14 @@ matlab是Mathworks公司推出的一款强大的仿真软件。由于其简单�
 </p>
 <div class="org-src-container">
 
-<pre class="src src-C"><span class="linenr">1: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">arrayProduct</span>(<span style="color: #b58900;">double</span> <span style="color: #268bd2;">x</span>, <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">Y</span>, <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">Z</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">n</span>)
-<span class="linenr">2: </span>{
+<pre class="src src-C"><span class="linenr">1: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">arrayProduct</span><span style="color: #2aa198;">(</span><span style="color: #b58900;">double</span> <span style="color: #268bd2;">x</span>, <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">Y</span>, <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">Z</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">n</span><span style="color: #2aa198;">)</span>
+<span class="linenr">2: </span><span style="color: #2aa198;">{</span>
 <span class="linenr">3: </span>  <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>;
 <span class="linenr">4: </span>
-<span class="linenr">5: </span>  <span style="color: #859900;">for</span> (i=0; i&lt;n; i++) {
-<span class="linenr">6: </span>    Z[i] = x * Y[i];
-<span class="linenr">7: </span>  }
-<span class="linenr">8: </span>}
+<span class="linenr">5: </span>  <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #b58900;">(</span>i=<span style="color: #6c71c4;">0</span>; i&lt;n; i++<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+<span class="linenr">6: </span>    Z<span style="color: #268bd2;">[</span>i<span style="color: #268bd2;">]</span> = x * Y<span style="color: #268bd2;">[</span>i<span style="color: #268bd2;">]</span>;
+<span class="linenr">7: </span>  <span style="color: #b58900;">}</span>
+<span class="linenr">8: </span><span style="color: #2aa198;">}</span>
 </pre>
 </div>
 </div>
@@ -182,20 +182,20 @@ matlab是Mathworks公司推出的一款强大的仿真软件。由于其简单�
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #586e75; font-style: italic;">/*</span>
-<span style="color: #586e75; font-style: italic;"> *arrayProduct.c - example in MATLAB External Interfaces</span>
-<span style="color: #586e75; font-style: italic;"> *</span>
-<span style="color: #586e75; font-style: italic;"> * Multiplies an input scalar (multiplier)</span>
-<span style="color: #586e75; font-style: italic;"> * times a 1xN matrix (inMatrix)</span>
-<span style="color: #586e75; font-style: italic;"> * and outputs a 1xN matrix (outMatrix)</span>
-<span style="color: #586e75; font-style: italic;"> *</span>
-<span style="color: #586e75; font-style: italic;"> * The calling syntax is:</span>
-<span style="color: #586e75; font-style: italic;"> *</span>
-<span style="color: #586e75; font-style: italic;"> *              outMatrix = arrayProduct(multiplier, inMatrix)</span>
-<span style="color: #586e75; font-style: italic;"> *</span>
-<span style="color: #586e75; font-style: italic;"> * This is a MEX-file for MATLAB.</span>
-<span style="color: #586e75; font-style: italic;">*/</span>
-<span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"mex.h"</span>
+<pre class="src src-c"><span style="color: #586e75;">/*</span>
+<span style="color: #586e75;"> *arrayProduct.c - example in MATLAB External Interfaces</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> * Multiplies an input scalar (multiplier)</span>
+<span style="color: #586e75;"> * times a 1xN matrix (inMatrix)</span>
+<span style="color: #586e75;"> * and outputs a 1xN matrix (outMatrix)</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> * The calling syntax is:</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> *    outMatrix = arrayProduct(multiplier, inMatrix)</span>
+<span style="color: #586e75;"> *</span>
+<span style="color: #586e75;"> * This is a MEX-file for MATLAB.</span>
+<span style="color: #586e75;">*/</span>
+<span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">"mex.h"</span>
 </pre>
 </div>
 <p>
@@ -215,14 +215,14 @@ matlab是Mathworks公司推出的一款强大的仿真软件。由于其简单�
 </p>
 <div class="org-src-container">
 
-<pre class="src src-C"><span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">The gateway function </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span style="color: #b58900;">void</span> <span style="color: #268bd2;">mexFunction</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">nlhs</span>, <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">plhs</span>[],
-         <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nrhs</span>, <span style="color: #859900;">const</span> <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">prhs</span>[])
-{
-<span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">variable declarations here </span><span style="color: #586e75; font-style: italic;">*/</span>
+<pre class="src src-C"><span style="color: #586e75;">/* </span><span style="color: #586e75;">The gateway function </span><span style="color: #586e75;">*/</span>
+<span style="color: #b58900;">void</span> <span style="color: #268bd2;">mexFunction</span><span style="color: #2aa198;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">nlhs</span>, <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">plhs</span><span style="color: #b58900;">[]</span>,
+     <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nrhs</span>, <span style="color: #859900; font-weight: bold;">const</span> <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">prhs</span><span style="color: #b58900;">[]</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">{</span>
+<span style="color: #586e75;">/* </span><span style="color: #586e75;">variable declarations here </span><span style="color: #586e75;">*/</span>
 
-<span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">code here </span><span style="color: #586e75; font-style: italic;">*/</span>
-}
+<span style="color: #586e75;">/* </span><span style="color: #586e75;">code here </span><span style="color: #586e75;">*/</span>
+<span style="color: #2aa198;">}</span>
 </pre>
 </div>
 
@@ -292,36 +292,36 @@ Z = arrayProduct(x,Y)
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #586e75; font-style: italic;">/*</span>
-<span class="linenr"> 2: </span><span style="color: #586e75; font-style: italic;"> *arrayProduct.c - example in MATLAB External Interfaces</span>
-<span class="linenr"> 3: </span><span style="color: #586e75; font-style: italic;"> *</span>
-<span class="linenr"> 4: </span><span style="color: #586e75; font-style: italic;"> * Multiplies an input scalar (multiplier)</span>
-<span class="linenr"> 5: </span><span style="color: #586e75; font-style: italic;"> * times a 1xN matrix (inMatrix)</span>
-<span class="linenr"> 6: </span><span style="color: #586e75; font-style: italic;"> * and outputs a 1xN matrix (outMatrix)</span>
-<span class="linenr"> 7: </span><span style="color: #586e75; font-style: italic;"> *</span>
-<span class="linenr"> 8: </span><span style="color: #586e75; font-style: italic;"> * The calling syntax is:</span>
-<span class="linenr"> 9: </span><span style="color: #586e75; font-style: italic;"> *</span>
-<span class="linenr">10: </span><span style="color: #586e75; font-style: italic;"> *              outMatrix = arrayProduct(multiplier, inMatrix)</span>
-<span class="linenr">11: </span><span style="color: #586e75; font-style: italic;"> *</span>
-<span class="linenr">12: </span><span style="color: #586e75; font-style: italic;"> * This is a MEX-file for MATLAB.</span>
-<span class="linenr">13: </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">14: </span><span style="color: #cb4b16;">#include</span> <span style="color: #2aa198;">"mex.h"</span>
-<span class="linenr">15: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">arrayProduct</span>(<span style="color: #b58900;">double</span> <span style="color: #268bd2;">x</span>, <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">Y</span>, <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">Z</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">n</span>)
-<span class="linenr">16: </span>{
+<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #586e75;">/*</span>
+<span class="linenr"> 2: </span><span style="color: #586e75;"> *arrayProduct.c - example in MATLAB External Interfaces</span>
+<span class="linenr"> 3: </span><span style="color: #586e75;"> *</span>
+<span class="linenr"> 4: </span><span style="color: #586e75;"> * Multiplies an input scalar (multiplier)</span>
+<span class="linenr"> 5: </span><span style="color: #586e75;"> * times a 1xN matrix (inMatrix)</span>
+<span class="linenr"> 6: </span><span style="color: #586e75;"> * and outputs a 1xN matrix (outMatrix)</span>
+<span class="linenr"> 7: </span><span style="color: #586e75;"> *</span>
+<span class="linenr"> 8: </span><span style="color: #586e75;"> * The calling syntax is:</span>
+<span class="linenr"> 9: </span><span style="color: #586e75;"> *</span>
+<span class="linenr">10: </span><span style="color: #586e75;"> *    outMatrix = arrayProduct(multiplier, inMatrix)</span>
+<span class="linenr">11: </span><span style="color: #586e75;"> *</span>
+<span class="linenr">12: </span><span style="color: #586e75;"> * This is a MEX-file for MATLAB.</span>
+<span class="linenr">13: </span><span style="color: #586e75;">*/</span>
+<span class="linenr">14: </span><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">"mex.h"</span>
+<span class="linenr">15: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">arrayProduct</span><span style="color: #2aa198;">(</span><span style="color: #b58900;">double</span> <span style="color: #268bd2;">x</span>, <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">Y</span>, <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">Z</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">n</span><span style="color: #2aa198;">)</span>
+<span class="linenr">16: </span><span style="color: #2aa198;">{</span>
 <span class="linenr">17: </span>  <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>;
 <span class="linenr">18: </span>
-<span class="linenr">19: </span>  <span style="color: #859900;">for</span> (i=0; i&lt;n; i++) {
-<span class="linenr">20: </span>    Z[i] = x * Y[i];
-<span class="linenr">21: </span>  }
-<span class="linenr">22: </span>}
-<span class="linenr">23: </span><span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">The gateway function </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">24: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">mexFunction</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">nlhs</span>, <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">plhs</span>[],
-<span class="linenr">25: </span>         <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nrhs</span>, <span style="color: #859900;">const</span> <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">prhs</span>[])
-<span class="linenr">26: </span>{
-<span class="linenr">27: </span><span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">variable declarations here </span><span style="color: #586e75; font-style: italic;">*/</span>
+<span class="linenr">19: </span>  <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #b58900;">(</span>i=<span style="color: #6c71c4;">0</span>; i&lt;n; i++<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+<span class="linenr">20: </span>    Z<span style="color: #268bd2;">[</span>i<span style="color: #268bd2;">]</span> = x * Y<span style="color: #268bd2;">[</span>i<span style="color: #268bd2;">]</span>;
+<span class="linenr">21: </span>  <span style="color: #b58900;">}</span>
+<span class="linenr">22: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">23: </span><span style="color: #586e75;">/* </span><span style="color: #586e75;">The gateway function </span><span style="color: #586e75;">*/</span>
+<span class="linenr">24: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">mexFunction</span><span style="color: #2aa198;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">nlhs</span>, <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">plhs</span><span style="color: #b58900;">[]</span>,
+<span class="linenr">25: </span>     <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nrhs</span>, <span style="color: #859900; font-weight: bold;">const</span> <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">prhs</span><span style="color: #b58900;">[]</span><span style="color: #2aa198;">)</span>
+<span class="linenr">26: </span><span style="color: #2aa198;">{</span>
+<span class="linenr">27: </span><span style="color: #586e75;">/* </span><span style="color: #586e75;">variable declarations here </span><span style="color: #586e75;">*/</span>
 <span class="linenr">28: </span>
-<span class="linenr">29: </span><span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">code here </span><span style="color: #586e75; font-style: italic;">*/</span>
-<span class="linenr">30: </span>}
+<span class="linenr">29: </span><span style="color: #586e75;">/* </span><span style="color: #586e75;">code here </span><span style="color: #586e75;">*/</span>
+<span class="linenr">30: </span><span style="color: #2aa198;">}</span>
 </pre>
 </div>
 
@@ -330,25 +330,25 @@ Z = arrayProduct(x,Y)
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c"><span style="color: #b58900;">void</span> <span style="color: #268bd2;">mexFunction</span>(<span style="color: #b58900;">int</span> <span style="color: #268bd2;">nlhs</span>, <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">plhs</span>[],
-         <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nrhs</span>, <span style="color: #859900;">const</span> <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">prhs</span>[])
-{
-<span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">variable declarations here </span><span style="color: #586e75; font-style: italic;">*/</span>
-   <span style="color: #b58900;">double</span> <span style="color: #268bd2;">multiplier</span>; <span style="color: #586e75; font-style: italic;">/*</span><span style="color: #586e75; font-style: italic;">input scalar x </span><span style="color: #586e75; font-style: italic;">*/</span>
-   <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">inArray</span>;   <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">1xN input array </span><span style="color: #586e75; font-style: italic;">*/</span>
-   <span style="color: #b58900;">int</span>    <span style="color: #268bd2;">arraySize</span>;  <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">size of array</span><span style="color: #586e75; font-style: italic;">*/</span>
-   <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">outArray</span>;  <span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">1xN output array </span><span style="color: #586e75; font-style: italic;">*/</span>
+<pre class="src src-c"><span style="color: #b58900;">void</span> <span style="color: #268bd2;">mexFunction</span><span style="color: #2aa198;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">nlhs</span>, <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">plhs</span><span style="color: #b58900;">[]</span>,
+     <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nrhs</span>, <span style="color: #859900; font-weight: bold;">const</span> <span style="color: #b58900;">mxArray</span> *<span style="color: #268bd2;">prhs</span><span style="color: #b58900;">[]</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">{</span>
+<span style="color: #586e75;">/* </span><span style="color: #586e75;">variable declarations here </span><span style="color: #586e75;">*/</span>
+   <span style="color: #b58900;">double</span> <span style="color: #268bd2;">multiplier</span>; <span style="color: #586e75;">/*</span><span style="color: #586e75;">input scalar x </span><span style="color: #586e75;">*/</span>
+   <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">inArray</span>;   <span style="color: #586e75;">/* </span><span style="color: #586e75;">1xN input array </span><span style="color: #586e75;">*/</span>
+   <span style="color: #b58900;">int</span>    <span style="color: #268bd2;">arraySize</span>;  <span style="color: #586e75;">/* </span><span style="color: #586e75;">size of array</span><span style="color: #586e75;">*/</span>
+   <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">outArray</span>;  <span style="color: #586e75;">/* </span><span style="color: #586e75;">1xN output array </span><span style="color: #586e75;">*/</span>
 
-<span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">read input from matlab calling</span><span style="color: #586e75; font-style: italic;">*/</span>
-   multiplier = mxGetScalar(prhs[0]);
-   inArray    = mxGetPr(prhs[1]);
-   arraySize  = mxGetN(prhs[1]);
-<span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">create a pointer to the output array</span><span style="color: #586e75; font-style: italic;">*/</span>
-   plhs[0]    = mxCreateDoubleMatrix(1,arraySize);
-   outArray   = mxGetPr(plhs[0]);
-<span style="color: #586e75; font-style: italic;">/* </span><span style="color: #586e75; font-style: italic;">call arrayProduct </span><span style="color: #586e75; font-style: italic;">*/</span>
-   arrayProduct(multiplier, inArray, outArray, arraySize);
-}
+<span style="color: #586e75;">/* </span><span style="color: #586e75;">read input from matlab calling</span><span style="color: #586e75;">*/</span>
+   multiplier = mxGetScalar<span style="color: #b58900;">(</span>prhs<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">0</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span>;
+   inArray    = mxGetPr<span style="color: #b58900;">(</span>prhs<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span>;
+   arraySize  = mxGetN<span style="color: #b58900;">(</span>prhs<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span>;
+<span style="color: #586e75;">/* </span><span style="color: #586e75;">create a pointer to the output array</span><span style="color: #586e75;">*/</span>
+   plhs<span style="color: #b58900;">[</span><span style="color: #6c71c4;">0</span><span style="color: #b58900;">]</span>    = mxCreateDoubleMatrix<span style="color: #b58900;">(</span><span style="color: #6c71c4;">1</span>,arraySize<span style="color: #b58900;">)</span>;
+   outArray   = mxGetPr<span style="color: #b58900;">(</span>plhs<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">0</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span>;
+<span style="color: #586e75;">/* </span><span style="color: #586e75;">call arrayProduct </span><span style="color: #586e75;">*/</span>
+   arrayProduct<span style="color: #b58900;">(</span>multiplier, inArray, outArray, arraySize<span style="color: #b58900;">)</span>;
+<span style="color: #2aa198;">}</span>
 </pre>
 </div>
 
@@ -405,7 +405,7 @@ Z = arrayProduct(x,Y)
 </p>
 <div class="org-src-container">
 
-<pre class="src src-matlab"><span style="color: #2aa198;">ans</span> =
+<pre class="src src-matlab"><span style="color: #268bd2; font-weight: bold;">ans</span> =
     42,7,14
 </pre>
 </div>
