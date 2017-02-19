@@ -82,16 +82,16 @@ for the JavaScript code in this tag.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #2aa198;">{</span>
-<span class="linenr"> 2: </span>  <span style="color: #b58900;">int</span> <span style="color: #268bd2;">x</span> = <span style="color: #6c71c4;">12</span>;
-<span class="linenr"> 3: </span>  <span style="color: #586e75;">/* </span><span style="color: #586e75;">only x available </span><span style="color: #586e75;">*/</span>
-<span class="linenr"> 4: </span>  <span style="color: #b58900;">{</span>
-<span class="linenr"> 5: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">q</span> = <span style="color: #6c71c4;">96</span>;
-<span class="linenr"> 6: </span>    <span style="color: #586e75;">/* </span><span style="color: #586e75;">both x &amp; q available </span><span style="color: #586e75;">*/</span>
-<span class="linenr"> 7: </span>  <span style="color: #b58900;">}</span>
-<span class="linenr"> 8: </span>  <span style="color: #586e75;">/* </span><span style="color: #586e75;">only x available </span><span style="color: #586e75;">*/</span>
-<span class="linenr"> 9: </span>  <span style="color: #586e75;">/* </span><span style="color: #586e75;">q &#8220;out of scope&#8221; </span><span style="color: #586e75;">*/</span>
-<span class="linenr">10: </span><span style="color: #2aa198;">}</span>
+<pre class="src src-C"><span class="linenr"> 1: </span><span style="color: #AE81FF;">{</span>
+<span class="linenr"> 2: </span>  <span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">x</span> = <span style="color: #AE81FF;">12</span>;
+<span class="linenr"> 3: </span>  <span style="color: #75715E;">/* </span><span style="color: #75715E;">only x available </span><span style="color: #75715E;">*/</span>
+<span class="linenr"> 4: </span>  <span style="color: #66D9EF;">{</span>
+<span class="linenr"> 5: </span>    <span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">q</span> = <span style="color: #AE81FF;">96</span>;
+<span class="linenr"> 6: </span>    <span style="color: #75715E;">/* </span><span style="color: #75715E;">both x &amp; q available </span><span style="color: #75715E;">*/</span>
+<span class="linenr"> 7: </span>  <span style="color: #66D9EF;">}</span>
+<span class="linenr"> 8: </span>  <span style="color: #75715E;">/* </span><span style="color: #75715E;">only x available </span><span style="color: #75715E;">*/</span>
+<span class="linenr"> 9: </span>  <span style="color: #75715E;">/* </span><span style="color: #75715E;">q &#8220;out of scope&#8221; </span><span style="color: #75715E;">*/</span>
+<span class="linenr">10: </span><span style="color: #AE81FF;">}</span>
 </pre>
 </div>
 <p>
@@ -99,14 +99,15 @@ for the JavaScript code in this tag.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-c"><span class="linenr">1: </span><span style="color: #2aa198;">{</span>
-<span class="linenr">2: </span>  <span style="color: #b58900;">int</span> <span style="color: #268bd2;">x</span> = <span style="color: #6c71c4;">12</span>;
-<span class="linenr">3: </span>  <span style="color: #b58900;">{</span>
-<span class="linenr">4: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">x</span> = <span style="color: #6c71c4;">96</span>; <span style="color: #586e75;">/* </span><span style="color: #586e75;">illegal in Java but legal in C/C++ </span><span style="color: #586e75;">*/</span>
-<span class="linenr">5: </span>  <span style="color: #b58900;">}</span>
-<span class="linenr">6: </span><span style="color: #2aa198;">}</span>
+<pre class="src src-C"><span class="linenr">1: </span><span style="color: #AE81FF;">{</span>
+<span class="linenr">2: </span>  <span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">x</span> = <span style="color: #AE81FF;">12</span>;
+<span class="linenr">3: </span>  <span style="color: #66D9EF;">{</span>
+<span class="linenr">4: </span>    <span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">x</span> = <span style="color: #AE81FF;">96</span>; <span style="color: #75715E;">/* </span><span style="color: #75715E;">illegal in Java but legal in C/C++ </span><span style="color: #75715E;">*/</span>
+<span class="linenr">5: </span>  <span style="color: #66D9EF;">}</span>
+<span class="linenr">6: </span><span style="color: #AE81FF;">}</span>
 </pre>
 </div>
+
 <p>
 <b>注意第4行在C/C++中是合法的，但是在Java中是非法的。</b> 编译器会认为变量x已被定义。所以C和C++能将一个变量“隐藏”在一个更大的作用域里。但这种做法在Java里是不允许的，因为Java的设计者认为这样做使程序产生了混淆。
 </p>

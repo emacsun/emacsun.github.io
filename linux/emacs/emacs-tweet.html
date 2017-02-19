@@ -4,7 +4,7 @@
 <head>
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>emacs Tweet</title>
+<title>Emacs Tweet</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="emacsun" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
@@ -59,7 +59,7 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">emacs Tweet</h1>
+<h1 class="title">Emacs Tweet</h1>
 <div id="table-of-contents">
 <h2>目录</h2>
 <div id="text-table-of-contents">
@@ -67,6 +67,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline1">1. spacemacs中支持的text object.</a></li>
 <li><a href="#orgheadline2">2. spacemacs快捷键定义</a></li>
 <li><a href="#orgheadline3">3. spacemacs 定义文件保存快捷键</a></li>
+<li><a href="#orgheadline4">4. spacemacs 循环切换item符号</a></li>
 </ul>
 </div>
 </div>
@@ -110,14 +111,54 @@ for the JavaScript code in this tag.
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span style="color: #2aa198;">(</span>define-key evil-normal-state-map <span style="color: #2aa198;">"\'"</span> 'save-buffer<span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span>define-key evil-normal-state-map <span style="color: #2aa198;">"&#8217;"</span> 'save-buffer<span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span>define-key evil-normal-state-map <span style="color: #2aa198;">"&#8216;"</span> 'save-buffer<span style="color: #2aa198;">)</span>
-<span style="color: #2aa198;">(</span>define-key evil-normal-state-map <span style="color: #b58900;">(</span>kbd <span style="color: #2aa198;">"RET"</span><span style="color: #b58900;">)</span> 'save-buffer<span style="color: #2aa198;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #AE81FF;">(</span>define-key evil-normal-state-map <span style="color: #E6DB74;">"\'"</span> 'save-buffer<span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">(</span>define-key evil-normal-state-map <span style="color: #E6DB74;">"&#8217;"</span> 'save-buffer<span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">(</span>define-key evil-normal-state-map <span style="color: #E6DB74;">"&#8216;"</span> 'save-buffer<span style="color: #AE81FF;">)</span>
+<span style="color: #AE81FF;">(</span>define-key evil-normal-state-map <span style="color: #66D9EF;">(</span>kbd <span style="color: #E6DB74;">"RET"</span><span style="color: #66D9EF;">)</span> 'save-buffer<span style="color: #AE81FF;">)</span>
 </pre>
 </div>
+
 <p>
-在normal模式中按下 ='= <code>‘</code>  <code>’</code> 或者 <code>&lt;RET&gt;</code> （回车键）都可以实现文件保存的目的。
+在normal模式中按下  '  <code>‘</code>  <code>’</code> 或者 <code>&lt;RET&gt;</code> （回车键）都可以实现文件保存的目的。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> spacemacs 循环切换item符号</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+在spacemacs中，可以通过 <code>1.</code> 为多个项目或者步骤编号，比如 <code>1.</code> 代表第一步， <code>2.</code> 代表第二部，依次类推，如下所示：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-org">1. &#31532;&#19968;&#27493;
+2. &#31532;&#20108;&#27493;
+3. &#31532;&#19977;&#27493;
+</pre>
+</div>
+
+<p>
+当需要添加下一个步骤时，只需要在当前步骤按快捷键 <code>&lt;ALT&gt;-&lt;RET&gt;</code> 即同时按下 Alt和回车，即可添加下一步。
+</p>
+
+<p>
+另一个小窍门是实用 <code>org-cycle-list-bullet</code> 命令来实现 item符号的改变。在spacemacs中绑定为 <code>-</code> 。 仍旧用上面的例子，当我们进入 <code>normal</code> 模式，把光标放到任意一个 <code>item</code> 的任意一个位置，按下 <code>-</code> 就会发现 <code>item</code> 符号发生了变化，比如我把光标放在“第二步” 的“二”字上，按下 <code>-</code> 就有
+</p>
+<div class="org-src-container">
+
+<pre class="src src-org">A) &#31532;&#19968;&#27493;
+B) &#31532;&#20108;&#27493;
+C) &#31532;&#19977;&#27493;
+</pre>
+</div>
+
+<p>
+因为这个命令是 <code>cycle</code> 的，所以重复按下 <code>-</code> , <code>item</code> 符号会在Org支持的 <code>item</code> 符号之间切换。目前 Org支持的 <code>item</code> 符号有 <code>*</code> <code>+</code> <code>1.</code> <code>a)</code> <code>A)</code> .
 </p>
 </div>
 </div>
