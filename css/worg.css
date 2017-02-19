@@ -993,6 +993,10 @@
     }
     .org-variable-pitch {
     }
+    .org-src-container{
+        line-height:100%;
+	      font-size: .5em;
+    }
     .org-vertical-border {
     }
     .org-warning {

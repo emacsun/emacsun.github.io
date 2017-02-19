@@ -66,6 +66,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgheadline1">1. spacemacs中支持的text object.</a></li>
 <li><a href="#orgheadline2">2. spacemacs快捷键定义</a></li>
+<li><a href="#orgheadline3">3. spacemacs 定义文件保存快捷键</a></li>
 </ul>
 </div>
 </div>
@@ -96,6 +97,27 @@ for the JavaScript code in this tag.
 
 <p>
 在evil的normal模式中按下ENTER或者 ='= 键保存修改。这比 <code>:w</code> 或者 <code>SPC f s</code> 都方便。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> spacemacs 定义文件保存快捷键</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span style="color: #2aa198;">(</span>define-key evil-normal-state-map <span style="color: #2aa198;">"\'"</span> 'save-buffer<span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span>define-key evil-normal-state-map <span style="color: #2aa198;">"&#8217;"</span> 'save-buffer<span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span>define-key evil-normal-state-map <span style="color: #2aa198;">"&#8216;"</span> 'save-buffer<span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span>define-key evil-normal-state-map <span style="color: #b58900;">(</span>kbd <span style="color: #2aa198;">"RET"</span><span style="color: #b58900;">)</span> 'save-buffer<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+<p>
+在normal模式中按下 ='= <code>‘</code>  <code>’</code> 或者 <code>&lt;RET&gt;</code> （回车键）都可以实现文件保存的目的。
 </p>
 </div>
 </div>
