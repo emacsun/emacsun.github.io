@@ -253,7 +253,9 @@
 	dispaly:block;
 	margin:0 auto;
     }
-
+    div.figure{
+        text-align:center;
+    }
     .share img {
 	opacity: .4;
 	-moz-opacity: .4;

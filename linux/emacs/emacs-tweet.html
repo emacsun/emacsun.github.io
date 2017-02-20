@@ -68,6 +68,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline2">2. spacemacs快捷键定义</a></li>
 <li><a href="#orgheadline3">3. spacemacs 定义文件保存快捷键</a></li>
 <li><a href="#orgheadline4">4. spacemacs 循环切换item符号</a></li>
+<li><a href="#orgheadline5">5. Emacs org 输出html中figure，table对齐</a></li>
 </ul>
 </div>
 </div>
@@ -111,10 +112,10 @@ for the JavaScript code in this tag.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span style="color: #AE81FF;">(</span>define-key evil-normal-state-map <span style="color: #E6DB74;">"\'"</span> 'save-buffer<span style="color: #AE81FF;">)</span>
-<span style="color: #AE81FF;">(</span>define-key evil-normal-state-map <span style="color: #E6DB74;">"&#8217;"</span> 'save-buffer<span style="color: #AE81FF;">)</span>
-<span style="color: #AE81FF;">(</span>define-key evil-normal-state-map <span style="color: #E6DB74;">"&#8216;"</span> 'save-buffer<span style="color: #AE81FF;">)</span>
-<span style="color: #AE81FF;">(</span>define-key evil-normal-state-map <span style="color: #66D9EF;">(</span>kbd <span style="color: #E6DB74;">"RET"</span><span style="color: #66D9EF;">)</span> 'save-buffer<span style="color: #AE81FF;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span>define-key evil-normal-state-map <span style="color: #2aa198;">"\'"</span> 'save-buffer<span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span>define-key evil-normal-state-map <span style="color: #2aa198;">"&#8217;"</span> 'save-buffer<span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span>define-key evil-normal-state-map <span style="color: #2aa198;">"&#8216;"</span> 'save-buffer<span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span>define-key evil-normal-state-map <span style="color: #b58900;">(</span>kbd <span style="color: #2aa198;">"RET"</span><span style="color: #b58900;">)</span> 'save-buffer<span style="color: #2aa198;">)</span>
 </pre>
 </div>
 
@@ -160,6 +161,30 @@ C) &#31532;&#19977;&#27493;
 <p>
 因为这个命令是 <code>cycle</code> 的，所以重复按下 <code>-</code> , <code>item</code> 符号会在Org支持的 <code>item</code> 符号之间切换。目前 Org支持的 <code>item</code> 符号有 <code>*</code> <code>+</code> <code>1.</code> <code>a)</code> <code>A)</code> .
 </p>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">5</span> Emacs org 输出html中figure，table对齐</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+在Emacs的org输出的html中，如果需要figure和table对齐，需在css中添加如下设置：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-css"><span style="color: #268bd2;">div.figure</span><span style="color: #2aa198;">{</span>
+    <span style="color: #268bd2;">text-align</span>:center;
+<span style="color: #2aa198;">}</span>
+<span style="color: #268bd2;">table</span><span style="color: #2aa198;">{</span>
+    <span style="color: #268bd2;">text-align</span>:center;
+    <span style="color: #268bd2;">margin-left</span>:auto;
+    <span style="color: #268bd2;">margin-right</span>:auto;
+<span style="color: #2aa198;">}</span>
+</pre>
+</div>
 </div>
 </div>
 </div>
