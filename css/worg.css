@@ -240,7 +240,7 @@
     /* } */
 
     code {
-	font-size: 80%;
+	font-size: 120%;
 	color: black;
 	border: 1px solid #DEDEDE;
 	padding: 0px 0.2em;
@@ -255,6 +255,11 @@
     }
     div.figure{
         text-align:center;
+    }
+    table{
+        text-align:center;
+        margin-left:auto;
+        margin-right:auto;
     }
     .share img {
 	opacity: .4;
