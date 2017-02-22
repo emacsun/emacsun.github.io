@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>使用github记录Emacs配置目录</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./emacs-github.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">使用github记录Emacs配置目录</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. 首先把 .spacemacs换成 .spacemacs.d</a></li>
+<li><a href="#orgheadline2">2. 在github上创建一个仓库</a></li>
+<li><a href="#orgheadline3">3. 把本地仓库托管到github上去</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> 首先把 .spacemacs换成 .spacemacs.d</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+目前我使用 <a href="http://spacemacs.org/">spacemacs</a> 来配置 Emacs，配置都写在 <code>.spacemacs</code> 里，打算用 <code>.spacemacs.d</code> 文件夹来保存我的配置。 
+</p>
+
+<p>
+好处之一是便于版本管理。
+</p>
+
+<p>
+<code>.spacemacs</code> 文件在windows上会被当成扩展名为 <code>.spacemacs</code> 的无名字文件， 当我要把之前的 <code>backup.spacemacs</code> 中的 <code>backup</code> 去掉时， windows 会勒令我必须键入文件名。在 <code>.spacemacs.d</code> 中 <code>.spacemacs</code> 是以 <code>init.el</code> 的形式存在的。
+</p>
+
+<p>
+还有其他的好处, 见 <a href="https://zilongshanren.com/">子龙闪人</a> 博客中的相关叙述。岔开一句： <a href="https://zilongshanren.com/">子龙闪人</a>  的博客是值得收藏的价值博客。
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> 在github上创建一个仓库</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+这一步简单，不会问度娘。
+</p>
+
+<p>
+假设已经在github创建了仓库，地址是 <a href="https://github.com/emacsun/.spacemacs.d">https://github.com/emacsun/.spacemacs.d</a> 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> 把本地仓库托管到github上去</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+进入本地文件夹 <code>.spacemacs.d</code> ,执行:
+</p>
+<pre class="example">
+1. git init  // 初始化本地git环境
+2. git config --global user.name yourname  //配置用户名，如果已经做过就可以忽略
+3. git config --global user.email youremail //配置Email
+4. git add . //添加新文件
+5. git commit -m "inital version"  //初始版本提交
+6. git remote add origin https://github.com/emacsun/.spacemacs.d //添加远程版本库
+7. git push -u origin master //将本地master分支提交到远程分支
+</pre>
+
+<p>
+如果第一次执行第7步的时候，报错说：提交失败，因为远程仓库包含您本地尚不存在的提交，就把第7步换成 
+</p>
+
+<p>
+<code>git push -u origin master -f</code>
+</p>
+
+<p>
+去强行提交，覆盖远程仓库原有的东西(很可能是一个README.MD文件)
+</p>
+
+<p>
+至此结束，以后每修改一次都执行第4，第5和第7步即可。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
