@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Thinking in Java chapter4 笔记和习题</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./TIJ-ch04.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Thinking in Java chapter4 笔记和习题</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. Java赋值</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Java赋值</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+第四章给出带有一个整数成员的类的赋值，
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">assignment with objects is a bit tricky</span>
+<span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Tank</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 5: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">level</span>;
+<span class="linenr"> 6: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">assignment</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 9: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> <span style="color: #268bd2;">args</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+<span class="linenr">10: </span>        <span style="color: #b58900;">Tank</span> <span style="color: #268bd2;">t1</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Tank</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">11: </span>        <span style="color: #b58900;">Tank</span> <span style="color: #268bd2;">t2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Tank</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">12: </span>        t1.level = <span style="color: #6c71c4;">47</span>;
+<span class="linenr">13: </span>        t1.level = <span style="color: #6c71c4;">27</span>;
+<span class="linenr">14: </span>        p<span style="color: #b58900;">rint</span><span style="color: #268bd2;">(</span><span style="color: #b58900;">"</span><span style="color: #2aa198;">1:t1.level: "</span> + t1.level +
+<span class="linenr">15: </span>              <span style="color: #2aa198;">", t2.level: "</span> + t2.level<span style="color: #268bd2;">)</span>;
+<span class="linenr">16: </span>        t1 = t2;
+<span class="linenr">17: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"2:t1.level: "</span> + t1.level +
+<span class="linenr">18: </span>              <span style="color: #2aa198;">", t2.level:"</span> + t2.level<span style="color: #268bd2;">)</span>;
+<span class="linenr">19: </span>        t1.level = <span style="color: #6c71c4;">33</span>;
+<span class="linenr">20: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"3:t1.level: "</span> + t1.level +
+<span class="linenr">21: </span>              <span style="color: #2aa198;">", t2.level:"</span> + t2.level<span style="color: #268bd2;">)</span>;
+<span class="linenr">22: </span>        t2.level = <span style="color: #6c71c4;">99</span>;
+<span class="linenr">23: </span>        <span style="color: #b58900;">print</span><span style="color: #268bd2;">(</span><span style="color: #2aa198;">"4:t1.level: "</span> + t1.level +
+<span class="linenr">24: </span>              <span style="color: #2aa198;">", t2.level:"</span> + t2.level<span style="color: #268bd2;">)</span>;
+<span class="linenr">25: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">26: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+在第16行执行结束之后， <code>t1</code> 和 <code>t2</code> 变成同一个对象，原先 <code>t2</code> 指向的对象会被garbage collector收走。如果不想 <code>t2</code> 被收走，则需要对对象的每个域进行赋值操作：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java">t1.level = t2.level;
+</pre>
+</div>
+
+
+<p>
+接下来给出对应的 <code>float</code> 类型，也就是第四章练习2.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">a</span><span style="color: #b58900;">ssign</span><span style="color: #586e75;">ment with objects is a bit tricky</span>
+<span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Tank</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 5: </span>    <span style="color: #b58900;">float</span> <span style="color: #268bd2;">level</span>;
+<span class="linenr"> 6: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">assignment</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 9: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> <span style="color: #268bd2;">args</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+<span class="linenr">10: </span>        <span style="color: #b58900;">Tank</span> <span style="color: #268bd2;">t1</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Tank</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">11: </span>        <span style="color: #b58900;">Tank</span> <span style="color: #268bd2;">t2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Tank</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">12: </span>        t1.level = <span style="color: #6c71c4;">47</span>.<span style="color: #6c71c4;">47f</span>;
+<span class="linenr">13: </span>        t1.level = <span style="color: #6c71c4;">27</span>.<span style="color: #6c71c4;">27f</span>;
+<span class="linenr">14: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"1:t1.level: "</span> + t1.level +
+<span class="linenr">15: </span>              <span style="color: #2aa198;">", t2.level: "</span> + t2.level<span style="color: #268bd2;">)</span>;
+<span class="linenr">16: </span>        t1 = t2;
+<span class="linenr">17: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"2:t1.level: "</span> + t1.level +
+<span class="linenr">18: </span>              <span style="color: #2aa198;">", t2.level:"</span> + t2.level<span style="color: #268bd2;">)</span>;
+<span class="linenr">19: </span>        t1.level = <span style="color: #6c71c4;">33</span>.<span style="color: #6c71c4;">33f</span>;
+<span class="linenr">20: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"3:t1.level: "</span> + t1.level +
+<span class="linenr">21: </span>              <span style="color: #2aa198;">", t2.level:"</span> + t2.level<span style="color: #268bd2;">)</span>;
+<span class="linenr">22: </span>        t2.level = <span style="color: #6c71c4;">99</span>.<span style="color: #6c71c4;">99f</span>;
+<span class="linenr">23: </span>        <span style="color: #b58900;">print</span><span style="color: #268bd2;">(</span><span style="color: #2aa198;">"4:t1.level: "</span> + t1.level +
+<span class="linenr">24: </span>              <span style="color: #2aa198;">", t2.level:"</span> + t2.level<span style="color: #268bd2;">)</span>;
+<span class="linenr">25: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">26: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+
+<p>
+注意在赋值程序对应的 <code>float</code> 版本中，浮点数的赋值 <code>t1.level = 47.47f</code> 这个 <code>47.47f</code> 如果改成 <code>47.47</code> 在我的编译器 <code>JSE8</code> 上会出错。一定是有一个开关，可以允许这样的赋值，这个开关就是 <code>cast</code> 即类型转换。
+</p>
+
+<p>
+Java 是强类型语言，默认的 <code>int</code> 变量初始化值是 <code>0</code> ; <code>long</code> 变量初始化值是 <code>0L</code> ; <code>float</code> 变量初始化值是 <code>0.0f</code> ; <code>double</code> 初始化值是 <code>0.0d</code>.
+</p>
+
+<p>
+当向一个函数传递对象的时候，也要注意传递的是引用，如下：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">assignment with objects is a bit tricky</span>
+<span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Letter</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 5: </span>    <span style="color: #b58900;">char</span> <span style="color: #268bd2;">c</span>;
+<span class="linenr"> 6: </span>    <span style="color: #b58900;">float</span> <span style="color: #268bd2;">ff</span>;
+<span class="linenr"> 7: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 8: </span>
+<span class="linenr"> 9: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">PassObject</span><span style="color: #2aa198;">{</span>
+<span class="linenr">10: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">f</span><span style="color: #b58900;">(</span><span style="color: #b58900;">Letter</span> <span style="color: #268bd2;">y</span><span style="color: #b58900;">){</span>
+<span class="linenr">11: </span>        y.c = <span style="color: #2aa198;">'z'</span>;
+<span class="linenr">12: </span>        y.ff = <span style="color: #6c71c4;">12</span>.<span style="color: #6c71c4;">3445f</span>;
+<span class="linenr">13: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">14: </span>    <span style="color: #859900; font-weight: bold;">pub</span><span style="color: #b58900;">lic </span><span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> <span style="color: #268bd2;">args</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+<span class="linenr">15: </span>        <span style="color: #b58900;">Letter</span> <span style="color: #268bd2;">x</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Letter</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">16: </span>        x.c = <span style="color: #2aa198;">'a'</span>;
+<span class="linenr">17: </span>        x.ff = <span style="color: #6c71c4;">234</span>.<span style="color: #6c71c4;">45f</span>;
+<span class="linenr">18: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"1:x.c "</span> + x.c +
+<span class="linenr">19: </span>              <span style="color: #2aa198;">"x.ff "</span> + x.ff<span style="color: #268bd2;">)</span>;
+<span class="linenr">20: </span>        f<span style="color: #268bd2;">(</span>x<span style="color: #268bd2;">)</span>;
+<span class="linenr">21: </span>        <span style="color: #b58900;">print</span><span style="color: #268bd2;">(</span><span style="color: #2aa198;">"2:x.c "</span> + x.c +
+<span class="linenr">22: </span>              <span style="color: #2aa198;">"x.ff "</span> + x.ff<span style="color: #268bd2;">)</span>;
+<span class="linenr">23: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">24: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+
+<p>
+输出是:
+</p>
+<pre class="example">
+1:x.c ax.ff 234.45
+2:x.c zx.ff 12.3445
+</pre>
+<p>
+可以看到当把 <code>x</code> 传递给 <code>f()</code> 时，传递给 <code>f()</code> 的是引用，在 <code>f()</code> 中执行的操作直接影响到 <code>x</code> 的值，这与 <code>C/C++</code> 中不同。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
