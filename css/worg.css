@@ -1027,6 +1027,9 @@
 
     #show_source {float: right; margin: .7em;}
 
+    .example{
+	      font-size: 60%;
+    }
 
 } /* END OF @media all */
 

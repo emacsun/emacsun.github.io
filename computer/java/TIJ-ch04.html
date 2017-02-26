@@ -56,6 +56,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "1em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "Neo-Euler"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "Neo-Euler"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -65,10 +87,18 @@ for the JavaScript code in this tag.
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgheadline1">1. Java赋值</a></li>
+<li><a href="#orgheadline2">2. 操作符</a></li>
+<li><a href="#orgheadline3">3. 关系运算符</a></li>
+<li><a href="#orgheadline4">4. 逻辑运算符</a></li>
+<li><a href="#orgheadline5">5. Java中的数值表示</a></li>
+<li><a href="#orgheadline6">6. 指数表示</a></li>
+<li><a href="#orgheadline7">7. 位操作</a></li>
 </ul>
 </div>
 </div>
-
+<p>
+本章学习起来毫无压力，因为大多和 <code>C/C++</code> 一脉相承。只记录几个和 <code>C/C++</code> 不一样的点，以备复习时多加注意。
+</p>
 
 <div id="outline-container-orgheadline1" class="outline-2">
 <h2 id="orgheadline1"><span class="section-number-2">1</span> Java赋值</h2>
@@ -83,7 +113,7 @@ for the JavaScript code in this tag.
 <div class="org-src-container">
 
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">assignment with objects is a bit tricky</span>
-<span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
+<span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">stati</span><span style="color: #b58900;">c</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr"> 3: </span>
 <span class="linenr"> 4: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Tank</span><span style="color: #2aa198;">{</span>
 <span class="linenr"> 5: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">level</span>;
@@ -95,7 +125,7 @@ for the JavaScript code in this tag.
 <span class="linenr">11: </span>        <span style="color: #b58900;">Tank</span> <span style="color: #268bd2;">t2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Tank</span><span style="color: #268bd2;">()</span>;
 <span class="linenr">12: </span>        t1.level = <span style="color: #6c71c4;">47</span>;
 <span class="linenr">13: </span>        t1.level = <span style="color: #6c71c4;">27</span>;
-<span class="linenr">14: </span>        p<span style="color: #b58900;">rint</span><span style="color: #268bd2;">(</span><span style="color: #b58900;">"</span><span style="color: #2aa198;">1:t1.level: "</span> + t1.level +
+<span class="linenr">14: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"1:t1.level: "</span> + t1.level +
 <span class="linenr">15: </span>              <span style="color: #2aa198;">", t2.level: "</span> + t2.level<span style="color: #268bd2;">)</span>;
 <span class="linenr">16: </span>        t1 = t2;
 <span class="linenr">17: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"2:t1.level: "</span> + t1.level +
@@ -206,6 +236,403 @@ Java 是强类型语言，默认的 <code>int</code> 变量初始化值是 <code
 <p>
 可以看到当把 <code>x</code> 传递给 <code>f()</code> 时，传递给 <code>f()</code> 的是引用，在 <code>f()</code> 中执行的操作直接影响到 <code>x</code> 的值，这与 <code>C/C++</code> 中不同。
 </p>
+</div>
+</div>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> 操作符</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
+<span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">MathOps</span>
+<span class="linenr"> 5: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 6: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 7: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr"> 8: </span>        <span style="color: #586e75;">//</span><span style="color: #586e75;">create a seeded random number generator</span>
+<span class="linenr"> 9: </span>        <span style="color: #b58900;">Random</span> <span style="color: #268bd2;">rand</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Random</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">10: </span>        <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>,<span style="color: #268bd2;">j</span>,<span style="color: #268bd2;">k</span>;
+<span class="linenr">11: </span>        j = rand.nextInt<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">100</span><span style="color: #268bd2;">)</span> +<span style="color: #6c71c4;">1</span>;
+<span class="linenr">12: </span>        k = rand.nextInt<span style="color: #268bd2;">(</span><span style="color: #b58900;">100</span><span style="color: #268bd2;">)</span><span style="color: #b58900;"> </span>+<span style="color: #6c71c4;">1</span>;
+<span class="linenr">13: </span>        i = j + k;
+<span class="linenr">14: </span>        <span style="color: #b58900;">print</span><span style="color: #268bd2;">(</span><span style="color: #2aa198;">"j ( "</span> + j +
+<span class="linenr">15: </span>              <span style="color: #2aa198;">" ) + k ( "</span> + k +
+<span class="linenr">16: </span>              <span style="color: #2aa198;">" ) =  "</span> + i<span style="color: #268bd2;">)</span>;
+<span class="linenr">17: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">18: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+在这段程序中，为了生成一个随机数，调用了 <code>Random</code> 这个 <code>Class</code> 。当没有指定随机数种子时，随机数种子是当前时间。
+</p>
+
+<p>
+除了 <code>nextInt()</code> 这个方法外，还有其他方法，比如 <code>nextfloat(), nextdouble()</code>  详见这个类的方法总结。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
+<span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">MathOps</span>
+<span class="linenr"> 5: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 6: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 7: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr"> 8: </span>        <span style="color: #586e75;">//</span><span style="color: #586e75;">create a seeded random number generator</span>
+<span class="linenr"> 9: </span>        <span style="color: #b58900;">Random</span> <span style="color: #268bd2;">rand</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Random</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">10: </span>        <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>,<span style="color: #268bd2;">j</span>,<span style="color: #268bd2;">k</span>;
+<span class="linenr">11: </span>        j = rand.nextInt<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">100</span><span style="color: #268bd2;">)</span> +<span style="color: #6c71c4;">1</span>;
+<span class="linenr">12: </span>        k = rand.nextInt<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">100</span><span style="color: #268bd2;">)</span> +<span style="color: #6c71c4;">1</span>;
+<span class="linenr">13: </span>        i = j + k;
+<span class="linenr">14: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"j ( "</span> + j +
+<span class="linenr">15: </span>              <span style="color: #2aa198;">" ) + k ( "</span> + k +
+<span class="linenr">16: </span>              <span style="color: #2aa198;">" ) =  "</span> + i<span style="color: #268bd2;">)</span>;
+<span class="linenr">17: </span>        <span style="color: #b58900;">float</span> <span style="color: #268bd2;">i</span>,<span style="color: #268bd2;">j</span>,<span style="color: #268bd2;">k</span>; 
+<span class="linenr">18: </span>        j = rand.nextFloat<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">100</span><span style="color: #268bd2;">)</span> +<span style="color: #6c71c4;">1</span>;
+<span class="linenr">19: </span>        k = rand.nextFloat<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">100</span><span style="color: #268bd2;">)</span> +<span style="color: #6c71c4;">1</span>;
+<span class="linenr">20: </span>        i = j + k;
+<span class="linenr">21: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"j ( "</span> + j +
+<span class="linenr">22: </span>              <span style="color: #2aa198;">" ) + k ( "</span> + k +
+<span class="linenr">23: </span>              <span style="color: #2aa198;">" ) =  "</span> + i<span style="color: #268bd2;">)</span>;
+<span class="linenr">24: </span>
+<span class="linenr">25: </span>        <span style="color: #b58900;">double</span> <span style="color: #268bd2;">i</span>,<span style="color: #268bd2;">j</span>,<span style="color: #268bd2;">k</span>; 
+<span class="linenr">26: </span>        j = rand.nextDouble<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">100</span><span style="color: #268bd2;">)</span> +<span style="color: #6c71c4;">1</span>;
+<span class="linenr">27: </span>        k = rand.nextDouble<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">100</span><span style="color: #268bd2;">)</span> +<span style="color: #6c71c4;">1</span>;
+<span class="linenr">28: </span>        i = j + k;
+<span class="linenr">29: </span>        <span style="color: #b58900;">print</span><span style="color: #268bd2;">(</span><span style="color: #2aa198;">"j ( "</span> + j +
+<span class="linenr">30: </span>              <span style="color: #2aa198;">" ) + k ( "</span> + k +
+<span class="linenr">31: </span>              <span style="color: #2aa198;">" ) =  "</span> + i<span style="color: #268bd2;">)</span>;
+<span class="linenr">32: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">33: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+上述代码会报错：错误信息是， <code>i,j,k</code> 已经定义了，这在 <code>C/C++</code> 中是允许的,但是在Java中却是不允许的。
+</p>
+
+<p>
+看如下代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
+<span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
+<span class="linenr"> 3: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">ExerciseCh0404</span>
+<span class="linenr"> 4: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 5: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 6: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr"> 7: </span>        <span style="color: #b58900;">int</span> <span style="color: #268bd2;">distance</span>=<span style="color: #6c71c4;">100</span>;
+<span class="linenr"> 8: </span>        <span style="color: #b58900;">int</span> <span style="color: #268bd2;">time</span>=<span style="color: #6c71c4;">300</span>;
+<span class="linenr"> 9: </span>        <span style="color: #b58900;">float</span> <span style="color: #268bd2;">velocity</span><span style="color: #b58900;">;</span>
+<span class="linenr">10: </span><span style="color: #b58900;">    </span>    velocity = <span style="color: #268bd2;">(</span><span style="color: #b58900;">float</span><span style="color: #268bd2;">)</span> distance / time;
+<span class="linenr">11: </span>        <span style="color: #b58900;">print</span><span style="color: #268bd2;">(</span><span style="color: #2aa198;">"distance / time = "</span> + velocity<span style="color: #268bd2;">)</span>;
+<span class="linenr">12: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">13: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+如果在第10行不加 <code>float</code> 显示的指示一下，结果输出就是:
+</p>
+<pre class="example">
+distance / time = 0.00
+</pre>
+<p>
+如果加 <code>float</code> 指示转换除法结果为的类型就会把计算结果转换为浮点类型。
+</p>
+<pre class="example">
+distance / time = 0.333333334
+</pre>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> 关系运算符</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+在Java中一切都是对象。所以针对对象的比较会带来一些意想不到的结果。看如下代码:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Equivalence</span>
+<span class="linenr"> 2: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 3: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 4: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr"> 5: </span>        <span style="color: #b58900;">Integer</span> <span style="color: #268bd2;">n1</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Integer</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 6: </span>        <span style="color: #b58900;">Integer</span> <span style="color: #268bd2;">n2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Integer</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 7: </span>        System.out.println<span style="color: #268bd2;">(</span>n1 == n2<span style="color: #268bd2;">)</span>;
+<span class="linenr"> 8: </span>        System.out.println<span style="color: #268bd2;">(</span>n1 != n2<span style="color: #268bd2;">)</span>;
+<span class="linenr"> 9: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">10: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出结果是：
+</p>
+<pre class="example">
+false
+true
+</pre>
+<p>
+确实surprise! 两个内容相同的整数(都是47)，但我们判断它们是否相等时，结果居然是 <code>false</code> 。这是因为在Java中== 这个关系运算符比较的不仅仅是内容，还比较 <code>reference</code> .  想要比较内容是否相等正确的做法是:使用方法 <code>equals()</code>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr">1: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Equivalence</span>
+<span class="linenr">2: </span><span style="color: #2aa198;">{</span>
+<span class="linenr">3: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr">4: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr">5: </span>        <span style="color: #b58900;">Integer</span> <span style="color: #268bd2;">n1</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Integer</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">6: </span>        <span style="color: #b58900;">Integer</span> <span style="color: #268bd2;">n2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Integer</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">7: </span>        System.out.println<span style="color: #268bd2;">(</span>n1.equals<span style="color: #6c71c4;">(</span>n2<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">8: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">9: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出结果是：
+</p>
+<pre class="example">
+true
+</pre>
+<p>
+方法 <code>equals()</code> 是 <code>Integer</code> 内置的一个方法，用来比较内容是否相等。同理， <code>Float</code> 类的对象也有 <code>equals()</code> 方法。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr">1: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Equivalence</span>
+<span class="linenr">2: </span><span style="color: #2aa198;">{</span>
+<span class="linenr">3: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr">4: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr">5: </span>        <span style="color: #b58900;">Float</span> <span style="color: #268bd2;">n1</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Float</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span>.<span style="color: #6c71c4;">0456f</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">6: </span>        <span style="color: #b58900;">Float</span> <span style="color: #268bd2;">n2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Float</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span>.<span style="color: #6c71c4;">0456f</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">7: </span>        System.out.println<span style="color: #268bd2;">(</span>n1.equals<span style="color: #6c71c4;">(</span>n2<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">8: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">9: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出结果是:
+</p>
+<pre class="example">
+true
+</pre>
+<p>
+这还没完，见如下代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Value</span> <span style="color: #2aa198;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>;
+<span class="linenr"> 3: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Equivalence</span>
+<span class="linenr"> 6: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 7: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 8: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr"> 9: </span>        <span style="color: #b58900;">Value</span> <span style="color: #268bd2;">n1</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Value</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">10: </span>        <span style="color: #b58900;">Value</span> <span style="color: #268bd2;">n2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Value</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">11: </span>        n1.i = n2.i = <span style="color: #6c71c4;">100</span>;
+<span class="linenr">12: </span>        System.out.println<span style="color: #268bd2;">(</span>n1.equals<span style="color: #6c71c4;">(</span>n2<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">13: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">14: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+你认为结果是什么？会是 <code>true</code> 么？如果你认为是 <code>true</code> ，那么你就错了。结果是 <code>false</code> 。这是因为 <code>equals()</code> 函数默认比较的是 <code>reference</code> 。如果要 <code>equals()</code> 函数比较自定义对象的内容，那么你得重载 <code>equals()</code> 这个函数。那么，如果我照如下方法写代码呢？
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Value</span> <span style="color: #2aa198;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>;
+<span class="linenr"> 3: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Equivalence</span>
+<span class="linenr"> 6: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 7: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 8: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr"> 9: </span>        <span style="color: #b58900;">Value</span> <span style="color: #268bd2;">n1</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Value</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">10: </span>        <span style="color: #b58900;">Value</span> <span style="color: #268bd2;">n2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Value</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">11: </span>        n1.i = n2.i = <span style="color: #6c71c4;">100</span>;
+<span class="linenr">12: </span>        System.out.println<span style="color: #268bd2;">(</span>n1.i.equals<span style="color: #6c71c4;">(</span>n2.i<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">13: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">14: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+编译报错：
+</p>
+<pre class="example">
+Equivalence.java:12: error: int cannot be dereferenced
+        System.out.println(n1.i.equals(n2.i));
+</pre>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> 逻辑运算符</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+Java语言中对逻辑云算法的操作也不同于 <code>C/C++</code>. 在 <code>C/C++</code> 中，非零值都是 <code>true</code> ,只有零会被当成 <code>false</code> . 但是在Java中却不是：在Java中，不能把非零值或者零当做 <code>boolean</code> 来处理， <code>boolean</code> 值只有两种 <code>true</code> 或者 <code>false</code> . 看代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
+<span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Bool</span>
+<span class="linenr"> 5: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 6: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 7: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr"> 8: </span>        <span style="color: #b58900;">Random</span> <span style="color: #268bd2;">rand</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Random</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 9: </span>        <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span> = rand.nextInt<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">100</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">10: </span>        <span style="color: #b58900;">int</span> <span style="color: #268bd2;">j</span> = rand.nextInt<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">100</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">11: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"i = "</span> + i <span style="color: #268bd2;">)</span>;
+<span class="linenr">12: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"j = "</span> + j <span style="color: #268bd2;">)</span>;
+<span class="linenr">13: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"i &lt; j is "</span> + <span style="color: #6c71c4;">(</span>i&lt;<span style="color: #b58900;">j</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">14: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"i &gt; j is "</span> + <span style="color: #6c71c4;">(</span>i&gt;j<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">15: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"i &lt;= j is "</span> + <span style="color: #6c71c4;">(</span>i&lt;=j<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">16: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"i &gt;= j is "</span> + <span style="color: #6c71c4;">(</span>i&gt;=j<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">17: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"i == j is "</span> + <span style="color: #6c71c4;">(</span>i==j<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">18: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"i != j is "</span> + <span style="color: #6c71c4;">(</span>i!=j<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">19: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"i &amp;&amp; j is "</span> + <span style="color: #6c71c4;">(</span>i&amp;&amp;j<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">20: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">21: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+这个代码的第19行会报错，因为 <code>&amp;&amp;</code> 这样的逻辑运算符只针对 <code>boolean</code> 类型，在 <code>C/C++</code> 中这样的操作是允许的。但是在 <code>Java</code> 中却不是允许的。所以 <code>Java</code>  是比 <code>C/C++</code> 更强的有类型语言，在写代码的时候最好把类型转化这样的写清楚，不要指望系统自动去转换，这样的代码也更好懂。
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">5</span> Java中的数值表示</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+前面说过 <code>Java</code> 是一种强类型语言，甚至比 <code>C/C++</code> 还要强类型。因此在数值表示的时候要格外小心，否则在编译阶段就不会通过。这对于写出健壮的代码是非常有用的。看代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">ExerciseCh0408</span>
+<span class="linenr"> 4: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 5: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 6: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr"> 7: </span>        <span style="color: #b58900;">byte</span> <span style="color: #268bd2;">i1</span> = <span style="color: #6c71c4;">0X80</span>;
+<span class="linenr"> 8: </span>        prin<span style="color: #b58900;">t</span><span style="color: #268bd2;">(</span><span style="color: #b58900;">"i1 </span><span style="color: #2aa198;">= "</span> + Integer.toBinaryString<span style="color: #6c71c4;">(</span>i1<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 9: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"i1 = "</span> + Long.toBinaryString<span style="color: #6c71c4;">(</span><span style="color: #b58900;">i1</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">10: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">11: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+上面的代码对一个 <code>byte</code> 类型的变量赋值 <code>0x80</code> 这在边一阶段就会报错：
+</p>
+<pre class="example">
+error: incompatible types: possible lossy conversion from int to byte
+        byte i1 = 0X80;
+</pre>
+<p>
+提醒我，从 <code>int</code> 到 <code>byte</code> 的类型转换会出错。因为 <code>0x80</code> 是 <code>int</code> 范围内的数， <code>byte</code> 表示不了这个数值。 <code>byte</code> 只能表示 <code>-0x80</code> 。
+</p>
+
+<p>
+如果把 <code>0x80</code> 改成 <code>-0x80</code> 则会看到输出:
+</p>
+<pre class="example">
+i1 = 11111111111111111111111110000000
+i1 = 1111111111111111111111111111111111111111111111111111111110000000
+</pre>
+
+<p>
+注意方法 <code>Integer.toBinaryString</code> 把 <code>byte</code> 变换成 <code>int</code> 来处理, <code>Long.toBinaryString</code> 把 <code>byte</code> 变换成 <code>long</code> 来处理而 <code>Byte</code> 类却没有方法 <code>toBinaryString()</code> 不知道 <code>Java</code> 是怎么想的。 <code>-0x80</code> 表示的是 <code>-128</code> 这个数是 <code>Byte</code> 能表示的最小的数。在Java中所有的数都是有符号数。
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6"><span class="section-number-2">6</span> 指数表示</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<p>
+在脚本语言 <code>MATLAB</code> 以及 <code>C/C++</code> 中 <code>aEb</code> 表示 \(a\times 10^{b}\)。在 <code>Java</code> 中，也有这种指数表示，不过由于 <code>Java</code> 是强类型语言，所以还是稍有不同。看代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Exponents</span>
+<span class="linenr"> 2: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 3: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 4: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr"> 5: </span>        <span style="color: #b58900;">float</span> <span style="color: #268bd2;">expfloat</span> = <span style="color: #6c71c4;">1</span>.<span style="color: #6c71c4;">25e</span>-<span style="color: #6c71c4;">43f</span>;
+<span class="linenr"> 6: </span>        <span style="color: #b58900;">float</span> <span style="color: #268bd2;">expFloat</span> = <span style="color: #6c71c4;">1</span>.<span style="color: #6c71c4;">25E</span>-<span style="color: #6c71c4;">43f</span>;
+<span class="linenr"> 7: </span>        System.out.println<span style="color: #268bd2;">(</span>expfloat<span style="color: #268bd2;">)</span>;
+<span class="linenr"> 8: </span>        System.out.println<span style="color: #268bd2;">(</span>expFloat<span style="color: #268bd2;">)</span>;
+<span class="linenr"> 9: </span>        <span style="color: #b58900;">double</span> <span style="color: #268bd2;">expdouble</span> = <span style="color: #6c71c4;">47e47d</span>;
+<span class="linenr">10: </span>        <span style="color: #b58900;">double</span> <span style="color: #268bd2;">expDouble</span> = <span style="color: #6c71c4;">47e47</span>;
+<span class="linenr">11: </span>        System.out.println<span style="color: #268bd2;">(</span>expDouble<span style="color: #268bd2;">)</span>;
+<span class="linenr">12: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">13: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+从这段代码中可以知道： <code>e</code> 和 <code>E</code> 是通用的。还有一些隐藏的信息： <code>aEb</code> 在 <code>Java</code> 中默认是 <code>Double</code> 类型。所以代码第9行的 <code>47e47d</code> 的 <code>d</code> 是可选的，第10行就去掉了。进而第5行和第6行的 <code>f</code> 是必须的，这里的 <code>1.25e-43f</code> 相当于 <code>(float) 1.25e-43</code> 或者 <code>(float) 1.25e-43D</code> .
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7"><span class="section-number-2">7</span> 位操作</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+
+</p>
+
+<p>
+虽然没有 <code>C/C++</code> 中位操作灵活，但是Java中也有对应的位操作，看代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
+<span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">ExerciseCh0410</span>
+<span class="linenr"> 3: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 4: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 5: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr"> 6: </span>        <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a</span> = <span style="color: #6c71c4;">0xBBBB</span>;
+<span class="linenr"> 7: </span>        <span style="color: #b58900;">int</span> <span style="color: #268bd2;">b</span> = <span style="color: #6c71c4;">0x5555</span>;
+<span class="linenr"> 8: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"a = "</span> + Integer.toBinaryString<span style="color: #6c71c4;">(</span>a<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 9: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"b = "</span> + Integer.toBinaryString<span style="color: #6c71c4;">(</span>b<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">10: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"a &amp;= b "</span> + Integer.toBinaryString<span style="color: #6c71c4;">(</span><span style="color: #b58900;">a&amp;=b</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">;</span>
+<span class="linenr">11: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"a ^= b "</span> + Integer.toBinaryString<span style="color: #6c71c4;">(</span>a^=b<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">12: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"a |= b "</span> + Integer.toBinaryString<span style="color: #6c71c4;">(</span><span style="color: #b58900;">a</span>|=b<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">13: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">14: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出为:
+</p>
+<pre class="example">
+a = 1011101110111011
+b = 101010101010101
+a &amp;= b 1000100010001
+a ^= b 100010001000100
+a |= b 101010101010101
+</pre>
 </div>
 </div>
 </div>

@@ -71,6 +71,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline5">5. Emacs org 输出html中figure，table对齐</a></li>
 <li><a href="#orgheadline6">6. JDEE 安装</a></li>
 <li><a href="#orgheadline7">7. 使用Thinking in Java书中代码</a></li>
+<li><a href="#orgheadline8">8. 定义复制整个buffer快捷键</a></li>
 </ul>
 </div>
 </div>
@@ -220,6 +221,20 @@ C) &#31532;&#19977;&#27493;
 <p>
 在添加环境变量的时候一定要记得把 <code>.;..;</code> 也加入环境变量。
 </p>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8"><span class="section-number-2">8</span> 定义复制整个buffer快捷键</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2017-02-26 Sun 19:49]</span></span>
+原来的快捷键为 <code>&lt;SPC&gt; b Y</code> ，太复杂还需要按下 <code>&lt;SHIFT&gt;</code> ，绑定后为 <code>&lt;SPC&gt; b y</code> 简单直接，拯救小拇指。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-list">(spacemacs/set-leader-keys "by" 'spacemacs/copy-whole-buffer-to-clipboard)
+</pre>
+</div>
 </div>
 </div>
 </div>
