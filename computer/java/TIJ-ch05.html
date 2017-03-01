@@ -67,6 +67,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline1">1. 简介</a></li>
 <li><a href="#orgheadline2">2. 只有 <code>boolean</code> 有真假</a></li>
 <li><a href="#orgheadline3">3. 注意 <code>a=b</code> 问题</a></li>
+<li><a href="#orgheadline4">4. Random的导入</a></li>
 </ul>
 </div>
 </div>
@@ -109,7 +110,7 @@ for the JavaScript code in this tag.
 <span class="linenr"> 3: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">IfElse</span>
 <span class="linenr"> 4: </span><span style="color: #2aa198;">{</span>
 <span class="linenr"> 5: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">result</span> = <span style="color: #6c71c4;">0</span>;
-<span class="linenr"> 6: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">test</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">testval</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">target</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 6: </span>    <span style="color: #859900; font-weight: bold;">static</span><span style="color: #b58900;"> void </span><span style="color: #268bd2;">test</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">testval</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">target</span><span style="color: #b58900;">)</span>
 <span class="linenr"> 7: </span>    <span style="color: #b58900;">{</span>
 <span class="linenr"> 8: </span>        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>testval &gt; target<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
 <span class="linenr"> 9: </span>            result = +<span style="color: #6c71c4;">1</span>;
@@ -127,7 +128,7 @@ for the JavaScript code in this tag.
 <span class="linenr">21: </span>        test<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">5</span>,<span style="color: #6c71c4;">6</span><span style="color: #268bd2;">)</span>;
 <span class="linenr">22: </span>        print<span style="color: #268bd2;">(</span>result<span style="color: #268bd2;">)</span>;
 <span class="linenr">23: </span>        test<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span>,<span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span>;
-<span class="linenr">24: </span>        print<span style="color: #268bd2;">(</span><span style="color: #b58900;">result</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">24: </span>        print<span style="color: #268bd2;">(</span>result<span style="color: #268bd2;">)</span>;
 <span class="linenr">25: </span>    <span style="color: #b58900;">}</span>
 <span class="linenr">26: </span><span style="color: #2aa198;">}</span>
 </pre>
@@ -142,6 +143,46 @@ IfElse.java:14: error: incompatible types: int cannot be converted to boolean
 <p>
 <code>Java</code> 在编译阶段就避免了代码中可能因为 <code>a=b</code>  导致的逻辑错误。我认为这是 <code>Java</code> 相对于 <code>C/C++</code> 进步的地方。
 </p>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> Random的导入</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+在完成 <code>Exercise02</code> 的过程中，忘记导入 <code>import java.util.*</code> 导致无法使用 <code>Random</code> 类， 特此记录，看代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
+<span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Exercise0502</span>
+<span class="linenr"> 3: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 4: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 5: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr"> 6: </span>        <span style="color: #b58900;">Random</span> <span style="color: #268bd2;">rand</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Random</span><span style="color: #268bd2;">()</span>;
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span>        <span style="color: #b58900;">int</span> <span style="color: #268bd2;">target</span> = rand.nextInt<span style="color: #268bd2;">()</span>;
+<span class="linenr"> 9: </span>        <span style="color: #b58900;">int</span> <span style="color: #268bd2;">source</span>;
+<span class="linenr">10: </span>        <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">j</span>=<span style="color: #6c71c4;">0</span>; j &lt; <span style="color: #6c71c4;">25</span>; j++<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
+<span class="linenr">11: </span>            source = r<span style="color: #b58900;">and.ne</span>xtInt<span style="color: #6c71c4;">()</span>;
+<span class="linenr">12: </span>            <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #6c71c4;">(</span>source &gt; target<span style="color: #6c71c4;">)</span>
+<span class="linenr">13: </span>                System.out.println<span style="color: #6c71c4;">(</span> <span style="color: #2aa198;">"target "</span> + target + 
+<span class="linenr">14: </span>                       <span style="color: #2aa198;">" &lt; "</span> + <span style="color: #2aa198;">" source "</span> + source<span style="color: #6c71c4;">)</span>;
+<span class="linenr">15: </span>            <span style="color: #859900; font-weight: bold;">else</span> <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #6c71c4;">(</span>source &lt; <span style="color: #b58900;">target</span><span style="color: #6c71c4;">)</span> 
+<span class="linenr">16: </span>                System.out.println<span style="color: #6c71c4;">(</span> <span style="color: #2aa198;">"target "</span> + target + 
+<span class="linenr">17: </span>                       <span style="color: #2aa198;">" &gt; "</span> + <span style="color: #2aa198;">" source "</span> + source<span style="color: #6c71c4;">)</span>;
+<span class="linenr">18: </span>            <span style="color: #859900; font-weight: bold;">else</span>
+<span class="linenr">19: </span>                System.out.println<span style="color: #6c71c4;">(</span> <span style="color: #2aa198;">"target "</span> + target + 
+<span class="linenr">20: </span>                       <span style="color: #2aa198;">" = "</span> + <span style="color: #2aa198;">" source "</span> + source<span style="color: #6c71c4;">)</span>;
+<span class="linenr">21: </span>        <span style="color: #268bd2;">}</span>
+<span class="linenr">22: </span>
+<span class="linenr">23: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">24: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
 </div>
 </div>
 </div>
