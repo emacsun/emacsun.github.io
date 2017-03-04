@@ -1,0 +1,425 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Thinking in Java chapter6 笔记和习题</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./TIJ-ch05.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Thinking in Java chapter6 笔记和习题</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. 简介</a></li>
+<li><a href="#orgheadline2">2. 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></a></li>
+<li><a href="#orgheadline3">3. 从 <code>constructor</code> 的定义引入函数重载</a></li>
+<li><a href="#orgheadline4">4. 默认的 <code>constructor</code></a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> 简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<b>Initialization and Cleanup</b> 这一章首先讲述类初始化的一些操作，顺带初始化操作阐述了方法重载。然后讲述了Java的Garbage Collector机制。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+首先默认的 <code>constructor</code> ，看代码：
+</p>
+<pre class="example">
+import java.util.*;
+import static net.mindview.util.Print.*;
+class Rock{
+    Rock(){
+        System.out.println("Rock");
+    }
+}
+public class SimpleConstructor
+{
+    public static void main(String args[])
+    {
+        for (int i=0; i &lt; 10 ;i++) {
+            new Rock();
+        }
+    }
+}
+</pre>
+
+<p>
+注意:  <code>constructor</code> 是一个函数，其名称和 <code>class</code> 的名称必须相同(没有为什么，这是规定)。但是没有说明这个函数可不可以携带参数，实际上是可以的， 继续看代码：
+</p>
+<pre class="example">
+import java.util.*;
+import static net.mindview.util.Print.*;
+class Rock{
+    Rock(int i){
+        System.out.print("Rock" + i);
+    }
+}
+public class SimpleConstructor2
+{
+    public static void main(String args[])
+    {
+        for (int i=0; i &lt; 10 ;i++) {
+            new Rock(i);
+        }
+    }
+}
+</pre>
+<p>
+这段代码的输出是:
+</p>
+<pre class="example">
+Rock 0 Rock 1 Rock 2 Rock 3 Rock 4 Rock 5 Rock 6 Rock 7 Rock 8 Rock 9
+</pre>
+<p>
+注意在这段代码中使用了 <code>print</code> 而不是 <code>println</code> . <code>print</code> 输出默认不带回车； <code>println</code> 输出默认带回车。
+</p>
+
+<p>
+<code>constructor</code> 函数没有返回值，注意这里的没有返回值和 <code>void</code> 函数是两回事。
+</p>
+
+<p>
+<code>String</code> 对象初始化值是 <code>null</code>, 看代码：
+</p>
+<pre class="example">
+import java.util.*;
+import static net.mindview.util.Print.*;
+class Rock{
+    String str;
+}
+public class Exercise0601
+{
+    public static void main(String args[])
+    {
+        Rock rcok = new Rock();
+        print("" + rcok.str);
+    }
+}
+</pre>
+
+<p>
+其输出为
+</p>
+<pre class="example">
+null
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> 从 <code>constructor</code> 的定义引入函数重载</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+作者从 <code>constructor</code> 过度到另一个知识点 <code>overload</code> , 平滑自然。对于重载，值得注意的是 <code>primitive</code> 类型的重载。 看代码：
+</p>
+<pre class="example">
+import static net.mindview.util.Print.*;
+public class PrimitiveOverloading{
+    void f1(char x){printnb("f1(char) ");}
+    void f1(byte x){printnb("f1(byte) ");}
+    void f1(short x){printnb("f1(short) ");}
+    void f1(int x){printnb("f1(int) ");}
+    void f1(long x){printnb("f1(long) ");}
+    void f1(float x){printnb("f1(float) ");}
+    void f1(double x){printnb("f1(double) ");}
+
+    void f2(byte x){printnb("f2(byte) ");}
+    void f2(short x){printnb("f2(short) ");}
+    void f2(int x){printnb("f2(int) ");}
+    void f2(long x){printnb("f2(long) ");}
+    void f2(float x){printnb("f2(float) ");}
+    void f2(double x){printnb("f2(double) ");}
+
+    void f3(short x){printnb("f3(short) ");}
+    void f3(int x){printnb("f3(int) ");}
+    void f3(long x){printnb("f3(long) ");}
+    void f3(float x){printnb("f3(float) ");}
+    void f3(double x){printnb("f3(double) ");}
+
+    void f4(int x){printnb("f4(int) ");}
+    void f4(long x){printnb("f4(long) ");}
+    void f4(float x){printnb("f4(float) ");}
+    void f4(double x){printnb("f4(double) ");}
+
+    void f5(long x){printnb("f5(long) ");}
+    void f5(float x){printnb("f5(float) ");}
+    void f5(double x){printnb("f5(double) ");}
+
+    void f6(float x){printnb("f6(float) ");}
+    void f6(double x){printnb("f6(double) ");}
+
+    void f7(double x){printnb("f7(double) ");}
+
+    void testConstVal(){
+        printnb("5: ");
+        f1(5);f2(5);f3(5);f4(5);f5(5);f6(5);f7(5);print();
+    }
+
+    void testChar(){
+        char x = 'x';
+        printnb("char: ");
+        f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);print();
+    }
+
+    void testByte(){
+        byte x = 0;
+        printnb("byte: ");
+        f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);print();
+    }
+
+    void testShort(){
+        short x = 0;
+        printnb("short: ");
+        f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);print();
+    }
+
+    void testInt(){
+        int x = 0;
+        printnb("int: ");
+        f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);print();
+    }
+
+    void testLong(){
+        long x = 0;
+        printnb("long: ");
+        f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);print();
+    }
+
+    void testFloat(){
+        float x = 0;
+        printnb("float: ");
+        f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);print();
+    }
+
+    void testDouble(){
+        double x = 0;
+        printnb("double: ");
+        f1(x);f2(x);f3(x);f4(x);f5(x);f6(x);f7(x);print();
+    }
+
+    public static void main(String[] args){
+        PrimitiveOverloading p = new PrimitiveOverloading();
+        p.testConstVal();
+        p.testChar();
+        p.testByte();
+        p.testShort();
+        p.testInt();
+        p.testLong();
+        p.testFloat();
+        p.testDouble();
+    }
+}
+</pre>
+<p>
+这段代码的输出是:
+</p>
+<pre class="example">
+5: f1(int) f2(int) f3(int) f4(int) f5(long) f6(float) f7(double) 
+char: f1(char) f2(int) f3(int) f4(int) f5(long) f6(float) f7(double) 
+byte: f1(byte) f2(byte) f3(short) f4(int) f5(long) f6(float) f7(double) 
+short: f1(short) f2(short) f3(short) f4(int) f5(long) f6(float) f7(double) 
+int: f1(int) f2(int) f3(int) f4(int) f5(long) f6(float) f7(double) 
+long: f1(long) f2(long) f3(long) f4(long) f5(long) f6(float) f7(double) 
+float: f1(float) f2(float) f3(float) f4(float) f5(float) f6(float) f7(double) 
+double: f1(double) f2(double) f3(double) f4(double) f5(double) f6(double) f7(double)
+</pre>
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> 默认的 <code>constructor</code></h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+默认的 <code>constructor</code> 是没有参数的。如果定义类时没有指定构造函数，那么编译器会生成一个默认的构造函数。如果在定义类时指定了构造函数，那么在创建该类的对象时就需要指定该对象实用的构造函数，而不能使用默认构造函数，否则就会报错。看代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Bird</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span><span style="color: #b58900;">){}</span>
+<span class="linenr"> 3: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">double</span> <span style="color: #268bd2;">d</span><span style="color: #b58900;">){}</span>
+<span class="linenr"> 4: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 5: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">NoSynthesis</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 6: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> <span style="color: #268bd2;">args</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 7: </span>        <span style="color: #b58900;">Bird</span> <span style="color: #268bd2;">b2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Bird</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 8: </span>        <span style="color: #b58900;">Bird</span> <span style="color: #268bd2;">b3</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Bird</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span>.<span style="color: #6c71c4;">0</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 9: </span>        <span style="color: #b58900;">Bird</span> <span style="color: #268bd2;">b4</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Bird</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">10: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">11: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+这个代码会报错：
+</p>
+<pre class="example">
+error: no suitable constructor found for Bird(no arguments)
+        Bird b4 = new Bird();
+                  ^
+    constructor Bird.Bird(int) is not applicable
+      (actual and formal argument lists differ in length)
+    constructor Bird.Bird(double) is not applicable
+      (actual and formal argument lists differ in length)
+1 error
+</pre>
+
+<p>
+编译器会认为没有无参数的构造函数定义。对代码进行修改：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Bird</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span><span style="color: #b58900;">){}</span>
+<span class="linenr"> 3: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">double</span> <span style="color: #268bd2;">d</span><span style="color: #b58900;">){}</span>
+<span class="linenr"> 4: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 5: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">NoSynthesis</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 6: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> <span style="color: #268bd2;">args</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 7: </span>        <span style="color: #b58900;">Bird</span> <span style="color: #268bd2;">b2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Bird</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 8: </span>        <span style="color: #b58900;">Bird</span> <span style="color: #268bd2;">b3</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Bird</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span>.<span style="color: #6c71c4;">0</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 9: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">10: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+就没有报错。但是，看代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Bird</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span><span style="color: #b58900;">){}</span>
+<span class="linenr"> 3: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">double</span> <span style="color: #268bd2;">d</span><span style="color: #b58900;">){}</span>
+<span class="linenr"> 4: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 5: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">NoSynthesis</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 6: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> <span style="color: #268bd2;">args</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 7: </span>        <span style="color: #b58900;">Bird</span> <span style="color: #268bd2;">b2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Bird</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 8: </span>        <span style="color: #b58900;">Bird</span> <span style="color: #268bd2;">b3</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Bird</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span>.<span style="color: #6c71c4;">0</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 9: </span>        <span style="color: #b58900;">Bird</span> <span style="color: #268bd2;">b4</span>;
+<span class="linenr">10: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">11: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+这个代码也没有报错，但是我不知道 <code>b4</code> 调用了那个构造函数。为了确认一下，对代码做如下修改：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Bird</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 3: </span>        System.out.println<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"with int i"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 4: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr"> 5: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">double</span> <span style="color: #268bd2;">d</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 6: </span>        System.out.println<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"with double d"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 7: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr"> 8: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 9: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">NoSynthesis</span><span style="color: #2aa198;">{</span>
+<span class="linenr">10: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> <span style="color: #268bd2;">args</span><span style="color: #b58900;">){</span>
+<span class="linenr">11: </span>        <span style="color: #b58900;">Bird</span> <span style="color: #268bd2;">b2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Bird</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">12: </span>        <span style="color: #b58900;">Bird</span> <span style="color: #268bd2;">b3</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Bird</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span>.<span style="color: #6c71c4;">0</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">13: </span>        <span style="color: #b58900;">Bird</span> <span style="color: #268bd2;">b4</span>;
+<span class="linenr">14: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">15: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+
+<p>
+输出为:
+</p>
+<pre class="example">
+with int i
+with double d
+</pre>
+<p>
+可见 <code>Bird b4</code> 没有调用给出的两个构造函数，而是用的默认的构造函数。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
