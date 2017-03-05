@@ -68,6 +68,8 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline2">2. 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></a></li>
 <li><a href="#orgheadline3">3. 从 <code>constructor</code> 的定义引入函数重载</a></li>
 <li><a href="#orgheadline4">4. 默认的 <code>constructor</code></a></li>
+<li><a href="#orgheadline5">5. <code>this</code> 的作用</a></li>
+<li><a href="#orgheadline6">6. 理解 <code>static</code></a></li>
 </ul>
 </div>
 </div>
@@ -402,6 +404,101 @@ with double d
 </pre>
 <p>
 可见 <code>Bird b4</code> 没有调用给出的两个构造函数，而是用的默认的构造函数。
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">5</span> <code>this</code> 的作用</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+简而言之， <code>this</code> 用来代表当前的对象。在使用的过程中，你完全可以用 <code>this</code> 来替代当前的对象。但是 <code>this</code> 的实用也会有一些限制，比如只能在 <code>non-static</code> 的方法中使用。但是在一个类的多个方法中不需要显示的使用 <code>this</code> 来指示当前类。
+</p>
+
+<p>
+<code>this</code> 的一个经常用到的地方是 <code>return</code> 语句返回一个对象。看代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Leaf</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>=<span style="color: #6c71c4;">0</span>;
+<span class="linenr"> 3: </span>    <span style="color: #b58900;">Leaf</span> <span style="color: #268bd2;">increament</span><span style="color: #b58900;">(){</span>
+<span class="linenr"> 4: </span>        i++;
+<span class="linenr"> 5: </span>        <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #859900; font-weight: bold;">this</span>;
+<span class="linenr"> 6: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr"> 7: </span>    <span style="color: #b58900;">void</span> <span style="color: #268bd2;">print</span><span style="color: #b58900;">(){</span>
+<span class="linenr"> 8: </span>        System.out.println<span style="color: #268bd2;">(</span><span style="color: #2aa198;">" i = "</span> + i<span style="color: #268bd2;">)</span>;
+<span class="linenr"> 9: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">10: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> <span style="color: #268bd2;">args</span><span style="color: #b58900;">){</span>
+<span class="linenr">11: </span>        <span style="color: #b58900;">Leaf</span> <span style="color: #268bd2;">x</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Leaf</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">12: </span>        x.increament<span style="color: #268bd2;">()</span>.increament<span style="color: #268bd2;">()</span>.print<span style="color: #268bd2;">()</span>;
+<span class="linenr">13: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">14: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+结果输出为：
+</p>
+<pre class="example">
+i = 2
+</pre>
+<p>
+<code>this</code> 也可以用来把当前的对象传递给另外的方法，看代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Person</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">eat</span><span style="color: #b58900;">(</span><span style="color: #b58900;">Apple</span> <span style="color: #268bd2;">apple</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 3: </span>        <span style="color: #b58900;">Apple</span> <span style="color: #268bd2;">peeled</span> = apple.getPeeled<span style="color: #268bd2;">()</span>;
+<span class="linenr"> 4: </span>        System.out.println<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Yummy"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 5: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr"> 6: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Peeler</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 9: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">Apple</span> <span style="color: #268bd2;">peel</span><span style="color: #b58900;">(</span><span style="color: #b58900;">Apple</span> <span style="color: #268bd2;">apple</span><span style="color: #b58900;">){</span>
+<span class="linenr">10: </span>        <span style="color: #586e75;">//</span><span style="color: #586e75;">...remove peel</span>
+<span class="linenr">11: </span>        <span style="color: #859900; font-weight: bold;">return</span> apple;
+<span class="linenr">12: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">13: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">14: </span>
+<span class="linenr">15: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Apple</span><span style="color: #2aa198;">{</span>
+<span class="linenr">16: </span>    <span style="color: #b58900;">Apple</span> <span style="color: #268bd2;">getPeeled</span><span style="color: #b58900;">(){</span><span style="color: #859900; font-weight: bold;">return</span> Peeler.peel<span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">this</span><span style="color: #268bd2;">)</span>;<span style="color: #b58900;">}</span>
+<span class="linenr">17: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">18: </span>
+<span class="linenr">19: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">PassingThis</span><span style="color: #2aa198;">{</span>
+<span class="linenr">20: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> <span style="color: #268bd2;">args</span><span style="color: #b58900;">){</span>
+<span class="linenr">21: </span>        <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Person</span><span style="color: #268bd2;">()</span>.eat<span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Apple</span><span style="color: #6c71c4;">()</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">22: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">23: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+<code>this</code> 还可以用来从一个 <code>constructor</code> 中调用另一个 <code>constructor</code> 。这一用途有两点需要注意：
+</p>
+<ol class="org-ol">
+<li>你不能在一个 <code>constructor</code> 中调用两次 <code>this</code> 初始化函数。</li>
+<li>在一个 <code>constructor</code> 中，如果要使用 <code>this</code> ，第一行有效代码就应该是使用 <code>this</code> 的代码。</li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6"><span class="section-number-2">6</span> 理解 <code>static</code></h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<p>
+有了 <code>this</code> 我们现在可以更深刻的理解 <code>static</code> 。我们可以从 <code>non-static</code> 函数里调用 <code>static</code> 函数，但是不能从 <code>static</code> 函数里调用 <code>non-static</code> 函数。为什么? 因为在 <code>static</code> 函数里没有对象的概念。 <code>static</code> 函数依赖于 <code>class</code> 的定义存在，而不依赖于对象的存在。所以 <code>static</code> 看起来就像是一个全局方法，不依赖于对象存在。但是 <code>Java</code> 中是没有全局函数的，所以通过 <code>static</code> 可以实现类似的效果。
+</p>
+
+<p>
+正是因为 <code>static</code> 的这个特性，人们诟病 <code>Java</code> 的 <code>static</code> 方法不是面向对象的。因为在 <code>static</code> 方法中，无法像一个对象发消息，因为根本没有 <code>this</code> 。因此当你的代码中有很多 <code>static</code> 的时候，你要重新审视一下你的代码结构。但是在很多时候 <code>static</code> 又是一个不得不存在的特性，在以后的章节中就会看到。
 </p>
 </div>
 </div>
