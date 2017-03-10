@@ -70,6 +70,8 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline4">4. 默认的 <code>constructor</code></a></li>
 <li><a href="#orgheadline5">5. <code>this</code> 的作用</a></li>
 <li><a href="#orgheadline6">6. 理解 <code>static</code></a></li>
+<li><a href="#orgheadline7">7. <code>class</code> 成员初始化</a></li>
+<li><a href="#orgheadline8">8. 初始化顺序</a></li>
 </ul>
 </div>
 </div>
@@ -500,6 +502,129 @@ i = 2
 <p>
 正是因为 <code>static</code> 的这个特性，人们诟病 <code>Java</code> 的 <code>static</code> 方法不是面向对象的。因为在 <code>static</code> 方法中，无法像一个对象发消息，因为根本没有 <code>this</code> 。因此当你的代码中有很多 <code>static</code> 的时候，你要重新审视一下你的代码结构。但是在很多时候 <code>static</code> 又是一个不得不存在的特性，在以后的章节中就会看到。
 </p>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7"><span class="section-number-2">7</span> <code>class</code> 成员初始化</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+
+</p>
+
+<p>
+<code>Java</code> 中对于 <code>class</code> 的基础类型成员都做了默认初始化。这说明，每一个基础类成员都有一个默认的构造函数，为其赋初值。看代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span>  <span style="color: #b58900;">InitialValues</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 4: </span>    <span style="color: #b58900;">boolean</span> <span style="color: #268bd2;">t</span>;
+<span class="linenr"> 5: </span>    <span style="color: #b58900;">char</span> <span style="color: #268bd2;">c</span>;
+<span class="linenr"> 6: </span>    <span style="color: #b58900;">byte</span> <span style="color: #268bd2;">b</span>;
+<span class="linenr"> 7: </span>    <span style="color: #b58900;">short</span> <span style="color: #268bd2;">s</span>;
+<span class="linenr"> 8: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>;
+<span class="linenr"> 9: </span>    <span style="color: #b58900;">long</span> <span style="color: #268bd2;">l</span>;
+<span class="linenr">10: </span>    <span style="color: #b58900;">float</span>  <span style="color: #268bd2;">f</span>;
+<span class="linenr">11: </span>    <span style="color: #b58900;">double</span> <span style="color: #268bd2;">d</span>;
+<span class="linenr">12: </span>    <span style="color: #b58900;">InitialValues</span> <span style="color: #268bd2;">reference</span>;
+<span class="linenr">13: </span>    <span style="color: #b58900;">void</span> <span style="color: #268bd2;">printInitiaValues</span><span style="color: #b58900;">(){</span>
+<span class="linenr">14: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Data type         initial values"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">15: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"boolean           "</span>+t<span style="color: #268bd2;">)</span>;
+<span class="linenr">16: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"char              "</span>+c<span style="color: #268bd2;">)</span>;
+<span class="linenr">17: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"int               "</span>+i<span style="color: #268bd2;">)</span>;
+<span class="linenr">18: </span>     <span style="color: #b58900;">   pr</span>int<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"long              "</span>+l<span style="color: #268bd2;">)</span>;
+<span class="linenr">19: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"float             "</span>+f<span style="color: #268bd2;">)</span>;
+<span class="linenr">20: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"double            "</span>+d<span style="color: #268bd2;">)</span>;
+<span class="linenr">21: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"InitialValues     "</span>+reference<span style="color: #268bd2;">)</span>;
+<span class="linenr">22: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">23: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> <span style="color: #268bd2;">args</span><span style="color: #b58900;">){</span>
+<span class="linenr">24: </span>        <span style="color: #b58900;">InitialValues</span> <span style="color: #268bd2;">iv</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">InitialValues</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">25: </span>        iv.<span style="color: #b58900;">printInitiaValues</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">26: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">27: </span>
+<span class="linenr">28: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+其输出为：
+</p>
+<pre class="example">
+Data type         initial values
+boolean           false
+char              [ ]
+int               0
+long              0
+float             0.0
+double            0.0
+InitialValues     null
+</pre>
+<p>
+<code>char</code> 的初始值是0，打印出来是一个空格。另外需要注意的是：如果在 <code>class</code> 中定义了一个对象而没有为其赋初值，则这个对象的 <code>reference</code> 会被赋值 <code>null</code>
+</p>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8"><span class="section-number-2">8</span> 初始化顺序</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+
+</p>
+
+<p>
+在 <code>Java</code> 中，类变量的初始化先于类方法调用。什么意思？就是说：在写代码的时候，即便你把类变量的定义放在了构造函数的后面， <code>Java</code> 依然会先初始化这些变量，然后再去调用函数（这个函数通常是构造函数）。看代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #b58900;">import</span> <span style="color: #859900; font-weight: bold;">static</span>  net.mindview.util.Print.*;
+<span class="linenr"> 2: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">Window</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 3: </span>    <span style="color: #268bd2;">Window</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">marker</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 4: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Window number: "</span> + marker<span style="color: #268bd2;">)</span>;
+<span class="linenr"> 5: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr"> 6: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 7: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">House</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 8: </span>    <span style="color: #b58900;">Window</span> <span style="color: #268bd2;">w1</span> = new Window<span style="color: #b58900;">(</span><span style="color: #6c71c4;">1</span><span style="color: #b58900;">)</span>;
+<span class="linenr"> 9: </span>    <span style="color: #268bd2;">House</span><span style="color: #b58900;">(){</span>
+<span class="linenr">10: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"House()"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">11: </span>        w3 = new Window<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">33</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">12: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">13: </span>    <span style="color: #b58900;">Window</span> <span style="color: #268bd2;">w2</span> = new Window<span style="color: #b58900;">(</span><span style="color: #6c71c4;">2</span><span style="color: #b58900;">)</span>;
+<span class="linenr">14: </span>    <span style="color: #b58900;">void</span> <span style="color: #268bd2;">f</span><span style="color: #b58900;">(){</span>
+<span class="linenr">15: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"f()"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">16: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">17: </span>    <span style="color: #b58900;">Window</span> <span style="color: #268bd2;">w3</span> = new Window<span style="color: #b58900;">(</span><span style="color: #6c71c4;">3</span><span style="color: #b58900;">)</span>;
+<span class="linenr">18: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">19: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">OrderOfInitialization</span>
+<span class="linenr">20: </span><span style="color: #2aa198;">{</span>
+<span class="linenr">21: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr">22: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr">23: </span>        <span style="color: #b58900;">House</span> <span style="color: #268bd2;">h</span> = new House<span style="color: #268bd2;">()</span>;
+<span class="linenr">24: </span>        h.f<span style="color: #268bd2;">()</span>;
+<span class="linenr">25: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">26: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出为：
+</p>
+<pre class="example">
+Window number: 1
+Window number: 2
+Window number: 3
+House()
+Window number: 33
+f()
+</pre>
+
+<p>
+从代码中我们可以看到， <code>House</code> 的构造函数在 <code>w1</code> 和 <code>w2</code> 之间。但是我们执行 <code>House h = new House()</code> 这一行代码时，初始化的执行顺序是： 
+</p>
+<ol class="org-ol">
+<li>初始化  <code>w1</code></li>
+<li>初始化 <code>w2</code></li>
+<li>初始化 <code>w3</code></li>
+<li>调用 <code>House()</code> 对 <code>w3</code> 再次初始化。</li>
+</ol>
 </div>
 </div>
 </div>
