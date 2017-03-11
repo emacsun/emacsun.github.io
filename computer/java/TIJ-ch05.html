@@ -68,6 +68,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline2">2. 只有 <code>boolean</code> 有真假</a></li>
 <li><a href="#orgheadline3">3. 注意 <code>a=b</code> 问题</a></li>
 <li><a href="#orgheadline4">4. Random的导入</a></li>
+<li><a href="#orgheadline5">5. <code>foreach</code></a></li>
 </ul>
 </div>
 </div>
@@ -110,7 +111,7 @@ for the JavaScript code in this tag.
 <span class="linenr"> 3: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">IfElse</span>
 <span class="linenr"> 4: </span><span style="color: #2aa198;">{</span>
 <span class="linenr"> 5: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">result</span> = <span style="color: #6c71c4;">0</span>;
-<span class="linenr"> 6: </span>    <span style="color: #859900; font-weight: bold;">static</span><span style="color: #b58900;"> void </span><span style="color: #268bd2;">test</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">testval</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">target</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 6: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">test</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">testval</span>, <span style="color: #b58900;">int</span> <span style="color: #268bd2;">target</span><span style="color: #b58900;">)</span>
 <span class="linenr"> 7: </span>    <span style="color: #b58900;">{</span>
 <span class="linenr"> 8: </span>        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>testval &gt; target<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
 <span class="linenr"> 9: </span>            result = +<span style="color: #6c71c4;">1</span>;
@@ -126,7 +127,7 @@ for the JavaScript code in this tag.
 <span class="linenr">19: </span>        test<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">6</span>,<span style="color: #6c71c4;">5</span><span style="color: #268bd2;">)</span>;
 <span class="linenr">20: </span>        print<span style="color: #268bd2;">(</span>result<span style="color: #268bd2;">)</span>;
 <span class="linenr">21: </span>        test<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">5</span>,<span style="color: #6c71c4;">6</span><span style="color: #268bd2;">)</span>;
-<span class="linenr">22: </span>        print<span style="color: #268bd2;">(</span>result<span style="color: #268bd2;">)</span>;
+<span class="linenr">22: </span>  <span style="color: #b58900;"> </span>     print<span style="color: #268bd2;">(</span>result<span style="color: #268bd2;">)</span>;
 <span class="linenr">23: </span>        test<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span>,<span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span>;
 <span class="linenr">24: </span>        print<span style="color: #268bd2;">(</span>result<span style="color: #268bd2;">)</span>;
 <span class="linenr">25: </span>    <span style="color: #b58900;">}</span>
@@ -183,6 +184,41 @@ IfElse.java:14: error: incompatible types: int cannot be converted to boolean
 <span class="linenr">24: </span><span style="color: #2aa198;">}</span>
 </pre>
 </div>
+</div>
+</div>
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">5</span> <code>foreach</code></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+<code>foreach</code> 是 <code>C</code> 语言中不存在的一种循环表达方式，看代码：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
+<span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">ForEachFloat</span>
+<span class="linenr"> 3: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 4: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> <span style="color: #268bd2;">args</span><span style="color: #b58900;">)</span>
+<span class="linenr"> 5: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr"> 6: </span>        <span style="color: #b58900;">Random</span> <span style="color: #268bd2;">rand</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Random</span><span style="color: #268bd2;">()</span>;
+<span class="linenr"> 7: </span>        <span style="color: #b58900;">float</span> <span style="color: #268bd2;">f</span><span style="color: #268bd2;">[]</span> =  <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">float</span><span style="color: #268bd2;">[</span><span style="color: #6c71c4;">10</span><span style="color: #268bd2;">]</span>;
+<span class="linenr"> 8: </span>        <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span> = <span style="color: #6c71c4;">0</span>; i &lt; <span style="color: #6c71c4;">10</span>; i++<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
+<span class="linenr"> 9: </span>            f<span style="color: #6c71c4;">[</span>i<span style="color: #6c71c4;">]</span> = rand.nextFloat<span style="color: #6c71c4;">()</span>;
+<span class="linenr">10: </span>        <span style="color: #268bd2;">}</span>
+<span class="linenr">11: </span>        <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">(</span><span style="color: #b58900;">float</span> <span style="color: #268bd2;">x</span> : f<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
+<span class="linenr">12: </span>            System.out.println<span style="color: #6c71c4;">(</span><span style="color: #b58900;">x</span><span style="color: #6c71c4;">)</span>;
+<span class="linenr">13: </span>        <span style="color: #268bd2;">}</span>
+<span class="linenr">14: </span>
+<span class="linenr">15: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">16: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+<code>foreach</code> 可以配合任何 <code>Iterable</code> 对象。 <code>Python</code> 中有一类数据叫做 <code>iterator</code> 其抽象程度比 <code>Java</code> 的 <code>foreach</code> 中用到的 <code>Iterable</code> 对象更高。
+</p>
 </div>
 </div>
 </div>

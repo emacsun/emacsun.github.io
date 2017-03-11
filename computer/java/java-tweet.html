@@ -89,16 +89,16 @@ for the JavaScript code in this tag.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-C"><span class="linenr"> 1: </span><span style="color: #AE81FF;">{</span>
-<span class="linenr"> 2: </span>  <span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">x</span> = <span style="color: #AE81FF;">12</span>;
-<span class="linenr"> 3: </span>  <span style="color: #75715E;">/* </span><span style="color: #75715E;">only x available </span><span style="color: #75715E;">*/</span>
-<span class="linenr"> 4: </span>  <span style="color: #66D9EF;">{</span>
-<span class="linenr"> 5: </span>    <span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">q</span> = <span style="color: #AE81FF;">96</span>;
-<span class="linenr"> 6: </span>    <span style="color: #75715E;">/* </span><span style="color: #75715E;">both x &amp; q available </span><span style="color: #75715E;">*/</span>
-<span class="linenr"> 7: </span>  <span style="color: #66D9EF;">}</span>
-<span class="linenr"> 8: </span>  <span style="color: #75715E;">/* </span><span style="color: #75715E;">only x available </span><span style="color: #75715E;">*/</span>
-<span class="linenr"> 9: </span>  <span style="color: #75715E;">/* </span><span style="color: #75715E;">q &#8220;out of scope&#8221; </span><span style="color: #75715E;">*/</span>
-<span class="linenr">10: </span><span style="color: #AE81FF;">}</span>
+<pre class="src src-C"><span class="linenr"> 1: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 2: </span>  <span style="color: #b58900;">int</span> <span style="color: #268bd2;">x</span> = <span style="color: #6c71c4;">12</span>;
+<span class="linenr"> 3: </span>  <span style="color: #586e75;">/* </span><span style="color: #586e75;">only x available </span><span style="color: #586e75;">*/</span>
+<span class="linenr"> 4: </span>  <span style="color: #b58900;">{</span>
+<span class="linenr"> 5: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">q</span> = <span style="color: #6c71c4;">96</span>;
+<span class="linenr"> 6: </span>    <span style="color: #586e75;">/* </span><span style="color: #586e75;">both x &amp; q available </span><span style="color: #586e75;">*/</span>
+<span class="linenr"> 7: </span>  <span style="color: #b58900;">}</span>
+<span class="linenr"> 8: </span>  <span style="color: #586e75;">/* </span><span style="color: #586e75;">only x available </span><span style="color: #586e75;">*/</span>
+<span class="linenr"> 9: </span>  <span style="color: #586e75;">/* </span><span style="color: #586e75;">q &#8220;out of scope&#8221; </span><span style="color: #586e75;">*/</span>
+<span class="linenr">10: </span><span style="color: #2aa198;">}</span>
 </pre>
 </div>
 <p>
@@ -106,12 +106,12 @@ for the JavaScript code in this tag.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-C"><span class="linenr">1: </span><span style="color: #AE81FF;">{</span>
-<span class="linenr">2: </span>  <span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">x</span> = <span style="color: #AE81FF;">12</span>;
-<span class="linenr">3: </span>  <span style="color: #66D9EF;">{</span>
-<span class="linenr">4: </span>    <span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">x</span> = <span style="color: #AE81FF;">96</span>; <span style="color: #75715E;">/* </span><span style="color: #75715E;">illegal in Java but legal in C/C++ </span><span style="color: #75715E;">*/</span>
-<span class="linenr">5: </span>  <span style="color: #66D9EF;">}</span>
-<span class="linenr">6: </span><span style="color: #AE81FF;">}</span>
+<pre class="src src-C"><span class="linenr">1: </span><span style="color: #2aa198;">{</span>
+<span class="linenr">2: </span>  <span style="color: #b58900;">int</span> <span style="color: #268bd2;">x</span> = <span style="color: #6c71c4;">12</span>;
+<span class="linenr">3: </span>  <span style="color: #b58900;">{</span>
+<span class="linenr">4: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">x</span> = <span style="color: #6c71c4;">96</span>; <span style="color: #586e75;">/* </span><span style="color: #586e75;">illegal in Java but legal in C/C++ </span><span style="color: #586e75;">*/</span>
+<span class="linenr">5: </span>  <span style="color: #b58900;">}</span>
+<span class="linenr">6: </span><span style="color: #2aa198;">}</span>
 </pre>
 </div>
 
@@ -141,9 +141,9 @@ for the JavaScript code in this tag.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #F92672;">class</span> <span style="color: #66D9EF;">StaticVariable</span><span style="color: #AE81FF;">{</span>
-    <span style="color: #F92672;">static</span> <span style="color: #66D9EF;">int</span> <span style="color: #FD971F;">i</span>=<span style="color: #AE81FF;">47</span>;
-<span style="color: #AE81FF;">}</span>
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">StaticVariable</span><span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>=<span style="color: #6c71c4;">47</span>;
+<span style="color: #2aa198;">}</span>
 </pre>
 </div>
 <p>
@@ -151,8 +151,8 @@ for the JavaScript code in this tag.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #66D9EF;">StaticVariable</span> <span style="color: #FD971F;">sv1</span> = <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">StaticVariable</span><span style="color: #AE81FF;">()</span>;
-<span style="color: #66D9EF;">StaticVariable</span> <span style="color: #FD971F;">sv2</span> = <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">StaticVariable</span><span style="color: #AE81FF;">()</span>;
+<pre class="src src-java"><span style="color: #b58900;">StaticVariable</span> <span style="color: #268bd2;">sv1</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">StaticVariable</span><span style="color: #2aa198;">()</span>;
+<span style="color: #b58900;">StaticVariable</span> <span style="color: #268bd2;">sv2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">StaticVariable</span><span style="color: #2aa198;">()</span>;
 </pre>
 </div>
 
@@ -177,9 +177,9 @@ for the JavaScript code in this tag.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #F92672;">class</span> <span style="color: #66D9EF;">Incrementable</span><span style="color: #AE81FF;">{</span>
-    <span style="color: #F92672;">static</span> <span style="color: #66D9EF;">void</span> <span style="color: #A6E22E;">increment</span><span style="color: #66D9EF;">()</span> <span style="color: #66D9EF;">{</span>StaticVariable.i++;<span style="color: #66D9EF;">}</span>
-<span style="color: #AE81FF;">}</span>
+<pre class="src src-java"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Incrementable</span><span style="color: #2aa198;">{</span>
+    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">increment</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span>StaticVariable.i++;<span style="color: #b58900;">}</span>
+<span style="color: #2aa198;">}</span>
 </pre>
 </div>
 
@@ -192,8 +192,8 @@ for the JavaScript code in this tag.
 <div class="outline-text-3" id="text-orgheadline4">
 <div class="org-src-container">
 
-<pre class="src src-java"><span style="color: #66D9EF;">Incrementable</span> <span style="color: #FD971F;">incr</span> = <span style="color: #F92672;">new</span> <span style="color: #66D9EF;">Incrementable</span><span style="color: #AE81FF;">()</span>;
-incr.increment<span style="color: #AE81FF;">()</span>;
+<pre class="src src-java"><span style="color: #b58900;">Incrementable</span> <span style="color: #268bd2;">incr</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Incrementable</span><span style="color: #2aa198;">()</span>;
+incr.increment<span style="color: #2aa198;">()</span>;
 </pre>
 </div>
 </div>
@@ -203,7 +203,7 @@ incr.increment<span style="color: #AE81FF;">()</span>;
 <div class="outline-text-3" id="text-orgheadline5">
 <div class="org-src-container">
 
-<pre class="src src-java">Incrementable.increment<span style="color: #AE81FF;">()</span>;
+<pre class="src src-java">Incrementable.increment<span style="color: #2aa198;">()</span>;
 </pre>
 </div>
 
