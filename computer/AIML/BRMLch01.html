@@ -7,7 +7,7 @@
 <title>BRML第一章：概率推断</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="emacsun" />
-<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="pdf"  href="./learn-aiml-by-yourself.pdf"><img src="../../img/assets/pdf.png"></a>
 <script type="text/javascript">
@@ -59,15 +59,15 @@ for the JavaScript code in this tag.
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         displayAlign: "left",
-        displayIndent: "1em",
+        displayIndent: "3em",
 
         "HTML-CSS": { scale: 100,
                         linebreaks: { automatic: "false" },
-                        webFont: "Neo-Euler"
+                        webFont: "TeX"
                        },
         SVG: {scale: 100,
               linebreaks: { automatic: "false" },
-              font: "Neo-Euler"},
+              font: "TeX"},
         NativeMML: {scale: 100},
         TeX: { equationNumbers: {autoNumber: "AMS"},
                MultLineWidth: "85%",
@@ -87,6 +87,8 @@ for the JavaScript code in this tag.
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgheadline1">1. 贝叶斯法则</a></li>
+<li><a href="#orgheadline2">2. 概率推断</a></li>
+<li><a href="#orgheadline3">3. 先验概率，似然值和后验概率</a></li>
 </ul>
 </div>
 </div>
@@ -121,8 +123,544 @@ BRML的第一章主要复习了概率的基本知识，通过贝叶斯公式（�
 </p>
 
 <p>
-从贝叶斯规则引入统计独立的概念
+从贝叶斯规则引入统计独立的概念，即当\[p(x,y) = p(x)p(y)\] \(x,y\)是相互独立的。此时\(x\)的发生不影响\(y\)发生的概率，即\[p(y|x) = p(y)\]
 </p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> 概率推断</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+概率推断的核心是识别环境中所有相关的随机变量\(x_{1},\ldots ,x_{N}\)，并且根据他们的关系创建一个概率模型\(p(x_{1},\ldots ,x_{N})\)。推断的过程是根据已知信息更新某个随机变量概率的过程。
+</p>
+
+<div class="instance">
+<p>
+医生发现一个人得KJ病的概率是相当低的大约是\(1/100000\)，但是得了Kreuzfeld-Jacob(KJ)病的人几乎都吃汉堡包，\(p(Hamburger Eater| KJ) = 0.9\)。
+</p>
+<ol class="org-ol">
+<li><p>
+假设一个人吃汉堡包的概率是0.5，\(p(Hamburtger Eater) = 0.5\)，那么一个吃汉堡包的人得KJ的概率是多少？
+</p>
+
+<p>
+这个概率可以表示为：
+</p>
+\begin{eqnarray}
+\label{eq:1}
+p(KJ| Hamburtger Eater) &=& \frac{p(KJ,Hamburtger Eater)}{p(Hamburtger Eater)} \\
+ &=& \frac{p(Hamburtger Eater | KJ)p(KJ)}{p(Hamburtger Eater)} \\
+&=& \frac{0.9\times 1/100000}{1/2} \\
+&=& 1.8\times 10^{-5}
+\end{eqnarray}</li>
+
+<li><p>
+如果吃汉堡包的人的概率比较低，不是0.5而是0.001，那么一个吃汉堡包的人得KJ的概率是多少？
+</p>
+
+<p>
+重复上面的计算
+</p>
+\begin{eqnarray}
+\label{eq:2}
+p(KJ| Hamburtger Eater) &=& \frac{p(KJ,Hamburtger Eater)}{p(Hamburtger Eater)}\\ 
+&=& \frac{p(Hamburtger Eater | KJ)p(KJ)}{p(Hamburtger Eater)} \\
+&=& \frac{0.9\times 1/100000}{0.001} \\
+&\approx&  1/100
+\end{eqnarray}</li>
+</ol>
+
+</div>
+<p>
+这个例子告诉我们不要为一些不大可能的事情担心:得了KJ的前提下吃汉堡包的概率和吃汉堡包的前提下得KJ的概率完全是两码事。
+</p>
+
+
+<div class="instance">
+<p>
+再给一个异或门的例子，我们知道一个标准的异或门电路的逻辑关系满足表<a href="#orgtable1">1</a>:
+</p>
+<table id="orgtable1" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<caption class="t-above"><span class="table-number">表 1:</span> 异或门逻辑</caption>
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">\(A\)</th>
+<th scope="col" class="org-right">\(B\)</th>
+<th scope="col" class="org-right">\(C=A\oplus B\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row" class="org-right">0</th>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-right">0</th>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-right">1</th>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-right">1</th>
+<td class="org-right">1</td>
+<td class="org-right">1</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+当我们观测到异或门的输出是\(0\)时，对于\(A\)或者\(B\)的概率我们知道多少？在这样的情况下，可能\(A,B\)都是\(0\)，也可能\(A,B\)都是\(1\)。 \(A,B\)处于\(0\)或者\(1\)的概率是等该的。
+</p>
+
+<p>
+但是考虑一个软判决输出的异或门逻辑,其逻辑关系如表<a href="#orgtable2">2</a>，我们假定\(A,B\)是独立的且\(p(A=1)=0.65,p(B=1)=0.77\)，那么求\(p(A=1|C=0)\)？
+</p>
+<table id="orgtable2" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<caption class="t-above"><span class="table-number">表 2:</span> 异或门逻辑</caption>
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">\(A\)</th>
+<th scope="col" class="org-right">\(B\)</th>
+<th scope="col" class="org-right">\(p(C=1  \vert  A,B)\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row" class="org-right">0</th>
+<td class="org-right">0</td>
+<td class="org-right">0.1</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-right">0</th>
+<td class="org-right">1</td>
+<td class="org-right">0.99</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-right">1</th>
+<td class="org-right">0</td>
+<td class="org-right">0.8</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-right">1</th>
+<td class="org-right">1</td>
+<td class="org-right">0.25</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+由条件概率公式，得：
+</p>
+\begin{equation}
+\label{eq:3}
+p(A=1|C=0) = \frac{p(A=1,C=0)}{p(C=0)} = \frac{p(A=1,C=0)}{p(A=1,C=0) + p(A=0,C=0)}
+\end{equation}
+<p>
+接下来，我们对\ref{eq:3}右边分母上的两个求和项进行展开：
+</p>
+\begin{eqnarray}
+\label{eq:4}
+p(A=1,C=0) &=&\sum_{B}p(A=1,B,C=0) \\
+           &=& \sum_{B}p(C=0|B,A=1)p(B)p(A=1)
+\end{eqnarray}
+\begin{eqnarray}
+\label{eq:5}
+p(A=0,C=0) &=&\sum_{B}p(A=0,B,C=0) \\ 
+&=& \sum_{B}p(C=0|B,A=0)p(B)p(A=0)
+\end{eqnarray}
+<p>
+带入表格中相应的概率数字得出\(p(A=1|C=0) = 0.8436\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> 先验概率，似然值和后验概率</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+现实生活中非常多的问题可以归类为：当我知道数据\(D\)时，告诉我随机变量\(\theta\)的概率。这个问题可以归类为：
+</p>
+\begin{equation}
+\label{eq:6}
+p(\theta |D) = \frac{p(D|\theta)p(\theta)}{p(D)} = \frac{p(D|\theta)p(\theta)}{\int_{\theta}p(D|\theta)p(\theta)} 
+\end{equation}
+<p>
+这个模型在机器学习和信道编码理论中都有普遍的实用，甚至是其基础的基础。那么从式\ref{eq:6}我们可以读出什么信息呢？式\ref{eq:6}告诉我们，我们可以从数据生成模型\(p(D|\theta)\)和先验概率\(p(\theta)\)推断后验概率\(p(\theta |D)\)。最大后验概率准则(maximize a posteriori,MAP )准则，可以表示为：
+</p>
+\begin{equation}
+\label{eq:7}
+\hat{\theta} = \arg \max_{\theta} p(\theta | D)
+\end{equation}
+
+<p>
+对于等概率分布的先验概率\(p(\theta)\)，MAP准则和最大似然准则(maximum likelihood,ML) 是等效的，即最大化\(p(D|\theta)\)的\(\theta\)同样最大化\(p(\theta|D)\)。
+</p>
+
+<div class="instance">
+<p>
+现在针对\(p(D|\theta)\)我们给出一个例子。假设一个钟摆在摆动，我们用\(x_{t}\)来表示钟摆在\(t\)时刻的角度。假设每次测量都是独立的。假设每次测量都是精确的，则有
+</p>
+\begin{equation}
+\label{eq:8}
+x_{t} = \sin(\theta t)
+\end{equation}
+<p>
+这里假设系统没有阻尼则\(\theta = \sqrt{g/L}\)，其中\(g\)是地球引力场数，\(L\)是吊起钟摆的绳子的长度，但是我们是在测试\(\theta\)，是根据\(x_{1},\ldots ,x_{T}\)来测量\(\theta\)。另外，实际测量过程中(比如测量位置仪器质量很差或者定时器不准)，测量总是存在误差，假设误差是\(\epsilon_{t}\)，测量结果可以表示为：
+</p>
+\begin{equation}
+\label{eq:9}
+x_{t} = \sin(\theta t) + \theta_{t}
+\end{equation}
+<p>
+一般情况我们定义\(\epsilon_{t}\)服从均值为零方差为\(\delta^{2}\)的高斯随机变量。所以关于\(\theta\)的后验概率可以表示为：
+</p>
+\begin{equation}
+\label{eq:10}
+p(\theta|x_{1},\ldots,x_{T}) \propto p(\theta)\prod_{t=1}^{T}\frac{1}{\sqrt{2\pi \delta^{2}}}e^{\frac{1}{2\delta^{2}}(x_{t}-\sin(\theta)t)^{2}}
+\end{equation}
+
+</div>
+<div class="instance">
+<p>
+我们来考虑投掷两个均匀骰子的场景。假设现在有人告诉你两个骰子的数字之和为\(9\)。求此时关于两个骰子上数字的后验概率分布。
+</p>
+
+<p>
+首先我们用\(s_{a},s_{b}\)代表两个骰子的数字，其取值范围是\(\{1,2,3,4,5,6\}\)。两者之和为\(t=s_{a} + s_{b}\)这三个随机变量的模型遵循：
+</p>
+\begin{equation}
+\label{eq:11}
+p(t,s_{a},s_{b}) = \underbrace{p(t|s_{a},s_{b})}_{likelihood}\underbrace{p(s_{a},s_{b})}_{prior}
+\end{equation}
+<p>
+假设两个骰子是均匀的\(p(s_{a},s_{b})\)则\(p(s_{a},s_{b}) = p(s_{a})p(s_{b})\)其概率分布表格为：
+</p>
+
+<table id="orgtable3" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<caption class="t-above"><span class="table-number">表 3:</span> \(p(s_{a})p(s_{b})\)</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">\(s_{a} = 1\)</th>
+<th scope="col" class="org-left">\(s_{a} = 2\)</th>
+<th scope="col" class="org-left">\(s_{a} = 3\)</th>
+<th scope="col" class="org-left">\(s_{a} = 4\)</th>
+<th scope="col" class="org-left">\(s_{a} = 5\)</th>
+<th scope="col" class="org-left">\(s_{a} = 6\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 1\)</th>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 2\)</th>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 3\)</th>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 4\)</th>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 5\)</th>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 6\)</th>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+<td class="org-left">1/36</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+由于骰子是均匀的则\(p(s_{a}) = p(s_{b}) = 1/6\)。另外，我们有\(p(t|s_{a},s_{b})\)，表格如下：
+</p>
+<table id="orgtable4" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<caption class="t-above"><span class="table-number">表 4:</span> \(p(t|s_{a},s_{b})\)</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-right">\(s_{a} = 1\)</th>
+<th scope="col" class="org-right">\(s_{a} = 2\)</th>
+<th scope="col" class="org-right">\(s_{a} = 3\)</th>
+<th scope="col" class="org-right">\(s_{a} = 4\)</th>
+<th scope="col" class="org-right">\(s_{a} = 5\)</th>
+<th scope="col" class="org-right">\(s_{a} = 6\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 1\)</th>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 2\)</th>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 3\)</th>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 4\)</th>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 5\)</th>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 6\)</th>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+后验概率 \(p(s_{a},s_{b}|t=9) = \frac{p(t=9|s_{a},s_{b})p(s_{a})p(s_{b})}{p(t=9)}\)，其中\[p(t=9) = \sum_{s_{a}s_{b}} p(t=9| s_{a},s_{b})p(s_{a})p(s_{b})\] 
+</p>
+
+<table id="orgtable5" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<caption class="t-above"><span class="table-number">表 5:</span> \(p(s_{a},s_{b}|t=9)\)</caption>
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-right">\(s_{a} = 1\)</th>
+<th scope="col" class="org-right">\(s_{a} = 2\)</th>
+<th scope="col" class="org-right">\(s_{a} = 3\)</th>
+<th scope="col" class="org-right">\(s_{a} = 4\)</th>
+<th scope="col" class="org-right">\(s_{a} = 5\)</th>
+<th scope="col" class="org-right">\(s_{a} = 6\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 1\)</th>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 2\)</th>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 3\)</th>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1/4</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 4\)</th>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1/4</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 5\)</th>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1/4</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(s_{a} = 6\)</th>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">1/4</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+综上我们可以得到后验概率表：
+</p>
+
+</div>
 </div>
 </div>
 </div>

@@ -56,6 +56,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "1em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "Neo-Euler"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "Neo-Euler"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -72,6 +94,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline6">6. JDEE 安装</a></li>
 <li><a href="#orgheadline7">7. 使用Thinking in Java书中代码</a></li>
 <li><a href="#orgheadline8">8. 定义复制整个buffer快捷键</a></li>
+<li><a href="#orgheadline9">9. Emacs Org中用到 | 时怎么办</a></li>
 </ul>
 </div>
 </div>
@@ -235,6 +258,15 @@ C) &#31532;&#19977;&#27493;
 <pre class="src src-emacs-list">(spacemacs/set-leader-keys "by" 'spacemacs/copy-whole-buffer-to-clipboard)
 </pre>
 </div>
+</div>
+</div>
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9"><span class="section-number-2">9</span> Emacs Org中用到 | 时怎么办</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2017-03-11 Sat 18:04] </span></span> 
+Emacs Org的table使用 "|"来区分列，但是如果在表格中出现了条件概率\(P(A|B)\)这样的内容怎么办？答：使用转义字符 \\(~\)vert
+</p>
 </div>
 </div>
 </div>
