@@ -1,0 +1,791 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>学习Python第一天</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./learn-aiml-by-yourself.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">学习Python第一天</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. Python简介</a></li>
+<li><a href="#orgheadline2">2. 人生苦短，Python必选。</a></li>
+<li><a href="#orgheadline3">3. 上手Python解释器</a></li>
+<li><a href="#orgheadline7">4. 把Python当计算器用</a>
+<ul>
+<li><a href="#orgheadline4">4.1. 数值计算</a></li>
+<li><a href="#orgheadline5">4.2. 字符串</a></li>
+<li><a href="#orgheadline6">4.3. 列表（list）</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline8">5. 跨出编程的第一步</a></li>
+</ul>
+</div>
+</div>
+<p>
+今天是学习Python第一天，我从其官方文档入手，<a href="https://docs.python.org/3.5/tutorial/index.html">英文版地址</a> <a href="http://docspy3zh.readthedocs.io/en/latest/tutorial/">中文版地址</a> 。在学习的过程中，我以英文版为主，参照了中文版，这一系列博文是我的学习笔记，不是严格的文档翻译，很多地方按照我的理解进行了转述，我认为每个人的第一份Python学习资料都应该是其官方文档。尽管从这个文档不可能学到所有的Python特性（要想学习到所有的Python特性需要阅读其官方手册和大量的标准库文档。），但是你学到的是最正统的Python。
+</p>
+
+<p>
+我的学习环境是Windows + Anaconda + Python3.5 + Emacs. 我在Windows 上使用Emacs作为Python3.5的前端。在Emacs里使用IPython这样的REPL环境，大大提高了我的学习效率。另外为了使得报错提示显示为英文，我把Windows的语言环境改成了英文。
+</p>
+
+<p>
+嗯，开始吧！
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Python简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+Python简单易用，功能强大。相对于其他语言，它有更高级别的语言抽象和更有效的面向对象编程范式。Python的语法造就了Python程序格式上的优美，对于强迫症患者来说是福音。Python的解释特性使其成为脚本语言和快速开发部署的绝佳选择。
+</p>
+
+<p>
+从<a href="https://www.python.org/">Python的官网</a>上， 可以获得Python解释器和更多的第三方扩展库。当然，Python自带功能强大的<a href="https://docs.python.org/3.5/library/index.html#library-index">标准库</a> 。Python的解释器使其可以方便的<a href="https://docs.python.org/3.5/extending/index.html#extending-index">同其他语言(C/C++)进行扩展</a> ，从而强化了Python的可扩展性。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> 人生苦短，Python必选。</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+每个人都有自动化大量重复性劳动的冲动。因为重复性的劳动让人大脑迟钝，生活变得索然无味。在不停的重复过程中，生命就这么浪费了。Python会以出人意料的速度帮你完成重复性劳动，让你有时间去爬山。 如果你是一个程序员，肯定发现C/C++这类语言在编写代码编译代码重新编译代码的循环中浪费了好多青春。即便程序最终可以运行，为这个程序写大量的测试用例也要占用不少时间。
+</p>
+
+<p>
+人生苦短，Python必选。
+</p>
+
+<p>
+Python提供了不但Unix shell一样的批处理，还提供了可移植性。Python允许你的代码高度解耦，模块的重用易如反掌。Python本身携带了大量的标准模块，任君选择。作为一门解释性语言，Python不需要编译和链接，解释器也可以交互式的实用，随时查看程序结果。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> 上手Python解释器</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+这里我就不废话怎么安装Python环境了。我的IPyton启动后画面是：
+</p>
+
+<div id="orgparagraph1" class="figure">
+<p><img src="../../img/20170312PythonDay01.PNG" alt="20170312PythonDay01.PNG" width="800" align="center" />
+</p>
+<p><span class="figure-number">图 1:</span> 我的Python启动画面</p>
+</div>
+
+<p>
+Python文件默认编码方式是 <code>UTF-8</code> 。可以在文件头部添加: 
+</p>
+<pre class="example">
+# -*- coding: UTF-8 -*-
+</pre>
+<p>
+指定源文件采用 <code>UTF-8</code> 编码。在Python中使用 <code>#</code> 作为注释开始标志。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7"><span class="section-number-2">4</span> 把Python当计算器用</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">4.1</span> 数值计算</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">28</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">2</span>/<span style="color: #6c71c4;">7</span> 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">42</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #6c71c4;">0</span>.<span style="color: #6c71c4;">2857142857142857</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">43</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">50</span> - <span style="color: #6c71c4;">9</span>/<span style="color: #6c71c4;">6</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">59</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #6c71c4;">48</span>.<span style="color: #6c71c4;">5</span>
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">60</span><span style="color: #2aa198;">]</span>:
+</pre>
+</div>
+
+<p>
+整数 <code>2,4,9</code> 类型是 <code>int</code> ；有小数点的数 <code>48.5</code> 类型是 <code>float</code> ; 除法计算 <code>/</code> 总是返回浮点数。 为舍弃小数点部分，需要使用 <code>//</code> , 示例：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">60</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">17</span>/<span style="color: #6c71c4;">3</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">67</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #6c71c4;">5</span>.<span style="color: #6c71c4;">666666666666667</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">68</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">17</span>//<span style="color: #6c71c4;">3</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">78</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #6c71c4;">5</span>
+</pre>
+</div>
+
+<p>
+可以看出 <code>//</code> 进行的不是四舍五入，是直接舍弃小数部分，只保留整数部分。
+</p>
+
+<p>
+Python使用 <code>**</code> 完成幂计算，示例：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">82</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">2</span>**<span style="color: #6c71c4;">10</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">92</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">1024</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">93</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">3</span>**<span style="color: #6c71c4;">8</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">100</span><span style="color: #2aa198;">]</span>:<span style="color: #6c71c4;">6561</span>
+</pre>
+</div>
+
+<p>
+<code>=</code> 号的一个作用是变量赋值，示例：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">101</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">width</span> = <span style="color: #6c71c4;">20</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">109</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">height</span> = <span style="color: #6c71c4;">5</span>*<span style="color: #6c71c4;">9</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">117</span><span style="color: #2aa198;">]</span>: width * height
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">128</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #6c71c4;">900</span>
+</pre>
+</div>
+<p>
+如果变量没有被定义，会报错，示例：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">129</span><span style="color: #2aa198;">]</span>: n
+---------------------------------------------------------------------------
+<span style="color: #b58900;">NameError</span>                                 Traceback <span style="color: #2aa198;">(</span>most recent call last<span style="color: #2aa198;">)</span>
+&lt;ipython-<span style="color: #839496; font-weight: bold;">input</span>-<span style="color: #6c71c4;">133</span>-fe13119fb084&gt; <span style="color: #859900; font-weight: bold;">in</span> &lt;module&gt;<span style="color: #2aa198;">()</span>
+----&gt; <span style="color: #6c71c4;">1</span> n
+
+<span style="color: #b58900;">NameError</span>: name <span style="color: #2aa198;">'n'</span> <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #859900; font-weight: bold;">not</span> defined
+</pre>
+</div>
+
+<p>
+当整型和浮点类型一起混合使用时，结果为浮点类型：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">134</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">3</span> * <span style="color: #6c71c4;">3</span>.<span style="color: #6c71c4;">75</span>/<span style="color: #6c71c4;">1</span>.<span style="color: #6c71c4;">5</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">153</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #6c71c4;">7</span>.<span style="color: #6c71c4;">5</span>
+</pre>
+</div>
+<p>
+在交互式环境中，最后一个打印的表达式可以用 <code>_</code> 来表示：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">154</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">tax</span> = <span style="color: #6c71c4;">12</span>.<span style="color: #6c71c4;">5</span>/<span style="color: #6c71c4;">100</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">176</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">price</span> = <span style="color: #6c71c4;">100</span>.<span style="color: #6c71c4;">50</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">187</span><span style="color: #2aa198;">]</span>: price*tax
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">194</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #6c71c4;">12</span>.<span style="color: #6c71c4;">5625</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">195</span><span style="color: #2aa198;">]</span>: price + _
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">205</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #6c71c4;">113</span>.<span style="color: #6c71c4;">0625</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">206</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">round</span><span style="color: #2aa198;">(</span>_,<span style="color: #6c71c4;">2</span><span style="color: #2aa198;">)</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">212</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #6c71c4;">113</span>.<span style="color: #6c71c4;">06</span>
+</pre>
+</div>
+
+<p>
+除了 <code>int</code> 和 <code>float</code> , Python 支持也其他类型的数据，比如 <code>Decimal</code> 和 <code>Fraction</code> 。另外Python内置复数类型比如 <code>3+5j</code>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">213</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">n</span>= <span style="color: #6c71c4;">3</span>+<span style="color: #6c71c4;">5i</span>
+  File <span style="color: #2aa198;">"&lt;ipython-input-220-1c979fa6598a&gt;"</span>, line <span style="color: #6c71c4;">1</span>
+    <span style="color: #268bd2;">n</span>= <span style="color: #6c71c4;">3</span>+<span style="color: #6c71c4;">5i</span>
+          ^
+<span style="color: #b58900;">SyntaxError</span>: invalid syntax
+
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">221</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">n</span> = <span style="color: #6c71c4;">3</span>+<span style="color: #6c71c4;">5j</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">233</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">abs</span><span style="color: #2aa198;">(</span>n<span style="color: #2aa198;">)</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">233</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #6c71c4;">5</span>.<span style="color: #6c71c4;">830951894845301</span>
+</pre>
+</div>
+<p>
+注意是 <code>3+5j</code> 而不是 <code>3+5i</code> .
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">4.2</span> 字符串</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Python的字符串可以使用单引号 ='&#x2026;'= 也可以使用双引号 ="&#x2026;"= 。使用 <code>\</code> 做转义字符。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">234</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'span eggs'</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">249</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'span eggs'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">250</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'doesn\'t'</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">278</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">"doesn't"</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">279</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">"doesn't"</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">291</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">"doesn't"</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">292</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'"Yes," he said.'</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">312</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'"Yes," he said.'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">313</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">"\"Yes,\" he said."</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">333</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'"Yes," he said.'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">334</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'"Isn\'t," she said.'</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">368</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'"Isn\'t," she said.'</span>
+</pre>
+</div>
+
+<p>
+在交互式环境中，字符串的输出使用双引号；特殊字符使用反斜杠保留。 <code>print()</code> 函数打印的结果更具可读性：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">334</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'"Isn\'t," she said.'</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">368</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'"Isn\'t," she said.'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">369</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'"Isn\'t," she said'</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">"Isn't,"</span> she said
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">402</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">s</span> = <span style="color: #2aa198;">'First line.\nSecond line.'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">441</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>s<span style="color: #2aa198;">)</span>
+First line.
+Second line.
+</pre>
+</div>
+<p>
+如果你不希望 <code>print()</code> 中 <code>\</code> 转义，可以使用 <code>r</code> 选项：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">446</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">"C:\some\name"</span><span style="color: #2aa198;">)</span>
+C:\some
+ame
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">466</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>r<span style="color: #2aa198;">"C:\some\name"</span><span style="color: #2aa198;">)</span>
+C:\some\name
+</pre>
+</div>
+<p>
+Python 使用 ="""&#x2026;"""= 支持多行字符：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">"""</span>
+<span style="color: #2aa198;">This is a</span>
+<span style="color: #2aa198;">string</span>
+<span style="color: #2aa198;">occupying multiple lines</span>
+<span style="color: #2aa198;">"""</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+<p>
+输出：
+</p>
+<pre class="example">
+In [487]: 
+This is a
+string
+occupying multiple lines
+</pre>
+<p>
+也可以使用 <code>+</code> 级联多个字符串。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">518</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">4</span>*<span style="color: #2aa198;">"love "</span> + <span style="color: #2aa198;">"u"</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">518</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'love love love love u'</span>
+</pre>
+</div>
+
+<p>
+多个字符串放在一起也可以实现自动级联：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">519</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">"python"</span> <span style="color: #2aa198;">"is"</span> <span style="color: #2aa198;">'good'</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">547</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'pythonisgood'</span>
+</pre>
+</div>
+
+<p>
+但是这样的方式只支持字符串级联，不支持变量和字符串级联：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">548</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">prefix</span> = <span style="color: #2aa198;">'py'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">561</span><span style="color: #2aa198;">]</span>: prefix <span style="color: #2aa198;">'thon'</span>
+  File <span style="color: #2aa198;">"&lt;ipython-input-570-37b5e5a6971f&gt;"</span>, line <span style="color: #6c71c4;">1</span>
+    prefix <span style="color: #2aa198;">'thon'</span>
+                ^
+<span style="color: #b58900;">SyntaxError</span>: invalid syntax
+</pre>
+</div>
+<p>
+如果要变量和字符串级联，需要使用 <code>+</code> :
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">571</span><span style="color: #2aa198;">]</span>: prefix + <span style="color: #2aa198;">'thon'</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">587</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'python'</span>
+</pre>
+</div>
+
+<p>
+可以使用下表来索引字符串中的字符：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">626</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">word</span> = <span style="color: #2aa198;">'python'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">643</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">0</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">654</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'p'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">655</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">6</span><span style="color: #2aa198;">]</span>
+---------------------------------------------------------------------------
+<span style="color: #b58900;">IndexError</span>                                Traceback <span style="color: #2aa198;">(</span>most recent call last<span style="color: #2aa198;">)</span>
+&lt;ipython-<span style="color: #839496; font-weight: bold;">input</span>-<span style="color: #6c71c4;">658</span>-<span style="color: #6c71c4;">9f3bdf74c108</span>&gt; <span style="color: #859900; font-weight: bold;">in</span> &lt;module&gt;<span style="color: #2aa198;">()</span>
+----&gt; <span style="color: #6c71c4;">1</span> word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">6</span><span style="color: #2aa198;">]</span>
+
+<span style="color: #b58900;">IndexError</span>: string index out of <span style="color: #839496; font-weight: bold;">range</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">659</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">5</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">662</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'n'</span>
+</pre>
+</div>
+
+<p>
+注意下标索引和 <code>C/C++</code> 一样从 <code>0</code> 开始，并且不能越界。除了这种索引方式, Python 提供了从后面倒着索引的方法：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">663</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">674</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'n'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">675</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">5</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">684</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'y'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">685</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">6</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">688</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'p'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">689</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">7</span><span style="color: #2aa198;">]</span>
+---------------------------------------------------------------------------
+<span style="color: #b58900;">IndexError</span>                                Traceback <span style="color: #2aa198;">(</span>most recent call last<span style="color: #2aa198;">)</span>
+&lt;ipython-<span style="color: #839496; font-weight: bold;">input</span>-<span style="color: #6c71c4;">699</span>-<span style="color: #6c71c4;">03d2d1c3cbaf</span>&gt; <span style="color: #859900; font-weight: bold;">in</span> &lt;module&gt;<span style="color: #2aa198;">()</span>
+----&gt; <span style="color: #6c71c4;">1</span> word<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">7</span><span style="color: #2aa198;">]</span>
+
+<span style="color: #b58900;">IndexError</span>: string index out of <span style="color: #839496; font-weight: bold;">range</span>
+</pre>
+</div>
+
+<p>
+注意倒着索引也有越界的问题。
+</p>
+
+<p>
+除了逐个索引单字符，索引字符串中的某几个部分也是可以的：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">700</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">0</span>:<span style="color: #6c71c4;">2</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">703</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'py'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">704</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">3</span>:<span style="color: #6c71c4;">5</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">714</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'ho'</span>
+</pre>
+</div>
+<p>
+注意部分索引时，冒号前面的索引号是包含的，冒号后面的索引号是不包含的， <code>n:N</code> 的含义是：从第 <code>n</code> (包括) 到第 <code>N</code> (不包括)。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">715</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span>:<span style="color: #6c71c4;">2</span><span style="color: #2aa198;">]</span> + word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">2</span>:<span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">738</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'python'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">739</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span>:<span style="color: #6c71c4;">5</span><span style="color: #2aa198;">]</span> + word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">5</span>:<span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">751</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'python'</span>
+</pre>
+</div>
+
+<p>
+Python 不允许修改字符串，如果你需要一个新的字符，重新创建一个:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">752</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">word</span><span style="color: #2aa198;">[</span><span style="color: #6c71c4;">0</span><span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">'J'</span>
+--------------------------------------------------------------
+<span style="color: #b58900;">TypeError</span>                    Traceback <span style="color: #2aa198;">(</span>most recent call last<span style="color: #2aa198;">)</span>
+&lt;ipython-<span style="color: #839496; font-weight: bold;">input</span>-<span style="color: #6c71c4;">771</span>-<span style="color: #6c71c4;">197b67ffdd83</span>&gt; <span style="color: #859900; font-weight: bold;">in</span> &lt;module&gt;<span style="color: #2aa198;">()</span>
+----&gt; <span style="color: #6c71c4;">1</span> <span style="color: #268bd2;">word</span><span style="color: #2aa198;">[</span><span style="color: #6c71c4;">0</span><span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">'J'</span>
+
+<span style="color: #b58900;">TypeError</span>: <span style="color: #2aa198;">'str'</span> <span style="color: #839496; font-weight: bold;">object</span> does <span style="color: #859900; font-weight: bold;">not</span> support item assignment
+
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">772</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'J'</span> + word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>:<span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">778</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'Jython'</span>
+</pre>
+</div>
+<p>
+内置的 <code>len()</code> 函数返回字符串的长度：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">779</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">s</span> = <span style="color: #2aa198;">'askkjljlkjioejkjlkjlskjlj'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">793</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>s<span style="color: #2aa198;">)</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">801</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #6c71c4;">25</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">4.3</span> 列表（list）</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+Python支持很多复杂的数据类型，列表（list）是比较常用的一个:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">802</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">squares</span> = <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>,<span style="color: #6c71c4;">4</span>,<span style="color: #6c71c4;">9</span>,<span style="color: #6c71c4;">16</span>,<span style="color: #6c71c4;">25</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">833</span><span style="color: #2aa198;">]</span>: squares
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">837</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">4</span>, <span style="color: #6c71c4;">9</span>, <span style="color: #6c71c4;">16</span>, <span style="color: #6c71c4;">25</span><span style="color: #2aa198;">]</span>
+</pre>
+</div>
+<p>
+就像字符串一样，列表也可以用下表正向索引或者逆向索引
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">890</span><span style="color: #2aa198;">]</span>: squares<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">2</span>:<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">900</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">901</span><span style="color: #2aa198;">]</span>: squares<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">2</span>:-<span style="color: #6c71c4;">4</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">901</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">902</span><span style="color: #2aa198;">]</span>: squares<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">2</span>:<span style="color: #6c71c4;">4</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">902</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">9</span>, <span style="color: #6c71c4;">16</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">903</span><span style="color: #2aa198;">]</span>: squares<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">4</span>:-<span style="color: #6c71c4;">2</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">909</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">4</span>, <span style="color: #6c71c4;">9</span><span style="color: #2aa198;">]</span>
+</pre>
+</div>
+<p>
+list支持级联：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">910</span><span style="color: #2aa198;">]</span>: squares + <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">36</span>,<span style="color: #6c71c4;">49</span>,<span style="color: #6c71c4;">64</span>,<span style="color: #6c71c4;">81</span>,<span style="color: #6c71c4;">100</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">952</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">4</span>, <span style="color: #6c71c4;">9</span>, <span style="color: #6c71c4;">16</span>, <span style="color: #6c71c4;">25</span>, <span style="color: #6c71c4;">36</span>, <span style="color: #6c71c4;">49</span>, <span style="color: #6c71c4;">64</span>, <span style="color: #6c71c4;">81</span>, <span style="color: #6c71c4;">100</span><span style="color: #2aa198;">]</span>
+</pre>
+</div>
+<p>
+不像字符串不能被修改，list是可以修改的:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">953</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">cubes</span> = <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">8</span>, <span style="color: #6c71c4;">27</span>,<span style="color: #6c71c4;">65</span>,<span style="color: #6c71c4;">125</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">988</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">cubes</span><span style="color: #2aa198;">[</span><span style="color: #6c71c4;">3</span><span style="color: #2aa198;">]</span> = <span style="color: #6c71c4;">64</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1000</span><span style="color: #2aa198;">]</span>: cubes
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1004</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">8</span>, <span style="color: #6c71c4;">27</span>, <span style="color: #6c71c4;">64</span>, <span style="color: #6c71c4;">125</span><span style="color: #2aa198;">]</span>
+</pre>
+</div>
+
+<p>
+可以使用 <code>append()</code> 方法向list的尾巴上追加数据：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1000</span><span style="color: #2aa198;">]</span>: cubes
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1004</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">8</span>, <span style="color: #6c71c4;">27</span>, <span style="color: #6c71c4;">64</span>, <span style="color: #6c71c4;">125</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1005</span><span style="color: #2aa198;">]</span>: cubes.append<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">216</span><span style="color: #2aa198;">)</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1020</span><span style="color: #2aa198;">]</span>: cubes.append<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">7</span>**<span style="color: #6c71c4;">3</span><span style="color: #2aa198;">)</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1038</span><span style="color: #2aa198;">]</span>: cubes
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1038</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">8</span>, <span style="color: #6c71c4;">27</span>, <span style="color: #6c71c4;">64</span>, <span style="color: #6c71c4;">125</span>, <span style="color: #6c71c4;">216</span>, <span style="color: #6c71c4;">343</span><span style="color: #2aa198;">]</span>
+</pre>
+</div>
+
+<p>
+list也可以部分索引：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1039</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">letters</span> = <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'a'</span>,<span style="color: #2aa198;">'b'</span>,<span style="color: #2aa198;">'c'</span>,<span style="color: #2aa198;">'d'</span>,<span style="color: #2aa198;">'e'</span>,<span style="color: #2aa198;">'f'</span>,<span style="color: #2aa198;">'g'</span>,<span style="color: #2aa198;">'h'</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1075</span><span style="color: #2aa198;">]</span>: letters
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1075</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[</span><span style="color: #2aa198;">'a'</span>, <span style="color: #2aa198;">'b'</span>, <span style="color: #2aa198;">'c'</span>, <span style="color: #2aa198;">'d'</span>, <span style="color: #2aa198;">'e'</span>, <span style="color: #2aa198;">'f'</span>, <span style="color: #2aa198;">'g'</span>, <span style="color: #2aa198;">'h'</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1076</span><span style="color: #2aa198;">]</span>: <span style="color: #586e75;">#</span><span style="color: #586e75;">replace some values</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1081</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">letters</span><span style="color: #2aa198;">[</span><span style="color: #6c71c4;">2</span>:<span style="color: #6c71c4;">5</span><span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'C'</span>,<span style="color: #2aa198;">'D'</span>,<span style="color: #2aa198;">'E'</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1095</span><span style="color: #2aa198;">]</span>: letters
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1095</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[</span><span style="color: #2aa198;">'a'</span>, <span style="color: #2aa198;">'b'</span>, <span style="color: #2aa198;">'C'</span>, <span style="color: #2aa198;">'D'</span>, <span style="color: #2aa198;">'E'</span>, <span style="color: #2aa198;">'f'</span>, <span style="color: #2aa198;">'g'</span>, <span style="color: #2aa198;">'h'</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1096</span><span style="color: #2aa198;">]</span>: <span style="color: #586e75;">#</span><span style="color: #586e75;">now remove them</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1108</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">letters</span><span style="color: #2aa198;">[</span><span style="color: #6c71c4;">2</span>:<span style="color: #6c71c4;">5</span><span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">[]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1115</span><span style="color: #2aa198;">]</span>: letters
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1123</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[</span><span style="color: #2aa198;">'a'</span>, <span style="color: #2aa198;">'b'</span>, <span style="color: #2aa198;">'f'</span>, <span style="color: #2aa198;">'g'</span>, <span style="color: #2aa198;">'h'</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1124</span><span style="color: #2aa198;">]</span>: <span style="color: #586e75;"># </span><span style="color: #586e75;">clear all items</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1136</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">letters</span><span style="color: #2aa198;">[</span>:<span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">[]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1147</span><span style="color: #2aa198;">]</span>: letters
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1147</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[]</span>
+</pre>
+</div>
+<p>
+内置的 <code>len()</code> 函数同样返回list的长度。
+</p>
+
+<p>
+可以嵌套list:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1148</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">a</span> = <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'a'</span>,<span style="color: #2aa198;">'b'</span>,<span style="color: #2aa198;">'c'</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1157</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">n</span> = <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>,<span style="color: #6c71c4;">2</span>,<span style="color: #6c71c4;">3</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1168</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">x</span> = <span style="color: #2aa198;">[</span>a,n<span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1177</span><span style="color: #2aa198;">]</span>: x
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1181</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[</span><span style="color: #b58900;">[</span><span style="color: #2aa198;">'a'</span>, <span style="color: #2aa198;">'b'</span>, <span style="color: #2aa198;">'c'</span><span style="color: #b58900;">]</span>, <span style="color: #b58900;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">2</span>, <span style="color: #6c71c4;">3</span><span style="color: #b58900;">]</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1182</span><span style="color: #2aa198;">]</span>: x<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">0</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1189</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[</span><span style="color: #2aa198;">'a'</span>, <span style="color: #2aa198;">'b'</span>, <span style="color: #2aa198;">'c'</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1190</span><span style="color: #2aa198;">]</span>: x<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span><span style="color: #2aa198;">]</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1190</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">2</span>, <span style="color: #6c71c4;">3</span><span style="color: #2aa198;">]</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1191</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>x<span style="color: #2aa198;">)</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1195</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #6c71c4;">2</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1196</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>x<span style="color: #b58900;">[</span><span style="color: #6c71c4;">0</span><span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1207</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #6c71c4;">3</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8"><span class="section-number-2">5</span> 跨出编程的第一步</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+Python能做的事情可不止一个计算器那么简单。看下面的小例子：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python"><span class="linenr">1: </span><span style="color: #586e75;"># </span><span style="color: #586e75;">Fibonacci series:</span>
+<span class="linenr">2: </span><span style="color: #586e75;"># </span><span style="color: #586e75;">the sum of two elements defines the next</span>
+<span class="linenr">3: </span><span style="color: #268bd2;">a</span>,<span style="color: #268bd2;">b</span> = <span style="color: #6c71c4;">0</span>,<span style="color: #6c71c4;">1</span>
+<span class="linenr">4: </span><span style="color: #859900; font-weight: bold;">while</span> b&lt;<span style="color: #6c71c4;">10</span>:
+<span class="linenr">5: </span>    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>b<span style="color: #2aa198;">)</span>
+<span class="linenr">6: </span>    <span style="color: #268bd2;">a</span>,<span style="color: #268bd2;">b</span> = b,a+b
+</pre>
+</div>
+<p>
+输出为：
+</p>
+<pre class="example">
+1
+1
+2
+3
+5
+8
+</pre>
+
+<p>
+解读一下上面的程序：
+</p>
+<ol class="org-ol">
+<li>第一行和第二行是注释，第三行执行了多变量赋值操作。变量 <code>a</code> 和 <code>b</code> 同时被赋值为 <code>0</code> 和 <code>1</code> 。第6行也用了多变量赋值操作。</li>
+<li><code>while</code> 循环会一直循环下去, 只要 <code>(b&lt;10)</code> 为真。在Python中，任何非零的值都会被当做true来处理，但是在Java中 true和false是boolean类型。所以Python语言是一种比Java对类型约束比较弱的语言，可以说是弱类型语言。</li>
+<li><code>while</code> 的内容通过缩进表示。</li>
+<li>可以使用 <code>end</code> 来避免 <code>print()</code> 函数生成新行</li>
+</ol>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: #586e75;">#</span><span style="color: #586e75;">+begin_src python -n</span>
+<span style="color: #586e75;"># </span><span style="color: #586e75;">Fibonacci series:</span>
+<span style="color: #586e75;"># </span><span style="color: #586e75;">the sum of two elements defines the next</span>
+<span style="color: #268bd2;">a</span>,<span style="color: #268bd2;">b</span> = <span style="color: #6c71c4;">0</span>,<span style="color: #6c71c4;">1</span>
+<span style="color: #859900; font-weight: bold;">while</span> b&lt;<span style="color: #6c71c4;">10</span>:
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>b,end = <span style="color: #2aa198;">','</span><span style="color: #2aa198;">)</span>
+    <span style="color: #268bd2;">a</span>,<span style="color: #268bd2;">b</span> = b,a+b
+</pre>
+</div>
+<p>
+输出为：
+</p>
+<pre class="example">
+1,2,3,5,8
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
