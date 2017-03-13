@@ -1,0 +1,463 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>学习Python Doc第二天:控制语句和函数</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./learn-aiml-by-yourself.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">学习Python Doc第二天:控制语句和函数</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8014651">1. 控制语句</a></li>
+<li><a href="#orgca0297b">2. <code>if</code> 语句</a></li>
+<li><a href="#org1d2c99f">3. <code>for</code> 语句</a></li>
+<li><a href="#org700607e">4. <code>range()</code> 函数</a></li>
+<li><a href="#orgf66fed8">5. 循环中的 <code>break</code> <code>continue</code> 和 <code>else</code></a></li>
+<li><a href="#org562022f">6. 什么也不做的 <code>pass</code></a></li>
+<li><a href="#org1c0cf94">7. 定义函数</a>
+<ul>
+<li><a href="#org68d892d">7.1. 为函数指定默认参数值</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+今天是学习Python的第二天，主要内容涉及控制语句，函数定义以及代码风格。
+</p>
+
+
+<div id="outline-container-org8014651" class="outline-2">
+<h2 id="org8014651"><span class="section-number-2">1</span> 控制语句</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+除了之前学习过的 <code>while</code> ,典型的控制语句还有 <code>if,else</code> <code>for,break,continue</code> 
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgca0297b" class="outline-2">
+<h2 id="orgca0297b"><span class="section-number-2">2</span> <code>if</code> 语句</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2;">x</span> = <span style="color: #6c71c4;">23</span>
+<span style="color: #859900; font-weight: bold;">if</span> x&lt;<span style="color: #6c71c4;">0</span>:
+    <span style="color: #268bd2;">x</span> = <span style="color: #6c71c4;">0</span>
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'Negative changed to zero'</span><span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">elif</span> x==<span style="color: #6c71c4;">0</span>:
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'zero'</span><span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">elif</span> x == <span style="color: #6c71c4;">1</span>:
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'Single'</span><span style="color: #2aa198;">)</span>
+<span style="color: #859900; font-weight: bold;">else</span>:
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'More'</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+<p>
+可以有0个 <code>elif</code> ，也可以有多个 <code>elif</code> ，最后的　=else= 也是可选的。
+</p>
+</div>
+</div>
+<div id="outline-container-org1d2c99f" class="outline-2">
+<h2 id="org1d2c99f"><span class="section-number-2">3</span> <code>for</code> 语句</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+Python 的 <code>for</code> 语句和C语言中的 <code>for</code> 稍有不同。Python的 <code>for</code> 语句可以在任何 <code>list</code> 或者 <code>string</code> 之间循环。看代码：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2;">words</span> = <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'cat'</span>,<span style="color: #2aa198;">'window'</span>,<span style="color: #2aa198;">'defenestrate'</span><span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">for</span> w <span style="color: #859900; font-weight: bold;">in</span> words:
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>w,<span style="color: #839496; font-weight: bold;">len</span><span style="color: #b58900;">(</span>w<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+<p>
+输出为：
+</p>
+<pre class="example">
+cat 3
+window 6
+defenestrate 12
+</pre>
+
+<p>
+如果你需要在循环的过程中改变循环对象，建议首先创建一份寻欢对象的副本，看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2;">words</span> = <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'cat'</span>,<span style="color: #2aa198;">'window'</span>,<span style="color: #2aa198;">'defenestrate'</span><span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">for</span> w <span style="color: #859900; font-weight: bold;">in</span> words<span style="color: #2aa198;">[</span>:<span style="color: #2aa198;">]</span>:
+    <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>w<span style="color: #2aa198;">)</span> &gt; <span style="color: #6c71c4;">6</span>:
+        words.insert<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">0</span>,w<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+<p>
+输出
+</p>
+<pre class="example">
+['defenestrate', 'cat', 'window', 'defenestrate']
+</pre>
+<p>
+从代码中可以看出，在 <code>for w in words[:]:</code> 这一样代码中，Python隐含的创建了 <code>words[:]</code> 的一份copy。
+</p>
+</div>
+</div>
+<div id="outline-container-org700607e" class="outline-2">
+<h2 id="org700607e"><span class="section-number-2">4</span> <code>range()</code> 函数</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+如果你需要在一个整数数组里循环， <code>range()</code> 函数使其易如反掌，看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">for</span> i <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span><span style="color: #6c71c4;">5</span><span style="color: #2aa198;">)</span>:
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>i<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+输出:
+</p>
+<pre class="example">
+0
+1
+2
+3
+4
+</pre>
+<p>
+可以看到， <code>range(n)</code> 返回的是 <code>[0,n-1]</code> .  <code>range()</code>  函数非常灵活，比如：
+</p>
+<ol class="org-ol">
+<li><code>range(5,9)</code> 生成从5到9，包含5不包含9的整数列表</li>
+<li><code>range(0,10,3)</code> 生成从0到10，包含0不包含10，间隔为3的整数列表</li>
+<li><code>range(-10,-100,-30)</code> 生成从-10到-100，间隔30的整数列表</li>
+</ol>
+
+<p>
+为了索引字符串构成的list，我们可以结合 <code>range()</code> 和 <code>len()</code> ，看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2;">a</span> = <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'Mary'</span>,<span style="color: #2aa198;">'had'</span>,<span style="color: #2aa198;">'a'</span> ,<span style="color: #2aa198;">'little'</span>,<span style="color: #2aa198;">'lamb'</span><span style="color: #2aa198;">]</span>
+<span style="color: #859900; font-weight: bold;">for</span> i <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">len</span><span style="color: #b58900;">(</span>a<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>:
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>i,a<span style="color: #b58900;">[</span>i<span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+<p>
+输出：
+</p>
+<pre class="example">
+0 Mary
+1 had
+2 a
+3 little
+4 lamb
+</pre>
+
+<p>
+山外有山，人外有人，函数外有函数，大多数情况下 <code>enumerate()</code> 是更方便的选择。关于 <code>enumerate()</code> 就不展开了。
+</p>
+
+<p>
+关于 <code>range()</code> 有个非常奇怪的现象，大多数时候 <code>range()</code> 表现的像个 list，但是它不是。 <code>range()</code> 的返回是一个对象，这个对象可以用来迭代（这样的对象叫做迭代器，这个迭代器并不占用空间存储内容，因此比较节省空间）。 <code>list()</code> 函数也是迭代器( <code>iterator</code> ) .
+</p>
+</div>
+</div>
+<div id="outline-container-orgf66fed8" class="outline-2">
+<h2 id="orgf66fed8"><span class="section-number-2">5</span> 循环中的 <code>break</code> <code>continue</code> 和 <code>else</code></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+<code>break</code> <code>continue</code> 的表象和 C 语言中类似。不同的是 <code>for</code> ， <code>for</code> 可以有一个 <code>else</code> 。这个 <code>else</code> 在 <code>for</code> 循环结束后执行（ <code>break</code> 跳出除外， <code>break</code> 跳出不会执行 <code>for</code> 的 <code>else</code> ）。 看代码：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">for</span> n <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span><span style="color: #6c71c4;">2</span>,<span style="color: #6c71c4;">10</span><span style="color: #2aa198;">)</span>:
+    <span style="color: #859900; font-weight: bold;">for</span> x <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span><span style="color: #6c71c4;">2</span>,n<span style="color: #2aa198;">)</span>:
+        <span style="color: #859900; font-weight: bold;">if</span> n%x == <span style="color: #6c71c4;">0</span>:
+            <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>n, <span style="color: #2aa198;">'equals'</span>, x ,<span style="color: #2aa198;">'*'</span>, n//x<span style="color: #2aa198;">)</span>
+            <span style="color: #859900; font-weight: bold;">break</span>
+    <span style="color: #859900; font-weight: bold;">else</span>:
+        <span style="color: #586e75;"># </span><span style="color: #586e75;">loop fell through without finding a factor</span>
+        <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>n,<span style="color: #2aa198;">'is a prime number'</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+输出为：
+</p>
+<pre class="example">
+2 is a prime number
+3 is a prime number
+4 equals 2 * 2
+5 is a prime number
+6 equals 2 * 3
+7 is a prime number
+8 equals 2 * 4
+9 equals 3 * 3
+</pre>
+
+<p>
+请再次注意： <code>else=　属于　=for</code> 不属于 <code>if</code> .
+</p>
+
+<p>
+<code>continue</code> 和C中的 <code>continue</code> 一样, 看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">for</span> num <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span><span style="color: #6c71c4;">2</span>,<span style="color: #6c71c4;">10</span><span style="color: #2aa198;">)</span>:
+    <span style="color: #859900; font-weight: bold;">if</span> n%<span style="color: #6c71c4;">2</span> == <span style="color: #6c71c4;">0</span>:
+        <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'find an even number'</span>,num<span style="color: #2aa198;">)</span>
+        <span style="color: #859900; font-weight: bold;">continue</span>
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'find a number'</span>,num<span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+输出为：
+</p>
+<pre class="example">
+find an even number 2
+find a number 3
+find an even number 4
+find a number 5
+find an even number 6
+find a number 7
+find an even number 8
+find a number 9
+</pre>
+</div>
+</div>
+<div id="outline-container-org562022f" class="outline-2">
+<h2 id="org562022f"><span class="section-number-2">6</span> 什么也不做的 <code>pass</code></h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<p>
+<code>pass</code> 语句什么也不做，常用来做语法占位，比如：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">while</span> <span style="color: #268bd2; font-weight: bold;">True</span>:
+    <span style="color: #859900; font-weight: bold;">pass</span>
+</pre>
+</div>
+
+<p>
+或者,创建一个最小的 <code>class</code> 
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">MyEmptyClass</span>:
+    <span style="color: #859900; font-weight: bold;">pass</span>
+</pre>
+</div>
+<p>
+另外 <code>pass</code> 也可以用来占位，稍后再回来实现相关功能。 比如：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">initlog</span><span style="color: #2aa198;">(</span>*args<span style="color: #2aa198;">)</span>:
+    <span style="color: #859900; font-weight: bold;">pass</span> % Remember to come back <span style="color: #859900; font-weight: bold;">and</span> fill the <span style="color: #859900; font-weight: bold;">pass</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1c0cf94" class="outline-2">
+<h2 id="org1c0cf94"><span class="section-number-2">7</span> 定义函数</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+
+</p>
+
+<p>
+在Python中使用 <code>def</code> 来定义函数，看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">fib</span><span style="color: #2aa198;">(</span>n<span style="color: #2aa198;">)</span>:
+    <span style="color: #2aa198;">"""Pring a Fibonacci series up to n"""</span>
+    <span style="color: #268bd2;">a</span>,<span style="color: #268bd2;">b</span> = <span style="color: #6c71c4;">0</span>,<span style="color: #6c71c4;">1</span>
+    <span style="color: #859900; font-weight: bold;">while</span> a&lt;n:
+        <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>a,end=<span style="color: #2aa198;">' '</span><span style="color: #2aa198;">)</span>
+        <span style="color: #268bd2;">a</span>,<span style="color: #268bd2;">b</span> = b,a+b
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">()</span>
+</pre>
+</div>
+
+<p>
+调用 <code>fib(2000)</code> 输出：
+</p>
+<pre class="example">
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
+</pre>
+
+<p>
+函数的第一行往往是这个函数的文档，一句话说明这个函数的功能。Python有相应的工具可以把用这些注释生成文档供用户查看。执行函数过程中，会为函数中的变量生成一个本地符号表。系统检索变量值的顺序是：1. 本地符号表; 2. 全局符号表；3. 内置变量符号表。所以全局变量不能在一个函数中直接赋值(因为函数内创建的是本地符号表)，但是全局变量在函数中确实可以被引用的。
+</p>
+
+<p>
+一个函数的定义在当前符号表中引入了这个函数的名字。解释器把函数名字识别为用户定义的函数。这个值可以赋给另外的名字。看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">fib</span><span style="color: #2aa198;">(</span>n<span style="color: #2aa198;">)</span>:
+    <span style="color: #2aa198;">"""Pring a Fibonacci series up to n"""</span>
+    <span style="color: #268bd2;">a</span>,<span style="color: #268bd2;">b</span> = <span style="color: #6c71c4;">0</span>,<span style="color: #6c71c4;">1</span>
+    <span style="color: #859900; font-weight: bold;">while</span> a&lt;n:
+        <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>a,end=<span style="color: #2aa198;">' '</span><span style="color: #2aa198;">)</span>
+        <span style="color: #268bd2;">a</span>,<span style="color: #268bd2;">b</span> = b,a+b
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">()</span>
+
+<span style="color: #268bd2;">f</span> = fib
+f<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">1000</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+输出为：
+</p>
+<pre class="example">
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+</pre>
+
+<p>
+如果有其他计算机语言的基础，你会疑惑： <code>fib</code> 只能是一个代码段，不能算一个函数，因为根本没有返回值。事实上，即使没有 <code>return</code> 语句的函数也有返回值，只不过这个返回值无关紧要。这个值是 <code>None</code> 。如果你一定要看到这个 <code>None</code> ，看代码：
+</p>
+<pre class="example">
+&gt;&gt;&gt;print(fib(0))
+
+None
+</pre>
+
+<p>
+写一个返回菲波那切数列的函数很容易，看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">fib</span><span style="color: #2aa198;">(</span>n<span style="color: #2aa198;">)</span>:
+    <span style="color: #2aa198;">"""Pring a Fibonacci series up to n"""</span>
+    <span style="color: #268bd2;">result</span> = <span style="color: #2aa198;">[]</span>
+    <span style="color: #268bd2;">a</span>,<span style="color: #268bd2;">b</span> = <span style="color: #6c71c4;">0</span>,<span style="color: #6c71c4;">1</span>
+    <span style="color: #859900; font-weight: bold;">while</span> a&lt;n:
+        result.append<span style="color: #2aa198;">(</span>a<span style="color: #2aa198;">)</span>
+        <span style="color: #268bd2;">a</span>,<span style="color: #268bd2;">b</span> = b,a+b
+    <span style="color: #859900; font-weight: bold;">return</span> result
+</pre>
+</div>
+<p>
+调用：
+</p>
+<div class="org-src-container">
+<pre class="src src-python">&gt;&gt;&gt; <span style="color: #268bd2;">f100</span> = fib<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">100</span><span style="color: #2aa198;">)</span>
+&gt;&gt;&gt; f100
+<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">0</span>, <span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">2</span>, <span style="color: #6c71c4;">3</span>, <span style="color: #6c71c4;">5</span>, <span style="color: #6c71c4;">8</span>, <span style="color: #6c71c4;">13</span>, <span style="color: #6c71c4;">21</span>, <span style="color: #6c71c4;">34</span>, <span style="color: #6c71c4;">55</span>, <span style="color: #6c71c4;">89</span><span style="color: #2aa198;">]</span>
+</pre>
+</div>
+
+<p>
+从这个例子，我们得知：
+</p>
+<ol class="org-ol">
+<li><code>return</code> 语句返回一个值。如果没有 <code>return</code> 语句，返回 <code>None</code> 。</li>
+<li><code>result.append(a)</code>  调用了 <code>result</code> 对象的一个方法 <code>append</code> 。不同类型的对象有不同的方法，尽管这些方法可能名字相同，但是由于类型不同，所以在使用过程中也不会造成歧义。</li>
+</ol>
+
+<p>
+在定义函数的时候，我们可以为输入参数指定默认值，也可以使输入参数的个数可变，等等。接下来，我们深入讨论一下函数。
+</p>
+</div>
+<div id="outline-container-org68d892d" class="outline-3">
+<h3 id="org68d892d"><span class="section-number-3">7.1</span> 为函数指定默认参数值</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
