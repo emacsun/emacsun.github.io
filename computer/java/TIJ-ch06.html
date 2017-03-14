@@ -2,11 +2,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Thinking in Java chapter6 笔记和习题</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="emacsun" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="pdf"  href="./TIJ-ch05.pdf"><img src="../../img/assets/pdf.png"></a>
@@ -64,29 +64,30 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. 简介</a></li>
-<li><a href="#orgheadline2">2. 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></a></li>
-<li><a href="#orgheadline3">3. 从 <code>constructor</code> 的定义引入函数重载</a></li>
-<li><a href="#orgheadline4">4. 默认的 <code>constructor</code></a></li>
-<li><a href="#orgheadline5">5. <code>this</code> 的作用</a></li>
-<li><a href="#orgheadline6">6. 理解 <code>static</code></a></li>
-<li><a href="#orgheadline7">7. <code>class</code> 成员初始化</a></li>
-<li><a href="#orgheadline8">8. 初始化顺序</a></li>
+<li><a href="#org7ba0bb4">1. 简介</a></li>
+<li><a href="#orgfa8717a">2. 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></a></li>
+<li><a href="#org7ad263e">3. 从 <code>constructor</code> 的定义引入函数重载</a></li>
+<li><a href="#org8303b7b">4. 默认的 <code>constructor</code></a></li>
+<li><a href="#org3eaed89">5. <code>this</code> 的作用</a></li>
+<li><a href="#org27f6dec">6. 理解 <code>static</code></a></li>
+<li><a href="#orgd1f895f">7. <code>class</code> 成员初始化</a></li>
+<li><a href="#org05729c0">8. 初始化顺序</a></li>
+<li><a href="#orgb5c9976">9. <code>static</code> 类型的初始化</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> 简介</h2>
+<div id="outline-container-org7ba0bb4" class="outline-2">
+<h2 id="org7ba0bb4"><span class="section-number-2">1</span> 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-<b>Initialization and Cleanup</b> 这一章首先讲述类初始化的一些操作，顺带初始化操作阐述了方法重载。然后讲述了Java的Garbage Collector机制。
+<b>Initialization and Cleanup</b> 这一章首先讲述类初始化的一些操作，顺带初始化操作阐述了方法重载。然后讲述了Java的Garbage Collector机制。其中关于 <code>static</code> 初始化的例子最为令人印象深刻，我把那个“橱柜”的代码做了逐行解析，学完之后感觉非常顺畅。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></h2>
+<div id="outline-container-orgfa8717a" class="outline-2">
+<h2 id="orgfa8717a"><span class="section-number-2">2</span> 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -177,8 +178,8 @@ null
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> 从 <code>constructor</code> 的定义引入函数重载</h2>
+<div id="outline-container-org7ad263e" class="outline-2">
+<h2 id="org7ad263e"><span class="section-number-2">3</span> 从 <code>constructor</code> 的定义引入函数重载</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -300,8 +301,8 @@ double: f1(double) f2(double) f3(double) f4(double) f5(double) f6(double) f7(dou
 </pre>
 </div>
 </div>
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> 默认的 <code>constructor</code></h2>
+<div id="outline-container-org8303b7b" class="outline-2">
+<h2 id="org8303b7b"><span class="section-number-2">4</span> 默认的 <code>constructor</code></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -311,7 +312,6 @@ double: f1(double) f2(double) f3(double) f4(double) f5(double) f6(double) f7(dou
 默认的 <code>constructor</code> 是没有参数的。如果定义类时没有指定构造函数，那么编译器会生成一个默认的构造函数。如果在定义类时指定了构造函数，那么在创建该类的对象时就需要指定该对象实用的构造函数，而不能使用默认构造函数，否则就会报错。看代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Bird</span><span style="color: #2aa198;">{</span>
 <span class="linenr"> 2: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span><span style="color: #b58900;">){}</span>
 <span class="linenr"> 3: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">double</span> <span style="color: #268bd2;">d</span><span style="color: #b58900;">){}</span>
@@ -343,7 +343,6 @@ error: no suitable constructor found for Bird(no arguments)
 编译器会认为没有无参数的构造函数定义。对代码进行修改：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Bird</span><span style="color: #2aa198;">{</span>
 <span class="linenr"> 2: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span><span style="color: #b58900;">){}</span>
 <span class="linenr"> 3: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">double</span> <span style="color: #268bd2;">d</span><span style="color: #b58900;">){}</span>
@@ -360,7 +359,6 @@ error: no suitable constructor found for Bird(no arguments)
 就没有报错。但是，看代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Bird</span><span style="color: #2aa198;">{</span>
 <span class="linenr"> 2: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span><span style="color: #b58900;">){}</span>
 <span class="linenr"> 3: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">double</span> <span style="color: #268bd2;">d</span><span style="color: #b58900;">){}</span>
@@ -378,7 +376,6 @@ error: no suitable constructor found for Bird(no arguments)
 这个代码也没有报错，但是我不知道 <code>b4</code> 调用了那个构造函数。为了确认一下，对代码做如下修改：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Bird</span><span style="color: #2aa198;">{</span>
 <span class="linenr"> 2: </span>    <span style="color: #268bd2;">Bird</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span><span style="color: #b58900;">){</span>
 <span class="linenr"> 3: </span>        System.out.println<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"with int i"</span><span style="color: #268bd2;">)</span>;
@@ -409,8 +406,8 @@ with double d
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">5</span> <code>this</code> 的作用</h2>
+<div id="outline-container-org3eaed89" class="outline-2">
+<h2 id="org3eaed89"><span class="section-number-2">5</span> <code>this</code> 的作用</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -424,7 +421,6 @@ with double d
 <code>this</code> 的一个经常用到的地方是 <code>return</code> 语句返回一个对象。看代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Leaf</span><span style="color: #2aa198;">{</span>
 <span class="linenr"> 2: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>=<span style="color: #6c71c4;">0</span>;
 <span class="linenr"> 3: </span>    <span style="color: #b58900;">Leaf</span> <span style="color: #268bd2;">increament</span><span style="color: #b58900;">(){</span>
@@ -451,7 +447,6 @@ i = 2
 <code>this</code> 也可以用来把当前的对象传递给另外的方法，看代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Person</span><span style="color: #2aa198;">{</span>
 <span class="linenr"> 2: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">eat</span><span style="color: #b58900;">(</span><span style="color: #b58900;">Apple</span> <span style="color: #268bd2;">apple</span><span style="color: #b58900;">){</span>
 <span class="linenr"> 3: </span>        <span style="color: #b58900;">Apple</span> <span style="color: #268bd2;">peeled</span> = apple.getPeeled<span style="color: #268bd2;">()</span>;
@@ -488,8 +483,8 @@ i = 2
 </div>
 
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">6</span> 理解 <code>static</code></h2>
+<div id="outline-container-org27f6dec" class="outline-2">
+<h2 id="org27f6dec"><span class="section-number-2">6</span> 理解 <code>static</code></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 
@@ -504,8 +499,8 @@ i = 2
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">7</span> <code>class</code> 成员初始化</h2>
+<div id="outline-container-orgd1f895f" class="outline-2">
+<h2 id="orgd1f895f"><span class="section-number-2">7</span> <code>class</code> 成员初始化</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 
@@ -515,7 +510,6 @@ i = 2
 <code>Java</code> 中对于 <code>class</code> 的基础类型成员都做了默认初始化。这说明，每一个基础类成员都有一个默认的构造函数，为其赋初值。看代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr"> 2: </span>
 <span class="linenr"> 3: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span>  <span style="color: #b58900;">InitialValues</span><span style="color: #2aa198;">{</span>
@@ -564,8 +558,8 @@ InitialValues     null
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8"><span class="section-number-2">8</span> 初始化顺序</h2>
+<div id="outline-container-org05729c0" class="outline-2">
+<h2 id="org05729c0"><span class="section-number-2">8</span> 初始化顺序</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 
@@ -575,7 +569,6 @@ InitialValues     null
 在 <code>Java</code> 中，类变量的初始化先于类方法调用。什么意思？就是说：在写代码的时候，即便你把类变量的定义放在了构造函数的后面， <code>Java</code> 依然会先初始化这些变量，然后再去调用函数（这个函数通常是构造函数）。看代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #b58900;">import</span> <span style="color: #859900; font-weight: bold;">static</span>  net.mindview.util.Print.*;
 <span class="linenr"> 2: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">Window</span><span style="color: #2aa198;">{</span>
 <span class="linenr"> 3: </span>    <span style="color: #268bd2;">Window</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">marker</span><span style="color: #b58900;">){</span>
@@ -627,13 +620,128 @@ f()
 </ol>
 </div>
 </div>
+
+<div id="outline-container-orgb5c9976" class="outline-2">
+<h2 id="orgb5c9976"><span class="section-number-2">9</span> <code>static</code> 类型的初始化</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+
+</p>
+
+<p>
+无论创建了多少个对象， <code>static</code> 类型的数据都只占用一份存储。只有 <code>class</code> 的域可以是 <code>static</code> ，一个本地变量不能是 <code>static</code> 类型的。接下来我们通过一个例子来查看 <code>static</code> 是如何初始化的, 看代码:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #586e75;">// </span><span style="color: #586e75;">specifying initial values in a class definition</span>
+<span class="linenr"> 2: </span><span style="color: #b58900;">import</span> <span style="color: #859900; font-weight: bold;">static</span> net.mindview.util.Print.*;
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">Bowl</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 5: </span>    <span style="color: #268bd2;">Bowl</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">marker</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 6: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Bowl("</span> + marker + <span style="color: #2aa198;">")"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 7: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr"> 8: </span>    <span style="color: #b58900;">void</span> <span style="color: #268bd2;">f1</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">marker</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 9: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"f1("</span> + marker + <span style="color: #2aa198;">")"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">10: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">11: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">12: </span>
+<span class="linenr">13: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">Table</span><span style="color: #2aa198;">{</span>
+<span class="linenr">14: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">Bowl</span> <span style="color: #268bd2;">bowl</span> =new Bowl<span style="color: #b58900;">(</span><span style="color: #6c71c4;">1</span><span style="color: #b58900;">)</span>;
+<span class="linenr">15: </span>    <span style="color: #268bd2;">Table</span><span style="color: #b58900;">(){</span>
+<span class="linenr">16: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Table()"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">17: </span>        bowl2.f1<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">18: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">19: </span>    <span style="color: #b58900;">void</span> <span style="color: #268bd2;">f2</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">marker</span><span style="color: #b58900;">){</span>
+<span class="linenr">20: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"f2("</span> + marker + <span style="color: #2aa198;">")"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">21: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">22: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">Bowl</span> <span style="color: #268bd2;">bowl2</span> = new Bowl<span style="color: #b58900;">(</span><span style="color: #6c71c4;">2</span><span style="color: #b58900;">)</span>;
+<span class="linenr">23: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">24: </span>
+<span class="linenr">25: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">Cupboard</span><span style="color: #2aa198;">{</span>
+<span class="linenr">26: </span>    <span style="color: #b58900;">Bowl</span> <span style="color: #268bd2;">bowl3</span> = new Bowl<span style="color: #b58900;">(</span><span style="color: #6c71c4;">3</span><span style="color: #b58900;">)</span>;
+<span class="linenr">27: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">Bowl</span> <span style="color: #268bd2;">bowl4</span> = new Bowl<span style="color: #b58900;">(</span><span style="color: #6c71c4;">4</span><span style="color: #b58900;">)</span>;
+<span class="linenr">28: </span>    <span style="color: #268bd2;">Cupboard</span><span style="color: #b58900;">(){</span>
+<span class="linenr">29: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Cupboard()"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">30: </span>        bowl4.f1<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">2</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">31: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">32: </span>    <span style="color: #b58900;">void</span> <span style="color: #268bd2;">f3</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">marker</span><span style="color: #b58900;">){</span>
+<span class="linenr">33: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"f3("</span> + marker + <span style="color: #2aa198;">")"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">34: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">35: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">Bowl</span> <span style="color: #268bd2;">bowl5</span> =new Bowl<span style="color: #b58900;">(</span><span style="color: #6c71c4;">5</span><span style="color: #b58900;">)</span>;
+<span class="linenr">36: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">37: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">StaticInitialization</span>
+<span class="linenr">38: </span><span style="color: #2aa198;">{</span>
+<span class="linenr">39: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
+<span class="linenr">40: </span>    <span style="color: #b58900;">{</span>
+<span id="coderef-print1" class="coderef-off"><span class="linenr">41: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Creating new Cupboard() in main"</span><span style="color: #268bd2;">)</span>;</span>
+<span id="coderef-Cupboard1" class="coderef-off"><span class="linenr">42: </span>        <span style="color: #b58900;">new</span> <span style="color: #268bd2;">Cupboard</span><span style="color: #268bd2;">()</span>;</span>
+<span id="coderef-print2" class="coderef-off"><span class="linenr">43: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Creating new Cupboard() in main"</span><span style="color: #268bd2;">)</span>;</span>
+<span id="coderef-Cupboard2" class="coderef-off"><span class="linenr">44: </span>        <span style="color: #b58900;">new</span> <span style="color: #268bd2;">Cupboard</span><span style="color: #268bd2;">()</span>;</span>
+<span class="linenr">45: </span>        table.f2<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">46: </span>        cupboard.f3<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">47: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">48: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">Table</span> <span style="color: #268bd2;">table</span> = new Table<span style="color: #b58900;">()</span>;
+<span class="linenr">49: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">Cupboard</span> <span style="color: #268bd2;">cupboard</span> = new Cupboard<span style="color: #b58900;">()</span>;
+<span class="linenr">50: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+
+<p>
+这段代码是我目前敲过的最长的 Java代码，其输出也最长，看输出:
+</p>
+<pre class="example">
+Bowl(1)
+Bowl(2)
+Table()
+f1(1)
+Bowl(4)
+Bowl(5)
+Bowl(3)
+Cupboard()
+f1(2)
+Creating new Cupboard() in main
+Bowl(3)
+Cupboard()
+f1(2)
+Creating new Cupboard() in main
+Bowl(3)
+Cupboard()
+f1(2)
+f2(1)
+f3(1)
+</pre>
+
+<p>
+让我们来仔细分析一下每一行的输出是怎么来的。通过 <code>Bowl</code> 我们可以知道初始化的顺序。当我们调用 <code>main()</code> 时，首先初始化的是 <code>StaticInitialization</code> 中的 <code>static</code> 成员，然后是 <code>non-static</code> 成员。在这个代码中是先初始化最后两行的 <code>table</code> 和 <code>cupboard</code> 。
+</p>
+
+<p>
+在初始化 <code>table</code> 过程中，生成了前四行输出。 具体过程是：先初始化 <code>Table</code> 的 <code>bowl1</code> 和 <code>bowl(2)</code> 然后调用构造函数 <code>Table()</code> 生成第三行第四行输出。
+</p>
+
+<p>
+在初始化 <code>cupboard</code> 过程中，生成了接下来的五行输出。具体过程是：先初始化 <code>bowl(4)</code> 和 <code>bowl(5)</code> 然后初始化 <code>bowl3</code> 最后调用 <code>Cupboard()</code> 构造函数。
+</p>
+
+<p>
+<code>table</code> 和 <code>cupboard</code> 初始化结束后， 接下来执行第 <a href="#coderef-print1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-print1');" onmouseout="CodeHighlightOff(this, 'coderef-print1');">41</a> 行打印了一句提示，然后执行第<a href="#coderef-Cupboard1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-Cupboard1');" onmouseout="CodeHighlightOff(this, 'coderef-Cupboard1');">42</a> 行，这个时候由于 <code>bowl4</code> 和 <code>bowl5</code> 已经被初始化了，所以只初始化了 <code>bowl3</code> 并调用了 <code>Cupboard()</code> 构造函数。
+</p>
+
+<p>
+然后执行第 <a href="#coderef-print2" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-print2');" onmouseout="CodeHighlightOff(this, 'coderef-print2');">43</a> 行，同样的只初始化了 <code>bowl3</code> 并调用了 <code>Cupboard()</code> 构造函数。
+</p>
+
+<p>
+最后调用 <code>table.f2(2)</code> 和 <code>cupboard.f3(1)</code> 生成最后两行输出。
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'zclspace';
-    
+
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
