@@ -2,11 +2,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>BRML第一章：概率推断</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="emacsun" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css" />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="pdf"  href="./BRMLch01.pdf"><img src="../../img/assets/pdf.png"></a>
@@ -86,9 +86,9 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. 贝叶斯法则</a></li>
-<li><a href="#orgheadline2">2. 概率推断</a></li>
-<li><a href="#orgheadline3">3. 先验概率，似然值和后验概率</a></li>
+<li><a href="#orgd2ee2c4">1. 贝叶斯法则</a></li>
+<li><a href="#orgee39b54">2. 概率推断</a></li>
+<li><a href="#org11e61e7">3. 先验概率，似然值和后验概率</a></li>
 </ul>
 </div>
 </div>
@@ -101,8 +101,8 @@ BRML的第一章主要复习了概率的基本知识，通过贝叶斯公式（�
 </p>
 
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> 贝叶斯法则</h2>
+<div id="outline-container-orgd2ee2c4" class="outline-2">
+<h2 id="orgd2ee2c4"><span class="section-number-2">1</span> 贝叶斯法则</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -128,8 +128,8 @@ BRML的第一章主要复习了概率的基本知识，通过贝叶斯公式（�
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> 概率推断</h2>
+<div id="outline-container-orgee39b54" class="outline-2">
+<h2 id="orgee39b54"><span class="section-number-2">2</span> 概率推断</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -183,9 +183,9 @@ p(KJ| Hamburtger Eater) &=& \frac{p(KJ,Hamburtger Eater)}{p(Hamburtger Eater)}\\
 
 <div class="instance">
 <p>
-再给一个异或门的例子，我们知道一个标准的异或门电路的逻辑关系满足表<a href="#orgtable1">1</a>:
+再给一个异或门的例子，我们知道一个标准的异或门电路的逻辑关系满足表<a href="#org321611b">1</a>:
 </p>
-<table id="orgtable1" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<table id="org321611b" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 1:</span> 异或门逻辑</caption>
 
 <colgroup>
@@ -234,9 +234,9 @@ p(KJ| Hamburtger Eater) &=& \frac{p(KJ,Hamburtger Eater)}{p(Hamburtger Eater)}\\
 </p>
 
 <p>
-但是考虑一个软判决输出的异或门逻辑,其逻辑关系如表<a href="#orgtable2">2</a>，我们假定\(A,B\)是独立的且\(p(A=1)=0.65,p(B=1)=0.77\)，那么求\(p(A=1|C=0)\)？
+但是考虑一个软判决输出的异或门逻辑,其逻辑关系如表<a href="#org6e49078">2</a>，我们假定\(A,B\)是独立的且\(p(A=1)=0.65,p(B=1)=0.77\)，那么求\(p(A=1|C=0)\)？
 </p>
-<table id="orgtable2" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<table id="org6e49078" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 2:</span> 异或门逻辑</caption>
 
 <colgroup>
@@ -307,8 +307,8 @@ p(A=0,C=0) &=&\sum_{B}p(A=0,B,C=0) \\
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> 先验概率，似然值和后验概率</h2>
+<div id="outline-container-org11e61e7" class="outline-2">
+<h2 id="org11e61e7"><span class="section-number-2">3</span> 先验概率，似然值和后验概率</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -373,7 +373,7 @@ p(t,s_{a},s_{b}) = \underbrace{p(t|s_{a},s_{b})}_{likelihood}\underbrace{p(s_{a}
 假设两个骰子是均匀的\(p(s_{a},s_{b})\)则\(p(s_{a},s_{b}) = p(s_{a})p(s_{b})\)其概率分布表格为：
 </p>
 
-<table id="orgtable3" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<table id="org43f70e0" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 3:</span> \(p(s_{a})p(s_{b})\)</caption>
 
 <colgroup>
@@ -468,7 +468,7 @@ p(t,s_{a},s_{b}) = \underbrace{p(t|s_{a},s_{b})}_{likelihood}\underbrace{p(s_{a}
 <p>
 由于骰子是均匀的则\(p(s_{a}) = p(s_{b}) = 1/6\)。另外，我们有\(p(t|s_{a},s_{b})\)，表格如下：
 </p>
-<table id="orgtable4" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<table id="orgad0e9a3" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 4:</span> \(p(t|s_{a},s_{b})\)</caption>
 
 <colgroup>
@@ -564,7 +564,11 @@ p(t,s_{a},s_{b}) = \underbrace{p(t|s_{a},s_{b})}_{likelihood}\underbrace{p(s_{a}
 后验概率 \(p(s_{a},s_{b}|t=9) = \frac{p(t=9|s_{a},s_{b})p(s_{a})p(s_{b})}{p(t=9)}\)，其中\[p(t=9) = \sum_{s_{a}s_{b}} p(t=9| s_{a},s_{b})p(s_{a})p(s_{b})\] 
 </p>
 
-<table id="orgtable5" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<p>
+综上我们可以得到后验概率表：
+</p>
+
+<table id="orgc2ca1e4" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 5:</span> \(p(s_{a},s_{b}|t=9)\)</caption>
 
 <colgroup>
@@ -656,10 +660,6 @@ p(t,s_{a},s_{b}) = \underbrace{p(t|s_{a},s_{b})}_{likelihood}\underbrace{p(s_{a}
 </tbody>
 </table>
 
-<p>
-综上我们可以得到后验概率表：
-</p>
-
 </div>
 </div>
 </div>
@@ -669,7 +669,7 @@ p(t,s_{a},s_{b}) = \underbrace{p(t|s_{a},s_{b})}_{likelihood}\underbrace{p(s_{a}
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'zclspace';
-    
+
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
