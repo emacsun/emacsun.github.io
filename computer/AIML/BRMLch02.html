@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>BRML第二章：图论简介</title>
+<title>图论简介</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="emacsun" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css" />
@@ -81,21 +81,22 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">BRML第二章：图论简介</h1>
+<h1 class="title">图论简介</h1>
 <div id="table-of-contents">
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org210c035">1. 图</a></li>
-<li><a href="#org34a7927">2. 用矩阵表示图</a></li>
+<li><a href="#orgd75fc42">1. 图</a></li>
+<li><a href="#orgc84968c">2. 用矩阵表示图</a></li>
 </ul>
 </div>
 </div>
+<p>
+本文非常简单的介绍一下与图有关的知识。在以后做贝叶斯网络，置信网络和马尔科夫网络分析的时候这些基本的概念将会被赋予具体的意义。图在机器学习里最重要的应用可能就是其矩阵表示。另外赋予了特殊意义的图在解决问题的时候抽象问题图形化，也方便分析问题，编写代码实现解决方案。对我而言，目前基于消息传递算法的LDPC译码，基于BCJR的Turbo码译码都用到了图这个强有力的工具。
+</p>
 
-
-
-<div id="outline-container-org210c035" class="outline-2">
-<h2 id="org210c035"><span class="section-number-2">1</span> 图</h2>
+<div id="outline-container-orgd75fc42" class="outline-2">
+<h2 id="orgd75fc42"><span class="section-number-2">1</span> 图</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -112,7 +113,7 @@ for the JavaScript code in this tag.
 
 </div>
 
-<div id="orgaa2446c" class="figure">
+<div id="org68cde83" class="figure">
 <p><img src="../../img/20170315fig2dot2.png" alt="20170315fig2dot2.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> 有向图和无向图</p>
@@ -120,7 +121,7 @@ for the JavaScript code in this tag.
 
 <div class="definition">
 <p>
-一个有向环是指从一个节点出发经过若干条有向路径后又回到该点的路径，比如\(a\mapsto b\mapsto \ldots \mapsto z \mapsto a\). 一个无向环则是不考虑方向的环。例如图<a href="#orgaa2446c">1</a> 中图b的\(1-2-4-3-1\)只能构成一个无向环，但不能构成有向环。弦是一个无向环中链接两个不相邻点的边，比如图<a href="#orgaa2446c">1</a> 图a的\(2-3\)构成了\(1-2-4-3-2-1\)的一条弦。
+一个有向环是指从一个节点出发经过若干条有向路径后又回到该点的路径，比如\(a\mapsto b\mapsto \ldots \mapsto z \mapsto a\). 一个无向环则是不考虑方向的环。例如图<a href="#org68cde83">1</a> 中图b的\(1-2-4-3-1\)只能构成一个无向环，但不能构成有向环。弦是一个无向环中链接两个不相邻点的边，比如图<a href="#org68cde83">1</a> 图a的\(2-3\)构成了\(1-2-4-3-2-1\)的一条弦。
 </p>
 
 </div>
@@ -133,14 +134,14 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="org7961327" class="figure">
+<div id="org0d12884" class="figure">
 <p><img src="../../img/20170315DAG.png" alt="20170315DAG.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> 有向无环图</p>
 </div>
 
 <p>
-在图<a href="#org7961327">2</a> 中， \(x_{4}\)的父节点是\(pa(x_{4}) = \{x_{1},x_{2},x_{3}\}\)，\(x_{4}\)的子节点\(ch(x_{4}) = \{x_{5},x_{6}\}\)，一个点的family包含这个点本身和它的parents。一个点的Markov blanket包含它的parents，children以及children的parents，比如\(x_{4}\)的Markov blanket是\(x_{1},x_{2},x_{3},x_{5},x_{6},x_{7}\) 
+在图<a href="#org0d12884">2</a> 中， \(x_{4}\)的父节点是\(pa(x_{4}) = \{x_{1},x_{2},x_{3}\}\)，\(x_{4}\)的子节点\(ch(x_{4}) = \{x_{5},x_{6}\}\)，一个点的family包含这个点本身和它的parents。一个点的Markov blanket包含它的parents，children以及children的parents，比如\(x_{4}\)的Markov blanket是\(x_{1},x_{2},x_{3},x_{5},x_{6},x_{7}\) 
 </p>
 
 <p>
@@ -152,14 +153,14 @@ DAG在有大量随机变量建模的场景中广泛使用，特别是置信网�
 给定一个无向图，一个clique死一个全连接的节点子集，即一个clique中的所有节点都是邻居。
 </p>
 
-<div id="org2583ca7" class="figure">
+<div id="org770f443" class="figure">
 <p><img src="../../img/20170315clique.png" alt="20170315clique.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 3:</span> clique</p>
 </div>
 
 <p>
-比如图<a href="#org2583ca7">3</a>中有两个最大clique \(\mathcal{C}_{1} = \{A,B,C,D\},\mathcal{C}_{2} = \{B,C,E\}\) 尽管\(A,B,C\)是全连接的但是这个集合不是最大clique,因为有更大的clique包含它。不是最大的clique又叫做cliquo
+比如图<a href="#org770f443">3</a>中有两个最大clique \(\mathcal{C}_{1} = \{A,B,C,D\},\mathcal{C}_{2} = \{B,C,E\}\) 尽管\(A,B,C\)是全连接的但是这个集合不是最大clique,因为有更大的clique包含它。不是最大的clique又叫做cliquo
 </p>
 
 </div>
@@ -170,15 +171,15 @@ DAG在有大量随机变量建模的场景中广泛使用，特别是置信网�
 </div>
 </div>
 
-<div id="outline-container-org34a7927" class="outline-2">
-<h2 id="org34a7927"><span class="section-number-2">2</span> 用矩阵表示图</h2>
+<div id="outline-container-orgc84968c" class="outline-2">
+<h2 id="orgc84968c"><span class="section-number-2">2</span> 用矩阵表示图</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
 </p>
 
 <p>
-机器学习的实质是实现概率推断，在这个过程中概率图模型是一个有力的工具。我们要对图进行数学表示，一种方便的表示方法是矩阵。矩阵是一种方便计算机操作的数学模型。比如图<a href="#orgaa2446c">1</a>a中的矩阵就可以表示为：
+机器学习的实质是实现概率推断，在这个过程中概率图模型是一个有力的工具。我们要对图进行数学表示，一种方便的表示方法是矩阵。矩阵是一种方便计算机操作的数学模型。比如图<a href="#org68cde83">1</a>a中的矩阵就可以表示为：
 </p>
 \begin{equation}
 \label{eq:12}
@@ -192,7 +193,7 @@ DAG在有大量随机变量建模的场景中广泛使用，特别是置信网�
 \end{equation}
 
 <p>
-其中\(A_{ij} = 1\)表示第\(i\)个节点和第\(j\)个节点直接有一条边。\(0\)表示第\(i\)个节点和第\(j\)个节点之间没有边。一个有向图<a href="#orgaa2446c">1</a>b的矩阵表示为：
+其中\(A_{ij} = 1\)表示第\(i\)个节点和第\(j\)个节点直接有一条边。\(0\)表示第\(i\)个节点和第\(j\)个节点之间没有边。一个有向图<a href="#org68cde83">1</a>b的矩阵表示为：
 </p>
 \begin{equation}
 \label{eq:1}

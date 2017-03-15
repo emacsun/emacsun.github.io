@@ -64,21 +64,21 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7ba0bb4">1. 简介</a></li>
-<li><a href="#orgfa8717a">2. 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></a></li>
-<li><a href="#org7ad263e">3. 从 <code>constructor</code> 的定义引入函数重载</a></li>
-<li><a href="#org8303b7b">4. 默认的 <code>constructor</code></a></li>
-<li><a href="#org3eaed89">5. <code>this</code> 的作用</a></li>
-<li><a href="#org27f6dec">6. 理解 <code>static</code></a></li>
-<li><a href="#orgd1f895f">7. <code>class</code> 成员初始化</a></li>
-<li><a href="#org05729c0">8. 初始化顺序</a></li>
-<li><a href="#orgb5c9976">9. <code>static</code> 类型的初始化</a></li>
+<li><a href="#orge244600">1. 简介</a></li>
+<li><a href="#org1c452f6">2. 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></a></li>
+<li><a href="#org67ffa96">3. 从 <code>constructor</code> 的定义引入函数重载</a></li>
+<li><a href="#org1b5c189">4. 默认的 <code>constructor</code></a></li>
+<li><a href="#org46f2767">5. <code>this</code> 的作用</a></li>
+<li><a href="#org0da4977">6. 理解 <code>static</code></a></li>
+<li><a href="#orge35bef3">7. <code>class</code> 成员初始化</a></li>
+<li><a href="#orgeb11cf7">8. 初始化顺序</a></li>
+<li><a href="#orge602ee0">9. <code>static</code> 类型的初始化</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7ba0bb4" class="outline-2">
-<h2 id="org7ba0bb4"><span class="section-number-2">1</span> 简介</h2>
+<div id="outline-container-orge244600" class="outline-2">
+<h2 id="orge244600"><span class="section-number-2">1</span> 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <b>Initialization and Cleanup</b> 这一章首先讲述类初始化的一些操作，顺带初始化操作阐述了方法重载。然后讲述了Java的Garbage Collector机制。其中关于 <code>static</code> 初始化的例子最为令人印象深刻，我把那个“橱柜”的代码做了逐行解析，学完之后感觉非常顺畅。
@@ -86,8 +86,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgfa8717a" class="outline-2">
-<h2 id="orgfa8717a"><span class="section-number-2">2</span> 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></h2>
+<div id="outline-container-org1c452f6" class="outline-2">
+<h2 id="org1c452f6"><span class="section-number-2">2</span> 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -178,8 +178,8 @@ null
 </div>
 </div>
 
-<div id="outline-container-org7ad263e" class="outline-2">
-<h2 id="org7ad263e"><span class="section-number-2">3</span> 从 <code>constructor</code> 的定义引入函数重载</h2>
+<div id="outline-container-org67ffa96" class="outline-2">
+<h2 id="org67ffa96"><span class="section-number-2">3</span> 从 <code>constructor</code> 的定义引入函数重载</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -301,8 +301,8 @@ double: f1(double) f2(double) f3(double) f4(double) f5(double) f6(double) f7(dou
 </pre>
 </div>
 </div>
-<div id="outline-container-org8303b7b" class="outline-2">
-<h2 id="org8303b7b"><span class="section-number-2">4</span> 默认的 <code>constructor</code></h2>
+<div id="outline-container-org1b5c189" class="outline-2">
+<h2 id="org1b5c189"><span class="section-number-2">4</span> 默认的 <code>constructor</code></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -406,8 +406,8 @@ with double d
 </p>
 </div>
 </div>
-<div id="outline-container-org3eaed89" class="outline-2">
-<h2 id="org3eaed89"><span class="section-number-2">5</span> <code>this</code> 的作用</h2>
+<div id="outline-container-org46f2767" class="outline-2">
+<h2 id="org46f2767"><span class="section-number-2">5</span> <code>this</code> 的作用</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -483,8 +483,8 @@ i = 2
 </div>
 
 
-<div id="outline-container-org27f6dec" class="outline-2">
-<h2 id="org27f6dec"><span class="section-number-2">6</span> 理解 <code>static</code></h2>
+<div id="outline-container-org0da4977" class="outline-2">
+<h2 id="org0da4977"><span class="section-number-2">6</span> 理解 <code>static</code></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 
@@ -499,8 +499,8 @@ i = 2
 </p>
 </div>
 </div>
-<div id="outline-container-orgd1f895f" class="outline-2">
-<h2 id="orgd1f895f"><span class="section-number-2">7</span> <code>class</code> 成员初始化</h2>
+<div id="outline-container-orge35bef3" class="outline-2">
+<h2 id="orge35bef3"><span class="section-number-2">7</span> <code>class</code> 成员初始化</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 
@@ -558,8 +558,8 @@ InitialValues     null
 </p>
 </div>
 </div>
-<div id="outline-container-org05729c0" class="outline-2">
-<h2 id="org05729c0"><span class="section-number-2">8</span> 初始化顺序</h2>
+<div id="outline-container-orgeb11cf7" class="outline-2">
+<h2 id="orgeb11cf7"><span class="section-number-2">8</span> 初始化顺序</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 
@@ -621,8 +621,8 @@ f()
 </div>
 </div>
 
-<div id="outline-container-orgb5c9976" class="outline-2">
-<h2 id="orgb5c9976"><span class="section-number-2">9</span> <code>static</code> 类型的初始化</h2>
+<div id="outline-container-orge602ee0" class="outline-2">
+<h2 id="orge602ee0"><span class="section-number-2">9</span> <code>static</code> 类型的初始化</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 
