@@ -12,7 +12,7 @@
 <meta name="keywords" content="communication algebra math" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
-<a id="pdf"  href="./ECC02.pdf"><img src="../../img/assets/pdf.png"></a>
+<a id="pdf"  href="./Capacity-of-multi-antenna-gaussian-channels.pdf"><img src="../../img/assets/pdf.png"></a>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -89,19 +89,19 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf883d21">1. 系统模型</a></li>
-<li><a href="#org298e2c1">2. 具有固定传输函数的确定高斯信道</a>
+<li><a href="#orgecb7760">1. 系统模型</a></li>
+<li><a href="#org6b103ea">2. 具有固定传输函数的确定高斯信道</a>
 <ul>
-<li><a href="#org26d7022">2.1. Error Exponents</a></li>
-<li><a href="#orgc60816b">2.2. Conclusion</a></li>
+<li><a href="#orgba6dd14">2.1. Error Exponents</a></li>
+<li><a href="#orgc9ec65b">2.2. Conclusion</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf883d21" class="outline-2">
-<h2 id="orgf883d21"><span class="section-number-2">1</span> 系统模型</h2>
+<div id="outline-container-orgecb7760" class="outline-2">
+<h2 id="orgecb7760"><span class="section-number-2">1</span> 系统模型</h2>
 <div class="outline-text-2" id="text-1">
 \begin{equation}
   \label{eq:20120322y}
@@ -229,8 +229,8 @@ Let \(A=\mathcal{E}[\mathbf{xx}^{T}]\) and \(B=\mathcal{E}[\mathbf{yy}^{T}]\) . 
 </div>
 </div>
 
-<div id="outline-container-org298e2c1" class="outline-2">
-<h2 id="org298e2c1"><span class="section-number-2">2</span> 具有固定传输函数的确定高斯信道</h2>
+<div id="outline-container-org6b103ea" class="outline-2">
+<h2 id="org6b103ea"><span class="section-number-2">2</span> 具有固定传输函数的确定高斯信道</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 We will first derive an expression for the capacity \(C(H,P)\) of this channel, where \(H\in \mathbb{C}^{r\times t}\) . By the SVD theorem \(\mathbf{y} = H\mathbf{x}+ \mathbf{n}\) can be written as \(\mathbf{y}=UDV^{T}\mathbf{x}+\mathbf{n}\) , where \(D\in \mathbb{R}^{r\times t}\) .Let \(\tilde{\mathbf{y}} = U^{T}\mathbf{y}, \tilde{\mathbf{x}} = V^{T}\mathbf{x}, \tilde{\mathbf{n}} = U^{T}\mathbf{n}\) .Then, \(\tilde{\mathbf{y}} = D\tilde{\mathbf{x}} +\tilde{\mathbf{n}}\) . Since \(H\) is of rank at most \(\min\{r,t\}\) , at most  \(\min\{r,t\}\) of the singular values of it are non-zero. Denoting these by \(\lambda_i^{1/2},i = 1,2,\dots, \min\{r,t\}\) , we can write the matrix form of \(\tilde{\mathbf{y}} = D\tilde{\mathbf{x}} +\tilde{\mathbf{n}}\) component-wise, to get \(\tilde{y}_i = \lambda_{i}^{1/2}\tilde{x}_{i}+ \tilde{n}_{i}, \quad 1\le i \le  \min\{r,t\}\) , and the rest of the components of \(\tilde{y}\) (if any)are equal to the corresponding components of \(\tilde{n}\) . We thus see that \(\tilde{y}_{i}\) for \(i>  \min\{r,t\}\) is independent of the transmitted signal and that \(\tilde{x}_i\) for \(i> \min\{r,t\}\) don't play any role. To maximize the mutual information, we need to choose \(\{ \tilde{x}_i:1\le i \le  \min\{r,t\}\) to be independent, with each \(\tilde{x}_i\) having independent Gaussian, zero-mean real and imaginary parts. The variances need to be chosen via"water-filling" as
@@ -267,8 +267,8 @@ and thus maximizing \(\mathcal{I}(\mathbf{x};\mathbf{y})\) is equivalent to maxi
 where the second equality follows from the determinant identity \(\det(I+AB) = \det(I+BA)\) , and it only remains to choose \(Q\) to maximize this quantity subject to the constraints \(tr(Q)\le P\) and that \(Q\) is non-negative definite. Let \(\log\det(I+ HQH^{T})= \Psi(Q,H)\)
 </p>
 </div>
-<div id="outline-container-org26d7022" class="outline-3">
-<h3 id="org26d7022"><span class="section-number-3">2.1</span> Error Exponents</h3>
+<div id="outline-container-orgba6dd14" class="outline-3">
+<h3 id="orgba6dd14"><span class="section-number-3">2.1</span> Error Exponents</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 仅仅知道信道容量是不够的，通常还需要知道如何才能逼近这个容量，或者说，逼近这个容量的难度如何。于是，提出错误指数函数的概念给出差错概率一个上限。随机编码的上限是：
@@ -301,8 +301,8 @@ In our case \(p(y|x)=\det(\pi I_r)^{-1} \exp(-(y-x)^{T}(y-x))\) . If we choose \
 </div>
 </div>
 
-<div id="outline-container-orgc60816b" class="outline-3">
-<h3 id="orgc60816b"><span class="section-number-3">2.2</span> Conclusion</h3>
+<div id="outline-container-orgc9ec65b" class="outline-3">
+<h3 id="orgc9ec65b"><span class="section-number-3">2.2</span> Conclusion</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 The use of multiple antennas will greatly increase the achievable rates on fading channels if the channel parameters can be estimated at the reciver and if the path gains between different antenna pairs behave independently. The second of these requirements can be met with relative ease and is somewhat technical in nature. The first requirement is a rather tall order, and can be justified in certain communication scenarios and not in others. Since the original writing of this monograph in late 1994 and early 1995, there has been some work in which the assumption of the availability of channel state information is replaced with the assumption of a slowly varying channel.
