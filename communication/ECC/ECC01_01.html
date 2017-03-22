@@ -2,14 +2,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>通信与存储系统中的可靠编码</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="zcl.space" />
-<meta  name="description" content="本文描述卷积编码和viterbi译码原理。"
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<meta name="description" content="本文描述卷积编码和viterbi译码原理。"
  />
-<meta  name="keywords" content="communication viterbi ECC" />
+<meta name="keywords" content="communication viterbi ECC" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="pdf"  href="./ECC01_01.pdf"><img src="../../img/assets/pdf.png"></a>
@@ -89,17 +89,17 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. 引言</a></li>
-<li><a href="#orgheadline2">2. 码的类型</a></li>
-<li><a href="#orgheadline3">3. 调制和编码</a></li>
-<li><a href="#orgheadline4">4. 最大似然译码</a></li>
+<li><a href="#org5ac87b8">1. 引言</a></li>
+<li><a href="#org8c381f7">2. 码的类型</a></li>
+<li><a href="#orgdd12ef5">3. 调制和编码</a></li>
+<li><a href="#org8cb4464">4. 最大似然译码</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> 引言</h2>
+<div id="outline-container-org5ac87b8" class="outline-2">
+<h2 id="org5ac87b8"><span class="section-number-2">1</span> 引言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -114,11 +114,11 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-数字信息的传输和存储有很多相似之处。他们都涉及从信息源头到目的地的数据搬移。一个典型的数据传输系统可以如图<a href="#orgparagraph1">1</a>所示。
+数字信息的传输和存储有很多相似之处。他们都涉及从信息源头到目的地的数据搬移。一个典型的数据传输系统可以如图<a href="#org0da8728">1</a>所示。
 </p>
 
 
-<div id="orgparagraph1" class="figure">
+<div id="org0da8728" class="figure">
 <p><img src="../../img/20161111figure01_01.png" alt="20161111figure01_01.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> 典型数字传输（存储）系统框图</p>
@@ -126,7 +126,7 @@ for the JavaScript code in this tag.
 
 
 <p>
-在图<a href="#orgparagraph1">1</a> 中，information source是指信源，信源可以是一个人也可以是一个数字终端。信源发出需要接收端接收的信息。承载信息的可以使连续的波形也可以是离散的符号。信源编码器把信源的输出变成一串二进制序列。我们把这串序列用 \(\mathbf{u}\) 表示。信道编码器有两个作用：
+在图<a href="#org0da8728">1</a> 中，information source是指信源，信源可以是一个人也可以是一个数字终端。信源发出需要接收端接收的信息。承载信息的可以使连续的波形也可以是离散的符号。信源编码器把信源的输出变成一串二进制序列。我们把这串序列用 \(\mathbf{u}\) 表示。信道编码器有两个作用：
 </p>
 <ol class="org-ol">
 <li>最小化表示信源序列的比特数。</li>
@@ -134,7 +134,7 @@ for the JavaScript code in this tag.
 </ol>
 
 <p>
-信源编码不是关注的重点。我只关注信道编码，也就是图 <a href="#orgparagraph1">1</a>中的channel encoder和channel decoder。信道编码把信息序列 \(\mathbf{u}\) 转换成一个离散序列 \(\mathbf{v}\) ,我们称 \(\mathbf{v}\) 为码字。在大多数情况下， \(\mathbf{v}\) 也是一个二进制序列（有时候 \(\mathbf{v}\)也可以是非二进制序列）。本书的一个重要关注点就是设计一个好的信道编码器用来对抗信道中的噪声。
+信源编码不是关注的重点。我只关注信道编码，也就是图 <a href="#org0da8728">1</a>中的channel encoder和channel decoder。信道编码把信息序列 \(\mathbf{u}\) 转换成一个离散序列 \(\mathbf{v}\) ,我们称 \(\mathbf{v}\) 为码字。在大多数情况下， \(\mathbf{v}\) 也是一个二进制序列（有时候 \(\mathbf{v}\)也可以是非二进制序列）。本书的一个重要关注点就是设计一个好的信道编码器用来对抗信道中的噪声。
 </p>
 
 <p>
@@ -146,10 +146,10 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-本书的重点在于设计信道编解码系统，所以，图<a href="#orgparagraph1">1</a> 可以简化为图<a href="#orgparagraph2">2</a>
+本书的重点在于设计信道编解码系统，所以，图<a href="#org0da8728">1</a> 可以简化为图<a href="#org004b426">2</a>
 </p>
 
-<div id="orgparagraph2" class="figure">
+<div id="org004b426" class="figure">
 <p><img src="../../img/20161112figure01_02.png" alt="20161112figure01_02.png" width="400" align="centerfig:20161111figure01_01fig:20161111figure01_01" /> 
 </p>
 <p><span class="figure-number">图 2:</span> 简化的编解码系统</p>
@@ -175,8 +175,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> 码的类型</h2>
+<div id="outline-container-org8c381f7" class="outline-2">
+<h2 id="org8c381f7"><span class="section-number-2">2</span> 码的类型</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -191,10 +191,10 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-在一个二进制码中，每一个码字 \(\mathbf{v}\)也是二进制的。为了让编码系统有效，必须保证每一个信息序列对应一个编码码字，也就是说 \(k \leq n\)，即 \(R \leq 1\)  。 当 \(k < n\) 时，有 \(n-k\) 个冗余比特产生，这些冗余比特赋予线性分组码对抗噪声干扰的能力。对于一个固定的码率 \(R\)， 可以通过增加码长添加更多的冗余比特。比如对于 \(R=1/2\) ，可以是 \(100/200\) 也可以是 \(1000/2000\) 。越长的码，添加的冗余比特越多。图<a href="#orgparagraph3">3</a>给出了一个 \((7,4)\) 线性分组码的所有码字。
+在一个二进制码中，每一个码字 \(\mathbf{v}\)也是二进制的。为了让编码系统有效，必须保证每一个信息序列对应一个编码码字，也就是说 \(k \leq n\)，即 \(R \leq 1\)  。 当 \(k < n\) 时，有 \(n-k\) 个冗余比特产生，这些冗余比特赋予线性分组码对抗噪声干扰的能力。对于一个固定的码率 \(R\)， 可以通过增加码长添加更多的冗余比特。比如对于 \(R=1/2\) ，可以是 \(100/200\) 也可以是 \(1000/2000\) 。越长的码，添加的冗余比特越多。图<a href="#org800c56f">3</a>给出了一个 \((7,4)\) 线性分组码的所有码字。
 </p>
 
-<div id="orgparagraph3" class="figure">
+<div id="org800c56f" class="figure">
 <p><img src="../../img/20161112tab01_01.png" alt="20161112tab01_01.png" width="400" align="centerfig:20161111figure01_01fig:20161111figure01_01" />
 </p>
 <p><span class="figure-number">图 3:</span> (7,4)线性分组码的码字构成</p>
@@ -206,23 +206,23 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-二进制卷积码也是通过添加冗余比特来对抗信道噪声，不同的是，二进制卷积码通过增大约束长度来实现更多冗余添加。通常我们可以保持 \(k\) 和 \(n\) 不变，增加约束长度来实现冗余比特的添加。如何利用卷积码的约束长度是工程实现时需要重点考虑的问题。一个 \(k=1\)， \(n=2\) ， \(m=2\) 的卷积码如图<a href="#orgparagraph4">4</a>所示。
+二进制卷积码也是通过添加冗余比特来对抗信道噪声，不同的是，二进制卷积码通过增大约束长度来实现更多冗余添加。通常我们可以保持 \(k\) 和 \(n\) 不变，增加约束长度来实现冗余比特的添加。如何利用卷积码的约束长度是工程实现时需要重点考虑的问题。一个 \(k=1\)， \(n=2\) ， \(m=2\) 的卷积码如图<a href="#orgc04fab1">4</a>所示。
 </p>
 
-<div id="orgparagraph4" class="figure">
+<div id="orgc04fab1" class="figure">
 <p><img src="../../img/20161113fig01_03.png" alt="20161113fig01_03.png" width="400" align="centerfig:20161111figure01_01fig:20161111figure01_01" />
 </p>
 <p><span class="figure-number">图 4:</span> \(k=1\)， \(n=2\) ， \(m=2\) 的卷积码</p>
 </div>
 
 <p>
-对于图<a href="#orgparagraph4">4</a> 所示的编码器，假设输入为 \(\mathbf{u} = 1101000\cdots \) (左边的信息比特最早进入编码器)， 假设编码器上边的输出是第一个输出比特，下面的输出是第二个编码比特，则 \(\mathbf{u}\) 对应的输出
+对于图<a href="#orgc04fab1">4</a> 所示的编码器，假设输入为 \(\mathbf{u} = 1101000\cdots \) (左边的信息比特最早进入编码器)， 假设编码器上边的输出是第一个输出比特，下面的输出是第二个编码比特，则 \(\mathbf{u}\) 对应的输出
 为 \(\mathbf{v} = (11,10,10,00,01,11,00,00,00,\cdots)\)
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> 调制和编码</h2>
+<div id="outline-container-orgdd12ef5" class="outline-2">
+<h2 id="orgdd12ef5"><span class="section-number-2">3</span> 调制和编码</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -272,7 +272,7 @@ y = \int_{0}^{T}r(t) \sqrt{\frac{2E_{s}}{T}}\cos{2\pi f_{0}t dt}
 </ol>
 
 
-<div id="orgparagraph5" class="figure">
+<div id="org81bd61d" class="figure">
 <p><img src="../../img/20161113fig01_06a.png" alt="20161113fig01_06a.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 5:</span> BSC信道模型</p>
@@ -313,19 +313,19 @@ p(y|x=1)&=& \frac{1}{\sqrt{\pi N_{0}}} e^{-\frac{(y-\sqrt{E_{s}})^{2}}{N_{0}}}
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> 最大似然译码</h2>
+<div id="outline-container-org8cb4464" class="outline-2">
+<h2 id="org8cb4464"><span class="section-number-2">4</span> 最大似然译码</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
 </p>
 
 <p>
-AWGN信道下的编码系统如图<a href="#orgparagraph6">6</a> 所示。
+AWGN信道下的编码系统如图<a href="#org617851d">6</a> 所示。
 </p>
 
 
-<div id="orgparagraph6" class="figure">
+<div id="org617851d" class="figure">
 <p><img src="../../img/20161114fig01_07.png" alt="20161114fig01_07.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 6:</span> AWGN信道下的编码系统</p>
@@ -397,7 +397,7 @@ P(\mathbf{r}|\mathbf{v}) = \prod_{i} P(r_{i}| v_{i})
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'zclspace';
-    
+
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

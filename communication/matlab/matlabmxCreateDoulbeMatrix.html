@@ -2,14 +2,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Matlab与C混合编程API之mxCreateDoubleMatrix</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="zcl.space" />
-<meta  name="description" content="mxCreateDoubleMatrix创建二维双精度浮点数组"
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<meta name="description" content="mxCreateDoubleMatrix创建二维双精度浮点数组"
  />
-<meta  name="keywords" content="matlab communication simulation C" />
+<meta name="keywords" content="matlab communication simulation C" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="pdf"  href="./matlabmxCreateDoulbeMatrix.pdf"><img src="../../img/assets/pdf.png"></a>
@@ -67,20 +67,20 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. 引言</a></li>
-<li><a href="#orgheadline2">2. 调用语法</a></li>
-<li><a href="#orgheadline3">3. 输入输出参数</a></li>
-<li><a href="#orgheadline4">4. 功能描述</a></li>
-<li><a href="#orgheadline5">5. 一个例子</a></li>
-<li><a href="#orgheadline6">6. 另一个例子</a></li>
-<li><a href="#orgheadline7">7. <code>mxCreateDoubleScalar</code></a></li>
-<li><a href="#orgheadline8">8. 尾声</a></li>
+<li><a href="#org6863ccb">1. 引言</a></li>
+<li><a href="#org9d2f43d">2. 调用语法</a></li>
+<li><a href="#org7748e57">3. 输入输出参数</a></li>
+<li><a href="#orge55c1ad">4. 功能描述</a></li>
+<li><a href="#org64160e3">5. 一个例子</a></li>
+<li><a href="#orgae4739d">6. 另一个例子</a></li>
+<li><a href="#orga3db293">7. <code>mxCreateDoubleScalar</code></a></li>
+<li><a href="#org7c21148">8. 尾声</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> 引言</h2>
+<div id="outline-container-org6863ccb" class="outline-2">
+<h2 id="org6863ccb"><span class="section-number-2">1</span> 引言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -92,8 +92,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> 调用语法</h2>
+<div id="outline-container-org9d2f43d" class="outline-2">
+<h2 id="org9d2f43d"><span class="section-number-2">2</span> 调用语法</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -103,7 +103,6 @@ for the JavaScript code in this tag.
 在C文件中，调用 <code>mxCreateDoubleMatrix</code> 的语法为：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-c"><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">"matrix.h"</span>
 mxArray *mxCreateDoubleMatrix<span style="color: #2aa198;">(</span><span style="color: #b58900;">mwSize</span> <span style="color: #268bd2;">m</span>, <span style="color: #b58900;">mwSize</span> <span style="color: #268bd2;">n</span>,
   <span style="color: #b58900;">mxComplexity</span> <span style="color: #268bd2;">ComplexFlag</span><span style="color: #2aa198;">)</span>;
@@ -112,17 +111,17 @@ mxArray *mxCreateDoubleMatrix<span style="color: #2aa198;">(</span><span style="
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> 输入输出参数</h2>
+<div id="outline-container-org7748e57" class="outline-2">
+<h2 id="org7748e57"><span class="section-number-2">3</span> 输入输出参数</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
 </p>
 
 <p>
-输入参数如表<a href="#orgtable1">1</a>所示
+输入参数如表<a href="#org2e0dbcd">1</a>所示
 </p>
-<table id="orgtable1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org2e0dbcd" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">表 1:</span> mxCreateDoubleMatrix输入输出参数表</caption>
 
 <colgroup>
@@ -176,8 +175,8 @@ mxArray *mxCreateDoubleMatrix<span style="color: #2aa198;">(</span><span style="
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> 功能描述</h2>
+<div id="outline-container-orge55c1ad" class="outline-2">
+<h2 id="orge55c1ad"><span class="section-number-2">4</span> 功能描述</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -193,8 +192,8 @@ mxArray *mxCreateDoubleMatrix<span style="color: #2aa198;">(</span><span style="
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">5</span> 一个例子</h2>
+<div id="outline-container-org64160e3" class="outline-2">
+<h2 id="org64160e3"><span class="section-number-2">5</span> 一个例子</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -204,7 +203,6 @@ mxArray *mxCreateDoubleMatrix<span style="color: #2aa198;">(</span><span style="
 举一个很简单的例子，写一个函数返回一个实数乘以2的值。这个例子很简单，但是包含了matlab到C之间互传数据的过程。
 </p>
 <div class="org-src-container">
-
 <pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">"mex.h"</span>
 <span class="linenr"> 2: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">timestwo</span><span style="color: #2aa198;">(</span><span style="color: #b58900;">double</span> <span style="color: #268bd2;">y</span><span style="color: #b58900;">[]</span>, <span style="color: #b58900;">double</span> <span style="color: #268bd2;">x</span><span style="color: #b58900;">[]</span><span style="color: #2aa198;">)</span>
 <span class="linenr"> 3: </span><span style="color: #2aa198;">{</span>
@@ -259,8 +257,8 @@ mxArray *mxCreateDoubleMatrix<span style="color: #2aa198;">(</span><span style="
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">6</span> 另一个例子</h2>
+<div id="outline-container-orgae4739d" class="outline-2">
+<h2 id="orgae4739d"><span class="section-number-2">6</span> 另一个例子</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 
@@ -271,7 +269,6 @@ mxArray *mxCreateDoubleMatrix<span style="color: #2aa198;">(</span><span style="
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">"mex.h"</span>
 <span class="linenr"> 2: </span><span style="color: #b58900;">void</span> <span style="color: #268bd2;">xtimesy</span><span style="color: #2aa198;">(</span><span style="color: #b58900;">double</span> <span style="color: #268bd2;">x</span>, <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">y</span>,
 <span class="linenr"> 3: </span>       <span style="color: #b58900;">double</span> *<span style="color: #268bd2;">z</span>, <span style="color: #b58900;">size_t</span> <span style="color: #268bd2;">m</span>, <span style="color: #b58900;">size_t</span> <span style="color: #268bd2;">n</span><span style="color: #2aa198;">)</span>
@@ -348,7 +345,6 @@ mxArray *mxCreateDoubleMatrix<span style="color: #2aa198;">(</span><span style="
 本例的第2-13行完成了标量乘以矩阵的c函数。在桥梁函数中，matlab传入的矩阵 <code>y</code> 体现为指向矩阵 <code>y</code> 的第一个元素的地址。这个通过第52行代码实现。
 </p>
 <div class="org-src-container">
-
 <pre class="src src-c">y = mxGetPr<span style="color: #2aa198;">(</span>prhs<span style="color: #b58900;">[</span><span style="color: #6c71c4;">1</span><span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>;
 </pre>
 </div>
@@ -363,8 +359,8 @@ mxArray *mxCreateDoubleMatrix<span style="color: #2aa198;">(</span><span style="
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">7</span> <code>mxCreateDoubleScalar</code></h2>
+<div id="outline-container-orga3db293" class="outline-2">
+<h2 id="orga3db293"><span class="section-number-2">7</span> <code>mxCreateDoubleScalar</code></h2>
 <div class="outline-text-2" id="text-7">
 <p>
 
@@ -374,7 +370,6 @@ mxArray *mxCreateDoubleMatrix<span style="color: #2aa198;">(</span><span style="
 既然介绍了 <code>mxCreateDoulbeMatrix</code>  ，就顺带提一下另一个API <code>mxCreateDoubleScalar</code> 。这个API是 <code>mxCreateDoulbeMatrix</code> 的特殊形式，其创建指向一个double标量的指针，并初始化。其语法为：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-c">pa = mxCreateDoubleScalar<span style="color: #2aa198;">(</span>value<span style="color: #2aa198;">)</span>;
 </pre>
 </div>
@@ -386,7 +381,6 @@ pa是个地址指向一个doulbe值，大小为 <code>value</code> 。
 用 <code>mxCreateDoulbeMatrix</code> 完成就是：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-c">pa = mxCreateDoubleMatrix<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">1</span>, mxREAL<span style="color: #2aa198;">)</span>;
 *mxGetPr<span style="color: #2aa198;">(</span>pa<span style="color: #2aa198;">)</span> = value;
 </pre>
@@ -397,8 +391,8 @@ pa是个地址指向一个doulbe值，大小为 <code>value</code> 。
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8"><span class="section-number-2">8</span> 尾声</h2>
+<div id="outline-container-org7c21148" class="outline-2">
+<h2 id="org7c21148"><span class="section-number-2">8</span> 尾声</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 
@@ -415,7 +409,7 @@ pa是个地址指向一个doulbe值，大小为 <code>value</code> 。
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'zclspace';
-    
+
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

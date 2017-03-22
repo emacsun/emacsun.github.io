@@ -2,14 +2,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Matlab与C混合编程API之mxCreateStructMatrix</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="zcl.space" />
-<meta  name="description" content="mxCreateNumericMatrix创建结构体数组"
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<meta name="description" content="mxCreateNumericMatrix创建结构体数组"
  />
-<meta  name="keywords" content="matlab communication simulation C" />
+<meta name="keywords" content="matlab communication simulation C" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="pdf"  href="./matlabmxCreateStructMatrix.pdf"><img src="../../img/assets/pdf.png"></a>
@@ -67,17 +67,17 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. 引言</a></li>
-<li><a href="#orgheadline2">2. 调用语法</a></li>
-<li><a href="#orgheadline3">3. 一个例子</a></li>
-<li><a href="#orgheadline4">4. 尾声</a></li>
+<li><a href="#orgcd12fef">1. 引言</a></li>
+<li><a href="#orge29ee0d">2. 调用语法</a></li>
+<li><a href="#orgd343a94">3. 一个例子</a></li>
+<li><a href="#orge709b8f">4. 尾声</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> 引言</h2>
+<div id="outline-container-orgcd12fef" class="outline-2">
+<h2 id="orgcd12fef"><span class="section-number-2">1</span> 引言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -88,8 +88,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> 调用语法</h2>
+<div id="outline-container-orge29ee0d" class="outline-2">
+<h2 id="orge29ee0d"><span class="section-number-2">2</span> 调用语法</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -99,7 +99,6 @@ for the JavaScript code in this tag.
 <code>mxCreateStructMatrix</code> 的调用语法如下
 </p>
 <div class="org-src-container">
-
 <pre class="src src-c"><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">"matrix.h"</span>
 mxArray *mxCreateStructMatrix<span style="color: #2aa198;">(</span><span style="color: #b58900;">mwSize</span> <span style="color: #268bd2;">m</span>, <span style="color: #b58900;">mwSize</span> <span style="color: #268bd2;">n</span>,
      <span style="color: #b58900;">int</span> <span style="color: #268bd2;">nfields</span>, <span style="color: #859900; font-weight: bold;">const</span> <span style="color: #b58900;">char</span> **<span style="color: #268bd2;">fieldnames</span><span style="color: #2aa198;">)</span>;
@@ -109,7 +108,7 @@ mxArray *mxCreateStructMatrix<span style="color: #2aa198;">(</span><span style="
 <p>
 输入参数表如下：
 </p>
-<table id="orgtable1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgc3293e4" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">表 1:</span> <code>mxCreateStructMatrix</code> 输入参数对照表</caption>
 
 <colgroup>
@@ -152,8 +151,8 @@ mxArray *mxCreateStructMatrix<span style="color: #2aa198;">(</span><span style="
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> 一个例子</h2>
+<div id="outline-container-orgd343a94" class="outline-2">
+<h2 id="orgd343a94"><span class="section-number-2">3</span> 一个例子</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -163,7 +162,6 @@ mxArray *mxCreateStructMatrix<span style="color: #2aa198;">(</span><span style="
 这个例子实现了电话本功能，是目前为止用到的最复杂的例子。
 </p>
 <div class="org-src-container">
-
 <pre class="src src-c"><span class="linenr">  1: </span><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">"mex.h"</span>
 <span class="linenr">  2: </span><span style="color: #268bd2;">#include</span> <span style="color: #2aa198;">"string.h"</span>
 <span class="linenr">  3: </span>
@@ -289,7 +287,6 @@ mxArray *mxCreateStructMatrix<span style="color: #2aa198;">(</span><span style="
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-c">plhs<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">0</span><span style="color: #2aa198;">]</span> = mxCreateStructMatrix<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">1</span>, nfields, fnames<span style="color: #2aa198;">)</span>;
 </pre>
 </div>
@@ -298,7 +295,6 @@ mxArray *mxCreateStructMatrix<span style="color: #2aa198;">(</span><span style="
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-c">mxSetFieldByNumber<span style="color: #2aa198;">(</span>plhs<span style="color: #b58900;">[</span><span style="color: #6c71c4;">0</span><span style="color: #b58900;">]</span>, <span style="color: #6c71c4;">0</span>, ifield, fout<span style="color: #2aa198;">)</span>;
 </pre>
 </div>
@@ -331,8 +327,8 @@ n.c ='hello world'
 </pre>
 </div>
 </div>
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> 尾声</h2>
+<div id="outline-container-orge709b8f" class="outline-2">
+<h2 id="orge709b8f"><span class="section-number-2">4</span> 尾声</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -349,7 +345,7 @@ n.c ='hello world'
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'zclspace';
-    
+
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

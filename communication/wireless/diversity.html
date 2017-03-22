@@ -89,22 +89,22 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org03ee80d">1. 分集技术简介</a></li>
-<li><a href="#orgcc9fbba">2. 基本原理</a></li>
-<li><a href="#orgd14e035">3. 分集技术分类</a>
+<li><a href="#org6bb7c18">1. 分集技术简介</a></li>
+<li><a href="#org96ccab3">2. 基本原理</a></li>
+<li><a href="#orga7a19db">3. 分集技术分类</a>
 <ul>
-<li><a href="#orga27ffd6">3.1. 空间分集</a></li>
-<li><a href="#orgb7c2aa2">3.2. 频率分集</a></li>
-<li><a href="#org6963a44">3.3. 时间分集</a></li>
-<li><a href="#orgbb4213d">3.4. 极化分集</a></li>
+<li><a href="#org59287ee">3.1. 空间分集</a></li>
+<li><a href="#org0dd3f3e">3.2. 频率分集</a></li>
+<li><a href="#orge944b2c">3.3. 时间分集</a></li>
+<li><a href="#org33d4f58">3.4. 极化分集</a></li>
 </ul>
 </li>
-<li><a href="#orgcaebf42">4. 合并技术</a>
+<li><a href="#org4e971ad">4. 合并技术</a>
 <ul>
-<li><a href="#orgfa7964a">4.1. 最大比合并（MRC）</a></li>
-<li><a href="#org989f420">4.2. 等增益合并</a></li>
-<li><a href="#orgb05ceec">4.3. 选择式合并</a></li>
-<li><a href="#org9755de5">4.4. 切换合并</a></li>
+<li><a href="#org186196f">4.1. 最大比合并（MRC）</a></li>
+<li><a href="#org499b504">4.2. 等增益合并</a></li>
+<li><a href="#org4922998">4.3. 选择式合并</a></li>
+<li><a href="#orgdd7d387">4.4. 切换合并</a></li>
 </ul>
 </li>
 </ul>
@@ -113,8 +113,8 @@ for the JavaScript code in this tag.
 <p>
 本文我对分集(diversity)和合并(combine)技术理解的总结，不涉及数学推导，完全的感性理解，读起来会比较容易。
 </p>
-<div id="outline-container-org03ee80d" class="outline-2">
-<h2 id="org03ee80d"><span class="section-number-2">1</span> 分集技术简介</h2>
+<div id="outline-container-org6bb7c18" class="outline-2">
+<h2 id="org6bb7c18"><span class="section-number-2">1</span> 分集技术简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -134,8 +134,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgcc9fbba" class="outline-2">
-<h2 id="orgcc9fbba"><span class="section-number-2">2</span> 基本原理</h2>
+<div id="outline-container-org96ccab3" class="outline-2">
+<h2 id="org96ccab3"><span class="section-number-2">2</span> 基本原理</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -151,16 +151,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgd14e035" class="outline-2">
-<h2 id="orgd14e035"><span class="section-number-2">3</span> 分集技术分类</h2>
+<div id="outline-container-orga7a19db" class="outline-2">
+<h2 id="orga7a19db"><span class="section-number-2">3</span> 分集技术分类</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 如前所述，在接收机看来，分集信号就像从发射机的多个相互独立的天线传输过来一样。在无线通信中，可利用的资源有空间，频率和时间等。我们可以利用这些通信资源达到让信号像从发射机的多个相互独立的天线传输过来的效果。分集技术可以看做整合了这些资源的多天线技术。根据通信过程中利用的通信资源不同，分集技术可以分为空间分集，频率分集和时间分集。
 </p>
 </div>
 
-<div id="outline-container-orga27ffd6" class="outline-3">
-<h3 id="orga27ffd6"><span class="section-number-3">3.1</span> 空间分集</h3>
+<div id="outline-container-org59287ee" class="outline-3">
+<h3 id="org59287ee"><span class="section-number-3">3.1</span> 空间分集</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 在移动通信中，空间的变化会导致信道环境的变化。当接收机接受两个来自不同信道的信号时，由于其受到的信道衰落影响是不相关的，故二者在同一时刻受到深衰落影响的可能性较小。基于这一点，我们可以在接收机使用两个天线。这两个天线的距离足以保证接收到的信号经历的信道是独立的。这样接收机两个天线独立的接收同一信号，然后合并输出。这一技术叫空间分集。
@@ -180,8 +180,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgb7c2aa2" class="outline-3">
-<h3 id="orgb7c2aa2"><span class="section-number-3">3.2</span> 频率分集</h3>
+<div id="outline-container-org0dd3f3e" class="outline-3">
+<h3 id="org0dd3f3e"><span class="section-number-3">3.2</span> 频率分集</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 频率分集是采用两个或两个以上具有一定频率间隔的微波频率同时发送和接受统一信息，然后进行合并或者选择，利用不同频段的信号经衰落后在统计上的不相关性，即不同频率衰落统计特性上的差异，来实现抗频率选择性衰落的功能。实现频率分集的条件是两个频率之间的间隔要大。
@@ -193,8 +193,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org6963a44" class="outline-3">
-<h3 id="org6963a44"><span class="section-number-3">3.3</span> 时间分集</h3>
+<div id="outline-container-orge944b2c" class="outline-3">
+<h3 id="orge944b2c"><span class="section-number-3">3.3</span> 时间分集</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 时间分集是将同一信号在不同时间区间内多次重发，只要各次发送的时间间隔足够大，则各次发送信号经历的信道衰落就可以认为是相互独立的。若移动台是静止的，要求重复发送时间间隔无限大，这表明时间分集对静止状态的移动信号是无效果的。我觉得这句话有点儿不太对，因为虽然移动台是静止的，但是在发射机和接收机之间的信道依然是变化的，不同时间内信道的变化难道跟移动台的速度有关系么？
@@ -202,8 +202,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgbb4213d" class="outline-3">
-<h3 id="orgbb4213d"><span class="section-number-3">3.4</span> 极化分集</h3>
+<div id="outline-container-org33d4f58" class="outline-3">
+<h3 id="org33d4f58"><span class="section-number-3">3.4</span> 极化分集</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 在移动化境下，两副在同一地点极化方向相互正交的天线发出的信号呈现出了不相关的衰落特性。利用这一特点，在接受端分别装上垂直极化和水平极化的天线就可以得到两路衰减特性不相关的信号。极化分集是空间分集的一个特例，其分集之路只有两路。这里我能不能多装一个这样的天线，其极化方向就像QPSK星座图那样，不是BPSK那样，这样有没有可能提高系统性能呢？这样两副天线就可以收到像四副天线那样的分集效果
@@ -216,16 +216,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgcaebf42" class="outline-2">
-<h2 id="orgcaebf42"><span class="section-number-2">4</span> 合并技术</h2>
+<div id="outline-container-org4e971ad" class="outline-2">
+<h2 id="org4e971ad"><span class="section-number-2">4</span> 合并技术</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 分集技术是研究如何利用传输中的多径能量，以改善传输的可靠性，它也是一项研究利用信号的基本参量在时域，频域以及空域中如何分散又如何收集起来的技术。前文主要介绍了分散的技术，接下来介绍合并技术。分集技术的"分" 与"集"就是这么来的。我觉得diversity翻译成分集很精确。 常见的分集技术有：最大比合并，等增益合并，选择式合并，切换合并。
 </p>
 </div>
 
-<div id="outline-container-orgfa7964a" class="outline-3">
-<h3 id="orgfa7964a"><span class="section-number-3">4.1</span> 最大比合并（MRC）</h3>
+<div id="outline-container-org186196f" class="outline-3">
+<h3 id="org186196f"><span class="section-number-3">4.1</span> 最大比合并（MRC）</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 在接收端由多个分集支路，经过相位调整后，按照适当的增益系数，同相相加，再送入检测器检测。在接收端各个不相关的分集支路经过相位校正，并按适当的可变增益加权再相加后送入检测器进行相干检测。
@@ -237,8 +237,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org989f420" class="outline-3">
-<h3 id="org989f420"><span class="section-number-3">4.2</span> 等增益合并</h3>
+<div id="outline-container-org499b504" class="outline-3">
+<h3 id="org499b504"><span class="section-number-3">4.2</span> 等增益合并</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 等增益合并也称为相位均衡，仅仅对信道的相位偏移进行校正，而幅度不做校正。等增益合并不是任何意义上的最佳合并方式，只有假设每一路信号的信噪比相同的情况下，在信噪比最大化的意义上，它才是最佳的。它输出地结果是各路信号幅度的叠加。
@@ -254,8 +254,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgb05ceec" class="outline-3">
-<h3 id="orgb05ceec"><span class="section-number-3">4.3</span> 选择式合并</h3>
+<div id="outline-container-org4922998" class="outline-3">
+<h3 id="org4922998"><span class="section-number-3">4.3</span> 选择式合并</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 采用选择式合并技术时，接收机从N个接收信号中选择一个具有最高信号噪声信噪比的基带信号作为输出。
@@ -263,8 +263,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org9755de5" class="outline-3">
-<h3 id="org9755de5"><span class="section-number-3">4.4</span> 切换合并</h3>
+<div id="outline-container-orgdd7d387" class="outline-3">
+<h3 id="orgdd7d387"><span class="section-number-3">4.4</span> 切换合并</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 我认为切换式合并是选择式合并的特例  

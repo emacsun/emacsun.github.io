@@ -2,14 +2,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>信道编码理论中用到的代数基础</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="zcl.space" />
-<meta  name="description" content="本文总结差错控制编码第二章。"
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<meta name="description" content="本文总结差错控制编码第二章。"
  />
-<meta  name="keywords" content="communication algebra math" />
+<meta name="keywords" content="communication algebra math" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="pdf"  href="./ECC02.pdf"><img src="../../img/assets/pdf.png"></a>
@@ -89,9 +89,9 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. 群</a></li>
-<li><a href="#orgheadline2">2. 域</a></li>
-<li><a href="#orgheadline3">3. 二进制域代数</a></li>
+<li><a href="#orgb08e25d">1. 群</a></li>
+<li><a href="#org46535f2">2. 域</a></li>
+<li><a href="#orge96be16">3. 二进制域代数</a></li>
 </ul>
 </div>
 </div>
@@ -103,8 +103,8 @@ for the JavaScript code in this tag.
 当然本章也并不是没有存在必要。本章以较快的节奏给出了信道编码理论中涉及的代数理论，便于有一定基础的专业人士快速复习和进入编码世界。
 </p>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> 群</h2>
+<div id="outline-container-orgb08e25d" class="outline-2">
+<h2 id="orgb08e25d"><span class="section-number-2">1</span> 群</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -135,7 +135,7 @@ for the JavaScript code in this tag.
 群中元素的个数叫做群的阶数。具有有限阶的群叫做有限群。接下来我们来阐述一个事实：对于任何的正整数\(m\)，我们都有可能定义一个有限群，群上的二元运算与实数加法非常相似。考虑一个整数集合\(G=\{0,1,2,\ldots,m-1\}\)  定义\(+\)是实数加法，定义\(\boxplus\)是\(G\)上的二元运算满足 \[i\boxplus j = r \] 其中 \(r = i+j \mod(m)\), 我们称其为模\(m\)加。显然\(0 \leq r \leq (m-1)\) 并且\(r\in G\).因此在二元运算符号\(\boxplus\)运算下 \(G\)是封闭的。对于 \(0 < i < m\) ， \(i\)和\(m-i\)都在\(G\)中. 因为 \[i + (m-i) = (m-i) + i = m\] 所以有\[i\boxplus (m-i) = (m-i)\boxplus i = 0\] 因此，\(i\)和\(m-i\)在\(\boxplus\)运算下互逆。\(0\)的逆是它本身。另外我们还可以证明模\(m\)加满足结合律，即\[(i\boxplus j)\boxplus k = i \boxplus ( j \boxplus k)\] 综上，我们可以说集合\(G=\{0,1,2,\ldots,m-1\}\)在模\(m\)加运算下是一个群。我们称这样的群为加法群。我们给出一个模4加群计算中的模4加表如下所示：
 </p>
 
-<table id="orgtable1" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border">
+<table id="org4d6304f" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border">
 <caption class="t-above"><span class="table-number">表 1:</span> 模4加法表</caption>
 
 <colgroup>
@@ -272,8 +272,8 @@ a*H&=& (b*h^{'})*H \\
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> 域</h2>
+<div id="outline-container-org46535f2" class="outline-2">
+<h2 id="org46535f2"><span class="section-number-2">2</span> 域</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -314,7 +314,7 @@ a*H&=& (b*h^{'})*H \\
 <p>
 考虑带有模2加法和乘法的集合\(\{0,1\}\)
 </p>
-<table id="orgtable2" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<table id="orgbe02686" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 2:</span> 模2加法表</caption>
 
 <colgroup>
@@ -346,7 +346,7 @@ a*H&=& (b*h^{'})*H \\
 </tbody>
 </table>
 
-<table id="orgtable3" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<table id="orga9e4e81" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 3:</span> 模2乘法表</caption>
 
 <colgroup>
@@ -485,8 +485,8 @@ a^{q-1}\cdot (b_{1}\cdot b_{2}\ldots b_{q-1}) &=& b_{1}\cdot b_{2}\ldots b_{q-1}
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> 二进制域代数</h2>
+<div id="outline-container-orge96be16" class="outline-2">
+<h2 id="orge96be16"><span class="section-number-2">3</span> 二进制域代数</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -647,7 +647,7 @@ a(X)\cdot [b(X) + c(X)] = a(X)\cdot b(X) + a(X)\cdot c(X)
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'zclspace';
-    
+
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
