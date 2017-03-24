@@ -56,11 +56,157 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
 <h1 class="title">可逆性与同构</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9d1a8c8">1. 可逆的线性映射</a></li>
+<li><a href="#org7f10d9a">2. 向量空间的同构</a></li>
+</ul>
+</div>
+</div>
+<p>
+在学习 Artin的《抽象代数》过程中，我曾接触过重构的概念。但是我觉得《linear algebra done right》从可逆线性映射到重构的过渡更加的自然，更加适合初学者。
+</p>
+<div id="outline-container-org9d1a8c8" class="outline-2">
+<h2 id="org9d1a8c8"><span class="section-number-2">1</span> 可逆的线性映射</h2>
+<div class="outline-text-2" id="text-1">
+<p>
 
+</p>
+
+<div class="definition">
+<p>
+线性映射\(T\in \mathcal{L}(V,W)\)成为可逆的，如果存在线性映射\(S\in \mathcal{L}(W,V)\)使得\(ST\)等于\(V\)上的恒等映射且\(TS\)等于\(W\)上的恒等映射。满足\(ST=I\)和\(TS=I\)的线性映射\(S\in \mathcal{L}(W,V)\)成为\(T\)的逆。
+</p>
+
+</div>
+
+<p>
+注意\(ST=I\)的恒等映射是\(W\)上的恒等映射，\(TS=I\)的恒等映射是\(V\)上的恒等映射。
+</p>
+<div class="theorem">
+<p>
+可逆线性映射的逆是唯一的。
+</p>
+
+</div>
+<div class="proof">
+<p>
+设\(T\in \mathcal{L}(V,W)\)可逆，且\(S_{1}\)和\(S_{2}\)都是\(T\)的逆，则有:
+\[S_{1} = S_{1}I = S_{1}(TS_{2}) = (S_{1}T) S_{2} = IS_{2} = S_{2}\]
+</p>
+
+</div>
+
+<p>
+由于\(T\)的逆是如此的重要，我们用\(T^{-1}\)来表示\(T\)的逆，即\(TT^{-1} = T^{-1}T = I\)。
+</p>
+<div class="theorem">
+<p>
+一个线性映射是可逆的当且仅当它既是单射又是满射。
+</p>
+
+</div>
+<div class="proof">
+<p>
+这个命题综合了线性映射，可逆，单射，满射的概念。
+</p>
+
+<p>
+首先我们从一个可逆的线性映射推出这个映射既是单射又是满射。假设\(u,v\in V\)，且\(Tu=Tv\)，则有\(T^{-1}Tu = T^{-1}Tv \)从而有\(u=v\)，即\(T\)是单射。假设\(w\in W\)，则有\(T(T^{-1}w) = w\)，即\(w\in rangeT\)，又由于\(w\)的任意性，则有\(rangeT = W\)，即\(T\)是满射。
+</p>
+
+<p>
+然后，我们从一个线性映射既是单射又是满射推出这个线性映射是可逆的，即对于每个\(w\in W\)，定义\(Sw\)是\(V\)中唯一使得\(T(Sw) = w\)的那个元素，显然\(T\circ S\)是\(W\)上的恒等映射。为了证明\(S\circ T\)是\(V\)上的恒等映射，设\(v\in V\)，则\[T((S\circ T)v) = (T\circ S)Tv = Tv\]这个等式表明\((S\circ T)v = v\)，因此\(S\circ T\)是\(V\)上的恒等映射。
+</p>
+
+<p>
+为了完成证明，我们还需要证明\(S\)是线性的。假设\(w_{1},w_{2}\in W\)则有：\[T(Sw_{1} + Sw_{2}) = TSw_{1} + TSw_{2} = w_{1} + w_{2}\]
+现在我们知道\(Sw_{1} + Sw_{2}\)是\(V\)中唯一被\(T\)映射成\(w_{1} + w_{2}\)的元素。因为之前我们定义\(Sw\)是\(V\)中唯一使得\(T(Sw) = w\)的那个元素，则有\(S(w_{1} + w_{2}) = w_{1} + w_{2}\)
+</p>
+
+<p>
+接下来证明齐次性，如果\(w\in W, \lambda \in \mathbf{F}\)，则：\[T(\lambda Sw) = \lambda T(Sw) = \lambda w\]
+由于\(T\)是单射所以，\(\lambda Sw\)是唯一被\(T\)映射成\(\lambda w\)的元素。又由于\(S\)的定义\(Sw\)是\(V\)中唯一被\(T\)映射称\(w\)的元素，则有\(S(\lambda w) = \lambda S(w)\)
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7f10d9a" class="outline-2">
+<h2 id="org7f10d9a"><span class="section-number-2">2</span> 向量空间的同构</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+两个向量空间是同构的。意味着，这两个向量空间除了元素名字之外本质上是相同的。这个概念非常重要，因为很多时候我们在一个向量空间中处理问题显得复杂，但是在另外一个空间中则显得简单，所以我们可以在简单的同构空间中先行处理问题，再把处理的结果转换到原空间中。信号处理的时域和频域之间的相互转换就是利用了时域空间和频域空间同构的本质。
+</p>
+
+<div class="definition">
+<p>
+同构就是可逆的线性映射。若两个向量空间之间存在一个同构，则称这个向量空间是同构的。
+</p>
+
+</div>
+
+<p>
+同构\(T:V\rightarrow W\)把\(v\in V\)重新标记为\(Tv\in W\).这个观点解释了为什么两个同构的向量空间具有相同的性质。同构和可逆的线性映射这两个术语的意思相同。同构更强调两个空间本质上的相同。
+</p>
+
+<div class="theorem">
+<p>
+\( \mathbf{F}\)上两个有限维向量空间同构当且仅当其维数相同。
+</p>
+
+</div>
+<div class="proof">
+<p>
+设\(V\)和\(W\)是同构的，则存在从\(V\)到\(W\)的同构\(T\)。因为\(T\)是可逆的，所以\(T\)既是单射又是满射，单射意味着\(nullT = \{0\}\)，满射意味着\(rangeT = W\)，所以\(\dim nullT = 0\), \(\dim range T = \dim W \)，根据线性映射基本定理，我们有：\[\dim v = \dim nullT + \dim rangeT = 0 + \dim W\]即，\(\dim V = \dim W\)
+</p>
+
+<p>
+接下来，我们证明另一个方向，假定\(V\)和\(W\)是维数相同的向量空间，设\(v_{1},\ldots ,v_{n}\)是\(V\)的基，\(w_{1},\ldots ,w_{n}\)是\(W\)的基。则一定存在线性映射\(T\in \mathcal{L}(V,W)\)定义如下：
+\[T(c_{1}v_{1} + \ldots + c_{n}V_{n}) = c_{1}w_{1} + \ldots + c_{n}w_{n}\]
+关于这个定义的合理性我们在前面证明过。由于\(w_{1},\ldots ,w_{n}\)张成\(W\)，所以\(T\)是满的。又因为\(w_{1},w_{2},\ldots ,w_{n}\)是线性无关的，所以\(nullT = \{0\}\)，从而\(T\)是单的。由于\(T\)既是单射又是满射，所以\(T\)是一个同构，因此\(V\)和\(W\)是同构的。
+</p>
+
+</div>
+
+<p>
+每个有限维空间都同构与\( \mathbf{F}^{n}\)，其中\(n = \dim V\).如果\(v_{1},\ldots ,v_{n}\)是\(V\)的基，\(w_{1},\ldots ,w_{n}\)是\(W\)的基，那么每个\(T\in \mathcal{L}(V,W)\)都有一个矩阵\( \mathcal{M}(T) \in \mathbf{F}^{m,n}\). 也就是说选定了\(V\)和\(W\)的基，那么\( \mathcal{M}\)就是从\( \mathcal{L}(V,W)\)到\( \mathbf{F}^{m,n}\)的函数。
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
