@@ -105,7 +105,7 @@ for the JavaScript code in this tag.
 
 <p>
 接下来我们就用矩阵来表示线性映射。我们知道如果\(v_{1},\ldots ,v_{n}\)是\(V\)的基，且\(T:V\rightarrow W\)是线性的，那么\(Tv_{1},\ldots ,Tv_{n}\)的值确定了\(T\)在\(V\)的任意向量上的值，因为我们之前证明过 \[\dim V = \dim nullT + \dim range T\]。
-马上就可以看到，利用矩阵\(W\)的基，矩阵可以有效地记录这些\(Tv_{j}\)
+马上就可以看到，利用矩阵和\(W\)的基，矩阵可以有效地记录这些\(Tv_{j}\)
 </p>
 
 <div class="definition">
@@ -285,6 +285,23 @@ A_{m,1} & \ldots & A_{m,n}
 \end{eqnarray}
 <p>
 因此\(\mathcal{M}(ST)\)是\(m\times p\)矩阵，它的第\(j\)行第\(k\)列元素等于\(\sum_{i=1}^{n}A_{j,i}C_{i,k}\)
+</p>
+<div class="definition">
+<p>
+
+</p>
+
+<p>
+设\(A\)是\(m\times n\)矩阵，\(C\)是\(n\times p\)矩阵，\(AC\)定义为\(m\times p\)矩阵，其第\(j\)行第\(k\)列元素是\[(AC)_{j,k} = \sum_{i=1}^{n}A_{j,i}C_{i,k}\]
+</p>
+
+<p>
+即，把\(A\)的第\(j\)行和\(C\)的第\(k\)列的对应元素相乘再求和就得到\(AC\)的第\(j\)行第\(k\)列元素。从定义我们也可以看出只有当一个矩阵的列数等于第二个矩阵的行数的时候才可以进行矩阵乘法计算。另外我们还可以发现，对于\(1 \leq k \leq p\)有\((AC)_{\cdot,k} = AC_{\cdot,k}\)，即\(AC\)的第\(k\)列等于\(A\)乘以\(C\)的第\(k\)列。我们可以把这个过程当做\(C\)中第\(K\)列的元素和\(A\)中各个列构成的线性组合。
+</p>
+
+</div>
+<p>
+假设考虑\(T\in \mathcal{L}(U,V)\)和\(S\in \mathcal{L}(V,W)\)时使用\(V\)的同一基，在考虑\(S\in \mathcal{L}(V,W)\)和\(ST\in \mathcal{L}(U,W)\)是使用\(W\)的同一基，在考虑\(T\in \mathcal{L}(U,V)\)和\(ST\in \mathcal{L}(U,W)\)是使用\(U\)的同一基，有\(\mathcal{M}(ST) = \mathcal{M}(S) \mathcal{M}(T)\)
 </p>
 </div>
 </div>
