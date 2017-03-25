@@ -86,16 +86,18 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9d1a8c8">1. 可逆的线性映射</a></li>
-<li><a href="#org7f10d9a">2. 向量空间的同构</a></li>
+<li><a href="#orgd656dd0">1. 可逆的线性映射</a></li>
+<li><a href="#orgca752e7">2. 向量空间的同构</a></li>
+<li><a href="#orgee406b3">3. 矩阵乘法和线性映射的关系</a></li>
+<li><a href="#org1a0481d">4. 算子</a></li>
 </ul>
 </div>
 </div>
 <p>
 在学习 Artin的《抽象代数》过程中，我曾接触过重构的概念。但是我觉得《linear algebra done right》从可逆线性映射到重构的过渡更加的自然，更加适合初学者。
 </p>
-<div id="outline-container-org9d1a8c8" class="outline-2">
-<h2 id="org9d1a8c8"><span class="section-number-2">1</span> 可逆的线性映射</h2>
+<div id="outline-container-orgd656dd0" class="outline-2">
+<h2 id="orgd656dd0"><span class="section-number-2">1</span> 可逆的线性映射</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -103,7 +105,7 @@ for the JavaScript code in this tag.
 
 <div class="definition">
 <p>
-线性映射\(T\in \mathcal{L}(V,W)\)成为可逆的，如果存在线性映射\(S\in \mathcal{L}(W,V)\)使得\(ST\)等于\(V\)上的恒等映射且\(TS\)等于\(W\)上的恒等映射。满足\(ST=I\)和\(TS=I\)的线性映射\(S\in \mathcal{L}(W,V)\)成为\(T\)的逆。
+线性映射\(T\in \mathcal{L}(V,W)\)称为可逆的，如果存在线性映射\(S\in \mathcal{L}(W,V)\)使得\(ST\)等于\(V\)上的恒等映射且\(TS\)等于\(W\)上的恒等映射。满足\(ST=I\)和\(TS=I\)的线性映射\(S\in \mathcal{L}(W,V)\)成为\(T\)的逆。
 </p>
 
 </div>
@@ -161,8 +163,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org7f10d9a" class="outline-2">
-<h2 id="org7f10d9a"><span class="section-number-2">2</span> 向量空间的同构</h2>
+<div id="outline-container-orgca752e7" class="outline-2">
+<h2 id="orgca752e7"><span class="section-number-2">2</span> 向量空间的同构</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -191,7 +193,7 @@ for the JavaScript code in this tag.
 </div>
 <div class="proof">
 <p>
-设\(V\)和\(W\)是同构的，则存在从\(V\)到\(W\)的同构\(T\)。因为\(T\)是可逆的，所以\(T\)既是单射又是满射，单射意味着\(nullT = \{0\}\)，满射意味着\(rangeT = W\)，所以\(\dim nullT = 0\), \(\dim range T = \dim W \)，根据线性映射基本定理，我们有：\[\dim v = \dim nullT + \dim rangeT = 0 + \dim W\]即，\(\dim V = \dim W\)
+设\(V\)和\(W\)是同构的，则存在从\(V\)到\(W\)的同构\(T\)。因为\(T\)是可逆的，所以\(T\)既是单射又是满射，单射意味着\(nullT = \{0\}\)，满射意味着\(rangeT = W\)，所以\(\dim nullT = 0\), \(\dim range T = \dim W \)，根据线性映射基本定理，我们有：\[\dim V = \dim nullT + \dim rangeT = 0 + \dim W\]即，\(\dim V = \dim W\)
 </p>
 
 <p>
@@ -205,6 +207,184 @@ for the JavaScript code in this tag.
 <p>
 每个有限维空间都同构与\( \mathbf{F}^{n}\)，其中\(n = \dim V\).如果\(v_{1},\ldots ,v_{n}\)是\(V\)的基，\(w_{1},\ldots ,w_{n}\)是\(W\)的基，那么每个\(T\in \mathcal{L}(V,W)\)都有一个矩阵\( \mathcal{M}(T) \in \mathbf{F}^{m,n}\). 也就是说选定了\(V\)和\(W\)的基，那么\( \mathcal{M}\)就是从\( \mathcal{L}(V,W)\)到\( \mathbf{F}^{m,n}\)的函数。
 </p>
+
+<p>
+既然每个有限维向量空间都同构于某个\( \mathbf{F}^{n}\)，那么为什么不只研究\( \mathbf{F}^{n}\)而还要研究更一般的向量空间呢？我们注意到\(\mathbf{F}^{n}\)的向量空间立刻就会产生不等于\(\mathbf{F}^{n}\)的向量空间。例如我们会遇到线性映射的零空间和值域，尽管这些向量空间都分别同构于某个\( \mathbf{F}^{n}\),但是这样考虑问题会增加不少复杂度。
+</p>
+
+<div class="theorem">
+<p>
+设\(v_{1},\ldots ,v_{n}\)是\(V\)的基，\(w_{1},\ldots ,w_{m}\)是\(W\)的基，则\( \mathcal{M}\)是\( \mathcal{L}(V,W)\)与\(\mathbf{F}^{m,n}\)之间的一个同构。
+</p>
+
+</div>
+<div class="proof">
+<p>
+已知\(\mathcal{M}\)是线性的，故只需证明\(\mathcal{M}\)既单又满。先从单性开始，如果\(T\in \mathcal{L}(V,W)\)并且\( \mathcal{M}(T) = 0\)，则有\(Tv_{k} = 0,k=1,\ldots ,n\)，因为\(v_{1},\ldots ,v_{n}\)是\(V\)的基，所以\(T=0\)。于是\(\mathcal{M}\)是单的（单射的零空间是\(\{0\}\)）。
+</p>
+
+<p>
+接下来证明\(\mathcal{M}\)是满的，设\( A\in \mathbf{F}^{m,n}\)。设\(T\)是从\(V\)到\(W\)的线性映射使得\[Tv_{k} = \sum_{j=1}^{n}A_{j,k}w_{j}\]其中\(k=1,\ldots ,n\) 显然\( \mathcal{M}(T)\)等于\(A\),所以\(M(T)\)的值域是\( \mathbf{F}^{m,n}\)
+</p>
+
+</div>
+
+<p>
+上述定理证明了所有的线性映射都可以映射为\( \mathbf{F}^{m,n}\)，所有的\( \mathbf{F}^{m,n}\)都映射为一个线性映射。
+</p>
+<div class="theorem">
+<p>
+\(\dim \mathcal{L}(V,W) = (\dim V)(\dim W)\)
+</p>
+
+</div>
+<div class="proof">
+<p>
+首先我们知道\(\mathcal{L}(V,W)\)同构于\(\mathbf{F}^{m,n}\)，而\(\dim \mathbf{F}^{m,n} = mn\)
+</p>
+
+<p>
+然后,\(\dim V = n,\dim W = m\) 
+</p>
+
+<p>
+所以结论得证。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgee406b3" class="outline-2">
+<h2 id="orgee406b3"><span class="section-number-2">3</span> 矩阵乘法和线性映射的关系</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+首先，定义向量对应的矩阵:
+</p>
+<div class="definition">
+<p>
+设\(v\in V\)，并设\(v_{1},\ldots ,v_{n}\)是\(V\)的基，则规定\(v\)关于这个基的矩阵是\(n\times 1\)矩阵。
+</p>
+\begin{equation}
+\label{eq:201703252}
+\mathcal{M}(v) = 
+\begin{bmatrix}
+c_{1} \\ 
+\vdots \\
+c_{n}
+\end{bmatrix}
+\end{equation}
+<p>
+这里\(c_{1},\ldots ,c_{n}\)是使得下式成立的标量：
+\[v=c_{1}v_{1}+ \ldots + c_{n}v_{n}\] 
+</p>
+
+</div>
+
+<p>
+显然，对于\(2-7x+5x^{3}\)关于\(\mathcal{P}_{3}(R)\)的标准基的矩阵为：
+</p>
+\begin{equation}
+\label{eq:201703251}
+\begin{bmatrix}
+2 \\ -7 \\ 0 \\ 5
+\end{bmatrix}
+\end{equation}
+
+<p>
+向量\(x\in \mathbf{F}^{n}\)关于标准基的矩阵就是以\(x\)的坐标为元素而得到的\(n\times 1\)矩阵，也即是说，若\(x=(x_{1},\ldots ,x_{n})\in \mathbf{F}^{n}\)，则
+</p>
+\begin{equation}
+\label{eq:201703253}
+\mathcal{M}(x) = 
+\begin{bmatrix}
+x_{1} \\ \vdots \\ x_{n}
+\end{bmatrix}
+\end{equation}
+
+<p>
+以上两个例子都实现了\(V\)到\(\mathbf{F}^{n,1}\)的同构。
+</p>
+
+<div class="theorem">
+<p>
+设\(T\in \mathcal{L}(V,W)\), \(v_{1},\ldots ,v_{n}\)是\(V\)的基，\(w_{1},\ldots ,w_{m}\)是\(W\)的基。设\(1\leq k \leq n\)，则\(\mathcal{M}(T)\)的第\(k\)列(记为\(\mathcal{M}(T)_{\cdot,k}\))等于\(M(Tv_{k})\)
+</p>
+
+</div>
+
+<div class="proof">
+<p>
+设\(v=c_{1}v_{1} + \ldots + c_{n}v_{n}\)，其中\(c_{1},\ldots ,c_{n}\in \mathbf{F}\)，则
+</p>
+\begin{eqnarray}
+\label{eq:201703254}
+Tv &=& c_{1}Tv_{1} + \ldots + c_{n}Tv_{n} \\
+&=& c_{1} \mathcal{M}(T)_{\cdot,1} + \ldots + c_{n} \mathcal{M}(T)_{\cdot,n} \\
+&=& \mathcal{M}(T)\mathcal{M}(v)
+\end{eqnarray}
+
+</div>
+<p>
+每个\(m\times n\)矩阵\(A\)诱导一个从\(\mathbf{F}^{n,1}\)到\(\mathbf{F}^{m,1}\)的线性映射，即将\(x\in \mathbf{F}^{n,1}\)变为\(Ax\in \mathbf{F}^{m,n}\)的矩阵乘。通过上述命题我们可以知道，利用通过\(\mathcal{M}\)，我们可以把线性映射当做矩阵乘映射。具体来说，若\(T\in \mathcal{L}(V,W)\)，并将\(v\in V\)等同于\(\mathcal{M}(v)\in \mathbf{F}^{n,1}\)，则上述命题说，我们可以将\(Tv\)等同于\(\mathcal{M}(T) \mathcal{M}(v)\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1a0481d" class="outline-2">
+<h2 id="org1a0481d"><span class="section-number-2">4</span> 算子</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+向量空间到其自身的线性映射称为算子。记\(\mathcal{L}(V)\)表示\(V\)上全体算子所组成的集合。即，\(\mathcal{L}(V) = \mathcal{L}(V,V)\) 在线性代数中，最深刻也最重要的内容就是研究算子。
+</p>
+
+<p>
+我们知道对于一个线性映射既单又满则可逆，但是对于一个算子是不是也是这样的呢？或者对于一个算子如果仅仅满足单性或者满性是不是也可以推出可逆呢？对于无限维空间我们知道单单一个不能推出可逆性。
+</p>
+
+<ol class="org-ol">
+<li>\(\mathcal{P}(R)\)上乘以\(x^{2}\)的映射是单的，但不是满的。</li>
+<li>\(\mathbf{F}^{\infty}\)上向后移位算子是满的，但不是单的。</li>
+</ol>
+
+<p>
+但是对于有限维向量空间上的算子，单性和满性中的任何一个都可以推出另一个。通常检验有限维向量空间上的算子是单的更容易，而由单性自然可以得到满性。
+</p>
+
+<div class="theorem">
+<p>
+设\(V\)是有限维的，并设\(T\in \mathcal{L}(V)\)，则一下陈述等价：
+</p>
+<ol class="org-ol">
+<li>\(T\)是可逆的；</li>
+<li>\(T\)是单的；</li>
+<li>\(T\)是满的；</li>
+</ol>
+
+</div>
+
+<div class="proof">
+<p>
+显然从 \(T\)是可逆的可以推出\(T\)是单的。
+</p>
+
+<p>
+接下来我们假设\(T\)是单的，那么\(nullT = 0\)，由线性映射基本定理有：\(rangeT = \dim V - \dim nullT = \dim v \)，则有\(\dim V = \dim rangeT\)从而\(T\)是满的。 
+</p>
+
+<p>
+最后假设\(T\)是满的，由线性映射基本定理有：\(\dim nullT = \dim V - \dim rangeT = 0\)，对出\(T\)是单的，所以\(T\)既单又满是可逆的。
+</p>
+
+</div>
 </div>
 </div>
 </div>
