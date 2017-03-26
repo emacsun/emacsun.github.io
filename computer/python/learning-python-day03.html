@@ -67,6 +67,8 @@ for the JavaScript code in this tag.
 <li><a href="#org22b7cdf">1. 为函数指定默认参数值</a></li>
 <li><a href="#orgabca2cf">2. 关键词参数</a></li>
 <li><a href="#org1a5b1ef">3. 任意参数列表</a></li>
+<li><a href="#org33a3d25">4. Lambda 表达式</a></li>
+<li><a href="#org93f8456">5. 代码文档格式规范化</a></li>
 </ul>
 </div>
 </div>
@@ -306,6 +308,85 @@ In [338]: concat("earth","mars","venus",sep='.')
 Out[356]: 
 'earth.mars.venus'
 </pre>
+</div>
+</div>
+<div id="outline-container-org33a3d25" class="outline-2">
+<h2 id="org33a3d25"><span class="section-number-2">4</span> Lambda 表达式</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+可以使用 <code>lambda</code> 来表示一些小的匿名函数。比如 <code>lambda a,b: a+b</code> 返回 <code>a,b</code> 的和。 <code>lambda</code> 可以被用在对象调用的地方。从语法上来看， <code>lambda</code> 表达式是一句话。 <code>python</code> 中的 <code>lambda</code> 有点语法糖的味道。一个简单的例子，看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="linenr">1: </span><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">make_incrementor</span><span style="color: #2aa198;">(</span>n<span style="color: #2aa198;">)</span>:
+<span class="linenr">2: </span>    <span style="color: #859900; font-weight: bold;">return</span> <span style="color: #859900; font-weight: bold;">lambda</span> x: x+n
+</pre>
+</div>
+
+<p>
+调用和输出为：
+</p>
+<pre class="example">
+In [1]: 
+In [2]: f = make_incrementor(42)
+
+In [33]: f(0)
+Out[33]: 
+42
+
+In [34]: f(1)
+Out[34]: 
+43
+
+In [35]: f(4)
+Out[38]: 
+46
+</pre>
+
+<p>
+<code>make_incrementor</code> 生成的是一个 <code>generator</code> .
+</p>
+</div>
+</div>
+
+<div id="outline-container-org93f8456" class="outline-2">
+<h2 id="org93f8456"><span class="section-number-2">5</span> 代码文档格式规范化</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+在写 <code>Python</code> 代码的过程中，可以顺便把代码文档也给完成，颇有文学编程的感觉。对于函数来说可以通过以下方式告知该函数的信息：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="linenr">1: </span><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">my_function</span><span style="color: #2aa198;">()</span>:
+<span class="linenr">2: </span>    <span style="color: #2aa198;">""" Do nothing, it doesn't do anything</span>
+<span class="linenr">3: </span>
+<span class="linenr">4: </span><span style="color: #2aa198;">    no, really, it doesn't do anything</span>
+<span class="linenr">5: </span><span style="color: #2aa198;">    """</span>
+<span class="linenr">6: </span>
+<span class="linenr">7: </span>    <span style="color: #859900; font-weight: bold;">pass</span>
+</pre>
+</div>
+
+<p>
+通过 <code>print(my_function.__doc__)</code> 查看 <code>my_function</code> 的文档：
+</p>
+<pre class="example">
+In [40]: print(my_function.__doc__)
+ Do nothing, it doesn't do anything
+
+    no, really, it doesn't do anything
+</pre>
+
+
+<p>
+当 <code>Python</code> 工程较大时，更需要规范化的文档和编程风格。所幸 <code>PEP 8</code> 提供了高度可读的编码风格，每个 <code>python</code> 程序员都应当遵守这个规范（尤其参与大项目的时候，像我平常做的小实验，我就不那么严格的要求了）。
+</p>
 </div>
 </div>
 </div>

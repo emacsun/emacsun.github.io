@@ -92,7 +92,7 @@ for the JavaScript code in this tag.
 <li><a href="#org2266206">信道编码理论</a></li>
 <li><a href="#orgfdc1c5b">信息论</a></li>
 <li><a href="#org2240680">matlab仿真</a></li>
-<li><a href="#orgfe19855">LTE协议解读</a></li>
+<li><a href="#org9f19ea3">通信协议解读</a></li>
 </ul>
 </li>
 <li><a href="#orgefd65a9">数学</a>
@@ -168,8 +168,14 @@ for the JavaScript code in this tag.
 <ul class="org-ul">
 <li><a href="communication/DSP/fft-introduction.html"><i>快速傅里叶变换</i></a></li>
 <li><a href="communication/DSP/fft-two-in-one.html"><i>一次计算两个序列的FFT</i></a></li>
-<li><a href="communication/DSP/kalman-filter.html"><i>卡尔曼滤波</i></a></li>
+<li><a href="communication/DSP/least-squares.html"><i>最小二乘法</i></a></li>
+<li><a href="communication/DSP/least-mean-square.html"><i>最小均方误差</i></a></li>
+<li><a href="communication/DSP/filter-kalman.html"><i>卡尔曼滤波</i></a></li>
+<li><a href="communication/DSP/filter-wiener.html"><i>维纳滤波</i></a></li>
+<li><a href="communication/DSP/filter-match.html"><i>匹配滤波</i></a></li>
 <li><a href="communication/DSP/steepest-descend-method.html"><i>最陡梯度下降法</i></a></li>
+<li><a href="communication/DSP/annealing-method.html"><i>最优退火算法</i></a></li>
+<li><a href="communication/DSP/why-multirate-filter.html"><i>为什么要用多速率滤波器</i></a></li>
 </ul>
 </div>
 </div>
@@ -203,8 +209,16 @@ for the JavaScript code in this tag.
 <p>
 
 </p>
+
+<ul class="org-ul">
+<li><a href="communication/IT/entropy.html"><i>什么是信息熵</i></a></li>
+<li><a href="communication/IT/channel-code-theory.html"><i>有噪信道编码定理</i></a></li>
+<li><a href="communication/IT/source-coding-theory.html"><i>信源编码定理</i></a></li>
+</ul>
 </div>
 </div>
+
+
 <div id="outline-container-org2240680" class="outline-3">
 <h3 id="org2240680">matlab仿真</h3>
 <div class="outline-text-3" id="text-org2240680">
@@ -220,20 +234,22 @@ for the JavaScript code in this tag.
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfe19855" class="outline-3">
-<h3 id="orgfe19855">LTE协议解读</h3>
-<div class="outline-text-3" id="text-orgfe19855">
+<div id="outline-container-org9f19ea3" class="outline-3">
+<h3 id="org9f19ea3">通信协议解读</h3>
+<div class="outline-text-3" id="text-org9f19ea3">
 <p>
 
 </p>
 
 <ul class="org-ul">
 <li><a href="lte/physical/lte-physical-overview.html">LTE 物理层技术概要</a></li>
+<li><a href="communication/protocol/wifi-physical-overview.html">WIFI（802.11） 物理层技术概要</a></li>
+<li><a href="communication/protocol/wifi-frame.html">WIFI（802.11） 成帧过程</a></li>
+<li><a href="communication/protocol/wifi-csma.html">WIFI（802.11） 信道接入过程</a></li>
 </ul>
 </div>
 </div>
 </div>
-
 <div id="outline-container-orgefd65a9" class="outline-2">
 <h2 id="orgefd65a9"><a href="math/index.html">数学</a></h2>
 <div class="outline-text-2" id="text-orgefd65a9">
@@ -282,7 +298,8 @@ for the JavaScript code in this tag.
 <li><a href="math/LADR/linear-map-on-vector-space.html">线性映射</a></li>
 <li><a href="math/LADR/matrix-for-linear-map.html">矩阵和线性映射的关系</a></li>
 <li><a href="math/LADR/invertible-isomorphic.html">可逆性与同构</a></li>
-<li><a href="math/LADR/vector-space-product.html">向量空间的积与商</a></li>
+<li><a href="math/LADR/vector-space-product.html">向量空间的积</a></li>
+<li><a href="math/LADR/vector-space-quotient.html">向量空间的商</a></li>
 </ul>
 </div>
 </div>
@@ -304,21 +321,32 @@ for the JavaScript code in this tag.
 <ul class="org-ul">
 <li><a href="math/probability/probability-evolution.html">概率定义的演进</a></li>
 <li><a href="math/probability/binary-distribution.html"><i>二项分布</i></a></li>
-<li><a href="math/probability/gauss-distribution.html"><i>高斯分布</i></a></li>
 <li><a href="math/probability/geometry-distribution.html"><i>几何分布</i></a></li>
+<li><a href="math/probability/poisson-distribution.html"><i>泊松分布</i></a></li>
+<li><a href="math/probability/gauss-distribution.html"><i>高斯分布</i></a></li>
+<li><a href="math/probability/gamma-distribution.html"><i>伽马分布</i></a></li>
+<li><a href="math/probability/beta-distribution.html"><i>\(\beta\)分布</i></a></li>
+<li><a href="math/probability/function-of-random-distribution.html"><i>随机变量函数的分布</i></a></li>
+<li><a href="math/probability/law-of-large-numbers-and-inequalities.html"><i>大数定理和两个重要的不等式</i></a></li>
 </ul>
 </div>
 </div>
+
+
 <div id="outline-container-orgf8ead72" class="outline-3">
 <h3 id="orgf8ead72">随机过程</h3>
 <div class="outline-text-3" id="text-orgf8ead72">
 <p>
 
 </p>
-</div>
-</div>
-</div>
 
+<ul class="org-ul">
+<li><a href="math/stochastic/markov-process.html"><i>马尔科夫过程</i></a></li>
+<li><a href="math/stochastic/brown-motion.html"><i>布朗运动</i></a></li>
+</ul>
+</div>
+</div>
+</div>
 <div id="outline-container-orgf490ac6" class="outline-2">
 <h2 id="orgf490ac6">计算机</h2>
 <div class="outline-text-2" id="text-orgf490ac6">
@@ -332,8 +360,17 @@ for the JavaScript code in this tag.
 <p>
 
 </p>
+<ul class="org-ul">
+<li><a href="computer/algorithms/sort-summary.html"><i>排序概述</i></a></li>
+<li><a href="computer/algorithms/sort-insertion.html"><i>插入排序</i></a></li>
+<li><a href="computer/algorithms/sort-quick.html"><i>快速排序</i></a></li>
+<li><a href="computer/algorithms/sort-heap.html"><i>堆排序</i></a></li>
+<li><a href="computer/algorithms/sort-base.html"><i>基排序</i></a></li>
+<li><a href="computer/algorithms/sort-shell.html"><i>希尔排序</i></a></li>
+</ul>
 </div>
 </div>
+
 
 <div id="outline-container-org36d072e" class="outline-3">
 <h3 id="org36d072e">TAOCP</h3>
@@ -433,10 +470,14 @@ for the JavaScript code in this tag.
 <li><a href="computer/AIML/learn-aiml-by-yourself.html">自学AL和ML资料汇总</a></li>
 <li><a href="computer/AIML/BRMLch01.html">概率推断和贝叶斯公式</a></li>
 <li><a href="computer/AIML/BRMLch02.html">图论简介</a></li>
+<li><a href="computer/AIML/Rosenblatt.html">Rosenblatt感知器</a></li>
+<li><a href="computer/AIML/SVM.html">支持向量机</a></li>
+<li><a href="computer/AIML/CNN.html">卷积网络</a></li>
 </ul>
 </div>
 </div>
 </div>
+
 <div id="outline-container-org54aa860" class="outline-2">
 <h2 id="org54aa860">工具</h2>
 <div class="outline-text-2" id="text-org54aa860">
