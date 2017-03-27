@@ -149,6 +149,74 @@ for the JavaScript code in this tag.
 </p>
 
 </div>
+
+<div class="definition">
+<p>
+设\(U\)是\(V\)的子空间，则\(V/U\)上的加法和标量乘法定义为：对任意\(v,w\in V\)和\(\lambda in \mathbf{F}\) \[(v+U) + (w+U) = (v+w) + U\] \[\lambda(v+U) = (\lambda v) + U\]
+</p>
+
+</div>
+
+<div class="theorem">
+<p>
+设\(U\)是\(V\)的子空间，则\(V/U\)按照商空间上加法和标量乘法定义构成向量空间。
+</p>
+
+</div>
+
+<div class="proof">
+<p>
+在上面定义的\(V/U\)上的加法和标量乘法中，一个潜在的问题是平行于\(U\)的仿射子集的表示并不是唯一的。具体来讲，设\(v,w\in V\)，假设\(\hat{v},\hat{w}\in V\)使得\(v+U = \hat{w} + U\)，要证明上面给出的\(V/U\)上的加法是有意义的，必须证明\((v+W) + U = (\hat{v} + \hat{w}) + U\)，于是有\[v-\hat{v}\in U,w-\hat{w}\in U\]
+因为\(U\)是\(V\)的子空，所以在加法下封闭，这说明\( (v-\hat{v}) + (w-\hat{w}) \in U\).所以
+\[(v+w) - (\hat{v}+\hat{w}) \in U\]然后有：\[(v+w) +U = (\hat{v}+\hat{w}) + U\]因此\(V/U\)上定义的加法是合理的。
+</p>
+
+<p>
+假设\(\lambda \in \mathbf{F}\)，因为\(U\)是\(V\)的子空间，所以在标量乘法下封闭，从而有\(\lambda (v-\hat{v}) \in U\)，于是\(\lambda u - \lambda \hat{u} \in U\). 所以\(\lambda u + U = \lambda \hat{u} + U\)，即\(V/U\)上的标量乘法是有意义的。
+</p>
+
+<p>
+接下来我们只需要证明\(0\)元存在，加法和标量乘法封闭即可。
+</p>
+
+</div>
+
+<div class="definition">
+<p>
+设\(U\)是\(V\)的子空间。 商映射\(\pi\)定义为\(\pi: V\rightarrow V/U\)对任意的\(v\in V\)，有\(\pi(v) = v+ U\)
+</p>
+
+</div>
+<div class="theorem">
+<p>
+设\(V\)是有限维的，\(U\)是\(V\)的子空间，则\(\dim V/U = \dim V - \dim U\) 
+</p>
+
+</div>
+<div class="proof">
+<p>
+设\(\pi \)是\(V\)到\(V/U\)的商映射。则\(null\pi = U,range\pi = V/U\),则\(\dim V = \dim U + \dim V/U\)
+</p>
+
+</div>
+<div class="definition">
+<p>
+设\(T\in \mathcal{L}(V,W) \)，定义\(\tilde{T}:V/(nullT)\rightarrow W\)为：\[\tilde(T)(v + nullT) = Tv\]
+</p>
+
+</div>
+<div class="theorem">
+<p>
+设\(T\in \mathcal{L}(V,W)\),则
+</p>
+<ol class="org-ol">
+<li>\(\tilde{T}\)是\(V/(nullT)\)到\(W\)的线性映射；</li>
+<li>\(\tilde{T}\)是单的；</li>
+<li>\(range{\tilde{T}} = rangeT\);</li>
+<li>\(V/(nullT)\)同构于\(rangeT\)</li>
+</ol>
+
+</div>
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
