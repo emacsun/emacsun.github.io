@@ -1030,6 +1030,10 @@
     .example{
         font-size: 60%;
     }
+    .output{
+        font-size: 60%;
+        background-color: #Fff5ee;
+    }
     .proof{
         font-size: 100%;
         font-weight: bold;
@@ -1046,7 +1050,21 @@
         font-weight: bold;
         background-color: #B0e0e6;
     }
-
+    .instance{
+        font-size: 100%;
+        font-weight: bold;
+        background-color: #B0e0e6;
+    }
+    .problem{
+        font-size: 100%;
+        font-weight: bold;
+        background-color: #Ffdab9;
+    }
+    .answer{
+        font-size: 100%;
+        font-weight: bold;
+        background-color:#20b2aa;
+    }
     .theorem{
         font-size: 100%;
         font-weight: bold;
