@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>练习：子空间，和与直和</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./ch01-vector-space-exercise.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">练习：子空间，和与直和</h1>
+<div class="problem">
+<p>
+判断 \(\mathbf{F}^{3}\)的下列子集是不是\(\mathbf{F}^{3}\)的子空间
+</p>
+<ol class="org-ol">
+<li><a id="orgbef21b4"></a> \(U=\{(x_{1},x_{2},x_{3})\in \mathbf{F}^{3}: x_{1} + 2x_{2} + 3x_{3} = 0\}\)</li>
+<li><a id="org1d04da3"></a> \(V=\{(x_{1},x_{2},x_{3})\in \mathbf{F}^{3}: x_{1} + 2x_{2} + 3x_{3} = 4\}\)</li>
+<li><a id="org5c0b840"></a> \(W=\{(x_{1},x_{2},x_{3})\in \mathbf{F}^{3}: x_{1} x_{2}x_{3} = 0\}\)</li>
+<li><a id="org6b611ef"></a> \(Z=\{(x_{1},x_{2},x_{3})\in \mathbf{F}^{3}: x_{1}  = 5x_{3}\}\)</li>
+</ol>
+
+</div>
+
+<div class="answer">
+<p>
+针对这个简单的问题，我们只需要按照子空间判断的三个条件来一一确认即可：
+\(V\)的子集\(U\)是\(V\)的子空间当且仅当\(U\)满足以下三个条件：
+</p>
+
+<ol class="org-ol">
+<li>加法单位元 \(0\in U\)；</li>
+<li>加法封闭性 : \(u,w\in U \rightarrow u+w\in U\)；</li>
+<li>标量乘法封闭性：\(a\in \mathbf{F}, u\in U \rightarrow au\in U\)</li>
+</ol>
+
+<p>
+对于<a href="#orgbef21b4">第一个问题</a> ,显然有\((0,0,0)\in \mathbf{F}^{3}\)也在\(U=\{(x_{1},x_{2},x_{3})\in \mathbf{F}^{3}: x_{1} + 2x_{2} + 3x_{3} = 0\}\)中。
+</p>
+
+<p>
+对于可加性，设\((x,y,z)\in U,(u,v,w)\in U\)，则有\(x+2y +3z = 0, u+2v+3w =0\)，进而有\((x+u) + 2(y+v) + 3(z+w) = 0\),即\((x+u,y+v,z+w)\in U\)
+</p>
+
+<p>
+对于齐次性，设\((x,y,z)\in U\)，则有\(\lambda(x+2y+3z) = 0\)，进而有\(\lambda x + 2(\lambda y) + 3(\lambda z) = 0\),即，\((\lambda x,\lambda y,\lambda z)\in U\)
+</p>
+
+<p>
+综上\(\{(x_{1},x_{2},x_{3})\in \mathbf{F}^{3}: x_{1} + 2x_{2} + 3x_{3} = 0\}\)是\(\mathbf{F}^{3}\)的子空间.
+</p>
+
+<p>
+对于<a href="#org1d04da3">第二个问题</a>，显然\((0,0,0)\in \mathbf{F}^{3}\)，但是\((0,0,0)\notin V\) ，还可以验证这个子空间不满足齐次可加性。
+</p>
+
+<p>
+对于<a href="#org5c0b840">第三个问题</a>，\((0,0,0)\in \mathbf{F}^{3}\)且\((0,0,0)\in W\)，但是\((1,1,0)\in W\)，\((1,0,1)\in W\) \((1,1,0) + (1,0,1) = (2,1,1)\notin W\)
+</p>
+
+<p>
+对于<a href="#org6b611ef">第四个问题</a>，假设\((x,y,z)\in Z, (u,v,w)\in Z\)，则有\(x=5c,z=5w\),所以\((x+u)=5z + 5w=5(z+w)\)，所以\((x+u,y+v,z+w)\in Z\), 
+</p>
+
+<p>
+对于齐次性： \(\lambda \in \mathbf{F}\)，\((a,b,c)\in W\)，则有\(\lambda a = \lambda (5c) = 5(\lambda c)\)，即\((\lambda a,\lambda b,\lambda c)\in Z\)
+</p>
+
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
