@@ -83,7 +83,7 @@ for the JavaScript code in this tag.
 <h1 class="title">练习：子空间，和与直和</h1>
 <div class="problem">
 <p>
-判断 \(\mathbf{F}^{3}\)的下列子集是不是\(\mathbf{F}^{3}\)的子空间
+1.C.1 判断 \(\mathbf{F}^{3}\)的下列子集是不是\(\mathbf{F}^{3}\)的子空间
 </p>
 <ol class="org-ol">
 <li><a id="orgbef21b4"></a> \(U=\{(x_{1},x_{2},x_{3})\in \mathbf{F}^{3}: x_{1} + 2x_{2} + 3x_{3} = 0\}\)</li>
@@ -136,6 +136,71 @@ for the JavaScript code in this tag.
 
 <p>
 对于齐次性： \(\lambda \in \mathbf{F}\)，\((a,b,c)\in W\)，则有\(\lambda a = \lambda (5c) = 5(\lambda c)\)，即\((\lambda a,\lambda b,\lambda c)\in Z\)
+</p>
+
+</div>
+<div class="problem">
+<p>
+1.C.3 证明区间\((-4,4)\)上满足\(f^{'}(-1) = 3f(2)\)的可微实值函数\(f\)构成的集合是\(\mathbf{R}^{(-4,4)}\)的子空间。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+首先指定加法单位元是定义如下的函数\(0:(-4,4)\rightarrow \mathbf{R}\)，对所有的\(x\in (-4,4)\)都有\(0(x) = 0\)
+</p>
+
+<p>
+显然这个函数是\(f^{'}(-1) = 3f(2)\)的单位元。
+</p>
+
+<p>
+定义\(V= \{ \mathbf{R}^{(-4,4)}: f^{'}(-1) = 3f(2)\}\)假设\(f,g\in \{ \mathbf{R}^{(-4,4)}: f^{'}(-1) = 3f(2)\}\)，则\((f+g)^{'}(-1) = f^{'}(-1) + g^{'}(-1) = 3f(2) + 3g(2) = 3 (f(2) + g(2)) = 3(f+g)(2)\),即 \(V\)下加法封闭。
+</p>
+
+<p>
+然后定义\(\lambda in \mathbf{R}\)则，\(\lambda f\)也是实值可微函数，且有\((\lambda f)^{'}(-1) = \lambda f^{'}(-1) = \lambda 3 f(2) = 3 \lambda f(2) = 3 (\lambda f)(2)\) 
+</p>
+
+<p>
+因此\(V\)在标量乘法下封闭
+</p>
+
+<p>
+综上， \(V\)是\( \mathbf{R}^{(-4,4)}\)上的子空间。
+</p>
+
+</div>
+
+<div class="problem">
+<p>
+1.C.4 设\(b\in \mathbf{R}\)，证明区间\([0,1]\)上满足\(\int_{0}^{1}f(x)dx = b\)的实值连续函数\(f\)构成的集合是\(\mathbf{R}^{[0,1]}\)的子空间，当且仅当\(b=0\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+用\(V\)表示区间\([0,1]\)上满足\(\int_{0}^{1}f(x)dx = b\)的实值连续函数\(f\)构成的集合。首先根据零函数的定义，有 \(b=0\)时，零元\(f=0\)在\(V\)内。
+</p>
+
+<p>
+假设\(V\)是\(\mathbf{R}^{[0,1]}\)上的子空间, \(\lambda \in \mathbf{R}\),\(f\in V\) 则有
+\[\int_{0}^{1}\lambda f(x) dx = b =\lambda \int_{0}^{1} f(x)dx = \lambda b\]
+从\(b = \lambda b\)得出 \(b=0\)。
+</p>
+
+<p>
+接下来就是证明子空间的三个步骤。逐一检验就可以了。
+</p>
+
+</div>
+
+
+<div class="problem">
+<p>
+1.C.5 \(\mathbf{R}^{2}\)是福向量空间\(\mathbf{C}^{2}\)的子空间么？
 </p>
 
 </div>
