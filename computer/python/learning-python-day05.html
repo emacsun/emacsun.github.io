@@ -1,0 +1,577 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>学习Python Doc第五天: 模块</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./learning-python-day05.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">学习Python Doc第五天: 模块</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgb282d74">1. 简介</a></li>
+<li><a href="#org607cdac">2. 深入了解 <code>module</code></a></li>
+<li><a href="#org722ddd7">3. 把 <code>module</code> 当做脚本执行</a></li>
+<li><a href="#orga853c77">4. <code>module</code> 的搜索路径</a></li>
+<li><a href="#orgee14419">5. “编译” <code>Python</code> 文件</a></li>
+<li><a href="#org6975842">6. 标准模块</a></li>
+<li><a href="#orgb048e41">7. <code>dir()</code> 函数</a></li>
+<li><a href="#orgae3c760">8. 包 （ <code>Packages</code> ）</a></li>
+<li><a href="#org5a35f83">9. 从 <code>package</code> 导入 <code>*</code></a></li>
+<li><a href="#org635c061">10. 包之间的调用</a></li>
+<li><a href="#org61f713a">11. 在多个文件夹下的包</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgb282d74" class="outline-2">
+<h2 id="orgb282d74"><span class="section-number-2">1</span> 简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+如果从 <code>Python</code> 解释器（命令行）退出再进入，那些之前定义的变量，函数都不复存在。如果想保存之前写过的代码，就需要用文件保存起来，下次调用的时候 <code>import</code> 进来。这些保存的文件可以是简单的脚本，亦可是复杂的函数。 <code>Python</code> 把调用的文件叫做 <code>module</code> .一个 <code>module</code> 中的函数定义可以 <code>import</code> 到其他 <code>module</code> 也可以 <code>import</code> 到 <code>main module</code> 
+</p>
+
+<p>
+一个 <code>module</code> 包含了 <code>Python</code> 函数定义和语句。这个文件用 <code>.py</code> 作为文件名后缀。 在一个 <code>module</code> 中,  <code>module</code> 的名字是全局变量 <code>__name__</code> 的值。例如，用文本编辑器（推荐 <code>vi</code> 或者 <code>Emacs</code> ）创建一个文件命名为 <code>fibo.py</code> 内容是：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #586e75;"># </span><span style="color: #586e75;">Fibonacci numbers module</span>
+
+<span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">fib</span><span style="color: #2aa198;">(</span>n<span style="color: #2aa198;">)</span>:    <span style="color: #586e75;"># </span><span style="color: #586e75;">write Fibonacci series up to n</span>
+    <span style="color: #268bd2;">a</span>, <span style="color: #268bd2;">b</span> = <span style="color: #6c71c4;">0</span>, <span style="color: #6c71c4;">1</span>
+    <span style="color: #859900; font-weight: bold;">while</span> b &lt; n:
+        <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>b, end=<span style="color: #2aa198;">' '</span><span style="color: #2aa198;">)</span>
+        <span style="color: #268bd2;">a</span>, <span style="color: #268bd2;">b</span> = b, a+b
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">()</span>
+
+<span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">fib2</span><span style="color: #2aa198;">(</span>n<span style="color: #2aa198;">)</span>:   <span style="color: #586e75;"># </span><span style="color: #586e75;">return Fibonacci series up to n</span>
+    <span style="color: #268bd2;">result</span> = <span style="color: #2aa198;">[]</span>
+    <span style="color: #268bd2;">a</span>, <span style="color: #268bd2;">b</span> = <span style="color: #6c71c4;">0</span>, <span style="color: #6c71c4;">1</span>
+    <span style="color: #859900; font-weight: bold;">while</span> b &lt; n:
+        result.append<span style="color: #2aa198;">(</span>b<span style="color: #2aa198;">)</span>
+        <span style="color: #268bd2;">a</span>, <span style="color: #268bd2;">b</span> = b, a+b
+    <span style="color: #859900; font-weight: bold;">return</span> result
+</pre>
+</div>
+
+<p>
+现在进入 <code>Python</code> 解释器，导入这个 <code>modul</code> 
+</p>
+
+<pre class="example">
+&gt;&gt;&gt;import fibo
+</pre>
+
+<p>
+使用 <code>module</code> 的名字 <code>fibo</code> ，可以调用该 <code>module</code> 中的函数。 比如：
+</p>
+<pre class="example">
+In [1485]: fibo.fib(1000)
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 
+
+In [1493]: fibo.fib2(100)
+Out[1502]: 
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+</pre>
+
+<p>
+还可以把函数的名字付给一个本地变量：
+</p>
+<pre class="example">
+In [1503]: fib = fibo.fib
+
+In [1510]: fib(20)
+1 1 2 3 5 8 13
+</pre>
+</div>
+</div>
+<div id="outline-container-org607cdac" class="outline-2">
+<h2 id="org607cdac"><span class="section-number-2">2</span> 深入了解 <code>module</code></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+一个 <code>module</code> 不仅可以包括函数还可以包括可执行语句（由可执行语句集合起来的文件我们也叫脚本）。每一个 <code>module</code> 都有自己的私有符号表，这些符号表对于 <code>module</code> 中的函数来讲是全局的。因此，在 <code>module</code> 中使用全局变量不用担心与另一个人的全局变量产生冲突。
+</p>
+
+<p>
+<code>module</code> 可以 <code>import</code> 其他的 <code>module</code> 还可以只调用 <code>module</code> 内的某些名字。
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; from fibo import fib,fib2
+&gt;&gt;&gt; fib(500)
+1 1 2 3 5 8 13 21 34 55 89 144 233 377
+</pre>
+<p>
+这样不会导入模块名，在上面的例子中 <code>fibo</code> 就没有被定义。
+</p>
+
+<p>
+可以使用 <code>*</code> 来导入当前 <code>module</code> 中的所有名字：
+</p>
+<pre class="example">
+&gt;&gt;&gt; from fibo import *
+&gt;&gt;&gt; fib(500)
+1 1 2 3 5 8 13 21 34 55 89 144 233 377
+</pre>
+<p>
+上面的语句导入了除以下划线开头的所有名字。当然大多数时候，不建议使用这样的做法，因为这样子有可能会导入一些未知的名字进来，有可能会覆盖掉我们自己定义的函数或者变量。另外使用 <code>*</code> 会降低代码的可读性。
+</p>
+
+<p>
+注意：从效率方面考虑，每一个 <code>module</code> 都只被导入一次，因此，如果 <code>module</code> 有所改变，你要么重启解释器，要么使用 <code>importlib.reload()</code> 比如: 
+</p>
+<pre class="example">
+import importlib;
+importlib.reload(modulename)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org722ddd7" class="outline-2">
+<h2 id="org722ddd7"><span class="section-number-2">3</span> 把 <code>module</code> 当做脚本执行</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+把一个 <code>module</code> 当做脚本执行很简单：
+</p>
+<pre class="example">
+python fibo.py &lt;arguments&gt;
+</pre>
+
+<p>
+这个 <code>module</code> 中的代码就会被执行（就像你 <code>import</code> 了它一样），在执行的过程中 <code>__name__</code> 被设置为 <code>__main__</code> ，这意味着通过在 <code>module</code> 的尾部添加，如下语句，就可以把一个 <code>module</code> 当做脚本来使用：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">if</span> <span style="color: #839496; font-weight: bold;">__name__</span> == <span style="color: #2aa198;">"__main__"</span>:
+    <span style="color: #859900; font-weight: bold;">import</span> sys
+    fib<span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">int</span><span style="color: #b58900;">(</span>sys.argv<span style="color: #268bd2;">[</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">]</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+使用过程为：
+</p>
+<pre class="example">
+&gt;&gt;&gt;python fibo.py 50
+1 1 2 3 5 8 13 21 34
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orga853c77" class="outline-2">
+<h2 id="orga853c77"><span class="section-number-2">4</span> <code>module</code> 的搜索路径</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+<code>import</code> 一个名称为 <code>spam</code> 的 <code>module</code> 后，解释器首先在内置 <code>module</code> 中搜索 <code>spam</code> 。如果没有找到，然后搜索名字为 <code>spam.py</code> 的文件名，搜索路径为 <code>sys.path</code> 
+</p>
+
+<p>
+初始的 <code>sys.path</code> 包含：
+</p>
+<ol class="org-ol">
+<li>当前路径；</li>
+<li><code>PYTHONPATH</code></li>
+<li>安装的默认路径</li>
+</ol>
+
+<p>
+初始化之后， <code>Python</code> 程序可以修改 <code>sys.path</code> 。包含当前脚本的路径被放在搜索路径的最开始位置（比标准库路径还要靠前），这意味着在当前路径匹配的 <code>module</code> 名会优先被调用。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgee14419" class="outline-2">
+<h2 id="orgee14419"><span class="section-number-2">5</span> “编译” <code>Python</code> 文件</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+为了加速 <code>module</code> 载入， <code>Python</code> 会把每一个 <code>module</code> 的编译版本 <code>module.version.pyc</code> 放到 <code>__pycache__</code> 目录下。比如，在 <code>CPython3.3</code> 中， <code>spam.py</code> 的编译版本保存路径是 <code>__pycache__/spam.cpython-33.pyc</code> . <code>Python</code> 会像 <code>make</code> 一样自动检测 <code>.pyc</code> 和 <code>py</code> 的时间，然后判断哪些文件需要重新编译。
+</p>
+
+<p>
+你可以使用 <code>-O</code> 或者 <code>-OO</code> 选项来让 <code>Python</code> 减小编译文件的大小。 <code>-O</code> 参数移除了 <code>assert</code> 语句。 使用 <code>-OO</code> 参数时，会从字节码中去除 <code>__doc__</code> 以产生更紧凑的 <code>.pyo</code> .
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6975842" class="outline-2">
+<h2 id="org6975842"><span class="section-number-2">6</span> 标准模块</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<p>
+<code>Python</code> 自带了一个标准模板库 <code>Python Library Reference</code> 。一些 <code>module</code> 内置于解释器中，这些 <code>module</code> 提供了 <code>Python</code> 语言核心不提供的功能，比如系统调用；比如 <code>winreg</code>  模块只在Windows上提供。
+</p>
+
+<p>
+有一个特殊的模块需要注意 <code>sys</code> 。这个模块内置于所有的 <code>Python</code> 解释器中。比如 变量 <code>sys.ps1</code> 和 <code>sys.ps2</code> 定义了主和次提示符的字符串:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.ps1
+'&gt;&gt;&gt; '
+&gt;&gt;&gt; sys.ps2
+'... '
+&gt;&gt;&gt; sys.ps1 = 'C&gt; '
+C&gt; print('Yuck!')
+Yuck!
+C&gt;
+</pre>
+
+<p>
+只有解释器处于交互模式时，这两个变量才有意义。
+</p>
+
+<p>
+<code>sys.path</code> 包含了解释器搜索 <code>module</code> 的所有路径。可以使用标准的 <code>list</code> 操作符来改变这个值：
+</p>
+<pre class="example">
+&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.path.append('/ufs/guido/lib/python')
+</pre>
+</div>
+</div>
+<div id="outline-container-orgb048e41" class="outline-2">
+<h2 id="orgb048e41"><span class="section-number-2">7</span> <code>dir()</code> 函数</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+
+</p>
+
+<p>
+内置的 <code>dir()</code> 用于找出一个模块里定义了那些名字. 它返回一个有序字串列表:
+</p>
+<pre class="example">
+&gt;&gt;&gt; import fibo, sys
+&gt;&gt;&gt; dir(fibo)
+['__name__', 'fib', 'fib2']
+&gt;&gt;&gt; dir(sys)  
+['__displayhook__', '__doc__', '__excepthook__', '__loader__', '__name__',
+ '__package__', '__stderr__', '__stdin__', '__stdout__',
+ '_clear_type_cache', '_current_frames', '_debugmallocstats', '_getframe',
+ '_home', '_mercurial', '_xoptions', 'abiflags', 'api_version', 'argv',
+ 'base_exec_prefix', 'base_prefix', 'builtin_module_names', 'byteorder',
+ 'call_tracing', 'callstats', 'copyright', 'displayhook',
+ 'dont_write_bytecode', 'exc_info', 'excepthook', 'exec_prefix',
+ 'executable', 'exit', 'flags', 'float_info', 'float_repr_style',
+ 'getcheckinterval', 'getdefaultencoding', 'getdlopenflags',
+ 'getfilesystemencoding', 'getobjects', 'getprofile', 'getrecursionlimit',
+ 'getrefcount', 'getsizeof', 'getswitchinterval', 'gettotalrefcount',
+ 'gettrace', 'hash_info', 'hexversion', 'implementation', 'int_info',
+ 'intern', 'maxsize', 'maxunicode', 'meta_path', 'modules', 'path',
+ 'path_hooks', 'path_importer_cache', 'platform', 'prefix', 'ps1',
+ 'setcheckinterval', 'setdlopenflags', 'setprofile', 'setrecursionlimit',
+ 'setswitchinterval', 'settrace', 'stderr', 'stdin', 'stdout',
+ 'thread_info', 'version', 'version_info', 'warnoptions']
+</pre>
+
+<p>
+如果没哟输入参数 <code>dir()</code> 列出了目前你定义的所有名字。 <code>dir()</code> 不会列举所有内置函数和变量，如果你想要看看  <code>builtins</code> 都内置了哪些函数和变量。你可以使用:
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; import builtins
+&gt;&gt;&gt; dir(builtins)  
+['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException',
+ 'BlockingIOError', 'BrokenPipeError', 'BufferError', 'BytesWarning',
+ 'ChildProcessError', 'ConnectionAbortedError', 'ConnectionError',
+ 'ConnectionRefusedError', 'ConnectionResetError', 'DeprecationWarning',
+ 'EOFError', 'Ellipsis', 'EnvironmentError', 'Exception', 'False',
+ 'FileExistsError', 'FileNotFoundError', 'FloatingPointError',
+ 'FutureWarning', 'GeneratorExit', 'IOError', 'ImportError',
+ 'ImportWarning', 'IndentationError', 'IndexError', 'InterruptedError',
+ 'IsADirectoryError', 'KeyError', 'KeyboardInterrupt', 'LookupError',
+ 'MemoryError', 'NameError', 'None', 'NotADirectoryError', 'NotImplemented',
+ 'NotImplementedError', 'OSError', 'OverflowError',
+ 'PendingDeprecationWarning', 'PermissionError', 'ProcessLookupError',
+ 'ReferenceError', 'ResourceWarning', 'RuntimeError', 'RuntimeWarning',
+ 'StopIteration', 'SyntaxError', 'SyntaxWarning', 'SystemError',
+ 'SystemExit', 'TabError', 'TimeoutError', 'True', 'TypeError',
+ 'UnboundLocalError', 'UnicodeDecodeError', 'UnicodeEncodeError',
+ 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarning',
+ 'ValueError', 'Warning', 'ZeroDivisionError', '_', '__build_class__',
+ '__debug__', '__doc__', '__import__', '__name__', '__package__', 'abs',
+ 'all', 'any', 'ascii', 'bin', 'bool', 'bytearray', 'bytes', 'callable',
+ 'chr', 'classmethod', 'compile', 'complex', 'copyright', 'credits',
+ 'delattr', 'dict', 'dir', 'divmod', 'enumerate', 'eval', 'exec', 'exit',
+ 'filter', 'float', 'format', 'frozenset', 'getattr', 'globals', 'hasattr',
+ 'hash', 'help', 'hex', 'id', 'input', 'int', 'isinstance', 'issubclass',
+ 'iter', 'len', 'license', 'list', 'locals', 'map', 'max', 'memoryview',
+ 'min', 'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property',
+ 'quit', 'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice',
+ 'sorted', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars',
+ 'zip']
+</pre>
+</div>
+</div>
+<div id="outline-container-orgae3c760" class="outline-2">
+<h2 id="orgae3c760"><span class="section-number-2">8</span> 包 （ <code>Packages</code> ）</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+
+</p>
+
+<p>
+包是一种 <code>Python</code>  模块组织命名空间的方法。比如模块名 <code>A.B</code> 是指在包 <code>A</code> 中字块 <code>B</code> 。就像模块的使用，使不同模块的作者不用担心其它全局变量的名字, 而带点号的模块使得多模块包, 例如 NumPy 或 Python 图像库, 的作者不用担心与其他模块名冲突。
+</p>
+
+<p>
+假设你想设计一个模块集 (一个 “包”), 用于统一声音文件和声音数据的处理. 有许多不同的声音格式 (通常通过它们的后缀来辨认, 例如: .wave, .aiff, .au), 因此你可能需要创建和维护一个不断增长的模块集, 用以各种各样的文件格式间的转换. 还有许多你想对声音数据执行的不同操作 (例如混频, 增加回音, 应用一个均衡器功能, 创建人造的立体声效果), 因此, 你将额外的写一个永无止尽的模块流来执行这些操作. 这是你的包的一个可能的结构:
+</p>
+
+<pre class="example">
+sound/                          Top-level package
+      __init__.py               Initialize the sound package
+      formats/                  Subpackage for file format conversions
+              __init__.py
+              wavread.py
+              wavwrite.py
+              aiffread.py
+              aiffwrite.py
+              auread.py
+              auwrite.py
+              ...
+      effects/                  Subpackage for sound effects
+              __init__.py
+              echo.py
+              surround.py
+              reverse.py
+              ...
+      filters/                  Subpackage for filters
+              __init__.py
+              equalizer.py
+              vocoder.py
+              karaoke.py
+              ...
+</pre>
+
+<p>
+导入一个包时， <code>Python</code> 通过搜索 <code>sys.path</code> 来找包的子目录。
+</p>
+
+<p>
+使用 <code>__init__.py</code> 来告诉 <code>Python</code> 哪些目录包含了包。这用来避免名字为一个通用名字(比如 <code>string</code> ), 的目录意外地隐藏了在模块搜索路径靠后的合法模块. 在最简单的例子里,  <code>__init__.py</code>  是个空文件, 但它也可以为这个包执行初始化代码.
+</p>
+
+<p>
+使用包可以导入单个模块：
+</p>
+<pre class="example">
+import sound.effects.echo
+</pre>
+
+<p>
+这样导入了子模块 <code>sound.effects.echo</code> 。在使用这个子模块时必须使用全名，比如：
+</p>
+<pre class="example">
+sound.effects.echo.echofilter(input, output, delay=0.7, atten=4)
+</pre>
+
+<p>
+显然，这很啰嗦。一种简单的调用方法是：
+</p>
+<pre class="example">
+from sound.effects import echo
+</pre>
+
+<p>
+调用时，不需要很长的前缀，
+</p>
+<pre class="example">
+echo.echofilter(input, output, delay=0.7, atten=4)
+</pre>
+
+<p>
+虽然简单，但是不够简单，我们想要的是 <code>foo(a,b,c)</code> 这样的形式， 看代码：
+</p>
+<pre class="example">
+from sound.effects.echo import echofilter
+</pre>
+
+<p>
+调用：
+</p>
+<pre class="example">
+echofilter(input, output, delay=0.7, atten=4)
+</pre>
+
+<p>
+现在，我开心了。
+</p>
+
+<p>
+通过上面的各种导入过程，我们发现，使用 <code>from package import item</code> 这样的语法 <code>item</code> 可以是一个子模块，也可以是一个包，也可以是一个包中定义的函数。
+</p>
+
+<p>
+相反，使用 <code>import item.subitem.subsubitem</code> 每一个项除了最后一个都应该是一个 <code>package</code> ，最后一项必须是 <code>module</code> 或者一个 <code>package</code> 但不许是函数或者变量。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5a35f83" class="outline-2">
+<h2 id="org5a35f83"><span class="section-number-2">9</span> 从 <code>package</code> 导入 <code>*</code></h2>
+<div class="outline-text-2" id="text-9">
+<p>
+
+</p>
+
+<p>
+试想 <code>from sound.effects import *</code> 会发生什么？我们希望这句话能够去文件系统中找到所有包中包含的子模块，然后导入。但是这样操作一方面耗时，另一方面有可能出现名字覆盖。
+</p>
+
+<p>
+包作者唯一能做的是提供包的显示索引。 <code>import</code> 语句有以下约定：
+</p>
+<ol class="org-ol">
+<li>如果一个包的 <code>__init__.py</code> 中定义了一个名为 <code>__all__</code> 的列表</li>
+<li>当遇到 <code>from package import *</code> 时，它会被用来作为导入的模块名字的列表。</li>
+</ol>
+
+<p>
+是否维护 <code>__all__</code> 这个变量取决于包作者。例如 <code>sound/effects/__init__.py</code> 可能包含：
+</p>
+<pre class="example">
+__all__ = ["echo","surround","reverse"]
+</pre>
+
+<p>
+那么， <code>from sound.effects import *</code> 将导入 <code>"echo","surround","reverse"</code> 这几个子模块。一个放之四海而皆准的导入方法是： <code>from package import specific_submodule</code> .
+</p>
+</div>
+</div>
+
+<div id="outline-container-org635c061" class="outline-2">
+<h2 id="org635c061"><span class="section-number-2">10</span> 包之间的调用</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+
+</p>
+
+<p>
+当我们需要调用子包内部的模块式，我们实用绝对路径，比如如果 <code>sound.filters.vocoder</code> 需要用到 <code>sound.effects</code> 中的 <code>echo</code> 模块，可以使用：
+</p>
+<pre class="example">
+from sound.effects import echo
+</pre>
+
+<p>
+当然也可以使用相对路径来调用，比如 从 <code>surround</code> 模块，可以使用：
+</p>
+<pre class="example">
+from . import echo
+from .. import formats
+from ..filters import equalizer
+</pre>
+
+<p>
+注意相对路径只适合于当前模块。由于主模块的名字永远是 <code>__main__</code> 因此所有需要被当做主模块使用的模块都必须使用绝对路径导入。
+</p>
+</div>
+</div>
+<div id="outline-container-org61f713a" class="outline-2">
+<h2 id="org61f713a"><span class="section-number-2">11</span> 在多个文件夹下的包</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+
+</p>
+
+<p>
+包支持一个特殊的属性 <code>__path__</code> ，这个属性初始化值是一个包含了包含了 <code>__init__.py</code> 目录的名字。可以修改这个变量使得在搜索模块或者子包时查找特定的路径。当然这个属性用的并不经常，主要用这个属性扩展当前包可以调用的模块。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
