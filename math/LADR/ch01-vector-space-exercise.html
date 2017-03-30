@@ -104,6 +104,10 @@ for the JavaScript code in this tag.
 <li><a href="#orgcf24f1a">1.c.18</a></li>
 <li><a href="#org3315ee1">1.c.19</a></li>
 <li><a href="#orga5c625a">1.c.20</a></li>
+<li><a href="#org5b98e3b">1.c.21</a></li>
+<li><a href="#orgf3336ba">1.c.22</a></li>
+<li><a href="#org11b1541">1.c.23</a></li>
+<li><a href="#orgf1f890f">1.c.24</a></li>
 </ul>
 </div>
 </div>
@@ -675,7 +679,149 @@ for the JavaScript code in this tag.
 
 <div class="problem">
 <p>
+设\(U=\{(x,x,y,y)\in \mathbf{F}^{4}:x,y\in \mathbf{F}\}\)，找出\(\mathbf{F}^{4}\)的一个子空间\(W\)使得\(\mathbf{F}^{4} = U\oplus W\)
+</p>
 
+</div>
+
+<div class="answer">
+<p>
+这个题目的处理方式有点像1.c.14的证明。
+</p>
+
+<p>
+对于任何的\((x,y,z,w)\in \mathbf{F}^{4}\)，有\((x,x,z,z) + (0,y-x,0,w-z) = (x,y,z,w)\)，因为\((x,x,z,z) \in U \) ，我们只需要令\(W = \{(0,x,0,y)\in \mathbf{F}^{4}:x,y\in \mathbf{F} \}\)
+</p>
+
+<p>
+关于直和，我们知道两个子空间可以作直和当且仅当这两个子空间的交集是零空间，或者这两个子空间的和中零的表示方式是唯一的。
+</p>
+
+<p>
+我们还需要证明\(U\)和\(W\)的交集是\(\{0\}\)。假设\((x,y,z,w)\in U\cap W\)，则有\(x=0,z=0,y=x=0,w=z=0\)， 显然\(U\cap W = \{0\}\)，所以\(\mathbf{F}^{4} = U \oplus W\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org5b98e3b" class="outline-2">
+<h2 id="org5b98e3b">1.c.21</h2>
+<div class="outline-text-2" id="text-org5b98e3b">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(U=\{(x,y,x+y,x-y,2x)\in \mathbf{F}^{5}:x,y\in \mathbf{F}\}\)，找出\(\mathbf{F}^{5}\)的一个子空间\(W\)使得 \(\mathbf{F}^{5} = U\oplus W\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+观察\(U=\{(x,y,x+y,x-y,2x)\in \mathbf{F}^{5}:x,y\in \mathbf{F}\}\)我们发现，后三个元素可以由前两个元素导出，那么我么需要构造一个后三个元素不能由前两个元素导出的向量组的集合。显然，可以构造：
+</p>
+
+<p>
+\(W=\{(0,0,x,y,z)\in \mathbf{F}^{5}:x,y,z\in \mathbf{F}\}\)
+</p>
+
+<p>
+对于每个\((x,y,z,u,v)\in \mathbf{F}^{5}\)有：
+\[(x,y,z,u,v) = (x,y,x+y,x-y,2x) + (0,0,z-x-y,u-x+y,v-2x)\] 我们有\((x,y,x+y,x-y,2x) \in U\)，\((0,0,z-x-y,u-x+y,v-2x) \in W\).
+</p>
+
+<p>
+另外对于\(U\cap W\)我们有\(x=0,y=0,z=0,u=0,v=0\)，即\(U\cap V = \{0\}\)。
+</p>
+
+<p>
+综上\(\mathbf{F}^{5} = U\oplus W\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgf3336ba" class="outline-2">
+<h2 id="orgf3336ba">1.c.22</h2>
+<div class="outline-text-2" id="text-orgf3336ba">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(U=\{(x,y,x+y,x-y,2x)\in \mathbf{F}^{5}:x,y\in \mathbf{F}\}\)，找出\(\mathbf{F}^{5}\)的三个非零子空间\(W_{1},W_{2},W_{3}\)使得 \(\mathbf{F}^{5} = U\oplus W_{1} \oplus W_{2} \oplus W_{3}\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+这个问题是1.c.21的延续，比较简单：
+</p>
+
+<p>
+\[W_{1}=\{(0,0,x,0,0)\in \mathbf{F}^{5}:x\in \mathbf{F}\}\]
+\[W_{2}=\{(0,0,0,x,0)\in \mathbf{F}^{5}:x\in \mathbf{F}\}\]
+\[W_{3}=\{(0,0,0,0,x)\in \mathbf{F}^{5}:x\in \mathbf{F}\}\]
+</p>
+
+<p>
+证明略
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org11b1541" class="outline-2">
+<h2 id="org11b1541">1.c.23</h2>
+<div class="outline-text-2" id="text-org11b1541">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+证明或者给出反例: 如果\(U_{1},U_{2},W\)是\(V\)的子空间，使得\(V = U_{1} \oplus W\)，且\(V = U_{2}\oplus W\) 则\(U_{1} = U_{2}\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+有反例\(V = \mathbf{R}^{2}\) \(U_{1} = \{(x,0)\in \mathbf{R}^{2}:x\in \mathbf{R}\}\) \(U_{2} = \{(0,x)\in \mathbf{R}^{2}:x\in \mathbf{R}\}\), \(W = \{(x,x)\in \mathbf{R}^{2}:x\in \mathbf{R}\}\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgf1f890f" class="outline-2">
+<h2 id="orgf1f890f">1.c.24</h2>
+<div class="outline-text-2" id="text-orgf1f890f">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+函数\(f: \mathbf{R}\rightarrow \mathbf{R}\)称为偶函数，如果对所有的\(x\in \mathbf{R}\)都有\(f(x) = f(-x)\)，函数\(f: \mathbf{R}\rightarrow \mathbf{R}\)称为奇函数，如果对所有的\(x\in \mathbf{R}\)都有\(f(x) = -f(-x)\)。用\(U_{e}\)表示\(\mathbf{R}\)上实值偶函数的集合，用\(U_{o}\)表示\(\mathbf{R}\)上实值奇函数的集合。证明\(\mathbf{R}^{ \mathbf{R}} = U_{e} \oplus U_{o}\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+对于任何一个\(f(x)\in \mathbf{R}^{ \mathbf{R}}\)我们有
+</p>
+\begin{equation}
+\label{eq:1}
+f(x) = \frac{f(x) + f(-x)}{2} + \frac{f(x) - f(-x)}{2}
+\end{equation}
+
+<p>
+\(\frac{f(x)+f(-x)}{2}\in U_{e}\)， \(\frac{f(x)-f(-x)}{2}\in U_{o}\)，所以有\( \mathbf{R}^{\mathbf{R}} = U_{e} + U_{o}\) ，另外对于\(U_{e}\cap U_{0}\)我们有\(f =0\)所以\(U_{e}\cap U_{0} = \{0\}\)
 </p>
 
 </div>
