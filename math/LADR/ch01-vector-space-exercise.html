@@ -81,6 +81,39 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <h1 class="title">练习：子空间，和与直和</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgcc839c9">1.c.1</a></li>
+<li><a href="#org8179714">1.c.3</a></li>
+<li><a href="#org50e70b9">1.c.4</a></li>
+<li><a href="#org96f103c">1.c.5</a></li>
+<li><a href="#org71a2e3c">1.c.6</a></li>
+<li><a href="#org35aea9d">1.c.7</a></li>
+<li><a href="#org780012d">1.c.8</a></li>
+<li><a href="#orgcfb109a">1.c.9</a></li>
+<li><a href="#org0fbe2c2">1.c.10</a></li>
+<li><a href="#org1efa567">1.c.11</a></li>
+<li><a href="#orgc55bcd0">1.c.12</a></li>
+<li><a href="#org7f54884">1.c.13</a></li>
+<li><a href="#org7aad32b">1.c.14</a></li>
+<li><a href="#org5d94f3e">1.c.15</a></li>
+<li><a href="#org26fe840">1.c.16</a></li>
+<li><a href="#org71a7679">1.c.17</a></li>
+<li><a href="#orgcf24f1a">1.c.18</a></li>
+<li><a href="#org3315ee1">1.c.19</a></li>
+<li><a href="#orga5c625a">1.c.20</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgcc839c9" class="outline-2">
+<h2 id="orgcc839c9">1.c.1</h2>
+<div class="outline-text-2" id="text-orgcc839c9">
+<p>
+
+</p>
 <div class="problem">
 <p>
 1.C.1 判断 \(\mathbf{F}^{3}\)的下列子集是不是\(\mathbf{F}^{3}\)的子空间
@@ -139,6 +172,15 @@ for the JavaScript code in this tag.
 </p>
 
 </div>
+</div>
+</div>
+<div id="outline-container-org8179714" class="outline-2">
+<h2 id="org8179714">1.c.3</h2>
+<div class="outline-text-2" id="text-org8179714">
+<p>
+
+</p>
+
 <div class="problem">
 <p>
 1.C.3 证明区间\((-4,4)\)上满足\(f^{'}(-1) = 3f(2)\)的可微实值函数\(f\)构成的集合是\(\mathbf{R}^{(-4,4)}\)的子空间。
@@ -172,6 +214,14 @@ for the JavaScript code in this tag.
 </p>
 
 </div>
+</div>
+</div>
+<div id="outline-container-org50e70b9" class="outline-2">
+<h2 id="org50e70b9">1.c.4</h2>
+<div class="outline-text-2" id="text-org50e70b9">
+<p>
+
+</p>
 
 <div class="problem">
 <p>
@@ -196,13 +246,440 @@ for the JavaScript code in this tag.
 </p>
 
 </div>
+</div>
+</div>
+<div id="outline-container-org96f103c" class="outline-2">
+<h2 id="org96f103c">1.c.5</h2>
+<div class="outline-text-2" id="text-org96f103c">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+1.C.5 \(\mathbf{R}^{2}\)是复向量空间\(\mathbf{C}^{2}\)的子空间么？
+</p>
+
+</div>
+<div class="answer">
+<p>
+这种伪命题最好的办法是找个反例推翻它。我们有\(i \in \mathbf{C},(1,1)\in \mathbf{R}^{2}\)，则\(i(1,1) = (i,i)\notin \mathbf{R}^{2}\)，即\(\mathbf{C}^{2}\)的子集\(\mathbf{R}^{2}\)不满足标量乘法封闭性，所以\(\mathbf{R}^{2}\)不是复向量空间\(\mathbf{C}^{2}\)的子空间。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org71a2e3c" class="outline-2">
+<h2 id="org71a2e3c">1.c.6</h2>
+<div class="outline-text-2" id="text-org71a2e3c">
+<p>
+
+</p>
+
+<div class="problem">
+<ol class="org-ol">
+<li>\(\{(a,b,c)\in \mathbf{R}^{3}:a^{3} = b^{3}\}\)是\(\mathbf{R}^{3}\)的子空间么？</li>
+<li>\(\{(a,b,c)\in \mathbf{C}^{3}:a^{3} = b^{3}\}\)是\(\mathbf{C}^{3}\)的子空间么？</li>
+</ol>
+
+</div>
+
+<div class="answer">
+<p>
+对于第一个问题，我们知道在实数域上\(a^{3}=b^{3}\)意味着\(a=b\)，则我们用证明子空间的三步可以证明，\(\{(a,b,c)\in \mathbf{R}^{3}:a^{3} = b^{3}\}\)是\(\mathbf{R}^{3}\)的子空间。
+</p>
+
+<p>
+对于第二个问题，当\(x=(1,\frac{-1 + \sqrt{3}i}{2},0) \in \{(a,b,c)\in \mathbf{C}^{3}:a^{3} = b^{3}\}\)，\(y= (1,\frac{-1 - \sqrt{3}i}{2},0) \in \{(a,b,c)\in \mathbf{C}^{3}:a^{3} = b^{3}\}\),但是\(x+y = (2,-1,0)\notin \{(a,b,c)\in \mathbf{C}^{3}:a^{3} = b^{3}\}\)
+因此不满足加法封闭性。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org35aea9d" class="outline-2">
+<h2 id="org35aea9d">1.c.7</h2>
+<div class="outline-text-2" id="text-org35aea9d">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+1.C.7 给出\(\mathbf{R}^{2}\)上的一个子集\(U\)使得，\(U\)上满足加法和加法的逆封闭，但是\(U\)却不是\(\mathbf{R}^{2}\)的子空间。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+这个问题我的第一印象是\((a,b)\in \mathbf{R}^{2}:b\neq 0\)，对于\(x=(a,b),y=(-a,-b)\)，显然有\(y\in U\)，但是却不满足加法和加法的逆封闭，因为\(x+y = (0,0)\notin \{(a,b)\in \mathbf{R}^{2}: b\neq 0\}\)
+</p>
+
+<p>
+于是换种思路\(U = \{(a,b)\in \mathbf{R}^{2}: a,b\in \mathbf{Z}\}\)，显然满足加法和加法的逆封闭，但是不满足标量乘法封闭。举一个反例\(0.5\in \mathbf{R},(1,4)\in \{(a,b)\in \mathbf{R}^{2}:a,b\in \mathbf{Z}\}\)，但是\(0.5(1,4)\notin \{(a,b)\in \mathbf{R}^{2}:a,b\in \mathbf{Z}\} \)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org780012d" class="outline-2">
+<h2 id="org780012d">1.c.8</h2>
+<div class="outline-text-2" id="text-org780012d">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+给出\(\mathbf{R}^{2}\)的一个非空子集\(U\)的例子，使得\(U\)在标量乘法下是封闭的，但是\(U\)不是\(\mathbf{R}^{2}\)的子空间。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+定义子集\(U=\{(a,b)\in \mathbf{R}^{2}:a=0 \quad or \quad b=0\}\)，显然对于\((1,0)\in U, \(\lambda,0\)=in U\)， \((0,1)\in U, (0,\lambda) \in U\)，但是\((1,0) + (0,1) = (1,1)\notin U\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgcfb109a" class="outline-2">
+<h2 id="orgcfb109a">1.c.9</h2>
+<div class="outline-text-2" id="text-orgcfb109a">
+<p>
+
+</p>
 
 
 <div class="problem">
 <p>
-1.C.5 \(\mathbf{R}^{2}\)是福向量空间\(\mathbf{C}^{2}\)的子空间么？
+函数\(f: \mathbf{R}\rightarrow \mathbf{R}\)称为周期函数，如果有正整数\(p\)使得对于任意\(x\in \mathbf{R}\)有\(f(x) = f(x+p)\). \(\mathbf{R}\)到\(\mathbf{R}\)的周期函数构成的集合是\(\mathbf{R}^{ \mathbf{R}}\)的子空间么？说明理由。
 </p>
 
+</div>
+
+<div class="answer">
+<p>
+定义从\(\mathbf{R}\)到\(\mathbf{R}\)的周期函数集合为\(U\)。\(U\)不是\(\mathbf{R}^{R}\)的子空间，我们可以给出一个反例。\(h(x) = \sin (\sqrt{2}x) + \cos x\)，因为\(f(x) = \sin \sqrt{2}x\)和\(g(x) = \cos x\)都是从\(\mathbf{R}\)到\(\mathbf{R}\)的周期函数，假设存在正数\(p\)，使得\(h(x) = h(x+p)\)则有\(1 = h(0) = h(p) = h(-p)\) 等效于：
+\[1 = \cos p + \sin \sqrt{2} p = \cos p - \sin \sqrt{2}p\]
+</p>
+
+<p>
+显然有：
+</p>
+\begin{eqnarray*}
+\sin \sqrt{2} p &=&0 \\
+\cos  p &=&1 \\
+\end{eqnarray*}
+<p>
+进而有\(\sqrt{2}p = 2m\pi, p = 2n\pi, m,n\in \mathbf{Z}\)，推出\(\sqrt{2} = m/n\) 我们知道\(\sqrt{2}\)是无理数，进而推出矛盾。
+</p>
+
+<p>
+这个题目告诉我们：从\(\mathbf{R}\)到\(\mathbf{R}\)的周期函数的集合不是子空间。从\(\mathbf{R}\)到\(\mathbf{R}\)的两个周期函数之和不一定还是周期的。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org0fbe2c2" class="outline-2">
+<h2 id="org0fbe2c2">1.c.10</h2>
+<div class="outline-text-2" id="text-org0fbe2c2">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(U_{1},U_{2}\)是\(V\)的两个子空间，证明\(U_{1}\cap U_{2}\)是\(V\)的子空间。
+</p>
+
+</div>
+
+
+<div class="answer">
+<p>
+由于\(U_{1},U_{2}\)是\(V\)的两个子空间，显然有\(0\in V, 0\in U_1 ,0\in U_{2}\)，则\(0\in U_{1}\cap U_{2}\)
+</p>
+
+<p>
+下面证明可加性和齐次性。假设\(u,v\in U_{1}\cap U_{2}\)，则有\(u+v\in U_{1},u+v\in U_{2}\)，进而有\(u+v\in U_{1}\cap U_{2}\)
+</p>
+
+<p>
+对于齐次性，有\(\lambda \in \mathbf{F},u \in U_{1}\cap U_{2}\),则有\(\lambda u \in U_{1}, \lambda u \in U_{2}\) ，即\(\lambda u\in U_{1}\cap U_{2}\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org1efa567" class="outline-2">
+<h2 id="org1efa567">1.c.11</h2>
+<div class="outline-text-2" id="text-org1efa567">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+证明\(V\)的任意一簇子空间的交是\(V\)的子空间
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+设\(U_{i},i=\{1,\ldots ,m\}\)是\(V\)的一簇子空间，这组子空间的交为\(\overset{m}{\underset{i=1}{\cap}}\)，接下来的证明和上一题的证明是一样的。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc55bcd0" class="outline-2">
+<h2 id="orgc55bcd0">1.c.12</h2>
+<div class="outline-text-2" id="text-orgc55bcd0">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+证明\(V\)的两个子空间的并是\(V\)的子空间当前仅当其中一个字空间包含另一个子空间。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+假设\(U,W\)是\(V\)的两个子空间，首先我们从\(U\cup W = W\)推出\(U\cup W\)是\(V\)的子空间。
+</p>
+
+<p>
+显然因为\(U\cup W = W\),\(W\)是\(V\)的子空间。
+</p>
+
+
+<p>
+然后我们从\(U\cup W\)是\(V\)的子空间推出\(U\cup W = W\)(对于\(U\cup W = U\))的情形也是类似。
+</p>
+
+<p>
+设\(u\in U/W, w\in  W/U\)，因为\(U\cup W\)是\(V\)的子空间，则有\(u+w\in U\cup W\)。利用反证法，假设\(U \nsubseteq W\)且\(W\nsubseteq U\)，有如果\(u+w \in U\), 则\(w = (u+w)-u \in U \)，导出矛盾；如果\(u+w \in w\), 则\(u = (u+w)-w \in W \)，导出矛盾。
+</p>
+
+<p>
+所以有\(U\cup W\)是\(V\)的子空间当且仅当\(U\subseteq W\)或者\(W\subseteq U\)
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7f54884" class="outline-2">
+<h2 id="org7f54884">1.c.13</h2>
+<div class="outline-text-2" id="text-org7f54884">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+证明当\(V\)的三个子空间的并是\(V\)的子空间，当且仅当其中一个子空间包含另两个子空间。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+假设\(X,Y,Z\)是\(U\)的三个子空间，不失一般性，我们假设\(X\subseteq Z, Y\subseteq Z\), 所以\(X\cup Y \cup Z = X\),所以\(X\cup Y\cup Z\)是\(V\)的子空间。
+</p>
+
+<p>
+但是，我不会证明:如果\(X\cup Y\cup Z\)是\(V\)的子空间，则意味着\(X\subseteq Z,Y\subseteq Z\)，或者\(Y\subseteq X,Z\subseteq X\)或者\(X\subseteq Y, Z\subseteq Y\).
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org7aad32b" class="outline-2">
+<h2 id="org7aad32b">1.c.14</h2>
+<div class="outline-text-2" id="text-org7aad32b">
+<p>
+
+</p>
+<div class="problem">
+<p>
+设\(U=\{(x,x,y,y)\in \mathbf{F}^{4}:x,y\in \mathbf{F}\}\)，\(W = \{(x,x,x,y)\in \mathbf{F}^{4}:x,y\in \mathbf{F}\}\)，则\(U+W = \{(x,x,y,z)\in \mathbf{F}^{4}:x,y,z\in \mathbf{F}\}\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+设\((a,a,b,b)\in U\) 其中\( a,b\in \mathbf{F}\),\((c,c,c,d)\in W\) 其中 \(c,d \in \mathbf{F}\)
+则\(U+W\)中的元素具有如下形式\(\{(a+c,a+c,b+c,b+d):a,b,c,d\in \mathbf{F}\}\)，鉴于\(a,b,c,d \in \mathbf{F}\)的任意性，有\(\{(a+c,a+c,b+c,b+d):a,b,c,d\in \mathbf{F}\}\)可以写为\(\{(x,x,y,z):x,y,z\in \mathbf{F}\}\),因此有\(U+W\subseteq \{(x,x,y,z)\in \mathbf{F}^{4}:x,y,z\in \mathbf{F}\}\)
+</p>
+
+<p>
+接下来我们验证\(\{(x,x,y,z)\in \mathbf{F}^{4}:x,y,z\in \mathbf{F}\} \subseteq U+W\)，对于任意的\(\{(x,x,y,z)\in \mathbf{F}^{4}:x,y,z\in \mathbf{F}\}\) 我们都可以都有\((0,0,y-x,y-x)\in U\),\((x,x,x,z-y+x)\in W\)，满足：\((x,x,y,z) = (0,0,y-x,y-x) + (x,x,x,z-y+x)\) 因此\(\{(x,x,y,z)\in \mathbf{F}^{4}:x,y,z\in \mathbf{F}\} \subseteq U+W\)
+</p>
+
+<p>
+综上有\(U+W =\{(x,x,y,z)\in \mathbf{F}^{4}:x,y,z\in \mathbf{F}\} \)
+</p>
+
+<p>
+证明\(A=B\)必须同时证明\(A\subseteq B\)且\(B\subseteq A\).在完成此类证明的时候我总是会落下一个。要长记性。下面的一个题目也是的。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org5d94f3e" class="outline-2">
+<h2 id="org5d94f3e">1.c.15</h2>
+<div class="outline-text-2" id="text-org5d94f3e">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(U\)是\(V\)的子空间，求\(U+U\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+因为\(U\)是\(V\)的子空间，所以\(U\)在加法下封闭，则有\(x,y\in U\)意味着\(x+y \in U\)，所以\(U + U = \{x +y :x\in U, y\in U\}\)，意味着\(U + U \subseteq U\).
+</p>
+
+<p>
+接下来我们有对于任意的\(x,u\in U\), \(x = x+0 = x+u -u = (x-u) + u \in U+U \) 所以\(U\subseteq U+U\)
+</p>
+
+<p>
+综上我们有\( U + U = U\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org26fe840" class="outline-2">
+<h2 id="org26fe840">1.c.16</h2>
+<div class="outline-text-2" id="text-org26fe840">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+如果\(U\)和\(W\)都是\(V\)的子空间，那么是否意味着\(U+W = W+U\)?
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+解：根据空间和的定义，\(U+W=\{u+w:u\in U,w\in W\}\) ，因为\(U\)和\(W\)都是\(V\)的子空间，则\(u\in V,w\in V\)，进而有\(u+w = w+u\),所以\(U+W=\{u+w:u\in U,w\in W\}=\{w+u:w\in W,u\in U\} = W+U \)
+</p>
+
+<p>
+说明\(V\)的子空间加法具有交换性
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org71a7679" class="outline-2">
+<h2 id="org71a7679">1.c.17</h2>
+<div class="outline-text-2" id="text-org71a7679">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+如果\(U_{1},U_{2},U_{3}\)是\(V\)的子空间，那么是否有\((U_{1} + U_{2}) + U_{3} = U_{1} + (U_{2} + U_{3})\)?
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+这道题的做法和上道题的做法一样，紧扣空间和的定义。我们可以发现子空间的和具有结合性。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgcf24f1a" class="outline-2">
+<h2 id="orgcf24f1a">1.c.18</h2>
+<div class="outline-text-2" id="text-orgcf24f1a">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+\(V\)的子空间加法运算有单位元么？哪些子空间有加法逆元？
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+只包含\(0\)的子空间是加法单位元。只包含\(0\)的子空间有加法逆元
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org3315ee1" class="outline-2">
+<h2 id="org3315ee1">1.c.19</h2>
+<div class="outline-text-2" id="text-org3315ee1">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+证明或者给出反例：如果\(U_{1},U_{2},W\)是\(V\)的子空间，使得\(U_{1} + W = U_{2} + W\)则有\(U_{1} = U_{2}\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+这个题的直观感受是不成立，因为只有\(W\)有逆元的时候才成立。而有加法逆元的子空间只有\(\{0\}\)。我们可以举一个反例假设\(U_{1} = \{(a,b)\in \mathbf{R}^{2}:a,b\in \mathbf{R}\}\)，  \(U_{2} = \{(a,0)\in \mathbf{R}^{2}:a\in \mathbf{R}\}\)， \(W = \{(0,b)\in \mathbf{R}^{2}:b\in \mathbf{R}\}\) 显然有\(U_{1} + W = U_{2} + W\)，但是\(U_{1}\neq U_{2}\)
+</p>
+
+<p>
+这个题目说明子空间的加法不能使用消去率，因为除了\(\{0\}\)外，所有的子空间都不具有逆元。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orga5c625a" class="outline-2">
+<h2 id="orga5c625a">1.c.20</h2>
+<div class="outline-text-2" id="text-orga5c625a">
+<p>
+
+</p>
+
+
+<div class="problem">
+<p>
+
+</p>
+
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
