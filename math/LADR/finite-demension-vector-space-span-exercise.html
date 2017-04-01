@@ -100,6 +100,7 @@ for the JavaScript code in this tag.
 <li><a href="#org63c3e7e">2.a.14</a></li>
 <li><a href="#orgb6faedd">2.a.15</a></li>
 <li><a href="#org2d092f7">2.a.16</a></li>
+<li><a href="#orgef75402">2.a.17</a></li>
 </ul>
 </div>
 </div>
@@ -351,14 +352,14 @@ a_{4} - a_{3} &=& 0
 
 <div class="problem">
 <p>
-设\(v_{1},\ldots ,v_{m}\)在\(V\)中线性无关，并设\(w\in V\)，证明若\(v_{1}+w,\ldots ,v_{m}+w)线性相关，则有\(w\in span(v_{1},\ldots ,v_{m})\)
+设\(v_{1},\ldots ,v_{m}\)在\(V\)中线性无关，并设\(w\in V\)，证明若\(v_{1}+w,\ldots ,v_{m}+w)线性相关，则有 \(w\in span(v_{1},\ldots ,v_{m}\)
 </p>
 
 </div>
 
 <div class="answer">
 <p>
-显然若\(v_{1}+w,\ldots ,v_{m}+w)线性相关，则存在不全为零的\(a_{1},a_{2},\ldots ,a_{m}\)使得：
+显然若\(v_{1}+w,\ldots ,v_{m}+w\)线性相关，则存在不全为零的\(a_{1},a_{2},\ldots ,a_{m}\)使得：
 </p>
 \begin{equation}
 \label{eq:8}
@@ -550,6 +551,74 @@ w = -\frac{\sum_{i}^{m}a_{i}v_{i}}{b}
 <div class="problem">
 <p>
 证明区间\([0,1]\)上的所有实值连续函数构成的向量空间是无穷维的。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+这个题目我一直解不出来，一定有什么tricky的东西。
+</p>
+
+<p>
+定义：
+</p>
+\begin{equation}
+\label{eq:14}
+f_{n} =
+\begin{cases}
+x-1/n & x \geq 1/n; \\
+0, & x\in [0,1/n]
+\end{cases}
+\end{equation}
+<p>
+那么\(f_{n}\)在\([0,1]\)内是连续的。接下来，我们证明\(f_{n+1}\notin span \{f_{1},\ldots ,f_{n}\}\)，那么就有明区间\([0,1]\)上的所有实值连续函数构成的向量空间是无穷维的。
+</p>
+
+<p>
+如果\(f_{n+1}\notin span \{f_{1},\ldots ,f_{n}\}\)，那么有:
+</p>
+\begin{equation}
+\label{eq:15}
+f_{n+1}(x) = a_{1}f_{x} + \ldots + a_{n}f_{n}(x)
+\end{equation}
+<p>
+注意，我们有\(f_{1}(1/n) = \ldots = f_{n}(1/n)=0\),但是\(f_{n+1} = 1/(n(n+1)) \neq 0\)。矛盾。命题得证
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgef75402" class="outline-2">
+<h2 id="orgef75402">2.a.17</h2>
+<div class="outline-text-2" id="text-orgef75402">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(p_{0},\ldots ,p_{m}\) 是\(\mathcal{P}_{m}(\mathbf{F})\)中的多项式使得对每个\(j\)都有\(p_{j}(2) = 0\),证明\(p_{0},p_{1},\ldots ,p_{m}\)在\(\mathcal{P}_{m}(\mathbf{F})\)中不是线性无关的。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+假设\(p_{0},p_{1},\ldots ,p_{m}\)是线性独立的。我们知道对于一个维度是\(m\)的线性子空间，这个空间中的线性无关组向量的个数不可能大于其张成组向量的个数。我们知道\(1,z,\ldots ,z^{m}\)张成了\(\mathcal{P}_{m}(z)\)，又因为假设\(p_{0},p_{1},\ldots ,p_{m}\)是线性独立的，说明其也是\(\mathcal{P}_{m}(z)\)的张成向量组。所以存在：
+</p>
+\begin{equation}
+\label{eq:16}
+z = a_{0}p_{0}(z) + \ldots a_{m}p_{m}(z)
+\end{equation}
+
+<p>
+又因为每个\(j\)都有\(p_{j}(2) = 0\)，我们有\(z=2\)，矛盾。
+</p>
+
+<p>
+所以\(p_{0},p_{1},\ldots ,p_{m}\)在\(\mathcal{P}_{m}(\mathbf{F})\)中不是线性无关的。
 </p>
 
 </div>
