@@ -64,21 +64,24 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge244600">1. 简介</a></li>
-<li><a href="#org1c452f6">2. 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></a></li>
-<li><a href="#org67ffa96">3. 从 <code>constructor</code> 的定义引入函数重载</a></li>
-<li><a href="#org1b5c189">4. 默认的 <code>constructor</code></a></li>
-<li><a href="#org46f2767">5. <code>this</code> 的作用</a></li>
-<li><a href="#org0da4977">6. 理解 <code>static</code></a></li>
-<li><a href="#orge35bef3">7. <code>class</code> 成员初始化</a></li>
-<li><a href="#orgeb11cf7">8. 初始化顺序</a></li>
-<li><a href="#orge602ee0">9. <code>static</code> 类型的初始化</a></li>
+<li><a href="#org7ba0bb4">1. 简介</a></li>
+<li><a href="#orgfa8717a">2. 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></a></li>
+<li><a href="#org7ad263e">3. 从 <code>constructor</code> 的定义引入函数重载</a></li>
+<li><a href="#org8303b7b">4. 默认的 <code>constructor</code></a></li>
+<li><a href="#org3eaed89">5. <code>this</code> 的作用</a></li>
+<li><a href="#org27f6dec">6. 理解 <code>static</code></a></li>
+<li><a href="#orgd1f895f">7. <code>class</code> 成员初始化</a></li>
+<li><a href="#org05729c0">8. 初始化顺序</a></li>
+<li><a href="#orgb5c9976">9. <code>static</code> 类型的初始化</a></li>
+<li><a href="#orgcaf8246">10. 显示初始化</a></li>
+<li><a href="#orgbfbf6f0">11. 非静态实例初始化</a></li>
+<li><a href="#org4a9fb82">12. 数组初始化</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge244600" class="outline-2">
-<h2 id="orge244600"><span class="section-number-2">1</span> 简介</h2>
+<div id="outline-container-org7ba0bb4" class="outline-2">
+<h2 id="org7ba0bb4"><span class="section-number-2">1</span> 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <b>Initialization and Cleanup</b> 这一章首先讲述类初始化的一些操作，顺带初始化操作阐述了方法重载。然后讲述了Java的Garbage Collector机制。其中关于 <code>static</code> 初始化的例子最为令人印象深刻，我把那个“橱柜”的代码做了逐行解析，学完之后感觉非常顺畅。
@@ -86,8 +89,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org1c452f6" class="outline-2">
-<h2 id="org1c452f6"><span class="section-number-2">2</span> 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></h2>
+<div id="outline-container-orgfa8717a" class="outline-2">
+<h2 id="orgfa8717a"><span class="section-number-2">2</span> 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -178,8 +181,8 @@ null
 </div>
 </div>
 
-<div id="outline-container-org67ffa96" class="outline-2">
-<h2 id="org67ffa96"><span class="section-number-2">3</span> 从 <code>constructor</code> 的定义引入函数重载</h2>
+<div id="outline-container-org7ad263e" class="outline-2">
+<h2 id="org7ad263e"><span class="section-number-2">3</span> 从 <code>constructor</code> 的定义引入函数重载</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -301,8 +304,8 @@ double: f1(double) f2(double) f3(double) f4(double) f5(double) f6(double) f7(dou
 </pre>
 </div>
 </div>
-<div id="outline-container-org1b5c189" class="outline-2">
-<h2 id="org1b5c189"><span class="section-number-2">4</span> 默认的 <code>constructor</code></h2>
+<div id="outline-container-org8303b7b" class="outline-2">
+<h2 id="org8303b7b"><span class="section-number-2">4</span> 默认的 <code>constructor</code></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -406,8 +409,8 @@ with double d
 </p>
 </div>
 </div>
-<div id="outline-container-org46f2767" class="outline-2">
-<h2 id="org46f2767"><span class="section-number-2">5</span> <code>this</code> 的作用</h2>
+<div id="outline-container-org3eaed89" class="outline-2">
+<h2 id="org3eaed89"><span class="section-number-2">5</span> <code>this</code> 的作用</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -483,8 +486,8 @@ i = 2
 </div>
 
 
-<div id="outline-container-org0da4977" class="outline-2">
-<h2 id="org0da4977"><span class="section-number-2">6</span> 理解 <code>static</code></h2>
+<div id="outline-container-org27f6dec" class="outline-2">
+<h2 id="org27f6dec"><span class="section-number-2">6</span> 理解 <code>static</code></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 
@@ -499,8 +502,8 @@ i = 2
 </p>
 </div>
 </div>
-<div id="outline-container-orge35bef3" class="outline-2">
-<h2 id="orge35bef3"><span class="section-number-2">7</span> <code>class</code> 成员初始化</h2>
+<div id="outline-container-orgd1f895f" class="outline-2">
+<h2 id="orgd1f895f"><span class="section-number-2">7</span> <code>class</code> 成员初始化</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 
@@ -558,8 +561,8 @@ InitialValues     null
 </p>
 </div>
 </div>
-<div id="outline-container-orgeb11cf7" class="outline-2">
-<h2 id="orgeb11cf7"><span class="section-number-2">8</span> 初始化顺序</h2>
+<div id="outline-container-org05729c0" class="outline-2">
+<h2 id="org05729c0"><span class="section-number-2">8</span> 初始化顺序</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 
@@ -621,8 +624,8 @@ f()
 </div>
 </div>
 
-<div id="outline-container-orge602ee0" class="outline-2">
-<h2 id="orge602ee0"><span class="section-number-2">9</span> <code>static</code> 类型的初始化</h2>
+<div id="outline-container-orgb5c9976" class="outline-2">
+<h2 id="orgb5c9976"><span class="section-number-2">9</span> <code>static</code> 类型的初始化</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 
@@ -732,6 +735,399 @@ f3(1)
 
 <p>
 最后调用 <code>table.f2(2)</code> 和 <code>cupboard.f3(1)</code> 生成最后两行输出。
+</p>
+</div>
+</div>
+<div id="outline-container-orgcaf8246" class="outline-2">
+<h2 id="orgcaf8246"><span class="section-number-2">10</span> 显示初始化</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+
+</p>
+
+<p>
+在 <code>Java</code> 中可以使用 <code>static</code> 语句初始化（有时候我们叫之中初始化方式为 <code>static</code> 块）。看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span class="linenr">1: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Spoon</span><span style="color: #2aa198;">{</span>
+<span class="linenr">2: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>;
+<span class="linenr">3: </span>    <span style="color: #859900; font-weight: bold;">static</span><span style="color: #b58900;">{</span>
+<span class="linenr">4: </span>        i = <span style="color: #6c71c4;">47</span>;
+<span class="linenr">5: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">6: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+看起来像是一个方法，但是注意这种初始化方法仅仅是一个 <code>static</code> 关键词跟着一个语句块。同其他 <code>static</code> 初始化语句一样，使用 <code>static</code> 块的初始化也仅仅执行一次。看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-C++"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Cup</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 2: </span>  <span style="color: #268bd2;">Cup</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">marker</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 3: </span>    print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Cup("</span> + marker + <span style="color: #2aa198;">")"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 4: </span>  <span style="color: #b58900;">}</span>
+<span class="linenr"> 5: </span>  <span style="color: #b58900;">void</span> <span style="color: #268bd2;">f</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">marker</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 6: </span>    print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"f("</span> + marker + <span style="color: #2aa198;">")"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 7: </span>  <span style="color: #b58900;">}</span>
+<span class="linenr"> 8: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Cups</span><span style="color: #2aa198;">{</span>
+<span class="linenr">11: </span>  <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">Cup</span> <span style="color: #268bd2;">cup1</span>;
+<span class="linenr">12: </span>  <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">Cup</span> <span style="color: #268bd2;">cup2</span>;
+<span class="linenr">13: </span>  <span style="color: #859900; font-weight: bold;">static</span><span style="color: #b58900;">{</span>
+<span class="linenr">14: </span>    cup1 = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Cup</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">15: </span>    cup2 = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Cup</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">2</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">16: </span>  <span style="color: #b58900;">}</span>
+<span class="linenr">17: </span>  <span style="color: #268bd2;">Cups</span><span style="color: #b58900;">(){</span>
+<span class="linenr">18: </span>    print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Cups()"</span><span style="color: #268bd2;">)</span>; 
+<span class="linenr">19: </span>  <span style="color: #b58900;">}</span>
+<span class="linenr">20: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">21: </span>
+<span class="linenr">22: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">ExplicitStatic</span><span style="color: #2aa198;">{</span>
+<span class="linenr">23: </span>  <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> main<span style="color: #b58900;">(</span>String<span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
+<span class="linenr">24: </span>    print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Inside main()"</span><span style="color: #268bd2;">)</span>;
+<span id="coderef-cupsrun" class="coderef-off"><span class="linenr">25: </span>    Cups.cup1.f<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">99</span><span style="color: #268bd2;">)</span>; (cupsrun)</span>
+<span class="linenr">26: </span>  <span style="color: #b58900;">}</span>
+<span id="coderef-cupsrun1" class="coderef-off"><span class="linenr">27: </span>  <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">Cups</span> <span style="color: #268bd2;">cups1</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Cups</span><span style="color: #b58900;">()</span>; (cupsrun1)</span>
+<span class="linenr">28: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+
+<p>
+输出为：
+</p>
+<pre class="example">
+Inside main()
+Cup(1)
+Cup(2)
+f(99)
+</pre>
+
+<p>
+<code>static</code> 初始化语句在下列任一情况下初始化 <code>Cups</code> ：
+</p>
+<ol class="org-ol">
+<li>第<a href="#coderef-cupsrun" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-cupsrun');" onmouseout="CodeHighlightOff(this, 'coderef-cupsrun');">cupsrun</a> 行执行。</li>
+<li>第<a href="#coderef-cupsrun" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-cupsrun');" onmouseout="CodeHighlightOff(this, 'coderef-cupsrun');">cupsrun</a> 被注释，第<a href="#coderef-cupsrun1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-cupsrun1');" onmouseout="CodeHighlightOff(this, 'coderef-cupsrun1');">cupsrun1</a> 行解注；</li>
+</ol>
+
+<p>
+在情况1， 我们访问了 <code>Cups</code>  的成员变量，这个时候出发了 <code>Cups</code> 类的初始化；在情况2，我们初始化了对象 <code>cups1</code> 。
+</p>
+
+<p>
+当我们把第 <a href="#coderef-cupsrun1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-cupsrun1');" onmouseout="CodeHighlightOff(this, 'coderef-cupsrun1');">cupsrun1</a>行解注，第<a href="#coderef-cupsrun" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-cupsrun');" onmouseout="CodeHighlightOff(this, 'coderef-cupsrun');">cupsrun</a> 注释掉之后，输出为：
+</p>
+<pre class="example">
+Cup(1) 
+Cup(2)
+Cups()
+Inside main()
+</pre>
+
+<p>
+可以看到在类 <code>ExplicitStatic</code> 中，也是 <code>static</code> 变量先初始化。我们看到 <code>Inside main()</code> 最后输出。说明程序先完成了静态成员 <code>cups1</code> 的初始化之后再调用的 <code>main</code> 函数。
+</p>
+
+<p>
+如果我把第 <a href="#coderef-cupsrun1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-cupsrun1');" onmouseout="CodeHighlightOff(this, 'coderef-cupsrun1');">cupsrun1</a>行和第<a href="#coderef-cupsrun" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-cupsrun');" onmouseout="CodeHighlightOff(this, 'coderef-cupsrun');">cupsrun</a> 行都解注，则输出：
+</p>
+<pre class="example">
+Cup(1)
+Cup(2)
+Cups()
+Inside main()
+f(99)
+</pre>
+<p>
+可以看出还是 <code>static</code> 变量优先，通过第 <a href="#coderef-cupsrun1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-cupsrun1');" onmouseout="CodeHighlightOff(this, 'coderef-cupsrun1');">cupsrun1</a>行对 <code>Cups</code> 类的静态变量进行了初始化。然后再执行 <code>main</code> 函数。
+</p>
+
+
+<div class="problem">
+<p>
+Create a class with a <code>static String</code> field that is initialized at the point of definition, and another one that is initialized by the <code>static</code> block. Add a <code>static</code> method that prints both fields and demonstrates that they are both initialized before they are used.
+</p>
+
+</div>
+<div class="answer">
+<p>
+首先编写代码，如下
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="linenr"> 1: </span><span style="color: #b58900;">import</span> <span style="color: #859900; font-weight: bold;">static</span> net.mindview.util.Print.*;
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">String1</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 4: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">String</span> <span style="color: #268bd2;">str1</span> = <span style="color: #2aa198;">"string in String1"</span>;
+<span class="linenr"> 5: </span>    <span style="color: #268bd2;">String1</span><span style="color: #b58900;">(){</span>
+<span class="linenr"> 6: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">""</span> + str1<span style="color: #268bd2;">)</span>;
+<span class="linenr"> 7: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr"> 8: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 9: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">String2</span><span style="color: #2aa198;">{</span>
+<span class="linenr">10: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">String</span> <span style="color: #268bd2;">str2</span>;
+<span class="linenr">11: </span>    <span style="color: #859900; font-weight: bold;">static</span><span style="color: #b58900;">{</span>
+<span class="linenr">12: </span>        str2 = <span style="color: #2aa198;">"string in string2"</span>;
+<span class="linenr">13: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">14: </span>    <span style="color: #268bd2;">String2</span><span style="color: #b58900;">(){</span>
+<span class="linenr">15: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">""</span> + str2<span style="color: #268bd2;">)</span>;
+<span class="linenr">16: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">17: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">18: </span>
+<span class="linenr">19: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">Exercise0614</span><span style="color: #2aa198;">{</span>
+<span class="linenr">20: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
+<span class="linenr">21: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Inside main()"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">22: </span>        <span style="color: #b58900;">String1</span> <span style="color: #268bd2;">str1</span> = new String1<span style="color: #268bd2;">()</span>;
+<span class="linenr">23: </span>        <span style="color: #b58900;">String2</span> <span style="color: #268bd2;">str2</span> = new String2<span style="color: #268bd2;">()</span>;
+<span class="linenr">24: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">25: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出为：
+</p>
+<pre class="example">
+Inside main()
+string in String1
+string in string2
+</pre>
+<p>
+之所以按顺序初始化 <code>str1</code> 和 <code>str2</code> ，是因为在 <code>Exercise0614</code> 的类中，这两个变量不是 <code>static</code> ,把这两个类改成 <code>static</code> 的有：
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span class="linenr"> 1: </span><span style="color: #b58900;">import</span> <span style="color: #859900; font-weight: bold;">static</span> net.mindview.util.Print.*;
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">String1</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 4: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">String</span> <span style="color: #268bd2;">str1</span> = <span style="color: #2aa198;">"string in String1"</span>;
+<span class="linenr"> 5: </span>    <span style="color: #268bd2;">String1</span><span style="color: #b58900;">(){</span>
+<span class="linenr"> 6: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">""</span> + str1<span style="color: #268bd2;">)</span>;
+<span class="linenr"> 7: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr"> 8: </span><span style="color: #2aa198;">}</span>
+<span class="linenr"> 9: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">String2</span><span style="color: #2aa198;">{</span>
+<span class="linenr">10: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">String</span> <span style="color: #268bd2;">str2</span>;
+<span class="linenr">11: </span>    <span style="color: #859900; font-weight: bold;">static</span><span style="color: #b58900;">{</span>
+<span class="linenr">12: </span>        str2 = <span style="color: #2aa198;">"string in string2"</span>;
+<span class="linenr">13: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">14: </span>    <span style="color: #268bd2;">String2</span><span style="color: #b58900;">(){</span>
+<span class="linenr">15: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">""</span> + str2<span style="color: #268bd2;">)</span>;
+<span class="linenr">16: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">17: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">18: </span>
+<span class="linenr">19: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">Exercise0614</span><span style="color: #2aa198;">{</span>
+<span class="linenr">20: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
+<span class="linenr">21: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Inside main()"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">22: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">23: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">String1</span> <span style="color: #268bd2;">str1</span> = new String1<span style="color: #b58900;">()</span>;
+<span class="linenr">24: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">String2</span> <span style="color: #268bd2;">str2</span> = new String2<span style="color: #b58900;">()</span>;
+<span class="linenr">25: </span>
+<span class="linenr">26: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出为：
+</p>
+<pre class="example">
+string in String1
+string in string2
+Inside main()
+</pre>
+
+<p>
+然后修改代码，为其添加静态函数（静态函数可以在不定义对象的时候调用，而我们调用静态函数的同时，对这个静态函数所属的类初始化，主要是初始化其 <code>static</code> 变量）。
+</p>
+<div class="org-src-container">
+<pre class="src src-C"><span class="linenr"> 1: </span><span style="color: #b58900;">import</span> <span style="color: #859900; font-weight: bold;">static</span> net.mindview.util.Print.*;
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">String1</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 4: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">String</span> <span style="color: #268bd2;">str1</span> = <span style="color: #2aa198;">"string in String1"</span>;
+<span class="linenr"> 5: </span>    <span style="color: #268bd2;">String1</span><span style="color: #b58900;">(){</span>
+<span class="linenr"> 6: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"construct 1"</span> + str1<span style="color: #268bd2;">)</span>;
+<span class="linenr"> 7: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr"> 8: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">f1</span><span style="color: #b58900;">(){</span>
+<span class="linenr"> 9: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"static method"</span> + str1<span style="color: #268bd2;">)</span>;
+<span class="linenr">10: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">11: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">12: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">String2</span><span style="color: #2aa198;">{</span>
+<span class="linenr">13: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">String</span> <span style="color: #268bd2;">str2</span>;
+<span class="linenr">14: </span>    <span style="color: #859900; font-weight: bold;">static</span><span style="color: #b58900;">{</span>
+<span class="linenr">15: </span>        str2 = <span style="color: #2aa198;">"string in string2"</span>;
+<span class="linenr">16: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">17: </span>    <span style="color: #268bd2;">String2</span><span style="color: #b58900;">(){</span>
+<span class="linenr">18: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"constructor 2"</span> + str2<span style="color: #268bd2;">)</span>;
+<span class="linenr">19: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">20: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">f2</span><span style="color: #b58900;">(){</span>
+<span class="linenr">21: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"static method"</span> + str2<span style="color: #268bd2;">)</span>;
+<span class="linenr">22: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">23: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">24: </span>
+<span class="linenr">25: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">Exercise0614</span><span style="color: #2aa198;">{</span>
+<span class="linenr">26: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
+<span class="linenr">27: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Inside main()"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">28: </span>        String2.f2<span style="color: #268bd2;">()</span>;
+<span class="linenr">29: </span>        String1.f1<span style="color: #268bd2;">()</span>;
+<span class="linenr">30: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">31: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">String2</span> <span style="color: #268bd2;">str2</span> = new String2<span style="color: #b58900;">()</span>;
+<span class="linenr">32: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出为：
+</p>
+<pre class="example">
+constructor 2string in string2
+Inside main()
+static methodstring in string2
+static methodstring in String1
+</pre>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgbfbf6f0" class="outline-2">
+<h2 id="orgbfbf6f0"><span class="section-number-2">11</span> 非静态实例初始化</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+
+</p>
+
+<p>
+对于非静态变量， java提供了类似于 <code>static</code> 块的初始化方式。看代码：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C"><span class="linenr"> 1: </span><span style="color: #b58900;">import</span> <span style="color: #859900; font-weight: bold;">static</span> net.mindview.util.Print.*;
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">Mug</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 4: </span>    <span style="color: #268bd2;">Mug</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">marker</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 5: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Mug("</span>  + marker +<span style="color: #2aa198;">")"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 6: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr"> 7: </span>    <span style="color: #b58900;">void</span> <span style="color: #268bd2;">f</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">marker</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 8: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"f("</span> + marker + <span style="color: #2aa198;">")"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 9: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">10: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">11: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">Mugs</span><span style="color: #2aa198;">{</span>
+<span class="linenr">12: </span>    <span style="color: #b58900;">Mug</span> <span style="color: #268bd2;">mug1</span>;
+<span class="linenr">13: </span>    <span style="color: #b58900;">Mug</span> <span style="color: #268bd2;">mug2</span>;
+<span class="linenr">14: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr">15: </span>        mug1 = new Mug<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">16: </span>        mug2 = new Mug<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">2</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">17: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"mug1 &amp; mug2 initialized"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">18: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">19: </span>    <span style="color: #268bd2;">Mugs</span><span style="color: #b58900;">(){</span>
+<span class="linenr">20: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Mugs()"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">21: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">22: </span>    <span style="color: #268bd2;">Mugs</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span><span style="color: #b58900;">){</span>
+<span class="linenr">23: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Mugs(int)"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">24: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">25: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
+<span class="linenr">26: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Inside main()"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">27: </span>        <span style="color: #b58900;">new</span> <span style="color: #268bd2;">Mugs</span><span style="color: #268bd2;">()</span>;
+<span class="linenr">28: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"new Mugs() completed"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">29: </span>        <span style="color: #b58900;">new</span> <span style="color: #268bd2;">Mugs</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">30: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"new Mugs(1) completed"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">31: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">32: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出为：
+</p>
+<pre class="example">
+Inside main()
+Mug(1)
+Mug(2)
+mug1 &amp; mug2 initialized
+Mugs()
+new Mugs() completed
+Mug(1)
+Mug(2)
+mug1 &amp; mug2 initialized
+Mugs(int)
+new Mugs(1) completed
+</pre>
+<p>
+从这个输出可以看出，实例可以按照顺序初始化，没有像 <code>static</code> 一样执行顺序和代码出现顺序不一样的情况。
+</p>
+</div>
+</div>
+<div id="outline-container-org4a9fb82" class="outline-2">
+<h2 id="org4a9fb82"><span class="section-number-2">12</span> 数组初始化</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+
+</p>
+
+<p>
+数组是一些相同类型元素的集合。这些元素可以是基础类型也可以是某个类（这么说可能有些不严谨，基础类型也是类，在Java中一切都是类。）。
+</p>
+
+<p>
+定义一个整型数组可以使用 <code>int[] a1;</code> 也可以用 <code>int a1[]</code> 。在 <code>Java</code> 中，数组的初始化可以通过大括号实现，也可以不初始化。 <code>Java</code> 中，数组名的赋值，复制的是引用。看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #b58900;">import</span> <span style="color: #859900; font-weight: bold;">static</span> net.mindview.util.Print.*;
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">ArrayOfPrimitives</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 4: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
+<span class="linenr"> 5: </span>        <span style="color: #b58900;">int</span><span style="color: #268bd2;">[]</span> a1 = <span style="color: #268bd2;">{</span><span style="color: #6c71c4;">1</span>,<span style="color: #6c71c4;">2</span>,<span style="color: #6c71c4;">3</span>,<span style="color: #6c71c4;">4</span>,<span style="color: #6c71c4;">5</span><span style="color: #268bd2;">}</span>;
+<span class="linenr"> 6: </span>        <span style="color: #b58900;">int</span><span style="color: #268bd2;">[]</span> a2;
+<span class="linenr"> 7: </span>        a2 = a1;
+<span class="linenr"> 8: </span>        <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span> = <span style="color: #6c71c4;">0</span>; i &lt; a1.length; i++<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
+<span class="linenr"> 9: </span>            a2<span style="color: #6c71c4;">[</span>i<span style="color: #6c71c4;">]</span> = a2<span style="color: #6c71c4;">[</span>i<span style="color: #6c71c4;">]</span>*<span style="color: #6c71c4;">2</span>;
+<span class="linenr">10: </span>        <span style="color: #268bd2;">}</span>
+<span class="linenr">11: </span>        <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span> = <span style="color: #6c71c4;">0</span>; i &lt; a1.length; i++<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
+<span class="linenr">12: </span>            print<span style="color: #6c71c4;">(</span><span style="color: #2aa198;">"a1["</span> + i + <span style="color: #2aa198;">"]= "</span> + a1<span style="color: #859900;">[</span>i<span style="color: #859900;">]</span><span style="color: #6c71c4;">)</span>;
+<span class="linenr">13: </span>        <span style="color: #268bd2;">}</span>
+<span class="linenr">14: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">15: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出是：
+</p>
+<pre class="example">
+a1[0]= 2
+a1[1]= 4
+a1[2]= 6
+a1[3]= 8
+a1[4]= 10
+</pre>
+<p>
+可以看到执行了 <code>a2=a1</code> 之后， <code>a2</code> 指向的内容和 <code>a1</code> 指向的内容是一样的。 这时候即使对 <code>a2</code> 进行修改， <code>a1</code> 的内容也同时发生了改变。
+</p>
+
+<p>
+关于数组越界的问题在 <code>C/C++</code> 和 <code>Java</code> 中有不同的处理方法： <code>C/C++</code> 不会对数组越界进行约束，而 <code>Java</code> 会。在 <code>Java</code> 中，一旦数组越界就会报错。 虽然适时的检查会不会报错是一件很低效的事情，但是为了开发效率， <code>Java</code> 的设计者认为这是值得的。
+</p>
+
+<p>
+对于事先不知道长度的数组，需要用 <code>new</code> 来为其分配空间，看代码：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #b58900;">import</span> <span style="color: #268bd2;">java</span>.util.*;
+<span class="linenr"> 2: </span><span style="color: #b58900;">import</span> <span style="color: #859900; font-weight: bold;">static</span> net.mindview.util.Print.*;
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">ArrayNew</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 5: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
+<span class="linenr"> 6: </span>        <span style="color: #b58900;">int</span> <span style="color: #268bd2;">[]</span> a;
+<span class="linenr"> 7: </span>        <span style="color: #b58900;">Random</span> <span style="color: #268bd2;">rand</span> = new Random<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 8: </span>        a = new <span style="color: #b58900;">int</span><span style="color: #268bd2;">[</span>rand.nextInt<span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">20</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">]</span>;
+<span class="linenr"> 9: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"length of a = "</span> + a.length <span style="color: #268bd2;">)</span>;
+<span class="linenr">10: </span>        print<span style="color: #268bd2;">(</span>Arrays.toString<span style="color: #6c71c4;">(</span>a<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">11: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">12: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出为：
+</p>
+<pre class="example">
+length of a = 18
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+</pre>
+
+<p>
+当你创建了
 </p>
 </div>
 </div>
