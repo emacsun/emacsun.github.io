@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>练习：张成空间与线性无关</title>
+<title>练习：基</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="张朝龙" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css" />
@@ -81,7 +81,7 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">练习：张成空间与线性无关</h1>
+<h1 class="title">练习：基</h1>
 <div id="table-of-contents">
 <h2>目录</h2>
 <div id="text-table-of-contents">
@@ -281,14 +281,14 @@ for the JavaScript code in this tag.
 我们知道\(1,x,x^{2},x^{3}\)构成了\(\mathcal{P}_{3}(\mathbf{F})\)的一个基。对于另外一组向量\(1,x,x^{3}-x^{2},x^{3}+x^{2}\),可以得到对于任何\(a_{i}\in \mathbf{F}\)，有
 </p>
 \begin{equation}
-\label{eq:1}
+\label{eq:20170402LADR2b1}
 0=a_{0} + a_{1} x + a_{2}(x^{3}-x^{2}) + a_{3}(x_{3}+x^{2})
 \end{equation}
 <p>
 整理后：
 </p>
 \begin{equation}
-\label{eq:2}
+\label{eq:20170402LADR2b2}
 0=a_{0} + a_{1} x + (a_{3} - a_{2})x^{2} + (a_{3}+a_{2})x^{3}
 \end{equation}
 
@@ -322,7 +322,7 @@ for the JavaScript code in this tag.
 设有\(a_{i}\in \mathbf{F}\)，使得：
 </p>
 \begin{equation}
-\label{eq:3}
+\label{eq:20170402LADR2b3}
 0= a_{1}(v_{1} +v_{2}) + a_{2}(v_{2} + v_{3}) + a_{3}(v_{3}+v_{4}) + a_{4}v_{4}
 \end{equation}
 
@@ -330,7 +330,7 @@ for the JavaScript code in this tag.
 则有：
 </p>
 \begin{equation}
-\label{eq:4}
+\label{eq:20170402LADR2b4}
 0 = a_{1}v_{1} + (a_{1}+a_{2})v_{2} + (a_{2}+a_{3})v_{3} + (a_{3} + a_{4})v_{4}
 \end{equation}
 
@@ -404,21 +404,21 @@ v_{4}&=&(0,0,0,1)
 证明因为\(V=U\oplus W\)，对于\(V\)总的任意一个向量\(v\)都有唯一的一个\(u\in U,w\in W\)使得\(v = u+w,u\in U, w\in W\)。 而对于\(u\in U\)有唯一的一组\(a_{i}\in \mathbf{F}\)使得：
 </p>
 \begin{equation}
-\label{eq:5}
+\label{eq:20170402LADR2b5}
 u = a_{1}u_{1}+\ldots a_{m}u_{m}
 \end{equation}
 <p>
 同理对于\(w\)有：
 </p>
 \begin{equation}
-\label{eq:6}
+\label{eq:20170402LADR2b6}
 w = b_{1}w_{1}+\ldots b_{m}w_{m}
 \end{equation}
 <p>
 所以有：
 </p>
 \begin{equation}
-\label{eq:7}
+\label{eq:20170402LADR2b7}
 v = a_{1}u_{1}+\ldots a_{m}u_{m} + b_{1}w_{1}+\ldots b_{n}w_{n}
 \end{equation}
 <p>
@@ -429,14 +429,14 @@ v = a_{1}u_{1}+\ldots a_{m}u_{m} + b_{1}w_{1}+\ldots b_{n}w_{n}
 另外假设存在\(a_{i}\in \mathbf{F},b_{i} \in \mathbf{F}\)，使得：
 </p>
 \begin{equation}
-\label{eq:8}
+\label{eq:20170402LADR2b8}
  a_{1}u_{1}+\ldots a_{m}u_{m} + b_{1}w_{1}+\ldots b_{n}w_{n} = 0
 \end{equation}
 <p>
 则有：
 </p>
 \begin{equation}
-\label{eq:9}
+\label{eq:20170402LADR2b9}
  a_{1}u_{1}+\ldots a_{m}u_{m} = -( b_{1}w_{1}+\ldots b_{n}w_{n}) \in U\cap W
 \end{equation}
 
