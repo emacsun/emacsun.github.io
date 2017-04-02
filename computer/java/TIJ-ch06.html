@@ -1127,7 +1127,186 @@ length of a = 18
 </pre>
 
 <p>
-当你创建了
+之前创建了 <code>primitive</code> 的数组。现在创建对象数组，当创建对象数组时，数组元素是对象的索引。现在考虑创建 <code>Integer</code> 数组。（回忆一下 <code>Integer</code> 是类不是primitive类型。 基础类型和类的区别是，基础类型保存在栈上，而对象保存在堆上。）
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #b58900;">import</span> <span style="color: #268bd2;">java</span>.util.*;
+<span class="linenr"> 2: </span><span style="color: #b58900;">import</span> <span style="color: #859900; font-weight: bold;">static</span> net.mindview.util.Print.*;
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">ArrayClassObj</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 5: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
+<span class="linenr"> 6: </span>        <span style="color: #b58900;">Random</span> <span style="color: #268bd2;">rand</span> = new Random<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 7: </span>        Integer<span style="color: #268bd2;">[]</span> a = new Integer<span style="color: #268bd2;">[</span>rand.nextInt<span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">10</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">]</span>;
+<span class="linenr"> 8: </span>        print<span style="color: #268bd2;">(</span>Arrays.toString<span style="color: #6c71c4;">(</span>a<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 9: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"length of a = "</span> + a.length<span style="color: #268bd2;">)</span>;
+<span class="linenr">10: </span>        <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span> = <span style="color: #6c71c4;">0</span>; i &lt; a.length; i++<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
+<span class="linenr">11: </span>            a<span style="color: #6c71c4;">[</span>i<span style="color: #6c71c4;">]</span> = rand.nextInt<span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">500</span><span style="color: #6c71c4;">)</span>;
+<span class="linenr">12: </span>        <span style="color: #268bd2;">}</span>
+<span class="linenr">13: </span>        print<span style="color: #268bd2;">(</span>Arrays.toString<span style="color: #6c71c4;">(</span>a<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">14: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">15: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出是：
+</p>
+<pre class="example">
+[null, null, null, null, null, null, null, null]
+length of a = 8
+[55, 193, 361, 461, 429, 368, 200, 22]
+</pre>
+<p>
+从代码可以看出，没有初始化之前打印输出的都是 <code>null</code> 而不是像基础类型那样初始化为 <code>0</code> ，只有初始化之后才会有数据打印。在创建对象数组时，即使使用 <code>new</code> 也没有初始化这个数组，必须一个一个来。
+</p>
+
+<p>
+对于对象数组也可以用大括号进行初始化，看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #b58900;">import</span> <span style="color: #268bd2;">java</span>.util.*;
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">ArrayInit</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 4: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
+<span class="linenr"> 5: </span>        Integer<span style="color: #268bd2;">[]</span> a = <span style="color: #268bd2;">{</span>
+<span class="linenr"> 6: </span>            <span style="color: #b58900;">new</span> <span style="color: #268bd2;">Integer</span><span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">1</span><span style="color: #6c71c4;">)</span>,
+<span class="linenr"> 7: </span>            <span style="color: #268bd2;">new</span> Integer<span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">2</span><span style="color: #6c71c4;">)</span>,
+<span class="linenr"> 8: </span>            <span style="color: #6c71c4;">3</span>,
+<span class="linenr"> 9: </span>        <span style="color: #268bd2;">}</span>;
+<span class="linenr">10: </span>        Integer<span style="color: #268bd2;">[]</span> b = new Integer<span style="color: #268bd2;">[]{</span>
+<span class="linenr">11: </span>            <span style="color: #b58900;">new</span> <span style="color: #268bd2;">Integer</span><span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">1</span><span style="color: #6c71c4;">)</span>,
+<span class="linenr">12: </span>            <span style="color: #268bd2;">new</span> Integer<span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">2</span><span style="color: #6c71c4;">)</span>,
+<span class="linenr">13: </span>            <span style="color: #6c71c4;">3</span>,
+<span class="linenr">14: </span>        <span style="color: #268bd2;">}</span>;
+<span class="linenr">15: </span>        System.out.println<span style="color: #268bd2;">(</span>Arrays.toString<span style="color: #6c71c4;">(</span>a<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">16: </span>        System.out.println<span style="color: #268bd2;">(</span>Arrays.toString<span style="color: #6c71c4;">(</span>b<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">17: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">18: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出为：
+</p>
+<pre class="example">
+[1, 2, 3]
+[1, 2, 3]
+</pre>
+
+<p>
+注意初始化对象数组时，最后一个元素后面的逗号。使用这个逗号写出的代码便于维护，尤其是维护长数组。可以用这种初始化方法传递变长参数。看代码：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">A</span><span style="color: #2aa198;">{}</span>
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">VarArgs</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 4: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">printArray</span><span style="color: #b58900;">(</span><span style="color: #b58900;">Object</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
+<span class="linenr"> 5: </span>        <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">(</span><span style="color: #b58900;">Object</span> <span style="color: #268bd2;">obj</span>: args<span style="color: #268bd2;">)</span>
+<span class="linenr"> 6: </span>            System.out.print<span style="color: #268bd2;">(</span>obj + <span style="color: #2aa198;">" "</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 7: </span>        System.out.println<span style="color: #268bd2;">()</span>;
+<span class="linenr"> 8: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr"> 9: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
+<span class="linenr">10: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #b58900;">new</span> <span style="color: #268bd2;">Object</span><span style="color: #6c71c4;">[]{</span>
+<span class="linenr">11: </span>                <span style="color: #b58900;">new</span> <span style="color: #268bd2;">Integer</span><span style="color: #859900;">(</span><span style="color: #6c71c4;">47</span><span style="color: #859900;">)</span>, <span style="color: #268bd2;">new</span> Float<span style="color: #859900;">(</span><span style="color: #6c71c4;">3.14</span><span style="color: #859900;">)</span>,<span style="color: #268bd2;">new</span> Double<span style="color: #859900;">(</span><span style="color: #6c71c4;">11.11</span><span style="color: #859900;">)</span>,
+<span class="linenr">12: </span>            <span style="color: #6c71c4;">}</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">13: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #b58900;">new</span> <span style="color: #268bd2;">Object</span><span style="color: #6c71c4;">[]{</span><span style="color: #2aa198;">"one"</span>,<span style="color: #2aa198;">"two"</span>,<span style="color: #2aa198;">"three"</span><span style="color: #6c71c4;">}</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">14: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #b58900;">new</span> <span style="color: #268bd2;">Object</span><span style="color: #6c71c4;">[]{</span><span style="color: #b58900;">new</span> <span style="color: #268bd2;">A</span><span style="color: #859900;">()</span>,<span style="color: #268bd2;">new</span> A<span style="color: #859900;">()</span>,<span style="color: #268bd2;">new</span> A<span style="color: #859900;">()</span><span style="color: #6c71c4;">}</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">15: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">16: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出是：
+</p>
+<pre class="example">
+47 3.14 11.11 
+one two three 
+A@15db9742 A@6d06d69c A@7852e922
+</pre>
+<p>
+上面代码的 <code>Object</code> 共有的根类，关于这个类，我们后面还会学到更多。因为所有类都是从 <code>Object</code> 继承而来，所以可以把 <code>Object</code> 数组传入一个方法。
+</p>
+
+<p>
+另外我们还可以看到， <code>print</code> 函数接收一个 <code>Object</code> 的数组，然后用 <code>foreach</code> 的循环语法打印每个 <code>Object</code> 数组中 <code>reference</code> 对应的内容。打印标准的 <code>Java</code> 库类输出具有较强的可读性（看输出的前两行），打印自定义的类的输出（输出的第三行）就有点不知所云。不过从输出的第三行可以看出打印自定义类，其输出具有固定的格式，都是类名跟上 <code>@</code> 然后是一串十六进制数（以后我们会了解到，这串十六进制数是对象地址）。
+</p>
+
+<p>
+上面的这段代码在 Java SE5之前比较常见，但是自从 Java SE5之后，就有更方便的写法了：可以像  <code>printArray()</code> 那样打印数组（我现在写这个笔记的时候用的是SE8，所以浪费了一段时间学习了一个历史技术。）。
+</p>
+
+<p>
+看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span class="linenr"> 1: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">NewVarArgs</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">printArray</span><span style="color: #b58900;">(</span><span style="color: #b58900;">Object</span>... <span style="color: #268bd2;">args</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 3: </span>        <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">(</span><span style="color: #b58900;">Object</span> <span style="color: #268bd2;">obj</span> : args<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
+<span class="linenr"> 4: </span>            System.out.print<span style="color: #6c71c4;">(</span>obj + <span style="color: #2aa198;">" "</span><span style="color: #6c71c4;">)</span>;
+<span class="linenr"> 5: </span>        <span style="color: #268bd2;">}</span>
+<span class="linenr"> 6: </span>        System.out.println<span style="color: #268bd2;">()</span>;
+<span class="linenr"> 7: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr"> 8: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
+<span class="linenr"> 9: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #b58900;">new</span> <span style="color: #268bd2;">Integer</span><span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">47</span><span style="color: #6c71c4;">)</span>,<span style="color: #b58900;">new</span> <span style="color: #268bd2;">Float</span><span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">3.14</span><span style="color: #6c71c4;">)</span>,<span style="color: #b58900;">new</span> <span style="color: #268bd2;">Double</span><span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">11.11</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">10: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span>,<span style="color: #6c71c4;">3.14F</span>,<span style="color: #6c71c4;">11.11</span><span style="color: #268bd2;">)</span>; 
+<span class="linenr">11: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"one"</span>,<span style="color: #2aa198;">"two"</span>,<span style="color: #2aa198;">"three"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">12: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #b58900;">new</span> <span style="color: #b58900;">A</span><span style="color: #6c71c4;">()</span>,<span style="color: #b58900;">new</span> <span style="color: #b58900;">A</span><span style="color: #6c71c4;">()</span>,<span style="color: #b58900;">new</span> <span style="color: #b58900;">A</span><span style="color: #6c71c4;">()</span><span style="color: #268bd2;">)</span>;
+<span id="coderef-NewVarArgsline2" class="coderef-off"><span class="linenr">13: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span><span style="color: #b58900;">Object</span><span style="color: #859900;">[]</span><span style="color: #6c71c4;">)</span><span style="color: #b58900;">new</span> <span style="color: #268bd2;">Integer</span><span style="color: #6c71c4;">[]{</span><span style="color: #6c71c4;">1</span>,<span style="color: #6c71c4;">2</span>,<span style="color: #6c71c4;">3</span>,<span style="color: #6c71c4;">4</span><span style="color: #6c71c4;">}</span><span style="color: #268bd2;">)</span>; (NewVarArgsline2)</span>
+<span class="linenr">14: </span>        printArray<span style="color: #268bd2;">()</span>;<span style="color: #586e75;">//</span><span style="color: #586e75;">Empth list is also OK;</span>
+<span class="linenr">15: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">16: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出为：
+</p>
+<pre class="example">
+47 3.14 11.11 
+47 3.14 11.11 
+one two three 
+A@15db9742 A@6d06d69c A@7852e922 
+1 2 3 4
+</pre>
+
+<p>
+开心的服下这颗语法糖。
+</p>
+
+<p>
+当你使用 <code>varargs</code> 时，不在需要写明数组信息，编译器会自动帮你填写。编译器会给 <code>print()</code> 函数一个 <code>array</code> 。但是注意这里不仅仅是从一个元素列表到一个数组的转换。注意代码中第<a href="#coderef-NewVarArgsline2" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-NewVarArgsline2');" onmouseout="CodeHighlightOff(this, 'coderef-NewVarArgsline2');">NewVarArgsline2</a> 行，我们可以看到一个 <code>Integer</code> 数组转换成了一个 <code>Object</code> 数组。 <i>在编译过程中，编译器看到这是一个数组，并不会做转换</i>  （对这句话我还没有深刻的理解，需要以后回头看）。
+</p>
+
+<p>
+最后一行代码告诉我们，可以对一个 <code>vararg</code> 的列表传送零个参数。这个语法很有用，尤其是当函数的尾随参数个数可变时。关于尾随参数，看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span class="linenr"> 1: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">OptionalTrailingArguments</span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 2: </span>    <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">f</span><span style="color: #b58900;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">required</span>, <span style="color: #b58900;">String</span>... <span style="color: #268bd2;">trailing</span><span style="color: #b58900;">){</span>
+<span class="linenr"> 3: </span>        System.out.print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"required: "</span> + required + <span style="color: #2aa198;">" "</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 4: </span>
+<span class="linenr"> 5: </span>        <span style="color: #859900; font-weight: bold;">for</span><span style="color: #268bd2;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">s</span>: trailing<span style="color: #268bd2;">)</span>
+<span class="linenr"> 6: </span>            System.out.print<span style="color: #268bd2;">(</span>s + <span style="color: #2aa198;">" "</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 7: </span>        System.out.println<span style="color: #268bd2;">()</span>;
+<span class="linenr"> 8: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr"> 9: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
+<span class="linenr">10: </span>        f<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span>,<span style="color: #2aa198;">"one"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">11: </span>        f<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">2</span>,<span style="color: #2aa198;">"two"</span>,<span style="color: #2aa198;">"three"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">12: </span>        f<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">0</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">13: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">14: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+<p>
+输出为：
+</p>
+<pre class="example">
+required: 1 one 
+required: 2 two three 
+required: 0
+</pre>
+
+<p>
+从上面代码还可以看出，可以使用除了 <code>Object</code> 之外的类型作为 <code>varargs</code> 的类型（在这里例子中，我们实用的是 <code>String</code> ）。
 </p>
 </div>
 </div>
