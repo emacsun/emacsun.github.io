@@ -1,0 +1,546 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>练习：线性映射</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./linear-map-on-vector-space.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">练习：线性映射</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7758d36">1. 3.A.1</a></li>
+<li><a href="#org2b3ca7f">2. 3.A.2</a></li>
+<li><a href="#org43fe0e6">3. 3.A.3</a></li>
+<li><a href="#orgec886f6">4. 3.A.4</a></li>
+<li><a href="#org7d4b6be">5. 3.A.7</a></li>
+<li><a href="#orgbb22f4e">6. 3.A.8</a></li>
+<li><a href="#org10d7dd1">7. 3.A.9</a></li>
+<li><a href="#orgc65d467">8. 3.A.10</a></li>
+<li><a href="#org351179d">9. 3.A.11</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7758d36" class="outline-2">
+<h2 id="org7758d36"><span class="section-number-2">1</span> 3.A.1</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(b,c\in  \mathbf{R}\)，定义\(T: \mathbf{R}^{3} \rightarrow \mathbf{R}^{2}\) 如下：
+\[T(x,y,z) = (2x-4y+3z +b,6x+cxyz)\]
+证明\(T\)是线性的当且仅当\(b=c=0\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+首先：如果\(T\)是线性的，必有\(T(0) = 0\)，从而有\((b,0) = (0,0)\)，即\(b=0\)。
+</p>
+
+<p>
+另外有\(T(1,1,1) = T(1,1,0) + T(0,0,1)\)，推出\((1+b,6+c) = (-2+b,6) + (3+b,0)\)，即有\(c+0\)
+</p>
+
+<p>
+接下来证明\(b=c=0\)所以\(T\)是线性的。因为\(b=c=0\)，则\(T\)可以写成：
+\[T(x,y,z) = (2x-4y+3z,6x)\]
+这个映射是如下线性映射的特例。
+</p>
+
+<p>
+从\(\mathbf{F}^{n}\)到\(\mathbf{F}^{m}\)，设\(m,n\)是正整数，\(A_{j,k}\in \mathbf{F},j = 1,\ldots ,m,k=1,\ldots ,n\)，定义\(T\in \mathcal{L}(\mathbf{F}^{n}, \mathbf{F}^{m})\)为：
+</p>
+\begin{equation}
+\label{eq:201704033}
+T(x_{1},x_{2},\ldots ,x_{n}) = (A_{1,1}x_{1} + \ldots  + A_{1,n}x_{n}, \ldots , A_{m,1}x_{1} + \ldots + A_{m,n}x_{n})
+\end{equation}
+<p>
+式\ref{eq:201704033}可以写成矩阵的形式为：
+</p>
+\begin{equation}
+\label{eq:201704034}
+\begin{bmatrix}
+y_{1} \\ y_{2} \\ \vdots \\ y_{m}
+\end{bmatrix}
+=
+\begin{bmatrix}
+A_{1,1} & A_{1,2}  & \ldots & A_{1,n} \\
+A_{2,1} & A_{2,2}  & \ldots & A_{2,n} \\
+\vdots & \vdots  & \ddots & \vdots \\
+A_{m,1} & A_{m,2}  & \ldots & A_{m,n} \\
+\end{bmatrix}
+\begin{bmatrix}
+x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+\end{bmatrix}
+\end{equation}
+
+</div>
+</div>
+</div>
+<div id="outline-container-org2b3ca7f" class="outline-2">
+<h2 id="org2b3ca7f"><span class="section-number-2">2</span> 3.A.2</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(b,c\in \mathbf{R}\)，定义\(T: \mathcal{P}( \mathbf{R}) \rightarrow \mathbf{R}^{2} \)如下：
+</p>
+\begin{equation}
+\label{eq:1}
+Tp = (3p(4) + 5p^{'}(6) + bp(1)p(2),\int_{-1}^{2}x^{3}p(x)dx + c\sin p(0))
+\end{equation}
+<p>
+证明\(T\)是线性的当且仅当\(b=c=0\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+假设\(p,q\in \mathcal{P}(R)\)，若\(T\)是线性映射则有：
+\[T(p + q) = Tp + Tq\]
+把(\ref{eq:1})带入上式，可得\(b=c=0\)
+</p>
+
+<p>
+然后证明假设\(b=c=0\) ,\(T\)是线性映射。按照线性映射的定义来。把定义附在下面，证明过程略。
+</p>
+
+<div class="definition">
+<p>
+从\(V\) 到\(W\)的线性映射是具有以下性质的函数\(T: V \rightarrow W \):
+</p>
+
+<p>
+加性: 对所有\(u,v \in V\)都有 \(T(u+v) = T(u) + T(v)\)
+</p>
+
+<p>
+齐次: 对所有的 \(\lambda \in \mathbf{F}\) 和\(v\in V\) 都有 \(T(\lambda v) = \lambda (Tv)\)
+</p>
+
+</div>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org43fe0e6" class="outline-2">
+<h2 id="org43fe0e6"><span class="section-number-2">3</span> 3.A.3</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}( \mathbf{F}^{n}, \mathbf{F}^{m})\)，证明存在标量\(A_{j,k},j=1,\ldots ,m,k=1,\ldots ,n\)使得对任意\(x_{1},\ldots ,x_{n}\in \mathbf{F}^{n}\)都有
+</p>
+
+\begin{equation}
+\label{eq:2}
+T(x_{1},\ldots ,x_{n}) = (A_{1,1}x_{1} + \ldots A_{1,n}x_{n} ,\ldots ,A_{m,1}x_{1} + \ldots +A_{m,n}x_{n})
+\end{equation}
+
+</div>
+
+<div class="answer">
+<p>
+我们这里准备提前使用一下矩阵的概念。
+</p>
+
+\begin{equation}
+\label{eq:3}
+T(x_{1},x_{2},\ldots ,x_{n}) = (A_{1,1}x_{1} + \ldots  + A_{1,n}x_{n}, \ldots , A_{m,1}x_{1} + \ldots + A_{m,n}x_{n})
+\end{equation}
+
+
+<p>
+式\ref{eq:3}可以写成矩阵的形式为：
+</p>
+\begin{equation}
+\label{eq:4}
+\begin{bmatrix}
+y_{1} \\ y_{2} \\ \vdots \\ y_{m}
+\end{bmatrix}
+=
+\begin{bmatrix}
+A_{1,1} & A_{1,2}  & \ldots & A_{1,n} \\
+A_{2,1} & A_{2,2}  & \ldots & A_{2,n} \\
+\vdots & \vdots  & \ddots & \vdots \\
+A_{m,1} & A_{m,2}  & \ldots & A_{m,n} \\
+\end{bmatrix}
+\begin{bmatrix}
+x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+\end{bmatrix}
+\end{equation}
+<p>
+令：
+</p>
+\begin{equation}
+\label{eq:7}
+\mathbf{y} = 
+\begin{bmatrix}
+y_{1} \\ y_{2} \\ \vdots \\ y_{m}
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\label{eq:5}
+\mathbf{A} = 
+\begin{bmatrix}
+A_{1,1} & A_{1,2}  & \ldots & A_{1,n} \\
+A_{2,1} & A_{2,2}  & \ldots & A_{2,n} \\
+\vdots & \vdots  & \ddots & \vdots \\
+A_{m,1} & A_{m,2}  & \ldots & A_{m,n} \\
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\label{eq:6}
+\mathbf{x} = 
+\begin{bmatrix}
+x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+\end{bmatrix}
+\end{equation}
+
+<p>
+则有\(\mathbf{y} = \mathbf{Ax}\)
+</p>
+
+<p>
+进而\(\mathbf{y_{1} + y_{2}} = \mathbf{A(x_{1} + x_{2})}\)
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgec886f6" class="outline-2">
+<h2 id="orgec886f6"><span class="section-number-2">4</span> 3.A.4</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(V,W) \)  且\(v_{1},\ldots ,v_{m}\)是\(V\)中的向量组，使得\(Tv_{1},\ldots ,Tv_{m}\)在\(W\)中是线性无关的，证明\(v_{1},\ldots ,v_{m}\)是线性无关的。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+假设存在\(a_{i}\in \mathbf{F},i=1,\ldots ,m\)使得：
+</p>
+\begin{equation}
+\label{eq:8}
+a_{1}v_{1} + \ldots + a_{m}v_{m} = 0
+\end{equation}
+<p>
+则对两边使用线性映射：
+</p>
+\begin{equation}
+\label{eq:9}
+T(a_{1}v_{1} + \ldots + a_{m}v_{m}) = T(0)=0
+\end{equation}
+<p>
+根据线性映射的齐次可加性有：
+</p>
+\begin{equation}
+\label{eq:10}
+a_{1} T(v_{1}) + \ldots + a_{m}T(v_{m}) = 0
+\end{equation}
+
+<p>
+因为\(T(v_{1}),\ldots ,T(v_{m})\)是线性无关的，所以有\(a_{i} = 0,i=1,\ldots ,m\)
+</p>
+
+<p>
+即证明了\(v_{1},\ldots ,v_{m}\)是线性无关的。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org7d4b6be" class="outline-2">
+<h2 id="org7d4b6be"><span class="section-number-2">5</span> 3.A.7</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+证明每个从一维向量空间到其自身的线性映射都是乘以某个标量。准确的说，证明：若\(\dim V = 1\)且\(T\in \mathcal{L}(V,V)\)，则有\(\lambda \in \mathbf{F}\)使得对所有\(v\in V\)都有\(Tv = \lambda v\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+因为\(\dim V = 1\)，说明\(V\)的基只有一个向量，即\(V\)中的任何一个向量都可以写成另一个非零向量的标量形式，即\(Tu = au\)。
+</p>
+
+<p>
+现在考虑特定的 \(v\in V,v = bu\)，则有：
+</p>
+\begin{eqnarray*}
+Tv&=&T(bu) \\
+&=&bT(u) \\
+&=&bau \\
+&=&abu\\
+&=&av
+\end{eqnarray*}
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgbb22f4e" class="outline-2">
+<h2 id="orgbb22f4e"><span class="section-number-2">6</span> 3.A.8</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+给出一个函数\(\phi: \mathbf{R}^{2} \rightarrow \mathbf{R}\)使得对于所有\(a\in \mathbf{R}\)和所有的\(v\in \mathbf{R}^{2}\)有:
+</p>
+\begin{equation}
+\label{eq:11}
+\phi(av) = a(\phi(v))
+\end{equation}
+<p>
+但是\(\phi\)不是线性的。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+令\(\phi(x,y) = \sqrt[3]{x^{3} + y^{3}}  \) 。
+</p>
+
+<p>
+这个函数满足齐次性，对于\(\phi(\lambda(x,y))\)，有：
+</p>
+\begin{eqnarray*}
+\phi(\lambda x,\lambda y) &=& \sqrt[3]{(\lambda x)^{3} + (\lambda y)^{3}}  \\
+&=& \lambda  \sqrt[3]{x^{3} + y^{3}}  \\ 
+&=& \lambda \phi (x,y)
+\end{eqnarray*}
+<p>
+即\(\phi\)满足齐次性。但是\(\phi\)不满足可加性，即
+</p>
+\begin{eqnarray*}
+\phi(x_{1}+x_{2},y_{1}+y_{2})&\neq& \phi(x_{1},y_{1}) + \phi(x_{2},y_{2}) \\
+\end{eqnarray*}
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org10d7dd1" class="outline-2">
+<h2 id="org10d7dd1"><span class="section-number-2">7</span> 3.A.9</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+给出一个函数\(\varphi: \mathbf{C}\rightarrow \mathbf{C}\)，使得对于所有的\(w,z\in C\)都有：
+</p>
+\begin{equation}
+\label{eq:13}
+\varphi(w+z) = \varphi(w) + \varphi(z)
+\end{equation}
+<p>
+但是\(\varphi\)不是线性的。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+想到了\(\varphi(z) = \Re(z)\)满足
+</p>
+\begin{equation}
+\label{eq:14}
+\varphi(u+v) = \varphi(u) + \varphi(v)
+\end{equation}
+<p>
+但是对于\(i\in \mathbf{F}\)，有:
+</p>
+\begin{equation}
+\label{eq:15}
+\varphi(i u) \neq i\varphi(u)
+\end{equation}
+
+<p>
+这个问题在复数域上很好证明，但是在实数域上暂时还没有想到什么好办法。因为实数域上的加法和标量乘法是等效的，即\(\lambda u = \underbrace{u+\ldots +u}_{\lambda}\)
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc65d467" class="outline-2">
+<h2 id="orgc65d467"><span class="section-number-2">8</span> 3.A.10</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(U\)是\(V\)的子空间且\(U\neq V\)，设\(S\in \mathcal{L}(V,W)\)且\(S\neq 0\)，定义\(T:V\rightarrow W\)如下：
+</p>
+\begin{equation}
+\label{eq:16}
+Tv = 
+\begin{cases}
+Sv & v\in U \\
+0 & v\in V, v\notin U
+\end{cases}
+\end{equation}
+<p>
+证明\(T\)不是\(V\)上的线性映射。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+首先因为\(U\neq V\)，所以存在\(v\in V,v\not U\)且\(v\neq 0\)，
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org351179d" class="outline-2">
+<h2 id="org351179d"><span class="section-number-2">9</span> 3.A.11</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维的。证明\(V\)的子空间上的线性映射可以扩张成\(V\)上的线性映射。也就是说，证明如果\(U\)是\(V\)的子空间，\(S\in \mathcal{L}(U,W)\)，那么存在\(T\in \mathcal{L}(V,W)\)使得对于所有的\(u\in U\)都有\(Tu = Su\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+
+</p>
+
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
