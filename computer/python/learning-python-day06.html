@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>学习Python Doc第六天: 输入和输出</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./learning-python-day06.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">学习Python Doc第六天: 输入和输出</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org49e35a9">1. 多种多样的输出格式</a>
+<ul>
+<li><a href="#org5b912a4">1.1. 之前的字符格式化方式</a></li>
+</ul>
+</li>
+<li><a href="#orgb5668e8">2. 文件的读写</a>
+<ul>
+<li><a href="#orgd36082f">2.1. 使用 <code>json</code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+一个程序的输出可以有多种呈现方式：1）通过屏幕打印；2）通过写入文件。今天我们来探讨这两种方法。
+</p>
+
+<div id="outline-container-org49e35a9" class="outline-2">
+<h2 id="org49e35a9"><span class="section-number-2">1</span> 多种多样的输出格式</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+像在 <code>C</code> 语言中一样， <code>Python</code> 也提供了样式繁多的输出格式。在 <code>Python</code> 中你可以自己控制输出格式，可以通过 <code>str.format()</code> 这个方法实现。
+</p>
+
+<p>
+在 <code>Python</code> 中有两种方式实现值到字符串的转换：  <code>repr()</code> 和 <code>str()</code> 。 <code>repr()</code> 函数生成解释器可读的格式； <code>str()</code> 生成人类可读的格式。（看Python Tutorial的这段文字的时候，有想打人的冲动，写的非常零散。本以为英文文档应该会好一些，现在对Python的官方手册质量不敢恭维，） 直接看代码：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">25</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">s</span> = <span style="color: #2aa198;">'hello, world.'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">26</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">str</span><span style="color: #2aa198;">(</span>s<span style="color: #2aa198;">)</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">26</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'hello, world.'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">27</span><span style="color: #2aa198;">]</span>: s
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">27</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'hello, world.'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">28</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">str</span><span style="color: #2aa198;">(</span><span style="color: #6c71c4;">1</span>/<span style="color: #6c71c4;">7</span><span style="color: #2aa198;">)</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">34</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'0.14285714285714285'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">35</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">x</span> = <span style="color: #6c71c4;">10</span> * <span style="color: #6c71c4;">3</span>.<span style="color: #6c71c4;">25</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">50</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">y</span>= <span style="color: #6c71c4;">200</span>*<span style="color: #6c71c4;">200</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">66</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">s</span> = <span style="color: #2aa198;">'the value of x is '</span> + <span style="color: #839496; font-weight: bold;">repr</span><span style="color: #2aa198;">(</span>x<span style="color: #2aa198;">)</span> + <span style="color: #2aa198;">', and y is '</span> + <span style="color: #839496; font-weight: bold;">repr</span><span style="color: #2aa198;">(</span>y<span style="color: #2aa198;">)</span> + <span style="color: #2aa198;">'...'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">123</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>s<span style="color: #2aa198;">)</span>
+the value of x <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #6c71c4;">32</span>.<span style="color: #6c71c4;">5</span>, <span style="color: #859900; font-weight: bold;">and</span> y <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #6c71c4;">40000</span>...
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">128</span><span style="color: #2aa198;">]</span>: <span style="color: #586e75;">#</span><span style="color: #586e75;">the repr() of a string adds string quotes and backslashes:</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">160</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">hello</span> = <span style="color: #2aa198;">'hello world\n'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">168</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">hellos</span> = <span style="color: #839496; font-weight: bold;">repr</span><span style="color: #2aa198;">(</span>hello<span style="color: #2aa198;">)</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">172</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>hellos<span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">'hello world\n'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">173</span><span style="color: #2aa198;">]</span>: <span style="color: #586e75;"># </span><span style="color: #586e75;">the argument to repr() may be any python objects:</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">189</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">repr</span><span style="color: #2aa198;">(</span><span style="color: #b58900;">(</span>x,y,<span style="color: #268bd2;">(</span><span style="color: #2aa198;">'spam'</span>,<span style="color: #2aa198;">'eggs'</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">215</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">"(32.5, 40000, ('spam', 'eggs'))"</span>
+</pre>
+</div>
+
+<p>
+接下来给出两种输出平方表和立方表的方法：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">for</span> x <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span><span style="color: #6c71c4;">1</span>,<span style="color: #6c71c4;">11</span><span style="color: #2aa198;">)</span>:
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">repr</span><span style="color: #b58900;">(</span>x<span style="color: #b58900;">)</span>.rjust<span style="color: #b58900;">(</span><span style="color: #6c71c4;">2</span><span style="color: #b58900;">)</span>, <span style="color: #839496; font-weight: bold;">repr</span><span style="color: #b58900;">(</span>x*x<span style="color: #b58900;">)</span>.rjust<span style="color: #b58900;">(</span><span style="color: #6c71c4;">3</span><span style="color: #b58900;">)</span>,end = <span style="color: #2aa198;">' '</span><span style="color: #2aa198;">)</span>
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #839496; font-weight: bold;">repr</span><span style="color: #b58900;">(</span>x*x*x<span style="color: #b58900;">)</span>.rjust<span style="color: #b58900;">(</span><span style="color: #6c71c4;">4</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+输出为：
+</p>
+<pre class="example">
+In [218]:
+ 1   1    1
+ 2   4    8
+ 3   9   27
+ 4  16   64
+ 5  25  125
+ 6  36  216
+ 7  49  343
+ 8  64  512
+ 9  81  729
+10 100 1000
+</pre>
+<p>
+另一种方法为：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">for</span> x <span style="color: #859900; font-weight: bold;">in</span> <span style="color: #839496; font-weight: bold;">range</span><span style="color: #2aa198;">(</span><span style="color: #6c71c4;">1</span>,<span style="color: #6c71c4;">11</span><span style="color: #2aa198;">)</span>:
+    <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'{0:2d} {1:3d} {2:4d}'</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #b58900;">(</span>x,x*x,x*x*x<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+<p>
+输出同上一种方法。
+</p>
+
+<p>
+注意:在第一种方法中，每一列后都有一个空格，这个空格是 <code>print()</code> 自动加上去的， <code>print()</code> 总是在它的参数中加空格。第一种方法演示了字符对象的 <code>str.rjust()</code> 方法。 <code>str.rjust()</code> 实现了右对齐。举一反三，存在 <code>str.ljust</code> 和 <code>str.center()</code> . 还有另外一个方法 <code>str.zfill()</code> 这个方法在一串数值前面填零。看代码：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">220</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'12'</span>.zfill<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">6</span><span style="color: #2aa198;">)</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">233</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'000012'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">234</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'abc'</span>.zfill<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">6</span><span style="color: #2aa198;">)</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">241</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'000abc'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">242</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'-abc'</span>.zfill<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">6</span><span style="color: #2aa198;">)</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">262</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'-00abc'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">263</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'-45'</span>.zfill<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">6</span><span style="color: #2aa198;">)</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">283</span><span style="color: #2aa198;">]</span>: 
+<span style="color: #2aa198;">'-00045'</span>
+</pre>
+</div>
+
+<p>
+可以看出 <code>str.zfill</code> 把 <code>.</code> 之前的字符当做有符号数值字符。
+</p>
+
+<p>
+基本的 <code>str.format()</code> 使用方法是：
+</p>
+<pre class="example">
+&gt;&gt;&gt; print('We are the {} who say "{}!"'.format('knights', 'Ni'))
+We are the knights who say "Ni!"
+</pre>
+
+<p>
+使用大括号代表待输入的参数，输入参数通过 <code>.format</code> 提供。可以通过在大括号中填入数字指定 <code>.format</code> 后的字符串填入的位置。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">284</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'{0} and {1}'</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #b58900;">(</span><span style="color: #2aa198;">'spam'</span>,<span style="color: #2aa198;">'egg'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+spam <span style="color: #859900; font-weight: bold;">and</span> egg
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">302</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'{1} and {0}'</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #b58900;">(</span><span style="color: #2aa198;">'spam'</span>,<span style="color: #2aa198;">'egg'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+egg <span style="color: #859900; font-weight: bold;">and</span> spam
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">303</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'{2} and {0}'</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #b58900;">(</span><span style="color: #2aa198;">'spam'</span>,<span style="color: #2aa198;">'egg'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+---------------------------------------------------------------------------
+<span style="color: #b58900;">IndexError</span>       Traceback <span style="color: #2aa198;">(</span>most recent call last<span style="color: #2aa198;">)</span>
+&lt;ipython-<span style="color: #839496; font-weight: bold;">input</span>-<span style="color: #6c71c4;">303</span>-f5413a9d7179&gt; <span style="color: #859900; font-weight: bold;">in</span> &lt;module&gt;<span style="color: #2aa198;">()</span>
+----&gt; <span style="color: #6c71c4;">1</span> <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'{2} and {0}'</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #b58900;">(</span><span style="color: #2aa198;">'spam'</span>,<span style="color: #2aa198;">'egg'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #b58900;">IndexError</span>: <span style="color: #839496; font-weight: bold;">tuple</span> index out of <span style="color: #839496; font-weight: bold;">range</span>
+</pre>
+</div>
+<p>
+可以看到也有数组越界问题存在。
+</p>
+
+<p>
+可以在 <code>print()</code> 中使用关键字。比如：
+</p>
+<div class="org-src-container">
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">304</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'This {food} is {adjestive}.'</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #b58900;">(</span>food=<span style="color: #2aa198;">'spam'</span>,adjective=<span style="color: #2aa198;">'absolutely horrible'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+---------------------------------------------------------------------------
+<span style="color: #b58900;">KeyError</span>            Traceback <span style="color: #2aa198;">(</span>most recent call last<span style="color: #2aa198;">)</span>
+&lt;ipython-<span style="color: #839496; font-weight: bold;">input</span>-<span style="color: #6c71c4;">389</span>-<span style="color: #6c71c4;">9f9f624a721c</span>&gt; <span style="color: #859900; font-weight: bold;">in</span> &lt;module&gt;<span style="color: #2aa198;">()</span>
+----&gt; <span style="color: #6c71c4;">1</span> <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'This {food} is {adjestive}.'</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #b58900;">(</span>food=<span style="color: #2aa198;">'spam'</span>,adjective=<span style="color: #2aa198;">'absolutely horrible'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+
+<span style="color: #b58900;">KeyError</span>: <span style="color: #2aa198;">'adjestive'</span>
+
+In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">390</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'This {food} is {adjective}.'</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #b58900;">(</span>food=<span style="color: #2aa198;">'spam'</span>,adjective=<span style="color: #2aa198;">'absolutely horrible'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+This spam <span style="color: #859900; font-weight: bold;">is</span> absolutely horrible.
+</pre>
+</div>
+
+<p>
+注意关键词的对应。也可以组合以上两种方法：
+</p>
+<div class="org-src-container">
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">396</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'The story of {0},{1},and {other}'</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #b58900;">(</span><span style="color: #2aa198;">'Bill'</span>,<span style="color: #2aa198;">'Manfred'</span>,other=<span style="color: #2aa198;">'Georg'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+The story of Bill,Manfred,<span style="color: #859900; font-weight: bold;">and</span> Georg
+</pre>
+</div>
+
+<p>
+通过 <code>:</code> 来指定显示格式。
+</p>
+<div class="org-src-container">
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">472</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'pi is {0:.3f}'</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #b58900;">(</span>math.pi<span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
+pi <span style="color: #859900; font-weight: bold;">is</span> <span style="color: #6c71c4;">3</span>.<span style="color: #6c71c4;">142</span>
+</pre>
+</div>
+<p>
+在 <code>:</code> 之后跟上一个整数可以指定最小的显示宽度，这在美化表格显示方面非常有用。
+</p>
+<pre class="example">
+table = {'Sjoerd': 4127,'Jack':4098,'Dcab':7678}
+for name,phone in table.items():
+    print('{0:10} ==&gt; {1:10d}'.format(name,phone) )
+</pre>
+<p>
+输出为：
+</p>
+<pre class="example">
+In [560]: 
+Sjoerd     ==&gt;       4127
+Jack       ==&gt;       4098
+Dcab       ==&gt;       7678
+</pre>
+</div>
+<div id="outline-container-org5b912a4" class="outline-3">
+<h3 id="org5b912a4"><span class="section-number-3">1.1</span> 之前的字符格式化方式</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+
+</p>
+
+<p>
+<code>%</code> 字符在较老的Python版本中用来做字符串格式化，其格式化过程与 <code>sprintf()</code> 函数差不多。
+</p>
+
+<pre class="example">
+In [565]: print('pi is %5.3f' % math.pi)
+pi is 3.142
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb5668e8" class="outline-2">
+<h2 id="orgb5668e8"><span class="section-number-2">2</span> 文件的读写</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+<code>open()</code> 返回一个文件对象，最经常的实用方式是 <code>open(filename,mode)</code>
+</p>
+
+<p>
+第一个参数是文件名字，第二个是文件的读写模式可选的选项有：
+</p>
+<ol class="org-ol">
+<li><code>r</code> 只读</li>
+<li><code>w</code> 只写，同名文件会被覆盖。</li>
+<li><code>a</code> 打开文件，写在文件最后边。</li>
+<li><code>r+</code> 读写。</li>
+</ol>
+
+<p>
+默认情况下 <code>mode</code> 参数的值是 <code>r</code> 。
+</p>
+
+<p>
+通常，文件是作为文本进行编辑的，也就是说有指定的文本编码格式。 <code>b</code> 是二进制编码。如果没有指定编码格式则文本的编码格式依操作系统平台而定。
+</p>
+
+<p>
+文件的常用方法有： 
+</p>
+<ol class="org-ol">
+<li><code>f.read()</code> 读出文件内容。</li>
+<li><code>f.readline()</code> 读出文件的一行。</li>
+<li><code>f.write(string)</code> 向文件中写入。</li>
+<li><code>f.seek(5)</code> 找到文件的第6行。</li>
+<li><code>f.close()</code> 关闭文件。</li>
+</ol>
+</div>
+<div id="outline-container-orgd36082f" class="outline-3">
+<h3 id="orgd36082f"><span class="section-number-3">2.1</span> 使用 <code>json</code></h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+
+</p>
+
+<p>
+字符串可以很容易的读写，数值就麻烦了点儿。因为 <code>read()</code> 函数只返回字符串。如果读出 <code>'123'</code> 还需要使用 <code>int()</code> 来返回真实的数值。碰上复杂的数据类型，操作就更麻烦了。
+</p>
+
+<p>
+万幸， <code>Python</code> 使用 <code>JSON</code> （JavaScript Object Notation）来作为数据保存格式， <code>JSON</code> 是一种广为使用的数据交换格式。。 Python有处理 <code>JSON</code> 的标准库 <code>json</code> 。这个库可以方便的层次化保存数据，把这些数据保存成字符串（这个过程叫做 <code>serializing</code> ）；也可以方便的把这些字符创变回数值( 这个过程叫做 <code>deserializing</code>  ).  
+</p>
+
+<p>
+关于 <code>JSON</code> 的介绍就到这里，以后用到了再来补充。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
