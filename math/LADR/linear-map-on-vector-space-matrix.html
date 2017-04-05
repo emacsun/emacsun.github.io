@@ -1,0 +1,512 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>练习：矩阵</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./linear-map-on-vector-space-matrix.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">练习：矩阵</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7f2f3ec">1. 3.C.1</a></li>
+<li><a href="#org0301cb1">2. 3.C.2</a></li>
+<li><a href="#org16e08f0">3. 3.C.3</a></li>
+<li><a href="#org1f53217">4. 3.C.4</a></li>
+<li><a href="#orgce882ec">5. 3.C.5</a></li>
+<li><a href="#org1eaed29">6. 3.C.6</a></li>
+<li><a href="#orgfb01751">7. 3.C.7</a></li>
+<li><a href="#org38b0dd7">8. 3.C.8</a></li>
+<li><a href="#org7544004">9. 3.C.9</a></li>
+<li><a href="#org2793465">10. 3.C.10</a></li>
+<li><a href="#orgc98c02a">11. 3.C.11</a></li>
+</ul>
+</div>
+</div>
+<p>
+本章的题目都不难，只要紧扣线性映射矩阵的定义和矩阵加法，矩阵标量乘法，矩阵乘法的定义即可轻松完成所有题目。为节省时间，最后几个题目略去不提。
+</p>
+
+<div id="outline-container-org7f2f3ec" class="outline-2">
+<h2 id="org7f2f3ec"><span class="section-number-2">1</span> 3.C.1</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)和\(W\)都是有限维的，\(T\in \mathcal{L}(V,W)\),证明对于\(V\)和\(W\)的任意基，\(T\)的矩阵都至少有\(\dim rangeT\)个非零元
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+首先我们知道\( rangeT\)中一定有\(\dim rangeT\)个线性无关的向量\(u_{1},u_{2},\ldots ,u_{m}\), \(m = \dim rangeT\)。\(rangeT\)就是由这些向量张成的子空间。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org0301cb1" class="outline-2">
+<h2 id="org0301cb1"><span class="section-number-2">2</span> 3.C.2</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(D\in \mathcal{L}( \mathcal{P}_{3}( \mathbf{R}),\mathcal{P}_{2}(\mathbf{R}))\)是微分映射\( Dp = p^{'}\)，求\( \mathcal{P}_{3}( \mathbf{R})\)的一个基和\( \mathcal{P}_{2}(R)\)的一个基，使得\(D\) 关于这些基的矩阵为：
+</p>
+\begin{equation*}
+\begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0
+\end{bmatrix}
+\end{equation*}
+
+</div>
+
+<div class="answer">
+<p>
+这里在重复一下根据线性映射定义矩阵的过程。假设\(V\)的基是\(v_{1},\ldots ,v_{n}\)，\(W\)的基是\(w_{1},\ldots ,w_{m}\)，有线性映射\(T\in \mathcal{L}(V,W)\)，则\(T\)关于\(V\)和\(W\)的两个基定义的矩阵是\(A\)，则有
+</p>
+\begin{equation}
+\label{eq:1}
+Tv_{k} = A_{1,k}w_{1} + \ldots + A_{m,k}w_{m}
+\end{equation}
+
+<p>
+对于题目中给定的矩阵。我们有：
+</p>
+\begin{eqnarray}
+\label{eq:2}
+Tv_{1}&=& w_{1} \\
+Tv_{2}&=& w_{2} \\
+Tv_{3}&=& w_{3} \\
+Tv_{4}&=& 0
+\end{eqnarray}
+<p>
+一个可能的组合是:\(V\)的基为\(\{x,\frac{x^{2}}{2},\frac{x^{3}}{3},1 \}\)，\(W\)的基为\(1,x,x^{2}\) 。
+</p>
+
+<p>
+显然有：
+</p>
+\begin{eqnarray*}
+T(x)&=& 1\\
+T(x^{2}/2)&=& x\\
+T(x^{3}/3)&=& x^{2}\\
+T(1) &=& 0
+\end{eqnarray*}
+
+</div>
+</div>
+</div>
+<div id="outline-container-org16e08f0" class="outline-2">
+<h2 id="org16e08f0"><span class="section-number-2">3</span> 3.C.3</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)和\(W\)都是有限维的，\(T\in \mathcal{L}(V,W)\).证明存在\(V\)的一个基和\(W\)的一个基使得关于这些基，\(\mathcal{M}(T)\)除了第\(j\)行第\(j\)列\(1\leq j \leq \dim range T\)的元素意外，其余元素都为\(0\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+根据线性映射矩阵定义，\(\mathcal{M}(T)\)的行是\(rangeT\)基的大小。我们定义线性映射：
+</p>
+\begin{equation}
+\label{eq:3}
+Tv_{k} = w_{k},k =1,\ldots ,\dim range T
+\end{equation}
+\begin{equation}
+\label{eq:4}
+Tv_{k} = 0, k=\dim range T + 1 ,\ldots ,\dim V
+\end{equation}
+<p>
+这个映射对应的矩阵就是题目中所描述的矩阵。
+</p>
+
+<p>
+在证明过程中，采用的思路和证明线性映射基本定理相同。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org1f53217" class="outline-2">
+<h2 id="org1f53217"><span class="section-number-2">4</span> 3.C.4</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(v_{1},\ldots ,v_{m}\)是\(V\)的基，且\(W\)是有限维的。设\(T\in \mathcal{L}(V,W)\)。证明存在\(W\)的一个基\(w_{1},\ldots ,w_{n}\)使得在\(T\)关于基\(v_{1},\ldots ,v_{m}\)和\(w_{1},\ldots ,w_{n}\)的矩阵\(\mathcal{M}(T)\)中，除了第一行第一列的元素可能为1之外，第一列的其余元素均为0.
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+存在映射：\(T\in (V,W)\)满足：
+</p>
+\begin{eqnarray*}
+Tv_{1}&=&w_{1} \\
+Tv_{2}&=&w_{1} + w_{2} \\
+\vdots && \vdots \\
+Tv_{n} &=& w_{n-1} + w_{n}
+\end{eqnarray*}
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgce882ec" class="outline-2">
+<h2 id="orgce882ec"><span class="section-number-2">5</span> 3.C.5</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(w_{1},\ldots ,w_{n}\)是\(W\)的一个基，且\(V\)是有限维的。设\(T\in \mathcal{L}(V,W)\)。证明存在\(V\)的一个基\(v_{1},\ldots ,v_{m}\)使得，在\(T\)关于\(v_{1},\ldots ,v_{m}\)和\(w_{1},\ldots ,w_{n}\)的矩阵\(\mathcal{M}(T)\)中，除了第一行第一列的元素可能为1之外，第一行的其余元素均为0。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+这个题目的证明和3.C.4类似。略。做这样的题目的时候最好把从线性映射定义矩阵的过程给默想一遍。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1eaed29" class="outline-2">
+<h2 id="org1eaed29"><span class="section-number-2">6</span> 3.C.6</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)和\(W\)都是有限维的，\(T\in \mathcal{L}(V,W)\) 证明\(\dim rangeT = 1\)当且仅当\(V\)和\(W\)各有一个基使得关于这些基\(\mathcal{M}(T)\)的所有元素都是1.
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+我们先从当\(V\)和\(W\)各有一个基使得关于这些基\(\mathcal{M}(T)\)的所有元素都是1导出\(\dim rangeT = 1\)
+</p>
+
+<p>
+根据线性映射基本定理的证明过程，我们知道\(V\)的基中存在一个线性无关组\(u_{1},\ldots ,u_{n}\)张成了\(nullT\)，而另外一些线性无关向量\(v_{1},\ldots ,v_{m}\)是基于\(u_{1},\ldots ,u_{n}\)扩展而来的。
+</p>
+
+
+<p>
+假设 \(w_{1},\ldots ,w_{p}\)是\(W\)的一个基，定义线性映射：
+</p>
+\begin{eqnarray*}
+Tv_{1}&=&w_{1} + \ldots + w_{p} \\
+\vdots && \vdots \\
+Tv_{n}&=&w_{1} + \ldots + w_{p} 
+\end{eqnarray*}
+
+<p>
+这个线性映射满足\(\dim range T = 1\)
+</p>
+
+<p>
+接下来我们证明另外一方面.因为\(\dim rangeT = 1\)，我们有以上定义的线性映射满足\(\mathcal{M}(T)\)的所有元素都是1。
+</p>
+
+<p>
+证明这个命题，主要还是采用线性映射基本定理中的方法。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgfb01751" class="outline-2">
+<h2 id="orgfb01751"><span class="section-number-2">7</span> 3.C.7</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+验证 3.36
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+从线性映射的矩阵定义出发。略。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org38b0dd7" class="outline-2">
+<h2 id="org38b0dd7"><span class="section-number-2">8</span> 3.C.8</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+验证3.38
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+从线性映射的矩阵定义出发。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7544004" class="outline-2">
+<h2 id="org7544004"><span class="section-number-2">9</span> 3.C.9</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+证明3.52
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+从矩阵乘法定义出发。假设
+</p>
+\begin{equation}
+\label{eq:5}
+A = 
+\begin{bmatrix}
+A_{1,1} & \ldots & A_{1,n} \\
+\vdots & \ddots & \vdots \\
+A_{m,1} & \ldots & A_{m,n}
+\end{bmatrix}
+\end{equation}
+<p>
+则\(Ac\)是一个\(m\times 1\)的列向量。并且有：
+</p>
+\begin{equation}
+\label{eq:6}
+Ac =
+\begin{bmatrix}
+\sum_{i=1}^{n}A_{1,i}c_{i} \\
+\sum_{i=1}^{n}A_{2,i}c_{i} \\
+\vdots \\
+\sum_{i=1}^{n}A_{mi}c_{i} \\
+\end{bmatrix}
+\end{equation}
+
+<p>
+通过对上式右端展开，得：
+</p>
+\begin{equation*}
+Ac =
+\begin{bmatrix}
+\sum_{i=1}^{n}A_{1,i}c_{i} \\
+\sum_{i=1}^{n}A_{2,i}c_{i} \\
+\vdots \\
+\sum_{i=1}^{n}A_{mi}c_{i} 
+\end{bmatrix}
+= 
+c_{1} 
+\begin{bmatrix}
+A_{1,1} \\ A_{2,1} \\ \vdots \\A_{m,1}
+\end{bmatrix}
++
+c_{2} 
+\begin{bmatrix}
+A_{1,2} \\ A_{2,2} \\ \vdots \\A_{m,2}
+\end{bmatrix}
++ 
+\ldots 
++
+c_{n} 
+\begin{bmatrix}
+A_{1,n} \\ A_{2,n} \\ \vdots \\A_{m,n}
+\end{bmatrix}
+\end{equation*}
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2793465" class="outline-2">
+<h2 id="org2793465"><span class="section-number-2">10</span> 3.C.10</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(A\)是\(m\times n\)矩阵，\(C\)是\(n\times p\)矩阵。证明对于\(1\leq j \leq m\) \((AC)_{j,\cdot} = A_{j,\cdot}C\)
+</p>
+
+<p>
+也就是说，证明\(AC\)的第\(j\)行等于\(A\)的第\(j\)行乘以\(C\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+略去证明。
+</p>
+
+<p>
+在学习MIT Strang教授的线性代数时掌握这种观点。\(AC\)的每一行是\(C\)的行向量的线性组合，线性组合系数是\(A\)对应的行的元素。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc98c02a" class="outline-2">
+<h2 id="orgc98c02a"><span class="section-number-2">11</span> 3.C.11</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(a=(a_{1} \quad \ldots \quad a_{n})\)是\(1\times n\)矩阵，\(C\)是\(n\times p\)矩阵。证明\[aC = a_{1}C_{1,\cdot} + \ldots + a_{n}C_{n,\cdot}\]
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+此题是3.C.10 的特例。
+</p>
+
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
