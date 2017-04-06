@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>练习：可逆性与同构</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./linear-map-on-vector-space-invertible.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">练习：可逆性与同构</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgbd35828">1. 3.D.1</a></li>
+<li><a href="#org339c0b5">2. 3.D.2</a></li>
+<li><a href="#org5a9af34">3. 3.D.3</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgbd35828" class="outline-2">
+<h2 id="orgbd35828"><span class="section-number-2">1</span> 3.D.1</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(U,V)\)和\(S\in \mathcal{L}(V,W)\)都是可逆的线性映射。证明\(ST\in \mathcal{L}(V,W)\)可逆且\((ST)^{-1} = T^{-1}S^{-1}\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+根据3.56，可逆映射既是单的又是满的。
+</p>
+
+<p>
+假设\(u,v\in U\)，且\(STu = STv\)。根据\(S\)是单射，所以有\(Tu=Tv\)；再根据\(T\)是单射，所以有\(u=v\).即，\(ST\)是单射。
+</p>
+
+<p>
+令\(w\in W\)，则有\(v\in V\)使得\(Sv=w\)（因为\(S\)是满射）。对于\(v\in V\)，都有\(u\in U\)使得\(Tu=v\)。综上有对于任意的\(w\in W\)都有 \(STu = w\)，所以\(ST\)是满射。
+</p>
+
+<p>
+因为\(ST\)既是单射又是满射所以\(ST\)是可逆的。
+</p>
+
+
+<p>
+因为\(ST(T^{-1}S^{-1}) = S(TT^{-1})S^{-1} = SS^{-1} = I\)，且\(T^{-1}S^{-1}ST = T^{-1}T = I\)
+</p>
+
+<p>
+所以有\(ST\)的逆映射是\(T^{-1}S^{-1}\)
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org339c0b5" class="outline-2">
+<h2 id="org339c0b5"><span class="section-number-2">2</span> 3.D.2</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维的，且\(\dim V > 1\)。证明\(V\)上不可逆的算子构成的集合不是\(\mathcal{L}(V)\)的子空间。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+我们对\(\dim V = 2\)的例子给出反例。假设\(S,T\in \mathcal{L}(V)\)，且有\(e_{1},e_{2}\)是\(V\)的标准基：
+\[Te_{1} = 0;Te_{2} = e_{2}\]
+\[Se_{1} = e_{1};Se_{2} = 0\]
+因为\(nullT \neq \{0\}\)，且\(nullS \neq \{0\}\)，所以\(S,T\)都是不可逆映射。
+</p>
+
+<p>
+所以有
+</p>
+\begin{eqnarray*}
+(S+T)e_{1}&=&e_{1} \\
+(S+T)e_{2}&=&e_{2}
+\end{eqnarray*}
+
+<p>
+显然\(S+T\)是恒等映射，恒等映射是可逆映射。原命题得证。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5a9af34" class="outline-2">
+<h2 id="org5a9af34"><span class="section-number-2">3</span> 3.D.3</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维的，\(U\)是\(V\)的子空间，且\(S\in \mathcal{L}(U,V)\)。证明:存在可逆的算子\(T\in \mathcal{L}(V)\)使得对每个\(u\in U\)均有\(Tu = Su\)当且仅当\(S\)是单射。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+
+</p>
+
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
