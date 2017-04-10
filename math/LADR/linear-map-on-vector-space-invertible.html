@@ -271,11 +271,96 @@ Tv&=&T( b_{1}u_{1} + \ldots + b_{m}u_{m} + c_{1}v_{1} + \ldots + c_{n}v_{n}) \\
 
 <div class="answer">
 <p>
-证明这个题目，我们要设法证明\(S\)是单的就可以了，因为\(W\)是有限维的，只要证明了\(S\)是单的，就说明\(S\)是可逆的。
+假设有\(nullT_{1} = nullT_{2}\)，因为\(W\)是有限维的，所以\(rangeT_{2}\)也是有限维的。，假设\(w_{1},\ldots ,w_{n}\)是\(rangeT_{2}\)的一个基，所以存在\(v_{1},\ldots ,v_{n}\in V\)使得\(T_{2}v_{i} = w_{i},i=1,\ldots ,n\)，\(v_{1},\ldots ,v_{n}\)的存在性可以通过线性映射基本定理得到满足.
 </p>
 
 <p>
-假设\(nullT_{1} = nullT_{2}\)，则有令\(u\in NullT_{1}\)，则有
+现在证明\(V = nullT_{2}\oplus span(v_{1},\ldots ,v_{n})\)，对于任何\(v\in V\)，存在\(a_{i}\in \mathbf{F},i \in \{1,\ldots ,n\}\)我们有：
+</p>
+\begin{equation}
+\label{eq:3}
+T_{2}v = a_{1}w_{1} + \ldots + a_{n}w_{n}
+\end{equation}
+
+<p>
+因此有:
+</p>
+\begin{equation}
+\label{eq:4}
+T_{2}(v-a_{1}v_{1} -\ldots -a_{n}v_{n}) = 0
+\end{equation}
+<p>
+也就是说：
+\[v = (v-a_{1}v_{1} -\ldots -a_{n}v_{n})  + (a_{1}v_{1} + \ldots + a_{n}v_{n})\]
+又因为\(v\)的任意性，所以：
+</p>
+\begin{equation}
+\label{eq:5}
+V = nullT_{2} + span(v_{1},\ldots ,v_{n})
+\end{equation}
+<p>
+接下来我们证明直和的条件成立即\(nullT_{2}\cap span(v_{1},\ldots ,v_{n}) = \{0\}\) 假设\(a_{1}v_{1} + \ldots + a_{n}v_{n} \in nullT_{2}\)我们有：
+</p>
+\begin{equation}
+\label{eq:6}
+T_{2}(a_{1}v_{1} + \ldots + a_{n}v_{n}) = a_{1}w_{1} +\ldots + a_{n}w_{n} = 0
+\end{equation}
+
+<p>
+因为\(w_{1},\ldots ,w_{n}\)是线性无关的，所以\(a_{1},\ldots ,a_{n}\)都是零。所以:
+</p>
+\begin{equation}
+\label{eq:7}
+V = nullT_{2} \oplus  span(v_{1},\ldots ,v_{n})
+\end{equation}
+
+<p>
+同样的，因为\(v_{1},\ldots ,v_{n}\)是线性无关的，所以\(T_{1}v_{1},\ldots ,T_{1}v_{n}\)也是线性无关的。又因为\(nullT_{1} = nullT_{2}\)，所以有：
+</p>
+\begin{equation}
+\label{eq:8}
+0 = T_{2}(a_{1}v_{1} + \ldots + a_{n}v_{n}) = a_{1}w_{1} + \ldots +a_{n}
+\end{equation}
+
+<p>
+现在我们扩展两个\(W\)的基，一个从\(T_{1}v_{1},\ldots ,T_{1}v_{n}\)扩展到\(T_{1}v_{1},\ldots ,T_{n}v_{n},f_{1},\ldots ,f_{m}\)，另一个从\(w_{1},\ldots ,w_{n}\)扩展到\(w_{1},\ldots ,w_{n},e_{1},\ldots ,e_{m}\)。在这两个基之间我们定义\(S\in \mathcal{L}(W)\)使得：
+</p>
+\begin{equation}
+\label{eq:9}
+Sw_{i} = T_{1}v_{i},Se_{j} = f_{j},i=1,\ldots ,n;j=1,\ldots ,m
+\end{equation}
+<p>
+之前我们有\(V = nullT_{2} \oplus  span(v_{1},\ldots ,v_{n}) \) 所以对于任何的\(v\in V\)可以写成：
+</p>
+\begin{equation}
+\label{eq:10}
+v = v_{null} + a_{1}v_{1} + \ldots + a_{n}v_{n}
+\end{equation}
+<p>
+所以有：
+</p>
+\begin{eqnarray*}
+ST_{2}(v)&=&ST_{2}(v_{null} + a_{1}v_{1} + \ldots + a_{n}v_{n}) \\
+&=& ST_{2}(a_{1}v_{1} + \ldots + a_{n}v_{n}) \\
+&=& S(a_{1}w_{1} + \ldots + a_{n}w_{n}) \\
+&=&a_{1}T_{1}(v_{1}) + \ldots + a_{n}T_{1}(v_{n}) \\
+&=&T_{1}(a_{1}v_{1} + \ldots + a_{n}v_{n}) \\
+&=& T_{1}(v_{null} + a_{1}v_{1} + \ldots +a_{n}v_{n}) \\
+&=& T_{1}(v)
+\end{eqnarray*}
+<p>
+所以有\(ST_{2} = T_{1}\)。因为\(S\)是满射，因此\(S\)是单射。
+</p>
+
+<p>
+另一方面假设存在可逆映射\(S\in \mathcal{L}(W)\)满足\(ST_{2} = T_{1}\)，对于任何\(\mu \in nullT_{1}\)，我们有:
+</p>
+\begin{equation}
+\label{eq:12}
+ST_{2}\mu = T_{1}\mu =0
+\end{equation}
+<p>
+因为\(S\)是单射所以，其零空间等于\(\{0\}\)，所以\(T_{2}\mu =0\)，因此\(\mu \in nullT_{2}\)。所以\(nullT_{1} \subseteq nullT_{2}\)，同样的，考虑到\(T_{2} = S^{-1}T_{1}\)我们有\(nullT_{2}\subseteq nullT_{1}\),所以有\(nullT_{1} = nullT_{2}\)
 </p>
 
 </div>
@@ -297,7 +382,7 @@ Tv&=&T( b_{1}u_{1} + \ldots + b_{m}u_{m} + c_{1}v_{1} + \ldots + c_{n}v_{n}) \\
 
 <div class="answer">
 <p>
-
+我们假设\(rangeT_{1} = rangeT_{2}\)
 </p>
 
 </div>
