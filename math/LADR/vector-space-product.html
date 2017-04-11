@@ -82,6 +82,14 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <h1 class="title">向量空间的积</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga89469d">1. 向量空间的商</a></li>
+</ul>
+</div>
+</div>
 <div class="definition">
 <p>
 设\(V_{1},\ldots ,V_{m}\)均为\(\mathbf{F}\)上的向量空间。
@@ -112,7 +120,7 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-首先根据定义，\( \mathbf{R}^{2}\times \mathbf{R}^{3} = ((x_1,x_2),(x_3,x_4,x_5))\)，其中\(x_{1},x_{2},x_{3},x_{4},x_{5}\in \mathbf{R}\) \( \mathbf{R}^{5}\)中的元素为\((x_{1},x_{2},x_{3},x_{4},x_{5})\)
+首先根据定义，\( \mathbf{R}^{2}\times \mathbf{R}^{3} = ((x_1,x_2),(x_3,x_4,x_5))\)，其中\(x_{1},x_{2},x_{3},x_{4},x_{5}\in \mathbf{R}\) 而\( \mathbf{R}^{5}\)中的元素为\((x_{1},x_{2},x_{3},x_{4},x_{5})\)
 </p>
 
 <p>
@@ -187,6 +195,119 @@ for the JavaScript code in this tag.
 \(\dim(U_{1} + \ldots + U_{m}) = \dim U_{1} + \ldots + \dim U_{m}\)
 </p>
 
+</div>
+
+
+
+<div id="outline-container-orga89469d" class="outline-2">
+<h2 id="orga89469d"><span class="section-number-2">1</span> 向量空间的商</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+首先定义向量与子空间的和，然后定义商空间。
+</p>
+
+<div class="definition">
+<p>
+设\(v\in V\)，\(U\)是\(V\)的子空间，则\(v+U\)是\(V\)的子集，定义如下：
+</p>
+\begin{equation}
+\label{eq:1}
+v+U = \{v+u:u\in U\}
+\end{equation}
+
+</div>
+
+<div class="definition">
+<ol class="org-ol">
+<li>\(V\)的仿射子集是\(V\)的形如\(v+U\)的子集，其中\(v\in V\),\(U\)是\(V\)的子空间。</li>
+<li>对于\(v\in V\)和\(V\)的子空间\(U\)，称仿射子集\(v+U\)平行于\(U\)</li>
+</ol>
+
+</div>
+
+<div class="instance">
+<p>
+若\(U=\{(x,y,0)\in \mathbf{R}^{3}:x,y\in \mathbf{R}\}\)则\(\mathbf{R}^{3}\)的平行于\(U\)的仿射子集是\(\mathbf{R}^{3}\)中在通常意义下平行于\(xy\)平面\(U\)的那些平面（注意这里必须是平面，直线不行.）。
+</p>
+
+</div>
+
+<div class="definition">
+<p>
+设\(U\)是\(V\)的子空间，则商空间\(V/U\)是指\(V\)中所有平行于\(U\)的仿射子集的集合。也就是说：
+</p>
+\begin{equation}
+\label{eq:2}
+V/U = \{v+U:v\in V\}
+\end{equation}
+
+</div>
+
+<div class="instance">
+<ol class="org-ol">
+<li>若\(U = \{(x,2x)\in \mathbf{R}^{2}:x\in \mathbf{R}\}\)，则\(\mathbf{R}^{2}/U\)是\(\mathbf{R}^{2}\)中所有平行于\(U\)的直线的集合。</li>
+<li>若\(U\)是\(\mathbf{R}^{3}\)中的包含原点的直线，则\(\mathbf{R}^{3}/U\)是\(\mathbf{R}^{3}\)中所有平行于\(U\)的直线的集合。</li>
+<li>若\(U\)是\(\mathbf{R}^{3}\)中的包含原点的平面，则\(\mathbf{R}^{3}/U\)是\(\mathbf{R}^{3}\)中所有平行于\(U\)的平面的集合。</li>
+</ol>
+
+</div>
+
+<div class="theorem">
+<p>
+设\(U\)是\(V\)的子空间，\(v,w\in V\)，则一下陈述等价：
+</p>
+<ol class="org-ol">
+<li>\(v-w \in U\)</li>
+<li>\(v+U = w+U\)</li>
+<li>\((v+U)\cap (w+U) \neq \varnothing\)</li>
+</ol>
+
+</div>
+
+<div class="proof">
+<p>
+假设1成立，则有对于任何的\(u\in U\)都有：
+</p>
+\begin{equation}
+\label{eq:3}
+v+ u = w + v-w +u = w + (v-w) +u \in w + U
+\end{equation}
+<p>
+所以\(v+U\subseteq w + U\)
+</p>
+
+<p>
+对于所有的\(u in U\)都有：
+</p>
+\begin{equation}
+\label{eq:4}
+(w+u) = v+w -v +u = v + (w-v) + u \in v + U
+\end{equation}
+<p>
+所以\(w+U\subseteq v + U\)
+</p>
+
+<p>
+从2到3是显然的。
+</p>
+
+<p>
+我们证明从3到1. 假设\((v+U)\cap (w+U) \neq \varnothing\) ，则存在\(u_{1},u_{2}\)使得：
+</p>
+\begin{equation}
+\label{eq:5}
+v+u_{1} = w + u_{2}
+\end{equation}
+<p>
+所以有\(v-w = u_{2} - u_{1}\)，显然有\(v-w\in U\)
+</p>
+
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
