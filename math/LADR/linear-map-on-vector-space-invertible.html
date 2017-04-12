@@ -92,6 +92,7 @@ for the JavaScript code in this tag.
 <li><a href="#org7bf9ac8">4. 3.D.4</a></li>
 <li><a href="#orgb0a8095">5. 3.D.5</a></li>
 <li><a href="#orgc7590fd">6. 3.D.6</a></li>
+<li><a href="#orgf4fba53">7. 3.D.7</a></li>
 </ul>
 </div>
 </div>
@@ -493,6 +494,70 @@ ST_{2}\zeta_{j} = T_{1}w_{j},S\beta_{k} = \alpha_{k},j=1,\ldots ,n;k=1,\ldots ,l
 
 <p>
 综上有\(T_{1} = ST_{2}R\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgf4fba53" class="outline-2">
+<h2 id="orgf4fba53"><span class="section-number-2">7</span> 3.D.7</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)和\(W\)是有限维的，\(v\in V\)，\(E = \{T\in \mathcal{L}(V,W):Tv = 0\}\)
+ 证明\(E\)是\(\mathcal{L}(V,W)\)的子空间。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+证明子空间只需要做三件事情，证明\(0\)的存在，证明齐次可加性。
+</p>
+
+<p>
+对于这个题目，显然\(0\in E\)。
+</p>
+
+<p>
+假设\(T,S\in E\)，则有
+</p>
+\begin{equation}
+\label{eq:21}
+(T+S)v = Tv + Sv = 0 + 0 = 0
+\end{equation}
+<p>
+所以\(T+S \in E\)。对于任意的\(\lambda \in \mathbf{F}\)：
+</p>
+\begin{equation}
+\label{eq:22}
+(\lambda T)v = \lambda(Tv) =0
+\end{equation}
+
+</div>
+
+<div class="problem">
+<p>
+假设\(v\neq 0\)，则\(\dim E\)等于多少？
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+因为\(v\neq 0\)，我们可以把\(v\)扩展成\(V\)的一个基\(v,v_{2},\ldots ,v_{n}\)，假设\(w_{1},\ldots ,w_{m}\)是\(W\)的一个基。在这两个基下，\(\mathcal{L}(V,W)\)和\(\mathbf{F}^{m,n}\)是同构的。
+</p>
+
+<p>
+现在因为\(Tv = 0\)，根据线性映射与矩阵的关系，我们知道\(\mathcal{M}(T)\)的第一列必须死全零。因此\(E\)和第一列是全零的\(\mathbf{F}^{m,n}\)同构，因为\(\dim E = \dim \mathbf{F}^{m,n} = m(n-1) = \dim W (\dim V -1)\)
+</p>
+
+<p>
+另外这个映射\(T\)可以看做是从\(span(v_{2},\ldots ,v_{n})\)向\(W\)的映射。
 </p>
 
 </div>
