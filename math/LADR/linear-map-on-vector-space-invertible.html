@@ -634,7 +634,43 @@ Tu &=& T(a_{1}v_{1}+ \ldots + a_{n}v_{n}) \\
 
 <div class="answer">
 <p>
+首先假设\(ST\)是可逆的，则有存在\(R\in \mathcal{L}(V)\)使得\((ST)R = R(ST) = I\)，如果\(v\in V\)满足\(Tv = 0\)，那么有：
+</p>
+\begin{eqnarray*}
+v &=&Iv \\
+&=&R(ST)v \\
+&=&  0
+\end{eqnarray*}
+<p>
+由于\(v\)的任意性，所以\(nullT = 0\)，所以\(T\)是单射，所以\(T\)是可逆的。如果\(u\in V\)，那么：
+</p>
+\begin{eqnarray*}
+u&=&Iu \\
+&=&(ST)Ru \\
+&=&S(TRu)
+\end{eqnarray*}
+<p>
+这说明\(u\in rangeS\)这说明\(S\)是满射，所以\(S\)是可逆的。
+</p>
 
+<p>
+现在证明另一方向。现在假设\(S,T\)都是可逆的，所以：
+</p>
+\begin{eqnarray*}
+ST(T^{-1}S^{-1})&=&S(TT^{-1})S^{-1} \\
+&=&SS^{-1} \\
+&=& I
+\end{eqnarray*}
+<p>
+又因为：
+</p>
+\begin{eqnarray*}
+T^{-1}S^{-1}ST&=&T^{-1}(S^{-1}S)T \\
+&=&T^{-1}T \\
+&=& I
+\end{eqnarray*}
+<p>
+因此\(T^{-1}S^{-1}\)是\(ST\)的逆。
 </p>
 
 </div>
