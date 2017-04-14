@@ -326,6 +326,96 @@ v+u_{1} = w + u_{2}
 </p>
 
 </div>
+
+<div class="proof">
+<p>
+在我们定义\(V/U\)的加法和标量乘法中，一个问题是平行于\(U\)的仿射子集的表示并不是唯一的。具体来说，设\(v,w\in V\)，假设\(\hat{v},\hat{w}\in V\)使得\(v+U = \hat{v} + U\)和\(w +U = \hat{w} + U\)，要证明上面给出的\(V/U\)上的加法是有意义的，必须证明\((v+w) + U = (\hat{v} + \hat{w}) + U\)
+</p>
+
+<p>
+因为\(v-\hat{v}\in U\)， \(w- \hat{w} \in U\)，因为\(U\)是\(V\)的子空间，所以在加法下封闭，所以\(v- \hat{v} + w - \hat{w} \in U\)所以\(v + w - ( \hat{v} + \hat{w}) \in U\)，所以有：
+</p>
+\begin{equation}
+\label{eq:7}
+v + w + U = \hat{v} + \hat{w} + U
+\end{equation}
+
+<p>
+同理，设\( \lambda \in \mathbf{F}\)，因为\(U\)是\(V\)的子空间，所以在标量乘法下封闭从而有\(\lambda (v - \hat{v})\in U\),所以有：
+</p>
+\begin{equation}
+\label{eq:8}
+\lambda v + U = \lambda \hat{v} + U
+\end{equation}
+
+<p>
+现在我们假设\(v+U,u+U\in V/U\)，则有\(v+U + u + U = (v+u) + U\in V/U\)，同理\(\lambda \in \mathbf{F}\)则\(\lambda (v + U) = \lambda v + U \in V/U\)
+</p>
+
+<p>
+另外\(V/U\)中的加法零元是\(U\).因为任何的\(v+U\)在加上\(U\)都是其本身。
+</p>
+
+</div>
+
+<div class="definition">
+<p>
+设\(U\)是\(V\)的子空间. 商映射\(\pi\)是如下定义的线性映射\(\pi :V\rightarrow V/U\)对任意的\(v\in V\)满足：\(\pi(v) = v+U\)
+</p>
+
+</div>
+
+<div class="theorem">
+<p>
+设\(V\)是有限维的，\(U\)是\(V\)的子空间，则：\(\dim V/U = \dim V - \dim U \)
+</p>
+
+</div>
+
+<div class="proof">
+<p>
+定义\(\pi : V\rightarrow V/U\)，则有\(null\pi = U\)，根据线性映射基本定理则有：
+</p>
+\begin{equation}
+\label{eq:9}
+\dim V = \dim null\pi + \dim range \pi
+\end{equation}
+<p>
+因为\(range\pi = V/U\)，所以\(\dim V/U = \dim V - \dim U\).
+</p>
+
+</div>
+
+<p>
+从商映射的一般形式可以推导出一个特别重要映射。
+</p>
+<div class="definition">
+<p>
+设\(T\in \mathcal{L}(V,W)\)，定义\(\tilde{T}:V/(nullT) \rightarrow W\)，如下：
+</p>
+\begin{equation}
+\label{eq:10}
+\tilde{T}(v + nullT) = Tv
+\end{equation}
+
+</div>
+
+<p>
+现在对这个定义做一下简单的说明。设\(u,v\in V\)使得\(u+nullT = v+ nullT\)则有\(u-v\in nullT\),于是\(T(u-v) = 0\)，则\(Tu=Tv\)，因此\(\tilde{T}\)的定义是有意义的。
+</p>
+
+<div class="theorem">
+<p>
+设\(T\in \mathcal{L}(V,W)\)，则：
+</p>
+<ol class="org-ol">
+<li>\(\tilde{T}\)是\(V/(nullT)\)到\(W\)的线性映射；</li>
+<li>\(\tilde{T}\)是单的。</li>
+<li>\(range \tilde{T} = range T\)</li>
+<li>\(V/nullT\)同构于\(rangeT\)</li>
+</ol>
+
+</div>
 </div>
 </div>
 </div>
