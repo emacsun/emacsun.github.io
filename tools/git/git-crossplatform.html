@@ -2,18 +2,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-02-17 Fri 21:42 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>文瑞地图</title>
-<meta  name="generator" content="Org-mode" />
-<style type="text/css">
-  pre {
-    background-color: #2f4f4f;line-height: 1.6;
-    FONT: 10.5pt Consola,Yahei Monaco, Courier New, helvetica;
-    color:white;
-  }
-</style>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Git 跨平台的文件结尾问题</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./git-tweet.pdf"><img src="../../img/assets/pdf.png"></a>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -63,26 +59,49 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">文瑞地图</h1>
-<ul class="org-ul">
-<li>地名篇
-<ul class="org-ul">
-<li><a href="地名篇/三十六条街.html">三十六条街</a></li>
-<li><a href="地名篇/三山五岭八景台.html">三山五岭八景台，十个铜钱买得来</a></li>
-<li><a href="地名篇/地名与人物的故事.html">地名与人物的故事</a></li>
-<li><a href="地名篇/旧赣州十俗.html">旧赣州十俗</a></li>
-<li><a href="地名篇/虔州八景.html">虔州八景</a></li>
-<li><a href="地名篇/第一部序负托千年文明.html">负托千年文明 传承地名文化</a></li>
-</ul></li>
-<li><a href="index.html">龚文瑞文集</a></li>
-</ul>
+<h1 class="title">Git 跨平台的文件结尾问题</h1>
+<p>
+本文选自《Pro git》
+</p>
+
+<p>
+格式化与空白是许多开发人员在协作时，特别是在跨平台情况下，遇到的令人头疼的细小问题。由于编辑器的不同或者Windows程序员在跨平台项目中的文件行尾加入了回车换行符，一些细微的空格变化会不经意地进入大家合作的工作或提交的补丁中。不用怕，Git 的一些配置选项会帮助你解决这些问题。
+</p>
+
+<p>
+Git可以在你提交时自动地把行结束符CRLF转换成LF，而在签出代码时把LF转换成CRLF。
+用core.autocrlf来打开此项功能，如果是在Windows系统上，把它设置成true，这样当签出
+代码时，LF会被转换成CRLF：
+</p>
+<pre class="example">
+git config --global core.autocrlf true
+</pre>
+
+<p>
+Linux或Mac系统使用LF作为行结束符，因此你不想 Git 在签出文件时进行自动的转换；当一个以CRLF为行结束符的文件不小心被引入时你肯定想进行修正，把core.autocrlf设置成input来告诉 Git 在提交时把CRLF转换成LF，签出时不转换：
+</p>
+<pre class="example">
+git config --global core.autocrlf input
+</pre>
+
+<p>
+这样会在Windows系统上的签出文件中保留CRLF，会在Mac和Linux系统上，包括仓库中保留LF。
+</p>
+
+<p>
+如果你是Windows程序员，且正在开发仅运行在Windows上的项目，可以设置false取消此功能，把回车符记录在库中：
+</p>
+
+<pre class="example">
+git config --global core.autocrlf false
+</pre>
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'zclspace';
-    
+
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
