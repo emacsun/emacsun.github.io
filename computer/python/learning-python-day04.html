@@ -64,19 +64,19 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3f3f6f1">1. 深入了解 <code>list</code></a>
+<li><a href="#orgb639091">1. 深入了解 <code>list</code></a>
 <ul>
-<li><a href="#org8ca29fc">1.1. 把 <code>list</code> 当栈用</a></li>
-<li><a href="#org30b590a">1.2. 把 <code>list</code> 当队列用</a></li>
-<li><a href="#org7c1faf0">1.3. 队列推导式</a></li>
-<li><a href="#org554e557">1.4. 嵌套的 <code>list</code> 推导式</a></li>
+<li><a href="#orgcd510d4">1.1. 把 <code>list</code> 当栈用</a></li>
+<li><a href="#org713bfa7">1.2. 把 <code>list</code> 当队列用</a></li>
+<li><a href="#orgbb4ab8c">1.3. 队列推导式</a></li>
+<li><a href="#org5114f1a">1.4. 嵌套的 <code>list</code> 推导式</a></li>
 </ul>
 </li>
-<li><a href="#org9af1b98">2. <code>del</code> 语句</a></li>
-<li><a href="#orgf0042b9">3. <code>tuple</code> 和 <code>sequence</code></a></li>
-<li><a href="#org0296e95">4. <code>set</code></a></li>
-<li><a href="#org22fe538">5. 字典（dictionaries）</a></li>
-<li><a href="#org2a4e35f">6. 使用循环</a></li>
+<li><a href="#org79c403e">2. <code>del</code> 语句</a></li>
+<li><a href="#org9139bf8">3. <code>tuple</code> 和 <code>sequence</code></a></li>
+<li><a href="#orgbdb0076">4. <code>set</code></a></li>
+<li><a href="#org228571c">5. 字典（dictionaries）</a></li>
+<li><a href="#org3e2c451">6. 使用循环</a></li>
 </ul>
 </div>
 </div>
@@ -84,8 +84,8 @@ for the JavaScript code in this tag.
 <code>Python</code> 提供了丰富的数据结构，极大提高编码效率。今天，我们讨论与数据结构有关的知识点。
 </p>
 
-<div id="outline-container-org3f3f6f1" class="outline-2">
-<h2 id="org3f3f6f1"><span class="section-number-2">1</span> 深入了解 <code>list</code></h2>
+<div id="outline-container-orgb639091" class="outline-2">
+<h2 id="orgb639091"><span class="section-number-2">1</span> 深入了解 <code>list</code></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -110,8 +110,8 @@ for the JavaScript code in this tag.
 
 </div>
 </div>
-<div id="outline-container-org8ca29fc" class="outline-3">
-<h3 id="org8ca29fc"><span class="section-number-3">1.1</span> 把 <code>list</code> 当栈用</h3>
+<div id="outline-container-orgcd510d4" class="outline-3">
+<h3 id="orgcd510d4"><span class="section-number-3">1.1</span> 把 <code>list</code> 当栈用</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 
@@ -141,8 +141,8 @@ Out[220]:
 </pre>
 </div>
 </div>
-<div id="outline-container-org30b590a" class="outline-3">
-<h3 id="org30b590a"><span class="section-number-3">1.2</span> 把 <code>list</code> 当队列用</h3>
+<div id="outline-container-org713bfa7" class="outline-3">
+<h3 id="org713bfa7"><span class="section-number-3">1.2</span> 把 <code>list</code> 当队列用</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 
@@ -182,8 +182,8 @@ Out[313]:
 </pre>
 </div>
 </div>
-<div id="outline-container-org7c1faf0" class="outline-3">
-<h3 id="org7c1faf0"><span class="section-number-3">1.3</span> 队列推导式</h3>
+<div id="outline-container-orgbb4ab8c" class="outline-3">
+<h3 id="orgbb4ab8c"><span class="section-number-3">1.3</span> 队列推导式</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 
@@ -299,8 +299,8 @@ Out[616]:
 </pre>
 </div>
 </div>
-<div id="outline-container-org554e557" class="outline-3">
-<h3 id="org554e557"><span class="section-number-3">1.4</span> 嵌套的 <code>list</code> 推导式</h3>
+<div id="outline-container-org5114f1a" class="outline-3">
+<h3 id="org5114f1a"><span class="section-number-3">1.4</span> 嵌套的 <code>list</code> 推导式</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 
@@ -333,8 +333,7 @@ Out[658]:
 [x[0] for x in matrix]
 </pre>
 <p>
-输出的是 <code>matrix</code> 的第 <code>0</code> 列 <code>[1,5,9]</code> 。
-整个矩阵转换代码等效于：
+输出的是 <code>matrix</code> 的第 <code>0</code> 列 <code>[1,5,9]</code> 。整个矩阵转换代码等效于：
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #268bd2;">matrix</span> = <span style="color: #2aa198;">[</span>
@@ -362,8 +361,8 @@ list(zip(*matrix))
 </div>
 </div>
 </div>
-<div id="outline-container-org9af1b98" class="outline-2">
-<h2 id="org9af1b98"><span class="section-number-2">2</span> <code>del</code> 语句</h2>
+<div id="outline-container-org79c403e" class="outline-2">
+<h2 id="org79c403e"><span class="section-number-2">2</span> <code>del</code> 语句</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -404,8 +403,8 @@ del a
 </div>
 </div>
 
-<div id="outline-container-orgf0042b9" class="outline-2">
-<h2 id="orgf0042b9"><span class="section-number-2">3</span> <code>tuple</code> 和 <code>sequence</code></h2>
+<div id="outline-container-org9139bf8" class="outline-2">
+<h2 id="org9139bf8"><span class="section-number-2">3</span> <code>tuple</code> 和 <code>sequence</code></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -485,8 +484,8 @@ Out[942]:
 </div>
 </div>
 
-<div id="outline-container-org0296e95" class="outline-2">
-<h2 id="org0296e95"><span class="section-number-2">4</span> <code>set</code></h2>
+<div id="outline-container-orgbdb0076" class="outline-2">
+<h2 id="orgbdb0076"><span class="section-number-2">4</span> <code>set</code></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -570,8 +569,8 @@ Out[1146]:
 </div>
 </div>
 
-<div id="outline-container-org22fe538" class="outline-2">
-<h2 id="org22fe538"><span class="section-number-2">5</span> 字典（dictionaries）</h2>
+<div id="outline-container-org228571c" class="outline-2">
+<h2 id="org228571c"><span class="section-number-2">5</span> 字典（dictionaries）</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -654,8 +653,8 @@ Out[1433]:
 </div>
 </div>
 
-<div id="outline-container-org2a4e35f" class="outline-2">
-<h2 id="org2a4e35f"><span class="section-number-2">6</span> 使用循环</h2>
+<div id="outline-container-org3e2c451" class="outline-2">
+<h2 id="org3e2c451"><span class="section-number-2">6</span> 使用循环</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 

@@ -2,11 +2,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Thinking in Java chapter5 笔记和习题</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="emacsun" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="pdf"  href="./TIJ-ch05.pdf"><img src="../../img/assets/pdf.png"></a>
@@ -64,17 +64,17 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. 简介</a></li>
-<li><a href="#orgheadline2">2. 只有 <code>boolean</code> 有真假</a></li>
-<li><a href="#orgheadline3">3. 注意 <code>a=b</code> 问题</a></li>
-<li><a href="#orgheadline4">4. Random的导入</a></li>
-<li><a href="#orgheadline5">5. <code>foreach</code></a></li>
+<li><a href="#orgc1402fc">1. 简介</a></li>
+<li><a href="#org324c866">2. 只有 <code>boolean</code> 有真假</a></li>
+<li><a href="#org757185c">3. 注意 <code>a=b</code> 问题</a></li>
+<li><a href="#orgcb6d3f3">4. Random的导入</a></li>
+<li><a href="#org5b09bfe">5. <code>foreach</code></a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> 简介</h2>
+<div id="outline-container-orgc1402fc" class="outline-2">
+<h2 id="orgc1402fc"><span class="section-number-2">1</span> 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <b>Controlling Execution</b> 这一章涉及的大多知识点和 <code>C/C++</code> 中已经学过的类似，仅仅有一小部分不同，比如去掉了饱受争议的 <code>goto</code> 语句。本文记录控制语句学习过程中需要记录的知识点。
@@ -82,8 +82,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> 只有 <code>boolean</code> 有真假</h2>
+<div id="outline-container-org324c866" class="outline-2">
+<h2 id="org324c866"><span class="section-number-2">2</span> 只有 <code>boolean</code> 有真假</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -94,8 +94,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> 注意 <code>a=b</code> 问题</h2>
+<div id="outline-container-org757185c" class="outline-2">
+<h2 id="org757185c"><span class="section-number-2">3</span> 注意 <code>a=b</code> 问题</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -105,7 +105,6 @@ for the JavaScript code in this tag.
 在 <code>if</code> 的条件判断句中，最容易犯的错误是: <code>a=b</code> . 本意是要比较 <code>a</code> 和 <code>b</code> 是否相等，但是 <code>a=b</code> 是赋值语句。这样的语句在 <code>C/C++</code> 中不会报错，但是存在逻辑错误，但是在java中，这样的语句一定会报错。看代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">:control/IfElse.java</span>
 <span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr"> 3: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">IfElse</span>
@@ -116,7 +115,7 @@ for the JavaScript code in this tag.
 <span class="linenr"> 8: </span>        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>testval &gt; target<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
 <span class="linenr"> 9: </span>            result = +<span style="color: #6c71c4;">1</span>;
 <span class="linenr">10: </span>        <span style="color: #268bd2;">}</span><span style="color: #859900; font-weight: bold;">else</span> <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>testval &lt; <span style="color: #b58900;">target</span> <span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
-<span class="linenr">11: </span>            result = -<span style="color: #6c71c4;">1</span>;
+<span class="linenr">11: </span>   <span style="color: #b58900;">      </span>   result = -<span style="color: #6c71c4;">1</span>;
 <span class="linenr">12: </span>        <span style="color: #268bd2;">}</span>
 <span class="linenr">13: </span>        <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>testval = target<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
 <span class="linenr">14: </span>            result = <span style="color: #6c71c4;">0</span>;
@@ -127,7 +126,7 @@ for the JavaScript code in this tag.
 <span class="linenr">19: </span>        test<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">6</span>,<span style="color: #6c71c4;">5</span><span style="color: #268bd2;">)</span>;
 <span class="linenr">20: </span>        print<span style="color: #268bd2;">(</span>result<span style="color: #268bd2;">)</span>;
 <span class="linenr">21: </span>        test<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">5</span>,<span style="color: #6c71c4;">6</span><span style="color: #268bd2;">)</span>;
-<span class="linenr">22: </span>  <span style="color: #b58900;"> </span>     print<span style="color: #268bd2;">(</span>result<span style="color: #268bd2;">)</span>;
+<span class="linenr">22: </span>        print<span style="color: #268bd2;">(</span>result<span style="color: #268bd2;">)</span>;
 <span class="linenr">23: </span>        test<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">1</span>,<span style="color: #6c71c4;">1</span><span style="color: #268bd2;">)</span>;
 <span class="linenr">24: </span>        print<span style="color: #268bd2;">(</span>result<span style="color: #268bd2;">)</span>;
 <span class="linenr">25: </span>    <span style="color: #b58900;">}</span>
@@ -146,8 +145,8 @@ IfElse.java:14: error: incompatible types: int cannot be converted to boolean
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> Random的导入</h2>
+<div id="outline-container-orgcb6d3f3" class="outline-2">
+<h2 id="orgcb6d3f3"><span class="section-number-2">4</span> Random的导入</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -157,7 +156,6 @@ IfElse.java:14: error: incompatible types: int cannot be converted to boolean
 在完成 <code>Exercise02</code> 的过程中，忘记导入 <code>import java.util.*</code> 导致无法使用 <code>Random</code> 类， 特此记录，看代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
 <span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Exercise0502</span>
 <span class="linenr"> 3: </span><span style="color: #2aa198;">{</span>
@@ -186,8 +184,8 @@ IfElse.java:14: error: incompatible types: int cannot be converted to boolean
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">5</span> <code>foreach</code></h2>
+<div id="outline-container-org5b09bfe" class="outline-2">
+<h2 id="org5b09bfe"><span class="section-number-2">5</span> <code>foreach</code></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -197,7 +195,6 @@ IfElse.java:14: error: incompatible types: int cannot be converted to boolean
 <code>foreach</code> 是 <code>C</code> 语言中不存在的一种循环表达方式，看代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
 <span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">ForEachFloat</span>
 <span class="linenr"> 3: </span><span style="color: #2aa198;">{</span>
@@ -227,7 +224,7 @@ IfElse.java:14: error: incompatible types: int cannot be converted to boolean
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'zclspace';
-    
+
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
