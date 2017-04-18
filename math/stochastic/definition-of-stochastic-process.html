@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>随机过程的定义</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./definition-of-stochastic-process.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">随机过程的定义</h1>
+<p>
+按照事物发展变化的可预测与否，自然界中事物变化过程可以分两类。第一类具有确定的变化过程，具有必然的规律，可以用一个时间\(t\)的函数来描述。这类过程称为确定性过程。例如水平向前丢一个石头，其垂直方向的速度永远是\(v=gt\)，\(g\)是重力加速度，\(t\)是时间。另一类过程则没有确定的变化形式，也就是说每次观测这个过程，其测量结果没有一个确定的变化规律，用数学语言说就是，这类事物的变化过程不能用一个时间\(t\)的确定函数来描述。如果对该事物的变化过程进行一次观测，可以得到\(t\)的一次函数，但是若对这个过程进行重复独立的观测，则每次得到的结果是不同的。从另一个角度来讲，如果我们固定某一个观察时刻\(t\)，则事物在时刻\(t\)出现的状态是随机的。这类过程叫做随机过程。
+</p>
+
+<p>
+虽然随机过程不能用一个确定的函数来描述，但是随机过程也是有规律的。学习随机过程的目标就是寻找如何描述一个随机过程，并研究这个随机过程的性质和规律。事实上，前人已经总结除了很多随机过程的模型供我们参考。
+</p>
+
+<p>
+我们给出一些例子，描述随机过程。
+</p>
+
+<div class="instance">
+<p>
+首先给出的是伯努利过程。以掷硬币为例。设想每单位时间丢一次硬币，观察结果。如果出现正面记为 1，如果出现反面记为 0。一直丢下去，便可得到一个无穷序列\(\{x_{1},x_{2},\ldots \}\)，则:
+</p>
+\begin{equation}
+\label{eq:1}
+\{x_{1},x_{2},\ldots \} = \{x_{n}:n=1,2,\ldots ;x_{n}=1 \quad or \quad x_{n} = 0\}
+\end{equation}
+
+<p>
+因为每次抛掷的结果\(x_{n}\)是一个随机变量\(1\)或者\(0\)，所以无穷次抛掷的结果是一随机变量的无穷序列。称随机变量的序列为随机序列，也可以说是随机过程。每次抛掷的结果与向后歌词抛掷的结果是统计独立的，并且\(x_{n}\)出现\(0\)或者\(1\)的概率与抛掷的时间\(n\)无关。设：
+</p>
+\begin{eqnarray}
+\label{eq:2}
+p\{x_{n} = 1\}&=& p \\
+p\{x_{n} = 0\}&=&1- p
+\end{eqnarray}
+<p>
+其中\(p\{x_{n} = 1\} = p\) 与\(n\)无关，且\(x_{i},x_{k},i\neq k\)是相互统计独立的随机变量。称具有这种特性的随机过程为伯努利型随机过程。
+</p>
+
+<p>
+有许多实际问题可以归类到伯努利概率模型。如在数字通信中所传送的信号是脉冲信号，在某一时刻\(t\)可能出现脉冲也可能不出现脉冲，出现脉冲记为\(1\)，不出现脉冲记为\(0\)，则在\(t\)时刻信号的值\(x\)是一个随机变量，\(x_{t}\)有两个取值。如果在\(t_{1},t_{2},t_{3},\ldots \)时观察信号，则所得结果\(\{x_{1},x_{2},x_{3},\ldots \}\)。如果在\(t_{k}\)时刻出现\(1\)或者\(0\)的概率和观察的时刻\(t_{k}\)无关，在\(t_{i}\)时刻出现\(x_{i}\)和在\(t_{k}\)时刻出现\(x_{k}\)是相互独立的，并设\(P(x_{i} =1) = p,P(x_{i} = 0) = 1-p\)则\(p\)与\(i\)无关，且\(x_{i},x_{k}\)是相互独立的随机变量，这样形成的随机序列属于伯努利概型。
+</p>
+
+</div>
+
+<div class="instance">
+<p>
+正弦波过程。在振荡器的大批生产过程中抽出一台振荡器，它的输出波形为：
+</p>
+\begin{equation}
+\label{eq:3}
+x(t) = v\sin(\omega t + \phi)
+\end{equation}
+
+<p>
+其中\(v\)是振幅，\(\omega\)是震荡角频率，\(\omega = 2\pi f\)，\(f\)是频率，\(\phi\)为振荡器的初始相位。由于生产工艺的偏差，每个振荡器的振幅和频率与额定值都会有一定的偏差，各台的偏差是不一致的，也就是说\(v,\omega\)是随机变量，每一台的\(v,\omega\)是样本空间\((V,\Omega)\)的一个样本点。而且把振荡器接上电源，初始相位\(\phi\)也是随机的，所以每次对一台振荡器做实验，其输出电压的\(v,\omega,\phi\)为随机变量。不同振荡器在各次试验中其输出电压的时间函数虽然是正弦波，但因为\(v,\omega,\phi\)为随机变量，不同台不同次的输出可能均不相同，如果固定一个观察时刻，观察各台振荡器在这一时刻的电压，则\(x(t) = v\sin (\omega t + \phi)\)也是随机变量。在\(t\)时，\(x(t)\)的分布决定于\(t\)以及\(v,\omega,\phi\)的分布。
+</p>
+
+<p>
+称\(x(t) = v\sin (\omega t + \phi)\)为正弦波过程，在这个过程中，\(t\)是一个参量，它可取\([0,\infty)\) 内的任意值。
+</p>
+
+</div>
+
+<div class="instance">
+<p>
+如果对晶体管的噪声进行测量，每隔单位时间去一个样本，则可在\(t=1,2,\ldots \)时刻测得一组无穷可列维随机矢量\(\{x_{1},x_{2},\ldots \}\)一次测量的结果为样本空间的一个点，每次测量的结果可能各不相同。我们每次测试的结果成为一个现实，或称为一个样本函数。另一方面，如果固定一个观测时刻，对噪声进行无穷次测量，则可以得到该时刻噪声的分布。如果固定第二个时刻，则测测该第二个时刻噪声的二维分布。如果固定\(n\)个时刻，则可测得\(n\)个时刻噪声的\(n\)维分布。
+</p>
+
+</div>
+
+<p>
+根据上面的几个例子，我们可以对随机过程做一个概括的说明。
+</p>
+<div class="definition">
+<p>
+设\(\Omega, \mathcal{F},P\)是概率空间，\(T\)是直线上的参数集(可列的或不可列的)，若对每一个\(t\in T\), \(\xi(\omega,t) = \xi_{t}(\omega)\)是随机变量，则称\(\{\xi(\omega,t),t\in T\}\)为该空间上的随机过程。
+</p>
+
+</div>
+
+<p>
+随机过程是一个统称，根据\(T\)是否连续可以分为离散随机过程和连续随机过程。离散的随机过程也叫作随机序列或者时间序列。时间序列在金融分析中经常用到，我曾见过专门的金融时序分析方面的教材，但是没有深入研究，不知道是在那里是如何建模的。
+</p>
+
+<p>
+我们把一次实验结果\(x_{k}(t),t\in T\)叫做随机过程的一个实现或者一个样本。通过本文我们可以发现可以通过两个角度去看随机过程，一个角度是对一个随机变量的无穷次测量，另一个角度是对无穷多个独立同分布的随机变量做一次测量。这两种方法各有所长，都统一与随机过程的定义中。
+</p>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
