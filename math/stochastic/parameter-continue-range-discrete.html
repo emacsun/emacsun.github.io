@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>通信系统中的随机过程</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./parameter-continue-range-discrete.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">通信系统中的随机过程</h1>
+<p>
+在 <a href="one-dimension-random-walk.html">一维随机游动</a> 的例子中，我们讨论了参数离散取值离散的随机过程，今天，给出一个参数连续取值离散的随机过程。
+</p>
+
+<div class="problem">
+<p>
+设有一个脉冲数字通信系统，它传送的信号是脉冲宽度为\(T_{0}\)的脉冲信号，每隔\(T_{0}\)送出一个脉冲。脉冲幅度\(\xi(t)\)是一个随机变量，它可取四个值\(\{-2,-1,1,2\}\)，且取这四个值的概率是相同的，即：
+</p>
+\begin{eqnarray*}
+P(\xi(t) = 2)&=&P(\xi(t) = 1) \\
+&=&P(\xi(t) = -1) \\
+&=&P(\xi(t) = -2) \\
+&=&1/4
+\end{eqnarray*}
+
+<p>
+不同周期内脉冲幅度是相互统计独立的，脉冲的起始时间相对于原点\(t=0\)的时间差\(u\)为均匀分布在\(0,T_{0}\)内的随机变量。试求在两个时刻\(t_{1},t_{2}\)该随机过程\(\xi(t)\)所取值\(\xi(t_{1}),\xi(t_{2})\)的二维联合概率密度。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+首先，给出一个该脉冲数字通信数字信号的一个典型样本函数。如图<a href="#org7e8be33">1</a>所示
+</p>
+
+<div id="org7e8be33" class="figure">
+<p><img src="../../img/math_stochastic/201704191dot2.png" alt="201704191dot2.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 1:</span> 脉冲信号的典型样本函数</p>
+</div>
+
+
+
+<p>
+在时间轴上固定两个时刻\(t_{1},t_{2}\)。首先要研究的问题时\(t_{1},t_{2}\)是否处于一个脉冲内。设事件\(c\)表示\(t_{1},t_{2}\)处于不同的脉冲，它的逆事件\(c^{c}\)表示\(t_{1},t_{2}\)处于同一脉冲周期内。
+</p>
+
+<p>
+当\(|t_{1} - t_{2}| > T_{0}\)时，事件\(c\)是必然事件，此时，\(P(c) = 1,P(c^{c}) = 0\),;
+</p>
+
+<p>
+当\(|t_{1} - t_{2}| \leq T_{0}\)时，\(t_{1},t_{2}\)有可能在同一脉冲内，也有可能处于两个不同的脉冲内。设\(\theta\)为\(t_{1}\)所在的脉冲的起始时刻。由于脉冲的起始时间相对于原点\(t=0\)的时间差\(u\)均匀分布于\((0,T_{0})\)内，而且该信号为等脉宽的脉冲信号，脉宽均匀为\(T_{0}\)。则\(\theta\)也是均匀分布的随机变量，\(\theta\)可视为均匀分布于\([t_{1}-T_{0},t_{1}]\)内的随机变量。图<a href="#orgd107a80">2</a>给出了\(\theta\)的概率密度和\(t_{1},t_{2},\theta\)的关系图。
+</p>
+
+
+<div id="orgd107a80" class="figure">
+<p><img src="../../img/math_stochastic/201704191dot3.png" alt="201704191dot3.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 2:</span> \(t_{1},t_{2},\theta\)关系图</p>
+</div>
+
+<p>
+如果\(t_{1} < t_{2}\)，则：
+</p>
+\begin{eqnarray}
+\label{eq:1}
+P(c^{c})&=& P(t_{2} < \theta + T_{0}) = P( \theta > t_{2} - T_{0}) \\
+&=& 1- P(\theta < t_{2} - T_{0}) \\
+&=& 1- \frac{1}{T_{0}}\int_{t_{1} - T_{0}}^{t_{2} - T_{0}} d\theta \\
+&=& 1- \frac{t_{2} - t_{1}}{T_{0}}
+\end{eqnarray}
+
+<p>
+如果\(t_{2} < t_{1}\) ，则：
+</p>
+\begin{eqnarray}
+\label{eq:2}
+P(c^{c})&=& P(t_{2} > \theta) = \frac{1}{T_{0}} \int_{t_{1} - T_{0}}^{t_{2}}d\theta \\
+&=& 1- \frac{t_{1}-t_{2}}{T_{0}} 
+\end{eqnarray}
+
+<p>
+因此：
+</p>
+\begin{eqnarray}
+\label{eq:3}
+P(c^{c})&=&  1- \frac{|t_{1}-t_{2}|}{T_{0}} \\
+P(c) &=&\frac{|t_{1}-t_{2}|}{T_{0}}
+\end{eqnarray}
+
+<p>
+根据全概率公式：
+</p>
+\begin{equation}
+\label{eq:4}
+f_{\xi_{t_{1}},\xi_{t_{2}}}(x_{1},x_{2}) = f_{\xi_{t_{1}},\xi_{t_{2}},c}(x_{1},x_{2}|c)P(c) + f_{\xi_{t_{1}},\xi_{t_{2}},c^{c}}(x_{1},x_{2}|c^{c})P(c^{c}) 
+\end{equation}
+<p>
+又因为不同周期内脉冲幅度是相互统计独立的随机变量，于是：
+</p>
+\begin{equation}
+\label{eq:5}
+f_{\xi_{t_{1}},\xi_{t_{2}},c}(x_{1},x_{2}|c) = \sum_{i=\{-2,-1,1,2\}}\frac{1}{4}\delta(x_{1} - i)  \sum_{k=\{-2,-1,1,2\}}\frac{1}{4}\delta(x_{2} - k) 
+\end{equation}
+
+<p>
+如果\(t_{1},t_{2}\)处于同一周期，则\(\xi(t_{1} = \xi(t_{2}))\)，这时:
+</p>
+\begin{equation}
+\label{eq:6}
+f_{\xi_{t_{1}},\xi_{t_{2}} |c^{c}} = \sum_{i=\{-2,-1,1,2\}} \frac{1}{4}\delta(x_{1} - i)\delta(x_{2} - i)
+\end{equation}
+
+<p>
+综上有：当\(|t_{1} - t_{2}| \leq T_{0}\)时：
+</p>
+
+\begin{eqnarray}
+\label{eq:9}
+f_{\xi_{t_{1}},\xi_{t_{2}}}(x_{1},x_{2}) &=& \sum_{i=\{-2,-1,1,2\}}\frac{1}{4}\delta(x_{1} - i)  \sum_{k=\{-2,-1,1,2\}}\frac{1}{4}\delta(x_{2} - k) \frac{|t_{1} - t_{2}|}{T_{0}}\\ 
+&+& \sum_{i=\{-2,-1,1,2\}} \frac{1}{4}\delta(x_{1} - i)\delta(x_{2} - i)(1- \frac{|t_{1} - t_{2}|}{T_{0}})
+\end{eqnarray}
+
+<p>
+当\(|t_{1} - t_{2}| \geq T_{0}\)时：
+</p>
+\begin{equation}
+\label{eq:8}
+f_{\xi_{t_{1}},\xi_{t_{2}}}(x_{1},x_{2}) = \sum_{i=\{-2,-1,1,2\}}\frac{1}{4}\delta(x_{1} - i)  \sum_{k=\{-2,-1,1,2\}}\frac{1}{4}\delta(x_{2} - k)
+\end{equation}
+
+</div>
+
+<p>
+在这个题目中，全概率公式是主线，如何进行概率空间的划分是解决这个问题的关键。</p>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
