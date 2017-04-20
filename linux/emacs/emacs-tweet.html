@@ -86,47 +86,48 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org477e0b2">1. spacemacs中支持的text object.</a></li>
-<li><a href="#org9afbe3b">2. spacemacs快捷键定义</a></li>
+<li><a href="#org6551415">1. spacemacs 中支持的 text object.</a></li>
+<li><a href="#org4e4ec94">2. spacemacs 快捷键定义</a></li>
 <li><a href="#orgfe4cf05">3. spacemacs 定义文件保存快捷键</a></li>
-<li><a href="#org63e95ba">4. spacemacs 循环切换item符号</a></li>
-<li><a href="#orgaaaf375">5. Emacs org 输出html中figure，table对齐</a></li>
+<li><a href="#org2320218">4. spacemacs 循环切换 item 符号</a></li>
+<li><a href="#orga8faee0">5. Emacs org 输出 html 中 figure，table 对齐</a></li>
 <li><a href="#orgf219f03">6. JDEE 安装</a></li>
-<li><a href="#org225ae13">7. 使用Thinking in Java书中代码</a></li>
-<li><a href="#orga7eb71b">8. 定义复制整个buffer快捷键</a></li>
-<li><a href="#orgfc447dc">9. Emacs Org中用到 | 时怎么办</a></li>
+<li><a href="#org4858749">7. 使用 Thinking in Java 书中代码</a></li>
+<li><a href="#orga440c4d">8. 定义复制整个 buffer 快捷键</a></li>
+<li><a href="#org790fab0">9. Emacs Org 中用到 | 时怎么办</a></li>
 <li><a href="#org639e673">10. Emacs Org 编辑代码快捷键</a></li>
-<li><a href="#org448f4a5">11. Emacs tab缩进配置</a></li>
+<li><a href="#orgdde4e5c">11. Emacs tab 缩进配置</a></li>
+<li><a href="#org61bb49d">12. 在选择区域的首尾跳转</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org477e0b2" class="outline-2">
-<h2 id="org477e0b2"><span class="section-number-2">1</span> spacemacs中支持的text object.</h2>
+<div id="outline-container-org6551415" class="outline-2">
+<h2 id="org6551415"><span class="section-number-2">1</span> spacemacs 中支持的 text object.</h2>
 <div class="outline-text-2" id="text-1">
 
-<div id="orgb93c15c" class="figure">
+<div id="orge14a46a" class="figure">
 <p><img src="../../img/20170217spacemacsTxtObject.jpg" alt="20170217spacemacsTxtObject.jpg" width="700" align="center" />
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org9afbe3b" class="outline-2">
-<h2 id="org9afbe3b"><span class="section-number-2">2</span> spacemacs快捷键定义</h2>
+<div id="outline-container-org4e4ec94" class="outline-2">
+<h2 id="org4e4ec94"><span class="section-number-2">2</span> spacemacs 快捷键定义</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">[2017-02-17 Fri 21:30]</span></span>
 有几个快捷键失灵或者被覆盖，特意在 <code>.spacemacs</code> 中重定义。
 </p>
 
-<div id="orge14a46a" class="figure">
+<div id="orgb662c39" class="figure">
 <p><img src="../../img/20170217spacemacsSeveralShortkey.jpg" alt="20170217spacemacsSeveralShortkey.jpg" width="700" align="center" />
 </p>
 </div>
 
 <p>
-在evil的normal模式中按下ENTER或者 <code>'</code> 键保存修改。这比 <code>:w</code> 或者 <code>SPC f s</code> 都方便。
+在 evil 的 normal 模式中按下 ENTER 或者 <code>'</code> 键保存修改。这比 <code>:w</code> 或者 <code>SPC f s</code> 都方便。
 </p>
 </div>
 </div>
@@ -147,20 +148,20 @@ for the JavaScript code in this tag.
 </div>
 
 <p>
-在normal模式中按下  '  <code>‘</code>  <code>’</code> 或者 <code>&lt;RET&gt;</code> （回车键）都可以实现文件保存的目的。
+在 normal 模式中按下  '  <code>‘</code>  <code>’</code> 或者 <code>&lt;RET&gt;</code> （回车键）都可以实现文件保存的目的。
 </p>
 </div>
 </div>
 
-<div id="outline-container-org63e95ba" class="outline-2">
-<h2 id="org63e95ba"><span class="section-number-2">4</span> spacemacs 循环切换item符号</h2>
+<div id="outline-container-org2320218" class="outline-2">
+<h2 id="org2320218"><span class="section-number-2">4</span> spacemacs 循环切换 item 符号</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
 </p>
 
 <p>
-在spacemacs中，可以通过 <code>1.</code> 为多个项目或者步骤编号，比如 <code>1.</code> 代表第一步， <code>2.</code> 代表第二部，依次类推，如下所示：
+在 spacemacs 中，可以通过 <code>1.</code> 为多个项目或者步骤编号，比如 <code>1.</code> 代表第一步， <code>2.</code> 代表第二部，依次类推，如下所示：
 </p>
 <div class="org-src-container">
 <pre class="src src-org">1. &#31532;&#19968;&#27493;
@@ -170,11 +171,11 @@ for the JavaScript code in this tag.
 </div>
 
 <p>
-当需要添加下一个步骤时，只需要在当前步骤按快捷键 <code>&lt;ALT&gt;-&lt;RET&gt;</code> 即同时按下 Alt和回车，即可添加下一步。
+当需要添加下一个步骤时，只需要在当前步骤按快捷键 <code>&lt;ALT&gt;-&lt;RET&gt;</code> 即同时按下 Alt 和回车，即可添加下一步。
 </p>
 
 <p>
-另一个小窍门是实用 <code>org-cycle-list-bullet</code> 命令来实现 item符号的改变。在spacemacs中绑定为 <code>-</code> 。 仍旧用上面的例子，当我们进入 <code>normal</code> 模式，把光标放到任意一个 <code>item</code> 的任意一个位置，按下 <code>-</code> 就会发现 <code>item</code> 符号发生了变化，比如我把光标放在“第二步” 的“二”字上，按下 <code>-</code> 就有
+另一个小窍门是实用 <code>org-cycle-list-bullet</code> 命令来实现 item 符号的改变。在 spacemacs 中绑定为 <code>-</code> 。 仍旧用上面的例子，当我们进入 <code>normal</code> 模式，把光标放到任意一个 <code>item</code> 的任意一个位置，按下 <code>-</code> 就会发现 <code>item</code> 符号发生了变化，比如我把光标放在“第二步” 的“二”字上，按下 <code>-</code> 就有
 </p>
 <div class="org-src-container">
 <pre class="src src-org">A) &#31532;&#19968;&#27493;
@@ -184,19 +185,19 @@ C) &#31532;&#19977;&#27493;
 </div>
 
 <p>
-因为这个命令是 <code>cycle</code> 的，所以重复按下 <code>-</code> , <code>item</code> 符号会在Org支持的 <code>item</code> 符号之间切换。目前 Org支持的 <code>item</code> 符号有 <code>*</code> <code>+</code> <code>1.</code> <code>a)</code> <code>A)</code> .
+因为这个命令是 <code>cycle</code> 的，所以重复按下 <code>-</code> , <code>item</code> 符号会在 Org 支持的 <code>item</code> 符号之间切换。目前 Org 支持的 <code>item</code> 符号有 <code>*</code> <code>+</code> <code>1.</code> <code>a)</code> <code>A)</code> .
 </p>
 </div>
 </div>
-<div id="outline-container-orgaaaf375" class="outline-2">
-<h2 id="orgaaaf375"><span class="section-number-2">5</span> Emacs org 输出html中figure，table对齐</h2>
+<div id="outline-container-orga8faee0" class="outline-2">
+<h2 id="orga8faee0"><span class="section-number-2">5</span> Emacs org 输出 html 中 figure，table 对齐</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
 </p>
 
 <p>
-在Emacs的org输出的html中，如果需要figure和table对齐，需在css中添加如下设置：
+在 Emacs 的 org 输出的 html 中，如果需要 figure 和 table 对齐，需在 css 中添加如下设置：
 </p>
 <div class="org-src-container">
 <pre class="src src-css"><span style="color: #268bd2;">div.figure</span><span style="color: #2aa198;">{</span>
@@ -219,8 +220,8 @@ C) &#31532;&#19977;&#27493;
 </p>
 
 <ol class="org-ol">
-<li>在melpa中安装jdee</li>
-<li>安装jdee-server，（需要用到maven）</li>
+<li>在 melpa 中安装 jdee</li>
+<li>安装 jdee-server，（需要用到 maven）</li>
 <li></li>
 </ol>
 <p>
@@ -228,15 +229,15 @@ C) &#31532;&#19977;&#27493;
 </p>
 </div>
 </div>
-<div id="outline-container-org225ae13" class="outline-2">
-<h2 id="org225ae13"><span class="section-number-2">7</span> 使用Thinking in Java书中代码</h2>
+<div id="outline-container-org4858749" class="outline-2">
+<h2 id="org4858749"><span class="section-number-2">7</span> 使用 Thinking in Java 书中代码</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 
 </p>
 
 <p>
-去 <a href="http://www.mindviewinc.com/TIJ4/CodeInstructions.html">这里</a> 下载代码，按照所示步骤添加 <code>CLASSPATH</code> 环境变量。由于TIJ侧重基础的学习，代码量都不是很大。因此学习TIJ, 只用Emacs JDEE即可完成所有操作。
+去 <a href="http://www.mindviewinc.com/TIJ4/CodeInstructions.html">这里</a> 下载代码，按照所示步骤添加 <code>CLASSPATH</code> 环境变量。由于 TIJ 侧重基础的学习，代码量都不是很大。因此学习 TIJ, 只用 Emacs JDEE 即可完成所有操作。
 </p>
 
 <p>
@@ -244,8 +245,8 @@ C) &#31532;&#19977;&#27493;
 </p>
 </div>
 </div>
-<div id="outline-container-orga7eb71b" class="outline-2">
-<h2 id="orga7eb71b"><span class="section-number-2">8</span> 定义复制整个buffer快捷键</h2>
+<div id="outline-container-orga440c4d" class="outline-2">
+<h2 id="orga440c4d"><span class="section-number-2">8</span> 定义复制整个 buffer 快捷键</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">[2017-02-26 Sun 19:49]</span></span>
@@ -257,12 +258,12 @@ C) &#31532;&#19977;&#27493;
 </div>
 </div>
 </div>
-<div id="outline-container-orgfc447dc" class="outline-2">
-<h2 id="orgfc447dc"><span class="section-number-2">9</span> Emacs Org中用到 | 时怎么办</h2>
+<div id="outline-container-org790fab0" class="outline-2">
+<h2 id="org790fab0"><span class="section-number-2">9</span> Emacs Org 中用到 | 时怎么办</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">[2017-03-11 Sat 18:04] </span></span> 
-Emacs Org的table使用 "|"来区分列，但是如果在表格中出现了条件概率\(P(A|B)\)这样的内容怎么办？答：使用转义字符 \\(~\)vert
+Emacs Org 的 table 使用 "|"来区分列，但是如果在表格中出现了条件概率\(P(A|B)\)这样的内容怎么办？答：使用转义字符 \\(~\)vert
 </p>
 </div>
 </div>
@@ -274,24 +275,36 @@ Emacs Org的table使用 "|"来区分列，但是如果在表格中出现了条�
 </p>
 
 <p>
-在Spacemacs Org中编辑代码段，使用 <code>C-c '</code> ,便会进入一个临时buffer，编辑结束后使用 <code>,c</code> 返回，使用 <code>,k</code> 放弃
+在 Spacemacs Org 中编辑代码段，使用 <code>C-c '</code> ,便会进入一个临时 buffer，编辑结束后使用 <code>,c</code> 返回，使用 <code>,k</code> 放弃
 </p>
 </div>
 </div>
-<div id="outline-container-org448f4a5" class="outline-2">
-<h2 id="org448f4a5"><span class="section-number-2">11</span> Emacs tab缩进配置</h2>
+<div id="outline-container-orgdde4e5c" class="outline-2">
+<h2 id="orgdde4e5c"><span class="section-number-2">11</span> Emacs tab 缩进配置</h2>
 <div class="outline-text-2" id="text-11">
 <p>
 
 </p>
 
 <p>
-目标：不插入tab字符，每次缩进四个空格。
+目标：不插入 tab 字符，每次缩进四个空格。
 </p>
 <pre class="example">
 (setq indent-tabs-mode nil)
 (setq tab-width 4)
 </pre>
+</div>
+</div>
+<div id="outline-container-org61bb49d" class="outline-2">
+<h2 id="org61bb49d"><span class="section-number-2">12</span> 在选择区域的首尾跳转</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+
+</p>
+
+<p>
+<code>o</code> 可以使光标在选择的区域首尾跳转。 <code>v</code> <code>V</code> 或者 <code>C-v</code> 进入选择模式， <code>o</code> 在选中的区域首尾跳转。
+</p>
 </div>
 </div>
 </div>
