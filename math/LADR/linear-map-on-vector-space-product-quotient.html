@@ -252,7 +252,7 @@ for the JavaScript code in this tag.
 
 <div class="answer">
 <p>
-假设\(A_{1}\cap A_{2}  = \varnothing\)，那么对于\(x,y\in A_{1}\cap A_{2}\) 和\(\lambda \mathbf{F}\)，根据上一题，我们有：
+假设\(A_{1}\cap A_{2}  = \varnothing\)，那么对于\(x,y\in A_{1}\cap A_{2}\) 和\(\lambda \in \mathbf{F}\)，根据上一题，我们有：
 </p>
 \begin{equation}
 \label{eq:2}
@@ -320,9 +320,32 @@ A = \{\lambda_{1}v_{1} + \ldots + \lambda_{m} v_{m}:\lambda_{1},\ldots ,\lambda_
 </div>
 
 <div class="answer">
-<p>
+<ol class="org-ol">
+<li>设\(v = \lambda_{1}v_{1} + \ldots + \lambda_{m}v_{m} \in A\)，\(w = \eta_{1}v_{1} + \ldots + \eta_{m}v_{m} \in A\)，其中\(\lambda_{1} ,\ldots ,\lambda_{m}\in \mathbf{F}\)， \(\lambda_{1} + \ldots + \lambda_{m} = 1\)，\(\eta_{1} ,\ldots ,\eta_{m}\in \mathbf{F}\)， \(\eta_{1} + \ldots + \eta_{m} = 1\)，</li>
+</ol>
 
+<p>
+对任意的\(\lambda \in \mathbf{F}\)，有：
 </p>
+\begin{equation}
+\label{eq:5}
+\lambda v + (1-\lambda)w = \sum_{i=1}^{m}(\lambda\lambda_{i} + (1-\lambda)\eta_{i})v_{i}
+\end{equation}
+<p>
+注意到：
+</p>
+\begin{equation}
+\label{eq:6}
+\sum_{i=1}^{m}(\lambda\lambda_{i} + (1-\lambda)\eta_{i}) = \lambda \sum_{i=1}^{m}\lambda_{i} + (1-\lambda) \sum_{i=1}^{m}\eta_{i} = \lambda + (1-\lambda) = 1
+\end{equation}
+
+<p>
+所以有：\(\lambda v + (1-\lambda)w \in A\)，根据第 8 题，我们有：\(A\)是\(V\)的仿射子集。
+</p>
+
+<ol class="org-ol">
+<li></li>
+</ol>
 
 </div>
 </div>
