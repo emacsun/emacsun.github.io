@@ -86,19 +86,21 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc1aaeaa">1. 3.E.1</a></li>
-<li><a href="#orgea0fb14">2. 4.E.2</a></li>
-<li><a href="#org32a0c33">3. 3.E.7</a></li>
-<li><a href="#org2f61ce3">4. 3.E.8</a></li>
-<li><a href="#org10ec0ad">5. 3.E.9</a></li>
-<li><a href="#org94d29a9">6. 3.E.10</a></li>
-<li><a href="#org459e006">7. 3.E.11</a></li>
+<li><a href="#orgaa7c77c">1. 3.E.1</a></li>
+<li><a href="#org69fc705">2. 4.E.2</a></li>
+<li><a href="#org044bb6a">3. 3.E.7</a></li>
+<li><a href="#org56fa4c1">4. 3.E.8</a></li>
+<li><a href="#org7dad7b2">5. 3.E.9</a></li>
+<li><a href="#orgfec548a">6. 3.E.10</a></li>
+<li><a href="#orgf31c771">7. 3.E.11</a></li>
+<li><a href="#org9004645">8. 3.E.12</a></li>
+<li><a href="#org5d2442f">9. 3.E.13</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgc1aaeaa" class="outline-2">
-<h2 id="orgc1aaeaa"><span class="section-number-2">1</span> 3.E.1</h2>
+<div id="outline-container-orgaa7c77c" class="outline-2">
+<h2 id="orgaa7c77c"><span class="section-number-2">1</span> 3.E.1</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -140,8 +142,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-orgea0fb14" class="outline-2">
-<h2 id="orgea0fb14"><span class="section-number-2">2</span> 4.E.2</h2>
+<div id="outline-container-org69fc705" class="outline-2">
+<h2 id="org69fc705"><span class="section-number-2">2</span> 4.E.2</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -164,8 +166,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org32a0c33" class="outline-2">
-<h2 id="org32a0c33"><span class="section-number-2">3</span> 3.E.7</h2>
+<div id="outline-container-org044bb6a" class="outline-2">
+<h2 id="org044bb6a"><span class="section-number-2">3</span> 3.E.7</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -192,8 +194,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org2f61ce3" class="outline-2">
-<h2 id="org2f61ce3"><span class="section-number-2">4</span> 3.E.8</h2>
+<div id="outline-container-org56fa4c1" class="outline-2">
+<h2 id="org56fa4c1"><span class="section-number-2">4</span> 3.E.8</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -236,8 +238,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org10ec0ad" class="outline-2">
-<h2 id="org10ec0ad"><span class="section-number-2">5</span> 3.E.9</h2>
+<div id="outline-container-org7dad7b2" class="outline-2">
+<h2 id="org7dad7b2"><span class="section-number-2">5</span> 3.E.9</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -273,8 +275,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org94d29a9" class="outline-2">
-<h2 id="org94d29a9"><span class="section-number-2">6</span> 3.E.10</h2>
+<div id="outline-container-orgfec548a" class="outline-2">
+<h2 id="orgfec548a"><span class="section-number-2">6</span> 3.E.10</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 
@@ -295,8 +297,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 </div>
-<div id="outline-container-org459e006" class="outline-2">
-<h2 id="org459e006"><span class="section-number-2">7</span> 3.E.11</h2>
+<div id="outline-container-orgf31c771" class="outline-2">
+<h2 id="orgf31c771"><span class="section-number-2">7</span> 3.E.11</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 
@@ -343,9 +345,130 @@ A = \{\lambda_{1}v_{1} + \ldots + \lambda_{m} v_{m}:\lambda_{1},\ldots ,\lambda_
 所以有：\(\lambda v + (1-\lambda)w \in A\)，根据第 8 题，我们有：\(A\)是\(V\)的仿射子集。
 </p>
 
+<p>
+<b>这个问题</b> 告诉我们证明一个子集是仿射子集不一定要按照定义来，也可以从第 8 题的思路出发。
+</p>
+
 <ol class="org-ol">
-<li></li>
+<li>接下来使用数学归纳法来证明对人包含\(v_{1},\ldots ,v_{m}\)的仿射子集包含\(A\).</li>
 </ol>
+
+<p>
+对于\(k\leq m\)，如果\(\sum_{i=1}^{k}\lambda_{i} = 1\)，我们有：
+</p>
+\begin{equation}
+\label{eq:7}
+\sum_{j=1}^{k}\lambda_{j}v_{j} \in W
+\end{equation}
+
+<p>
+对于\(k=1,2\)，根据 3.E.8，我们有命题成立。
+</p>
+
+<p>
+假设对于\(k\)命题成立，则对于\(k+1\leq m\)，假设有\(\sum_{i}^{k+1}\lambda_{i} = 1\)，如果\(\lambda_{k+1} = 1\)，那么
+</p>
+\begin{equation}
+\label{eq:8}
+\sum_{j=1}^{k+1}\lambda_{j}v_{j} = v_{k+1} \in W
+\end{equation}
+
+<p>
+如果\(\lambda_{k+1} \neq 1\),那么：
+</p>
+\begin{equation}
+\label{eq:9}
+\frac{1}{1-\lambda_{k+1}}(\lambda_{1}v_{1} + \ldots + \lambda_{k}v_{k}) \in W
+\end{equation}
+
+<p>
+也就是说：
+</p>
+\begin{equation}
+\label{eq:10}
+\lambda_{1}v_{1} + \ldots + \lambda_{k+1}v_{k+1} \in W
+\end{equation}
+
+<p>
+所以\(\lambda_{1}v_{1} + \ldots + \lambda_{m}v_{m}\in W\)
+</p>
+
+<ol class="org-ol">
+<li>因为\(\lambda_{1} + \ldots \lambda_{m} = 1\)，那么：</li>
+</ol>
+\begin{equation}
+\label{eq:11}
+\lambda_{1}v_{1} + \ldots + \lambda_{m}v_{m} = v_{1} + \lambda_{2}(v_{2} -v_{1}) + \ldots + \lambda_{m}(v_{m} - v_{1})
+\end{equation}
+<p>
+因此\(A\subseteq v_{1} + span(v_{2} - v_{1},\ldots ,v_{m}-v_{1})\), \(v\)可以写为另外一种形式：
+</p>
+\begin{equation}
+\label{eq:12}
+v_{1} + \sum_{j=2}^{m}\lambda_{i}(v_{i} - v_{1}) = (1-\lambda_{2} - \ldots -\lambda_{m}) + \sum_{i=2}^{m}\lambda_{i}v_{i}
+\end{equation}
+<p>
+注意:\(1-\lambda_{2} - \ldots -\lambda_{m} + \sum_{j=2}^{m}\lambda_{i} = 1\)，所以
+</p>
+\begin{equation}
+\label{eq:13}
+v_{1} + span(v_{2}-v_{1},\ldots ,v_{m} - v_{1}) \subseteq A
+\end{equation}
+
+<p>
+继而有：
+</p>
+\begin{equation}
+\label{eq:14}
+A = v_{1} + span(v_{2} - v_{1},\ldots ,v_{m}-v_{1})
+\end{equation}
+<p>
+令\(v=v_{1}\)，\(U = span(v_{2} -v_{1})\)，则有\(\dim U \leq m-1\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org9004645" class="outline-2">
+<h2 id="org9004645"><span class="section-number-2">8</span> 3.E.12</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(U\)是\(V\)的子空间使得\(V/U\)是有限维的。证明\(V\)同构于\(U\times (V/U)\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org5d2442f" class="outline-2">
+<h2 id="org5d2442f"><span class="section-number-2">9</span> 3.E.13</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(U\)是\(V\)的子空间，\(v_{1} + U,\ldots ,v_{m} + U\)是\(V/U\)的基，\(u_{1},\ldots ,u_{n}\)是\(U\)的基，证明\(v_{1},\ldots ,v_{m},u_{1},\ldots ,u_{n}\)是\(V\)的基。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+
+</p>
 
 </div>
 </div>
