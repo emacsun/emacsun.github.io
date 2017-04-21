@@ -86,13 +86,13 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org045be72">1. 对偶空间与对偶映射</a></li>
+<li><a href="#org4621a61">1. 对偶空间与对偶映射</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org045be72" class="outline-2">
-<h2 id="org045be72"><span class="section-number-2">1</span> 对偶空间与对偶映射</h2>
+<div id="outline-container-org4621a61" class="outline-2">
+<h2 id="org4621a61"><span class="section-number-2">1</span> 对偶空间与对偶映射</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -134,7 +134,113 @@ for the JavaScript code in this tag.
 
 <div class="proof">
 <p>
+我们之前 3.61 证明过：\(\dim(\mathcal{L}(V,W)) = (\dim V)(\dim W) \)。
+</p>
 
+<p>
+对于这个命题因为\(V^{'} = \mathcal{L}(V,F)\) ，所以\(\dim(V^{'}) = \dim(V)\dim(\mathbf{F})\)，又因为\(\dim \mathbf{F} = 1\) .
+</p>
+
+<p>
+这里\(V^{'}\)是线性泛函的集合，(线性泛函都是从\(V\)到\(\mathbf{F}\)的映射。)
+</p>
+
+</div>
+
+<div class="definition">
+<p>
+设\(v_{1},\ldots ,v_{n}\)是\(V\)的基，则\(v_{1},\ldots ,v_{n}\)的对偶基是\(V^{'}\)中的元素组\(\varphi_{1}, \ldots ,\varphi_{n}\)，其中每个\(\varphi_{j}\)都是\(V\)上的线性泛函，满足：
+</p>
+\begin{equation}
+\label{eq:1}
+\varphi_{j}(v_{k}) = 
+\begin{cases}
+1, & k=j \\
+0, & k\neq j 
+\end{cases}
+\end{equation}
+
+</div>
+
+<div class="instance">
+<p>
+求\(\mathbf{F}^{n}\)的标准基\(e_{1},\ldots ,e_{n}\)的对偶基。
+</p>
+
+<p>
+对于\(1\leq j \leq n\)，定义\(\varphi_{j}\)是\(\mathbf{F}^{n}\)上的线性泛函，满足\(\forall (x_{1},\ldots ,x_{n})\in \mathbf{F}^{n}\):
+</p>
+\begin{equation}
+\label{eq:2}
+\varphi_{j}(x_{1},\ldots ,x_{n}) = x^{j}
+\end{equation}
+
+<p>
+显然：
+</p>
+\begin{equation}
+\label{eq:3}
+\varphi_{j}(v_{k}) = 
+\begin{cases}
+1, & k=j \\
+0, & k\neq j 
+\end{cases}
+\end{equation}
+<p>
+于是\(\varphi_{1},\ldots ,\varphi_{n}\)是\(\mathbf{F}^{n}\)的标准基\(e_{1},\ldots ,e_{n}\)的对偶基。
+</p>
+
+<p>
+从对偶基的定义可以看出对偶基与\(V\)的基紧密相关，由于对偶基是\(V^{'}\)中满足特定条件的线性映射，根据定义，对偶基是把\(V\)的基的各个元素映射称\(1\)或者\(0\)的线性泛函的集合。注意对偶基是把\(V\)中的基映射为\(\mathbf{F}\)中的\(1\)而不是其他元素，所以可以想见这个对偶基在以后有很多特殊的应用。
+</p>
+
+</div>
+
+<div class="theorem">
+<p>
+设\(V\)是有限维的，则\(V\)的一个基的对偶基是\(V^{'}\)的基。
+</p>
+
+</div>
+
+<div class="proof">
+<p>
+还是从定义出发逐一解读这个命题的关键元素。
+</p>
+
+<p>
+首先\(V\)是有限维的，说明\(V\)的维度有限。\(V\)的一个基的对偶基是\(V^{'}\)中的元素，这些元素是线性泛函，这些线性泛函把\(V\)的基映射称\(\mathbf{F}\)中的\(1\)或者\(0\)，另外注意：\(1\)是\(\mathbf{F}\)中的乘法单位元，\(0\)是\(\mathbf{F}\)中的加法零元。
+</p>
+
+<p>
+所以我们假设\(v_{1},\ldots ,v_{n}\)是\(V\)的基，则\(V^{'}\)的对偶基也有\(n\)个元素，假设为\(\varphi_{1},\ldots ,\varphi_{n}\)。我们接下来要证明\(\varphi_{1},\ldots ,\varphi_{n}\)是线性无关且张成\(V^{'}\)。
+</p>
+
+<p>
+为了证明\(\varphi_{1},\ldots ,\varphi_{n}\)是线性独立的，令:
+</p>
+\begin{equation}
+\label{eq:4}
+0 = a_{1}\varphi_{1} + \ldots + a_{n}\varphi_{n}
+\end{equation}
+<p>
+我们只要得到\(a_{i},\forall i\)即可。注意上式左端的\(0\)是对偶空间中的\(0\)元素，是一个线性泛函。
+</p>
+
+<p>
+对上式两端我们作用于\(v_{i}\)，显然有\(0v_{i} = 0 = a_{i}\varphi_{i}(v_{i})\) . 根据对偶基的定义，我们有\(a_{i}\varphi_{i}(v_{i}) = a_{i}, a_{j}\varphi_{j}(v_{i}) = 0, \forall j\neq i\).
+</p>
+
+<p>
+所以\(a_{i} = 0, \forall i\)
+</p>
+
+<p>
+又因为，我们之前有\(\dim V^{'} = \dim V\)。而\(\dim span(\varphi_{1},\ldots ,\varphi_{n}) = n\)，所以\(\dim V^{'} = n\)。
+</p>
+
+<p>
+所以\(\varphi_{1},\ldots ,\varphi_{n}\)是\(V^{'}\)的一组基（若\(V^{'}\)是有限维的，则\(V^{'}\)中每个长度为\(\dim V^{'}\) 的线性无关向量组都是\(V^{'}\)的基）。
 </p>
 
 </div>
