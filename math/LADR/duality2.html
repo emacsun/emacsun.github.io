@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>对偶映射的矩阵以及矩阵的秩</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./duality2.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">对偶映射的矩阵以及矩阵的秩</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2136035">1. 对偶映射的矩阵</a></li>
+<li><a href="#orgb3feb3a">2. 矩阵的秩</a></li>
+</ul>
+</div>
+</div>
+<p>
+我非常喜欢《linear algebra done right》这本书。其原因之一是这本书从头到尾都不是从矩阵到线性空间，而是从线性空间到矩阵。在 <a href="matrix-for-linear-map.html">线性映射和矩阵的关系</a> 一文中，我们从线性映射引出了矩阵， 这种自然的过渡不知道比从莫名其妙的行列式高明多少。说实话，大一的时候碰到行列式，然后进行各种稀奇古怪的计算时，我的内心是崩溃的，你现在还记得四阶行列式用伴随子计算的过程么？忘了最好！；好不容易从行列式出来，又突然进入了矩阵的泥潭，这完全是再次莫名其妙，等到线性映射出现的时候，已经“三而竭”了。尽管最后考了高分，那完全是填鸭式突击的结果。
+</p>
+
+<p>
+在本文我们再次把矩阵和线性映射紧密联系。这次我们先给出矩阵转置的定义，然后论述矩阵的转置是如何和线性空间以及线性映射结合的。
+</p>
+
+<div id="outline-container-org2136035" class="outline-2">
+<h2 id="org2136035"><span class="section-number-2">1</span> 对偶映射的矩阵</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+<div class="definition">
+<p>
+矩阵\(A\)的转置是通过互换\(A\)的行和列来完成的。确切的说，若\(A\)是\(m\times n\)的矩阵，则\(A^{t}\)是\(n\times m\)矩阵，其元素由下面的等式给出：
+\[(A^{t})_{k,j} = A_{j,k}\]
+</p>
+
+</div>
+
+<p>
+转置有一个特别好的性质：对所有的\(m\times n\)矩阵\(A,C\)和所有\(\lambda\in \mathbf{F}\)均有\((A+C)^{t} A^{t} + C^{t}\) 且\((\lambda A)^{t} = \lambda A^{t}\)。
+</p>
+
+<div class="theorem">
+<p>
+若\(A\)是\(m\times n\)矩阵,\(C\)是\(n\times p\)矩阵，则：\[(AC)^{t} = C^{t}A^{t}\]
+</p>
+
+</div>
+
+<div class="proof">
+<p>
+设\(1\leq k \leq m, 1\leq j\leq p\)，则：
+</p>
+\begin{eqnarray}
+\label{eq:1}
+(AC)^{t}_{j,k}&=& (AC)_{k,j} \\
+&=&\sum_{r=1}^{n}A_{k,r}C_{r,j} \\
+&=&\sum_{r=1}^{n}(A^{t})_{r,k}(C^{t})_{j,r} \\
+&=&\sum_{r=1}^{n} (C^{t})_{j,r}(A^{t})_{r,k} \\
+&=& (C^{t}A^{t})_{j,k}
+\end{eqnarray}
+
+<p>
+即：\((AC)^{t} = C^{t}A^{t}\)
+</p>
+
+</div>
+
+<div class="theorem">
+<p>
+假设\(V\)有基\(v_{1},\ldots ,v_{n}\)，\(V^{'}\)的对偶基\(\varphi_{1},\ldots ,\varphi_{n}\)，并假设\(W\)有基\(w_{1},\ldots ,w_{m}\)以及\(W^{'}\)的对偶基\(\psi_{1},\ldots ,\psi_{m}\)，于是\(\mathcal{M}(T)\)是按\(V\)和\(W\)的上述基对应的矩阵，\(\mathcal{M}(T^{'})\)时按照\(W^{'}\)和\(V^{'}\)对应的矩阵计算。
+</p>
+
+<p>
+则有对于\(T\in \mathcal{L}(V,W)\)，有\(\mathcal{M}(T^{'}) = (\mathcal{M}(T))^{t}\)
+</p>
+
+</div>
+
+<div class="proof">
+<p>
+这个命题的证明仅仅需要紧扣定义。
+</p>
+
+<p>
+设\(A = \mathcal{M}(T)\),\(C = \mathcal{M}(T^{'})\)，再设\(1\leq j \leq m\),\(1\leq k \leq n\)，由\(\mathcal{M}(T^{'})\)的定义我们有：
+</p>
+\begin{eqnarray}
+\label{eq:2}
+T^{'}(\psi_{j})&=& \sum_{r=1}^{n}C_{r,j}\varphi_{r} 
+\end{eqnarray}
+<p>
+因为\(T^{'}(\psi_{j}) = \psi_{j} \circ T\) ,所以，将上式两端作用到\(v_{k}\)上，有：
+</p>
+\begin{eqnarray}
+\label{eq:3}
+(\psi_{j}\circ T)(v_{k})&=& \sum_{r=1}^{n}C_{r,j}\varphi_{r}(k) \\
+&=&C_{k,j}
+\end{eqnarray}
+<p>
+另外，根据\(T(v_{k})\)的定义我们有：
+</p>
+\begin{eqnarray}
+\label{eq:4}
+(\psi_{j}\circ T)(v_{k})&=& \psi_{j}(Tv_{k}) \\
+&=& \psi_{j}(\sum_{r=1}^{m} A_{r,k}w_{r}) \\
+&=&\sum_{r=1}^{m}A_{r,k}\psi_{j}(w_{r}) \\
+&=&A_{j,k}
+\end{eqnarray}
+
+<p>
+综上有：\(A_{j,k} = C_{k,j}\)，即\(A = C^{t}\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgb3feb3a" class="outline-2">
+<h2 id="orgb3feb3a"><span class="section-number-2">2</span> 矩阵的秩</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<div class="definition">
+<p>
+设\(A\)是元素属于\(F\)的\(m\times n\)矩阵：
+</p>
+<ol class="org-ol">
+<li>\(A\)的行秩是\(A\)的诸行在\(\mathbf{F}^{1,n}\)中的张成空间的维数；</li>
+<li>\(A\)的列秩是\(A\)的诸列在\(\mathbf{F}^{m,1}\)中的张成空间的维数。</li>
+</ol>
+
+</div>
+
+<div class="theorem">
+<p>
+设\(V\)和\(W\)都是有限维的，\(T\in \mathcal{L}(V,W)\)，则\(\dim range T\)等于\(\mathcal{M}(T)\)的列秩。
+</p>
+
+</div>
+
+<div class="proof">
+<p>
+设\(v_{1},\ldots ,v_{n}\)是\(V\)的基，\(w_{1},\ldots ,w_{n}\)是\(W\)的基。则将\(w\in span(Tv_{1},\ldots ,Tv_{n})\)变为\(\mathcal{M}(w)\)的函数是从\(span(Tv_{1},\ldots ,Tv_{n})\)到\(span(\mathcal{M}(Tv_{1}), \ldots ,\mathcal{M}(Tv_{n}))\)的同构。于是\(\dim span(Tv_{1},\ldots ,Tv_{n}) = \dim span(\mathcal{M}(Tv_{1}), \mathcal{M}(Tv_{n}))\) 等式右边的维数等于\(\mathcal{M}(T)\)的列秩。
+</p>
+
+<p>
+因为\(rangeT = span(Tv_{1},\ldots ,Tv_{n})\)，所以\(\dim rangeT = \dim span(Tv_{1},\ldots ,Tv_{n})\)
+</p>
+
+</div>
+<div class="theorem">
+<p>
+设\(A \in \mathbf{F}^{m,n}\)，则\(A\)的行秩等于\(A\)的列秩。
+</p>
+
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
