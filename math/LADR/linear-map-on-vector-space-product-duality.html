@@ -88,6 +88,10 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#org07c7b17">1. 3.F.1</a></li>
 <li><a href="#org19410e5">2. 3.F.2</a></li>
+<li><a href="#org9f7aff5">3. 3.F.3</a></li>
+<li><a href="#org74df0c8">4. 3.F.4</a></li>
+<li><a href="#org156742e">5. 3.F.5</a></li>
+<li><a href="#orgeba9fd2">6. 3.F.6</a></li>
 </ul>
 </div>
 </div>
@@ -136,6 +140,118 @@ for the JavaScript code in this tag.
 <div class="answer">
 <ol class="org-ol">
 <li>\(\varphi: \mathbf{R} \rightarrow \mathbf{R}\), \(\varphi(x) = x\)</li>
+</ol>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9f7aff5" class="outline-2">
+<h2 id="org9f7aff5"><span class="section-number-2">3</span> 3.F.3</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维的，\(v\in V\)且\(v \neq 0\)，证明存在\(\varphi\in V^{'}\)使得\(\varphi(v) = 1\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+理解题目，\(V^{'}= \mathcal{L}(V, \mathbf{F})\)。从第一题我们知道：线性泛函要么是满的要么是零映射。又因为\(v\neq 0\)，所以\(V^{'}\)中的元素都是满的。
+</p>
+
+<p>
+特别的，我们把\(v\)扩展成\(V\)的对偶基\(v,v_{2},\ldots ,v_{n}\)，则有\(V^{'}\)中的对偶基\(\varphi_{1},\varphi_{2},\ldots ,\varphi_{n}\)，则有：
+</p>
+\begin{equation}
+\label{eq:1}
+\varphi_{k}(v) = 
+\begin{cases}
+1 & k = 1  \\
+0 & k\neq 1
+\end{cases}
+\end{equation}
+
+<p>
+从一个非零向量扩展出一个基是一个总要的技巧。对偶基的定义也要牢牢掌握。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org74df0c8" class="outline-2">
+<h2 id="org74df0c8"><span class="section-number-2">4</span> 3.F.4</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维的，\(U\)是\(V\)的子空间使得\(U\neq V\)，证明存在\(\varphi\in V^{'}\)使得对每个\(u\in U\)有\(\varphi(u) = 0\)但\(\varphi \neq 0\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+因为\(U\)是\(V\)的子空间且\(V\neq U\)，我们知道\(\dim V >  \dim U\)，又因为\(\dim U + \dim U^{0} = \dim V\)，则有\(\dim U^{0} = \dim V - \dim U > 0\)，所以\(\dim U^{0} \neq {0}\) 所以在零化子空间中存在非零的线性泛函。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org156742e" class="outline-2">
+<h2 id="org156742e"><span class="section-number-2">5</span> 3.F.5</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V_{1},\ldots ,V_{m}\)均为向量空间。证明\((V_{1}\times \ldots \times V_{m})^{'}\)和\(V_{1}^{'}\times \ldots \times V_{m}^{'}\)是同构的向量空间。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+因为\[\dim (V_{1}\times \ldots \times V_{m})^{'} = \dim (V_{1}\times \ldots \times V_{m})\]而\[ \dim (V_{1}\times \ldots \times V_{m}) = \sum_{i=1}^{m}\dim V_{i}\]
+</p>
+
+<p>
+另一方面\[\dim V_{1}^{'}\times \ldots \times V_{m}^{'} = \sum_{i=1}^{m}\dim V_{i}^{'}\] 又因为\[\dim V_{i}^{'} = \dim V_{i},\forall i\]
+</p>
+
+<p>
+所以\[\dim (V_{1}\times \ldots \times V_{m})^{'} = \dim V_{1}^{'}\times \ldots \times V_{m}^{'}\]命题得证。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgeba9fd2" class="outline-2">
+<h2 id="orgeba9fd2"><span class="section-number-2">6</span> 3.F.6</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维的，\(v_{1},\ldots ,v_{m}\in V\)，定义线性映射\(\Gamma:V^{'}\rightarrow \mathbf{F}^{m}\)如下：\[\Gamma(\varphi) = (\varphi(v_{1}), \ldots ,\varphi(v_{m}))\]
+</p>
+<ol class="org-ol">
+<li>证明：\(v_{1},\ldots ,v_{m}\)张成\(V\)当且仅当\(\Gamma\)是单的。</li>
+<li>证明\(v_{1},\ldots ,v_{m}\)线性无关当且仅当\(\Gamma\)是满的。</li>
 </ol>
 
 </div>
