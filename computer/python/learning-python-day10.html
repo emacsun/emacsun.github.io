@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>学习Python Doc第十天: 标准库巡礼(二)</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./learning-python-day10.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">学习Python Doc第十天: 标准库巡礼(二)</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga1b280b">1. 输出格式</a></li>
+<li><a href="#org7016738">2. 模板</a></li>
+<li><a href="#orgd01aefd">3. 二进制文件工具</a></li>
+<li><a href="#org17920da">4. 多线程</a></li>
+<li><a href="#org06d6226">5. 日志</a></li>
+<li><a href="#orgfd99ca9">6. 弱引用</a></li>
+</ul>
+</div>
+</div>
+<p>
+之前对标准库中的部分模块已经有了简单的介绍，<a href="learning-python-day09.html">见这里</a> 。今天，我们浏览剩下的部分。我只快速浏览，详细的用法留到工程实践中去。所以这部分内容大概可以五分钟过完。
+</p>
+
+<div id="outline-container-orga1b280b" class="outline-2">
+<h2 id="orga1b280b"><span class="section-number-2">1</span> 输出格式</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+<code>reprlib</code> 模块提供了一个 <code>repr()</code> 的版本，用于显示较大的容器的简写。
+</p>
+
+<pre class="example">
+&gt;&gt;&gt; import reprlib
+&gt;&gt;&gt; reprlib.repr(set('supercalifragilisticexpialidocious'))
+"{'a', 'c', 'd', 'e', 'f', 'g', ...}"
+</pre>
+
+<p>
+在输出内置的或者用户定义的对象时， <code>pprint</code> 模块提供了更精巧的控制。 当结果冲过一行时， <code>pretty printer</code> 会自动断行，并美化显示结果。
+</p>
+
+<p>
+<code>textwrap</code> 模块会格式化一段文字，使其适合在给定的屏幕上显示。
+</p>
+</div>
+</div>
+<div id="outline-container-org7016738" class="outline-2">
+<h2 id="org7016738"><span class="section-number-2">2</span> 模板</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+<code>string</code> 模块提供了 <code>Template</code> 类。这个类的语法简单，适合普通用户使用。格式字符创中使用 $ 定位 <code>Pytone</code> 变量位置。看代码：
+</p>
+<pre class="example">
+&gt;&gt;&gt; from string import Template
+&gt;&gt;&gt; t = Template('${village}folk send $$10 to $cause.')
+&gt;&gt;&gt; t.substitute(village='Nottingham', cause='the ditch fund')
+'Nottinghamfolk send $10 to the ditch fund.'
+</pre>
+
+
+<p>
+当一个$ 后的变量没有被替换时， <code>substitude()</code> 方法会产生一个 <code>KeyError</code> 的错误。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd01aefd" class="outline-2">
+<h2 id="orgd01aefd"><span class="section-number-2">3</span> 二进制文件工具</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+<code>struct</code> 模块提供了 <code>pack()</code> 和 <code>unpack()</code> 函数。这两个函数可以用来操作二进制文件。
+</p>
+<pre class="example">
+import struct
+
+with open('myfile.zip', 'rb') as f:
+    data = f.read()
+
+start = 0
+for i in range(3):                      # show the first 3 file headers
+    start += 14
+    fields = struct.unpack('&lt;IIIHH', data[start:start+16])
+    crc32, comp_size, uncomp_size, filenamesize, extra_size = fields
+
+    start += 16
+    filename = data[start:start+filenamesize]
+    start += filenamesize
+    extra = data[start:start+extra_size]
+    print(filename, hex(crc32), comp_size, uncomp_size)
+
+    start += extra_size + comp_size     # skip to the next header
+</pre>
+</div>
+</div>
+<div id="outline-container-org17920da" class="outline-2">
+<h2 id="org17920da"><span class="section-number-2">4</span> 多线程</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+多线程使得并行计算成为可能。 <code>threading</code> 模块提供了很多函数用于产生多线程。
+</p>
+
+<pre class="example">
+import threading, zipfile
+
+class AsyncZip(threading.Thread):
+    def __init__(self, infile, outfile):
+        threading.Thread.__init__(self)
+        self.infile = infile
+        self.outfile = outfile
+
+    def run(self):
+        f = zipfile.ZipFile(self.outfile, 'w', zipfile.ZIP_DEFLATED)
+        f.write(self.infile)
+        f.close()
+        print('Finished background zip of:', self.infile)
+
+background = AsyncZip('mydata.txt', 'myarchive.zip')
+background.start()
+print('The main program continues to run in foreground.')
+
+background.join()    # Wait for the background task to finish
+print('Main program waited until background was done.')
+</pre>
+<p>
+多线程编程的最大挑战是协调多个线程的数据和其他计算资源。 <code>threading</code> 模块提供了很多同步机制用来保证数据一致性，这些同步机制包括： <code>locks,events,condition variables, semaphores</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org06d6226" class="outline-2">
+<h2 id="org06d6226"><span class="section-number-2">5</span> 日志</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+<code>logging</code> 模块提供了全能且灵活的日志系统。最简单的情况是：用文件或者 <code>sys.stderr</code> 来记录日志。
+</p>
+
+<pre class="example">
+import logging
+logging.debug('Debugging information')
+logging.info('Informational message')
+logging.warning('Warning:config file %s not found', 'server.conf')
+logging.error('Error occurred')
+logging.critical('Critical error -- shutting down')
+</pre>
+
+<p>
+输出为：
+</p>
+<pre class="example">
+WARNING:root:Warning:config file server.conf not found
+ERROR:root:Error occurred
+CRITICAL:root:Critical error -- shutting down
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgfd99ca9" class="outline-2">
+<h2 id="orgfd99ca9"><span class="section-number-2">6</span> 弱引用</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<p>
+<code>Python</code> 提供自动内存管理机制，有自己的 <code>garbage collection</code> 系统。对大多数对象执行 <code>reference counting</code> 。当最后一个reference消失的时候，对象的内存被释放。
+</p>
+
+<p>
+这套机制在大多数应用中都工作良好。但是，偶尔情况下，我们需要对某个对象进行长时间的追踪。不幸的是，紧紧追踪这些对象会产生一个永远也不能消除reference。 <code>weakref</code> 模块提供了追踪对象而不生成reference的方法。当一个对象不再使用，它会从弱引用表中删除。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
