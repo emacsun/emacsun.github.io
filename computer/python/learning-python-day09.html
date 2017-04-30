@@ -1,0 +1,495 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>学习Python Doc第九天: 标准库巡礼(一)</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./learning-python-day09.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">学习Python Doc第九天: 标准库巡礼(一)</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf42d596">1. 操作系统接口</a></li>
+<li><a href="#org0161ae2">2. 文件统配符</a></li>
+<li><a href="#orgf5b6cb2">3. 命令行参数</a></li>
+<li><a href="#org39647d3">4. 错误重定向</a></li>
+<li><a href="#org47ed93c">5. 字符串匹配</a></li>
+<li><a href="#orgcf322c0">6. 数学</a></li>
+<li><a href="#orge84d377">7. Internet 接入</a></li>
+<li><a href="#org3804aa1">8. 日期和时间</a></li>
+<li><a href="#orgf3eee28">9. 数据压缩</a></li>
+<li><a href="#org0ff1a19">10. 性能测试</a></li>
+<li><a href="#orgdf938f6">11. 质量控制</a></li>
+</ul>
+</div>
+</div>
+<p>
+<code>Python</code> 提供了丰富的标准库。本文快速浏览这些标准库的一部分。
+</p>
+
+<div id="outline-container-orgf42d596" class="outline-2">
+<h2 id="orgf42d596"><span class="section-number-2">1</span> 操作系统接口</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+为方便和操作系统交互，=OS= 模块提供多个函数接口。看代码：
+</p>
+<pre class="example">
+import os # import the function provided by os module
+os.getcwd() # get the current working directory
+os.chdir('/usr/local/python') #change the current working directory
+os.system('mkdir newDir') #run the command mkdir in the system shell
+</pre>
+
+<p>
+需要说明的是：必须使用 <code>import os</code> 来导入模块而不是 <code>from os import *</code> 。后者会导致 <code>Python</code> 内置的 <code>open()</code> 覆盖 <code>os.open()</code> .
+</p>
+
+<p>
+在使用像 <code>os</code> 这样比较大的模块时， <code>Python</code> 内置的 <code>dir()</code> 和 <code>help()</code> 可以方便的提供交互式帮助。
+</p>
+
+<pre class="example">
+import os
+dir(os) # list all module functions
+help(os) # return manual page
+</pre>
+
+<p>
+对于日常的文件和文件夹操作， <code>shutil</code> 模块提供了一些简单易用的接口。
+</p>
+
+<pre class="example">
+import shutil
+shutil.copyfile('data.db','archive.db')
+shutil.move('/usr/local/source.txt','destination.txt')
+</pre>
+</div>
+</div>
+<div id="outline-container-org0161ae2" class="outline-2">
+<h2 id="org0161ae2"><span class="section-number-2">2</span> 文件统配符</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+<code>glob</code> 模块提供了使用通配符在当前目录中搜寻文件的功能。
+</p>
+
+<pre class="example">
+import glob
+glob.glob('*.py') #find all .py files
+</pre>
+
+<p>
+通配符叫做 <code>wildcards</code> ，中文叫外卡。记得有次林丹通过外卡进入了一个顶级的羽毛球比赛。
+</p>
+</div>
+</div>
+<div id="outline-container-orgf5b6cb2" class="outline-2">
+<h2 id="orgf5b6cb2"><span class="section-number-2">3</span> 命令行参数</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+通常，在脚本文件中经常要用到命令行参数。这些参数保存在 <code>sys</code> 模块中。比如下面的命令输出调用 <code>python demo.py one two three</code> 后的系统参数。
+</p>
+
+<pre class="example">
+import sys
+print(sys.argv)
+
+&gt;&gt;&gt; ['demo.py', 'one', 'two','three']
+</pre>
+
+<p>
+在处理 <code>sys.argv</code> 的过程中， <code>getopt</code> 模块采用和Unix函数 <code>getopt()</code> 一样的规则。 <code>argparse</code> 模块提供了更强大的命令行处理函数。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org39647d3" class="outline-2">
+<h2 id="org39647d3"><span class="section-number-2">4</span> 错误重定向</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+<code>sys</code> 模块有属性 <code>stdin,stdout,stderr</code> 。 <code>stderr</code> 在生成警告和错误信息的过程中经常用到。
+</p>
+<pre class="example">
+sys.stderr.write('warning, log file not found ')
+</pre>
+
+<p>
+终止一个脚本最直接的办法是 <code>sys.exit()</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org47ed93c" class="outline-2">
+<h2 id="org47ed93c"><span class="section-number-2">5</span> 字符串匹配</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+<code>re</code> 模块提供了正则表达式工具。使用这些工具可以完成许多高级的的字符串处理工作。对于复杂的匹配和操作，正则表达式提供了清晰且优质的解决方案。
+</p>
+
+<pre class="example">
+import re
+re.findall(r'\bf[a-z]*','which foot or hand fell fastest')
+&gt;&gt;&gt; ['foot','fell','fastest']
+re.sub(r'(\b[a-z]+) \l', r'\l', 'cat in the hat')
+'cat in the hat'
+</pre>
+
+<p>
+简单的字符处理任务通过系统自带的方法就可以完成。
+</p>
+<pre class="example">
+'tee for too'.replace('too','two')
+&gt;&gt;&gt; 'tea for two'
+</pre>
+</div>
+</div>
+<div id="outline-container-orgcf322c0" class="outline-2">
+<h2 id="orgcf322c0"><span class="section-number-2">6</span> 数学</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<p>
+看到 <code>mathematics</code> 的时候，我总有一种莫名的好感，来看看 <code>python</code> 提供了什么样的数学模块吧。
+</p>
+
+<p>
+<code>Python</code> 使用 <code>math</code> 模块来提供数学函数。这些函数是用 <code>C</code> 来完成的。
+</p>
+
+<pre class="example">
+import math
+math.cos(math.pi / 4)
+&gt;&gt;&gt; 0.70710678118654757
+math.log(1024,2)
+&gt;&gt;&gt;10.0
+</pre>
+
+<p>
+<code>math</code> 的输出结果是浮点的。
+</p>
+
+<p>
+<code>random</code> 模块提供了生成随机数的函数。
+</p>
+<pre class="example">
+import random
+random.choice(['apple', 'pear','banana'])
+&gt;&gt;&gt; 'pear'
+random.sample(range(100),10) # sampling without replacement
+&gt;&gt;&gt;[0, 35, 54, 53, 36, 95, 11, 48, 23, 97]
+random.random() #random float
+&gt;&gt;&gt;0.07476343923517015
+random.randrange(60) #random integer chose from range(6)
+&gt;&gt;&gt; 13
+</pre>
+
+<p>
+<code>statistics</code> 模块提供了基本的统计函数，包括均值 <code>mean</code> ,中位数 <code>meadian</code> ， 方差 <code>variance</code> .
+</p>
+
+<pre class="example">
+In [118]: import statistics
+
+In [127]: data = [2.75,1.75,1.26,0.25,0.5,1.25,3.5]
+
+In [128]: statistics.mean(data)
+Out[138]:
+1.6085714285714285
+
+In [139]: statistics.mean(data)
+Out[145]:
+1.6085714285714285
+
+In [146]: statistics.median(data)
+Out[146]:
+1.26
+
+In [147]: statistics.variance(data)
+Out[153]:
+1.370847619047619
+</pre>
+
+<p>
+值得注意的是 <code>Python</code> 提供的这些数学函数在 <code>scipy</code> 这个第三方库面前就是个小儿科。所以投入更多的时间去学习 <code>scipy</code> 收获更多。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge84d377" class="outline-2">
+<h2 id="orge84d377"><span class="section-number-2">7</span> Internet 接入</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+
+</p>
+
+<p>
+<code>python</code> 提供了很多与 internet有关的模块。两个最简单的是 <code>urllib.request</code> 和 <code>smtplib</code> 。前者从 <code>URL</code> 获取数据，后者用于发送邮件。
+</p>
+
+<p>
+我对这些包不感兴趣，通信工程师对 <code>scipy</code> 更感兴趣。不过有个大概印象总是好的，万一那一天去了互联网公司。。。。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3804aa1" class="outline-2">
+<h2 id="org3804aa1"><span class="section-number-2">8</span> 日期和时间</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+
+</p>
+
+<p>
+<code>datetime</code> 包提供了很多类用于操作日期和时间。使用这些类操作日期和时间，可简单可复杂，丰俭由人。这些类提供了漂亮的时间显示格式和时区计算。
+</p>
+
+<pre class="example">
+In [179]: from datetime import date
+
+In [198]: now = date.today()
+
+In [217]: now
+Out[217]:
+datetime.date(2017, 4, 30)
+
+In [218]: now.strftime("%m-%d-%y. %d %b %Y is a %A on the %d of %B" )
+Out[314]:
+'04-30-17. 30 Apr 2017 is a Sunday on the 30 of April'
+
+In [315]: birthday = date(1964,7,31)
+
+In [338]: age = now -birthday
+
+In [346]: age.days
+Out[352]:
+19266
+</pre>
+</div>
+</div>
+<div id="outline-container-orgf3eee28" class="outline-2">
+<h2 id="orgf3eee28"><span class="section-number-2">9</span> 数据压缩</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+
+</p>
+
+<p>
+<code>Python</code> 提供了  <code>zlib,gzip,bz2,lzma,zipfile,tarfile</code> 来支持数据压缩。
+</p>
+
+<pre class="example">
+In [358]: import zlib
+
+In [363]: s = b"I love mathematics and want to learn more"
+
+In [413]: len(s)
+Out[417]:
+41
+
+In [418]: t = zlib.compress(s)
+
+In [426]: len(t)
+Out[430]:
+47
+
+In [431]: zlib.decompress(t)
+Out[435]:
+b'I love mathematics and want to learn more'
+
+In [436]: zlib.crc32(s)
+Out[439]:
+3762686923
+</pre>
+
+<p>
+压缩之后的长度还变长了，什么鬼？
+</p>
+<pre class="example">
+In [440]: s = b'I love math and want learn more and more'
+
+In [472]: s.len()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+&lt;ipython-input-475-cadf611cbf34&gt; in &lt;module&gt;()
+----&gt; 1 s.len()
+
+AttributeError: 'bytes' object has no attribute 'len'
+
+In [476]: len(s)
+Out[480]:
+40
+
+In [481]: t = zlib.compress(s)
+
+In [486]: len(t)
+Out[486]:
+42
+
+In [487]: s = b'witch which has which witches wrist watch'
+
+In [526]: len(s)
+Out[530]:
+41
+
+In [531]: t = zlib.compress(s)
+
+In [536]: len(t)
+Out[536]:
+37
+</pre>
+
+<p>
+可见压缩后的长度跟数据本身有关，变长的原因是数据本身没有多少重复的，还引入了额外的 <code>CRC</code> 校验。
+</p>
+</div>
+</div>
+<div id="outline-container-org0ff1a19" class="outline-2">
+<h2 id="org0ff1a19"><span class="section-number-2">10</span> 性能测试</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+
+</p>
+
+<p>
+不少发烧 <code>Python</code> 用户对于检测同一问题的不同实现之间的性能差异具有浓厚的兴趣。 <code>Python</code> 为此也提供了方便好用的工具。  <code>timeit</code> 就是一个这样的包。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdf938f6" class="outline-2">
+<h2 id="orgdf938f6"><span class="section-number-2">11</span> 质量控制</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+
+</p>
+
+<p>
+为每一个函数写测试脚本是完成高质量软件的有效方法。 <code>doctest</code> 包提供了一个工具，该工具可以扫描模块，并执行嵌套在注释中的测试脚本。
+</p>
+
+<pre class="example">
+def average(values):
+    """Computes the arithmetic mean of a list of numbers.
+
+    &gt;&gt;&gt; print(average([20, 30, 70]))
+    40.0
+    """
+    return sum(values) / len(values)
+
+import doctest
+doctest.testmod()   # automatically validate the embedded tests
+</pre>
+
+<p>
+<code>unittest</code> 模块提供了比 <code>doctest</code> 更复杂更强大的功能。
+</p>
+<pre class="example">
+import unittest
+
+class TestStatisticalFunctions(unittest.TestCase):
+
+    def test_average(self):
+        self.assertEqual(average([20, 30, 70]), 40.0)
+        self.assertEqual(round(average([1, 5, 7]), 1), 4.3)
+        with self.assertRaises(ZeroDivisionError):
+            average([])
+        with self.assertRaises(TypeError):
+            average(20, 30, 70)
+
+unittest.main()  # Calling from the command line invokes all tests
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
