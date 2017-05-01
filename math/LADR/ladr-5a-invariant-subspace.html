@@ -86,16 +86,16 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org986e8d1">1. 回忆</a></li>
-<li><a href="#org0c4baa5">2. 被算子映射到自身的子空间</a></li>
-<li><a href="#org271d752">3. 本征值与本证向量</a></li>
-<li><a href="#orgd86fb05">4. 限制算子与商算子</a></li>
+<li><a href="#orgcab5808">1. 回忆</a></li>
+<li><a href="#orgba5e38b">2. 被算子映射到自身的子空间</a></li>
+<li><a href="#org47d1c44">3. 本征值与本证向量</a></li>
+<li><a href="#org307f847">4. 限制算子与商算子</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org986e8d1" class="outline-2">
-<h2 id="org986e8d1"><span class="section-number-2">1</span> 回忆</h2>
+<div id="outline-container-orgcab5808" class="outline-2">
+<h2 id="orgcab5808"><span class="section-number-2">1</span> 回忆</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -111,8 +111,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org0c4baa5" class="outline-2">
-<h2 id="org0c4baa5"><span class="section-number-2">2</span> 被算子映射到自身的子空间</h2>
+<div id="outline-container-orgba5e38b" class="outline-2">
+<h2 id="orgba5e38b"><span class="section-number-2">2</span> 被算子映射到自身的子空间</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -133,7 +133,7 @@ for the JavaScript code in this tag.
 设\(T\in \mathcal{L}(V)\)，证明\(V\)的下列子空间在\(T\)下不变：
 </p>
 <ol class="org-ol">
-<li>\{0\}</li>
+<li>\(\{0\}\)</li>
 <li>\(V\)</li>
 <li>\(nullT\)</li>
 <li>\(rangeT\)</li>
@@ -157,8 +157,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org271d752" class="outline-2">
-<h2 id="org271d752"><span class="section-number-2">3</span> 本征值与本证向量</h2>
+<div id="outline-container-org47d1c44" class="outline-2">
+<h2 id="org47d1c44"><span class="section-number-2">3</span> 本征值与本证向量</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -297,12 +297,63 @@ a_{1}(\lambda_{k} - \lambda_{k-1})&=&0
 </div>
 </div>
 </div>
-<div id="outline-container-orgd86fb05" class="outline-2">
-<h2 id="orgd86fb05"><span class="section-number-2">4</span> 限制算子与商算子</h2>
+<div id="outline-container-org307f847" class="outline-2">
+<h2 id="org307f847"><span class="section-number-2">4</span> 限制算子与商算子</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
 </p>
+
+<p>
+若\(T\in \mathcal{L}(V)\)且\(U\)是\(V\)的在\(T\)下不变的子空间，则\(U\)默认定了另外两个算子\(T|_{U} \in \mathcal{L}(U)\)，和\(T/U \in \mathcal{L}(V/U)\)，其定义为：
+</p>
+<div class="definition">
+<p>
+设\(T\in \mathcal{L}(V)\)，且\(U\)是\(V\)的在\(T\)下不变的子空间。
+</p>
+<ol class="org-ol">
+<li>限制算子 \(T|_{U} \in \mathcal{L}(U)\)的定义为：\[\forall u\in U, T|_{U}(u) = Tu\]</li>
+<li>商算子\(T/U \in \mathcal{L}(V/U)\)定义为：\(\forall v\in V, (T/U)(v+U) = Tv + U\)</li>
+</ol>
+
+</div>
+
+<p>
+首先考虑限制算子\(T|_{U}\in \mathcal{L}(U)\)这个算子之所以叫限制算子，是因为这个算子把映射的定义域限制在\(U\)上。并且\(T|_{U}\)是把\(U\)上的元素映射到\(U\)上而不是\(V\)上。
+</p>
+
+<p>
+对于商算子，我们需要验证\(v+U = w +U\)，则\(Tv + U = Tw + U\)。现在设\(v+U = w+U\)，则\(v-w \in U\)。由于\(U\)在\(T\)下不变，则\(T(v-w)\in U\)，即\(Tv - Tw\in U\)，所以\(Tv + U = Tw + U\)。
+</p>
+
+<p>
+设\(T\)是有限维向量空间\(V\)上的算子，且\(U\)是\(V\)在\(T\)不变的子空间使得\(U\neq \{0\}\)且\(U\neq V\)。在某种意义下，可以通过研究算子\(T|_{U}\)和\(T/U\)来了解算子\(T\)，而\(T|_{U}\)和\(T/U\)都是维数小于\(V\)维数的向量空间上的算子。但是，有时候\(T|_{U}\)和\(T/U\)并没有给出关于\(T\)的足够信息。在下面的例子中，\(T|_{U}\)和\(T/U\)都是\(0\)，即便\(T\)不是\(0\)算子。
+</p>
+
+<div class="instance">
+<p>
+定义算子\(T\in \mathcal{L}(\mathbf{F}^{2})\)为\(T(x,y) = (y,0)\)，设\(U=\{(x,0):x\in \mathbf{F}\}\)。证明：
+</p>
+<ol class="org-ol">
+<li>\(U\)在\(T\)下不变。且\(T|_{U}\)是\(U\)上的\(0\)算子。</li>
+<li>不存在\(\mathbf{F}^{2}\)的在\(T\)下不变的子空间\(W\)使得\(\mathbf{F}^{2} = U\oplus W\)</li>
+<li>\(T/U\)是\(\mathbf{F}^{2}/U\)上的\(0\)算子</li>
+</ol>
+
+</div>
+
+<div class="proof">
+<ol class="org-ol">
+<li>对于\((x,0)\in U\)，我们有\(T(x,0) = (0,0)\in U\),所以\(T|_{U}\)在\(U\)下不变，且\(T|_{U}\)是\(U\)的\(0\)算子。</li>
+<li>设\(W\)是\(V\)的子空间使得\(\mathbf{F}^{2} = U\oplus W\)，由于\(\dim \mathbf{F}^{2} = 2\)且\(\dim U = 1\),我们有\(\dim W = 1\)。若\(W\)在\(T\)下不变，则\(W\)的每个非零向量都是\(T\)的本证向量。然而\(T\)的唯一本征值是\(0\)，且\(T\)的所有本证向量都在\(U\)中。于是\(W\)并非在\(T\)下不变。</li>
+<li>对于\((x,y)\in \mathbf{F}^{2}\)，我们有：</li>
+</ol>
+<p>
+\[(T/U)((x,y) + U) = T(x,y) + U = (y,0) + U = U\]
+因为\(U\in V/U\)，且是\(V/U\)里的单位元，所以\(T/U\)是\(0\)算子。
+</p>
+
+</div>
 </div>
 </div>
 </div>
