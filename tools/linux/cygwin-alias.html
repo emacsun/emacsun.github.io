@@ -9,7 +9,6 @@
 <meta name="author" content="emacsun" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
-<a id="pdf"  href="./cygwin-alias.pdf"><img src="../../img/assets/pdf.png"></a>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -65,9 +64,11 @@ for the JavaScript code in this tag.
 </p>
 
 <pre class="example">
-alias oh='cd /cygdrive/C/Users/yourname/AppData/Roaming/zorg/output_html'
-alias se='cd /cygdrive/C/Users/yourname/AppData/Roaming/.spacemacs.d'
+alias oh='cd /cygdrive/C/Users/cliyh/AppData/Roaming/zorg/output_html'
+alias se='cd /cygdrive/C/Users/cliyh/AppData/Roaming/.spacemacs.d'
 alias gp='git push -u origin master'
+alias ga='git add .'
+alias gs='git status'
 </pre>
 
 <p>
@@ -80,6 +81,16 @@ alias gp='git push -u origin master'
 <ol class="org-ol">
 <li>定义 <code>alias</code> 时，等号前后不要有空格。</li>
 <li>修改 <code>.bashrc</code> 后，要执行 <code>source .bashrc</code> 使得修改生效。</li>
+</ol>
+
+<p>
+以后我的工作流程就变成了：
+</p>
+<ol class="org-ol">
+<li><code>gs</code> 查看仓储状态</li>
+<li><code>ga</code> 把当前修改加到 <code>stage</code> 区域</li>
+<li><code>git ci "what you want to say about current commit"</code></li>
+<li><code>gp</code> 把当前提交推送到远端 <code>github</code> 。</li>
 </ol>
 </div>
 <div id="postamble" class="status">
