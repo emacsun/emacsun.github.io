@@ -38,7 +38,7 @@
     li{
        /*float:left;*/
        margin:0px;
-       list-style:square;
+       list-style:square inside;
        padding:-5px 1em 0px 0px;
    }
     body .title {

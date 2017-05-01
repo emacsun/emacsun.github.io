@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>不变子空间</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./ladr-5a-invariant-subspace.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">不变子空间</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org986e8d1">1. 回忆</a></li>
+<li><a href="#org0c4baa5">2. 被算子映射到自身的子空间</a></li>
+<li><a href="#org271d752">3. 本征值与本证向量</a></li>
+<li><a href="#orgd86fb05">4. 限制算子与商算子</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org986e8d1" class="outline-2">
+<h2 id="org986e8d1"><span class="section-number-2">1</span> 回忆</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+<a href="invertible-isomorphic.html">算子</a> 是从一个向量空间到自身的线性映射。\(V\)上的算子集合记为\(\mathcal{L}(V)\)。为了更好的理解算子，假设\(T\in \mathcal{L}(V)\)，如果\(V\)有直和分解：\[V  = U_{1} \oplus \ldots \oplus U_{m}\] 其中\(U_{j},j\in \{1,\ldots ,m\}\)是\(V\)的真子空间，那么，如果想要了解\(T\)的特性，我们只需要了解每个\(T|_{U_{j}}\)的特性就可以了。这里\(T|_{U_{j}}\)表示把\(T\)限制到更小的定义域\(U_{j}\)上。因为\(U_{j}\)是比\(V\)更小的向量空间，所以处理\(T|_{U_{j}}\)应该比\(T\)更容易。
+</p>
+
+<p>
+但是这里有个问题：\(T|_{U_{j}}\)是\(U_{j}\)上的算子么？显然，不一定的。那么为了进一步简化分析，我们只考虑那些\(T\)能够把\(U_{j}\)映射到\(U_{j}\)的直和分解，即在这样的直和分解结果中\(T|_{U_{j}}\)依然是\(U_{j}\)上的算子。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0c4baa5" class="outline-2">
+<h2 id="org0c4baa5"><span class="section-number-2">2</span> 被算子映射到自身的子空间</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+被算子映射到自身的子空间非常重要。因此我们赋予它一个名字：
+</p>
+<div class="definition">
+<p>
+设\(T\in \mathcal{L}(V)\)，称\(V\)的子空间\(U\)在\(T\)下不变，如果对于每个\(u\in U\)都有\(Tu \in U\)
+</p>
+
+</div>
+
+<div class="instance">
+<p>
+设\(T\in \mathcal{L}(V)\)，证明\(V\)的下列子空间在\(T\)下不变：
+</p>
+<ol class="org-ol">
+<li>\{0\}</li>
+<li>\(V\)</li>
+<li>\(nullT\)</li>
+<li>\(rangeT\)</li>
+</ol>
+
+</div>
+
+<div class="proof">
+<ol class="org-ol">
+<li>对于\(\{0\}\)中的元素\(0\),\(T(0) = 0 \in \{0\} \)</li>
+<li>对于\(V\), \(\forall v\in V, T(v) \in V\)，因为\(T\)是\(V\)上的算子。</li>
+<li>对于\(nullT\), \(\forall u \in nullT\)， \(Tu = 0 \in nullT\)</li>
+<li>对于\(rangeT\)，\(\forall u \in rangeT\)，\(Tu \in rangeT\)</li>
+</ol>
+
+</div>
+
+<p>
+这四个空间是\(V\)的固有的四个不变子空间。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org271d752" class="outline-2">
+<h2 id="org271d752"><span class="section-number-2">3</span> 本征值与本证向量</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+不变子空间的研究可以非常深入，泛函分析中，最终名的尚未解决的问题叫做 <b>不变子空间问题</b> ， 它研究无限维向量空间上算子的不变子空间。现在我们先研究最简单的非平凡不变子空间：一维不变子空间。
+</p>
+
+<p>
+\(\forall v\in V, v\neq 0\)，并设\(U\)是\(v\)的标量倍构成的集合：\[U = \{\lambda v: \lambda \in \mathbf{F}\} = span(v) \]
+则，\(U\)是\(V\)的一维子空间。若\(U\)在算子\(T\in \mathcal{L}(V)\)下不变，则\(Tv\in U\)，因此必有标量\(\lambda\in \mathbf{F}\)使得\(Tv = \lambda v\)
+</p>
+
+<p>
+另一方面，若有某个\(\lambda \in \mathbf{F}\)使得\(Tv = \lambda v\)，则\(span(v)\)是\(V\)的在\(T\)下不变的一维子空间。终于，我们现在见到了本征值和本证向量。这种引入方式不同于生硬的定义，深入浅出的谆谆善诱。在使用《linear algebra done right》这本书的时候，恨不得把自己的大脑格式化一遍，从新学习线性代数。之前学的东西忘不掉，又不成体系，只发挥了扰乱心智的作用。
+</p>
+
+<div class="definition">
+<p>
+设\(T\in \mathcal{L}(V)\)，称数\(\lambda \in \mathbf{F}\)为\(T\)的本征值，若存在\(v\in V,v\neq 0\)，使得\(Tv = \lambda v\)
+</p>
+
+</div>
+
+<p>
+小插曲： <b>eigenvalue</b> 这个词一半是德文，一半是英文。德文形容词 <b>eigen</b> 的意思是 “特有的”。有些数学家使用特征值而不是本征值。我学线性代数的时候使用特征值这种说法。
+</p>
+
+<p>
+本征值的等价条件：设\(V\)是有限维的，\(T\in \mathcal{L}(V)\)，且\(\lambda\in \mathbf{F}\)，\(I\)是恒等映射，则以下条件等价：
+</p>
+<ol class="org-ol">
+<li>\(\lambda\)是\(T\)的本征值；</li>
+<li>\(T-\lambda I\)不是单的；</li>
+<li>\(T-\lambda I\)不是满的；</li>
+<li>\(T-\lambda I\)不是可逆的。</li>
+</ol>
+
+<p>
+我们之前就证明过一个命题：对于有限维空间，现行算子的单性，满性和可逆性是等价的, 见<a href="invertible-isomorphic.html">这里</a> 。
+</p>
+
+<div class="definition">
+<p>
+设\(T\in \mathcal{L}(V)\)，并设\(\lambda \in \mathbf{F}\)是\(T\)的本征值，称向量\(v\in V\)为\(T\)的相应于\(\lambda\)的本徵向量，如果\(v\neq 0\)且\(Tv = \lambda v\)
+</p>
+
+</div>
+
+<p>
+因为\(Tv = \lambda v\)当且仅当\((T - \lambda I)v = 0\)，说明\(v\in null(T-\lambda I)\)
+</p>
+
+<div class="theorem">
+<p>
+设\(T\in \mathcal{L}(V)\)，设\(\lambda_{1},\ldots ,\lambda_{m}\)是\(T\)的互不相同的本征值，并设\(v_{1},\ldots ,v_{m}\)是相应的本证向量，则\(v_{1},\ldots ,v_{m}\)是线性无关的。
+</p>
+
+</div>
+
+<div class="proof">
+<p>
+采用反证法。设\(v_{1},\ldots ,v_{m}\)是线性相关的，我们希望能够推出矛盾。假设\(k\)是满足\(k\in span(v_{1},\ldots ,v_{k-1})\)成立的最小正整数。根据线性相关引理，这个正整数是存在的，并且\(v_{1},\ldots ,v_{k-1}\)是线性无关的（因为任何小于\(k\)的数都不能是\(v_{k}\in span(v_{1},\ldots ,v_{k-1})\)，根据线性无关的定义，我们知道\(v_{1},\ldots ,v_{k-1}\)是线性无关的）。
+</p>
+
+<p>
+因为\(v_{k}\in span(v_{1},\ldots ,v_{k-1})\)，所以\[\exists a_{1},\ldots ,a_{k-1}, \quad v_{k} = a_{1}v_{1} + \ldots + a_{k-1}v_{k-1} \]我们对上式分别做两个操作：
+</p>
+<ol class="org-ol">
+<li>乘以\(\lambda_{k}\)</li>
+<li>执行\(T\)映射</li>
+</ol>
+<p>
+我们会得到两个式子：
+</p>
+\begin{eqnarray}
+\label{eq:1}
+\lambda_{k}v_{k}&=& \lambda_{k}a_{1}v_{1} + \ldots + \lambda_{k}a_{k-1}v_{k-1} \\
+\lambda_{k}v_{k}&=& \lambda_{1}a_{1}v_{1} + \ldots + \lambda_{k-1}a_{k-1}v_{k-1}
+\end{eqnarray}
+<p>
+两式相减则有：
+</p>
+\begin{equation}
+\label{eq:2}
+0 = a_{1}(\lambda_{k} - \lambda_{1}) v_{1} + \ldots + a_{k-1}(\lambda_{k} - \lambda_{k-1})v_{k-1}
+\end{equation}
+
+<p>
+因为\(v_{1},\ldots ,v_{k-1}\)是线性无关的，所以：
+</p>
+\begin{eqnarray*}
+a_{1}(\lambda_{k} - \lambda_{1})&=&0 \\
+\vdots &=& \vdots \\
+a_{1}(\lambda_{k} - \lambda_{k-1})&=&0
+\end{eqnarray*}
+<p>
+因为\(\lambda_{k}\)不与\(\lambda_{1},\ldots ,\lambda_{k-1}\)中的任何一个相等，所以\(a_{j}=0,\forall j\)。所以\(v_{k} = 0\)这与\(v_{k}\)是本证向量的假设矛盾。
+</p>
+
+<p>
+所以\(v_{1},\ldots ,v_{m}\)都是线性无关的。
+</p>
+
+</div>
+<p>
+这个定理的证明依赖于线性相关性引理，现在把这个引理复数如下：
+</p>
+<div class="theorem">
+<p>
+设\(v_{1},\ldots ,v_{m}\)是\(V\)中的一个线性相关的向量组，则有\(j\in \{1,\ldots ,m\}\)使得：
+</p>
+<ol class="org-ol">
+<li>\(v_{j}\in span(v_{1},\ldots ,v_{j-1})\)</li>
+<li>若从\(v_{1},\ldots ,v_{m}\)中去掉第\(j\)项，则剩余组的张成空间等于\(span(v_{1},\ldots ,v_{m})\)</li>
+</ol>
+
+</div>
+<p>
+结合线性相关性引理的两个步骤，我们可以迭代的找到那个使得\(v_{1},\ldots ,v_{j}\)线性无关的\(k\)，即\(v_{1},\ldots ,v_{k}\)是线性无关的，但是\(v_{1},\ldots ,v_{k+1}\)是线性相关的，且\(v_{k+1}\in span(v_{1},\ldots ,v_{k})\)。
+</p>
+
+<div class="theorem">
+<p>
+设\(V\)是有限维的，则\(V\)上的每个算子最多有\(\dim V\)个互不相同的本征值。
+</p>
+
+</div>
+
+<div class="proof">
+<p>
+设\(T\in \mathcal{L}(V)\)，设\(\lambda_{1},\ldots ,\lambda_{m}\)是\(T\)的互不相同的本征值，\(v_{1},\ldots ,v_{m}\)是相应的本证向量。由于\(v_{1},\ldots ,v_{m}\)是线性无关的，所以\(m \leq \dim V\)。一个向量空间中的线性无关组的长度小于这个向量的基中向量组的长度。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgd86fb05" class="outline-2">
+<h2 id="orgd86fb05"><span class="section-number-2">4</span> 限制算子与商算子</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
