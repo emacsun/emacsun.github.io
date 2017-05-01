@@ -4,12 +4,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Git pull 使用</title>
+<title>通过定义 <code>alias</code> 加速命令操作</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="emacsun" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
-<a id="pdf"  href="./git-pull.pdf"><img src="../../img/assets/pdf.png"></a>
+<a id="pdf"  href="./cygwin-alias.pdf"><img src="../../img/assets/pdf.png"></a>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -59,100 +59,28 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Git pull 使用</h1>
+<h1 class="title">通过定义 <code>alias</code> 加速命令操作</h1>
 <p>
-Github支持协作代码开发管理,会经常遇到需要更新别人的代码或者在不同的电脑上更新自己的代码。那么使用git pull命令即可更新代码。git pull命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。git pull 可以接受很多参数，本文总结一些常见的用法。
-</p>
-
-
-<div id="outline-container-org0ce00d6" class="outline-2">
-<h2 id="org0ce00d6"><span class="section-number-2">1</span> 直接从远程主分之更新代码</h2>
-<div class="outline-text-2" id="text-1">
-<p>
-
+在 <code>cygwin</code> 的 <code>shell</code> 中(linux 的 shell也是如此)经常要 <code>cd</code> 到一个很深的目录。偶尔为之还可忍受，经常为之就是负担。一个较为简单的解决办法就是通过 <code>alias</code> 在 <code>.bashrc</code> 文件中为要执行的命令行定义别名，一个例子：
 </p>
 
 <pre class="example">
-git pull
+alias oh='cd /cygdrive/C/Users/yourname/AppData/Roaming/zorg/output_html'
+alias se='cd /cygdrive/C/Users/yourname/AppData/Roaming/.spacemacs.d'
+alias gp='git push -u origin master'
 </pre>
 
 <p>
-以上相当于 <code>git pull origin master</code>
-</p>
-</div>
-</div>
-
-<div id="outline-container-orge53d10b" class="outline-2">
-<h2 id="orge53d10b"><span class="section-number-2">2</span> 指定更新的分支</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-
-</p>
-
-<pre class="example">
-git pull forkName branchName
-</pre>
-
-<p>
-从 <code>forkName</code> 更新  <code>branchName</code> 。 具体来讲：
-</p>
-<pre class="example">
-git pull &lt;远程主机名&gt;  &lt;远程分支名&gt;:&lt;本地分知名&gt;
-</pre>
-
-<p>
-例如
-</p>
-<pre class="example">
-git pull origin next:master
-</pre>
-
-<p>
-取回 <code>origin</code> 主机的 <code>next</code> 分支，并与 <code>master</code> 合并。上面命令表示，取回origin/next分支，再与当前分支合并。实质上，这等同于先做git fetch，再做git merge。
-</p>
-<pre class="example">
-git fetch origin
-git merge origin/master
-</pre>
-
-<p>
-在某些场合，Git会自动在本地分支与远程分支之间，建立一种追踪关系(tracking)。比如，在git clone的时候，所有本地分支默认与远程主机的同名分支，建立追踪关系，也就是说，本地的master分支自动”追踪”origin/master分支。
+以后在 <code>shell</code> 中只要输入 <code>oh</code> <code>se</code> 或者 <code>pg</code> 就可以达到输入后面一串命令的效果， easy！
 </p>
 
 <p>
-Git也允许手动建立追踪关系。
+需要注意：
 </p>
-<pre class="example">
-git branch --set-upstream master origin/next
-</pre>
-
-<p>
-上面命令指定master分支追踪origin/next分支。
-</p>
-
-<p>
-如果当前分支与远程分支存在追踪关系，git pull就可以省略远程分支名。
-</p>
-<pre class="example">
-git pull origin
-</pre>
-
-<p>
-上面命令表示，本地的当前分支自动与对应的origin主机”追踪分支”(remote-tracking branch)进行合并。
-</p>
-
-<p>
-如果当前分支只有一个追踪分支，连远程主机名都可以省略。即
-</p>
-<pre class="example">
-git pull
-</pre>
-
-<p>
-这与第一节的 <code>git pull</code> 不谋而合。
-</p>
-</div>
-</div>
+<ol class="org-ol">
+<li>定义 <code>alias</code> 时，等号前后不要有空格。</li>
+<li>修改 <code>.bashrc</code> 后，要执行 <code>source .bashrc</code> 使得修改生效。</li>
+</ol>
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
