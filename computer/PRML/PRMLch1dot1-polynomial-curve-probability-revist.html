@@ -89,6 +89,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgc17b7c3">1. 回忆</a></li>
 <li><a href="#orgfa99488">2. 贝叶斯估计</a></li>
 <li><a href="#org755efdf">3. 概率模型</a></li>
+<li><a href="#org2f99785">4. 我们离真正的贝叶斯估计有多远</a></li>
 </ul>
 </div>
 </div>
@@ -237,6 +238,59 @@ p(\mathbf{w} | \mathbf{x},\mathbf{t}, \alpha,\beta) \propto p( \mathbf{t} | \mat
 
 <p>
 即，最大化后验概率等效于最小化带有正则参数\(\lambda = \alpha/\beta\)的均方误差函数。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2f99785" class="outline-2">
+<h2 id="org2f99785"><span class="section-number-2">4</span> 我们离真正的贝叶斯估计有多远</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+截止目前，尽管我们引入了\(\mathbf{w}\)的一个先验估计\(p(\mathbf{w}|\alpha)\)，但是我们还是在做\(\mathbf{w}\)的点估计，算不得真正的贝叶斯方法。因为“纯真血统”的贝叶斯方法需要一直使用概率的和积准则。这个和积准则的实用牵涉到边缘概率的计算。而边缘概率的计算是使用贝叶斯方法进行模式识别的核心内容。
+</p>
+
+<p>
+在曲线拟合问题中，给定了训练数据\(\mathbf{x}, \mathbf{t}\)，还有一个测试点\(x\)，我们的目标是估计\(t\)。因此，我们希望对\(p(t|x, \mathbf{w}, \mathbf{t})\)做一个评估。
+</p>
+
+<p>
+贝叶斯估计求解\(p(t|x, \mathbf{w}, \mathbf{t})\)的过程应该是：
+</p>
+\begin{equation}
+\label{eq:12}
+p(t| x, \mathbf{x}, \mathbf{t}) = \int p(t | x, \mathbf{w})p( \mathbf{w} | \mathbf{x}, \mathbf{t}) \mathrm{d} \mathbf{w}
+\end{equation}
+<p>
+式 (\ref{eq:12}) 中\(p(t| x, \mathbf{w})\)由 (\ref{eq:3})给出。此处，我们准备忽略\(\alpha, \beta\)来简化符号表示。 \(p( \mathbf{w} | \mathbf{x}, \mathbf{t})\)是 参数\(\mathbf{w}\)的后验概率，可以对 (\ref{eq:10})归一化获得。稍后我们会发现，对于曲线拟合问题，这个后验概率分布是高斯分布，进而式 (\ref{eq:12})可以推演成：
+</p>
+\begin{equation}
+\label{eq:13}
+p(t| x, \mathbf{x}, \mathbf{t}) = \mathcal{N}(t| m(x), s^{2}(x))
+\end{equation}
+
+<p>
+其中均值和方差为：
+</p>
+\begin{eqnarray}
+\label{eq:14}
+m(x) &=& \beta \mathbf{\phi}(x)^{T} \mathbf{S} \sum_{n=1}^{N}\mathbf{\phi}(x_{n})t_{n} \\
+s^{2}(x) &=& \beta^{-1} + \mathbf{\phi}(x)^{T} \mathbf{S} \mathbf{\phi}(x)
+\end{eqnarray}
+<p>
+矩阵\(\mathbf{S}\)为：
+</p>
+
+\begin{equation}
+\label{eq:15}
+\mathbf{S}^{-1} = \alpha \mathbf{I} + \beta\sum_{n=1}^{N} \mathbf{\phi}(x_{n}) \mathbf{\phi}(x)^{T}
+\end{equation}
+<p>
+其中\(\mathbf{I}\)是单位阵。\(\mathbf{\phi}(x) = [\phi_{0}(x), \ldots ,\phi_{M}(x)], \phi_{i}(x) = x^{i}\)
+我们看到式 (\ref{eq:14})所示的均值和方差依赖于\(x\)。方差的第一项\(\beta^{-1}\)代表了\(t\)的不确定度，这个不确定度是由噪声引起的。方差的第二项代表由\(\mathbf{w}\)带来的不确定度，这个不确定度是由贝叶斯方法带来的。
 </p>
 </div>
 </div>
