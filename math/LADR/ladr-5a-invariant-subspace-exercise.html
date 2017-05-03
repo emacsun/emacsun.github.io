@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>练习：不变子空间</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./ladr-5a-invariant-subspace-exercise.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">练习：不变子空间</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge21282e">1. 5.A.1</a></li>
+<li><a href="#org87f4e61">2. 5.A.2</a></li>
+<li><a href="#org64caab1">3. 5.A.3</a></li>
+<li><a href="#org0248f99">4. 5.A.4</a></li>
+<li><a href="#org0b93e08">5. 5.A.5</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge21282e" class="outline-2">
+<h2 id="orge21282e"><span class="section-number-2">1</span> 5.A.1</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(V)\)，并设\(U\)是\(V\)的子空间
+</p>
+<ol class="org-ol">
+<li>证明：若\(U\subset \mathrm{null} T\)，则\(U\)在\(T\)下不变。</li>
+<li>证明：若\( \mathrm{range} T \subset U\)，则\(U\)在\(T\)下不变。</li>
+</ol>
+
+</div>
+
+<div class="answer">
+<ol class="org-ol">
+<li>\(\forall u\in U\) , \(Tu = 0\)，因为\(U\)是\(V\)的子空间，所以\(0\in U\)，所以\(Tu\in U\)，所以\(U\)在\(T\)下不变</li>
+<li>\(\forall u in U\)，\(Tu \in \mathrm{range}T \)。因为\( \mathrm{range} T \subset U\)，所以\(Tu \in U\) ，即\(U\)在\(T\)下不变。</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org87f4e61" class="outline-2">
+<h2 id="org87f4e61"><span class="section-number-2">2</span> 5.A.2</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(S,T\in \mathcal{L}(V)\)使得\(ST = TS\)，证明\(\mathrm{null}S\)在\(T\)下不变。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+\(\forall u \in \mathrm{null}S\)，则对\(ST = TS\)两边作用于\(u\)，有\(STu = TSu = T(0) = 0\)，显然有\(Tu \in \mathrm{null} S\)。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org64caab1" class="outline-2">
+<h2 id="org64caab1"><span class="section-number-2">3</span> 5.A.3</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(S,T\in \mathcal{L}(V)\)，使得\(ST = TS\)，证明\(\mathrm{range} S\)在\(T\)下不变。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+设\(v \in \mathrm{range}S\)，则\(\exists u\)，使得\(Su = v\)，所以\(STu = TSu = Tv\)，即\(Tv\in \mathrm{range} S\)
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0248f99" class="outline-2">
+<h2 id="org0248f99"><span class="section-number-2">4</span> 5.A.4</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(V)\)且\(U_{1},\ldots ,U_{m}\)是\(V\)的在\(T\)下不变的子空间。证明\(U_{1} + \ldots + U_{m}\)在\(T\)下不变。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+假设\(\forall u \in U_{1} + \ldots + U_{m}\)，则\(\exists u_{1}\in U_{1},\ldots ,u_{m}\in U_{m}\)，有\(u = u_{1} + \ldots + u_{m} \)。\(Tu = T(u_{1} + \ldots u_{m}) = Tu_{1} + \ldots + Tu_{m}\)。
+</p>
+
+<p>
+因为\(Tu_{1} \in U_{1},\ldots ,Tu_{m} \in U_{m}\)，所以\(Tu_{1} +\ldots + Tu_{m} \in Tu\)
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0b93e08" class="outline-2">
+<h2 id="org0b93e08"><span class="section-number-2">5</span> 5.A.5</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(V)\)，证明\(V\)的任意的一组在\(T\)下不变的子空间的交仍在\(T\)下不变。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+假设\(U_{1},\ldots ,U_{m}\)是\(T\)下的一组不变子空间，则对于\(U = U_{1}\cap \ldots \cap U_{m}\)，假设\(u\in U\),则\(u\in U_{1},\ldots ,u\in U_{m}\)，所以\(Tu \in U_{1},\ldots ,Tu \in U_{m}\)，即\(Tu \in U_{1} \cap \ldots \cap U_{m}\)
+</p>
+
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
