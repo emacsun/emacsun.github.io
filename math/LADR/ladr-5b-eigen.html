@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>本证向量与上三角矩阵</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./ladr-5b-eigen.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">本证向量与上三角矩阵</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org43e1568">1. 多项式作用于算子</a></li>
+<li><a href="#orgf3b77bc">2. 本征值的存在性</a></li>
+<li><a href="#org0b30e48">3. 上三角矩阵</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org43e1568" class="outline-2">
+<h2 id="org43e1568"><span class="section-number-2">1</span> 多项式作用于算子</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+算子理论比线性映射理论更加丰富多彩，主要原因是算子能自乘为幂。我们从算子的幂以及多项式作用于算子这一关键概念的定义开始。
+</p>
+
+<p>
+若\(T\in \mathcal{L}(V)\),则\(TT\)是有意义的，并且也包含于\(\mathcal{L}(V)\)。通常用\(T^{2}\)代替\(TT\)，更一般的，我们有：
+</p>
+<div class="definition">
+<p>
+设\(T\in \mathcal{L}(V)\),\(m\)是正整数。
+</p>
+<ol class="org-ol">
+<li>定义\(T^{m}\)为\(T^{m} = \underbrace{T\cdots T}_{m}\)</li>
+<li>定义\(T^{0}\)为\(V\)上的恒等算子\(I\)</li>
+<li>若\(T\)是可逆的，且逆为\(T^{-1}\),则定义\(T^{-m}\)为\(T^{m} = (T^{-1})^{m}\)</li>
+</ol>
+
+</div>
+
+<div class="definition">
+<p>
+设\(T\in \mathcal{L}(V)\),\(p\in \mathcal{P}(\mathbf{F})\)，对\(z\in \mathbf{F}\)，有\(p(z) = a_{0} + a_{1}z + a_{2}z^{2} + \ldots a_{m}z^{m}\)，则\(p(T)\)是定义为\(p(T) = a_{0}I + a_{1}T + \ldots + a_{m}T^{m}\)的算子。
+</p>
+
+</div>
+
+<div class="instance">
+<p>
+设\(D\in \mathcal{L}(\mathcal{P}(\mathbf{R}))\)是由\(Dq = q^{'}\)定义的微分算子，\(p\)是多项式\(p(x) = 7 - 3x + 5x^{2}\)，则\(p(D) = 7I - 3D + 5D^{2}\)。于是对每个\(q\in \mathcal{P}(\mathbf{R})\)有\((p(D))q = 7q - 3q^{'} + 5q^{''}\)
+</p>
+
+</div>
+
+<div class="definition">
+<p>
+若\(p,q\in \mathcal{P}(\mathbf{F})\)，则\(pq\in \mathcal{P}(\mathbf{F})\)的定义为：\(\forall z\in \mathbf{F}, (pq)(z) = p(z)q(z)\)
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf3b77bc" class="outline-2">
+<h2 id="orgf3b77bc"><span class="section-number-2">2</span> 本征值的存在性</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<div class="theorem">
+<p>
+有限维非零复向量空间上的每个算子都有本征值
+</p>
+
+</div>
+<div class="proof">
+<p>
+设\(V\)是\(n\)维复向量空间，\(n > 0\), 并设\(T\in \mathcal{L}(V)\)，取\(v\in V\)且\(v\neq 0\)，因为\(V\)是\(n\)维的，所以\(n+1\)个向量\[v,Tv,T^{2}v,\ldots ,T^{n}v\]线性相关。于是有并且为零的复数\(a_{0},\ldots ,a_{n}\)使得：
+\[0 = a_{0}v  + a_{1}Tv + \ldots + a_{n}T^{n}v\]
+</p>
+
+</div>
+<p>
+注意\(a_{1},\ldots ,a_{n}\)不全为零，否则\(a_{0}\)也必须为0.
+</p>
+
+<p>
+以这些\(a_{j}\)做一个多项式，利用代数学基本定理可以将此多项式分解为：
+</p>
+\begin{equation}
+\label{eq:1}
+a_{0} + a_{1}z + \ldots + a_{n}z^{n} = c(z-\lambda_{1})\ldots (z-\lambda_{m})
+\end{equation}
+<p>
+其中\(c\)是非零复数，每个\(\lambda_{j}\)都属于\(\mathbf{C}\)，且对于式 (\ref{eq:1}) 所有的\(z\in \mathbf{C}\)均成立。则：
+</p>
+\begin{eqnarray}
+\label{eq:3}
+0&=& a_{0}v + a_{1}Tv + \ldots a_{n}T^{n}v \\
+&=& (a_{0}I + a_{1}T + \ldots + a_{n}T^{n})v \\
+&=&c(T-\lambda_{1}) \ldots (T-\lambda_{m})v
+\end{eqnarray}
+
+<p>
+于是至少有一个\(j\)使得\(T-\lambda_{j}I\)不是单的，即有\(v\neq 0\)使得\((T-\lambda_{j}I)v = 0\)，即有\[Tv = \lambda v\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0b30e48" class="outline-2">
+<h2 id="org0b30e48"><span class="section-number-2">3</span> 上三角矩阵</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<div class="definition">
+<p>
+设\(T\in \mathcal{L}(V)\)，并设\(v_{1},\ldots ,v_{n}\)是\(V\)的基。\(T\)关于该基的矩阵定义为\(n\times n\)的矩阵：
+</p>
+\begin{equation}
+\label{eq:4}
+ \mathcal{M}(T) =
+\begin{bmatrix}
+A_{1,1} & \ldots & A_{1,n} \\
+\vdots & \ddots & \vdots \\
+A_{n,1} & \ldots & A_{n,n}
+\end{bmatrix}
+\end{equation}
+<p>
+其元素\(A_{j,k}\)定义为：
+</p>
+\begin{equation}
+\label{eq:5}
+T(v_{k}) = A_{1,k}v_{1} + \ldots A_{n,k}v_{n}
+\end{equation}
+
+</div>
+<p>
+我们发现：
+</p>
+<ol class="org-ol">
+<li>线性算子的矩阵是正方形方阵，越来越有意思了。</li>
+<li>\(Tv_{k}\)写成\(v_{1},\ldots ,v_{n}\)的线性组合时使用的那些系数构成了矩阵\(\mathcal{M}(T)\)的第\(k\)列。</li>
+</ol>
+
+<p>
+若\(T\)是\(\mathbf{F}^{n}\)的算子，且没有指定基，则假定为标准基。此时可以认为\(\mathcal{M}(T)\)的第\(j\)列维\(T\)作用到第\(j\)个标准基上得到的向量。
+</p>
+
+<div class="instance">
+<p>
+定义\(T\in \mathcal{L}(\mathbf{F})^{3}\)为\(T(x,y,z) = (2x+y,5y + 3z, 8z)\),则：
+</p>
+\begin{equation}
+\label{eq:6}
+\mathcal{M}(T) =
+\begin{bmatrix}
+2 & 1 & 0 \\
+0 & 5 & 3 \\
+0 & 0 & 8
+\end{bmatrix}
+\end{equation}
+<p>
+对这个问题，我们有对于标准基，显然有：
+</p>
+\begin{eqnarray}
+\label{eq:7}
+T(1,0,0)&=&(2,0,0) \\
+T(0,1,0)&=&(1,5,0) \\
+T(0,0,1)&=&(0,3,8)
+\end{eqnarray}
+
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
