@@ -91,6 +91,11 @@ for the JavaScript code in this tag.
 <li><a href="#org64caab1">3. 5.A.3</a></li>
 <li><a href="#org0248f99">4. 5.A.4</a></li>
 <li><a href="#org0b93e08">5. 5.A.5</a></li>
+<li><a href="#org57a4444">6. 5.A.6</a></li>
+<li><a href="#org8e621e4">7. 5.A.7</a></li>
+<li><a href="#org8aa641a">8. 5.A.8</a></li>
+<li><a href="#org9011864">9. 5.A.9</a></li>
+<li><a href="#org549832c">10. 5.A.10</a></li>
 </ul>
 </div>
 </div>
@@ -213,6 +218,199 @@ for the JavaScript code in this tag.
 <p>
 假设\(U_{1},\ldots ,U_{m}\)是\(T\)下的一组不变子空间，则对于\(U = U_{1}\cap \ldots \cap U_{m}\)，假设\(u\in U\),则\(u\in U_{1},\ldots ,u\in U_{m}\)，所以\(Tu \in U_{1},\ldots ,Tu \in U_{m}\)，即\(Tu \in U_{1} \cap \ldots \cap U_{m}\)
 </p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org57a4444" class="outline-2">
+<h2 id="org57a4444"><span class="section-number-2">6</span> 5.A.6</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+证明或给出反例：若\(V\)是有限维的，\(U\)是\(V\)的子空间且在\(V\)的每个算子下不变，则\(U=\{0\}\)或者\(U=V\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+我们用反证法证明这个命题是真命题。假设\(U\)是\(V\)的子空间，\(U\neq 0\)且\(U\neq V\)，那么存在\(T\in \mathcal{L}(V)\)满足\(U\)在\(T\)下不是不变的。
+</p>
+
+<p>
+假设\(U\)是\(V\)的子空间，\(U\neq 0\)且\(U\neq V\)，对于\(u\in U\)且\(u\neq 0\)和\(w\in V, w\notin U\)，扩展\(u\)为\(V\)的一个基\((u,v_{1},\ldots ,v_{n})\),定义：\[T(au+b_{1}v_{1} + \ldots + v_{n}v_{n}) = aw\]
+因此\(Tu = w\)。因为\(u\in U\)但是\(w\notin U\)，这表明\(U\)在\(T\)下不是不变的。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org8e621e4" class="outline-2">
+<h2 id="org8e621e4"><span class="section-number-2">7</span> 5.A.7</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+定义\(T\in \mathcal{L}(\mathbf{R}^{2})\)为\(T(x,y) = (-3y,x)\),求\(T\)的本征值
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+回忆一下本征值的定义。称数\(\lambda \in \mathbf{F}\)为\(T\)的本征值，若存在\(v\in V\)使得\(v\neq 0\)且\(Tv = \lambda v\)
+</p>
+
+<p>
+我们假设\(\lambda\)是本征值，则有\((-3y,x) = \lambda (x,y)\)，所以：
+</p>
+\begin{eqnarray}
+\label{eq:1}
+-3y&=& \lambda x \\
+x&=& \lambda y
+\end{eqnarray}
+<p>
+所以:
+</p>
+\begin{equation}
+\label{eq:2}
+-3y = \lambda^{2}y
+\end{equation}
+<p>
+所以\(\lambda^{2} =  - 3 \)，这是不可能的。因为\(T\in \mathcal{L}(\mathbf{R}^{2})\)。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org8aa641a" class="outline-2">
+<h2 id="org8aa641a"><span class="section-number-2">8</span> 5.A.8</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+定义\(T\in \mathcal{L}(\mathbf{F}^{2})\)为\(T(w,z) = (z,w)\),求\(T\)的所有本征值和本证向量。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+根据本征值的定义。
+</p>
+\begin{eqnarray}
+\label{eq:3}
+(z,w)&=&\lambda (w,z) \\
+\end{eqnarray}
+<p>
+所以\(\lambda = \pm 1\)。当\(\lambda = 1\)时，特征向量是\((w,w)\)；当\(\lambda = -1\)时，特征向量是\((w,-w)\)
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9011864" class="outline-2">
+<h2 id="org9011864"><span class="section-number-2">9</span> 5.A.9</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+定义\(T\in \mathcal{L}(\mathbf{F}^{3})\)为\(T(z_{1},z_{2},z_{3}) = (2z_{2},0,5z_{3})\)，求\(T\)的所有本征值和本证向量。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+根据本征值的定义。\[\lambda (z_{1},z_{2},z_{3}) = (2z_{2},0,5z_{3}) \]
+</p>
+\begin{eqnarray}
+\label{eq:4}
+\lambda z_{1}&=& 2z_{2}\\
+\lambda z_{2}&=& 0 \\
+\lambda z_{3}&=& 5z_{3}
+\end{eqnarray}
+
+<p>
+所以当\(\lambda \neq 0\)我们可以得到:
+</p>
+\begin{eqnarray}
+\label{eq:5}
+\lambda &=& 5 \\
+z_{2} &=&0 \\
+z_{1} &=&0 \\
+\end{eqnarray}
+<p>
+\(z_{3}\)是个自由变量，所以特征值是\(5\)，特征向量是\((0,0,z_{3})\)
+</p>
+
+<p>
+当\(\lambda =0\)，我们可以得到：
+</p>
+\begin{eqnarray}
+\label{eq:6}
+z_{2}&=&0 \\
+z_{3}&=&0 \\
+\end{eqnarray}
+<p>
+\(z_{1}\)是个自由变量，所以特征值\(0\)对应的特征向量是\((z_{1},0,0)\)
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org549832c" class="outline-2">
+<h2 id="org549832c"><span class="section-number-2">10</span> 5.A.10</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+定义\(T\in \mathbf{F}^{n}\)为\(T(x_{1},x_{2},\ldots ,x_{n}) = (x_{1},2x_{2},3x_{3},\ldots ,nx_{n})\)
+</p>
+<ol class="org-ol">
+<li>求\(T\)的所有本征值和本证向量。</li>
+<li>求\(T\)的所有不变子空间。</li>
+</ol>
+
+</div>
+
+<div class="answer">
+<ol class="org-ol">
+<li>根据特征值的定义有：</li>
+</ol>
+\begin{eqnarray}
+\label{eq:7}
+x_{1}&=&\lambda x_{1} \\
+x_{2}&=&\lambda x_{2} \\
+\vdots &=& \vdots \\
+x_{n} &=&\lambda x_{n}
+\end{eqnarray}
+
+<p>
+当\(\lambda = 0\)时，有\((x_{1},\ldots ,x_{n}) = (0,\ldots ,0) \)，所以\(0 \)不是\(T\)的特征值。当\(\lambda = 1\)时，我们有\((x_{1}\neq 0, 0,0,\ldots ,0)\)是\(T\)的特征向量，当\(\lambda = 2\)时，我们有\((0,x_{2}\neq 0, 0,0,\ldots ,0)\)是\(T\)的特征向量，依次类推,\(\lambda = n\)时，有\( (0,0,\ldots ,x_{n}\neq 0)\)是\(T\)的特征向量。
+</p>
+
+<ol class="org-ol">
+<li>关于\(T\)的不变子空间，我们有\(n\)个特征向量对应的一维子空间肯定是\(T\)的不变子空间。</li>
+</ol>
 
 </div>
 </div>
