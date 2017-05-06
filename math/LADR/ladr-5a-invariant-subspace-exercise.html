@@ -98,6 +98,8 @@ for the JavaScript code in this tag.
 <li><a href="#org549832c">10. 5.A.10</a></li>
 <li><a href="#orgee013c3">11. 5.A.11</a></li>
 <li><a href="#org725933d">12. 5.A.12</a></li>
+<li><a href="#orgc70d842">13. 5.A.13</a></li>
+<li><a href="#org6cb310c">14. 5.A.14</a></li>
 </ul>
 </div>
 </div>
@@ -495,6 +497,55 @@ x_{n} &=&\lambda x_{n}
 
 <p>
 因为\(a_{n}\neq 0\)，如果只考虑第一项，我们有\(\lambda = n\),然后\(a_{0} = a_{1} = \ldots = a_{n-1} = 0\)，因此\(q = a_{n}x^{n}\) 所以\(T\)的特征值是\(0,1,\ldots \)，各自对应的特征向量是\(\alpha x^{n}, \alpha\in \mathbf{R}\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgc70d842" class="outline-2">
+<h2 id="orgc70d842"><span class="section-number-2">13</span> 5.A.13</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维的，\(T\in \mathcal{L}(V)\)且\(\lambda\in \mathbf{F}\)，证明存在\(\alpha\in \mathbf{F}\)使得\(|\alpha - \lambda| < \frac{1}{1000}\) 且\((T-\alpha I)\)是可逆的。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+接触到这个题目，我拥有什么信息？ \(\lambda\)不一定是特征值。这个题目有点奇怪。假设：
+</p>
+\begin{equation}
+\label{eq:11}
+|\alpha - \lambda| = \frac{1}{1000 + i}, i = 1,2,\ldots ,\dim V + 1
+\end{equation}
+<p>
+又因为\(V\)至多有\(\dim V\)个特征值。多以在式 (\ref{eq:11})中一定有一个\(i\)使得\(\alpha_{i}\)不是\(T\)的特征值。
+</p>
+
+<p>
+没有看出来这个题目有什么玄机。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6cb310c" class="outline-2">
+<h2 id="org6cb310c"><span class="section-number-2">14</span> 5.A.14</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V = U\oplus W\)，其中\(U\)和\(W\)均为\(V\)的非零子空间。定义\(P\in \mathcal{L}(V)\)如下：对\(u\in U\)和\(w\in W\)有\(P(u+w) = u\)，求\(P\)的所有本征值和本证向量。
 </p>
 
 </div>
