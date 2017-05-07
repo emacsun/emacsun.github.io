@@ -85,7 +85,7 @@ github 是一个比较理想的 git 仓库托管地，至少我的学习笔记�
 </p>
 
 <p>
-目前我使用 <a href="http://spacemacs.org/">spacemacs</a> 来配置 Emacs，配置都写在 <code>.spacemacs</code> 里，打算用 <code>.spacemacs.d</code> 文件夹来保存我的配置。 
+目前我使用 <a href="http://spacemacs.org/">spacemacs</a> 来配置 Emacs，配置都写在 <code>.spacemacs</code> 里，打算用 <code>.spacemacs.d</code> 文件夹来保存我的配置。
 </p>
 
 <p>
@@ -113,7 +113,7 @@ github 是一个比较理想的 git 仓库托管地，至少我的学习笔记�
 </p>
 
 <p>
-假设已经在 github 创建了仓库，地址是 <a href="https://github.com/emacsun/.spacemacs.d">https://github.com/emacsun/.spacemacs.d</a> 
+假设已经在 github 创建了仓库，地址是 <a href="https://github.com/emacsun/.spacemacs.d">https://github.com/emacsun/.spacemacs.d</a>
 </p>
 </div>
 </div>
@@ -139,7 +139,7 @@ github 是一个比较理想的 git 仓库托管地，至少我的学习笔记�
 </pre>
 
 <p>
-如果第一次执行第 7 步的时候，报错说：提交失败，因为远程仓库包含您本地尚不存在的提交，就把第 7 步换成 
+如果第一次执行第 7 步的时候，报错说：提交失败，因为远程仓库包含您本地尚不存在的提交，就把第 7 步换成
 </p>
 
 <p>
@@ -185,12 +185,30 @@ github 是一个比较理想的 git 仓库托管地，至少我的学习笔记�
 6. git remote add origin git@github.com:emacsun/.spacemacs.d //添加远程版本库
 </pre>
 <p>
-即可。如果实现应添加了 <code>https</code> 的远程仓库，则需要：
+即可。如果事先已经添加了 <code>https</code> 的远程仓库，则需要：
 </p>
 <pre class="example">
 git remote remove origin
 git remote add origin git@github.com:emacsun/.spacemacs.d //添加远程版本库
 </pre>
+
+<p>
+如果不确定之前添加的remote仓库是基于 <code>https</code> 还是基于 <code>ssh</code> 的，那么可以使用
+</p>
+<pre class="example">
+git remote -v
+</pre>
+<p>
+来查看。
+</p>
+
+
+<div id="orgb905e5e" class="figure">
+<p><img src="../../img/tools_emacs/20170507tools_emacs_github.png" alt="20170507tools_emacs_github.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 1:</span> remote查看和更改</p>
+</div>
+
 
 <p>
 easy！
