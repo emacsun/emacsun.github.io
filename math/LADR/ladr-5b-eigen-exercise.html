@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>练习：本证向量与上三角阵</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./ladr-5b-eigen-exercise.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">练习：本证向量与上三角阵</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9a13bae">1. 5.B.1</a></li>
+<li><a href="#orgb8f808a">2. 5.B.2</a></li>
+<li><a href="#orgebafa44">3. 5.B.3</a></li>
+<li><a href="#org72f08a7">4. 5.B.4</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9a13bae" class="outline-2">
+<h2 id="org9a13bae"><span class="section-number-2">1</span> 5.B.1</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(V)\)且存在正整数\(n\)使得\(T^{n} = 0\):
+</p>
+<ol class="org-ol">
+<li>证明\(I-T\)是可逆的，且其逆为\((I-T)^{-1} = I + T + \ldots + T^{n-1}\)</li>
+<li>解释一下如何想到上面公式。</li>
+</ol>
+
+</div>
+
+<div class="answer">
+\begin{eqnarray}
+\label{eq:1}
+(I-T)(I + T + \ldots T^{n-1})&=&(I + T + \ldots T^{n-1}) - (T +T^{2} + \ldots +T^{n-1} + T^{n} )  \\
+&=& I
+\end{eqnarray}
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgb8f808a" class="outline-2">
+<h2 id="orgb8f808a"><span class="section-number-2">2</span> 5.B.2</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(V)\)且\((T-2I)(T-3I)(T-4I) = 0\)，设\(\lambda\)是\(T\)的本征值，证明\(\lambda= 2\) 或者 \(\lambda = 3\)，或者\(\lambda = 4\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+见定理5.21的证明过程。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgebafa44" class="outline-2">
+<h2 id="orgebafa44"><span class="section-number-2">3</span> 5.B.3</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(V)\),\(T^{2} = I\)，且\(-1\)不是\(T\)的本征值。证明\(T=I\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+由\(T^{2} = I\)得\((T-I)(T+I) = 0\)，则\(T\)有特征值\(1\)或者\(-1\)，又因为\(-1\)不是\(T\)的特征值，则\(1\)是\(T\)的唯一特征值，所以\(T = I\)
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org72f08a7" class="outline-2">
+<h2 id="org72f08a7"><span class="section-number-2">4</span> 5.B.4</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(P\in \mathcal{L}(V)\),\(P^{2} = P\)，证明\(V = \mathrm{null} P \oplus \mathrm{range} P\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+因为\(P^{2} = P\)，则\(P= 0\)或者\(P=I\)。
+</p>
+
+<p>
+当\(P=0\)时，\(\mathrm{range}P = \{0\}\)，\(\mathrm{null}P = V\)，因此\(V = \mathrm{null} P \oplus \mathrm{range}P\);
+当\(P=I\)时，\(\mathrm{null}P = \{0}\)，\(\mathrm{range}P = V\)，同样结论成立。
+</p>
+
+<p>
+综上命题得证。
+</p>
+
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
