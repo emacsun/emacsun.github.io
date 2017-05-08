@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>组合分析</title>
+<title>排列组合分析</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="zcl.space" />
 <meta name="description" content="本文介绍概率论中最基本的数数规则"
@@ -84,7 +84,7 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">组合分析</h1>
+<h1 class="title">排列组合分析</h1>
 <p>
 本文介绍最简单的数数规则，这类的概率问题可难也可简单。我记得上高中的时候比较麻烦的一个问题是两盒火柴的问题，大意如下：两个火柴盒里面放火柴，然后随机抽取，问第\(n\)次以后恰好第一个盒子的火柴被抽光的概率。这类的问题需要掌握一些基本的规则，按照规则逐步计算会容易的多。
 </p>
@@ -101,6 +101,31 @@ for the JavaScript code in this tag.
 \label{eq:1}
 \frac{n!}{n_{1}!n_{2}!\ldots n_{r}!}
 \end{equation}
+
+<p>
+<b>组合</b> 一般来说，如果考虑顺序，从\(n\)个元素中取出\(r\)个排成一组，一共有\(n(n-1)\ldots (n-r+1)\)种不同的方式，而每个包含\(r\)个元素的小组都被重复计算了\(r!\)次。所以从\(n\)个元素中取出\(r\)个组成不同组的数目为：
+</p>
+\begin{equation}
+\label{eq:2}
+\frac{n(n-1)\ldots (n-r+1)}{r!} = \frac{n!}{(n-r)!r!}
+\end{equation}
+<p>
+因此，如果不考虑顺序， \(\binom{n}{r}\)表示从\(n\)个元素中取出\(r\)个元素所组成的不同组的数目。
+</p>
+
+<div class="instance">
+<p>
+假设在一排\(n\)个天线中，有\(m\)个是失效的，另\(n-m\)个时有效的。假设所有有效天线不可区分，所有失效的天线之间也不可区分。为有多少中线性排列方式，使得任何两个失效的天线都不相邻？
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+把\(n-m\)个有效天线排一排。既然不允许连续两个失效天线在一起，那么这两个有效天线之间必然至多放置 一个失效的。即在\(n-m+1\)的位置中选择\(m\)个来放置，因此有\(\binom{n-m+1}{m}\)种放置方法。
+</p>
+
+</div>
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
