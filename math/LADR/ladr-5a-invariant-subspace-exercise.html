@@ -109,6 +109,7 @@ for the JavaScript code in this tag.
 <li><a href="#org6e1ac73">21. 5.A.21</a></li>
 <li><a href="#org58cc9ad">22. 5.A.22</a></li>
 <li><a href="#org9c34c54">23. 5.A.23</a></li>
+<li><a href="#org43c3fe8">24. 5.A.24</a></li>
 </ul>
 </div>
 </div>
@@ -868,13 +869,100 @@ Tw&=&3v
 
 <div class="answer">
 <p>
-假设\(\alpha\)是\(ST\)的特征值，对应的特征向量是\(u\); 假设\(\beta\)是\(TS\)的特征值，对应的特征向量是\(v\)，则：
+假设\(\alpha\)是\(ST\)的特征值，对应的特征向量是\(u\);我们要证明\(\lambda\)是\(TS\)的特征值。
 </p>
 \begin{eqnarray}
-\label{eq:16}
-STu&=&\alpha u \\
-TSv&=&\beta v
+\label{eq:17}
+(TS)(Tu)&=&T(ST)u \\
+&=&T(\lambda u) \\
+&=&\lambda (Tu)
 \end{eqnarray}
+<p>
+当\(Tu\neq 0\)时，\(Tu\)就是\(TS\)的特征值。
+</p>
+
+<p>
+当\(Tu=0\)，那么\(\lambda = 0\) (因为\(STu = \lambda u\))，所以\(T\)不是可逆的，继而\(TS\)也不是可逆的。\(TS\)不是可逆的，就有\(u\in V\)使得\(TS u = 0 = 0u\)，即\(0\)是\(TS\)的特征值。
+</p>
+
+<p>
+我们有不管\(Tu\)是否为零，\(\lambda\)都是其\(TS\)特征值。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org43c3fe8" class="outline-2">
+<h2 id="org43c3fe8"><span class="section-number-2">24</span> 5.A.24</h2>
+<div class="outline-text-2" id="text-24">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(A\)是元素属于\(\mathbf{F}\)的\(n\times n\)矩阵。定义\(T\in \mathcal{L}(\mathbf{F}^{n})\)为\(Tx = Ax\)，这里\(\mathbf{F}^{n}\)中的元素视为\(n\times 1\)的列向量。
+</p>
+<ol class="org-ol">
+<li>设\(A\)的每行元素之和都是1，证明\(1\)是\(T\)的本征值。</li>
+<li>设\(A\)的每列元素之和都是1，证明\(1\)是\(T\)的本征值。</li>
+</ol>
+
+</div>
+
+<div class="answer">
+<p>
+因为\(Tx = Ax\)；
+</p>
+\begin{eqnarray}
+\label{eq:18}
+Ax =
+\begin{bmatrix}
+a_{11}x_{1} + a_{12}x_{2} + \ldots + a_{1n}x_{n} \\
+a_{21}x_{1} + a_{22}x_{2} + \ldots + a_{2n}x_{n} \\
+\vdots \\
+a_{n1}x_{1} + a_{n2}x_{2} + \ldots + a_{nn}x_{n}
+\end{bmatrix}
+\end{eqnarray}
+
+<p>
+注意到当\(x_{1}=x_{2}=\ldots =x_{n}=\frac{1}{n}\)时，有：
+</p>
+\begin{equation}
+\label{eq:19}
+Ax = x
+\end{equation}
+<p>
+即\(1\)是\(T\)的本征值。我们可以看到针对特征值\(1\)，\(T\)有特征向量\[\{(x_{1},x_{2},\ldots ,x_{n}: x_{1} = x_{2} = \ldots = x_{n} \neq 0)\}\]
+</p>
+
+</div>
+<div class="answer">
+<p>
+对于第二个问题：我们有：
+</p>
+\begin{equation}
+\label{eq:20}
+(T-I)
+\begin{bmatrix}
+x_{1} \\  \vdots \\ x_{n}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\sum_{i=1}^{n}a_{1i}x_{i} - x_{1} \\
+\vdots \\
+\sum_{i=1}^{n}a_{ni}x_{i} - x_{n}
+\end{bmatrix}
+=
+\begin{bmatrix}
+y_{1} \\
+\vdots \\
+y_{n}
+\end{bmatrix}
+\end{equation}
+<p>
+显然\(T-I\)的值域不是\(\mathbf{F}^{n}\)，因此\(T-I\)不是双射，即\(T-I\)不是单射，所以存在\(u\in \mathrm{null}(T-I),u\neq \mathbf{0}\)，使得：\[(T-I)u = 0\]
+</p>
 
 </div>
 </div>
