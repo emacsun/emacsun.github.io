@@ -110,6 +110,11 @@ for the JavaScript code in this tag.
 <li><a href="#org58cc9ad">22. 5.A.22</a></li>
 <li><a href="#org9c34c54">23. 5.A.23</a></li>
 <li><a href="#org43c3fe8">24. 5.A.24</a></li>
+<li><a href="#org91809d1">25. 5.A.25</a></li>
+<li><a href="#org9da8ab0">26. 5.A.26</a></li>
+<li><a href="#orgcf9181e">27. 5.A.27</a></li>
+<li><a href="#orga169b28">28. 5.A.28</a></li>
+<li><a href="#org760224f">29. 5.A.29</a></li>
 </ul>
 </div>
 </div>
@@ -962,6 +967,161 @@ y_{n}
 \end{equation}
 <p>
 显然\(T-I\)的值域不是\(\mathbf{F}^{n}\)，因此\(T-I\)不是双射，即\(T-I\)不是单射，所以存在\(u\in \mathrm{null}(T-I),u\neq \mathbf{0}\)，使得：\[(T-I)u = 0\]
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org91809d1" class="outline-2">
+<h2 id="org91809d1"><span class="section-number-2">25</span> 5.A.25</h2>
+<div class="outline-text-2" id="text-25">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(V)\)且\(u\)和\(v\)均为\(T\)的本证向量使得\(u+v\)也是\(T\)的本证向量。证明\(u\)和\(v\)是\(T\)的同一本征值的本证向量。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+根据5.10，不同本征值的特征向量是线性无关的，很容易可以证明。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9da8ab0" class="outline-2">
+<h2 id="org9da8ab0"><span class="section-number-2">26</span> 5.A.26</h2>
+<div class="outline-text-2" id="text-26">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(V)\)使得\(V\)中的每个非零向量都是\(T\)的本征向量。证明\(T\)是恒等算子的标量倍。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+如果\(\forall v\in V, \exists a_{v}\in \mathbf{F}, \mathrm{s.t.} \quad Tv = a_{v} v\)。因为\(T0 = 0\)，我们可以选\(a_{0}\)为任意的数。对于\(v\in V\backslash \{0\}\) 我们证明\(a_{v}\)由\(Tv = a_{v}v\)唯一确定。
+</p>
+
+<p>
+为了证明\(T\)是恒等算子的标量倍，我们必须证明对于所有的\(v\in V\backslash \{0\}\)，\(a_{v}\)不变的。特别的，假设\(v,w \in V\backslash \{0\}\)，我们证明\(a_{v}=a_{w}\)首先考虑\(v,w\)线性相关，那么\(\exists~b, \mathrm{s.t.}\quad w=bv\)，所以：
+</p>
+\begin{eqnarray}
+\label{eq:21}
+a_{w}w&=&Tw \\
+&=&Tbv \\
+&=&bTv \\
+&=&ba_{v}v \\
+&=&a_{v}b_{v}\\
+&=&a_{v}w
+\end{eqnarray}
+<p>
+所以\(a_{v} = a_{w}\)
+</p>
+
+<p>
+另外考虑\(v,w\)是线性独立的，则：
+</p>
+\begin{eqnarray}
+\label{eq:23}
+a_{v+w}(v+w)&=&T(v + w) \\
+&=&a_{v}v + a_{w}w
+\end{eqnarray}
+<p>
+这意味着：\((a_{v+w} - a_{v})v + (a_{v+w} - a_{w})w = 0\)
+</p>
+\begin{eqnarray}
+\label{eq:24}
+a_{v+w}&=&a_{v} \\
+a_{v+w}&=&a_{w}
+\end{eqnarray}
+<p>
+即\(a_{v}=a_{w}\).
+</p>
+
+<p>
+综上，命题得证。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgcf9181e" class="outline-2">
+<h2 id="orgcf9181e"><span class="section-number-2">27</span> 5.A.27</h2>
+<div class="outline-text-2" id="text-27">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维的，\(T\in \mathcal{L}(V)\)使得\(V\)的每个\(\dim V -1\)维子空间都在\(T\)下不变。证明\(T\)是恒等算子的标量倍。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+利用上题的结论，假设\(T\)不是恒等算子的标量倍，则一定存在\(u\)不是\(T\)的特征向量，则\(Tu\)和\(u\)是线性独立的。我们把\(u,Tu\)扩展为\(V\)的一个基，\((u,Tu,v_{1},\ldots ,v_{n})\)，令
+\[U = \mathrm{span}(u,u_{1},\ldots ,u_{n})\]
+显然,\(\dim U = \dim V -1\)。我们可以看到\(U\)在\(T\)下不是不变的因为\(Tu\notin U\)。矛盾。因此\(T\)一定是恒等算子的标量倍。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga169b28" class="outline-2">
+<h2 id="orga169b28"><span class="section-number-2">28</span> 5.A.28</h2>
+<div class="outline-text-2" id="text-28">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维的，\(\dim V \geq 3\)且\(T\in \mathcal{L}(V)\)使得\(V\)的每个二维子空间都在\(T\)下不变。证明\(T\)是恒等算子的标量倍。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org760224f" class="outline-2">
+<h2 id="org760224f"><span class="section-number-2">29</span> 5.A.29</h2>
+<div class="outline-text-2" id="text-29">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(V)\)且\(\dim \mathrm{range}(T) = k \)，证明\(T\)至多有\(k+1\)个不同的特征值。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+\[\dim V = \dim \mathrm{null}T + \dim \mathrm{range}T\]
+假设\(\mathrm{null}T \neq \{0\}\)，\(\exists u\in \mathrm{null}T, u\neq 0, \mathrm{s.t.} \quad Tu = 0\),则\(0\)是\(T\)的一个特征值.
 </p>
 
 </div>
