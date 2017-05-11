@@ -115,6 +115,9 @@ for the JavaScript code in this tag.
 <li><a href="#orgcf9181e">27. 5.A.27</a></li>
 <li><a href="#orga169b28">28. 5.A.28</a></li>
 <li><a href="#org760224f">29. 5.A.29</a></li>
+<li><a href="#orgbcff3d7">30. 5.A.30</a></li>
+<li><a href="#org01f4306">31. 5.A.31</a></li>
+<li><a href="#org437e1da">32. 5.A.32</a></li>
 </ul>
 </div>
 </div>
@@ -1122,6 +1125,102 @@ a_{v+w}&=&a_{w}
 <p>
 \[\dim V = \dim \mathrm{null}T + \dim \mathrm{range}T\]
 假设\(\mathrm{null}T \neq \{0\}\)，\(\exists u\in \mathrm{null}T, u\neq 0, \mathrm{s.t.} \quad Tu = 0\),则\(0\)是\(T\)的一个特征值.
+</p>
+
+<p>
+假设\(T\)有\(m\)个互不相同的特征值,\(\lambda_{1},\ldots ,\lambda_{m}\)，并且\(v_{1},\ldots ,v_{m}\)是这些特征值对应的特征向量。则有如果\(\lambda_{i}\neq 0\)，则：
+</p>
+\begin{equation}
+\label{eq:25}
+T(v_{j}/\lambda_{j})= v_{j}
+\end{equation}
+<p>
+因为\(\lambda_{j}\)中最多有一个为\(0\)，这个零是我们之前做的假设导致的。那么也就是说\(\lambda_{j}\)中至少有\(m-1\)个向量在\(\mathrm{range}(T)\)中。这些向量是线性无关的，则：
+</p>
+\begin{equation}
+\label{eq:26}
+m - 1 \leq \dim \mathrm{range}(T) = k
+\end{equation}
+<p>
+因此\(m\leq k+1\)，证闭。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgbcff3d7" class="outline-2">
+<h2 id="orgbcff3d7"><span class="section-number-2">30</span> 5.A.30</h2>
+<div class="outline-text-2" id="text-30">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(\mathbf{R}^{3})\)，且\(4,5,\sqrt{7}\)是\(T\)的本征值，证明存在\(x\in \mathbf{R}^{3}\)使得\(Tx - 9x = (4,5,\sqrt{7})\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+已知,\(\dim \mathbf{R}^{3} = 3\)，且\(T\)有三个互不相同的特征值，则其对应的特征向量是线性无关的。这说明\(9\)肯定不是\(T\)的特征值。因此\(T-9I\)是满射。因此\(\exists x\in \mathbf{R}^{3}, \mathrm{s.t.}\quad (T-9I)x = (4,5,\sqrt{7})\)，即\(Tx - 9x = (4,5,\sqrt{7})\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org01f4306" class="outline-2">
+<h2 id="org01f4306"><span class="section-number-2">31</span> 5.A.31</h2>
+<div class="outline-text-2" id="text-31">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维的且\(v_{1},\ldots ,v_{m}\)是\(V\)中的一组向量。证明\(v_{1},\ldots ,v_{m}\)线性无关当且仅当存在\(T\in \mathcal{L}(V)\)，使得\(v_{1},\ldots ,v_{m}\)是\(T\)的相应于不同特征值的特征向量。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+首先，我们知道假设\(v_{1},\ldots ,v_{m}\)是\(T\in \mathcal{L}(V)\)的相应于不同特征值的特征向量，则\(v_{1},\ldots ,v_{m}\)是线性无关的。
+</p>
+
+<p>
+然后我们证明另外一个方面。假设\(v_{1},\ldots ,v_{m}\)是线性无关的，则\(v_{1},\ldots ,v_{m}\)可以扩展为\(V\)的一组基\(v_{1},\ldots ,v_{m},v_{m+1},\ldots ,v_{n}\)，定义\(T\in \mathcal{L}(V)\)为：
+</p>
+\begin{equation}
+\label{eq:28}
+Tv_{i} = iv_{i},i = 1,\ldots ,n
+\end{equation}
+<p>
+因此,\(v_{1},\ldots ,v_{n}\)是\(T\)的对应于\(1,\ldots ,n\)的特征向量。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org437e1da" class="outline-2">
+<h2 id="org437e1da"><span class="section-number-2">32</span> 5.A.32</h2>
+<div class="outline-text-2" id="text-32">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(\lambda_{1},\ldots ,\lambda_{m}\)是一组互异实数。证明在由\(\mathbf{R}\)上的实值函数构成的向量空间中，组\(e^{\lambda_{1}x},\ldots ,e^{\lambda_{n}x}\)线性无关。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+定义：\[Tf = f^{'}\]则有：
+\[Te^{\lambda_{i}x} = \lambda_{i}e^{\lambda_{i}x}\] 因此\(\lambda_{i}\)是\(T\)的对应于\(e^{\lambda_{i}x}\)的特征值。因为\(\lambda_{i}\)各不相同，所以\(e^{\lambda_{i}x},\forall i\)是线性独立的。
 </p>
 
 </div>
