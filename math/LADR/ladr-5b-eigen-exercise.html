@@ -95,6 +95,13 @@ for the JavaScript code in this tag.
 <li><a href="#org9fbef26">7. 5.B.7</a></li>
 <li><a href="#orgd31dc54">8. 5.B.8</a></li>
 <li><a href="#org581a7e1">9. 5.B.9</a></li>
+<li><a href="#org2522cd6">10. 5.B.10</a></li>
+<li><a href="#org6739184">11. 5.B.11</a></li>
+<li><a href="#org7fb7200">12. 5.B.12</a></li>
+<li><a href="#orgf4b0fb6">13. 5.B.13</a></li>
+<li><a href="#orgd88ac5a">14. 5.B.14</a></li>
+<li><a href="#orgfedd854">15. 5.B.15</a></li>
+<li><a href="#orgf761759">16. 5.B.16</a></li>
 </ul>
 </div>
 </div>
@@ -328,6 +335,226 @@ T(x,y) = (\frac{\sqrt{2}}{2} x - \frac{\sqrt{2}}{2} y, \frac{\sqrt{2}}{2}x + \fr
 <div class="problem">
 <p>
 设\(V\)是有限维的，\(T\in \mathcal{L}(V)\)，\(v\in V,v\neq 0\)。设\(p\)是使得\(p(T)v = 0\)的次数最小的非零多项式。证明\(p\)的每个零点都是\(T\)的本征值。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org2522cd6" class="outline-2">
+<h2 id="org2522cd6"><span class="section-number-2">10</span> 5.B.10</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(V)\)，\(v\)是\(T\)的相应于本征值\(\lambda\)的本证向量。设\(p\in \mathcal{P}(\mathbf{F})\)，证明\(p(T)v = p(\lambda)v\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+我们证明过\(T^{n}v = \lambda^{n}v\)，因此对于：\[p = \sum_{n=1}^{k}a_{n}x^{n}\]有：
+</p>
+\begin{equation}
+\label{eq:7}
+p(T)v = (\sum_{n=0}^{k}a_{n}T^{n})v = \sum_{n=0}^{k}a_{n}\lambda^{n}v = p(\lambda)v
+\end{equation}
+
+</div>
+</div>
+</div>
+<div id="outline-container-org6739184" class="outline-2">
+<h2 id="org6739184"><span class="section-number-2">11</span> 5.B.11</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(\mathbf{F}= \mathbf{C}\),\(T\in \mathcal{L}(V)\)，\(p\in \mathcal{P}(\mathbf{C})\)是多项式，\(\alpha \in \mathbf{C}\)，证明\(\alpha\)是\(p(T)\)的本征值当且仅当\(T\)有一个本征值\(\lambda \)使得\(\alpha = p(\lambda)\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+首先假设\(\alpha\)是\(p(T)\)的本征值，那么\(p(T) - \alpha I\)不是单射，把多项式\(p(z) - \alpha\)因式分解：
+</p>
+\begin{equation}
+\label{eq:8}
+p(z) - \alpha  = c(z-\alpha_{1})\ldots (z-\lambda_{m})
+\end{equation}
+<p>
+上式意味着：
+</p>
+\begin{equation}
+\label{eq:9}
+p(T) - \alpha I = c(T-\lambda_{1} I) \ldots (T-\lambda_{m} I)
+\end{equation}
+<p>
+因为\(p(T)  - \alpha I\)不是单射，所以对于某个\(j\)，\(T - \lambda_{j} I\)不是单射。换句话说\(\lambda_{j}\)是\(T\)的特征值。所以\(p(z) - \alpha  = 0\)，即\(\alpha = p(z)\)
+</p>
+
+<p>
+另一方面，假设存在某个特征值\(\lambda\)使得\(\alpha = p(\lambda)\),所以存在非零向量\(v\in V\)，满足：
+</p>
+\begin{equation}
+\label{eq:10}
+Tv= \lambda v
+\end{equation}
+<p>
+重复对左侧进行\(T\)映射，所以：
+</p>
+\begin{equation}
+\label{eq:11}
+p(T)v = p(\lambda)v = av
+\end{equation}
+<p>
+即\(\alpha\)是\(p(T)\)的一个特征值。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org7fb7200" class="outline-2">
+<h2 id="org7fb7200"><span class="section-number-2">12</span> 5.B.12</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+证明若将\(\mathbf{C}\)换成\(\mathbf{R}\)，上题的结论将不在成立。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+定义\(T\in \mathcal{L}(\mathbf{R}^{2})\)为 \(T(x,y) = (-y,x)\),定义\(p\in \mathcal{P}(\mathbf{R})\)为\(p(x) = x^{2}\)，那么\(p(T) = T^{2} = -I\)因此\(-1\)是\(p(T)\)的特征值，但是\(T\)没有实数域上的特征值。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf4b0fb6" class="outline-2">
+<h2 id="orgf4b0fb6"><span class="section-number-2">13</span> 5.B.13</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(W\)是复向量空间，并设\(T\in \mathcal{L}(W)\)没有本征值，证明：\(W\)在\(T\)下不变的子空间是\(\{0\}\)或者是无限维的。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+反证法
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgd88ac5a" class="outline-2">
+<h2 id="orgd88ac5a"><span class="section-number-2">14</span> 5.B.14</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+给出一个算子，它关于某个基的矩阵的对角线上只有\(0\)，但这个算子是可逆的。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+这个很容易，对于二维空间有基\(e_{1},e_{2}\) ，定义算子\(T\in \mathcal{L}(\mathbf{R}^{2})\)：
+</p>
+\begin{eqnarray}
+\label{eq:12}
+Te_{1}&=&e_{2} \\
+Te_{2}&=&e_{1}
+\end{eqnarray}
+<p>
+显然这个映射对应的矩阵对角线上全是\(0\)，但是它是可逆的。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgfedd854" class="outline-2">
+<h2 id="orgfedd854"><span class="section-number-2">15</span> 5.B.15</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+给出一个算子，它关于某个基的矩阵的对角线上全是非零值，但是这个算子是不可逆的。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+定义矩阵：
+</p>
+\begin{equation}
+\label{eq:13}
+\begin{bmatrix}
+1 & 1 \\
+1 & 1
+\end{bmatrix}
+\end{equation}
+<p>
+显然\(T(0,1) = T(1,0) = (1,1)\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgf761759" class="outline-2">
+<h2 id="orgf761759"><span class="section-number-2">16</span> 5.B.16</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+利用将\(p\in \mathcal{P}_{n}(\mathbf{C})\)变为\((p(T)) v\in V\)的线性映射，证明:复向量空间上的算子都有本征值。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+定义\(\varphi(p) = p(T)v\)：
+</p>
+\begin{equation}
+\label{eq:14}
+\varphi: \mathcal{P}_{n}(\mathbf{C}) \rightarrow V
+\end{equation}
+<p>
+那么\(\varphi\)是一个线性映射，注意：\(\dim \mathcal{P}_{n}(\mathbf{C}) = n+1\)且\(\dim V = n\)所以\(\varphi\)不是单射，所以存在非零元素\(p\)使得\(p(T)v = 0\).
+</p>
+
+<p>
+剩下的和5.21的证明过程一样。
 </p>
 
 </div>
