@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>练习：本证空间</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./ladr-5b-eigen-space-exercise.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">练习：本证空间</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org904cc73">1. 5.C.1</a></li>
+<li><a href="#orgc51cb07">2. 5.C.3</a></li>
+<li><a href="#org0cb6d4b">3. 5.C.5</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org904cc73" class="outline-2">
+<h2 id="org904cc73"><span class="section-number-2">1</span> 5.C.1</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(V)\)可对角化，证明\(V = \mathrm{null}(T) \oplus \mathrm{range}(T) \)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+对于\(T\in \mathcal{L}(V)\)，假设\(\lambda_{1},\ldots ,\lambda_{m}\)是\(T\)的互异的本征值，则：
+</p>
+<ol class="org-ol">
+<li>\(T\)可对角化。</li>
+<li>\(V\)有由\(T\)的本证向量构成的基；</li>
+<li>\(V\)有在\(T\)下不变的一维子空间\(U_{1},\ldots ,U_{n}\)使得\(V= U_{1}\oplus + \ldots + U_{n}\)</li>
+<li>\(V = E(\lambda_{1},T) \oplus \ldots \oplus E(\lambda_{m},T)\)</li>
+<li>\(\dim V = \dim E(\lambda_{1},T) + \ldots + \dim E(\lambda_{m},T)\)</li>
+</ol>
+
+<p>
+对于这个题目我们可以把特征向量分为两类，一类特征向量是特征值\(0\)对应的特征向量，一类特征向量是非零特征值对应的特征向量。基本证明思路已经比较清晰了。接下类给出详细的证明过程。
+</p>
+
+<p>
+如果\(T\)是可逆的，那么\(\mathrm{null}T = \{0\}\)，\(\mathrm{range}T = V\)，此时\(T\)是单射也是满射，显然有\(V = \mathrm{null}T \oplus \mathrm{range}T\),证明完毕。
+</p>
+
+<p>
+如果\(T\)不是可逆的，假设\(0,\lambda_{1},\ldots ,\lambda_{m}\)是\(T\)的特征值。所以有：
+</p>
+\begin{equation}
+\label{eq:1}
+V = E(0,T) \oplus  E(\lambda_{1},T) \oplus \ldots \oplus E(\lambda_{m},T)
+\end{equation}
+<p>
+利用定义我们有\(E(0,T) = \mathrm{null}T\)。另外
+\[T(\frac{1}{\lambda_{j}}v_{j}) = v_{j}\]
+所以\(E(\lambda_{j},T)\subset \mathrm{range}T\)，因此
+\[E(\lambda_{1},T)\oplus \ldots \oplus E(\lambda_{m},T) \subset \mathrm{range}T\]
+另一方面，对于任何\(v\in V\)，可以写作：
+\[v= v_{0} + v_{1} + \ldots +v_{m}\]
+其中\(v_{0}\in E(0,T),v_{j}\in E(\lambda_{j},T)\)，因此：
+\[T(v) = T(v_{0}+ v_{1} + \ldots v_{m}) = \lambda_{1}v_{1} + \ldots  +\lambda_{m}v_{m} \in E(\lambda_{1},T) \oplus \ldots \oplus E(\lambda_{m},T)\]
+因此有：
+\[\mathrm{range}T = E(\lambda_{1},T) \oplus \ldots \oplus E(\lambda_{m},T) \]
+因此\(V = \mathrm{null}T \oplus \mathrm{range}T\)
+</p>
+
+<p>
+对于这个题目虽然我想到了最主要的思路。但是在执行细节上我没有按照定理来做，子集创造了很多结论。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgc51cb07" class="outline-2">
+<h2 id="orgc51cb07"><span class="section-number-2">2</span> 5.C.3</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维的且\(T\in \mathcal{L}(V)\)，证明下列命题等价
+</p>
+<ol class="org-ol">
+<li>\(V = \mathrm{null}T \oplus \mathrm{range}T\)</li>
+<li>\(V = \mathrm{null}T + \mathrm{range}T\)</li>
+<li>\(\mathrm{null}T \cap \mathrm{range}T = \{0\}\)</li>
+</ol>
+
+</div>
+
+<div class="answer">
+<p>
+证明从1到2是显然的。我们证明从2到3.
+</p>
+
+<p>
+因为
+\[V = \mathrm{null}T + \mathrm{range}T\]
+所以
+\[\dim V = \dim \mathrm{null}T + \dim \mathrm{range}T - \dim (\mathrm{null}T \cap + \mathrm{range}T)\]
+根据线性映射基本定理：
+\[\dim V = \dim \mathrm{null}T + \dim \mathrm{range}T\]
+所以我们有：
+\[0 = \dim (\mathrm{null}T \cap + \mathrm{range}T)\]
+因此
+\[ \{0\} = \mathrm{null}T \cap + \mathrm{range}T\]
+</p>
+
+<p>
+证明从3到1 ：
+因为
+\[\mathrm{null}T \cap \mathrm{range}T = \{0\}\]
+所以
+\[\dim V = \dim \mathrm{null}T + \dim \mathrm{range}T\]
+进而有：
+\[\dim V = \dim (\mathrm{null}T + \mathrm{range}T)\]
+因此\(\mathrm{null}T + \mathrm{range}T = V\)，又因为\(\mathrm{null}T \cap \mathrm{range}T = \{0\}\)，所以\(\mathrm{null}T \oplus \mathrm{range}T = V\)
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0cb6d4b" class="outline-2">
+<h2 id="org0cb6d4b"><span class="section-number-2">3</span> 5.C.5</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维的复向量空间且\(T\in \mathcal{L}(V)\)，证明：\(T\)可对角化当且仅当对每个\(\lambda \in \mathbf{C}\)有\(V = \mathrm{null}(T-\lambda I) \oplus \mathrm{range}(T-\lambda I)\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+首先假设\(T\)可以对角化，则
+</p>
+
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
