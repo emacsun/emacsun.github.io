@@ -1,0 +1,452 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>规范正交基</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./ladr-6b-orthonormal-bases.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">规范正交基</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org95ec0ce">1. 规范正交基</a></li>
+<li><a href="#org6da4c2f">2. 格拉姆-施密特过程</a></li>
+<li><a href="#org701a2c4">3. 内积空间上的线性泛函</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org95ec0ce" class="outline-2">
+<h2 id="org95ec0ce"><span class="section-number-2">1</span> 规范正交基</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<div class="definition">
+<p>
+如果一个向量组中每个向量的范数都是\(1\)且与其他向量正交，则称这个向量组是规范正交的。也就是说，\(V\)上的向量组\(e_{1},\ldots ,e_{n}\)是规范正交的，如果：
+</p>
+\begin{equation}
+\label{eq:1}
+\langle e_{j},e_{k} \rangle =
+\begin{cases}
+1 & j = k \\
+0 & j\neq k
+\end{cases}
+\end{equation}
+
+</div>
+<div class="instance">
+<ol class="org-ol">
+<li>\(\mathbf{F}^{n}\)的标准基是规范正交组</li>
+<li>\((\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}} ,\frac{1}{\sqrt{3}})\) \((-\frac{1}{\sqrt{2}},-\frac{1}{\sqrt{2}} ,0)\) 是\(\mathbf{F}^{3}\)的规范正交组</li>
+<li>\((\frac{1}{\sqrt{3}},\frac{1}{\sqrt{3}} ,\frac{1}{\sqrt{3}})\) \((-\frac{1}{\sqrt{2}},-\frac{1}{\sqrt{2}} ,0)\), \((\frac{1}{\sqrt{6}}, \frac{1}{\sqrt{6}}, -\frac{2}{\sqrt{6}}) \) 是\(\mathbf{F}^{3}\)的规范正交组.</li>
+</ol>
+
+</div>
+
+<p>
+规范正交线性组合的范数：
+</p>
+
+<p>
+若\(e_{1},\ldots ,e_{m}\)是\(V\)中的规范正交向量组，则对所有的\(a_{1},\ldots ,a_{m}\in \mathbf{F}\)均有：
+</p>
+\begin{equation}
+\label{eq:2}
+\| a_{1}e_{1} + \ldots + a_{m}e_{m} \|^{2} = |a_{1}|^{2} + \ldots + |a_{m}|^{2}
+\end{equation}
+
+<div class="theorem">
+<p>
+每个规范正交向量组都是线性无关的
+</p>
+
+</div>
+<div class="proof">
+<p>
+设\(e_{1},\ldots ,e_{m}\)是一组规范正交向量组，并设\(a_{1},\ldots ,a_{m}\in \mathbf{F}\)，使得：
+</p>
+\begin{equation}
+\label{eq:3}
+a_{1}e_{1} + \ldots a_{m}e_{m} = 0
+\end{equation}
+<p>
+所以有\(|a_{1}|^{2} + \ldots |a_{m}|^{2} = 0\)，所以\(a_{1} = \ldots = a_{m} = 0\)
+</p>
+
+</div>
+
+<div class="definition">
+<p>
+\(V\)的规范正交基是\(V\)中的规范正交向量组成的基。\(V\)中的每个长度为\(\dim V\)的规范正交向量组都是\(V\)的规范正交基。
+</p>
+
+</div>
+<p>
+一般的，给定\(V\)的规范正交基\(e_{1},\ldots ,e_{n}\)和向量\(v\in V\)，存在标量\(a_{1},\ldots ,a_{n}\)使得：
+\[v= a_{1}e_{1} + \ldots + a_{n}e_{n}\]
+</p>
+
+<p>
+我们可以把向量写成规范正交基的线性组合。设\(e_{1},\ldots ,e_{n}\)是\(V\)的规范正交基，且\(v\in V\)，则：
+</p>
+\begin{equation}
+\label{eq:4}
+v= \langle v,e_{1} \rangle e_{1} + \ldots \langle v,e_{n} \rangle e_{n}
+\end{equation}
+<p>
+且：
+</p>
+\begin{equation}
+\label{eq:5}
+\| v \|^{2} = | \langle v,e_{1} \rangle  |^{2} + \ldots + | \langle v,e_{n} \rangle  |^{2}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org6da4c2f" class="outline-2">
+<h2 id="org6da4c2f"><span class="section-number-2">2</span> 格拉姆-施密特过程</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+规范正交基有这么好的作用，那么如何找到这个规范正交基呢？格拉姆-施密特过程可以把一个线性无关组转化成与原来的组有相同张成空间的规范正交基。
+</p>
+
+<div class="theorem">
+<p>
+设\(v_{1},\ldots ,v_{m}\)是\(V\)的线性无关向量组。设\(e_{1} = \frac{v_{1}}{\| v_{1} \| }\)，对于\(j = 2,\ldots ,m\)定义\(e_{j}\)如下：
+</p>
+\begin{equation}
+\label{eq:6}
+e_{j} = \frac{v_{j} - \langle v_{j},e_{1} \rangle e_{1} - \ldots - \langle v_{j},e_{j-1} \rangle e_{j-1}   }{ \| v_{j} - \langle v_{j},e_{1} \rangle e_{1} - \ldots - \langle v_{j},e_{j-1} \rangle e_{j-1}  \| }
+\end{equation}
+<p>
+则\(e_{1},\ldots ,e_{m}\)是\(V\)中的规范正交组，使得对\(j=1,\ldots ,m\)都有：
+</p>
+\begin{equation}
+\label{eq:7}
+\mathrm{span}(v_{1},\ldots ,v_{j}) = \mathrm{span}(e_{1},\ldots ,e_{j})
+\end{equation}
+
+</div>
+
+<div class="proof">
+<p>
+我们将对\(j\)用归纳法来证明结论成立。首先\(j=1\)时，由\(v_{1}\)是\(e_{1}\)的正数倍所以\[ \mathrm{span} (v_{1}) = \mathrm{span}(e_{1})\]
+</p>
+
+<p>
+设\(1 < j < m\)并假设已经有：
+\[ \mathrm{span}(v_{1},\ldots ,v_{j-1})  = \mathrm{span}(e_{1},\ldots ,e_{j-1})\]
+注意\(v_{j}\notin \mathrm{span}(v_{1},\ldots ,v_{j-1})\)，因为\(v_{1},\ldots ,v_{m}\)是线性无关的。于是\(v_{j}\notin \mathrm{span}(e_{1},\ldots ,e_{j-1})\) 因此有\( \| e_{j} \| = 1 \)。
+</p>
+
+<p>
+设\(1 \leq k < j\)则：
+</p>
+\begin{eqnarray}
+\label{eq:9}
+\langle e_{j},e_{k} \rangle  &=&  \bigg \langle \frac{v_{j} - \langle v_{j},e_{1} \rangle e_{1} - \ldots - \langle v_{j},e_{j-1} \rangle e_{j-1}   }{ \| v_{j} - \langle v_{j},e_{1} \rangle e_{1} - \ldots - \langle v_{j},e_{j-1} \rangle e_{j-1} \|} ,e_{k} \bigg\rangle \\
+&=&\frac{ \langle v,e_{k} \rangle - \langle v,e_{k} \rangle   }{  \| v_{j} - \langle v_{j},e_{1} \rangle e_{1} - \ldots - \langle v_{j},e_{j-1} \rangle e_{j-1} \|} \\
+&=& 0
+\end{eqnarray}
+<p>
+因此\(e_{1},\ldots ,e_{j}\)是规范正交组。
+</p>
+
+</div>
+
+<div class="instance">
+<p>
+求\(\mathcal{P}_{2}(\mathbf{R})\)的一个规范正交基，这里的内积为\((p,q)= \int_{-1}^{1}p(x)q(x)dx\)
+我们知道\(\mathcal{P}_{2}(\mathbf{R})\)的一个基为\(1,x,x^{2}\)，现在对这个基执行格拉姆施密特过程。
+</p>
+
+<p>
+首先对于\(v_{1} = 1\)，我们有：
+</p>
+\begin{eqnarray}
+\label{eq:8}
+e_{1}&=& \frac{v_{1}}{ \| v_{1} \| } \\
+&=& \frac{1}{ \sqrt{\int_{-1}^{1} 1 dx }} \\
+&=& \frac{1}{\sqrt{2}}
+\end{eqnarray}
+
+<p>
+对于\(e_{2}\)，我们首先计算格拉姆施密特过程的分子部分：
+</p>
+\begin{eqnarray}
+\label{eq:10}
+v_{2} - \langle v_{2},e_{1} \rangle e_{1}  &=& x - \int_{-1}^{1} x\frac{1}{\sqrt{2}}dx \frac{1}{\sqrt{2}} \\
+&=& x
+\end{eqnarray}
+<p>
+然后计算分子部分：
+</p>
+\begin{eqnarray}
+\label{eq:11}
+\| v_{2} -  \langle v_{2},e_{1} \rangle e_{1}  \| &=& \sqrt{ \int_{-1}^{1} x^{2} dx  } \\
+&=& \sqrt{\frac{2}{3}}
+\end{eqnarray}
+<p>
+所以:
+</p>
+\begin{equation}
+\label{eq:12}
+e_{2} = \sqrt{ \frac{3}{2}} x
+\end{equation}
+<p>
+对于\(e_{3}\)，先求得分子部分：
+</p>
+\begin{eqnarray}
+\label{eq:13}
+x^{2} &-& \langle x^{2},e_{1} \rangle e_{1} - \langle x^{2},e_{2} \rangle e_{2}  \\
+&=& x^{2} - \int_{-1}^{1}x^{2}\sqrt{\frac{1}{2}}dx \frac{1}{\sqrt{2}} - \int_{1}^{1}x^{2}\sqrt{\frac{3}{2}}x dx \sqrt{\frac{3}{2}}x = x^{2} - \frac{1}{3}
+\end{eqnarray}
+<p>
+对于分母部分：
+</p>
+\begin{eqnarray}
+\label{eq:14}
+\| x^{2} - \frac{1}{3} \|^{2} &=& \int_{-1}^{{1}} (x^{2} - \frac{1}{3})^{2}dx \\
+&=& \frac{8}{45}
+\end{eqnarray}
+<p>
+所以\[\| x^{2} - \frac{1}{3} \|  = \sqrt{\frac{8}{45}}\]
+进而\(e_{3} = \sqrt{\frac{45}{8}} (x^{2} - \frac{1}{3})\)
+</p>
+
+</div>
+
+<div class="theorem">
+<p>
+每个有限维内积空间都有规范正交基
+</p>
+
+</div>
+
+<div class="proof">
+<p>
+设\(V\)是有限维的，取\(V\)的一个基，对他应用格拉姆施密特过程，则得到一个\(\dim V\)的规范正交组，这个规范正交组就是\(V\)的规范正交基。
+</p>
+
+</div>
+
+<p>
+不仅规范正交基是存在的，而且任何规范正交组都可以扩展为规范正交基。
+</p>
+<div class="theorem">
+<p>
+设\(T\in \mathcal{L}(V)\)，如果\(T\)关于\(V\)的某个基具有上三角矩阵，那么\(T\)关于\(V\)的某个规范正交基也具有上三角矩阵。
+</p>
+
+</div>
+
+<div class="proof">
+<p>
+设\(T\)关于\(V\)的基\(v_{1},\ldots ,v_{n}\)具有上三角矩阵，则对每个\(j = 1,\ldots ,n\)均有\(\mathrm{span}(v_{1},\ldots ,v_{n})\)
+</p>
+
+<p>
+对\(v_{1},\ldots ,v_{n}\)应用格拉姆施密特过程，得到\(V\)的规范正交基\(e_{1},\ldots ,e_{n}\)，因为对每个\(j\)都有：
+\[ \mathrm{span}(e_{1},\ldots ,e_{j} ) = \mathrm{span}(v_{1},\ldots ,v_{j}) \]
+所以对每个\(j=1,\ldots ,n\)均有\(\mathrm{span}(e_{1},\ldots ,e_{j})\)在\(T\)下不变。因此，\(T\)关于规范正交基\(e_{1},\ldots ,e_{n}\)有上三角矩阵。
+</p>
+
+</div>
+
+<div class="theorem">
+<p>
+<b>舒尔定理</b> 设\(V\)是有限维的复向量空间且\(T\in \mathcal{L}(V)\)，则\(T\)关于\(V\)的某个规范正交基具有上三角矩阵。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org701a2c4" class="outline-2">
+<h2 id="org701a2c4"><span class="section-number-2">3</span> 内积空间上的线性泛函</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<div class="definition">
+<p>
+\(V\)上的线性泛函是从\(V\)到\(\mathbf{F}\)的线性映射。也就是说，线性泛函是\(\mathcal{L}(V, \mathbf{F})\)中的元素。
+</p>
+
+</div>
+<div class="instance">
+<p>
+如下定义的函数\(\varphi : \mathbf{F}^{3} \rightarrow \mathbf{F}\)
+\[\varphi(z_{1},z_{2},z_{3}) = 2z_{1} - 5z_{2} + z_{3}\]是\(\mathbf{F}^{3}\)上的线性泛函。我们可以将这个线性泛函写成如下的形式：对每个\(z\in \mathbf{F}^{3}\) \[\varphi(z) = \langle z,u \rangle  \]
+其中\(u = (2,-5,1)\)
+</p>
+
+</div>
+<div class="instance">
+<p>
+如下定义的函数\(\varphi : \mathcal{P}_{2}(\mathbf{R}) \rightarrow \mathbf{R}\) \[ \varphi(p) = \int_{-1}^{1} p(t)\cos(\pi t)dt \]是\(\mathcal{P}_{2}(\mathbf{R})\)上的线性泛函。这里\(\mathcal{P}_{2}(\mathbf{R})\)上的内积是\([-1,1]\)上的两个函数相乘后做定积分。存在\(u\in \mathbf{P}_{2}(\mathbf{R})\)使得对任意\(p\in \mathcal{P}_{2}(\mathbf{R})\)均有：\[\varphi(p) = \langle p,u \rangle  \] 我们不能取\(u(t) = \cos(\pi t)\)，因为它不是\(\mathcal{P}_{2}(\mathbf{R})\)中的元素。
+</p>
+
+</div>
+
+<p>
+如果\(u\in V\)那么把\(v\)映射成\( \langle v,u \rangle  \)的映射是\(V\)上的线性泛函。下述定理表明，\(V\)上的每个线性泛函都是这种形式。
+</p>
+<div class="theorem">
+<p>
+<b>里斯表示定理</b> 设\(V\)是有限维的且\(\varphi\)是\(V\)上的线性泛函，则存在唯一的向量\(u\in V\)使得对每个\(v\in V\)均有\(\varphi(v)= \langle v,u \rangle  \)
+</p>
+
+</div>
+
+<div class="proof">
+<p>
+先证明存在向量\(u\in V\)使得对每个\(v\in U\)均有\(\varphi(v)= \langle v,u \rangle  \), 设\(e_{1},\ldots ,e_{n}\)是\(V\)的规范正交基，则对每个\(v\in V\)均有：
+</p>
+\begin{eqnarray}
+\label{eq:15}
+\varphi(v)&=& \varphi ( \langle v,e_{1} \rangle e_{1} + \ldots + \langle v,e_{n} \rangle e_{n}   ) \\
+&=& \langle v,e_{1} \rangle \varphi(e_{1}) + \ldots + \langle v,e_{n} \rangle \varphi(e_{n}) \\
+&=& \langle v, \overline{\varphi(e_{1})}e_{1} \rangle  + \ldots + \langle v,\overline{\varphi(e_{n})}e_{n} \rangle \\
+&=& \langle v, \overline{\varphi(e_{1})}e_{1} + \ldots + \overline{\varphi(e_{n})}e_{n} \rangle
+\end{eqnarray}
+<p>
+令\(u = \overline{\varphi(e_{1})}e_{1} + \ldots + \overline{\varphi(e_{n})}e_{n}\)，因此，有：
+\[\forall v\in V, \varphi(v) = \langle v,u \rangle  \]
+现在来证明只有一个向量\(u\in V\)满足条件。设\(u_{1},u_{2}\in V\)使得对每个\(v\in V\)均有：
+\[\varphi(v) = \langle v,u_{1} \rangle  = \langle v,u_{2} \rangle  \]
+则对每个\(v\in V\)均有：
+\[0 = \langle v,u_{1} \rangle - \langle v,u_{2} \rangle = \langle v,u_{1}-u_{2} \rangle   \]
+令\(v = u_{1} - u_{2}\)，则有\(u_{1} - u_{2} = 0\)，即\(u_{1} = u_{2}\)这就完成了唯一性证明。
+</p>
+
+</div>
+
+<div class="instance">
+<p>
+求\(u\in \mathcal{P}_{2}(\mathbf{R})\)使得对每个\(p\in \mathcal{P}_{2}(\mathbf{R})\)均有：
+\[\int_{-1}^{1} p(t)(\cos(\pi t)) dt = \int_{-1}^{1} p(t)u(t)dt\]
+<b>解</b> 设\(\varphi(p) = \int_{-1}^{1} p(t)\cos(\pi t)dt\)，则：
+</p>
+\begin{eqnarray}
+\label{eq:16}
+u(x)&=& \int_{-1}^{1} \frac{1}{\sqrt{2}} (\cos(\pi t))  dt \frac{1}{\sqrt{2}} \\
+&+&\int_{-1}^{1} \sqrt{\frac{3}{2}} t (\cos(\pi t))  dt \sqrt{\frac{3}{2}} x \\
+&+&\int_{-1}^{1} \sqrt{\frac{45}{8}} (t^{2} - \frac{1}{3}) (\cos(\pi t))  dt \sqrt{\frac{45}{8}} (x^{2} - \frac{1}{3})
+\end{eqnarray}
+<p>
+计算可得：
+\[u(x) = -\frac{45}{2\pi^{2}}(x^2 - \frac{1}{3})\]
+</p>
+
+</div>
+
+<p>
+设\(V\)是有限维的且\(\varphi\)是\(V\)上的线性泛函，则
+\[u = \overline{\varphi(e_{1})}e_{1} + \ldots + \overline{\varphi(e_{n})} e_{n}\]
+给出了对所有\(v\in V\)均有\(\varphi(v) = \langle v,u \rangle  \)。看起来右端依赖于规范正交基\(e_{1},\ldots ,e_{n}\)和\(\varphi\)，然而里斯表示定理告诉我们\(u\)是由\(\varphi\)唯一确定的。所以等式右端与\(V\)的规范正交基\(e_{1},\ldots ,e_{n}\)的选取无关。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
