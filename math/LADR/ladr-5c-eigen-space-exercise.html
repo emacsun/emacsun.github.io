@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -77,7 +77,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -86,16 +86,22 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org904cc73">1. 5.C.1</a></li>
-<li><a href="#orgc51cb07">2. 5.C.3</a></li>
-<li><a href="#org0cb6d4b">3. 5.C.5</a></li>
+<li><a href="#org305e93d">1. 5.C.1</a></li>
+<li><a href="#orge86da6a">2. 5.C.3</a></li>
+<li><a href="#org617f033">3. 5.C.5</a></li>
+<li><a href="#org1d9c908">4. 5.C.6</a></li>
+<li><a href="#org747dfd3">5. 5.C.8</a></li>
+<li><a href="#orgdbcf34b">6. 5.C.9</a></li>
+<li><a href="#org3bb9825">7. 5.C.12</a></li>
+<li><a href="#orgc38156f">8. 5.C.13</a></li>
+<li><a href="#org3d3db6a">9. 5.C.14</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-org904cc73" class="outline-2">
-<h2 id="org904cc73"><span class="section-number-2">1</span> 5.C.1</h2>
+<div id="outline-container-org305e93d" class="outline-2">
+<h2 id="org305e93d"><span class="section-number-2">1</span> 5.C.1</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -156,8 +162,8 @@ V = E(0,T) \oplus  E(\lambda_{1},T) \oplus \ldots \oplus E(\lambda_{m},T)
 </div>
 </div>
 </div>
-<div id="outline-container-orgc51cb07" class="outline-2">
-<h2 id="orgc51cb07"><span class="section-number-2">2</span> 5.C.3</h2>
+<div id="outline-container-orge86da6a" class="outline-2">
+<h2 id="orge86da6a"><span class="section-number-2">2</span> 5.C.3</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -208,8 +214,8 @@ V = E(0,T) \oplus  E(\lambda_{1},T) \oplus \ldots \oplus E(\lambda_{m},T)
 </div>
 </div>
 
-<div id="outline-container-org0cb6d4b" class="outline-2">
-<h2 id="org0cb6d4b"><span class="section-number-2">3</span> 5.C.5</h2>
+<div id="outline-container-org617f033" class="outline-2">
+<h2 id="org617f033"><span class="section-number-2">3</span> 5.C.5</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -224,10 +230,249 @@ V = E(0,T) \oplus  E(\lambda_{1},T) \oplus \ldots \oplus E(\lambda_{m},T)
 
 <div class="answer">
 <p>
-首先假设\(T\)可以对角化，则
+首先假设\(T\)可以对角化，则\(T-\lambda I\)也可以对角化，因此利用5.C.1的结论有：
+</p>
+\begin{equation}
+\label{eq:2}
+V= \mathrm{null}(T-\lambda I) \oplus \mathrm{range}(T-\lambda I)
+\end{equation}
+
+<p>
+然后我们证明另外一个方向，因为\(V\)是有限维的，所以\(T\)有有限个特征值。假设\(\lambda_{1},\ldots ,\lambda_{m}\)是\(T\)的不同的特征值，所以：
+</p>
+\begin{equation}
+\label{eq:3}
+T = \mathrm{null}(T-\lambda_{1} I) \oplus \mathrm{range}(T-\lambda_{1} I)
+\end{equation}
+<p>
+且有：\(\mathrm{null}(T-\lambda_{2}I) \subset \mathrm{range}(T-\lambda_{1} I)\)，我们有：
+</p>
+\begin{equation}
+\label{eq:4}
+\mathrm{range}(T-\lambda_{1}I) = \mathrm{null}(T-\lambda_{2} I)\oplus \mathrm{range}(T-\lambda_{1}I)\cap \mathrm{range}(T-\lambda_{2}I)
+\end{equation}
+<p>
+同样的我们有：
+</p>
+\begin{equation}
+\label{eq:5}
+\mathrm{null}(T-\lambda_{3}I)\subset \mathrm{range}(T-\lambda_{1}I)\cap \mathrm{range}(T-\lambda_{2}I)
+\end{equation}
+<p>
+进而有：
+</p>
+\begin{equation}
+\label{eq:6}
+V = null(T-\lambda_{1}I)\oplus \ldots \oplus \mathrm{null}(T-\lambda_{m}I) \oplus (\mathrm{range}(T-\lambda_{1}I) \cap \ldots \cap \mathrm{range}(T-\lambda_{m}I))
+\end{equation}
+<p>
+如果：\(\mathrm{range}(T-\lambda_{1}I) \cap \ldots \cap \mathrm{range}(T-\lambda_{m}I) = \{0\}\)，那么:
+</p>
+\begin{equation}
+\label{eq:7}
+V = null(T-\lambda_{1}I)\oplus \ldots \oplus \mathrm{null}(T-\lambda_{m}I)
+\end{equation}
+<p>
+所以\(T\)是可对角化的。
+如果\(\mathrm{range}(T-\lambda_{1}I) \cap \ldots \cap \mathrm{range}(T-\lambda_{m}I) \neq \{0\}\)，因为\((T-\lambda_{i}I)T = T(T-\lambda_{i}I)\)，所以我们有\(\mathrm{range}(T-\lambda_{i}I) \)在\(T\)下是不变的。\(.......\)接下来证明不下去了
 </p>
 
 </div>
+</div>
+</div>
+<div id="outline-container-org1d9c908" class="outline-2">
+<h2 id="org1d9c908"><span class="section-number-2">4</span> 5.C.6</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维的，\(T\in \mathcal{L}(V)\)有\(\dim V\)个互异的本征值，\(S\in \mathcal{L}(V)\)与\(T\)有相同的本证向量(未必相应于同一本征值)，证明\(TS = ST\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+因为\(T\)有\(\dim V\)个互异的本证值，则我们可以找出\(V\)的一个基\(v_{1},\ldots ,v_{\dim V}\)使其是\(T\)的对应于\(\dim V\)个互异的本征值的本证向量。
+</p>
+
+<p>
+因为\(S\in \mathcal{L}(V)\)和\(T\)有相同的本证向量，那么存在\(\lambda_{1},\ldots ,\lambda_{\dim V}\)和\(\theta_{1},\ldots ,\theta_{\dim V}\)使得：
+</p>
+\begin{equation}
+\label{eq:8}
+Tv_{i} = \lambda_{i}v_{i},\quad Sv_{i} = \theta_{i}v_{i}
+\end{equation}
+<p>
+所以我们有：
+</p>
+\begin{equation}
+\label{eq:9}
+STv_{i} = S(\lambda_{i}v_{i}) = \lambda_{i}Sv_{i} = \lambda_{i}\theta_{i} v_{i},i=1,\ldots ,\dim V
+\end{equation}
+\begin{equation}
+\label{eq:10}
+TSv_{i} = T(\theta_{i}v_{i}) = \theta_{i}Tv_{i} = \theta_{i}\lambda_{i}v_{i} ,i = 1,\ldots ,\dim V
+\end{equation}
+<p>
+所以\(STv_{i} = TSv_{i},i=1,\ldots ,\dim V\)，因为\(v_{1},\ldots ,\dim V\)是\(V\)的一个基。所以\(ST=TS\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org747dfd3" class="outline-2">
+<h2 id="org747dfd3"><span class="section-number-2">5</span> 5.C.8</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathbf{F}^{5}\)且\(\dim E(8,T) = 4\)。证明\(T-2\lambda\)或者\(T-6\lambda\)是可逆的。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+反证法。假设\(T-2\lambda\)和\(T-6\lambda\)是不可逆的，这意味着\(2\)和\(6\)是\(T\)的特征值，因此\(\dim E(2,T)\geq 1\)，且\(\dim E(6,T)\geq 1\)所以有：
+</p>
+\begin{equation}
+\label{eq:11}
+4 + 1 + 1 \leq \dim E(8,T) + \dim E(2,T) + \dim E(6,T) \leq \dim V = 5
+\end{equation}
+<p>
+矛盾。所以假设错误，所以有\(T-2\lambda\)或者\(T-6\lambda\)是可逆的。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgdbcf34b" class="outline-2">
+<h2 id="orgdbcf34b"><span class="section-number-2">6</span> 5.C.9</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(V)\)是可逆的。证明对每个非零的\(\lambda\)均有\(E(\lambda,T) = E(\frac{1}{\lambda},T^{-1})\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+\(\forall \lambda \in \mathbf{F},\lambda\neq 0\)，令\(v\in E(\lambda,T)\)，则\(Tv = \lambda v\),注意对于\(\lambda,\lambda\neq 0\)，有\(Tv = \lambda v\)。由于\(T\)可逆，所以\(\frac{1}{\lambda}v = T^{-1}v\)，因此\(v\in E( \frac{1}{\lambda},T^{-1})\)，因此\(E(\lambda,T)\subset E(\frac{1}{\lambda},T^{-1})\).
+</p>
+
+<p>
+同理，我们可以证明\(E(\frac{1}{\lambda},T^{-1}) \subset E(\lambda,T)\)。因此\(E(\lambda,T) = E(\frac{1}{\lambda},T^{-1})\).
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org3bb9825" class="outline-2">
+<h2 id="org3bb9825"><span class="section-number-2">7</span> 5.C.12</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(R,T\in \mathcal{L}( \mathbf{F}^{3} )\)，本征值均为\(2,6,7\)，证明存在可逆算子\(S\in \mathcal{L}( \mathbf{F}^{3} )\)使得\(R = S^{-1}TS\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+因为对于\(\mathcal{L}(\mathbf{F}^{3})\)中的线性算子\(T,R\)有本征值\(2,6,7\)，则说明\(T,R\)都是可对角化的。因此存在\(T\)的基\(e_{1},e_{2},e_{3}\)和\(R\)的基\(\xi_{1},\xi_{2},\xi_{3}\)使得:
+</p>
+\begin{eqnarray}
+\label{eq:12}
+& &Te_{1} = 2e_{1},Te_{2} = 6e_{2}, Te_{3} = 7e_{3} \\
+& &R\xi_{1} = 2\xi_{1},R\xi_{2} = 6\xi_{2}, R\xi_{3} = 7\xi_{3}
+\end{eqnarray}
+<p>
+定义\(S\in \mathcal{L}(\mathbf{F}^{3})\)：对\
+</p>
+\begin{equation}
+\label{eq:13}
+S\xi_{i} = e_{i},i = 1,2,3
+\end{equation}
+<p>
+所以\(\xi_{i} = S^{-1}e_{i},i=1,2,3\)。所以：
+</p>
+\begin{equation}
+\label{eq:14}
+S^{-1}TS\xi_{1} = S^{-1}Te_{1} =  S^{-1} 2 e_{1} = 2 \xi_{1} = R\xi_{1}
+\end{equation}
+<p>
+类似的，我们有\(S^{-1}TS \xi_{2} = R \xi_{2},S^{-1}TS\xi_{3} = R \xi_{3}\)。因为\(S^{-1}TS\)和\(S\)在基上的作用是相同的，所以\(S^{-1}TS = R\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgc38156f" class="outline-2">
+<h2 id="orgc38156f"><span class="section-number-2">8</span> 5.C.13</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+求\(R,T\in \mathcal{L}(\mathbf{F}^{4})\)使得\(R\)和\(T\)均有本征值\(2,6,7\)，均没有其他本征值，且不存在可逆算子\(S\in \mathcal{L}(\mathbf{F}^{4})\)使得\(R=S^{-1}TS\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+令\(e_{1},\ldots ,e_{4}\)是\(\mathbf{F}^{4}\)的一个基，定义\(R,T\in \mathcal{L}(\mathbf{F}^{4})\)：
+</p>
+\begin{equation}
+\label{eq:15}
+Re_{1} = 2e_{1},Re_{2} = 2e_{2},Re_{3} = 6e_{3},Re_{4} =7e_{4}
+\end{equation}
+\begin{equation}
+\label{eq:16}
+Te_{1} = 2e_{1}, Te_{2} = 2e_{2} + e_{1}, Te_{3} = 6e_{3},Te_{4} = 7e_{4}
+\end{equation}
+<p>
+那么\(R\)是可对角化的，\(T\)不是可对角化的。
+</p>
+
+<p>
+如果存在可逆映射\(S\in \mathcal{L}(\mathbf{F}^{4})\)，满足\(R= S^{-1}TS\)，\(SRS^{-1} = T\)，那么\(Se_{1},\ldots ,Se_{4}\)是\(\mathbf{F}^{4}\)的一个基。进而：
+</p>
+\begin{equation}
+\label{eq:17}
+T(Se_{1}) = SRS^{-1}(Se_{1}) = SRe_{1} = S(2e_{1}) = 2Se_{1}
+\end{equation}
+<p>
+同样：\(T(Se_{2}) = 2Se_{2},TSe_{3} = 6Se_{3},TSe_{4} = 7Se_{4}\)这意味着\(T\)是可对角化的，矛盾。因此不存在可逆的算子\(S\in \mathcal{L}(\mathbf{F}^{4})\)使得\(R = S^{-1}TS\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org3d3db6a" class="outline-2">
+<h2 id="org3d3db6a"><span class="section-number-2">9</span> 5.C.14</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+
+</p>
 </div>
 </div>
 </div>
