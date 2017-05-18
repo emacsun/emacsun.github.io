@@ -95,6 +95,8 @@ for the JavaScript code in this tag.
 <li><a href="#org3bb9825">7. 5.C.12</a></li>
 <li><a href="#orgc38156f">8. 5.C.13</a></li>
 <li><a href="#org3d3db6a">9. 5.C.14</a></li>
+<li><a href="#org3c21e53">10. 5.C.15</a></li>
+<li><a href="#org9c97371">11. 5.C.16</a></li>
 </ul>
 </div>
 </div>
@@ -473,6 +475,86 @@ T(Se_{1}) = SRS^{-1}(Se_{1}) = SRe_{1} = S(2e_{1}) = 2Se_{1}
 <p>
 
 </p>
+
+<div class="problem">
+<p>
+求\(T\in \mathcal{L}(\mathbf{C}^{3})\)使得\(6\)和\(7\)是\(T\)的本征值，且\(T\)关于\(\mathbf{C}^{3}\)的任意基的矩阵都不是对角矩阵。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+令\(T\in \mathcal{L}(\mathbf{C}^{3})\)，定义为：
+</p>
+\begin{equation}
+\label{eq:18}
+Te_{1} = 6e_{1}, Te_{2} = 6e_{2} + e_{1}, Te_{3} = 7e_{3}
+\end{equation}
+<p>
+其中\(e_{1},e_{2},e_{3}\)是\(\mathbf{C}^{3}\)的一个基。那么对于所有的非零\(\alpha\in \mathbf{C}^{3}\)，可以表示为\(\alpha = k_{1}e_{1} + k_{2}e_{2} + k_{3}e_{3}\)，如果存在\(\lambda\in \mathbf{C}\)满足：
+\[T\alpha = \lambda \alpha\]我们有：
+</p>
+\begin{equation}
+\label{eq:19}
+\lambda (k_{1}e_{1} + k_{2}e_{2} + k_{3}e_{3}) = T (k_{1}e_{1} + k_{2}e_{2} + k_{3}e_{3}) = (6k_{1} + k_{2})e_{1} + 6k_{2}e_{2} + 7k_{3}e_{3}
+\end{equation}
+<p>
+如果\(k_{3}\neq 0\)，那么有\(\lambda k_{3} = 7k_{3}\)，即\(\lambda = 7\)，如果\(k_{3} = 0\)，我们有：\[(6-\lambda)k_{2} = 0 \quad (6-\lambda)k_{1} = -k_{2}\]注意\(\alpha \neq 0\)，所以\(k_{1}\)或者\(k_{2}\)不是零。如果\(K_{2}\neq 0\)，则有\(\lambda = 6\)，如果\(k_{1} \neq 0\)则 \(\lambda = 6\)
+</p>
+
+<p>
+综上：\(T\)的所有特征值是\(6\)或者\(7\)。另外\(\dim E(6,T) = 1\)，\(\dim E(7,T) = 1\)，这意味着：
+\[2 = \dim E(6,T) + \dim E(7,T) < \dim \mathbf{C}^{3} = 3\]
+所以\(T\)不是可对角化的。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org3c21e53" class="outline-2">
+<h2 id="org3c21e53"><span class="section-number-2">10</span> 5.C.15</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(T\in \mathcal{L}(\mathbf{C}^{3})\)使得\(6\)和\(7\)是\(T\)的本征值，且\(T\)关于\(\mathbf{C}^{3}\)的任意基的矩阵都不是对角矩阵。证明存在\((x,y,z)\in \mathbf{C}^{3}\)使得\(T(x,y,z) = (17 + 8x, \sqrt{5} + 8y, 2\pi + 8z)\)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+\(8\)不是\(T\)的特征值，所以\(T-8I\)是满射。所以存在\((x,y,z)\)使得\((T-8I)(x,y,z) = (17,\sqrt{5}, 2\pi)\)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org9c97371" class="outline-2">
+<h2 id="org9c97371"><span class="section-number-2">11</span> 5.C.16</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+\(F_{1},F_{2},\ldots \)定义为：
+\[F_{1} = 1,F_{2} = 1,F_{n} = F_{n-1} + F_{n-2}, n\geq 3\]. 定义\(T\in \mathcal{L}(\mathbf{R}^{3})\)为\(T(x,y) = (y,x+y)\)
+</p>
+<ol class="org-ol">
+<li>证明对每个正整数\(n\)均有\(T^{n}(0,1) = (F_{n},F_{n+1})\)</li>
+<li>求\(T\)的本征值。</li>
+<li>求\(\mathbf{R}^{2}\)的一个由\(T\)的本证向量构成的基。</li>
+<li>利用3的结论计算\(T^{n}(0,1)\)，并证明对每个正整数\(n\)有\[F_{n} = \frac{1}{\sqrt{5}} \bigg[ (\frac{1+\sqrt{5}}{2})^{n} - (\frac{1-\sqrt{5}}{2})^{n}  \bigg]\]</li>
+<li>利用4的结论证明：对每个正整数\(n\)，\(F_{n}\)是最接近于\(\frac{1}{\sqrt{5}} (\frac{1+\sqrt{5}}{2})^{n}\)的整数</li>
+</ol>
+
+</div>
 </div>
 </div>
 </div>
