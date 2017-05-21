@@ -1,0 +1,429 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>曲线拟合之matlab实现</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./PRMLch1dot1-polynomial-curve-matlab.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">曲线拟合之matlab实现</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgfd028fa">1. 回忆</a>
+<ul>
+<li><a href="#org44b5cc3">1.1. 数学模型</a></li>
+<li><a href="#orge96a3d0">1.2. 正则化过程</a></li>
+</ul>
+</li>
+<li><a href="#orgae32e7c">2. matlab实现</a>
+<ul>
+<li><a href="#org4b5a219">2.1. 画出\(y = \sin (2\pi x)\)</a></li>
+<li><a href="#orgaf21170">2.2. 训练集合</a></li>
+<li><a href="#org89d6bdd">2.3. 曲线拟合</a></li>
+<li><a href="#orgc9c42bd">2.4. 正则化</a></li>
+</ul>
+</li>
+<li><a href="#orgbac21ff">3. 下载完整的代码</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgfd028fa" class="outline-2">
+<h2 id="orgfd028fa"><span class="section-number-2">1</span> 回忆</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+在
+</p>
+<ol class="org-ol">
+<li><a href="./PRMLch1dot1-polynomial-curve.html">多项式拟合到模式识别的相关概念</a></li>
+<li><a href="./PRMLch1dot1-polynomial-curve-appendix.html">曲线拟合过程中的欠定过定问题</a></li>
+<li><a href="./PRMLch1dot1-polynomial-curve-probability-revist.html">曲线拟合之概率回访</a></li>
+</ol>
+
+<p>
+中我们介绍了多项式曲线拟合问题并从多方面对其进行了分析，顺便引入了机器学习领域的一些关键术语。今天我们针对多项式曲线拟合问题做一些matlab试验。
+</p>
+</div>
+<div id="outline-container-org44b5cc3" class="outline-3">
+<h3 id="org44b5cc3"><span class="section-number-3">1.1</span> 数学模型</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+
+</p>
+
+<p>
+目标模型：
+</p>
+\begin{equation}
+\label{eq:2}
+y(x, \mathbf{w}) = w_{0} + w_{1}x + \ldots + w_{M}x^{M} = \sum_{j=0}^{M}w_{j}x^{j}
+\end{equation}
+<p>
+均方误差函数：
+</p>
+\begin{equation}
+\label{eq:3}
+E( \mathbf{w}) = \frac{1}{2} \sum_{n=1}^{N}\{y(x_{n}, \mathbf{w}) - t_{n}\}^{2}
+\end{equation}
+<p>
+针对目标模型和均方误差函数的解\(\mathbf{w} = \{w_{j}\} \)是一般线性方程：
+</p>
+\begin{equation}
+\label{eq:4}
+\sum_{j=0}^{M}A_{ij}w_{j} = T_{i}, i = 0,\ldots ,M
+\end{equation}
+<p>
+的解。其中\(A_{ij} = \sum_{n=1}^{N}(x_{n})^{i+j}\)，\(T_{i} = \sum_{n=1}^{N}(x_{n})^{i}t_{n}\) 关于这个结论的证明过程详见 <a href="./PRMLch1dot1-polynomial-curve-appendix.html">曲线拟合过程中的欠定过定问题</a> 。
+</p>
+
+<p>
+式 (\ref{eq:4}) 可以写成矩阵的形式，如下：
+</p>
+
+\begin{equation}
+\label{eq:1}
+\begin{bmatrix}
+A_{00} & \ldots & A_{0M}\\
+\vdots & \ddots & \vdots \\
+A_{M0} & \ldots & A_{MM}
+\end{bmatrix}
+\begin{bmatrix}
+w_{0} \\ \vdots \\ w_{M}
+\end{bmatrix}
+=
+\begin{bmatrix}
+T_{0} \\ \vdots \\ T_{M}
+\end{bmatrix}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-orge96a3d0" class="outline-3">
+<h3 id="orge96a3d0"><span class="section-number-3">1.2</span> 正则化过程</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+
+</p>
+
+<p>
+针对误差函数 (\ref{eq:3})出现高阶模型的过拟合问题，对(\ref{eq:3}) 添加一个正则项会产生比较好的效果，如：
+</p>
+\begin{equation}
+\label{eq:5}
+E( \mathbf{w}) = \frac{1}{2} \sum_{n=1}^{N}\{y(x_{n}, \mathbf{w}) - t_{n}\}^{2} + \frac{\lambda}{2} \| \mathbf{w} \|^{2}
+\end{equation}
+<p>
+其中\( \| \mathbf{w} \|^{2} = w_{0}^{2} +　\ldots w_{M}^{2} \) ，稍后我们会看到这种正则化方法对于克服过拟合问题非常有效。针对式 (\ref{eq:5}) 和式 (\ref{eq:2}) 的解可以写成如下形式的解：
+</p>
+\begin{equation}
+\label{eq:7}
+\sum_{j=0}^{M}(A_{ij} + \lambda \delta_{ij})w_{j} = T_{i}, i = 0,\ldots ,M
+\end{equation}
+<p>
+其中：
+</p>
+\begin{equation}
+\label{eq:8}
+\delta_{ij} =
+\begin{cases}
+1 & i = j \\
+0 & i\neq j
+\end{cases}
+\end{equation}
+<p>
+矩阵形式就是：
+</p>
+\begin{equation}
+\label{eq:6}
+\begin{bmatrix}
+A_{00} - \lambda  & \ldots & A_{0M}\\
+\vdots & \ddots & \vdots \\
+A_{M0} & \ldots & A_{MM} - \lambda
+\end{bmatrix}
+\begin{bmatrix}
+w_{0} \\ \vdots \\ w_{M}
+\end{bmatrix}
+=
+\begin{bmatrix}
+T_{0} \\ \vdots \\ T_{M}
+\end{bmatrix}
+\end{equation}
+<p>
+式~(\ref{eq:6})和式 (\ref{eq:1}) 的区别在于，矩阵\(A\)的对角线上有一个\(\lambda\)的修正（或者叫做惩罚）。这样做的好处是求得的系数\(\mathbf{w}\)不会太大。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgae32e7c" class="outline-2">
+<h2 id="orgae32e7c"><span class="section-number-2">2</span> matlab实现</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+</div>
+<div id="outline-container-org4b5a219" class="outline-3">
+<h3 id="org4b5a219"><span class="section-number-3">2.1</span> 画出\(y = \sin (2\pi x)\)</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+  <span class="timestamp-wrapper"><span class="timestamp">[2017-05-21 Sun 15:55]</span></span>
+首先我们画出\(y = \sin (2\pi x)\)，这个函数的图像:
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab"><span class="linenr">1: </span>x = 0<span style="color: #b58900;">:</span>0.01<span style="color: #b58900;">:</span>1;<span style="color: #586e75;">%x</span>
+<span class="linenr">2: </span>y = sin(2<span style="color: #b58900;">*</span> <span style="color: #268bd2; font-weight: bold;">pi</span> <span style="color: #b58900;">*</span> x);
+<span class="linenr">3: </span><span style="color: #b58900;">figure</span>
+<span class="linenr">4: </span>plot(x,y,<span style="color: #2aa198;">'-r'</span>,<span style="color: #2aa198;">'linewidth'</span>,2),hold on;
+</pre>
+</div>
+<p>
+结果如图<a href="#orge04cabf">1</a> 所示：
+</p>
+
+<div id="orge04cabf" class="figure">
+<p><img src="../../img/computer_prml/20170521figure1.png" alt="20170521figure1.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 1:</span> \(y = \sin(2*\pi x) \)</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgaf21170" class="outline-3">
+<h3 id="orgaf21170"><span class="section-number-3">2.2</span> 训练集合</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+   <span class="timestamp-wrapper"><span class="timestamp">[2017-05-21 Sun 15:55]</span></span>
+然后给出一个训练集合，并画出这个集合的图像：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab"><span class="linenr">1: </span>numTraining = 100;
+<span class="linenr">2: </span>xTraining = rand(1,numTraining);
+<span class="linenr">3: </span>noiseVariance = 0.5;
+<span class="linenr">4: </span>noise = noiseVariance <span style="color: #b58900;">*</span>randn(1,numTraining);
+<span class="linenr">5: </span>yTraining = sin(2<span style="color: #b58900;">*</span><span style="color: #268bd2; font-weight: bold;">pi</span><span style="color: #b58900;">*</span>xTraining) <span style="color: #b58900;">+</span> noise;
+<span class="linenr">6: </span>plot(xTraining,yTraining,<span style="color: #2aa198;">'b+'</span>,<span style="color: #2aa198;">'linewidth'</span>,2),hold on;
+</pre>
+</div>
+<p>
+和\(y = \sin(2\pi x)\)画在一张图上，如图所示：
+</p>
+
+<div id="org5594977" class="figure">
+<p><img src="../../img/computer_prml/20170521figure2.png" alt="20170521figure2.png" width="600" align="center" />
+</p>
+<p><span class="figure-number">图 2:</span> 训练集合</p>
+</div>
+
+<p>
+注意这里有两个地方可以做调整：1. 训练结合的数量 <code>numTraining</code> ；2. 噪声的方差 <code>noiseVariance</code> .不同的训练集合大小和方差会影响最终的训练效果。当然总体结论是：训练集合越大，方差越小，训练效果越好。
+</p>
+</div>
+</div>
+<div id="outline-container-org89d6bdd" class="outline-3">
+<h3 id="org89d6bdd"><span class="section-number-3">2.3</span> 曲线拟合</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+
+</p>
+
+<p>
+曲线拟合的过程就是计算\(\mathbf{w}\)的过程，首先我们观察式~(\ref{eq:4}) 的结果。我们把计算\(Ax=B\)的过程分为三步：
+</p>
+<ol class="org-ol">
+<li><code>getA</code></li>
+<li><code>getB</code></li>
+<li><code>A\B</code></li>
+</ol>
+<p>
+这三步的代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab"><span class="linenr">1: </span><span style="color: #586e75; font-weight: bold; text-decoration: overline;">%%find the A and B for </span><span style="color: #586e75; font-weight: bold; text-decoration: overline;">Ax</span><span style="color: #586e75; font-weight: bold; text-decoration: overline;"> = </span><span style="color: #586e75; font-weight: bold; text-decoration: overline;">B</span>
+<span class="linenr">2: </span>A = getA(<span style="color: #268bd2;">xTraining</span>,modelOrder);
+<span class="linenr">3: </span>B = getB(<span style="color: #268bd2;">xTraining</span>,yTraining,modelOrder);
+<span class="linenr">4: </span>w = A<span style="color: #b58900;">\</span>B';
+<span class="linenr">5: </span><span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">1:length(x)</span>
+<span class="linenr">6: </span>yEstimation(<span style="color: #268bd2; font-weight: bold;">i</span>) = x(<span style="color: #268bd2; font-weight: bold;">i</span>)<span style="color: #b58900;">.^</span>(0<span style="color: #b58900;">:</span>modelOrder ) <span style="color: #b58900;">*</span> w  ;
+<span class="linenr">7: </span><span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<p>
+先是 <code>getA</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab"><span class="linenr">1: </span><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">A</span> = <span style="color: #268bd2;">getA</span>(<span style="color: #268bd2;">xTraining</span>,<span style="color: #268bd2;">modelOrder</span>)
+<span class="linenr">2: </span>    <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">1:modelOrder + 1</span>
+<span class="linenr">3: </span>        <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">j</span> = <span style="color: #268bd2; font-weight: bold;">1:modelOrder + 1</span>
+<span class="linenr">4: </span>            A(<span style="color: #268bd2; font-weight: bold;">i</span>,<span style="color: #268bd2; font-weight: bold;">j</span>) = sum(xTraining<span style="color: #b58900;">.^</span>(<span style="color: #268bd2; font-weight: bold;">i</span><span style="color: #b58900;">+</span><span style="color: #268bd2; font-weight: bold;">j</span> <span style="color: #b58900;">-</span> 2));
+<span class="linenr">5: </span>        <span style="color: #859900; font-weight: bold;">end</span>
+<span class="linenr">6: </span>    <span style="color: #859900; font-weight: bold;">end</span>
+<span class="linenr">7: </span><span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+<p>
+然后 <code>getB</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab"><span class="linenr">1: </span><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">B</span> = <span style="color: #268bd2;">getB</span>(<span style="color: #268bd2;">xTraining</span>,<span style="color: #268bd2;">yTraining</span>,<span style="color: #268bd2;">modelOrder</span>)
+<span class="linenr">2: </span>   <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">1:modelOrder + 1</span>
+<span class="linenr">3: </span>       B(<span style="color: #268bd2; font-weight: bold;">i</span>) = sum(yTraining <span style="color: #b58900;">.*</span> xTraining<span style="color: #b58900;">.^</span>(<span style="color: #268bd2; font-weight: bold;">i</span><span style="color: #b58900;">-</span>1));
+<span class="linenr">4: </span>   <span style="color: #859900; font-weight: bold;">end</span>
+<span class="linenr">5: </span><span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<p>
+我们给出 训练集合大小为20，模型阶数为9的训练结果：
+</p>
+
+<div id="orgdfb90ae" class="figure">
+<p><img src="../../img/computer_prml/20170521figure3.png" alt="20170521figure3.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 3:</span> 训练集合大小为20，模型阶数为9的训练结果</p>
+</div>
+
+<p>
+图中绿色曲线就是训练结果，可以看出来这个结果显然是过拟合了。我们给出来训练集合大小为20，模型结束为5的训练结果：
+</p>
+
+<div id="org29debc7" class="figure">
+<p><img src="../../img/computer_prml/20170521figure4.png" alt="20170521figure4.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 4:</span> 训练集合大小为20，模型阶数为5的训练结果</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc9c42bd" class="outline-3">
+<h3 id="orgc9c42bd"><span class="section-number-3">2.4</span> 正则化</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+
+</p>
+
+<p>
+按照式 (\ref{eq:7}) 所给结果，设置\(\lambda = 0.001\)，设置模型阶数为9，训练集合大小为20，训练结果：
+</p>
+
+<div id="org7c6ef6f" class="figure">
+<p><img src="../../img/computer_prml/20170521figure5.png" alt="20170521figure5.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 5:</span> 训练集合大小为20，模型阶数为9的训练结果,\(\lambda = 0.001\)</p>
+</div>
+
+<p>
+从图<a href="#org7c6ef6f">5</a> 和 <a href="#orgdfb90ae">3</a> 可以看到，正则化有效的遏制了拟合结果波动过大的情况。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbac21ff" class="outline-2">
+<h2 id="orgbac21ff"><span class="section-number-2">3</span> 下载完整的代码</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+<a href="curve_fitting.m">下载完整的代码</a>。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
