@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>机器学习中常用的概率分布</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./MLAPPch2dot3-some-probability-distributions.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">机器学习中常用的概率分布</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd803875">1. 二项分布</a></li>
+<li><a href="#org7299f06">2. 多项分布</a></li>
+<li><a href="#org4cd23d3">3. 泊松分布</a></li>
+<li><a href="#orgf8bfc1b">4. 经验分布</a></li>
+<li><a href="#org9a74a05">5. 高斯分布</a>
+<ul>
+<li><a href="#org76de027">5.1. 高斯分布的退化</a></li>
+</ul>
+</li>
+<li><a href="#orgd785cc9">6. 学生分布</a></li>
+</ul>
+</div>
+</div>
+<p>
+本文蜻蜓点水般的过一下机器学习中用到的概率分布。这些分布不仅在机器学习中有广泛使用，而且在各个领域都有用到。
+</p>
+
+<div id="outline-container-orgd803875" class="outline-2">
+<h2 id="orgd803875"><span class="section-number-2">1</span> 二项分布</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+二项分布也称伯努利分布。假设我们丢均匀硬币\(n\)次，令随机变量\(X\)表示出现正面的次数，则\(X\)服从二项分布，记为\(X\sim \mathrm{Bin}(n,\theta)\),概率密度函数是：
+</p>
+\begin{equation}
+\label{eq:1}
+\mathrm{Bin}(k|n,\theta) \triangleq \binom{n}{k}\theta^{k}(1-\theta)^{n-k}
+\end{equation}
+<p>
+其中：
+</p>
+\begin{equation}
+\label{eq:2}
+\binom{n}{k} = \frac{n!}{(n-k)!k!}
+\end{equation}
+<p>
+是二项式系数，表示从\(n\)个元素中选出\(k\)个的组合数。二项分布的均值为\(\theta\)，方差为\(n\theta (1-\theta)\).
+</p>
+\begin{equation}
+\label{eq:3}
+\mathrm{mean} = \theta,\quad \mathrm{var} = n\theta(1-\theta)
+\end{equation}
+</div>
+</div>
+<div id="outline-container-org7299f06" class="outline-2">
+<h2 id="org7299f06"><span class="section-number-2">2</span> 多项分布</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+二项分布用于建模丢硬币这样的结果有两种可能的事件，对于结果有\(K\)中可能的事件，我们用多项式分布建模。假设\(\mathbf{x} = (x_{1},\ldots ,x_{K})\)是一个随机矢量，\(x_{j}\)表示第\(j\)个可能出现的次数，我们有\(\sum_{i=1}^{K}x_{i} = n \)，则\(\mathbf{x}\)具有的分布是:
+</p>
+\begin{equation}
+\label{eq:4}
+\mathrm{Mu}(\mathbf{x}| n, \mathbf{\theta}) = \binom{n}{x_{1},\ldots ,x_{k}}\prod_{j=1}^{K}\theta_{j}^{x_{j}}
+\end{equation}
+<p>
+\(\theta_{j}\)代表第\(j\)个可能出现的概率，
+</p>
+\begin{equation}
+\label{eq:5}
+\binom{n}{x_{1},\ldots ,x_{K}} = \frac{n!}{x_{1}!x_{2}!\ldots x_{K}!}
+\end{equation}
+<p>
+是多项式系数。这个多项式系数是把\(n=\sum_{k=1}^{K}x_{k} \)分成\(x_{1},\ldots ,x_{K}\)的所有可能的分法。关于多项式系数更有意思的结论可以参见 <a href="file:///c:/Users/cliyh/AppData/Roaming/zorg/output/math/probability/afcp-01dot5-multinomial-coefficients.html">这篇博文</a>。
+</p>
+</div>
+</div>
+<div id="outline-container-org4cd23d3" class="outline-2">
+<h2 id="org4cd23d3"><span class="section-number-2">3</span> 泊松分布</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+随机变量\(X\)服从泊松分布，则其概率密度分布可以表示为：
+</p>
+\begin{equation}
+\label{eq:6}
+\mathrm{Poi}(x|\lambda) = e^{-\lambda} \frac{\lambda^{x}}{x!}
+\end{equation}
+<p>
+其中\(e^{-\lambda}\)是归一化敞亮，用于保证分布的和是1.
+</p>
+
+<p>
+泊松分布经常用于对较少发生的事情建模，比如一碗食堂免费汤里的蛋花。
+</p>
+</div>
+</div>
+<div id="outline-container-orgf8bfc1b" class="outline-2">
+<h2 id="orgf8bfc1b"><span class="section-number-2">4</span> 经验分布</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+给定一个数据集\(\mathcal{D} = \{x_{1},\ldots ,x_{N}\}\)，我们定义一个经验分布（也叫经验度量），
+</p>
+\begin{equation}
+\label{eq:7}
+P_{\mathrm{emp}}(A) = \frac{1}{N} \sum_{i=1}^{N}\delta_{x_{i}} (A)
+\end{equation}
+<p>
+其中\(\delta_{x}(A)\)是狄拉克度量，
+</p>
+\begin{equation}
+\label{eq:8}
+\delta_{x}(A) =
+\begin{cases}
+0 & x\notin A \\
+1 & x\in A
+\end{cases}
+\end{equation}
+<p>
+通常意义上我们为每一个样本分配一个权重：
+</p>
+\begin{equation}
+\label{eq:9}
+p(x) = \sum_{i=1}^{N}w_{i}\delta_{x_{i}}(x)
+\end{equation}
+<p>
+其中\(w_{i}\)是权重，满足\(0\leq w_{i} \leq 1\)，且\(\sum_{i=1}^{N}w_{i} = 1\)。我们可以把这个想象成一个直方图，在每一个\(x_{i}\)处都有一个高为\(w_{i}\)的直方柱。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9a74a05" class="outline-2">
+<h2 id="org9a74a05"><span class="section-number-2">5</span> 高斯分布</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+高斯分布是机器学习和统计学中使用最广泛的分布，关于高斯分布的八卦<a href="file:///c:/Users/cliyh/AppData/Roaming/zorg/output/math/probability/afcp-normal-distribution-history.html">见我的这篇博文</a> 。其密度函数是：
+</p>
+\begin{equation}
+\label{eq:10}
+\mathcal{N}(x|\mu,\sigma^{2}) = \frac{1}{\sqrt{2\pi \sigma^{2}}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}
+\end{equation}
+<p>
+这里\(\mu = \mathbb{E}(X)\)是均值，\(\sigma^{2}\)是方差。\(\sqrt{2\pi\sigma^{2}}\)是归一化因子，用来保证密度函数积分为1.
+</p>
+
+<p>
+我们用\(X\sim \mathcal{N}(\mu,\sigma^{2})\)来表示\(X\)服从高斯分布，其密度函数为\(p(x|\mu,\sigma^{2})\)，如果\(X\sim \mathcal{N}(0,1)\)，我们说\(X\)服从正态分布。通常，我们用方差的导数表示高斯分布的精度\(\lambda = 1/\sigma^{2}\)，一个高精度的高斯密度函数指的是一个方差较小的高斯函数。这一意味着，随机变量的值大都集中于均值\(\mu\)周围。考虑在\(x=\mu\)出的概率，其值为\(\mathcal{N}(\mu|\mu,\sigma^{2}) = \frac{1}{2\pi \sigma^{2}}\)，所以如果\(\sigma < \sqrt{2\pi}\)，我们有\(p(x) > 1\)，即出现了概率大于1的现象。
+</p>
+
+<p>
+高斯函数的累积分布函数(CDF)定义为：
+</p>
+\begin{equation}
+\label{eq:11}
+\Phi(x;\mu,\sigma^{2})= \int_{-\infty}^{x} \mathcal{N}(z|\mu,\sigma^{2}) \mathrm{d}z
+\end{equation}
+<p>
+这个CDF没有闭式解析解，但是很多软件包都可以用来结算该CDF。
+</p>
+
+<p>
+高斯函数之所以在统计学中有广泛应用，基于以下原因：
+</p>
+<ol class="org-ol">
+<li>高斯分布只用两个参数就可以解释：均值和方差。</li>
+<li>中心极限定理告诉我们：独立随机变量的和近似于高斯分布。所以我们用高斯变量来建模噪声。</li>
+<li>使用高斯分布用最少的假设条件就可以构建满足某种均值和方差的分布。</li>
+<li>高斯分布的数学形式简单，易于实现。</li>
+</ol>
+</div>
+
+<div id="outline-container-org76de027" class="outline-3">
+<h3 id="org76de027"><span class="section-number-3">5.1</span> 高斯分布的退化</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+当我们令式~(\ref{eq:10})中的\(\sigma^{2}\)趋近零的时候，高斯分布的精度会越来越高，意味着高斯分布越来越窄，窄到只在\(x=\mu\)处有值：
+</p>
+\begin{equation}
+\label{eq:12}
+\lim_{\sigma^{2}\to 0} \mathcal{N}(x|\mu,\sigma^{2}) = \delta(x-\mu)
+\end{equation}
+<p>
+其中\(\delta(x)\)是狄拉克函数：
+</p>
+\begin{equation}
+\label{eq:13}
+\delta(x) =
+\begin{cases}
+1 & x = 0 \\
+0 & x\neq 0
+\end{cases}
+\end{equation}
+<p>
+且有：
+</p>
+\begin{equation}
+\label{eq:14}
+\int_{-\infty}^{\infty} \delta(x) \mathrm{d}x = 1
+\end{equation}
+<p>
+这个狄拉克函数的最大作用是采样，可以用这个函数从一个和中选出一项，比如：
+</p>
+\begin{equation}
+\label{eq:15}
+\int_{-\infty}^{\infty}f(x)\delta(x-\mu)dx = f(\mu)
+\end{equation}
+<p>
+高斯函数的一个缺点是对异类(outlier)特别敏感（记不记得格拉德维尔有本书中文名是《异类》，其英文名就是outlier，这本书还不错，推荐阅读。格拉德维尔所著的书中我觉得只读一本的话读这本就可以了，只可惜我都读了才明白，花费了不少宝贵时间）。好吧，回到高斯函数对异类敏感，这是因为高斯函数取\(\log\)之后只随着\((x-\mu)\)的平方衰减，\(x-\mu\)是\(x\)到高斯函数中心的距离。一个更鲁棒的分布是学生分布。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd785cc9" class="outline-2">
+<h2 id="orgd785cc9"><span class="section-number-2">6</span> 学生分布</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<p>
+学生分布密度函数：
+</p>
+\begin{equation}
+\label{eq:16}
+\mathcal{T}(x|\mu,\sigma^{2},\nu) \propto \bigg[ 1 + \frac{1}{\nu}\big(\frac{x-\mu}{\sigma}\big)^{2} \bigg]^{-\frac{\nu + 1}{2}}
+\end{equation}
+<p>
+其中\(\mu\)是均值，\(\sigma^{2} > 0\)是缩放因子，\(\nu > 0\)是自由度。稍后我们会发现学生分布的方差是\(\frac{\nu\sigma^{2}}{\nu-2}\)。
+</p>
+
+<div id="org161924c" class="figure">
+<p><img src="../../img/computer_mlapp/20170524mlappfigure2dot7.png" alt="20170524mlappfigure2dot7.png" width="600" align="center" />
+</p>
+<p><span class="figure-number">图 1:</span> 高斯函数对异类敏感，学生分布更鲁棒</p>
+</div>
+
+<p>
+我们从图<a href="#org161924c">1</a> 可以看出高斯分布对异类更敏感，而学生分布则要稳定的多。对于学生分布\(\nu=1\)时，我们也称其为柯西分布或者洛伦兹分布。这个分布的尾巴很重以至于求均值计算积分的时候根本不收敛。
+</p>
+
+<p>
+为了保证方差有限，我们要求\(\nu > 2\). \(\nu = 4\)是比较常见的一个参数。当\(\nu \ggg 5 \)的时候，学生分布近似于高斯分布，逐渐失去其鲁棒性。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
