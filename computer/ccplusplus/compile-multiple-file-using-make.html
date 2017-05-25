@@ -67,6 +67,7 @@ for the JavaScript code in this tag.
 <li><a href="#org82e5850">1. 引言</a></li>
 <li><a href="#org44eec38">2. 九个文件的工程</a></li>
 <li><a href="#orgf540e21">3. make</a></li>
+<li><a href="#org1d9d416">4. 静态链接库</a></li>
 </ul>
 </div>
 </div>
@@ -157,7 +158,37 @@ gcc main.c sum.c substract.c multiply.c divide.c -o main
 </p>
 
 <p>
-我的make是跟着陈皓学的（陈皓是著名文档《跟我一起写Makefile》的作者。对于任何严肃的make学习者，这个文档都是极佳的入门资料。）
+我的make是跟着陈皓学的（陈皓是著名文档《跟我一起写Makefile》的作者。对于每个严肃的make学习者，这个文档都是极佳的入门资料。）
+</p>
+
+<p>
+这个工程的makefile可以写为：
+</p>
+<div class="org-src-container">
+<pre class="src src-makefile"><span style="color: #268bd2;">main</span>: main.o sum.o substract.o multiply.o divide.o
+  gcc main.o sum.o substract.o multiply.o divide.o -o main
+<span style="color: #268bd2;">main.o</span>: main.c
+  gcc -c main.c
+<span style="color: #268bd2;">sum.o</span>: sum.c
+  gcc -c sum.c
+<span style="color: #268bd2;">substract.o</span>:substract.c
+  gcc -c substract.c
+<span style="color: #268bd2;">multiply.o</span>: multiply.c
+  gcc -c multiply.c
+<span style="color: #268bd2;">divide.o</span>: divide.c
+  gcc -c divide.c
+</pre>
+</div>
+<p>
+make有很多特殊的变量，使用这些变量可以编写更加简洁的makefile。但是这些变量的使用，会使得不太熟悉makefile的人读起来费劲。对于只有九个文件的小工程，我倾向于使用这种最原始直观的makefile。即使这种最原始的makefile也极大的降低了编译工作量。
+</p>
+</div>
+</div>
+<div id="outline-container-org1d9d416" class="outline-2">
+<h2 id="org1d9d416"><span class="section-number-2">4</span> 静态链接库</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
 </p>
 </div>
 </div>
