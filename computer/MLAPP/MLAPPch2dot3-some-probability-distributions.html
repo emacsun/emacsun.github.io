@@ -96,6 +96,10 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#orgd785cc9">6. 学生分布</a></li>
+<li><a href="#orgd4bcf7c">7. 拉普拉斯分布</a></li>
+<li><a href="#orgdf94e63">8. 伽马分布</a></li>
+<li><a href="#org1ce2e00">9. 贝塔分布</a></li>
+<li><a href="#orgbbbd505">10. Pareto分布</a></li>
 </ul>
 </div>
 </div>
@@ -335,6 +339,105 @@ p(x) = \sum_{i=1}^{N}w_{i}\delta_{x_{i}}(x)
 
 <p>
 为了保证方差有限，我们要求\(\nu > 2\). \(\nu = 4\)是比较常见的一个参数。当\(\nu \ggg 5 \)的时候，学生分布近似于高斯分布，逐渐失去其鲁棒性。
+</p>
+</div>
+</div>
+<div id="outline-container-orgd4bcf7c" class="outline-2">
+<h2 id="orgd4bcf7c"><span class="section-number-2">7</span> 拉普拉斯分布</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+
+</p>
+
+<p>
+拉普拉斯分布也是具有重尾的分布，这个分布也叫作双边指数分布，从其定义式上就可以看出为什么这么称呼：
+</p>
+\begin{equation}
+\label{eq:17}
+\mathrm{Lap}(x| \mu ,b) = \frac{1}{2b} \mathrm{exp} \bigg( -\frac{|x-\mu|}{b} \bigg)
+\end{equation}
+<p>
+这里\(\mu\)是位置参数,\(b\)是一个缩放参数。拉普拉斯分布的均值是\(\mu\)，方差是\(2b^{2}\)。这个分布对于异类也是不敏感的，在\(0\)附近聚集了更多的概率密度。使用这个分布我们可以在模型中允许更多的稀疏性(sparsity)。
+</p>
+</div>
+</div>
+<div id="outline-container-orgdf94e63" class="outline-2">
+<h2 id="orgdf94e63"><span class="section-number-2">8</span> 伽马分布</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+
+</p>
+
+<p>
+伽马分布是一个非常灵活的分布。伽马分布由两个参数决定形状参数\(a\)，和速率参数\(b\):
+</p>
+\begin{equation}
+\label{eq:18}
+\mathrm{Ga}(T| \mathrm{shape} = a, \mathrm{rate} = b) = \frac{b^{a}}{\Gamma(a)}T^{a-1}e^{-Tb}
+\end{equation}
+<p>
+其中\(\Gamma(a)\)是伽马函数：
+</p>
+\begin{equation}
+\label{eq:19}
+\Gamma(x) = \int_{0}^{\infty} u^{x-1} e^{-u} du
+\end{equation}
+<p>
+伽马分布的主要参数是：
+</p>
+\begin{equation}
+\label{eq:20}
+\mathrm{mean} = \frac{a}{b}, \mathrm{mode} = \frac{a-1}{b}, \mathrm{var} = \frac{a}{b^{2}}
+\end{equation}
+<p>
+有几个分布是伽马分布的特例：
+</p>
+<ol class="org-ol">
+<li>指数分布，定义为：\[ \mathrm{Expon}(x|\lambda) \mathrm{Ga}(x|1,\lambda) \]其中\(\lambda\)是速率参数。这个分布描述了泊松过程中两个事件之间的时间。</li>
+<li>Erlang分布。这个分布和伽马分布相同，除了\(a\)是一个整数。我们令\(a=2\)就是Erlang分布，即\[ \mathrm{Erlang}(x|\lambda) = \mathrm{Ga}(x|2,\lambda) \]其中\(\lambda\)是速率参数。</li>
+<li>\( \chi^{2} \)分布。这个分布定义为：\[ \chi^{2}(x|\nu) = \mathrm{Ga}(x| \frac{\nu}{2},\frac{1}{2} ) \]这个分布是高斯随机变量平方和的分布，即如果\(Z_{i}\sim \mathcal{N}(0,1) \)，\(S = \sum_{i=1}^{\nu}Z_{i}^{2}\)，那么\(S\sim \chi_{\nu}^{2}\)</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org1ce2e00" class="outline-2">
+<h2 id="org1ce2e00"><span class="section-number-2">9</span> 贝塔分布</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+贝塔分布定义域在\([0,1]\)上，定义式为：
+</p>
+\begin{equation}
+\label{eq:21}
+\mathrm{Beta}(x|a,b) = \frac{1}{B(a,b)}x^{a-1}(1-x)^{b-1}
+\end{equation}
+<p>
+这里\(B(p,q)\)是贝塔函数：
+</p>
+\begin{equation}
+\label{eq:22}
+B(a,b) = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}
+\end{equation}
+
+<p>
+为确保\(B(a,b)\)存在，\(a,b\)必须是大于零的数。当\(a=b=1\)时，贝塔分布退化为均匀分布。贝塔分布的均值是\(\frac{a}{a+b}\)，方差为\(\frac{ab}{(a+b)^{2}(a+b+1)}\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgbbbd505" class="outline-2">
+<h2 id="orgbbbd505"><span class="section-number-2">10</span> Pareto分布</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+
+</p>
+
+<p>
+Pareto分布用于长尾数据量建模。例如英语里最常用的单词“the” 发生的频率是"of"的两倍，"of"发生的频率又是排名第四的单词的两倍，依次类推。如果我们根据这些单词的频率和排名画图的话，我们得到了一个幂函数的图像。这是 <code>Zipf</code> 定律。Pareto分布定义为：
+</p>
+\begin{equation}
+\label{eq:23}
+\mathrm{Pareto}(x|k,m)= km^{k}x^{-(k+1)} \mathbb{I}(x \geq m)
+\end{equation}
+<p>
+从式 (\ref{eq:23})我们可以看出\(x\)必须大于某一个常数，但是\(x\)又不能太大（\(k\)控制着到底多大才是“大”）。当\(k\to\infty\)时，Pareto分布趋向于\(\delta(x-m)\)。这个分布的均值是\(\frac{km}{k-1},k  > 1\)，方差是\(\frac{m^{2}k}{(k-1)^{2}(k-2)}\)
 </p>
 </div>
 </div>
