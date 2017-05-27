@@ -190,6 +190,38 @@ make有很多特殊的变量，使用这些变量可以编写更加简洁的make
 <p>
 
 </p>
+
+<p>
+在实际工程中，我们希望把编好的程序打包变成库，供以后使用。windows和linux下都有两种打包后的程序：静态库和动态库。关于静态库和动态库，本文不做过多介绍。 这篇<a href="http://www.cnblogs.com/LittleHann/p/3980364.html"> 博文</a> 对C/C++ 跨平台交叉编译，静态库和动态库编译有比较详细的介绍。更详细的介绍见《程序员的自我修养：链接、装载与库》。
+</p>
+
+<p>
+接下来，我演示如何在windows上使用gcc编译并使用静态库文件。静态库文件的编译非常简单，接着上面的工程：
+</p>
+<pre class="example">
+gcc -c sum.c
+</pre>
+<p>
+就会生成静态库文件 <code>sum.o</code> 。依次类推，生成 <code>substract.o</code> <code>multiply.o</code> <code>divide.o</code> ，然后使用 <code>ar</code> 把这些静态库打包：
+</p>
+<pre class="example">
+ar rcs libmymath.a sum.o substract.o multiply.o divide.o
+</pre>
+
+<p>
+编译 <code>main.c</code> 的时候就可以链接我们刚才生成的静态库，编译命令是：
+</p>
+<pre class="example">
+gcc -o main main.c -L. -lmymath
+</pre>
+
+<p>
+有两点需要注意：
+</p>
+<ol class="org-ol">
+<li><code>-L.</code> 告诉GCC除了默认目录外当前目录也是搜索静态库的目录。</li>
+<li><code>-lmymath</code> 告诉GCC链接的库的名字是 <code>mymath.a</code> .</li>
+</ol>
 </div>
 </div>
 </div>
