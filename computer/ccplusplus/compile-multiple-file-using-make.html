@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>使用make编译多个文件</title>
+<title>多文件编译</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="emacsun" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css" />
@@ -59,7 +59,7 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">使用make编译多个文件</h1>
+<h1 class="title">多文件编译</h1>
 <div id="table-of-contents">
 <h2>目录</h2>
 <div id="text-table-of-contents">
@@ -68,6 +68,7 @@ for the JavaScript code in this tag.
 <li><a href="#org44eec38">2. 九个文件的工程</a></li>
 <li><a href="#orgf540e21">3. make</a></li>
 <li><a href="#org1d9d416">4. 静态链接库</a></li>
+<li><a href="#org8907590">5. 动态链接库</a></li>
 </ul>
 </div>
 </div>
@@ -222,6 +223,30 @@ gcc -o main main.c -L. -lmymath
 <li><code>-L.</code> 告诉GCC除了默认目录外当前目录也是搜索静态库的目录。</li>
 <li><code>-lmymath</code> 告诉GCC链接的库的名字是 <code>mymath.a</code> .</li>
 </ol>
+</div>
+</div>
+<div id="outline-container-org8907590" class="outline-2">
+<h2 id="org8907590"><span class="section-number-2">5</span> 动态链接库</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+较少人使用gcc在windows下构建动态链接库，其过程并不复杂。但是，鉴于动态链接库的优点，基于本文的工程，演示一下如何构建使用gcc构建动态链接库。
+</p>
+<pre class="example">
+gcc -c main.c
+gcc -c -DBUILD_DLL sum.c
+gcc -shared -o sum.dll -Wl,--out-implib,libsum.a sum.o
+gcc -c -DBUILD_DLL substract.c
+gcc -shared -o substract.dll -Wl,--out-implib,libsubstract.a substract.o
+gcc -c -DBUILD_DLL multiply.c
+gcc -shared -o multiply.dll -Wl,--out-implib,libmultiply.a multiply.o
+gcc -c -DBUILD_DLL divide.c
+gcc -shared -o divide.dll -Wl,--out-implib,libdivide.a divide.o
+gcc -o maindll.exe main.o -L. -lsum -lsubstract -lmultiply -ldivide
+</pre>
+
+<p>
+终于生成了四个动态链接库分别保存了 <code>sum</code> ， <code>substract</code>   ， <code>multiply</code>  ， <code>divide</code> 的实现。关于在windows下使用gcc编译动态链接库的更复杂的例子请见 MinGW的帮助文档。
+</p>
 </div>
 </div>
 </div>
