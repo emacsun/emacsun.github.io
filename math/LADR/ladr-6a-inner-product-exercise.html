@@ -1,0 +1,270 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>练习：内积和范数</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./ladr-6a-inner-product-exercise.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">练习：内积和范数</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org021ebe4">1. 6.A.1</a></li>
+<li><a href="#org323f3d0">2. 6.A.2</a></li>
+<li><a href="#org33e9b97">3. 6.A.3</a></li>
+<li><a href="#org18249b3">4. 6.A.4</a></li>
+<li><a href="#org6a5e41d">5. 6.A.5</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org021ebe4" class="outline-2">
+<h2 id="org021ebe4"><span class="section-number-2">1</span> 6.A.1</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+证明将\(((x_{1},x_{2}), (y_{1},y_{2}))\in \mathbf{R}^{2}\times \mathbf{R}^{2}\)变为\(|x_{1}y_{1}| + |x_{2}y_{2}|\)的函数不是\(\mathbf{R}^{2}\)上的内积
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+我们需要根据内积的定义来证明。对于内积定义的第三条：第一位置具有可加性。显然有：
+</p>
+\begin{equation}
+\label{eq:1}
+(((x_{1},x_{2})+(z_{1},z_{2})),(y_{1},y_{2})) = ((x_{1},x_{2}), (y_{1},y_{2})) +((z_{1},z_{2}), (y_{1},y_{2}))
+\end{equation}
+<p>
+把\(((x_{1},x_{2}), (y_{1},y_{2}))\in \mathbf{R}^{2}\times \mathbf{R}^{2}\)变为\(|x_{1}y_{1}| + |x_{2}y_{2}|\)。上式的左边是：
+</p>
+\begin{equation}
+\label{eq:2}
+|x_1y_1 + z_1y_1| + |x_2y_2 + z_2y_2|
+\end{equation}
+<p>
+右边是：
+</p>
+\begin{equation}
+\label{eq:3}
+|x_1y_1| + |x_2y_2| + |z_1y_1| + |z_2y_2|
+\end{equation}
+<p>
+左右显然不一定相等，差着一个三角不等式呢。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org323f3d0" class="outline-2">
+<h2 id="org323f3d0"><span class="section-number-2">2</span> 6.A.2</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+证明将\(((x_{1},x_{2},x_{3}),(y_{1},y_{2},y_{3}))\in \mathbf{R}^{3}\times \mathbf{R}^{3}\)变为\(x_{1}y_{1} + x_{3}y_{3}\)的函数不是\(\mathbf{R}^{3}\)上的内积。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+这个用内积定义第二条就可以了，我也不知道为什么立即就想到了第二条。
+</p>
+\begin{equation}
+\label{eq:4}
+((0,1,0),(0,1,0))
+\end{equation}
+<p>
+按照题中定义的函数映射结果应该是\(0\)，但是，\((0,1,0)\)显然不是\(0\)。违反了第二条。而且，居然跟答案是一样的。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org33e9b97" class="outline-2">
+<h2 id="org33e9b97"><span class="section-number-2">3</span> 6.A.3</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(\mathbf{F} = \mathbf{R}\)且\(V\neq \{0\}\)。将内积定义中的整形条件改为对某个\(v\in V\)有\( \langle v,v \rangle > 0 \)。证明定义中的这个变化并不改变定义了\(V\)上内积的那些从\(V\times V\)到\(\mathbf{R}\)的函数所构成的集合。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+这个问题我直觉上感觉是可以证明的，但是我又不知道该如何去证明。因为函数的集合里的元素太多了，我不可能一一列举。从特例出发又不可能代表所有。
+</p>
+
+<p>
+对某个\(V\)有\( \langle v,v \rangle > 0  \), 加上\(V\neq \{0\}\)不妨碍对所有的\(v\in V, \langle v,v \rangle \geq 0 \)
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org18249b3" class="outline-2">
+<h2 id="org18249b3"><span class="section-number-2">4</span> 6.A.4</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是一个实内积空间。
+</p>
+<ol class="org-ol">
+<li>证明对所有\(u,v\in V\)均有\( \langle u+v,u-v \rangle   = \| u \|^{2} - \| v \|^{2} \)</li>
+<li>证明若\(u,v\in V\)具有相同的范数，则\(u+v\)正交与\(u-v\)</li>
+<li>利用\(2\)证明菱形的对角线相互垂直。</li>
+</ol>
+
+</div>
+
+<div class="answer">
+<p>
+这个题目的证明比较无趣，根据内积定义即可完成。第3步利用前面的结论很容易证明菱形的对角线相互垂直。对于一个平行四边形\(u+v\)和\(u-v\)就是其对角线，如果\(u,v\)范数相同则有\(u+v,u-v\)垂直。从这个角度看菱形还是有点耳目一新的感觉。
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6a5e41d" class="outline-2">
+<h2 id="org6a5e41d"><span class="section-number-2">5</span> 6.A.5</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(V\)是有限维向量空间，并设\(T\in \mathcal{L}(V)\)使得对每个\(v\in V\)均有\( \| Tv \| \leq \| v \| \)证明\(T-\sqrt{2}I\)是可逆的。
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+证明线性映射\(T-\sqrt{2}I\)可逆，我们只需要证明其是单射。假设\(u\in \mathrm{null}(T- \sqrt{2}I)\)，则有：
+</p>
+\begin{equation}
+\label{eq:5}
+(T-\sqrt{2}I)u = 0
+\end{equation}
+<p>
+则有\( \| Tu \| = \sqrt{2} \| v \| \)，又因为\( \| Tv \| \leq \| v \| \)，则\(u=0\)。哦了。
+</p>
+
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
