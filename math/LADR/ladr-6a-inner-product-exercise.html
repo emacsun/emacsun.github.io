@@ -91,6 +91,7 @@ for the JavaScript code in this tag.
 <li><a href="#org33e9b97">3. 6.A.3</a></li>
 <li><a href="#org18249b3">4. 6.A.4</a></li>
 <li><a href="#org6a5e41d">5. 6.A.5</a></li>
+<li><a href="#orgd5cc739">6. 6.A.6</a></li>
 </ul>
 </div>
 </div>
@@ -245,6 +246,64 @@ for the JavaScript code in this tag.
 \end{equation}
 <p>
 则有\( \| Tu \| = \sqrt{2} \| v \| \)，又因为\( \| Tv \| \leq \| v \| \)，则\(u=0\)。哦了。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgd5cc739" class="outline-2">
+<h2 id="orgd5cc739"><span class="section-number-2">6</span> 6.A.6</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<div class="problem">
+<p>
+设\(u,v\in V\) 证明\( \langle u,v \rangle = 0  \) 当且仅当对所有\(a\in \mathbf{F}\) 均有 \( \| u \| \leq \| u + av \| \)
+</p>
+
+</div>
+
+<div class="answer">
+<p>
+首先证明当对所有\(a\in \mathbf{F}\) 均有 \( \| u \| \leq \| u + av \| \)时， \( \langle u,v \rangle = 0  \)
+</p>
+
+<p>
+想到对两边平方然后使用内积定义展开：
+</p>
+\begin{equation}
+\label{eq:6}
+\langle u,u \rangle  \leq \langle u+av,u+av \rangle
+\end{equation}
+<p>
+稍加处理，
+</p>
+\begin{equation}
+\label{eq:7}
+\langle u,av \rangle + \langle av,u \rangle + |a|^{2} \langle v,v \rangle  \geq 0
+\end{equation}
+<p>
+如果上式对所有\(a\)成立。接下来就比较神了。由于对所有的\(a\)成立，所以令：
+</p>
+\begin{equation}
+\label{eq:8}
+a = - \frac{ \langle u,v \rangle  }{ \| v \|^{2} }
+\end{equation}
+<p>
+式 (\ref{eq:7})就变成：
+</p>
+\begin{equation}
+\label{eq:9}
+-\frac{  \| \langle u,v \rangle \|^{2}   }{ \| v \|^{2} } \geq 0
+\end{equation}
+<p>
+显然必须有\( \langle u,v \rangle   =0\)
+</p>
+
+<p>
+另一个方向的证明就免了.
 </p>
 
 </div>
