@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -77,7 +77,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -208,7 +208,7 @@ U = span(e_{1},e_{2}) = \{(x_{1},x_{2},0,0,0)\in \mathbf{R}^{5}:x_{1},x_{2}\in \
 </p>
 \begin{equation}
 \label{eq:2}
-\dim range i^{'} +\dim null i^{'} = \dim V^{'} 
+\dim range i^{'} +\dim null i^{'} = \dim V^{'}
 \end{equation}
 <p>
 而\(null i^{'} = U^{0}\)，且\(\dim V^{'} = \dim V\)，故上式变为：
@@ -260,7 +260,7 @@ U = span(e_{1},e_{2}) = \{(x_{1},x_{2},0,0,0)\in \mathbf{R}^{5}:x_{1},x_{2}\in \
 &=& \dim nullT + \dim W - \dim V
 \end{eqnarray}
 <p>
-第一个等式直接利用第一步的结果，第二个等式利用零化子的维数公式，第三个等式利用了线性映射基本定理。 
+第一个等式直接利用第一步的结果，第二个等式利用零化子的维数公式，第三个等式利用了线性映射基本定理。
 </p>
 
 </div>
@@ -306,7 +306,8 @@ U = span(e_{1},e_{2}) = \{(x_{1},x_{2},0,0,0)\in \mathbf{R}^{5}:x_{1},x_{2}\in \
 </p>
 
 <p>
-然后我们证明第二个问题：设\(\varphi\in rangeT^{'}\)，由于\(rangeT^{'}\subseteq V^{'}\),则\(\varphi\in V^{'}\)。存在\(\psi\in W^{'}\)，使得\(T^{'}(\psi) = \varphi\)，设\(v\in nullT\)，则有\(v \in V\)，所以\(\varphi(v) = T^{'}(\psi)(v) = \psi\circ T(v) = 0\)，所以\(\varphi \in (nullT)^{0}\)，即\(rangeT^{'} \subseteq (nullT)^{0}\)
+然后我们证明第二个问题：
+设\(\varphi\in rangeT^{'}\)，由于\(rangeT^{'}\subseteq V^{'}\),则\(\varphi\in V^{'}\)。存在\(\psi\in W^{'}\)，使得\(T^{'}(\psi) = \varphi\)，设\(v\in nullT\)，则有\(v \in V\)，所以\(\varphi(v) = T^{'}(\psi)(v) = \psi\circ T(v) = 0\)，所以\(\varphi \in (nullT)^{0}\)，即\(rangeT^{'} \subseteq (nullT)^{0}\)
 </p>
 
 <p>

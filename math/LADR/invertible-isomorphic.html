@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -77,7 +77,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -86,18 +86,18 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgd656dd0">1. 可逆的线性映射</a></li>
-<li><a href="#orgca752e7">2. 向量空间的同构</a></li>
-<li><a href="#orgee406b3">3. 矩阵乘法和线性映射的关系</a></li>
-<li><a href="#org1a0481d">4. 算子</a></li>
+<li><a href="#org397fc0e">1. 可逆的线性映射</a></li>
+<li><a href="#org8a91977">2. 向量空间的同构</a></li>
+<li><a href="#org484f154">3. 矩阵乘法和线性映射的关系</a></li>
+<li><a href="#org1ee88b9">4. 算子</a></li>
 </ul>
 </div>
 </div>
 <p>
 在学习 Artin的《抽象代数》过程中，我曾接触过重构的概念。但是我觉得《linear algebra done right》从可逆线性映射到重构的过渡更加的自然，更加适合初学者。
 </p>
-<div id="outline-container-orgd656dd0" class="outline-2">
-<h2 id="orgd656dd0"><span class="section-number-2">1</span> 可逆的线性映射</h2>
+<div id="outline-container-org397fc0e" class="outline-2">
+<h2 id="org397fc0e"><span class="section-number-2">1</span> 可逆的线性映射</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -163,8 +163,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgca752e7" class="outline-2">
-<h2 id="orgca752e7"><span class="section-number-2">2</span> 向量空间的同构</h2>
+<div id="outline-container-org8a91977" class="outline-2">
+<h2 id="org8a91977"><span class="section-number-2">2</span> 向量空间的同构</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -244,7 +244,7 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-然后,\(\dim V = n,\dim W = m\) 
+然后,\(\dim V = n,\dim W = m\)
 </p>
 
 <p>
@@ -255,8 +255,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgee406b3" class="outline-2">
-<h2 id="orgee406b3"><span class="section-number-2">3</span> 矩阵乘法和线性映射的关系</h2>
+<div id="outline-container-org484f154" class="outline-2">
+<h2 id="org484f154"><span class="section-number-2">3</span> 矩阵乘法和线性映射的关系</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -271,16 +271,16 @@ for the JavaScript code in this tag.
 </p>
 \begin{equation}
 \label{eq:201703252}
-\mathcal{M}(v) = 
+\mathcal{M}(v) =
 \begin{bmatrix}
-c_{1} \\ 
+c_{1} \\
 \vdots \\
 c_{n}
 \end{bmatrix}
 \end{equation}
 <p>
 这里\(c_{1},\ldots ,c_{n}\)是使得下式成立的标量：
-\[v=c_{1}v_{1}+ \ldots + c_{n}v_{n}\] 
+\[v=c_{1}v_{1}+ \ldots + c_{n}v_{n}\]
 </p>
 
 </div>
@@ -300,7 +300,7 @@ c_{n}
 </p>
 \begin{equation}
 \label{eq:201703253}
-\mathcal{M}(x) = 
+\mathcal{M}(x) =
 \begin{bmatrix}
 x_{1} \\ \vdots \\ x_{n}
 \end{bmatrix}
@@ -335,8 +335,8 @@ Tv &=& c_{1}Tv_{1} + \ldots + c_{n}Tv_{n} \\
 </div>
 </div>
 
-<div id="outline-container-org1a0481d" class="outline-2">
-<h2 id="org1a0481d"><span class="section-number-2">4</span> 算子</h2>
+<div id="outline-container-org1ee88b9" class="outline-2">
+<h2 id="org1ee88b9"><span class="section-number-2">4</span> 算子</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -377,7 +377,7 @@ Tv &=& c_{1}Tv_{1} + \ldots + c_{n}Tv_{n} \\
 </p>
 
 <p>
-接下来我们假设\(T\)是单的，那么\(nullT = 0\)，由线性映射基本定理有：\(rangeT = \dim V - \dim nullT = \dim v \)，则有\(\dim V = \dim rangeT\)从而\(T\)是满的。 
+接下来我们假设\(T\)是单的，那么\(nullT = 0\)，由线性映射基本定理有：\(rangeT = \dim V - \dim nullT = \dim v \)，则有\(\dim V = \dim rangeT\)从而\(T\)是满的。
 </p>
 
 <p>

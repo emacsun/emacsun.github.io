@@ -2,12 +2,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>递归问题：瑞士披萨</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="emacsun" />
-<meta  name="description" content="本文探讨具体数学第一章递归问题中的第二个问题：瑞士披萨"
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<meta name="description" content="本文探讨具体数学第一章递归问题中的第二个问题：瑞士披萨"
  />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css" />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
@@ -17,7 +17,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -79,7 +79,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -88,18 +88,18 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. 问题描述</a></li>
-<li><a href="#orgheadline2">2. 从小入手</a></li>
-<li><a href="#orgheadline3">3. 披萨递归式</a></li>
-<li><a href="#orgheadline4">4. 拓展1：锯齿刀</a></li>
-<li><a href="#orgheadline5">5. 拓展2：Z形刀</a></li>
-<li><a href="#orgheadline6">6. 拓展3: 三维奶酪问题</a></li>
+<li><a href="#org3c62b23">1. 问题描述</a></li>
+<li><a href="#org53b837f">2. 从小入手</a></li>
+<li><a href="#orga0b3336">3. 披萨递归式</a></li>
+<li><a href="#orgd8a0d64">4. 拓展1：锯齿刀</a></li>
+<li><a href="#org43934af">5. 拓展2：Z形刀</a></li>
+<li><a href="#org8790b77">6. 拓展3: 三维奶酪问题</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> 问题描述</h2>
+<div id="outline-container-org3c62b23" class="outline-2">
+<h2 id="org3c62b23"><span class="section-number-2">1</span> 问题描述</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -111,8 +111,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> 从小入手</h2>
+<div id="outline-container-org53b837f" class="outline-2">
+<h2 id="org53b837f"><span class="section-number-2">2</span> 从小入手</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 按照我们探讨汉诺塔的思路，先从小入手。
@@ -131,8 +131,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> 披萨递归式</h2>
+<div id="outline-container-orga0b3336" class="outline-2">
+<h2 id="orga0b3336"><span class="section-number-2">3</span> 披萨递归式</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 通过上节分析，有：
@@ -176,8 +176,8 @@ L_{n} = 1 + \frac{n(n+1)}{2} ,n > 0
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> 拓展1：锯齿刀</h2>
+<div id="outline-container-orgd8a0d64" class="outline-2">
+<h2 id="orgd8a0d64"><span class="section-number-2">4</span> 拓展1：锯齿刀</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 现在考虑切割披萨问题的一个变形。假设我们用折线代替直线，每一条折现包含一个锯齿，就像等腰三角形去掉底一样。如下图所示，平面上由 \(n\) 条这样的折线所界定的区域数 \(Z_{n}\) 最多是多少？
@@ -223,8 +223,8 @@ Z_{n} &\sim & 2n^{2}
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">5</span> 拓展2：Z形刀</h2>
+<div id="outline-container-org43934af" class="outline-2">
+<h2 id="org43934af"><span class="section-number-2">5</span> 拓展2：Z形刀</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -251,8 +251,8 @@ Z_{n} = L_{3n} - 5n = \frac{3n(3n+1)}{2} + 1 - 5n =  \frac{9n^{2}}{2} - \frac{7n
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">6</span> 拓展3: 三维奶酪问题</h2>
+<div id="outline-container-org8790b77" class="outline-2">
+<h2 id="org8790b77"><span class="section-number-2">6</span> 拓展3: 三维奶酪问题</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 
@@ -269,7 +269,7 @@ Z_{n} = L_{3n} - 5n = \frac{3n(3n+1)}{2} + 1 - 5n =  \frac{9n^{2}}{2} - \frac{7n
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'zclspace';
-    
+
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

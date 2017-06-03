@@ -2,12 +2,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>递归问题：约瑟夫问题</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="emacsun" />
-<meta  name="description" content="本文探讨《具体数学》第一章递归问题中的第三个问题：约瑟夫问题"
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<meta name="description" content="本文探讨《具体数学》第一章递归问题中的第三个问题：约瑟夫问题"
  />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css" />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
@@ -17,7 +17,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -79,7 +79,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -88,30 +88,30 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. 问题描述</a></li>
-<li><a href="#orgheadline2">2. 约瑟夫问题递归式</a></li>
-<li><a href="#orgheadline3">3. 约瑟夫递归式的解</a></li>
-<li><a href="#orgheadline4">4. 拓展1:二进制与约瑟夫问题</a></li>
-<li><a href="#orgheadline5">5. 拓展2:更一般的约瑟夫递归式</a></li>
-<li><a href="#orgheadline6">6. 推广3:不同基底的约瑟夫递归式</a></li>
-<li><a href="#orgheadline7">7. 推广4:倒数第二个位置</a></li>
+<li><a href="#org83f6ef3">1. 问题描述</a></li>
+<li><a href="#org844585f">2. 约瑟夫问题递归式</a></li>
+<li><a href="#org1ef9e4b">3. 约瑟夫递归式的解</a></li>
+<li><a href="#orgf6687ca">4. 拓展1:二进制与约瑟夫问题</a></li>
+<li><a href="#org228cda1">5. 拓展2:更一般的约瑟夫递归式</a></li>
+<li><a href="#org7259c02">6. 推广3:不同基底的约瑟夫递归式</a></li>
+<li><a href="#org4fe985d">7. 推广4:倒数第二个位置</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> 问题描述</h2>
+<div id="outline-container-org83f6ef3" class="outline-2">
+<h2 id="org83f6ef3"><span class="section-number-2">1</span> 问题描述</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
 </p>
 
 <p>
-这是一个生死攸关的问题！至于如何生死攸关参见《具体数学》1.3节 The Josephus Problem（那里详细的介绍了这个生死攸关的问题之来历）。现在把这个问题做如下数学上的抽象：假设有 \(n\) 个人站成一圈，现在要每隔一个删除一个人，直到只有一个人幸存下来。例如 \(n=10\) 的情形如图<a href="#orgparagraph1">1</a>所示：
+这是一个生死攸关的问题！至于如何生死攸关参见《具体数学》1.3节 The Josephus Problem（那里详细的介绍了这个生死攸关的问题之来历）。现在把这个问题做如下数学上的抽象：假设有 \(n\) 个人站成一圈，现在要每隔一个删除一个人，直到只有一个人幸存下来。例如 \(n=10\) 的情形如图<a href="#org8171eed">1</a>所示：
 </p>
 
 
-<div id="orgparagraph1" class="figure">
+<div id="org8171eed" class="figure">
 <p><img src="../../img/josephus-10.jpg" alt="josephus-10.jpg" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> n=10的约瑟夫问题</p>
@@ -123,17 +123,17 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> 约瑟夫问题递归式</h2>
+<div id="outline-container-org844585f" class="outline-2">
+<h2 id="org844585f"><span class="section-number-2">2</span> 约瑟夫问题递归式</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
 </p>
 
 <p>
-因为有 \(J(10)=5\)，所以我们猜测有 \(J(n)= \frac{n}{2}\)，但是一些简单的如同表<a href="#orgtable1">1</a>的例子否定了这个猜测。
+因为有 \(J(10)=5\)，所以我们猜测有 \(J(n)= \frac{n}{2}\)，但是一些简单的如同表<a href="#orgc5d2fb9">1</a>的例子否定了这个猜测。
 </p>
-<table id="orgtable1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgc5d2fb9" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">表 1:</span> 猜测</caption>
 
 <colgroup>
@@ -177,10 +177,10 @@ for the JavaScript code in this tag.
 
 
 <p>
-不过我们可以大胆猜测， \(J(n)\)一定是奇数，因为绕圈走一圈就消去了全部的偶数。如果 \(n\) 是偶数，则走一圈后除了仅剩下一半人口并且他们的号码有变化外，我们面临的情形是与刚开始相同的情形，如图<a href="#orgparagraph2">2</a>所示：
+不过我们可以大胆猜测， \(J(n)\)一定是奇数，因为绕圈走一圈就消去了全部的偶数。如果 \(n\) 是偶数，则走一圈后除了仅剩下一半人口并且他们的号码有变化外，我们面临的情形是与刚开始相同的情形，如图<a href="#org64be8b1">2</a>所示：
 </p>
 
-<div id="orgparagraph2" class="figure">
+<div id="org64be8b1" class="figure">
 <p><img src="../../img/josephus-n-even.jpg" alt="cat/spider image" align="center" width="200" />
 </p>
 <p><span class="figure-number">图 2:</span> n为偶数时的约瑟夫问题</p>
@@ -232,8 +232,8 @@ J(2n+1)&=2J(n)+1
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> 约瑟夫递归式的解</h2>
+<div id="outline-container-org1ef9e4b" class="outline-2">
+<h2 id="org1ef9e4b"><span class="section-number-2">3</span> 约瑟夫递归式的解</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -244,9 +244,9 @@ J(2n+1)&=2J(n)+1
 </p>
 
 <p>
-有了递归式，我们计算一些较小的值，如表<a href="#orgtable2">2</a>所示。
+有了递归式，我们计算一些较小的值，如表<a href="#orgcbe7048">2</a>所示。
 </p>
-<table id="orgtable2" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgcbe7048" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">表 2:</span> 递归式得出的一些解</caption>
 
 <colgroup>
@@ -330,7 +330,7 @@ J(2n+1)&=2J(n)+1
 
 
 <p>
-显然，从表<a href="#orgtable2">2</a>可以看出，将 \(n\) 按照 2的幂次进行分组或许会出现一些转机。每一组开始的 \(J(n)\) 总是等于1。仔细观察上表，如果将 \(n\) 写作 \(2^{m}+l\)，则 \(J(n)=J(2^{m}+l) = 2l +1, m\ge 0\le l < 2^{m}\). 其中 \(2^{m}\)是不超过 \(n\) 的 \(2\)的最大幂，而 \(l=n-2^{m}\)。事实上，可以对 \(m\) 使用数学归纳法证明：
+显然，从表<a href="#orgcbe7048">2</a>可以看出，将 \(n\) 按照 2的幂次进行分组或许会出现一些转机。每一组开始的 \(J(n)\) 总是等于1。仔细观察上表，如果将 \(n\) 写作 \(2^{m}+l\)，则 \(J(n)=J(2^{m}+l) = 2l +1, m\ge 0\le l < 2^{m}\). 其中 \(2^{m}\)是不超过 \(n\) 的 \(2\)的最大幂，而 \(l=n-2^{m}\)。事实上，可以对 \(m\) 使用数学归纳法证明：
 </p>
 \begin{equation}
 \label{eq:4}
@@ -342,8 +342,8 @@ J(n)=J(2^{m}+l) = 2l +1, m\ge 0\le l < 2^{m}
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> 拓展1:二进制与约瑟夫问题</h2>
+<div id="outline-container-orgf6687ca" class="outline-2">
+<h2 id="orgf6687ca"><span class="section-number-2">4</span> 拓展1:二进制与约瑟夫问题</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -365,7 +365,7 @@ n & = & (1b_{m-1}\ldots b_{1}b_{0})_{2} \\
 l & = & (0b_{m-1}\ldots b_{1}b_{0})_{2} \\
 2l& = & (b_{m-1}\ldots b_{1}b_{0}0)_{2} \\
 2l+1& = & (b_{m-1}\ldots b_{1}b_{0}1)_{2} \\
-J(n) & = & (b_{m-1}\ldots b_{1}b_{0}b_{m})_{2} 
+J(n) & = & (b_{m-1}\ldots b_{1}b_{0}b_{m})_{2}
 \end{eqnarray}
 
 <p>
@@ -385,8 +385,8 @@ J((b_{m}b_{m-1}\ldots b_{1}b_{0})_{2}) = (b_{m-1}b_{m-2}\ldots b_{1}b_{0}b_{m})_
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">5</span> 拓展2:更一般的约瑟夫递归式</h2>
+<div id="outline-container-org228cda1" class="outline-2">
+<h2 id="org228cda1"><span class="section-number-2">5</span> 拓展2:更一般的约瑟夫递归式</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -406,10 +406,10 @@ J((b_{m}b_{m-1}\ldots b_{1}b_{0})_{2}) = (b_{m-1}b_{m-2}\ldots b_{1}b_{0}b_{m})_
 \end{equation}
 
 <p>
-可以看出在约瑟夫问题中， \(\alpha=1,\beta=-1,\gamma=1\)。接下来，我们依然从小入手，得出表<a href="#orgtable3">3</a>。
+可以看出在约瑟夫问题中， \(\alpha=1,\beta=-1,\gamma=1\)。接下来，我们依然从小入手，得出表<a href="#orgba3a890">3</a>。
 </p>
 
-<table id="orgtable3" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgba3a890" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">表 3:</span> 约瑟夫推广的解</caption>
 
 <colgroup>
@@ -527,7 +527,7 @@ f((b_{m}b_{m-1}\ldots b_{1}b_{0})_{2}) &=  2f((b_{m}b_{m-1}\ldots b_{2}b_{1})_{2
 &= 8f((b_{m}b_{m-1}\ldots b_{4}b_{3})_{2})+ 4\beta_{b_{2}} + 2\beta_{b_{1}} + \beta_{b_{0}} \\
 & \vdots \\
 &= 2^{m}f((b_{m})_{2}) + 2^{m-1}\beta_{b_{m-1}} + \ldots + 2\beta_{b_{1}} + \beta_{b_{0}} \\
-&= 2^{m} \alpha + 2^{m-1}\beta_{b_{m-1}} + \ldots + 2\beta_{b_{1}} + \beta_{b_{0}} 
+&= 2^{m} \alpha + 2^{m-1}\beta_{b_{m-1}} + \ldots + 2\beta_{b_{1}} + \beta_{b_{0}}
 \end{split}
 \end{equation}
 
@@ -602,8 +602,8 @@ f((b_{m}b_{m-1}\ldots b_{1}b_{0})_{2}) = (\alpha\beta_{b_{m-1}}\beta_{b_{m-2}}\l
 
 \begin{equation}
 \label{eq:15}
-(\alpha\beta_{b_{m-1}}\beta_{b_{m-2}}\ldots \beta_{b_{1}}\beta_{b_{0}})_{2} = ( 1 \beta_{1} \beta_{0}\beta_{0} \beta_{1}\beta_{0}\beta_{0})_{2} 
-\end{equation} 
+(\alpha\beta_{b_{m-1}}\beta_{b_{m-2}}\ldots \beta_{b_{1}}\beta_{b_{0}})_{2} = ( 1 \beta_{1} \beta_{0}\beta_{0} \beta_{1}\beta_{0}\beta_{0})_{2}
+\end{equation}
 
 <p>
 因为 \(\alpha = 1, \beta_{0}=\beta = -1, \beta_{1}=\gamma=1\) ，所以 式(\ref{eq:15})可以重写为：
@@ -618,8 +618,8 @@ f((b_{m}b_{m-1}\ldots b_{1}b_{0})_{2}) = (\alpha\beta_{b_{m-1}}\beta_{b_{m-2}}\l
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">6</span> 推广3:不同基底的约瑟夫递归式</h2>
+<div id="outline-container-org7259c02" class="outline-2">
+<h2 id="org7259c02"><span class="section-number-2">6</span> 推广3:不同基底的约瑟夫递归式</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 
@@ -632,7 +632,7 @@ f((b_{m}b_{m-1}\ldots b_{1}b_{0})_{2}) = (\alpha\beta_{b_{m-1}}\beta_{b_{m-2}}\l
 \label{eq:88}
 \begin{split}
 f(j) &=  \alpha_{j}, 1\le j < d \\
-f(dn+j)&= c f(n) +\beta_{j}, 0\le j < d 
+f(dn+j)&= c f(n) +\beta_{j}, 0\le j < d
 \end{split}
 \end{equation}
 
@@ -645,8 +645,8 @@ f((b_{m}b_{m-1}\ldots b_{1}b_{0})_{d}) = (\alpha_{b_{m}} \beta_{b_{m-1}} \beta_{
 \end{equation}
 </div>
 </div>
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">7</span> 推广4:倒数第二个位置</h2>
+<div id="outline-container-org4fe985d" class="outline-2">
+<h2 id="org4fe985d"><span class="section-number-2">7</span> 推广4:倒数第二个位置</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 
@@ -676,7 +676,7 @@ J(n) = J(2^{m} +l) =  2l +1
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'zclspace';
-    
+
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
