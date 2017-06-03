@@ -97,6 +97,7 @@ for the JavaScript code in this tag.
 <li><a href="#orgd4dd04e">9. 6.A.11</a></li>
 <li><a href="#orgd852946">10. 6.A.12</a></li>
 <li><a href="#orgc0bc3d2">11. 6.A.13</a></li>
+<li><a href="#org6c7228b">12. 6.A.14</a></li>
 </ul>
 </div>
 </div>
@@ -485,6 +486,28 @@ v&=& (1/\sqrt{a},1/\sqrt{b},1/\sqrt{c},1/\sqrt{d})
 
 <p>
 这道题目的关键是<a href="https://zh.wikipedia.org/wiki/%E9%A4%98%E5%BC%A6%E5%AE%9A%E7%90%86">余弦定理</a>。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org6c7228b" class="outline-2">
+<h2 id="org6c7228b"><span class="section-number-2">12</span> 6.A.14</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+
+</p>
+
+<div class="tikzproblem">
+<p>
+\(\mathbf{R}^{2}\)和\(\mathbf{R}^{3}\)中两个向量的夹角可以用几何的方法来定义。但是对\(n > 3\)，\(\mathbf{R}^{n}\)中的几何是难以想象的。所以两个非零向量\(x,y\in \mathbf{R}^{n}\)的夹角定义为\(\arccos \tfrac{\langle x,y \rangle  }{ \| x \| \| y \| }\)。这个定义的动机来源于上一个题目。解释一下为什么这个定义是有意义的。
+</p>
+
+</div>
+
+<div class="tikzanswer">
+<p>
+柯西施瓦茨不等式。 \( | \langle u,v \rangle  |  \leq \| u \| \| v \| \) 。两个向量的内积小于等于各自范数的乘积。所以 \( \tfrac{\langle x,y \rangle  }{ \| x \| \| y \| } \)的取值范围是\( [-1,1] \)，正好符合\(\cos\)函数的取值范围。
 </p>
 
 </div>
