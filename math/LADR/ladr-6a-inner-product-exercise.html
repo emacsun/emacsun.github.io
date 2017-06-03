@@ -96,6 +96,7 @@ for the JavaScript code in this tag.
 <li><a href="#orga6f6a4a">8. 6.A.10</a></li>
 <li><a href="#orgd4dd04e">9. 6.A.11</a></li>
 <li><a href="#orgd852946">10. 6.A.12</a></li>
+<li><a href="#orgc0bc3d2">11. 6.A.13</a></li>
 </ul>
 </div>
 </div>
@@ -452,6 +453,39 @@ v&=& (1/\sqrt{a},1/\sqrt{b},1/\sqrt{c},1/\sqrt{d})
 \label{eq:16}
 | \langle x,y \rangle  |^2 \leq \| x \|^2 \| y \|^2
 \end{equation}
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgc0bc3d2" class="outline-2">
+<h2 id="orgc0bc3d2"><span class="section-number-2">11</span> 6.A.13</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+
+</p>
+
+<div class="tikzproblem">
+<p>
+设\(u,v\)是\( \mathbf{R}^{2} \)中的非零向量，证明\( \langle u,v \rangle  = \| u \| \| v \|\cos(\theta) \)，其中\(\theta\)是\(u\)和\(v\)的夹角
+</p>
+
+</div>
+
+<div class="tikzanswer">
+<p>
+此处需要想象力：一个三角形，有两条边分别是\(u,v\)，夹角是\(\theta\)，这个角的对边是\(u-v\)，有余弦定理：
+</p>
+\begin{equation}
+\label{eq:17}
+\| u-v \|^{2} = \| u \|^{2} + \| v \|^{2} - 2 \| u \| \| v \|\cos(\theta)
+\end{equation}
+<p>
+带入范数定义。得证。
+</p>
+
+<p>
+这道题目的关键是<a href="https://zh.wikipedia.org/wiki/%E9%A4%98%E5%BC%A6%E5%AE%9A%E7%90%86">余弦定理</a>。
+</p>
 
 </div>
 </div>
