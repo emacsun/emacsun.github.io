@@ -1106,6 +1106,11 @@
         font-weight: bold;
         background-color:#F0e68c ;
     }
+    .tikzquote{
+        font-size: 100%;
+        font-weight: bold;
+        margin-left: 2em
+    }
 } /* END OF @media all */
 
 
