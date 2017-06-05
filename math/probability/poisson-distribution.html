@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>泊松分布</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<meta name="keywords" content="probability" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf" href="afcp-normal-distribution-history.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">泊松分布</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7452c57">1. 定义</a></li>
+<li><a href="#orgafb66a9">2. 泊松分布与二项分布之间的关系</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7452c57" class="outline-2">
+<h2 id="org7452c57"><span class="section-number-2">1</span> 定义</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+在 <a href="binary-distribution.html">二项分布</a> 一文中，我们介绍了二项分布的定义和性质。在本文中，我们给出泊松分布，并分析泊松分布和二项分布之间的联系。
+</p>
+
+<div class="definition">
+<p>
+如果一个取值于\(0,1,2,\ldots \)的随机变量对某一个\(\lambda\)，其分布如下：
+</p>
+\begin{equation}
+\label{eq:1}
+p(i) = P\{X=i\} = e^{-\lambda}\frac{\lambda^{i}}{i!}, i = 0,1,2,\ldots
+\end{equation}
+<p>
+则称该随机变量未服从参数\(\lambda\)的泊松随机变量。
+</p>
+
+</div>
+<p>
+显然：
+</p>
+\begin{equation}
+\label{eq:2}
+\sum_{i=0}^{\infty}p(i) = \sum_{i=0}^{\infty} e^{-\lambda}\frac{\lambda^{i}}{i!} = 1
+\end{equation}
+</div>
+</div>
+<div id="outline-container-orgafb66a9" class="outline-2">
+<h2 id="orgafb66a9"><span class="section-number-2">2</span> 泊松分布与二项分布之间的关系</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+泊松分布在各个领域都有广泛应用，这是由于当\(n\)足够大，\(p\)充分小，\(np\)保持适当的大小时，参数为\((n,p)\)的二项随机变量可以近似的看做参数为\(\lambda = np\)的泊松随机变量。
+</p>
+
+<p>
+假设\(X\)是一个服从参数为\((n,p)\)的二项随机变量，并记\(\lambda = np\)，那么：
+</p>
+\begin{eqnarray}
+\label{eq:3}
+P\{X=i\}&=& \binom{n}{i} p^{i}(1-p)^{n-i} \\
+&=& \frac{ n! }{(n-i)!i!}(\frac{\lambda}{n})^{i}(1-\frac{\lambda}{n})^{n-i} \\
+&=& \frac{n(n-1)\ldots (n-i+1)}{n^{i}} \frac{\lambda^{i}}{i!} \frac{ (1-\lambda/n)^{n} }{ (1- \lambda/n)^{i}  }
+\end{eqnarray}
+<p>
+当\(n\to \infty\)时，观察上式：
+</p>
+\begin{eqnarray}
+\label{eq:4}
+e^{-\lambda}&\approx& (1-\lambda/n)^{n} \\
+1&\approx& \frac{n(n-1)\ldots (n-i+1)}{n^{i}} \\
+1 &\approx& (1-\frac{\lambda}{n})^{i}
+\end{eqnarray}
+<p>
+因此有：
+</p>
+\begin{equation}
+\label{eq:5}
+P\{ X=i\} \approx e^{-\lambda} \frac{\lambda^{i}}{i!}
+\end{equation}
+
+<p>
+独立重复\(n\)次试验，每次成功的概率为\(p\)，当\(n\)充分大，而\(p\)足够小，使得\(np\)保持适当的话，那么成功的次数近似的服从参数为\(\lambda =  np\)的泊松分布，这个\(\lambda\)值通常凭经验确定。
+</p>
+
+<p>
+以下的例子大都服从泊松分布：
+</p>
+<ol class="org-ol">
+<li>一本书里一页或若干页中印刷错误的数量；</li>
+<li>某地区居民活到100岁的人数；</li>
+<li>一天中拨错电话号码的次数；</li>
+<li>一家便利店里每天卖出狗粮饼干的盒数；</li>
+<li>某一天进入一个邮局的顾客数；</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
