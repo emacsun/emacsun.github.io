@@ -10,7 +10,7 @@
 <meta name="keywords" content="probability" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css" />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
-<a id="pdf" href="afcp-01dot5-multinomial-coefficients.pdf"><img src="../../img/assets/pdf.png"></a>
+<a id="pdf" href="geometry-distribution.pdf"><img src="../../img/assets/pdf.png"></a>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -87,14 +87,15 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga615266">1. 几何随机变量</a></li>
-<li><a href="#orgb1b8389">2. 几何随机变量的期望和方差</a></li>
+<li><a href="#org290f192">1. 几何随机变量</a></li>
+<li><a href="#org6502d7d">2. 几何随机变量的期望和方差</a></li>
+<li><a href="#org45da501">3. 一个例子</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga615266" class="outline-2">
-<h2 id="orga615266"><span class="section-number-2">1</span> 几何随机变量</h2>
+<div id="outline-container-org290f192" class="outline-2">
+<h2 id="org290f192"><span class="section-number-2">1</span> 几何随机变量</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -119,12 +120,103 @@ P\{X=n\} = (1-p)^{n-1}p,\qquad n = 1,2,\ldots
 </p>
 </div>
 </div>
-<div id="outline-container-orgb1b8389" class="outline-2">
-<h2 id="orgb1b8389"><span class="section-number-2">2</span> 几何随机变量的期望和方差</h2>
+<div id="outline-container-org6502d7d" class="outline-2">
+<h2 id="org6502d7d"><span class="section-number-2">2</span> 几何随机变量的期望和方差</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
 </p>
+
+<p>
+首先我们计算几何随机变量的期望，令\(q = 1-p\)，有：
+</p>
+\begin{eqnarray}
+\label{eq:3}
+E[X]&=& \sum_{i=1}^{\infty} iq^{i-1}p \\
+&=& \sum_{i=1}^{\infty}(i-1+1)q^{i-1}p \\
+&=&\sum_{i=1}^{\infty}(i-1)q^{i-1}p + \sum_{i=1}^{\infty} q^{i-1}p \\
+&=& q\sum_{j=0}^{\infty}jq^{j-1}p + 1\\
+&=&qE[X] + 1
+\end{eqnarray}
+<p>
+因此：\[E[X] = \frac{1}{p}\]
+一个成功概率为\(p\)的试验，如果独立重复进行直到饰演陈宫，那么需要进行的试验的期望次数邓毅\(\tfrac{1}{p}\)。掷一枚均匀的骰子，直到出现一次点数为\(1\)，需要的期望次数为\(6\).
+</p>
+
+<p>
+然后我们计算几何随机变量的方差。首先计算\(E[X^{2}]\)，有：
+</p>
+\begin{eqnarray}
+\label{eq:4}
+E[X^{2}]&=& \sum_{i=1}^{\infty} i^{2}q^{i-1}p \\
+&=&\sum_{i=1}^{\infty} (i-1+1)^{2}q^{i-1}p \\
+&=&\sum_{i=1}^{\infty} (i-1)^{2}q^{i-1}p + \sum_{i=1}^{\infty} 2(i-1)q^{i-1}p + \sum_{i=1}^{\infty}q^{i-1}p \\
+&=&\sum_{j=0}^{\infty}j^{2}q^{j}p + 2\sum_{j=1}^{\infty}jq^{j}p + 1 \\
+&=&qE[X^{2}] + 2qE[X] +1
+\end{eqnarray}
+<p>
+结合\(E[X]=1/p\)，我们可以得到：
+</p>
+\begin{equation}
+\label{eq:5}
+pE[X^{2}] = \frac{2q}{p} + 1
+\end{equation}
+<p>
+因此：
+</p>
+\begin{equation}
+\label{eq:6}
+\mathrm{Var}(X) = \frac{q+1}{p^{2}} - \frac{1}{p^{2}} = \frac{q}{p^{2}} = \frac{1-p}{p^{2}}
+\end{equation}
+</div>
+</div>
+<div id="outline-container-org45da501" class="outline-2">
+<h2 id="org45da501"><span class="section-number-2">3</span> 一个例子</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+每一个概率分布都有其现实中的例子。接下来给出一个几何随机变量的例子。
+</p>
+
+<div class="tikzproblem">
+<p>
+一个坛子中有\(N\)个白球和\(M\)个黑球，每次从中抽取一个球，观察球的颜色并放回，重复这个过程，直到取出一个黑球，求以下事件的概率：
+</p>
+<ol class="org-ol">
+<li>恰好取球\(n\)次。</li>
+<li>至少取球\(k\)次。</li>
+</ol>
+
+</div>
+
+<div class="tikzanswer">
+<p>
+如果我们令\(X\)表示要取出一个黑球需要的取球次数，则\(X\)满足 (\ref{eq:1})且\(p=\frac{M}{N+M}\)。所以：
+</p>
+\begin{equation}
+\label{eq:7}
+P\{X=n\} = (\frac{N}{M+N})^{n-1}\frac{M}{M+N} = \frac{MN^{n-1}}{(M+N)^{n}}
+\end{equation}
+
+<p>
+对于第二个问题，
+</p>
+\begin{equation}
+\label{eq:8}
+P\{X\geq k\} = \frac{M}{M+N}\sum_{n=k}^{\infty} \bigg( \frac{N}{M+N} \bigg)^{n-1} = \bigg( \frac{N}{M+N} \bigg)^{k-1}
+\end{equation}
+<p>
+式 (\ref{eq:8})的结果可以直接得到，因为至少需要\(k\)次取球意味着前\(k-1\)次拿到的都是白球，即前\(k-1\)次试验都失败。故对于一个服从几何分布的随机变量\(X\),有：
+</p>
+\begin{equation}
+\label{eq:9}
+P\{X\geq k\} = (1-p)^{k-1}
+\end{equation}
+
+</div>
 </div>
 </div>
 </div>

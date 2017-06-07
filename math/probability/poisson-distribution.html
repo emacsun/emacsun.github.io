@@ -10,7 +10,7 @@
 <meta name="keywords" content="probability" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css" />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
-<a id="pdf" href="afcp-normal-distribution-history.pdf"><img src="../../img/assets/pdf.png"></a>
+<a id="pdf" href="poisson-distribution.pdf"><img src="../../img/assets/pdf.png"></a>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -87,16 +87,16 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org05f1e45">1. 定义</a></li>
-<li><a href="#orgc0c260e">2. 泊松分布与二项分布之间的关系</a></li>
-<li><a href="#org2b099e3">3. 泊松分布的期望和方差</a></li>
-<li><a href="#orgfdd7eac">4. 计算泊松分布</a></li>
+<li><a href="#org7452c57">1. 定义</a></li>
+<li><a href="#orgafb66a9">2. 泊松分布与二项分布之间的关系</a></li>
+<li><a href="#org9b42ecf">3. 泊松分布的期望和方差</a></li>
+<li><a href="#orge2d83f9">4. 计算泊松分布</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org05f1e45" class="outline-2">
-<h2 id="org05f1e45"><span class="section-number-2">1</span> 定义</h2>
+<div id="outline-container-org7452c57" class="outline-2">
+<h2 id="org7452c57"><span class="section-number-2">1</span> 定义</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -128,8 +128,8 @@ p(i) = P\{X=i\} = e^{-\lambda}\frac{\lambda^{i}}{i!}, i = 0,1,2,\ldots
 \end{equation}
 </div>
 </div>
-<div id="outline-container-orgc0c260e" class="outline-2">
-<h2 id="orgc0c260e"><span class="section-number-2">2</span> 泊松分布与二项分布之间的关系</h2>
+<div id="outline-container-orgafb66a9" class="outline-2">
+<h2 id="orgafb66a9"><span class="section-number-2">2</span> 泊松分布与二项分布之间的关系</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -182,8 +182,8 @@ P\{ X=i\} \approx e^{-\lambda} \frac{\lambda^{i}}{i!}
 </div>
 </div>
 
-<div id="outline-container-org2b099e3" class="outline-2">
-<h2 id="org2b099e3"><span class="section-number-2">3</span> 泊松分布的期望和方差</h2>
+<div id="outline-container-org9b42ecf" class="outline-2">
+<h2 id="org9b42ecf"><span class="section-number-2">3</span> 泊松分布的期望和方差</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 回忆在上一章节中我们假设\(np=\lambda\)，而二项分布的期望是\(np\)，另外二项分布的方差是\(np(1-p) = \lambda (1-p) \) 当\(p\)很小时，\(\lambda (1-p)\)近似为\(\lambda\)。所以我们猜测泊松分布的均值和方差都是\(\lambda\)。接下来，证明这一点：
@@ -216,8 +216,8 @@ E[X^{2}]&=& \sum_{i=0}^{\infty} \frac{i^{2} e^{-\lambda \lambda^{i}}}{i!} \\
 \end{eqnarray}
 </div>
 </div>
-<div id="outline-container-orgfdd7eac" class="outline-2">
-<h2 id="orgfdd7eac"><span class="section-number-2">4</span> 计算泊松分布</h2>
+<div id="outline-container-orge2d83f9" class="outline-2">
+<h2 id="orge2d83f9"><span class="section-number-2">4</span> 计算泊松分布</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
