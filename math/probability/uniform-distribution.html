@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>均匀分布</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<meta name="keywords" content="probability" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf" href="uniform-distribution.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">均匀分布</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga0193e5">1. 定义</a></li>
+<li><a href="#orgef05b0b">2. 期望和方差</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orga0193e5" class="outline-2">
+<h2 id="orga0193e5"><span class="section-number-2">1</span> 定义</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+如果一个随机变量\(X\)的密度函数为：
+</p>
+\begin{equation}
+\label{eq:1}
+f(x)  =
+\begin{cases}
+1 & 0 < x < 1 \\
+0 & \mathrm{others}
+\end{cases}
+\end{equation}
+<p>
+则称随机变量\(X\)在\((0,1)\)区间上均匀分布。因为\(f(x) \geq 0\)，且\( \int_{-\infty}^{\infty} f(x)dx = 1 \)，所以\(f(x)\)是概率密度函数。因为仅当\(x\in (0,1)\)才有\(f(x) > 0\)，所以\(X\)必然取值在\(0,1\)之间。又因为在\((0,1)\)之间时，\(f(x)\)是常数，所以\(X\)等概的取\((0,1)\)的值。
+</p>
+
+<p>
+一般来讲，我们称\(X\)为区间\((\alpha,\beta)\)上服从均匀分布的随机变量，如果它的密度函数为：
+</p>
+\begin{equation}
+\label{eq:2}
+f(x) =
+\begin{cases}
+\frac{1}{\beta - \alpha} & \alpha < x < \beta \\
+0 & \mathbf{others}
+\end{cases}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-orgef05b0b" class="outline-2">
+<h2 id="orgef05b0b"><span class="section-number-2">2</span> 期望和方差</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+令\(X\)在\((\alpha,\beta)\)上服从均匀分布，求\(E[X]\)和\(\mathrm{Var}[X]\)。
+</p>
+
+<p>
+按照期望公式：
+</p>
+\begin{equation}
+\label{eq:3}
+E[X] = \int_{\infty}^{\infty} xf(x) dx = \int_{\alpha}^{\beta} \frac{x}{\beta-\alpha}dx = \frac{\alpha + \beta}{2}
+\end{equation}
+<p>
+即某个区间上均匀分布随机变量的期望就等于该区间的中值。
+</p>
+\begin{eqnarray}
+\label{eq:4}
+E[X^{2}]&=&\int_{\alpha}^{\beta} \frac{x^{2}}{\beta-\alpha} dx = \frac{\beta^{2} + \alpha \beta + \alpha^{2}}{3} \\
+\end{eqnarray}
+<p>
+利用：
+</p>
+\begin{equation}
+\label{eq:5}
+\mathrm{Var} = E[X^{2}] - (E[X])^{2}
+\end{equation}
+<p>
+则：
+</p>
+\begin{equation}
+\label{eq:6}
+\mathrm{Var}(X) = \frac{(\beta - \alpha)^{2}}{12}
+\end{equation}
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
