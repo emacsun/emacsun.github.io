@@ -87,15 +87,15 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org8861f89">1. 负二项随机变量</a></li>
-<li><a href="#orgdecdd1e">2. 负二项随机变量的期望和方差</a></li>
-<li><a href="#orge2f34bd">3. 例子</a></li>
+<li><a href="#org8d6d8bc">1. 负二项随机变量</a></li>
+<li><a href="#orge796f4b">2. 负二项随机变量的期望和方差</a></li>
+<li><a href="#org969adde">3. 例子</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org8861f89" class="outline-2">
-<h2 id="org8861f89"><span class="section-number-2">1</span> 负二项随机变量</h2>
+<div id="outline-container-org8d6d8bc" class="outline-2">
+<h2 id="org8d6d8bc"><span class="section-number-2">1</span> 负二项随机变量</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -118,15 +118,15 @@ P\{X=n\} = \binom{n-1}{r-1} p^{r}(1-p)^{n-r}, \quad n= r,r+1,\ldots
 </p>
 \begin{equation}
 \label{eq:2}
-\sum_{n=r}^{\infty}P\{X=n\} = \sum_{n=r}^{\infry} \binom{n-1}{r-1}p^{r}(1-p)^{n-r} = 1
+\sum_{n=r}^{\infty}P\{X=n\} = \sum_{n=r}^{\infty} \binom{n-1}{r-1}p^{r}(1-p)^{n-r} = 1
 \end{equation}
 <p>
 上式可以从分析的角度来证明，当然我们不会这么傻，我们希望从概率的角度来证明，我们要赋予上式数学意义。考虑获得\(r\)次成功所需要的实验次数可以分解为\(Y_{1} +Y_{2} + \ldots + Y_{r}\)，其中\(Y_{1}\)表示第1次成功需要的实验次数，\(Y_{2}\)表示从第一次到第二次成功用的试验次数，\(Y_{r}\)表示从第\(r-1\)到第\(r\)次成功需要的实验次数。因为试验是相互独立的所以\(Y_{1},\ldots ,Y_{r}\)都是几何随机变量。而几何随机变量都是以概率1取有限值，也就是说对于几何随机变量来说总会成功的，对于负二项随机变量来说成功一次就肯定可以成功\(r\)次。
 </p>
 </div>
 </div>
-<div id="outline-container-orgdecdd1e" class="outline-2">
-<h2 id="orgdecdd1e"><span class="section-number-2">2</span> 负二项随机变量的期望和方差</h2>
+<div id="outline-container-orge796f4b" class="outline-2">
+<h2 id="orge796f4b"><span class="section-number-2">2</span> 负二项随机变量的期望和方差</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -170,8 +170,8 @@ E[X^{2}] = \frac{r}{p}E[Y-1] = \frac{r}{p}(\frac{r+1}{p} - 1)
 </p>
 </div>
 </div>
-<div id="outline-container-orge2f34bd" class="outline-2">
-<h2 id="orge2f34bd"><span class="section-number-2">3</span> 例子</h2>
+<div id="outline-container-org969adde" class="outline-2">
+<h2 id="org969adde"><span class="section-number-2">3</span> 例子</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
