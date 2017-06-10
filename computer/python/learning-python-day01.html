@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -64,17 +64,17 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9630796">1. Python简介</a></li>
-<li><a href="#org0edfbd9">2. 人生苦短，Python必选。</a></li>
-<li><a href="#org48886a3">3. 上手Python解释器</a></li>
-<li><a href="#org012928e">4. 把Python当计算器用</a>
+<li><a href="#orgc08e505">1. Python简介</a></li>
+<li><a href="#org1d58080">2. 人生苦短，Python必选。</a></li>
+<li><a href="#org89bba19">3. 上手Python解释器</a></li>
+<li><a href="#orge12c554">4. 把Python当计算器用</a>
 <ul>
-<li><a href="#org8bdba6a">4.1. 数值计算</a></li>
-<li><a href="#orgc36c415">4.2. 字符串</a></li>
-<li><a href="#org8771bf5">4.3. 列表（list）</a></li>
+<li><a href="#org0ac61fa">4.1. 数值计算</a></li>
+<li><a href="#org308e6c8">4.2. 字符串</a></li>
+<li><a href="#org47ae083">4.3. 列表（list）</a></li>
 </ul>
 </li>
-<li><a href="#orgaa23610">5. 跨出编程的第一步</a></li>
+<li><a href="#org44f7b21">5. 跨出编程的第一步</a></li>
 </ul>
 </div>
 </div>
@@ -90,8 +90,8 @@ for the JavaScript code in this tag.
 嗯，开始吧！
 </p>
 
-<div id="outline-container-org9630796" class="outline-2">
-<h2 id="org9630796"><span class="section-number-2">1</span> Python简介</h2>
+<div id="outline-container-orgc08e505" class="outline-2">
+<h2 id="orgc08e505"><span class="section-number-2">1</span> Python简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -107,8 +107,8 @@ Python简单易用，功能强大。相对于其他语言，它有更高级别�
 </div>
 </div>
 
-<div id="outline-container-org0edfbd9" class="outline-2">
-<h2 id="org0edfbd9"><span class="section-number-2">2</span> 人生苦短，Python必选。</h2>
+<div id="outline-container-org1d58080" class="outline-2">
+<h2 id="org1d58080"><span class="section-number-2">2</span> 人生苦短，Python必选。</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -128,8 +128,8 @@ Python提供了不但Unix shell一样的批处理，还提供了可移植性。P
 </div>
 </div>
 
-<div id="outline-container-org48886a3" class="outline-2">
-<h2 id="org48886a3"><span class="section-number-2">3</span> 上手Python解释器</h2>
+<div id="outline-container-org89bba19" class="outline-2">
+<h2 id="org89bba19"><span class="section-number-2">3</span> 上手Python解释器</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -139,14 +139,14 @@ Python提供了不但Unix shell一样的批处理，还提供了可移植性。P
 这里我就不废话怎么安装Python环境了。我的IPyton启动后画面是：
 </p>
 
-<div id="org36a6949" class="figure">
+<div id="org25a1fc9" class="figure">
 <p><img src="../../img/20170312PythonDay01.png" alt="20170312PythonDay01.png" width="800" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> 我的Python启动画面</p>
 </div>
 
 <p>
-Python文件默认编码方式是 <code>UTF-8</code> 。可以在文件头部添加: 
+Python文件默认编码方式是 <code>UTF-8</code> 。可以在文件头部添加:
 </p>
 <pre class="example">
 # -*- coding: UTF-8 -*-
@@ -157,24 +157,24 @@ Python文件默认编码方式是 <code>UTF-8</code> 。可以在文件头部添
 </div>
 </div>
 
-<div id="outline-container-org012928e" class="outline-2">
-<h2 id="org012928e"><span class="section-number-2">4</span> 把Python当计算器用</h2>
+<div id="outline-container-orge12c554" class="outline-2">
+<h2 id="orge12c554"><span class="section-number-2">4</span> 把Python当计算器用</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
 </p>
 </div>
 
-<div id="outline-container-org8bdba6a" class="outline-3">
-<h3 id="org8bdba6a"><span class="section-number-3">4.1</span> 数值计算</h3>
+<div id="outline-container-org0ac61fa" class="outline-3">
+<h3 id="org0ac61fa"><span class="section-number-3">4.1</span> 数值计算</h3>
 <div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
-<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">28</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">2</span>/<span style="color: #6c71c4;">7</span> 
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">42</span><span style="color: #2aa198;">]</span>: 
+<pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">28</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">2</span>/<span style="color: #6c71c4;">7</span>
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">42</span><span style="color: #2aa198;">]</span>:
 <span style="color: #6c71c4;">0</span>.<span style="color: #6c71c4;">2857142857142857</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">43</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">50</span> - <span style="color: #6c71c4;">9</span>/<span style="color: #6c71c4;">6</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">59</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">59</span><span style="color: #2aa198;">]</span>:
 <span style="color: #6c71c4;">48</span>.<span style="color: #6c71c4;">5</span>
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">60</span><span style="color: #2aa198;">]</span>:
 </pre>
@@ -185,11 +185,11 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">60</span>
 </p>
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">60</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">17</span>/<span style="color: #6c71c4;">3</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">67</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">67</span><span style="color: #2aa198;">]</span>:
 <span style="color: #6c71c4;">5</span>.<span style="color: #6c71c4;">666666666666667</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">68</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">17</span>//<span style="color: #6c71c4;">3</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">78</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">78</span><span style="color: #2aa198;">]</span>:
 <span style="color: #6c71c4;">5</span>
 </pre>
 </div>
@@ -219,7 +219,7 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">100</span
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">109</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">height</span> = <span style="color: #6c71c4;">5</span>*<span style="color: #6c71c4;">9</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">117</span><span style="color: #2aa198;">]</span>: width * height
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">128</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">128</span><span style="color: #2aa198;">]</span>:
 <span style="color: #6c71c4;">900</span>
 </pre>
 </div>
@@ -242,8 +242,9 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">128</span
 </p>
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">134</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">3</span> * <span style="color: #6c71c4;">3</span>.<span style="color: #6c71c4;">75</span>/<span style="color: #6c71c4;">1</span>.<span style="color: #6c71c4;">5</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">153</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">153</span><span style="color: #2aa198;">]</span>:
 <span style="color: #6c71c4;">7</span>.<span style="color: #6c71c4;">5</span>
+
 </pre>
 </div>
 <p>
@@ -255,16 +256,17 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">153</span
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">176</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">price</span> = <span style="color: #6c71c4;">100</span>.<span style="color: #6c71c4;">50</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">187</span><span style="color: #2aa198;">]</span>: price*tax
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">194</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">194</span><span style="color: #2aa198;">]</span>:
 <span style="color: #6c71c4;">12</span>.<span style="color: #6c71c4;">5625</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">195</span><span style="color: #2aa198;">]</span>: price + _
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">205</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">205</span><span style="color: #2aa198;">]</span>:
 <span style="color: #6c71c4;">113</span>.<span style="color: #6c71c4;">0625</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">206</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">round</span><span style="color: #2aa198;">(</span>_,<span style="color: #6c71c4;">2</span><span style="color: #2aa198;">)</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">212</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">212</span><span style="color: #2aa198;">]</span>:
 <span style="color: #6c71c4;">113</span>.<span style="color: #6c71c4;">06</span>
+
 </pre>
 </div>
 
@@ -282,8 +284,9 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">212</span
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">221</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">n</span> = <span style="color: #6c71c4;">3</span>+<span style="color: #6c71c4;">5j</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">233</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">abs</span><span style="color: #2aa198;">(</span>n<span style="color: #2aa198;">)</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">233</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">233</span><span style="color: #2aa198;">]</span>:
 <span style="color: #6c71c4;">5</span>.<span style="color: #6c71c4;">830951894845301</span>
+
 </pre>
 </div>
 <p>
@@ -292,35 +295,35 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">233</span
 </div>
 </div>
 
-<div id="outline-container-orgc36c415" class="outline-3">
-<h3 id="orgc36c415"><span class="section-number-3">4.2</span> 字符串</h3>
+<div id="outline-container-org308e6c8" class="outline-3">
+<h3 id="org308e6c8"><span class="section-number-3">4.2</span> 字符串</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 Python的字符串可以使用单引号 <code>'...'</code> 也可以使用双引号 <code>"..."</code> 。使用 <code>\</code> 做转义字符。
 </p>
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">234</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'span eggs'</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">249</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">249</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'span eggs'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">250</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'doesn\'t'</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">278</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">278</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">"doesn't"</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">279</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">"doesn't"</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">291</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">291</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">"doesn't"</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">292</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'"Yes," he said.'</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">312</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">312</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'"Yes," he said.'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">313</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">"\"Yes,\" he said."</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">333</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">333</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'"Yes," he said.'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">334</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'"Isn\'t," she said.'</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">368</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">368</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'"Isn\'t," she said.'</span>
 </pre>
 </div>
@@ -330,7 +333,7 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">368</span
 </p>
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">334</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'"Isn\'t," she said.'</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">368</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">368</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'"Isn\'t," she said.'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">369</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'"Isn\'t," she said'</span><span style="color: #2aa198;">)</span>
@@ -341,6 +344,7 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">402</span
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">441</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>s<span style="color: #2aa198;">)</span>
 First line.
 Second line.
+
 </pre>
 </div>
 <p>
@@ -353,6 +357,7 @@ ame
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">466</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>r<span style="color: #2aa198;">"C:\some\name"</span><span style="color: #2aa198;">)</span>
 C:\some\name
+
 </pre>
 </div>
 <p>
@@ -370,7 +375,7 @@ Python 使用 <code>"""..."""</code> 支持多行字符：
 输出：
 </p>
 <pre class="example">
-In [487]: 
+In [487]:
 This is a
 string
 occupying multiple lines
@@ -380,8 +385,9 @@ occupying multiple lines
 </p>
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">518</span><span style="color: #2aa198;">]</span>: <span style="color: #6c71c4;">4</span>*<span style="color: #2aa198;">"love "</span> + <span style="color: #2aa198;">"u"</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">518</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">518</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'love love love love u'</span>
+
 </pre>
 </div>
 
@@ -390,8 +396,9 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">518</span
 </p>
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">519</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">"python"</span> <span style="color: #2aa198;">"is"</span> <span style="color: #2aa198;">'good'</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">547</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">547</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'pythonisgood'</span>
+
 </pre>
 </div>
 
@@ -406,6 +413,8 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">561</span
     prefix <span style="color: #2aa198;">'thon'</span>
                 ^
 <span style="color: #b58900;">SyntaxError</span>: invalid syntax
+
+
 </pre>
 </div>
 <p>
@@ -413,8 +422,9 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">561</span
 </p>
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">571</span><span style="color: #2aa198;">]</span>: prefix + <span style="color: #2aa198;">'thon'</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">587</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">587</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'python'</span>
+
 </pre>
 </div>
 
@@ -425,7 +435,7 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">587</span
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">626</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">word</span> = <span style="color: #2aa198;">'python'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">643</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">0</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">654</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">654</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'p'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">655</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">6</span><span style="color: #2aa198;">]</span>
@@ -437,8 +447,9 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">655</span
 <span style="color: #b58900;">IndexError</span>: string index out of <span style="color: #839496; font-weight: bold;">range</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">659</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">5</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">662</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">662</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'n'</span>
+
 </pre>
 </div>
 
@@ -447,15 +458,15 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">662</span
 </p>
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">663</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">674</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">674</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'n'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">675</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">5</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">684</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">684</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'y'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">685</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">6</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">688</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">688</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'p'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">689</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">7</span><span style="color: #2aa198;">]</span>
@@ -465,6 +476,7 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">689</span
 ----&gt; <span style="color: #6c71c4;">1</span> word<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">7</span><span style="color: #2aa198;">]</span>
 
 <span style="color: #b58900;">IndexError</span>: string index out of <span style="color: #839496; font-weight: bold;">range</span>
+
 </pre>
 </div>
 
@@ -477,12 +489,13 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">689</span
 </p>
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">700</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">0</span>:<span style="color: #6c71c4;">2</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">703</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">703</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'py'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">704</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">3</span>:<span style="color: #6c71c4;">5</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">714</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">714</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'ho'</span>
+
 </pre>
 </div>
 <p>
@@ -491,12 +504,13 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">714</span
 
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">715</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span>:<span style="color: #6c71c4;">2</span><span style="color: #2aa198;">]</span> + word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">2</span>:<span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">738</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">738</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'python'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">739</span><span style="color: #2aa198;">]</span>: word<span style="color: #2aa198;">[</span>:<span style="color: #6c71c4;">5</span><span style="color: #2aa198;">]</span> + word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">5</span>:<span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">751</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">751</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'python'</span>
+
 </pre>
 </div>
 
@@ -514,8 +528,10 @@ Python 不允许修改字符串，如果你需要一个新的字符，重新创�
 
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">772</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'J'</span> + word<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>:<span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">778</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">778</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'Jython'</span>
+
+
 </pre>
 </div>
 <p>
@@ -525,14 +541,15 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">778</span
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">779</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">s</span> = <span style="color: #2aa198;">'askkjljlkjioejkjlkjlskjlj'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">793</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>s<span style="color: #2aa198;">)</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">801</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">801</span><span style="color: #2aa198;">]</span>:
 <span style="color: #6c71c4;">25</span>
+
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org8771bf5" class="outline-3">
-<h3 id="org8771bf5"><span class="section-number-3">4.3</span> 列表（list）</h3>
+<div id="outline-container-org47ae083" class="outline-3">
+<h3 id="org47ae083"><span class="section-number-3">4.3</span> 列表（list）</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 Python支持很多复杂的数据类型，列表（list）是比较常用的一个:
@@ -542,8 +559,10 @@ Python支持很多复杂的数据类型，列表（list）是比较常用的一�
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">802</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">squares</span> = <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>,<span style="color: #6c71c4;">4</span>,<span style="color: #6c71c4;">9</span>,<span style="color: #6c71c4;">16</span>,<span style="color: #6c71c4;">25</span><span style="color: #2aa198;">]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">833</span><span style="color: #2aa198;">]</span>: squares
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">837</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">837</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">4</span>, <span style="color: #6c71c4;">9</span>, <span style="color: #6c71c4;">16</span>, <span style="color: #6c71c4;">25</span><span style="color: #2aa198;">]</span>
+
+
 </pre>
 </div>
 <p>
@@ -551,20 +570,21 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">837</span
 </p>
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">890</span><span style="color: #2aa198;">]</span>: squares<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">2</span>:<span style="color: #6c71c4;">1</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">900</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">900</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">901</span><span style="color: #2aa198;">]</span>: squares<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">2</span>:-<span style="color: #6c71c4;">4</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">901</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">901</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">902</span><span style="color: #2aa198;">]</span>: squares<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">2</span>:<span style="color: #6c71c4;">4</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">902</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">902</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">9</span>, <span style="color: #6c71c4;">16</span><span style="color: #2aa198;">]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">903</span><span style="color: #2aa198;">]</span>: squares<span style="color: #2aa198;">[</span>-<span style="color: #6c71c4;">4</span>:-<span style="color: #6c71c4;">2</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">909</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">909</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">4</span>, <span style="color: #6c71c4;">9</span><span style="color: #2aa198;">]</span>
+
 </pre>
 </div>
 <p>
@@ -572,8 +592,9 @@ list支持级联：
 </p>
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">910</span><span style="color: #2aa198;">]</span>: squares + <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">36</span>,<span style="color: #6c71c4;">49</span>,<span style="color: #6c71c4;">64</span>,<span style="color: #6c71c4;">81</span>,<span style="color: #6c71c4;">100</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">952</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">952</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">4</span>, <span style="color: #6c71c4;">9</span>, <span style="color: #6c71c4;">16</span>, <span style="color: #6c71c4;">25</span>, <span style="color: #6c71c4;">36</span>, <span style="color: #6c71c4;">49</span>, <span style="color: #6c71c4;">64</span>, <span style="color: #6c71c4;">81</span>, <span style="color: #6c71c4;">100</span><span style="color: #2aa198;">]</span>
+
 </pre>
 </div>
 <p>
@@ -585,8 +606,9 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">952</span
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">988</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">cubes</span><span style="color: #2aa198;">[</span><span style="color: #6c71c4;">3</span><span style="color: #2aa198;">]</span> = <span style="color: #6c71c4;">64</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1000</span><span style="color: #2aa198;">]</span>: cubes
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1004</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1004</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">8</span>, <span style="color: #6c71c4;">27</span>, <span style="color: #6c71c4;">64</span>, <span style="color: #6c71c4;">125</span><span style="color: #2aa198;">]</span>
+
 </pre>
 </div>
 
@@ -595,7 +617,7 @@ Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1004</spa
 </p>
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1000</span><span style="color: #2aa198;">]</span>: cubes
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1004</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1004</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">8</span>, <span style="color: #6c71c4;">27</span>, <span style="color: #6c71c4;">64</span>, <span style="color: #6c71c4;">125</span><span style="color: #2aa198;">]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1005</span><span style="color: #2aa198;">]</span>: cubes.append<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">216</span><span style="color: #2aa198;">)</span>
@@ -603,8 +625,9 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1005</spa
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1020</span><span style="color: #2aa198;">]</span>: cubes.append<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">7</span>**<span style="color: #6c71c4;">3</span><span style="color: #2aa198;">)</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1038</span><span style="color: #2aa198;">]</span>: cubes
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1038</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1038</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">8</span>, <span style="color: #6c71c4;">27</span>, <span style="color: #6c71c4;">64</span>, <span style="color: #6c71c4;">125</span>, <span style="color: #6c71c4;">216</span>, <span style="color: #6c71c4;">343</span><span style="color: #2aa198;">]</span>
+
 </pre>
 </div>
 
@@ -615,7 +638,7 @@ list也可以部分索引：
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1039</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">letters</span> = <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'a'</span>,<span style="color: #2aa198;">'b'</span>,<span style="color: #2aa198;">'c'</span>,<span style="color: #2aa198;">'d'</span>,<span style="color: #2aa198;">'e'</span>,<span style="color: #2aa198;">'f'</span>,<span style="color: #2aa198;">'g'</span>,<span style="color: #2aa198;">'h'</span><span style="color: #2aa198;">]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1075</span><span style="color: #2aa198;">]</span>: letters
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1075</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1075</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'a'</span>, <span style="color: #2aa198;">'b'</span>, <span style="color: #2aa198;">'c'</span>, <span style="color: #2aa198;">'d'</span>, <span style="color: #2aa198;">'e'</span>, <span style="color: #2aa198;">'f'</span>, <span style="color: #2aa198;">'g'</span>, <span style="color: #2aa198;">'h'</span><span style="color: #2aa198;">]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1076</span><span style="color: #2aa198;">]</span>: <span style="color: #586e75;">#</span><span style="color: #586e75;">replace some values</span>
@@ -623,7 +646,7 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1076</spa
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1081</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">letters</span><span style="color: #2aa198;">[</span><span style="color: #6c71c4;">2</span>:<span style="color: #6c71c4;">5</span><span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'C'</span>,<span style="color: #2aa198;">'D'</span>,<span style="color: #2aa198;">'E'</span><span style="color: #2aa198;">]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1095</span><span style="color: #2aa198;">]</span>: letters
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1095</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1095</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'a'</span>, <span style="color: #2aa198;">'b'</span>, <span style="color: #2aa198;">'C'</span>, <span style="color: #2aa198;">'D'</span>, <span style="color: #2aa198;">'E'</span>, <span style="color: #2aa198;">'f'</span>, <span style="color: #2aa198;">'g'</span>, <span style="color: #2aa198;">'h'</span><span style="color: #2aa198;">]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1096</span><span style="color: #2aa198;">]</span>: <span style="color: #586e75;">#</span><span style="color: #586e75;">now remove them</span>
@@ -631,7 +654,7 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1096</spa
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1108</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">letters</span><span style="color: #2aa198;">[</span><span style="color: #6c71c4;">2</span>:<span style="color: #6c71c4;">5</span><span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">[]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1115</span><span style="color: #2aa198;">]</span>: letters
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1123</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1123</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'a'</span>, <span style="color: #2aa198;">'b'</span>, <span style="color: #2aa198;">'f'</span>, <span style="color: #2aa198;">'g'</span>, <span style="color: #2aa198;">'h'</span><span style="color: #2aa198;">]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1124</span><span style="color: #2aa198;">]</span>: <span style="color: #586e75;"># </span><span style="color: #586e75;">clear all items</span>
@@ -639,8 +662,9 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1124</spa
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1136</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">letters</span><span style="color: #2aa198;">[</span>:<span style="color: #2aa198;">]</span> = <span style="color: #2aa198;">[]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1147</span><span style="color: #2aa198;">]</span>: letters
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1147</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1147</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[]</span>
+
 </pre>
 </div>
 <p>
@@ -658,31 +682,32 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1157</spa
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1168</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">x</span> = <span style="color: #2aa198;">[</span>a,n<span style="color: #2aa198;">]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1177</span><span style="color: #2aa198;">]</span>: x
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1181</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1181</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[</span><span style="color: #b58900;">[</span><span style="color: #2aa198;">'a'</span>, <span style="color: #2aa198;">'b'</span>, <span style="color: #2aa198;">'c'</span><span style="color: #b58900;">]</span>, <span style="color: #b58900;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">2</span>, <span style="color: #6c71c4;">3</span><span style="color: #b58900;">]</span><span style="color: #2aa198;">]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1182</span><span style="color: #2aa198;">]</span>: x<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">0</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1189</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1189</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[</span><span style="color: #2aa198;">'a'</span>, <span style="color: #2aa198;">'b'</span>, <span style="color: #2aa198;">'c'</span><span style="color: #2aa198;">]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1190</span><span style="color: #2aa198;">]</span>: x<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span><span style="color: #2aa198;">]</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1190</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1190</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1</span>, <span style="color: #6c71c4;">2</span>, <span style="color: #6c71c4;">3</span><span style="color: #2aa198;">]</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1191</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>x<span style="color: #2aa198;">)</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1195</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1195</span><span style="color: #2aa198;">]</span>:
 <span style="color: #6c71c4;">2</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1196</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">len</span><span style="color: #2aa198;">(</span>x<span style="color: #b58900;">[</span><span style="color: #6c71c4;">0</span><span style="color: #b58900;">]</span><span style="color: #2aa198;">)</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1207</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">1207</span><span style="color: #2aa198;">]</span>:
 <span style="color: #6c71c4;">3</span>
+
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgaa23610" class="outline-2">
-<h2 id="orgaa23610"><span class="section-number-2">5</span> 跨出编程的第一步</h2>
+<div id="outline-container-org44f7b21" class="outline-2">
+<h2 id="org44f7b21"><span class="section-number-2">5</span> 跨出编程的第一步</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 

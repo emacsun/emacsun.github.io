@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -64,24 +64,24 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge244600">1. 简介</a></li>
-<li><a href="#org1c452f6">2. 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></a></li>
-<li><a href="#org67ffa96">3. 从 <code>constructor</code> 的定义引入函数重载</a></li>
-<li><a href="#org1b5c189">4. 默认的 <code>constructor</code></a></li>
-<li><a href="#org46f2767">5. <code>this</code> 的作用</a></li>
-<li><a href="#org0da4977">6. 理解 <code>static</code></a></li>
-<li><a href="#orge35bef3">7. <code>class</code> 成员初始化</a></li>
-<li><a href="#orgeb11cf7">8. 初始化顺序</a></li>
-<li><a href="#orge602ee0">9. <code>static</code> 类型的初始化</a></li>
-<li><a href="#org4cc6eed">10. 显示初始化</a></li>
-<li><a href="#orgd716c04">11. 非静态实例初始化</a></li>
-<li><a href="#org5e7a1d9">12. 数组初始化</a></li>
+<li><a href="#org97806d9">1. 简介</a></li>
+<li><a href="#org2b0c826">2. 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></a></li>
+<li><a href="#org5d29dea">3. 从 <code>constructor</code> 的定义引入函数重载</a></li>
+<li><a href="#orgeac6035">4. 默认的 <code>constructor</code></a></li>
+<li><a href="#orga14d8e2">5. <code>this</code> 的作用</a></li>
+<li><a href="#org8f3bab4">6. 理解 <code>static</code></a></li>
+<li><a href="#org0f5b9d3">7. <code>class</code> 成员初始化</a></li>
+<li><a href="#org7f534f9">8. 初始化顺序</a></li>
+<li><a href="#org1370d5b">9. <code>static</code> 类型的初始化</a></li>
+<li><a href="#org39ac065">10. 显示初始化</a></li>
+<li><a href="#org64607a9">11. 非静态实例初始化</a></li>
+<li><a href="#orga8dbc93">12. 数组初始化</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orge244600" class="outline-2">
-<h2 id="orge244600"><span class="section-number-2">1</span> 简介</h2>
+<div id="outline-container-org97806d9" class="outline-2">
+<h2 id="org97806d9"><span class="section-number-2">1</span> 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <b>Initialization and Cleanup</b> 这一章首先讲述类初始化的一些操作，顺带初始化操作阐述了方法重载。然后讲述了Java的Garbage Collector机制。其中关于 <code>static</code> 初始化的例子最为令人印象深刻，我把那个“橱柜”的代码做了逐行解析，学完之后感觉非常顺畅。
@@ -89,8 +89,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org1c452f6" class="outline-2">
-<h2 id="org1c452f6"><span class="section-number-2">2</span> 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></h2>
+<div id="outline-container-org2b0c826" class="outline-2">
+<h2 id="org2b0c826"><span class="section-number-2">2</span> 默认的 <code>constructor</code> 和带参数的 <code>constructor</code></h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -181,8 +181,8 @@ null
 </div>
 </div>
 
-<div id="outline-container-org67ffa96" class="outline-2">
-<h2 id="org67ffa96"><span class="section-number-2">3</span> 从 <code>constructor</code> 的定义引入函数重载</h2>
+<div id="outline-container-org5d29dea" class="outline-2">
+<h2 id="org5d29dea"><span class="section-number-2">3</span> 从 <code>constructor</code> 的定义引入函数重载</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -293,19 +293,19 @@ public class PrimitiveOverloading{
 这段代码的输出是:
 </p>
 <pre class="example">
-5: f1(int) f2(int) f3(int) f4(int) f5(long) f6(float) f7(double) 
-char: f1(char) f2(int) f3(int) f4(int) f5(long) f6(float) f7(double) 
-byte: f1(byte) f2(byte) f3(short) f4(int) f5(long) f6(float) f7(double) 
-short: f1(short) f2(short) f3(short) f4(int) f5(long) f6(float) f7(double) 
-int: f1(int) f2(int) f3(int) f4(int) f5(long) f6(float) f7(double) 
-long: f1(long) f2(long) f3(long) f4(long) f5(long) f6(float) f7(double) 
-float: f1(float) f2(float) f3(float) f4(float) f5(float) f6(float) f7(double) 
+5: f1(int) f2(int) f3(int) f4(int) f5(long) f6(float) f7(double)
+char: f1(char) f2(int) f3(int) f4(int) f5(long) f6(float) f7(double)
+byte: f1(byte) f2(byte) f3(short) f4(int) f5(long) f6(float) f7(double)
+short: f1(short) f2(short) f3(short) f4(int) f5(long) f6(float) f7(double)
+int: f1(int) f2(int) f3(int) f4(int) f5(long) f6(float) f7(double)
+long: f1(long) f2(long) f3(long) f4(long) f5(long) f6(float) f7(double)
+float: f1(float) f2(float) f3(float) f4(float) f5(float) f6(float) f7(double)
 double: f1(double) f2(double) f3(double) f4(double) f5(double) f6(double) f7(double)
 </pre>
 </div>
 </div>
-<div id="outline-container-org1b5c189" class="outline-2">
-<h2 id="org1b5c189"><span class="section-number-2">4</span> 默认的 <code>constructor</code></h2>
+<div id="outline-container-orgeac6035" class="outline-2">
+<h2 id="orgeac6035"><span class="section-number-2">4</span> 默认的 <code>constructor</code></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -409,8 +409,8 @@ with double d
 </p>
 </div>
 </div>
-<div id="outline-container-org46f2767" class="outline-2">
-<h2 id="org46f2767"><span class="section-number-2">5</span> <code>this</code> 的作用</h2>
+<div id="outline-container-orga14d8e2" class="outline-2">
+<h2 id="orga14d8e2"><span class="section-number-2">5</span> <code>this</code> 的作用</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -486,8 +486,8 @@ i = 2
 </div>
 
 
-<div id="outline-container-org0da4977" class="outline-2">
-<h2 id="org0da4977"><span class="section-number-2">6</span> 理解 <code>static</code></h2>
+<div id="outline-container-org8f3bab4" class="outline-2">
+<h2 id="org8f3bab4"><span class="section-number-2">6</span> 理解 <code>static</code></h2>
 <div class="outline-text-2" id="text-6">
 <p>
 
@@ -502,8 +502,8 @@ i = 2
 </p>
 </div>
 </div>
-<div id="outline-container-orge35bef3" class="outline-2">
-<h2 id="orge35bef3"><span class="section-number-2">7</span> <code>class</code> 成员初始化</h2>
+<div id="outline-container-org0f5b9d3" class="outline-2">
+<h2 id="org0f5b9d3"><span class="section-number-2">7</span> <code>class</code> 成员初始化</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 
@@ -561,8 +561,8 @@ InitialValues     null
 </p>
 </div>
 </div>
-<div id="outline-container-orgeb11cf7" class="outline-2">
-<h2 id="orgeb11cf7"><span class="section-number-2">8</span> 初始化顺序</h2>
+<div id="outline-container-org7f534f9" class="outline-2">
+<h2 id="org7f534f9"><span class="section-number-2">8</span> 初始化顺序</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 
@@ -613,7 +613,7 @@ f()
 </pre>
 
 <p>
-从代码中我们可以看到， <code>House</code> 的构造函数在 <code>w1</code> 和 <code>w2</code> 之间。但是我们执行 <code>House h = new House()</code> 这一行代码时，初始化的执行顺序是： 
+从代码中我们可以看到， <code>House</code> 的构造函数在 <code>w1</code> 和 <code>w2</code> 之间。但是我们执行 <code>House h = new House()</code> 这一行代码时，初始化的执行顺序是：
 </p>
 <ol class="org-ol">
 <li>初始化  <code>w1</code></li>
@@ -624,8 +624,8 @@ f()
 </div>
 </div>
 
-<div id="outline-container-orge602ee0" class="outline-2">
-<h2 id="orge602ee0"><span class="section-number-2">9</span> <code>static</code> 类型的初始化</h2>
+<div id="outline-container-org1370d5b" class="outline-2">
+<h2 id="org1370d5b"><span class="section-number-2">9</span> <code>static</code> 类型的初始化</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 
@@ -738,8 +738,8 @@ f3(1)
 </p>
 </div>
 </div>
-<div id="outline-container-org4cc6eed" class="outline-2">
-<h2 id="org4cc6eed"><span class="section-number-2">10</span> 显示初始化</h2>
+<div id="outline-container-org39ac065" class="outline-2">
+<h2 id="org39ac065"><span class="section-number-2">10</span> 显示初始化</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 
@@ -778,7 +778,7 @@ f3(1)
 <span class="linenr">15: </span>    cup2 = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Cup</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">2</span><span style="color: #268bd2;">)</span>;
 <span class="linenr">16: </span>  <span style="color: #b58900;">}</span>
 <span class="linenr">17: </span>  <span style="color: #268bd2;">Cups</span><span style="color: #b58900;">(){</span>
-<span class="linenr">18: </span>    print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Cups()"</span><span style="color: #268bd2;">)</span>; 
+<span class="linenr">18: </span>    print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Cups()"</span><span style="color: #268bd2;">)</span>;
 <span class="linenr">19: </span>  <span style="color: #b58900;">}</span>
 <span class="linenr">20: </span><span style="color: #2aa198;">}</span>
 <span class="linenr">21: </span>
@@ -818,7 +818,7 @@ f(99)
 当我们把第 <a href="#coderef-cupsrun1" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-cupsrun1');" onmouseout="CodeHighlightOff(this, 'coderef-cupsrun1');">cupsrun1</a>行解注，第<a href="#coderef-cupsrun" class="coderef" onmouseover="CodeHighlightOn(this, 'coderef-cupsrun');" onmouseout="CodeHighlightOff(this, 'coderef-cupsrun');">cupsrun</a> 注释掉之后，输出为：
 </p>
 <pre class="example">
-Cup(1) 
+Cup(1)
 Cup(2)
 Cups()
 Inside main()
@@ -982,8 +982,8 @@ static methodstring in String1
 </div>
 </div>
 </div>
-<div id="outline-container-orgd716c04" class="outline-2">
-<h2 id="orgd716c04"><span class="section-number-2">11</span> 非静态实例初始化</h2>
+<div id="outline-container-org64607a9" class="outline-2">
+<h2 id="org64607a9"><span class="section-number-2">11</span> 非静态实例初始化</h2>
 <div class="outline-text-2" id="text-11">
 <p>
 
@@ -1049,8 +1049,8 @@ new Mugs(1) completed
 </p>
 </div>
 </div>
-<div id="outline-container-org5e7a1d9" class="outline-2">
-<h2 id="org5e7a1d9"><span class="section-number-2">12</span> 数组初始化</h2>
+<div id="outline-container-orga8dbc93" class="outline-2">
+<h2 id="orga8dbc93"><span class="section-number-2">12</span> 数组初始化</h2>
 <div class="outline-text-2" id="text-12">
 <p>
 
@@ -1219,8 +1219,8 @@ length of a = 8
 输出是：
 </p>
 <pre class="example">
-47 3.14 11.11 
-one two three 
+47 3.14 11.11
+one two three
 A@15db9742 A@6d06d69c A@7852e922
 </pre>
 <p>
@@ -1248,7 +1248,7 @@ A@15db9742 A@6d06d69c A@7852e922
 <span class="linenr"> 7: </span>    <span style="color: #b58900;">}</span>
 <span class="linenr"> 8: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">){</span>
 <span class="linenr"> 9: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #b58900;">new</span> <span style="color: #268bd2;">Integer</span><span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">47</span><span style="color: #6c71c4;">)</span>,<span style="color: #b58900;">new</span> <span style="color: #268bd2;">Float</span><span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">3.14</span><span style="color: #6c71c4;">)</span>,<span style="color: #b58900;">new</span> <span style="color: #268bd2;">Double</span><span style="color: #6c71c4;">(</span><span style="color: #6c71c4;">11.11</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span>;
-<span class="linenr">10: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span>,<span style="color: #6c71c4;">3.14F</span>,<span style="color: #6c71c4;">11.11</span><span style="color: #268bd2;">)</span>; 
+<span class="linenr">10: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">47</span>,<span style="color: #6c71c4;">3.14F</span>,<span style="color: #6c71c4;">11.11</span><span style="color: #268bd2;">)</span>;
 <span class="linenr">11: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"one"</span>,<span style="color: #2aa198;">"two"</span>,<span style="color: #2aa198;">"three"</span><span style="color: #268bd2;">)</span>;
 <span class="linenr">12: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #b58900;">new</span> <span style="color: #b58900;">A</span><span style="color: #6c71c4;">()</span>,<span style="color: #b58900;">new</span> <span style="color: #b58900;">A</span><span style="color: #6c71c4;">()</span>,<span style="color: #b58900;">new</span> <span style="color: #b58900;">A</span><span style="color: #6c71c4;">()</span><span style="color: #268bd2;">)</span>;
 <span id="coderef-NewVarArgsline2" class="coderef-off"><span class="linenr">13: </span>        printArray<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span><span style="color: #b58900;">Object</span><span style="color: #859900;">[]</span><span style="color: #6c71c4;">)</span><span style="color: #b58900;">new</span> <span style="color: #268bd2;">Integer</span><span style="color: #6c71c4;">[]{</span><span style="color: #6c71c4;">1</span>,<span style="color: #6c71c4;">2</span>,<span style="color: #6c71c4;">3</span>,<span style="color: #6c71c4;">4</span><span style="color: #6c71c4;">}</span><span style="color: #268bd2;">)</span>; (NewVarArgsline2)</span>
@@ -1261,10 +1261,10 @@ A@15db9742 A@6d06d69c A@7852e922
 输出为：
 </p>
 <pre class="example">
-47 3.14 11.11 
-47 3.14 11.11 
-one two three 
-A@15db9742 A@6d06d69c A@7852e922 
+47 3.14 11.11
+47 3.14 11.11
+one two three
+A@15db9742 A@6d06d69c A@7852e922
 1 2 3 4
 </pre>
 
@@ -1300,8 +1300,8 @@ A@15db9742 A@6d06d69c A@7852e922
 输出为：
 </p>
 <pre class="example">
-required: 1 one 
-required: 2 two three 
+required: 1 one
+required: 2 two three
 required: 0
 </pre>
 
@@ -1340,7 +1340,7 @@ int []: class [I
 </pre>
 
 <p>
-从上面的代码可以看出，可以使用 <code>Character</code> 数组作为可变参数类型，也可以使用 <code>int</code> 这种基础类型作为可变参数类型。 <code>getClass()</code> 函数是 <code>Object</code> 的内置函数。 
+从上面的代码可以看出，可以使用 <code>Character</code> 数组作为可变参数类型，也可以使用 <code>int</code> 这种基础类型作为可变参数类型。 <code>getClass()</code> 函数是 <code>Object</code> 的内置函数。
 </p>
 </div>
 </div>

@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -77,7 +77,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -86,9 +86,9 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org76c5efe">1. 贝叶斯法则</a></li>
-<li><a href="#orgd9891db">2. 概率推断</a></li>
-<li><a href="#org45d6992">3. 先验概率，似然值和后验概率</a></li>
+<li><a href="#org021989b">1. 贝叶斯法则</a></li>
+<li><a href="#org6e80634">2. 概率推断</a></li>
+<li><a href="#orgd9b31be">3. 先验概率，似然值和后验概率</a></li>
 </ul>
 </div>
 </div>
@@ -101,8 +101,8 @@ BRML的第一章主要复习了概率的基本知识，通过贝叶斯公式（�
 </p>
 
 
-<div id="outline-container-org76c5efe" class="outline-2">
-<h2 id="org76c5efe"><span class="section-number-2">1</span> 贝叶斯法则</h2>
+<div id="outline-container-org021989b" class="outline-2">
+<h2 id="org021989b"><span class="section-number-2">1</span> 贝叶斯法则</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -128,8 +128,8 @@ BRML的第一章主要复习了概率的基本知识，通过贝叶斯公式（�
 </div>
 </div>
 
-<div id="outline-container-orgd9891db" class="outline-2">
-<h2 id="orgd9891db"><span class="section-number-2">2</span> 概率推断</h2>
+<div id="outline-container-org6e80634" class="outline-2">
+<h2 id="org6e80634"><span class="section-number-2">2</span> 概率推断</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -168,7 +168,7 @@ p(KJ| Hamburtger Eater) &=& \frac{p(KJ,Hamburtger Eater)}{p(Hamburtger Eater)} \
 </p>
 \begin{eqnarray}
 \label{eq:2}
-p(KJ| Hamburtger Eater) &=& \frac{p(KJ,Hamburtger Eater)}{p(Hamburtger Eater)}\\ 
+p(KJ| Hamburtger Eater) &=& \frac{p(KJ,Hamburtger Eater)}{p(Hamburtger Eater)}\\
 &=& \frac{p(Hamburtger Eater | KJ)p(KJ)}{p(Hamburtger Eater)} \\
 &=& \frac{0.9\times 1/100000}{0.001} \\
 &\approx&  1/100
@@ -183,9 +183,9 @@ p(KJ| Hamburtger Eater) &=& \frac{p(KJ,Hamburtger Eater)}{p(Hamburtger Eater)}\\
 
 <div class="instance">
 <p>
-再给一个异或门的例子，我们知道一个标准的异或门电路的逻辑关系满足表<a href="#org1608a01">1</a>:
+再给一个异或门的例子，我们知道一个标准的异或门电路的逻辑关系满足表<a href="#org4e0e8b0">1</a>:
 </p>
-<table id="org1608a01" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<table id="org4e0e8b0" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 1:</span> 异或门逻辑</caption>
 
 <colgroup>
@@ -234,9 +234,9 @@ p(KJ| Hamburtger Eater) &=& \frac{p(KJ,Hamburtger Eater)}{p(Hamburtger Eater)}\\
 </p>
 
 <p>
-但是考虑一个软判决输出的异或门逻辑,其逻辑关系如表<a href="#orgd624987">2</a>，我们假定\(A,B\)是独立的且\(p(A=1)=0.65,p(B=1)=0.77\)，那么求\(p(A=1|C=0)\)？
+但是考虑一个软判决输出的异或门逻辑,其逻辑关系如表<a href="#org10305e3">2</a>，我们假定\(A,B\)是独立的且\(p(A=1)=0.65,p(B=1)=0.77\)，那么求\(p(A=1|C=0)\)？
 </p>
-<table id="orgd624987" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<table id="org10305e3" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 2:</span> 异或门逻辑</caption>
 
 <colgroup>
@@ -297,7 +297,7 @@ p(A=1,C=0) &=&\sum_{B}p(A=1,B,C=0) \\
 \end{eqnarray}
 \begin{eqnarray}
 \label{eq:5}
-p(A=0,C=0) &=&\sum_{B}p(A=0,B,C=0) \\ 
+p(A=0,C=0) &=&\sum_{B}p(A=0,B,C=0) \\
 &=& \sum_{B}p(C=0|B,A=0)p(B)p(A=0)
 \end{eqnarray}
 <p>
@@ -307,8 +307,8 @@ p(A=0,C=0) &=&\sum_{B}p(A=0,B,C=0) \\
 </div>
 </div>
 </div>
-<div id="outline-container-org45d6992" class="outline-2">
-<h2 id="org45d6992"><span class="section-number-2">3</span> 先验概率，似然值和后验概率</h2>
+<div id="outline-container-orgd9b31be" class="outline-2">
+<h2 id="orgd9b31be"><span class="section-number-2">3</span> 先验概率，似然值和后验概率</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -319,7 +319,7 @@ p(A=0,C=0) &=&\sum_{B}p(A=0,B,C=0) \\
 </p>
 \begin{equation}
 \label{eq:6}
-p(\theta |D) = \frac{p(D|\theta)p(\theta)}{p(D)} = \frac{p(D|\theta)p(\theta)}{\int_{\theta}p(D|\theta)p(\theta)} 
+p(\theta |D) = \frac{p(D|\theta)p(\theta)}{p(D)} = \frac{p(D|\theta)p(\theta)}{\int_{\theta}p(D|\theta)p(\theta)}
 \end{equation}
 <p>
 这个模型在机器学习和信道编码理论中都有普遍的实用，甚至是其基础的基础。那么从式\ref{eq:6}我们可以读出什么信息呢？式\ref{eq:6}告诉我们，我们可以从数据生成模型\(p(D|\theta)\)和先验概率\(p(\theta)\)推断后验概率\(p(\theta |D)\)。最大后验概率准则(maximize a posteriori,MAP )准则，可以表示为：
@@ -373,7 +373,7 @@ p(t,s_{a},s_{b}) = \underbrace{p(t|s_{a},s_{b})}_{likelihood}\underbrace{p(s_{a}
 假设两个骰子是均匀的\(p(s_{a},s_{b})\)则\(p(s_{a},s_{b}) = p(s_{a})p(s_{b})\)其概率分布表格为：
 </p>
 
-<table id="org56f70df" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<table id="org5fb01df" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 3:</span> \(p(s_{a})p(s_{b})\)</caption>
 
 <colgroup>
@@ -468,7 +468,7 @@ p(t,s_{a},s_{b}) = \underbrace{p(t|s_{a},s_{b})}_{likelihood}\underbrace{p(s_{a}
 <p>
 由于骰子是均匀的则\(p(s_{a}) = p(s_{b}) = 1/6\)。另外，我们有\(p(t|s_{a},s_{b})\)，表格如下：
 </p>
-<table id="org7936cfe" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<table id="orgd5fa671" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 4:</span> \(p(t|s_{a},s_{b})\)</caption>
 
 <colgroup>
@@ -561,14 +561,14 @@ p(t,s_{a},s_{b}) = \underbrace{p(t|s_{a},s_{b})}_{likelihood}\underbrace{p(s_{a}
 </table>
 
 <p>
-后验概率 \(p(s_{a},s_{b}|t=9) = \frac{p(t=9|s_{a},s_{b})p(s_{a})p(s_{b})}{p(t=9)}\)，其中\[p(t=9) = \sum_{s_{a}s_{b}} p(t=9| s_{a},s_{b})p(s_{a})p(s_{b})\] 
+后验概率 \(p(s_{a},s_{b}|t=9) = \frac{p(t=9|s_{a},s_{b})p(s_{a})p(s_{b})}{p(t=9)}\)，其中\[p(t=9) = \sum_{s_{a}s_{b}} p(t=9| s_{a},s_{b})p(s_{a})p(s_{b})\]
 </p>
 
 <p>
 综上我们可以得到后验概率表：
 </p>
 
-<table id="orgf220be7" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<table id="orgede94bf" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 5:</span> \(p(s_{a},s_{b}|t=9)\)</caption>
 
 <colgroup>

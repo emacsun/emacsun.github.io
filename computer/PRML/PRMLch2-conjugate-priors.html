@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>机器学习中的共轭先验（conjugate prior）</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./MLAPPch2dot3-some-probability-distributions.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">机器学习中的共轭先验（conjugate prior）</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgc239234">1. 前言</a></li>
+<li><a href="#orgdb00ca5">2. 共轭先验</a></li>
+<li><a href="#orgc79f618">3. 多项分布和狄利克雷分布</a>
+<ul>
+<li><a href="#org24a6a4b">3.1. 多项分布</a></li>
+<li><a href="#org9b80fc1">3.2. 狄利克雷分布</a></li>
+</ul>
+</li>
+<li><a href="#org9b221a5">4. 总结</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc239234" class="outline-2">
+<h2 id="orgc239234"><span class="section-number-2">1</span> 前言</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+在之前的一些博文中，我们提到了概率论中的一些<a href="file:///c:/Users/cliyh/AppData/Roaming/zorg/output/computer/MLAPP/MLAPPch2dot3-some-probability-distributions.html">重要的分布</a> ；在数学博文中，对这些重要的分布的性质也进行了不同程度的分析。今天，我来简要介绍一下，这些分布在机器学习中的一个应用：共轭先验。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdb00ca5" class="outline-2">
+<h2 id="orgdb00ca5"><span class="section-number-2">2</span> 共轭先验</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+讨论概率分布的一个重要原因是，现实生活中有很多数据可以使用这些模型来模拟。对于给定的一个数据集合\(x_{1},\ldots ,x_{n}\)我们希望这个数据集合来自于某个随机变量\(X\)，并且这个随机变量具有概率分布\(P(X)\)。找到\(P(X)\)的过程叫做密度估计（density estimation）。需要强调的是密度估计问题是一个病态问题，因为世界上的概率密度函数不计其数，能够给出观测集合\(x_{1},\ldots ,x_{n}\)的概率密度函数也是如此之多。任何一个在\(x_{1},\ldots ,x_{n}\)处非零的密度函数\(P(X)\)都可能是候选。选择一个合适的\(P(X)\)是模型选择问题，在机器学习领域经常遇见。
+</p>
+
+<p>
+之前我们也看到了很多分布，把这些分布用到密度估计过程中，我们需要确定相对于这些模型的一些重要参数，比如期望，比如方差，再比如一些超参数。这些量值的确定亦有不同的方法，从频率方面（frequentist）着手的话，我们根据某个准则进行优化，为这些参数选择特定的值，常见的准则是最大似然准则。从贝叶斯方面着手的话，我们引入这些参数的一些先验估计（prior distributions）,然后使用贝叶斯定理根据给定的观测数据计算关于这些参数的后验估计。 <b>这些先验估计的选取非常的关键</b> 直接影响到参数的准确度和计算的难易程度。常见的做法是选择可能分布的共轭先验。
+</p>
+
+<p>
+顾名思义，共轭先验是后验分布的一个先验假设。最重要的， <b>共轭先验和后验具有相同的形式</b> 。这在计算过程中可以非常方便的形成迭代，根据新的观测数据，原先的后验概率变成新的先验概率，继而更新出一个新的后验概率，这个后验概率的参数更加的准确。这个过程大大的简化了贝叶斯分析。举个例子，多变量分布的一个共轭先验叫做狄利克雷分布（Dirichlet distribution），高斯分布的共轭先验是另一个高斯函数。所有的这些函数都是指数函数家族里的分布。
+</p>
+</div>
+</div>
+<div id="outline-container-orgc79f618" class="outline-2">
+<h2 id="orgc79f618"><span class="section-number-2">3</span> 多项分布和狄利克雷分布</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+</div>
+
+<div id="outline-container-org24a6a4b" class="outline-3">
+<h3 id="org24a6a4b"><span class="section-number-3">3.1</span> 多项分布</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+我们讨论过<a href="file:///c:/Users/cliyh/AppData/Roaming/zorg/output/math/probability/binary-distribution.thm">二项分布</a> ，对于二项分布的一个扩展就是<a href="file:///c:/Users/cliyh/AppData/Roaming/zorg/output/math/probability/afcp-01dot5-multinomial-coefficients.html">多项分布</a> 。因为我们经常会碰到一个随机变量的取值是\(K\)个互斥的结果中的一个。尽管有很多方法来描述这个变量，但是我们实用一个\(K\)维的矢量来描述结果会非常容易。举个简单的例子，假设\(K=6\)，第三个结果发生，则这个事件可以表示为：
+</p>
+\begin{equation}
+\label{eq:1}
+\mathbf{x} = (0,0,1,0,0,0)
+\end{equation}
+<p>
+任何一个类似这样的矢量都满足：\(sum_{k=1}^{K}x_{k} = 1\),我们用\(\mu_{k}\)来描述\(x_{k}=1\)，则\(\mathbf{x}\)的分布可以表示为：
+</p>
+\begin{equation}
+\label{eq:2}
+p(\mathbf{x}| \mathrm{\mu}) = \prod_{k=1}^{K}\mu_{k}^{x_{k}}
+\end{equation}
+<p>
+其中\(\mathbf{\mu} = (\mu_{1},\ldots ,\mu_{K})\)满足\(\mu_{k} \geq 0\)，且\(\sum_{k} \mu_{k} = 1 \)。很容易想到一个骰子，有六面，假若这个骰子是均匀的则\(\mu_{1} = \ldots = \mu_{6} = 1/6\)。假若这个骰子不均匀，则\(\mu_{k}\)的取值就不一定了，但是依然会满足\(\sum_{k}\mu_{k} = 1\).
+</p>
+
+<p>
+现在考虑一个数据集合\(\mathcal{D}\)，长度是\(N\)，这\(N\)个数来自于对随机变量\(X\)的采样，\( \mathbf{x}_{1},\ldots , \mathbf{x}_{N} \)，对应的最大似然函数可以表示为：
+</p>
+\begin{equation}
+\label{eq:3}
+p(\mathcal{D}| \mathbf{\mu}) = \prod_{n=1}^{N}\prod_{k=1}^{K}\mu_{k}^{x_{nk}} = \prod_{k=1}^{K}\mu_{k}^{(\sum_{n}x_{nk})} = \prod_{k=1}^{K}\mu_{k}^{m_{k}}
+\end{equation}
+<p>
+我们看到似然函数只依赖于\(N\)个数据集合的\(K\)个量值：
+</p>
+\begin{equation}
+\label{eq:4}
+m_{k} = \sum_{n}x_{nk}
+\end{equation}
+<p>
+这\(K\)个量值是\(N\)个数据集合的充分统计量。其中\(m_{k}\)表示\(x_{k} = 1\)在\(N\)次观测中出现的总观测次数。
+</p>
+
+<p>
+为了找到\( \mathbf{\mu} \)的最大似然解，我们需要最大化\(\ln p( \mathcal{D} | \mathbf{\mu} )\)，约束条件是\(\sum_{k} = 1\)。这个过程可以使用拉格朗日乘子算法。
+</p>
+\begin{equation}
+\label{eq:5}
+\sum_{k=1}^{K}m_{k}\ln \mu_{k}+ \lambda(\sum_{k=1}^{K}\mu_{k} -1)
+\end{equation}
+<p>
+对上式针对\(\mu_{k}\)求导，则：
+</p>
+\begin{equation}
+\label{eq:6}
+\mu_{k} = -m_{k}/\lambda
+\end{equation}
+<p>
+把式 (\ref{eq:6})带入拉格朗日乘子的约束条件，我们有\( \lambda = -N\).所以我们得到式~(\ref{eq:3})的最大似然解是：
+</p>
+\begin{equation}
+\label{eq:7}
+\mu_{k}^{ML} = \frac{m_{k}}{N}
+\end{equation}
+<p>
+显然这个解是\(N\)次观测过程中\(x_{k}=1\)出现的频次。
+</p>
+
+<p>
+基于\(\mathbf{\mu},N\)，我们可以考虑量\(m_{1},\ldots ,m_{K}\)的联合分布，则这个分布可以表示为：
+</p>
+\begin{equation}
+\label{eq:8}
+\mathrm{Mult}(m_{1},m_{2},\ldots ,m_{K}| \mathbf{\mu},N) = \binom{N}{m_{1}m_{2}\ldots m_{K}} \prod_{k=1}^{K}\mu_{k}^{m_{k}}
+\end{equation}
+<p>
+式 (\ref{eq:8})叫做多项分布，其中归一化项表示把\(N\)分成\(K\)组的方法，大小为\(m_{1},\ldots ,m_{K}\)。
+</p>
+\begin{equation}
+\label{eq:9}
+\binom{N}{m_{1}m_{2}\ldots m_{K}} = \frac{N!}{m_{1}!\ldots m_{k}!}
+\end{equation}
+<p>
+其中:
+</p>
+\begin{equation}
+\label{eq:10}
+\sum_{k=1}^{K}m_{k} = N
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org9b80fc1" class="outline-3">
+<h3 id="org9b80fc1"><span class="section-number-3">3.2</span> 狄利克雷分布</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+
+</p>
+
+<p>
+在上一节，我们介绍了使用最大似然估计导出多项式分布的方法，这种方法是基于frequestist的。现在我们基于贝叶斯方法，导出多项式分布。
+</p>
+
+<p>
+首先我们引入\(\mu_{k}\)的一个先验分布。通过观察多项分布式 (\ref{eq:8}) ，我们发现共轭先验具有如下形式：
+</p>
+\begin{equation}
+\label{eq:11}
+p( \mathbf{\mu} | \mathbf{\alpha} ) \propto \sum_{k=1}^{K}\mu_{k}^{\alpha_{k} -1}
+\end{equation}
+<p>
+其中\(0 \leq \mu \leq 1\) 且\(\sum_{K}\mu_{k} = 1 \)。此处\(\alpha_{1},\ldots ,\alpha_{k}\)是分布的参数。由于\(\mu_{k}\)之和为1这个约束的存在，这个关于\(\mu_{k}\)的分布是一个\(K-1\)维的单纯形。
+</p>
+
+<p>
+针对式 (\ref{eq:11})的归一化形式，可以表示为：
+</p>
+\begin{equation}
+\label{eq:12}
+\mathrm{Dir}( \mathbf{\mu} | \mathbf{\alpha} ) = \frac{ \Gamma(\alpha_{0}) }{ \Gamma(\alpha_{1})\ldots \Gamma(\alpha_{K}) } \prod_{k=1}^{K} \mu_{k}^{\alpha_{k} - 1}
+\end{equation}
+<p>
+式 (\ref{eq:12})就是狄利克雷分布。这里\(\Gamma(x)\)是伽马函数。 \(\alpha_{0} = \sum_{k=1}^{K}\alpha_{k}\).
+</p>
+
+<p>
+把似然函数 (\ref{eq:8}) 和先验函数 (\ref{eq:12}) 相乘，我们得到一个后验分布：
+</p>
+\begin{equation}
+\label{eq:13}
+p( \mathbf{\mu} | \mathcal{D}, \mathbf{\alpha} ) \propto p( \mathcal{D} | \mathbf{\mu} ) p( \mathbf{\mu} | \mathbf{\alpha} ) \propto \prod_{k=1}^{K} \mu_{k}^{\alpha_{k} + m_{k} -1}
+\end{equation}
+
+<p>
+我们看到后验分布和共轭先验具有相同的形式，他们看起来都像狄利克雷分布。狄利克雷肺部确实是多项分布的共轭先验。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org9b221a5" class="outline-2">
+<h2 id="org9b221a5"><span class="section-number-2">4</span> 总结</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+共轭先验为使用贝叶斯方法提供了有力工具，使得快速迭代变为可能。然而并不是所有的分布都有其共轭先验，所以在具体的案例中还需要具体分析。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>

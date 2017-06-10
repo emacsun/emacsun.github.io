@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -77,7 +77,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -86,11 +86,11 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5a17b4b">1. 问题模型</a></li>
-<li><a href="#org74cde81">2. 多项式拟合</a></li>
-<li><a href="#orgdca06ba">3. 找到合适的\( \mathbf{w}\)和\(M\)</a></li>
-<li><a href="#orgd532df8">4. 修正误差函数</a></li>
-<li><a href="#orgea4a9cd">5. 总结</a></li>
+<li><a href="#orgbf2149d">1. 问题模型</a></li>
+<li><a href="#orgb2de384">2. 多项式拟合</a></li>
+<li><a href="#org8189305">3. 找到合适的\( \mathbf{w}\)和\(M\)</a></li>
+<li><a href="#orgcf02903">4. 修正误差函数</a></li>
+<li><a href="#orgaa44ad7">5. 总结</a></li>
 </ul>
 </div>
 </div>
@@ -98,30 +98,30 @@ for the JavaScript code in this tag.
 多项式曲线拟合是一个经典的机器学习入门案例。我在不止一本教科书上看到过。此处的笔记来自于 Bishop的PRML。在阅读这个案例的过程中，被Bishop的组织能力折服：诸多概念在不经意间被引入，毫无违和感。另外通读PRML之后，会发现多项式拟合的例子在PRML中被反复提及，从这个简单的案例中可以看到许多更高级算法的影子。
 </p>
 
-<div id="outline-container-org5a17b4b" class="outline-2">
-<h2 id="org5a17b4b"><span class="section-number-2">1</span> 问题模型</h2>
+<div id="outline-container-orgbf2149d" class="outline-2">
+<h2 id="orgbf2149d"><span class="section-number-2">1</span> 问题模型</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
 </p>
 
 <p>
-简而言之，这是一个用多项式来逼近正弦函数的例子。在这个例子中的观察数据可以表示为：\[ t = \sin(2\pi x) + n\]其中\(n\)是噪声。这个问题模型像极了通信系统中的加性白高斯噪声信道模型（AWGN）\(y=x+n\) 。假设我们有关于这个模型的\(N\)次观测，也就是说我们有长为\(N\)的\( \mathbf{x} = (x_{1},\ldots ,x_{N})^{T}\) 以及其对应的观测值\( \mathbf{t} = (t_{1},\ldots ,t_{N})^{T}\)。 图<a href="#org577be8b">1</a>给出了这个模型的十次观测结果和真实的正弦曲线。
+简而言之，这是一个用多项式来逼近正弦函数的例子。在这个例子中的观察数据可以表示为：\[ t = \sin(2\pi x) + n\]其中\(n\)是噪声。这个问题模型像极了通信系统中的加性白高斯噪声信道模型（AWGN）\(y=x+n\) 。假设我们有关于这个模型的\(N\)次观测，也就是说我们有长为\(N\)的\( \mathbf{x} = (x_{1},\ldots ,x_{N})^{T}\) 以及其对应的观测值\( \mathbf{t} = (t_{1},\ldots ,t_{N})^{T}\)。 图<a href="#orgcfa5c5d">1</a>给出了这个模型的十次观测结果和真实的正弦曲线。
 </p>
 
-<div id="org577be8b" class="figure">
+<div id="orgcfa5c5d" class="figure">
 <p><img src="../../img/computer_prml/20170430figure1dot2.png" alt="20170430figure1dot2.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> 模型\(t = \sin(2\pi x) + n\)的十次观测</p>
 </div>
 
 <p>
-图<a href="#org577be8b">1</a>中的蓝色圆圈代表十次观测值，绿色代表真实的结果。我们的目标是在不知道绿色曲线的前提下根据新的输入值\(x\)预测目标值\(t\)。图<a href="#org577be8b">1</a> 中的输入值\( \mathbf{x}\)是\([0,1]\)区间内随机选择的十个值。然后根据所选的\(\mathbf{x}\)，带入\(\sin(2\pi x)\)，生成十个精确的值，然后把这十个生成值加上一定量的噪声，目标数据集合\(\mathbf{t}\)就这样诞生了。（注意这里没有说加上多少噪声，在通信系统中，我们叫做信噪比不确定。Bishop在PRML中也没有指明到底是功率为多少的噪声，只说了 <b>a small level of random noise having a Gaussian distribution</b> ） 我们明白这十个数是有内在约束的，即也就是\(\sin(2\pi x)\)这个函数，这个函数是我们学习的目标，我们拿到这十个数的时候是不知道这个模型的存在的。
+图<a href="#orgcfa5c5d">1</a>中的蓝色圆圈代表十次观测值，绿色代表真实的结果。我们的目标是在不知道绿色曲线的前提下根据新的输入值\(x\)预测目标值\(t\)。图<a href="#orgcfa5c5d">1</a> 中的输入值\( \mathbf{x}\)是\([0,1]\)区间内随机选择的十个值。然后根据所选的\(\mathbf{x}\)，带入\(\sin(2\pi x)\)，生成十个精确的值，然后把这十个生成值加上一定量的噪声，目标数据集合\(\mathbf{t}\)就这样诞生了。（注意这里没有说加上多少噪声，在通信系统中，我们叫做信噪比不确定。Bishop在PRML中也没有指明到底是功率为多少的噪声，只说了 <b>a small level of random noise having a Gaussian distribution</b> ） 我们明白这十个数是有内在约束的，即也就是\(\sin(2\pi x)\)这个函数，这个函数是我们学习的目标，我们拿到这十个数的时候是不知道这个模型的存在的。
 </p>
 </div>
 </div>
-<div id="outline-container-org74cde81" class="outline-2">
-<h2 id="org74cde81"><span class="section-number-2">2</span> 多项式拟合</h2>
+<div id="outline-container-orgb2de384" class="outline-2">
+<h2 id="orgb2de384"><span class="section-number-2">2</span> 多项式拟合</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -153,20 +153,20 @@ E( \mathbf{w}) = \frac{1}{2} \sum_{n=1}^{N}\{y(x_{n}, \mathbf{w}) - t_{n}\}^{2}
 系数\(\frac{1}{2}\)只是为了求导的时候去掉多余的一个因子\(2\)，使得求得的\(w\)更有直观的意义，稍后就会发现了。
 </p>
 
-<div id="org192c52e" class="figure">
+<div id="org0af66c7" class="figure">
 <p><img src="../../img/computer_prml/20170430figure1dot3.png" alt="20170430figure1dot3.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> 误差函数示意图</p>
 </div>
 
 <p>
-图<a href="#org192c52e">2</a>中绿色就表示训练数据和我们估计的模型\(y(x, \mathbf{w})\)之间的误差。红色标示我们估计的结果\(y(x, \mathbf{w})\)，显然一个比较精确的估计是\(y(x, \mathbf{w})\)穿过所有的蓝色圆圈，即拟合结果与所有的训练数据完美匹配。
+图<a href="#org0af66c7">2</a>中绿色就表示训练数据和我们估计的模型\(y(x, \mathbf{w})\)之间的误差。红色标示我们估计的结果\(y(x, \mathbf{w})\)，显然一个比较精确的估计是\(y(x, \mathbf{w})\)穿过所有的蓝色圆圈，即拟合结果与所有的训练数据完美匹配。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgdca06ba" class="outline-2">
-<h2 id="orgdca06ba"><span class="section-number-2">3</span> 找到合适的\( \mathbf{w}\)和\(M\)</h2>
+<div id="outline-container-org8189305" class="outline-2">
+<h2 id="org8189305"><span class="section-number-2">3</span> 找到合适的\( \mathbf{w}\)和\(M\)</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -177,10 +177,10 @@ E( \mathbf{w}) = \frac{1}{2} \sum_{n=1}^{N}\{y(x_{n}, \mathbf{w}) - t_{n}\}^{2}
 </p>
 
 <p>
-另一个问题还没有解决：\(M\)怎么选？实际上，选\(M\)的过程在机器学习领域叫做模型选择(model selection). 图<a href="#org43a1548">3</a>给出了不同的\(M\)值对应的模型对(\ref{eq:1})的拟合结果。
+另一个问题还没有解决：\(M\)怎么选？实际上，选\(M\)的过程在机器学习领域叫做模型选择(model selection). 图<a href="#orged0423a">3</a>给出了不同的\(M\)值对应的模型对(\ref{eq:1})的拟合结果。
 </p>
 
-<div id="org43a1548" class="figure">
+<div id="orged0423a" class="figure">
 <p><img src="../../img/computer_prml/20170430figure1dot4.png" alt="20170430figure1dot4.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 3:</span> 不同\(M\) 对(\ref{eq:1})的拟合结果</p>
@@ -199,17 +199,17 @@ E_{RMS} = \sqrt{2E( \mathbf{w}^{*})/N}
 \end{equation}
 
 <p>
-式(\ref{eq:3})所示的这个均方根误差函数的优点在于：1.对不同数量的测试数据集（不同大小的\(N\)），比较结果是经过归一化的（因为有除以\(N\)的归一化操作）。2.开根号的好处在于\(E_{RMS}\)的量纲和\(t\)是一样的。不同\(M\)对应的\(E_{RMS}\)如图<a href="#org90a1555">4</a>所示.
+式(\ref{eq:3})所示的这个均方根误差函数的优点在于：1.对不同数量的测试数据集（不同大小的\(N\)），比较结果是经过归一化的（因为有除以\(N\)的归一化操作）。2.开根号的好处在于\(E_{RMS}\)的量纲和\(t\)是一样的。不同\(M\)对应的\(E_{RMS}\)如图<a href="#orge75aa7f">4</a>所示.
 </p>
 
-<div id="org90a1555" class="figure">
+<div id="orge75aa7f" class="figure">
 <p><img src="../../img/computer_prml/20170430figure1dot5.png" alt="20170430figure1dot5.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 4:</span> 不同\(M\)对应的均方根误差</p>
 </div>
 
 <p>
-从图<a href="#org90a1555">4</a> 可以看出，当\(M=3,4,5,6,7,8\)时，均方根误差最小，当\(M=9\)时训练数据集的均方根误差最小，但是测试数据集的均方根误差最大。这是很容易理解的，因为我们的训练数据集一共只有10个数据，而当\(M=9\)时，我们这个模型中有10个未知数。十个方程十个未知数，我们可以独一无二的解出\(w_{j},j \in \{0,1,\ldots ,9\}\)。但是这个解出来的模型抖动剧烈并与真实的模型相去甚远，所以当输入测试集的时候，这个模型就表现出了很大的均方根误差。
+从图<a href="#orge75aa7f">4</a> 可以看出，当\(M=3,4,5,6,7,8\)时，均方根误差最小，当\(M=9\)时训练数据集的均方根误差最小，但是测试数据集的均方根误差最大。这是很容易理解的，因为我们的训练数据集一共只有10个数据，而当\(M=9\)时，我们这个模型中有10个未知数。十个方程十个未知数，我们可以独一无二的解出\(w_{j},j \in \{0,1,\ldots ,9\}\)。但是这个解出来的模型抖动剧烈并与真实的模型相去甚远，所以当输入测试集的时候，这个模型就表现出了很大的均方根误差。
 </p>
 
 <p>
@@ -217,17 +217,17 @@ E_{RMS} = \sqrt{2E( \mathbf{w}^{*})/N}
 </p>
 </div>
 </div>
-<div id="outline-container-orgd532df8" class="outline-2">
-<h2 id="orgd532df8"><span class="section-number-2">4</span> 修正误差函数</h2>
+<div id="outline-container-orgcf02903" class="outline-2">
+<h2 id="orgcf02903"><span class="section-number-2">4</span> 修正误差函数</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
 </p>
 
 <p>
-针对上一节出现的问题，我们来仔细挖掘观察一下不同\(M\)对应的\(\mathbf{w}^{*}\)。表<a href="#org91a826a">1</a>给出了不同\(M\)对应的\(\mathbf{w}^{*}\)
+针对上一节出现的问题，我们来仔细挖掘观察一下不同\(M\)对应的\(\mathbf{w}^{*}\)。表<a href="#orgfd5572d">1</a>给出了不同\(M\)对应的\(\mathbf{w}^{*}\)
 </p>
-<table id="org91a826a" border="1" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" align="center">
+<table id="orgfd5572d" border="1" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" align="center">
 <caption class="t-above"><span class="table-number">表 1:</span> 不同\(M\)对应的\(\mathbf{w}^{*}\)</caption>
 
 <colgroup>
@@ -338,18 +338,18 @@ E_{RMS} = \sqrt{2E( \mathbf{w}^{*})/N}
 </p>
 
 <p>
-另外一个有意思的现象是：对于给定的\(M=9\)，假设我们加大训练数据，那么过度拟合线性就会消失，如图<a href="#org396822f">5</a>所示。
+另外一个有意思的现象是：对于给定的\(M=9\)，假设我们加大训练数据，那么过度拟合线性就会消失，如图<a href="#org3853081">5</a>所示。
 </p>
 
 
-<div id="org396822f" class="figure">
+<div id="org3853081" class="figure">
 <p><img src="../../img/computer_prml/20170430figure1dot6.png" alt="20170430figure1dot6.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 5:</span> 加大训练数据对拟合结果的影响</p>
 </div>
 
 <p>
-从图<a href="#org396822f">5</a>中可以看出，同样是\(M=9\)，当我们增大训练数据集的时候，过度拟合现象就消失了。一个合理的解释是更大训练数据集可以拟合出更复杂的模型。只有十个点的训练数据集拟合出的\(M=9\)的模型没有一百个点的训练数据集拟合出的\(M=9\)的模型准确。一个粗略的估计是训练数据集中数据的个数应该是模型参数个数的5到10倍。但是在以后的学习过程中我们发现这个关于模型复杂度的估计并不是必须的。
+从图<a href="#org3853081">5</a>中可以看出，同样是\(M=9\)，当我们增大训练数据集的时候，过度拟合现象就消失了。一个合理的解释是更大训练数据集可以拟合出更复杂的模型。只有十个点的训练数据集拟合出的\(M=9\)的模型没有一百个点的训练数据集拟合出的\(M=9\)的模型准确。一个粗略的估计是训练数据集中数据的个数应该是模型参数个数的5到10倍。但是在以后的学习过程中我们发现这个关于模型复杂度的估计并不是必须的。
 </p>
 
 <p>
@@ -368,10 +368,10 @@ E_{RMS} = \sqrt{2E( \mathbf{w}^{*})/N}
 </p>
 
 <p>
-图<a href="#org0c6bbce">6</a>展示了当\(M=9\)时，不同的\(\lambda\)对应的拟合效果。
+图<a href="#org385422a">6</a>展示了当\(M=9\)时，不同的\(\lambda\)对应的拟合效果。
 </p>
 
-<div id="org0c6bbce" class="figure">
+<div id="org385422a" class="figure">
 <p><img src="../../img/computer_prml/20170430figure1dot7.png" alt="20170430figure1dot7.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 6:</span> 当\(M=9\)时，不同\(\lambda\)对应的拟合效果</p>
@@ -382,9 +382,9 @@ E_{RMS} = \sqrt{2E( \mathbf{w}^{*})/N}
 </p>
 
 <p>
-表<a href="#orgb39cd37">2</a> 给出了 \(M=9\)时，不同\(\ln \lambda\)对应的\( \mathbf{w}^{*}\) 。
+表<a href="#org818041f">2</a> 给出了 \(M=9\)时，不同\(\ln \lambda\)对应的\( \mathbf{w}^{*}\) 。
 </p>
-<table id="orgb39cd37" border="1" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" align="center">
+<table id="org818041f" border="1" cellspacing="0" cellpadding="6" rules="groups" frame="hsides" align="center">
 <caption class="t-above"><span class="table-number">表 2:</span> \(M=9\)时，不同\(\ln \lambda\)对应的\( \mathbf{w}^{*}\)</caption>
 
 <colgroup>
@@ -477,26 +477,26 @@ E_{RMS} = \sqrt{2E( \mathbf{w}^{*})/N}
 </tbody>
 </table>
 <p>
-从表<a href="#orgb39cd37">2</a> 可以看出 当\(\lambda\) 增大时，模型系数降低。这也是我们称(\ref{eq:4})的方法为正则化的原因。
+从表<a href="#org818041f">2</a> 可以看出 当\(\lambda\) 增大时，模型系数降低。这也是我们称(\ref{eq:4})的方法为正则化的原因。
 </p>
 
 <p>
-同样我们还可以画出训练数据和测试数据对应的均方根误差，如图<a href="#orgd52753f">7</a>所示。
+同样我们还可以画出训练数据和测试数据对应的均方根误差，如图<a href="#org195f640">7</a>所示。
 </p>
 
-<div id="orgd52753f" class="figure">
+<div id="org195f640" class="figure">
 <p><img src="../../img/computer_prml/20170430figure1dot8.png" alt="20170430figure1dot8.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 7:</span> \(M=9\)时，不同\(\ln \lambda\)对应的\( E_{RMS}\)</p>
 </div>
 
 <p>
-从图<a href="#orgd52753f">7</a> 我们可以看出\(\lambda\)的确有效的控制了测试数据对应的均方根误差。但是训练数据的均方根误差也会有所上升，而不是保持在零。
+从图<a href="#org195f640">7</a> 我们可以看出\(\lambda\)的确有效的控制了测试数据对应的均方根误差。但是训练数据的均方根误差也会有所上升，而不是保持在零。
 </p>
 </div>
 </div>
-<div id="outline-container-orgea4a9cd" class="outline-2">
-<h2 id="orgea4a9cd"><span class="section-number-2">5</span> 总结</h2>
+<div id="outline-container-orgaa44ad7" class="outline-2">
+<h2 id="orgaa44ad7"><span class="section-number-2">5</span> 总结</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 

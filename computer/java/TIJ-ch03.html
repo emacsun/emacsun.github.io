@@ -2,11 +2,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Thinking in Java chapter3 笔记和习题</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="emacsun" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="pdf"  href="./java-tweet.pdf"><img src="../../img/assets/pdf.png"></a>
@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -64,22 +64,22 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">C++和Java变量作用域不同</a></li>
-<li><a href="#orgheadline2"><code>static</code> 关键字</a></li>
-<li><a href="#orgheadline3">当 <code>static</code> 遇到方法</a>
+<li><a href="#org62b39b9">C++和Java变量作用域不同</a></li>
+<li><a href="#org996fe5c"><code>static</code> 关键字</a></li>
+<li><a href="#orgffa4fa9">当 <code>static</code> 遇到方法</a>
 <ul>
-<li><a href="#orgheadline4">传统的方法</a></li>
-<li><a href="#orgheadline5"><code>static</code> 专用方法</a></li>
+<li><a href="#org6d5baa5">传统的方法</a></li>
+<li><a href="#orgca832aa"><code>static</code> 专用方法</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline6">Exercise1</a></li>
+<li><a href="#orgdc685b1">Exercise1</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">C++和Java变量作用域不同</h2>
-<div class="outline-text-2" id="text-orgheadline1">
+<div id="outline-container-org62b39b9" class="outline-2">
+<h2 id="org62b39b9">C++和Java变量作用域不同</h2>
+<div class="outline-text-2" id="text-org62b39b9">
 <p>
 
 </p>
@@ -88,7 +88,6 @@ for the JavaScript code in this tag.
 在C，C++和Java里，作用域是由花括号的位置决定的。参考下面这个例子：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-C"><span class="linenr"> 1: </span><span style="color: #2aa198;">{</span>
 <span class="linenr"> 2: </span>  <span style="color: #b58900;">int</span> <span style="color: #268bd2;">x</span> = <span style="color: #6c71c4;">12</span>;
 <span class="linenr"> 3: </span>  <span style="color: #586e75;">/* </span><span style="color: #586e75;">only x available </span><span style="color: #586e75;">*/</span>
@@ -105,7 +104,6 @@ for the JavaScript code in this tag.
 在Java和C/C++中有一个重要区别，如下：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-C"><span class="linenr">1: </span><span style="color: #2aa198;">{</span>
 <span class="linenr">2: </span>  <span style="color: #b58900;">int</span> <span style="color: #268bd2;">x</span> = <span style="color: #6c71c4;">12</span>;
 <span class="linenr">3: </span>  <span style="color: #b58900;">{</span>
@@ -121,9 +119,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><code>static</code> 关键字</h2>
-<div class="outline-text-2" id="text-orgheadline2">
+<div id="outline-container-org996fe5c" class="outline-2">
+<h2 id="org996fe5c"><code>static</code> 关键字</h2>
+<div class="outline-text-2" id="text-org996fe5c">
 <p>
 
 </p>
@@ -140,7 +138,6 @@ for the JavaScript code in this tag.
 比如对于
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">StaticVariable</span><span style="color: #2aa198;">{</span>
     <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>=<span style="color: #6c71c4;">47</span>;
 <span style="color: #2aa198;">}</span>
@@ -150,7 +147,6 @@ for the JavaScript code in this tag.
 此时即使有两个 <code>StaticVariable</code> 的对象，也只有一份内存保存变量 <code>StaticVariable.i</code> ，比如定义了两个 <code>StaticVariable</code> 对象：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span style="color: #b58900;">StaticVariable</span> <span style="color: #268bd2;">sv1</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">StaticVariable</span><span style="color: #2aa198;">()</span>;
 <span style="color: #b58900;">StaticVariable</span> <span style="color: #268bd2;">sv2</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">StaticVariable</span><span style="color: #2aa198;">()</span>;
 </pre>
@@ -165,9 +161,9 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">当 <code>static</code> 遇到方法</h2>
-<div class="outline-text-2" id="text-orgheadline3">
+<div id="outline-container-orgffa4fa9" class="outline-2">
+<h2 id="orgffa4fa9">当 <code>static</code> 遇到方法</h2>
+<div class="outline-text-2" id="text-orgffa4fa9">
 <p>
 
 </p>
@@ -176,7 +172,6 @@ for the JavaScript code in this tag.
 当一个 <code>class</code> 的方法是 <code>static</code> 时， 我们也有两种访问方法，一种是常规的访问，另一种是 <code>ClassName.method()</code> 比如：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Incrementable</span><span style="color: #2aa198;">{</span>
     <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">increment</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span>StaticVariable.i++;<span style="color: #b58900;">}</span>
 <span style="color: #2aa198;">}</span>
@@ -184,25 +179,23 @@ for the JavaScript code in this tag.
 </div>
 
 <p>
-<code>Incrementable</code> 的方法 <code>increment</code> 把 <code>static</code> 变量加1. 我们有两种方法调用 <code>increment()</code> 
+<code>Incrementable</code> 的方法 <code>increment</code> 把 <code>static</code> 变量加1. 我们有两种方法调用 <code>increment()</code>
 </p>
 </div>
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4">传统的方法</h3>
-<div class="outline-text-3" id="text-orgheadline4">
+<div id="outline-container-org6d5baa5" class="outline-3">
+<h3 id="org6d5baa5">传统的方法</h3>
+<div class="outline-text-3" id="text-org6d5baa5">
 <div class="org-src-container">
-
 <pre class="src src-java"><span style="color: #b58900;">Incrementable</span> <span style="color: #268bd2;">incr</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Incrementable</span><span style="color: #2aa198;">()</span>;
 incr.increment<span style="color: #2aa198;">()</span>;
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><code>static</code> 专用方法</h3>
-<div class="outline-text-3" id="text-orgheadline5">
+<div id="outline-container-orgca832aa" class="outline-3">
+<h3 id="orgca832aa"><code>static</code> 专用方法</h3>
+<div class="outline-text-3" id="text-orgca832aa">
 <div class="org-src-container">
-
 <pre class="src src-java">Incrementable.increment<span style="color: #2aa198;">()</span>;
 </pre>
 </div>
@@ -214,22 +207,21 @@ incr.increment<span style="color: #2aa198;">()</span>;
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6">Exercise1</h2>
-<div class="outline-text-2" id="text-orgheadline6">
+<div id="outline-container-orgdc685b1" class="outline-2">
+<h2 id="orgdc685b1">Exercise1</h2>
+<div class="outline-text-2" id="text-orgdc685b1">
 <p>
 
 </p>
 
 <p>
-Create a class containing an int and a char that are not initialized, and print their values to verify that Java performs default initialization. 
+Create a class containing an int and a char that are not initialized, and print their values to verify that Java performs default initialization.
 </p>
 
 <p>
 代码如下：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">ut</span><span style="color: #b58900;">il.*;</span>
 <span class="linenr"> 2: </span>
 <span class="linenr"> 3: </span><span style="color: #b58900;">pu</span><span style="color: #859900; font-weight: bold;">blic</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Main</span> <span style="color: #2aa198;">{</span>
@@ -255,7 +247,7 @@ Create a class containing an int and a char that are not initialized, and print 
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'zclspace';
-    
+
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

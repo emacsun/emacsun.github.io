@@ -2,11 +2,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Thinking in Java chapter4 笔记和习题</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="emacsun" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
 <a id="pdf"  href="./TIJ-ch04.pdf"><img src="../../img/assets/pdf.png"></a>
@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -77,7 +77,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -86,13 +86,13 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Java赋值</a></li>
-<li><a href="#orgheadline2">2. 操作符</a></li>
-<li><a href="#orgheadline3">3. 关系运算符</a></li>
-<li><a href="#orgheadline4">4. 逻辑运算符</a></li>
-<li><a href="#orgheadline5">5. Java中的数值表示</a></li>
-<li><a href="#orgheadline6">6. 指数表示</a></li>
-<li><a href="#orgheadline7">7. 位操作</a></li>
+<li><a href="#orga55d177">1. Java赋值</a></li>
+<li><a href="#org8c6bf83">2. 操作符</a></li>
+<li><a href="#orgc09865e">3. 关系运算符</a></li>
+<li><a href="#orgcbc366d">4. 逻辑运算符</a></li>
+<li><a href="#orgacbeb7c">5. Java中的数值表示</a></li>
+<li><a href="#orga393705">6. 指数表示</a></li>
+<li><a href="#org380ea70">7. 位操作</a></li>
 </ul>
 </div>
 </div>
@@ -100,8 +100,8 @@ for the JavaScript code in this tag.
 本章学习起来毫无压力，因为大多和 <code>C/C++</code> 一脉相承。只记录几个和 <code>C/C++</code> 不一样的点，以备复习时多加注意。
 </p>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Java赋值</h2>
+<div id="outline-container-orga55d177" class="outline-2">
+<h2 id="orga55d177"><span class="section-number-2">1</span> Java赋值</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -111,7 +111,6 @@ for the JavaScript code in this tag.
 第四章给出带有一个整数成员的类的赋值，
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">assignment with objects is a bit tricky</span>
 <span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr"> 3: </span>
@@ -145,7 +144,6 @@ for the JavaScript code in this tag.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-java">t1.level = t2.level;
 </pre>
 </div>
@@ -156,7 +154,6 @@ for the JavaScript code in this tag.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">a</span><span style="color: #b58900;">ssign</span><span style="color: #586e75;">ment with objects is a bit tricky</span>
 <span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr"> 3: </span>
@@ -198,7 +195,6 @@ Java 是强类型语言，默认的 <code>int</code> 变量初始化值是 <code
 当向一个函数传递对象的时候，也要注意传递的是引用，如下：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">assignment with objects is a bit tricky</span>
 <span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr"> 3: </span>
@@ -238,8 +234,8 @@ Java 是强类型语言，默认的 <code>int</code> 变量初始化值是 <code
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> 操作符</h2>
+<div id="outline-container-org8c6bf83" class="outline-2">
+<h2 id="org8c6bf83"><span class="section-number-2">2</span> 操作符</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -247,7 +243,6 @@ Java 是强类型语言，默认的 <code>int</code> 变量初始化值是 <code
 
 
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
 <span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr"> 3: </span>
@@ -277,7 +272,6 @@ Java 是强类型语言，默认的 <code>int</code> 变量初始化值是 <code
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
 <span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr"> 3: </span>
@@ -294,7 +288,7 @@ Java 是强类型语言，默认的 <code>int</code> 变量初始化值是 <code
 <span class="linenr">14: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"j ( "</span> + j +
 <span class="linenr">15: </span>              <span style="color: #2aa198;">" ) + k ( "</span> + k +
 <span class="linenr">16: </span>              <span style="color: #2aa198;">" ) =  "</span> + i<span style="color: #268bd2;">)</span>;
-<span class="linenr">17: </span>        <span style="color: #b58900;">float</span> <span style="color: #268bd2;">i</span>,<span style="color: #268bd2;">j</span>,<span style="color: #268bd2;">k</span>; 
+<span class="linenr">17: </span>        <span style="color: #b58900;">float</span> <span style="color: #268bd2;">i</span>,<span style="color: #268bd2;">j</span>,<span style="color: #268bd2;">k</span>;
 <span class="linenr">18: </span>        j = rand.nextFloat<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">100</span><span style="color: #268bd2;">)</span> +<span style="color: #6c71c4;">1</span>;
 <span class="linenr">19: </span>        k = rand.nextFloat<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">100</span><span style="color: #268bd2;">)</span> +<span style="color: #6c71c4;">1</span>;
 <span class="linenr">20: </span>        i = j + k;
@@ -302,7 +296,7 @@ Java 是强类型语言，默认的 <code>int</code> 变量初始化值是 <code
 <span class="linenr">22: </span>              <span style="color: #2aa198;">" ) + k ( "</span> + k +
 <span class="linenr">23: </span>              <span style="color: #2aa198;">" ) =  "</span> + i<span style="color: #268bd2;">)</span>;
 <span class="linenr">24: </span>
-<span class="linenr">25: </span>        <span style="color: #b58900;">double</span> <span style="color: #268bd2;">i</span>,<span style="color: #268bd2;">j</span>,<span style="color: #268bd2;">k</span>; 
+<span class="linenr">25: </span>        <span style="color: #b58900;">double</span> <span style="color: #268bd2;">i</span>,<span style="color: #268bd2;">j</span>,<span style="color: #268bd2;">k</span>;
 <span class="linenr">26: </span>        j = rand.nextDouble<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">100</span><span style="color: #268bd2;">)</span> +<span style="color: #6c71c4;">1</span>;
 <span class="linenr">27: </span>        k = rand.nextDouble<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">100</span><span style="color: #268bd2;">)</span> +<span style="color: #6c71c4;">1</span>;
 <span class="linenr">28: </span>        i = j + k;
@@ -311,6 +305,7 @@ Java 是强类型语言，默认的 <code>int</code> 变量初始化值是 <code
 <span class="linenr">31: </span>              <span style="color: #2aa198;">" ) =  "</span> + i<span style="color: #268bd2;">)</span>;
 <span class="linenr">32: </span>    <span style="color: #b58900;">}</span>
 <span class="linenr">33: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">34: </span>
 </pre>
 </div>
 <p>
@@ -321,7 +316,6 @@ Java 是强类型语言，默认的 <code>int</code> 变量初始化值是 <code
 看如下代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
 <span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr"> 3: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">ExerciseCh0404</span>
@@ -351,14 +345,13 @@ distance / time = 0.333333334
 </pre>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> 关系运算符</h2>
+<div id="outline-container-orgc09865e" class="outline-2">
+<h2 id="orgc09865e"><span class="section-number-2">3</span> 关系运算符</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 在Java中一切都是对象。所以针对对象的比较会带来一些意想不到的结果。看如下代码:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Equivalence</span>
 <span class="linenr"> 2: </span><span style="color: #2aa198;">{</span>
 <span class="linenr"> 3: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
@@ -382,7 +375,6 @@ true
 确实surprise! 两个内容相同的整数(都是47)，但我们判断它们是否相等时，结果居然是 <code>false</code> 。这是因为在Java中== 这个关系运算符比较的不仅仅是内容，还比较 <code>reference</code> .  想要比较内容是否相等正确的做法是:使用方法 <code>equals()</code>
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr">1: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Equivalence</span>
 <span class="linenr">2: </span><span style="color: #2aa198;">{</span>
 <span class="linenr">3: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
@@ -405,7 +397,6 @@ true
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr">1: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Equivalence</span>
 <span class="linenr">2: </span><span style="color: #2aa198;">{</span>
 <span class="linenr">3: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
@@ -427,7 +418,6 @@ true
 这还没完，见如下代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Value</span> <span style="color: #2aa198;">{</span>
 <span class="linenr"> 2: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>;
 <span class="linenr"> 3: </span><span style="color: #2aa198;">}</span>
@@ -448,7 +438,6 @@ true
 你认为结果是什么？会是 <code>true</code> 么？如果你认为是 <code>true</code> ，那么你就错了。结果是 <code>false</code> 。这是因为 <code>equals()</code> 函数默认比较的是 <code>reference</code> 。如果要 <code>equals()</code> 函数比较自定义对象的内容，那么你得重载 <code>equals()</code> 这个函数。那么，如果我照如下方法写代码呢？
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Value</span> <span style="color: #2aa198;">{</span>
 <span class="linenr"> 2: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>;
 <span class="linenr"> 3: </span><span style="color: #2aa198;">}</span>
@@ -474,8 +463,8 @@ Equivalence.java:12: error: int cannot be dereferenced
 </pre>
 </div>
 </div>
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> 逻辑运算符</h2>
+<div id="outline-container-orgcbc366d" class="outline-2">
+<h2 id="orgcbc366d"><span class="section-number-2">4</span> 逻辑运算符</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -485,7 +474,6 @@ Equivalence.java:12: error: int cannot be dereferenced
 Java语言中对逻辑云算法的操作也不同于 <code>C/C++</code>. 在 <code>C/C++</code> 中，非零值都是 <code>true</code> ,只有零会被当成 <code>false</code> . 但是在Java中却不是：在Java中，不能把非零值或者零当做 <code>boolean</code> 来处理， <code>boolean</code> 值只有两种 <code>true</code> 或者 <code>false</code> . 看代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
 <span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr"> 3: </span>
@@ -514,8 +502,8 @@ Java语言中对逻辑云算法的操作也不同于 <code>C/C++</code>. 在 <co
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">5</span> Java中的数值表示</h2>
+<div id="outline-container-orgacbeb7c" class="outline-2">
+<h2 id="orgacbeb7c"><span class="section-number-2">5</span> Java中的数值表示</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -525,7 +513,6 @@ Java语言中对逻辑云算法的操作也不同于 <code>C/C++</code>. 在 <co
 前面说过 <code>Java</code> 是一种强类型语言，甚至比 <code>C/C++</code> 还要强类型。因此在数值表示的时候要格外小心，否则在编译阶段就不会通过。这对于写出健壮的代码是非常有用的。看代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr"> 2: </span>
 <span class="linenr"> 3: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">ExerciseCh0408</span>
@@ -563,8 +550,8 @@ i1 = 1111111111111111111111111111111111111111111111111111111110000000
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">6</span> 指数表示</h2>
+<div id="outline-container-orga393705" class="outline-2">
+<h2 id="orga393705"><span class="section-number-2">6</span> 指数表示</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 
@@ -574,7 +561,6 @@ i1 = 1111111111111111111111111111111111111111111111111111111110000000
 在脚本语言 <code>MATLAB</code> 以及 <code>C/C++</code> 中 <code>aEb</code> 表示 \(a\times 10^{b}\)。在 <code>Java</code> 中，也有这种指数表示，不过由于 <code>Java</code> 是强类型语言，所以还是稍有不同。看代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Exponents</span>
 <span class="linenr"> 2: </span><span style="color: #2aa198;">{</span>
 <span class="linenr"> 3: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
@@ -595,8 +581,8 @@ i1 = 1111111111111111111111111111111111111111111111111111111110000000
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">7</span> 位操作</h2>
+<div id="outline-container-org380ea70" class="outline-2">
+<h2 id="org380ea70"><span class="section-number-2">7</span> 位操作</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 
@@ -606,7 +592,6 @@ i1 = 1111111111111111111111111111111111111111111111111111111110000000
 虽然没有 <code>C/C++</code> 中位操作灵活，但是Java中也有对应的位操作，看代码：
 </p>
 <div class="org-src-container">
-
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr"> 2: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">ExerciseCh0410</span>
 <span class="linenr"> 3: </span><span style="color: #2aa198;">{</span>
@@ -641,7 +626,7 @@ a |= b 101010101010101
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     var disqus_shortname = 'zclspace';
-    
+
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

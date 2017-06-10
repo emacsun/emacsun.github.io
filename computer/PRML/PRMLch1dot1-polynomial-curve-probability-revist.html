@@ -86,16 +86,16 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org42898d8">1. 回忆</a></li>
-<li><a href="#orgc619241">2. 贝叶斯估计</a></li>
-<li><a href="#orgb5efbd2">3. 概率模型</a></li>
-<li><a href="#org8008732">4. 我们离真正的贝叶斯估计有多远</a></li>
+<li><a href="#org1f42482">1. 回忆</a></li>
+<li><a href="#org455dc42">2. 贝叶斯估计</a></li>
+<li><a href="#orgd53c06d">3. 概率模型</a></li>
+<li><a href="#org32b95e3">4. 我们离真正的贝叶斯估计有多远</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org42898d8" class="outline-2">
-<h2 id="org42898d8"><span class="section-number-2">1</span> 回忆</h2>
+<div id="outline-container-org1f42482" class="outline-2">
+<h2 id="org1f42482"><span class="section-number-2">1</span> 回忆</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -122,8 +122,8 @@ E( \mathbf{w}) = \frac{1}{2} \sum_{n=1}^{N}\{y(x_{n}, \mathbf{w}) - t_{n}\}^{2}
 </div>
 </div>
 
-<div id="outline-container-orgc619241" class="outline-2">
-<h2 id="orgc619241"><span class="section-number-2">2</span> 贝叶斯估计</h2>
+<div id="outline-container-org455dc42" class="outline-2">
+<h2 id="org455dc42"><span class="section-number-2">2</span> 贝叶斯估计</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -141,17 +141,17 @@ p(t|x, \mathbf{w}, \beta) = \mathcal{N} (t| y(x, \mathbf{w}), \beta^{-1})
 </p>
 
 <p>
-式(\ref{eq:3})的示意图如<a href="#orgc41f28d">1</a>所示。
+式(\ref{eq:3})的示意图如<a href="#org4e4f9a8">1</a>所示。
 </p>
 
-<div id="orgc41f28d" class="figure">
+<div id="org4e4f9a8" class="figure">
 <p><img src="../../img/computer_prml/20170502figure1dot16.png" alt="20170502figure1dot16.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> 式(\ref{eq:3})的示意图</p>
 </div>
 
 <p>
-从图<a href="#orgc41f28d">1</a> 中可以看出蓝色曲线就是假设的高斯分布。而精度值\(\beta\)体现了分布的方差。
+从图<a href="#org4e4f9a8">1</a> 中可以看出蓝色曲线就是假设的高斯分布。而精度值\(\beta\)体现了分布的方差。
 </p>
 
 <p>
@@ -194,8 +194,8 @@ p( \mathbf{t} | \mathbf{x}, \mathbf{w},\beta) = \prod_{n=1}^{N} \mathcal{N}(t_{n
 </p>
 </div>
 </div>
-<div id="outline-container-orgb5efbd2" class="outline-2">
-<h2 id="orgb5efbd2"><span class="section-number-2">3</span> 概率模型</h2>
+<div id="outline-container-orgd53c06d" class="outline-2">
+<h2 id="orgd53c06d"><span class="section-number-2">3</span> 概率模型</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -242,15 +242,15 @@ p(\mathbf{w} | \mathbf{x},\mathbf{t}, \alpha,\beta) \propto p( \mathbf{t} | \mat
 </div>
 </div>
 
-<div id="outline-container-org8008732" class="outline-2">
-<h2 id="org8008732"><span class="section-number-2">4</span> 我们离真正的贝叶斯估计有多远</h2>
+<div id="outline-container-org32b95e3" class="outline-2">
+<h2 id="org32b95e3"><span class="section-number-2">4</span> 我们离真正的贝叶斯估计有多远</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
 </p>
 
 <p>
-截止目前，尽管我们引入了\(\mathbf{w}\)的一个先验估计\(p(\mathbf{w}|\alpha)\)，但是我们还是在做\(\mathbf{w}\)的点估计，算不得真正的贝叶斯方法。因为“纯真血统”的贝叶斯方法需要一直使用概率的和积准则。这个和积准则的实用牵涉到边缘概率的计算。而边缘概率的计算是使用贝叶斯方法进行模式识别的核心内容。
+截止目前，尽管我们引入了\(\mathbf{w}\)的一个先验估计\(p(\mathbf{w}|\alpha)\)，但是我们还是在做\(\mathbf{w}\)的点估计，算不得真正的贝叶斯方法。因为“纯真血统”的贝叶斯方法需要一直使用概率的和积准则。这个和积准则的使用牵涉到边缘概率的计算。而边缘概率的计算是使用贝叶斯方法进行模式识别的核心内容。
 </p>
 
 <p>

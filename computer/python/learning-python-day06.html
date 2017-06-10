@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -64,14 +64,14 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org676cd72">1. 多种多样的输出格式</a>
+<li><a href="#org871f4ad">1. 多种多样的输出格式</a>
 <ul>
-<li><a href="#orgff911e7">1.1. 之前的字符格式化方式</a></li>
+<li><a href="#org828bd40">1.1. 之前的字符格式化方式</a></li>
 </ul>
 </li>
-<li><a href="#org7c4b0ab">2. 文件的读写</a>
+<li><a href="#orgdf62f31">2. 文件的读写</a>
 <ul>
-<li><a href="#orgbd8c465">2.1. 使用 <code>json</code></a></li>
+<li><a href="#orgd7a27bf">2.1. 使用 <code>json</code></a></li>
 </ul>
 </li>
 </ul>
@@ -81,8 +81,8 @@ for the JavaScript code in this tag.
 一个程序的输出可以有多种呈现方式：1）通过屏幕打印；2）通过写入文件。今天我们来探讨这两种方法。
 </p>
 
-<div id="outline-container-org676cd72" class="outline-2">
-<h2 id="org676cd72"><span class="section-number-2">1</span> 多种多样的输出格式</h2>
+<div id="outline-container-org871f4ad" class="outline-2">
+<h2 id="org871f4ad"><span class="section-number-2">1</span> 多种多样的输出格式</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -100,15 +100,15 @@ for the JavaScript code in this tag.
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">25</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">s</span> = <span style="color: #2aa198;">'hello, world.'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">26</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">str</span><span style="color: #2aa198;">(</span>s<span style="color: #2aa198;">)</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">26</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">26</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'hello, world.'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">27</span><span style="color: #2aa198;">]</span>: s
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">27</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">27</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'hello, world.'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">28</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">str</span><span style="color: #2aa198;">(</span><span style="color: #6c71c4;">1</span>/<span style="color: #6c71c4;">7</span><span style="color: #2aa198;">)</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">34</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">34</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'0.14285714285714285'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">35</span><span style="color: #2aa198;">]</span>: <span style="color: #268bd2;">x</span> = <span style="color: #6c71c4;">10</span> * <span style="color: #6c71c4;">3</span>.<span style="color: #6c71c4;">25</span>
@@ -132,8 +132,9 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">172</span
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">173</span><span style="color: #2aa198;">]</span>: <span style="color: #586e75;"># </span><span style="color: #586e75;">the argument to repr() may be any python objects:</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">189</span><span style="color: #2aa198;">]</span>: <span style="color: #839496; font-weight: bold;">repr</span><span style="color: #2aa198;">(</span><span style="color: #b58900;">(</span>x,y,<span style="color: #268bd2;">(</span><span style="color: #2aa198;">'spam'</span>,<span style="color: #2aa198;">'eggs'</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">215</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">215</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">"(32.5, 40000, ('spam', 'eggs'))"</span>
+
 </pre>
 </div>
 
@@ -181,20 +182,21 @@ In [218]:
 
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">220</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'12'</span>.zfill<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">6</span><span style="color: #2aa198;">)</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">233</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">233</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'000012'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">234</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'abc'</span>.zfill<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">6</span><span style="color: #2aa198;">)</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">241</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">241</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'000abc'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">242</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'-abc'</span>.zfill<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">6</span><span style="color: #2aa198;">)</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">262</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">262</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'-00abc'</span>
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">263</span><span style="color: #2aa198;">]</span>: <span style="color: #2aa198;">'-45'</span>.zfill<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">6</span><span style="color: #2aa198;">)</span>
-Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">283</span><span style="color: #2aa198;">]</span>: 
+Out<span style="color: #2aa198;">[</span><span style="color: #6c71c4;">283</span><span style="color: #2aa198;">]</span>:
 <span style="color: #2aa198;">'-00045'</span>
+
 </pre>
 </div>
 
@@ -228,6 +230,7 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">303</span
 ----&gt; <span style="color: #6c71c4;">1</span> <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'{2} and {0}'</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #b58900;">(</span><span style="color: #2aa198;">'spam'</span>,<span style="color: #2aa198;">'egg'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
 
 <span style="color: #b58900;">IndexError</span>: <span style="color: #839496; font-weight: bold;">tuple</span> index out of <span style="color: #839496; font-weight: bold;">range</span>
+
 </pre>
 </div>
 <p>
@@ -248,6 +251,7 @@ In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">303</span
 
 In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">390</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'This {food} is {adjective}.'</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #b58900;">(</span>food=<span style="color: #2aa198;">'spam'</span>,adjective=<span style="color: #2aa198;">'absolutely horrible'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
 This spam <span style="color: #859900; font-weight: bold;">is</span> absolutely horrible.
+
 </pre>
 </div>
 
@@ -257,6 +261,7 @@ This spam <span style="color: #859900; font-weight: bold;">is</span> absolutely 
 <div class="org-src-container">
 <pre class="src src-python">In <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">396</span><span style="color: #2aa198;">]</span>: <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span><span style="color: #2aa198;">'The story of {0},{1},and {other}'</span>.<span style="color: #839496; font-weight: bold;">format</span><span style="color: #b58900;">(</span><span style="color: #2aa198;">'Bill'</span>,<span style="color: #2aa198;">'Manfred'</span>,other=<span style="color: #2aa198;">'Georg'</span><span style="color: #b58900;">)</span><span style="color: #2aa198;">)</span>
 The story of Bill,Manfred,<span style="color: #859900; font-weight: bold;">and</span> Georg
+
 </pre>
 </div>
 
@@ -280,14 +285,16 @@ for name,phone in table.items():
 输出为：
 </p>
 <pre class="example">
-In [560]: 
+
+In [560]:
 Sjoerd     ==&gt;       4127
 Jack       ==&gt;       4098
 Dcab       ==&gt;       7678
+
 </pre>
 </div>
-<div id="outline-container-orgff911e7" class="outline-3">
-<h3 id="orgff911e7"><span class="section-number-3">1.1</span> 之前的字符格式化方式</h3>
+<div id="outline-container-org828bd40" class="outline-3">
+<h3 id="org828bd40"><span class="section-number-3">1.1</span> 之前的字符格式化方式</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 
@@ -304,8 +311,8 @@ pi is 3.142
 </div>
 </div>
 </div>
-<div id="outline-container-org7c4b0ab" class="outline-2">
-<h2 id="org7c4b0ab"><span class="section-number-2">2</span> 文件的读写</h2>
+<div id="outline-container-orgdf62f31" class="outline-2">
+<h2 id="orgdf62f31"><span class="section-number-2">2</span> 文件的读写</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -334,7 +341,7 @@ pi is 3.142
 </p>
 
 <p>
-文件的常用方法有： 
+文件的常用方法有：
 </p>
 <ol class="org-ol">
 <li><code>f.read()</code> 读出文件内容。</li>
@@ -344,8 +351,8 @@ pi is 3.142
 <li><code>f.close()</code> 关闭文件。</li>
 </ol>
 </div>
-<div id="outline-container-orgbd8c465" class="outline-3">
-<h3 id="orgbd8c465"><span class="section-number-3">2.1</span> 使用 <code>json</code></h3>
+<div id="outline-container-orgd7a27bf" class="outline-3">
+<h3 id="orgd7a27bf"><span class="section-number-3">2.1</span> 使用 <code>json</code></h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 
@@ -356,7 +363,7 @@ pi is 3.142
 </p>
 
 <p>
-万幸， <code>Python</code> 使用 <code>JSON</code> （JavaScript Object Notation）来作为数据保存格式， <code>JSON</code> 是一种广为使用的数据交换格式。。 Python有处理 <code>JSON</code> 的标准库 <code>json</code> 。这个库可以方便的层次化保存数据，把这些数据保存成字符串（这个过程叫做 <code>serializing</code> ）；也可以方便的把这些字符创变回数值( 这个过程叫做 <code>deserializing</code>  ).  
+万幸， <code>Python</code> 使用 <code>JSON</code> （JavaScript Object Notation）来作为数据保存格式， <code>JSON</code> 是一种广为使用的数据交换格式。。 Python有处理 <code>JSON</code> 的标准库 <code>json</code> 。这个库可以方便的层次化保存数据，把这些数据保存成字符串（这个过程叫做 <code>serializing</code> ）；也可以方便的把这些字符创变回数值( 这个过程叫做 <code>deserializing</code>  ).
 </p>
 
 <p>

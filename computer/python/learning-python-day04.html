@@ -15,7 +15,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -64,19 +64,19 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb639091">1. 深入了解 <code>list</code></a>
+<li><a href="#org8074569">1. 深入了解 <code>list</code></a>
 <ul>
-<li><a href="#orgcd510d4">1.1. 把 <code>list</code> 当栈用</a></li>
-<li><a href="#org713bfa7">1.2. 把 <code>list</code> 当队列用</a></li>
-<li><a href="#orgbb4ab8c">1.3. 队列推导式</a></li>
-<li><a href="#org5114f1a">1.4. 嵌套的 <code>list</code> 推导式</a></li>
+<li><a href="#orga05d0a3">1.1. 把 <code>list</code> 当栈用</a></li>
+<li><a href="#org5e27610">1.2. 把 <code>list</code> 当队列用</a></li>
+<li><a href="#org826978a">1.3. 队列推导式</a></li>
+<li><a href="#org17dc79c">1.4. 嵌套的 <code>list</code> 推导式</a></li>
 </ul>
 </li>
-<li><a href="#org79c403e">2. <code>del</code> 语句</a></li>
-<li><a href="#org9139bf8">3. <code>tuple</code> 和 <code>sequence</code></a></li>
-<li><a href="#orgbdb0076">4. <code>set</code></a></li>
-<li><a href="#org228571c">5. 字典（dictionaries）</a></li>
-<li><a href="#org3e2c451">6. 使用循环</a></li>
+<li><a href="#orgd6f08ee">2. <code>del</code> 语句</a></li>
+<li><a href="#org73dfbb2">3. <code>tuple</code> 和 <code>sequence</code></a></li>
+<li><a href="#orgfb06e68">4. <code>set</code></a></li>
+<li><a href="#org141b691">5. 字典（dictionaries）</a></li>
+<li><a href="#org56cec8b">6. 使用循环</a></li>
 </ul>
 </div>
 </div>
@@ -84,8 +84,8 @@ for the JavaScript code in this tag.
 <code>Python</code> 提供了丰富的数据结构，极大提高编码效率。今天，我们讨论与数据结构有关的知识点。
 </p>
 
-<div id="outline-container-orgb639091" class="outline-2">
-<h2 id="orgb639091"><span class="section-number-2">1</span> 深入了解 <code>list</code></h2>
+<div id="outline-container-org8074569" class="outline-2">
+<h2 id="org8074569"><span class="section-number-2">1</span> 深入了解 <code>list</code></h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -110,8 +110,8 @@ for the JavaScript code in this tag.
 
 </div>
 </div>
-<div id="outline-container-orgcd510d4" class="outline-3">
-<h3 id="orgcd510d4"><span class="section-number-3">1.1</span> 把 <code>list</code> 当栈用</h3>
+<div id="outline-container-orga05d0a3" class="outline-3">
+<h3 id="orga05d0a3"><span class="section-number-3">1.1</span> 把 <code>list</code> 当栈用</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 
@@ -128,21 +128,22 @@ In [194]: stack.append(6)
 In [198]: stack.append(7)
 
 In [202]: stack
-Out[210]: 
+Out[210]:
 [3, 4, 5, 6, 7]
 
 In [211]: stack.pop()
-Out[215]: 
+Out[215]:
 7
 
 In [216]: stack
-Out[220]: 
+Out[220]:
 [3, 4, 5, 6]
+
 </pre>
 </div>
 </div>
-<div id="outline-container-org713bfa7" class="outline-3">
-<h3 id="org713bfa7"><span class="section-number-3">1.2</span> 把 <code>list</code> 当队列用</h3>
+<div id="outline-container-org5e27610" class="outline-3">
+<h3 id="org5e27610"><span class="section-number-3">1.2</span> 把 <code>list</code> 当队列用</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 
@@ -169,21 +170,22 @@ In [265]: queue.append('Terry')
 In [282]: queue.append('Grahm')
 
 In [298]: queue
-Out[298]: 
+Out[298]:
 deque(['Eric', 'John', 'Michael', 'Terry', 'Grahm'])
 
 In [299]: queue.popleft()
-Out[306]: 
+Out[306]:
 'Eric'
 
 In [307]: queue.popleft()
-Out[313]: 
+Out[313]:
 'John'
+
 </pre>
 </div>
 </div>
-<div id="outline-container-orgbb4ab8c" class="outline-3">
-<h3 id="orgbb4ab8c"><span class="section-number-3">1.3</span> 队列推导式</h3>
+<div id="outline-container-org826978a" class="outline-3">
+<h3 id="org826978a"><span class="section-number-3">1.3</span> 队列推导式</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
 
@@ -203,11 +205,11 @@ for x in range(10):
 </p>
 <pre class="example">
 In [333]: squares
-Out[337]: 
+Out[337]:
 [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 </pre>
 <p>
-当然，我们可以使用更方便的方法创建上面的这个 <code>list</code> 
+当然，我们可以使用更方便的方法创建上面的这个 <code>list</code>
 </p>
 
 <pre class="example">
@@ -229,7 +231,7 @@ squares = [x**2 for x in range(10)]
 </p>
 <pre class="example">
 In [339]: [(x,y) for x in [1,2,3] for y in [3,1,4] if x!=y]
-Out[397]: 
+Out[397]:
 [(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
 </pre>
 <p>
@@ -250,25 +252,25 @@ Out[397]:
 In [399]: vec = [-4,-2,0,2,4]
 
 In [409]: [x*2 for x in vec]
-Out[416]: 
+Out[416]:
 [-8, -4, 0, 4, 8]
 
 In [417]: [x for x in vec if x&gt;=0]
-Out[444]: 
+Out[444]:
 [0, 2, 4]
 
 In [445]: [abs(x) for x in vec]
-Out[456]: 
+Out[456]:
 [4, 2, 0, 2, 4]
 
 In [457]: freshfruit = [' banana',' loganberry','passion fruit ']
 
 In [506]: [weapon.strip() for weapon in freshfruit]
-Out[536]: 
+Out[536]:
 ['banana', 'loganberry', 'passion fruit']
 
 In [537]: [(x,x**2) for x in range(6)]
-Out[562]: 
+Out[562]:
 [(0, 0), (1, 1), (2, 4), (3, 9), (4, 16), (5, 25)]
 
 In [563]: [x,x**2 for x in range(6)]
@@ -281,8 +283,9 @@ SyntaxError: invalid syntax
 In [564]: vec = [[1,2,3],[4,5,6],[7,8,9]]
 
 In [581]: [num for elem in vec for num in elem]
-Out[596]: 
+Out[596]:
 [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
 </pre>
 <p>
 从上面的例子，我们可以看到，如果生成的 <code>list</code> 中元素都是二元组的话，则必须用括号包起来。
@@ -294,13 +297,13 @@ Out[596]:
 
 <pre class="example">
 In [602]: [str(round(pi,i)) for i in range(1,6)]
-Out[616]: 
+Out[616]:
 ['3.1', '3.14', '3.142', '3.1416', '3.14159']
 </pre>
 </div>
 </div>
-<div id="outline-container-org5114f1a" class="outline-3">
-<h3 id="org5114f1a"><span class="section-number-3">1.4</span> 嵌套的 <code>list</code> 推导式</h3>
+<div id="outline-container-org17dc79c" class="outline-3">
+<h3 id="org17dc79c"><span class="section-number-3">1.4</span> 嵌套的 <code>list</code> 推导式</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 
@@ -323,7 +326,7 @@ Out[616]:
 </p>
 <pre class="example">
 In [619]: [[row[i] for row in matrix] for i in range(4)]
-Out[658]: 
+Out[658]:
 [[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
 </pre>
 <p>
@@ -333,7 +336,8 @@ Out[658]:
 [x[0] for x in matrix]
 </pre>
 <p>
-输出的是 <code>matrix</code> 的第 <code>0</code> 列 <code>[1,5,9]</code> 。整个矩阵转换代码等效于：
+输出的是 <code>matrix</code> 的第 <code>0</code> 列 <code>[1,5,9]</code> 。
+整个矩阵转换代码等效于：
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span style="color: #268bd2;">matrix</span> = <span style="color: #2aa198;">[</span>
@@ -361,8 +365,8 @@ list(zip(*matrix))
 </div>
 </div>
 </div>
-<div id="outline-container-org79c403e" class="outline-2">
-<h2 id="org79c403e"><span class="section-number-2">2</span> <code>del</code> 语句</h2>
+<div id="outline-container-orgd6f08ee" class="outline-2">
+<h2 id="orgd6f08ee"><span class="section-number-2">2</span> <code>del</code> 语句</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -378,20 +382,21 @@ In [736]: a = [1,2,3,4,5,6,7]
 In [758]: del a[0]
 
 In [770]: a
-Out[770]: 
+Out[770]:
 [2, 3, 4, 5, 6, 7]
 
 In [771]: del a[5]
 
 In [787]: a
-Out[787]: 
+Out[787]:
 [2, 3, 4, 5, 6]
 
 In [788]: del a[2]
 
 In [792]: a
-Out[792]: 
+Out[792]:
 [2, 3, 5, 6]
+
 </pre>
 
 <p>
@@ -403,8 +408,8 @@ del a
 </div>
 </div>
 
-<div id="outline-container-org9139bf8" class="outline-2">
-<h2 id="org9139bf8"><span class="section-number-2">3</span> <code>tuple</code> 和 <code>sequence</code></h2>
+<div id="outline-container-org73dfbb2" class="outline-2">
+<h2 id="org73dfbb2"><span class="section-number-2">3</span> <code>tuple</code> 和 <code>sequence</code></h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -417,25 +422,25 @@ del a
 In [793]: t = 12345, 54321, 'hello!'
 
 In [821]: t[0]
-Out[828]: 
+Out[828]:
 12345
 
 In [829]: t[2]
-Out[832]: 
+Out[832]:
 'hello!'
 
 In [833]: t
-Out[837]: 
+Out[837]:
 (12345, 54321, 'hello!')
 
 In [838]: u = t,(1,3,4)
 
 In [854]: u
-Out[854]: 
+Out[854]:
 ((12345, 54321, 'hello!'), (1, 3, 4))
 
 In [855]: t[0]
-Out[863]: 
+Out[863]:
 12345
 
 In [864]: t[0] = 8888
@@ -449,8 +454,9 @@ TypeError: 'tuple' object does not support item assignment
 In [872]: v = ([1,2,3],[4,5,6])
 
 In [887]: v
-Out[887]: 
+Out[887]:
 ([1, 2, 3], [4, 5, 6])
+
 </pre>
 
 <p>
@@ -470,22 +476,23 @@ In [888]: empty = ()
 In [903]: singleton = 'hello', # note the trailing comma
 
 In [920]: len(empty)
-Out[920]: 
+Out[920]:
 0
 
 In [921]: len(singleton)
-Out[933]: 
+Out[933]:
 1
 
 In [934]: singleton
-Out[942]: 
+Out[942]:
 ('hello',)
+
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgbdb0076" class="outline-2">
-<h2 id="orgbdb0076"><span class="section-number-2">4</span> <code>set</code></h2>
+<div id="outline-container-orgfb06e68" class="outline-2">
+<h2 id="orgfb06e68"><span class="section-number-2">4</span> <code>set</code></h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -500,18 +507,20 @@ In [943]: basket = {'apple','orange','apple','pear','orange','banana'}
 
 In [989]: print(basket)
 {'banana', 'orange', 'pear', 'apple'}
+
 </pre>
 <p>
 可以看出 <code>set</code> 自动删除集合中的重复元素。
 </p>
 <pre class="example">
 In [997]: 'orange' in basket #fast membership testing
-Out[1027]: 
+Out[1027]:
 True
 
 In [1028]: 'crabgrass' in basket
-Out[1052]: 
+Out[1052]:
 False
+
 </pre>
 
 <p>
@@ -519,24 +528,25 @@ False
 </p>
 
 <pre class="example">
+
 In [1053]: a = set('abracadabra')
 
 In [1066]: b = set('alacazam')
 
 In [1078]: a
-Out[1078]: 
+Out[1078]:
 {'a', 'b', 'c', 'd', 'r'}
 
 In [1079]: b
-Out[1083]: 
+Out[1083]:
 {'a', 'c', 'l', 'm', 'z'}
 
 In [1084]: a-b # letters in a but not in b
-Out[1091]: 
+Out[1091]:
 {'b', 'd', 'r'}
 
 In [1092]: a | b #letters in either a or b
-Out[1099]: 
+Out[1099]:
 {'a', 'b', 'c', 'd', 'l', 'm', 'r', 'z'}
 
 In [1100]: a + b #do not support +
@@ -548,12 +558,13 @@ TypeError                                 Traceback (most recent call last)
 TypeError: unsupported operand type(s) for +: 'set' and 'set'
 
 In [1101]: a &amp; b #letter in both a and b
-Out[1108]: 
+Out[1108]:
 {'a', 'c'}
 
 In [1109]: a ^ b #letters in a or b nut not both
-Out[1120]: 
+Out[1120]:
 {'b', 'd', 'l', 'm', 'r', 'z'}
+
 </pre>
 
 <p>
@@ -563,14 +574,15 @@ Out[1120]:
 In [1121]: a = {x for x in 'abracadabra' if x not in 'abc'}
 
 In [1146]: a
-Out[1146]: 
+Out[1146]:
 {'d', 'r'}
+
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org228571c" class="outline-2">
-<h2 id="org228571c"><span class="section-number-2">5</span> 字典（dictionaries）</h2>
+<div id="outline-container-org141b691" class="outline-2">
+<h2 id="org141b691"><span class="section-number-2">5</span> 字典（dictionaries）</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -593,11 +605,11 @@ In [1147]: tel = {'jack':4098, 'sape':4139}
 In [1186]: tel['guido'] = 4127
 
 In [1198]: tel
-Out[1198]: 
+Out[1198]:
 {'guido': 4127, 'jack': 4098, 'sape': 4139}
 
 In [1199]: tel['jack']
-Out[1211]: 
+Out[1211]:
 4098
 
 In [1212]: del tel['sape']
@@ -605,24 +617,25 @@ In [1212]: del tel['sape']
 In [1224]: tel['irv'] = 4127
 
 In [1251]: tel
-Out[1255]: 
+Out[1255]:
 {'guido': 4127, 'irv': 4127, 'jack': 4098}
 
 In [1256]: list(tel.keys())
-Out[1276]: 
+Out[1276]:
 ['jack', 'irv', 'guido']
 
 In [1277]: sorted(tel.keys())
-Out[1284]: 
+Out[1284]:
 ['guido', 'irv', 'jack']
 
 In [1285]: 'guido' in tel
-Out[1293]: 
+Out[1293]:
 True
 
 In [1294]: 'jack' not in tel
-Out[1300]: 
+Out[1300]:
 False
+
 </pre>
 
 <p>
@@ -630,7 +643,7 @@ False
 </p>
 <pre class="example">
 In [1301]: dict([('sape',4139),('guido',4127),('jack',4098)])
-Out[1354]: 
+Out[1354]:
 {'guido': 4127, 'jack': 4098, 'sape': 4139}
 </pre>
 
@@ -639,7 +652,7 @@ Out[1354]:
 </p>
 <pre class="example">
 In [1355]: {x:x**2 for x in (2,4,6)}
-Out[1377]: 
+Out[1377]:
 {2: 4, 4: 16, 6: 36}
 </pre>
 <p>
@@ -647,14 +660,14 @@ Out[1377]:
 </p>
 <pre class="example">
 In [1378]: dict(sape=4139,guido=4127,jack=4098)
-Out[1433]: 
+Out[1433]:
 {'guido': 4127, 'jack': 4098, 'sape': 4139}
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org3e2c451" class="outline-2">
-<h2 id="org3e2c451"><span class="section-number-2">6</span> 使用循环</h2>
+<div id="outline-container-org56cec8b" class="outline-2">
+<h2 id="org56cec8b"><span class="section-number-2">6</span> 使用循环</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 
@@ -721,7 +734,7 @@ what is your favorite color It is blue.
 </p>
 <pre class="example">
 In [1438]: list(zip(questions,answers))
-Out[1456]: 
+Out[1456]:
 [('name', 'lancelot'), ('quest', 'the holy grail'), ('favorite color', 'blue')]
 </pre>
 <p>
@@ -736,6 +749,7 @@ for i in reversed(range(1,10,2)):
 输出是：
 </p>
 <pre class="example">
+
 In [1457]: 9
 7
 5
