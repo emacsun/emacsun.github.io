@@ -56,13 +56,199 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
 <h1 class="title">再看高斯</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7083250">1. 定义</a></li>
+<li><a href="#orgd2ae724">2. 高斯分布的形状</a></li>
+</ul>
+</div>
+</div>
 <p>
-<a href="file:///c:/Users/cliyh/AppData/Roaming/zorg/output/math/probability/gauss-distribution.html">高斯分布</a> 在机器学习中是如此重要，以至于我们必须对其进行透彻的理解和掌握。
+<a href="file:///c:/Users/cliyh/AppData/Roaming/zorg/output/math/probability/gauss-distribution.html">高斯分布</a> 在机器学习中是如此重要，我们必须对其进行透彻的理解和掌握。
 </p>
+
+<div id="outline-container-org7083250" class="outline-2">
+<h2 id="org7083250"><span class="section-number-2">1</span> 定义</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+对于单变量随机变量高斯分布可以写为：
+</p>
+\begin{equation}
+\label{eq:1}
+\mathcal{N}(x|\mu,\sigma^{2}) = \frac{1}{\sqrt{2\pi \sigma^{2}}} \exp\bigg\{-\frac{(x-\mu)^{2}}{2\sigma^{2}} \bigg\}
+\end{equation}
+<p>
+我们在 <a href="file:///c:/Users/cliyh/AppData/Roaming/zorg/output/math/probability/gauss-distribution.html">之前的博文</a> 中证明过这个形式的分布确实是概率分布，此处略去证明。
+</p>
+
+<p>
+对于\(D\)维的高斯随机矢量\(\mathbf{x}\)，则：
+</p>
+\begin{equation}
+\label{eq:2}
+\mathcal{N}(\mathbf{x}| \mathbf{\mu}, \mathbf{\Sigma}) = \frac{1}{(2\pi)^{D/2}}\frac{1}{| \mathbf{\Sigma} |^{1/2}}\exp \bigg\{ -\frac{1}{2}( \mathbf{x} - \mathbf{\mu} )^{T} \mathbf{\Sigma}^{-1} ( \mathbf{x} - \mathbf{\mu} ) \bigg\}
+\end{equation}
+<p>
+其中\(\mathbf{\mu}\)是\(D\)维的均值矢量，\(\mathbf{\Sigma}\)是\(D\times D\)的协方差矩阵。\( | \mathbf{\Sigma} | \)是\( \mathbf{\Sigma} \)的行列式。
+</p>
+
+<p>
+高斯分布如同幽灵一样无处不在。比如，对于单变量随机变量，最大化熵的分布是高斯分布，同样对于多变量随机矢量亦是如此。再比如，假设我们考虑多个随机变量和的分布，根据中心极限定理，满足一定条件后（这些条件都是很容易满足的条件），这些随机变量的和服从高斯分布。在机器学习中更是如此。实际上，对高斯分布的处理需要相当的数学基础，但是在以后的学习中，我们会发现这种投入是值得的。
+</p>
+</div>
+</div>
+<div id="outline-container-orgd2ae724" class="outline-2">
+<h2 id="orgd2ae724"><span class="section-number-2">2</span> 高斯分布的形状</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+对单变量高斯分布我们早已熟悉其钟形曲线。对于高斯矢量，我们从式(\ref{eq:2})可以看到起形状依赖于二次型：
+</p>
+\begin{equation}
+\label{eq:3}
+\Delta^{2} = ( \mathbf{x} - \mathbf{\mu} )^{T} \mathbf{\Sigma}^{-1} ( \mathbf{x} - \mathbf{\mu} )
+\end{equation}
+<p>
+这个\(\Delta\)叫做\( \mathbf{\mu} \)到\( \mathbf{x} \)的 Mahalanobis距离。当\(\mathbf{\Sigma}\)是单位阵时，这个距离退化为欧几里得距离。当这个二次型是常量的时候，高斯分布在\(\mathbf{x}\)面上是常量。
+</p>
+
+<p>
+不失一般性，对于\(\mathbf{\Sigma}\)我们可以假设其为实的对称的。对于实的对称的\(\mathbf{\Sigma}\)，其特征值也一定是实的。
+</p>
+\begin{equation}
+\label{eq:4}
+\mathbf{\Sigma} \mathbf{u}_{i} = \lambda_{i} \mathbf{u}_{i}
+\end{equation}
+<p>
+其中\(i=1,\ldots ,D\)。因为\(\mathbf{\Sigma}\)是实的对称的，所以其特征向量可以从一个正交基中选取，即：
+</p>
+\begin{equation}
+\label{eq:5}
+\mathbf{u}_{i}^{T} \mathbf{u}_{j} = \sigma_{ij}
+\end{equation}
+<p>
+协方差矩阵\(\mathbf{\Sigma}\)可以表示为特征向量的扩展：
+</p>
+\begin{equation}
+\label{eq:6}
+\mathbf{\Sigma} = \sum_{i=1}^{D} \lambda_{i} \mathbf{u}_{i} \mathbf{u}_{i}^{T}
+\end{equation}
+<p>
+同理，协方差矩阵的逆矩阵也可以表示为：
+</p>
+\begin{equation}
+\label{eq:7}
+\mathbf{\Sigma}^{-1} = \sum_{i=1}^{D}\frac{1}{\lambda_{i}}\mathbf{u}_{i} \mathbf{u}_{i}^{T}
+\end{equation}
+<p>
+我们定义：
+</p>
+\begin{equation}
+\label{eq:8}
+y_{i} = \mathbf{u}_{i}^{T}( \mathbf{x} - \mathbf{u} )
+\end{equation}
+<p>
+则式 (\ref{eq:3})可以简化为：
+</p>
+\begin{equation}
+\label{eq:9}
+\Delta^{2} = \sum_{i=1}^{D}\frac{y_{i}^{2}}{\lambda_{i}}
+\end{equation}
+
+<p>
+我们可以把\(y_{i}\)解释为一个新的坐标系统，该坐标由正交矢量\(\mathbf{u}_{i}\)通过相对于原来的坐标\(x_{i}\)移位和旋转得到。为了生成\(\mathbf{y}= (y_{1},\ldots ,y_{D})^{T}\)，我们有：
+</p>
+\begin{equation}
+\label{eq:10}
+\mathbf{y} = \mathbf{U}(\mathbf{x}- \mathbf{\mu})
+\end{equation}
+<p>
+其中\(U\)是一个矩阵，其每一行是\(\mathbf{u}_{i}^{T}\)，根据式 (\ref{eq:5})我们知道\(\mathbf{U}\)是一个正交矩阵，即\(\mathbf{U}\mathbf{U}^{T} = \mathbf{I}\)。 从式 (\ref{eq:8})我们可以知道二次型 (\ref{eq:3}) 在平面上是一个常量。如果所有的特征值\(\lambda_{i}\)是正数，那么这些二次型是椭圆, 其中心在\(\mathbf{\mu}\),其轴的方向是\(\mathbf{u}_{i}\)的方向，轴的长度与特征值\(\lambda_{i}\)有关。如图<a href="#org5c8e82d">1</a>所示：
+</p>
+
+<div id="org5c8e82d" class="figure">
+<p><img src="../../img/computer_prml/20170614figure2dot7.png" alt="20170614figure2dot7.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 1:</span> 二维高斯矢量在\(\exp(-1/2)\)时的图形</p>
+</div>
+
+
+<p>
+为了使得高斯随机变量有比较严格的定义，要求所有的特征值\(\lambda_{i}\)是正数，否则这个分布的积分就不会是1，也就是说这个分布没有归一化。对于非正定矩阵（有至少一个特征值为0或者负数），高斯分布会降维为低维的子空间。
+</p>
+
+<p>
+现在我们在新的坐标系下考虑高斯分布。从\(\mathbf{x}\)到\(\mathbf{y}\)的转化过程，我们有一个Jacobian矩阵\(\mathbf{J}\)，
+</p>
+\begin{equation}
+\label{eq:11}
+J_{ij} = \frac{\partial x_{i}}{\partial y_{j}} = U_{ji}
+\end{equation}
+<p>
+其中\(U_{ji}\)是矩阵\(\mathbf{U}^{T}\)的元素。根据\(\mathbf{U}\)的正交性，我们得到：
+</p>
+\begin{equation}
+\label{eq:12}
+| \mathbf{J} |^2 = | \mathbf{U}^T |^2 = | \mathbf{U}^T| |\mathbf{U}| = |\mathbf{I}| = 1
+\end{equation}
+<p>
+所以：
+</p>
+\begin{equation}
+\label{eq:13}
+| \mathbf{\Sigma} |^{1/2} = \prod_{j=1}^D \lambda_j^{1/2}
+\end{equation}
+<p>
+所以在\(y_{j}\)坐标系中，高斯分布的形式是：
+</p>
+\begin{equation}
+\label{eq:14}
+p(\mathbf{y}) = p(\mathbf{x})|\mathbf{J}| = \prod_{j=1}^{D} \frac{1}{(2\pi\lambda)^{1/2}}\exp\bigg\{ - \frac{y_{j}^{2}}{2\lambda_{j}}\bigg\}
+\end{equation}
+<p>
+这个形式非常的简洁可以看做是多个独立的高斯随机变量的乘积。特征向量定义了移位和旋转的规则，基于这个规则联合概率密度分解为独立随机变量的乘积。显然：
+</p>
+\begin{equation}
+\label{eq:15}
+\int p(\mathbf{y}) \mathrm{d}\mathbf{y} = \prod_{j=1}^{D}\frac{1}{(2\pi)^{1/2}}\exp\bigg\{ -\frac{y_{j}^{2}}{2\lambda_{j}} \bigg\} dy_{j} =1
+\end{equation}
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
