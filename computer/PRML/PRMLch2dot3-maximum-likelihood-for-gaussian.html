@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>高斯分布的最大似然估计</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./PRMLch2dot3-maximum-likelihood-for-gaussian.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">高斯分布的最大似然估计</h1>
+<p>
+给定一个数据集\(\mathbf{X} = (\mathbf{x}_{1},\ldots ,\mathbf{x}_{N})^{T}\)。假设\(\{\mathbf{x}_{n}\}\)是多变量高斯分布的一个独立的观察。我们可以通过最大似然估计来估计高斯分布的参数。对数似然函数是：
+</p>
+\begin{equation}
+\label{eq:1}
+\ln p(\mathbf{X}| \mathbf{\mu}, \mathbf{\Sigma}) = -\frac{ND}{2}\ln(2\pi) - \frac{N}{2}\ln|\mathbf{\Sigma}| - \frac{1}{2}\sum_{n=1}^{N}(\mathbf{x}_{n}- \mathbf{\mu})^{T}\mathbf{\Sigma}^{-1}(\mathbf{x}_{n} - \mathbf{\mu})
+\end{equation}
+<p>
+对上式化简，我们发现似然函数对数据集合的依赖体现在\(\sum_{n=1}^{N}\mathbf{x}_{n}\)和\(\sum_{n=1}^{N}\mathbf{x}_{n}\mathbf{x}_{n}^{T}\)两个量上。这两个量叫做高斯分布的充分统计量（sufficient statistics）。不同的分布有不同的充分统计量，这个我们用到的时候在详谈，此处不展开。
+</p>
+
+<p>
+在式 (\ref{eq:1})中，对\(\mathbf{\mu}\)求导，有：
+</p>
+\begin{equation}
+\label{eq:2}
+\frac{\partial }{\partial \mathbf{\mu}}\ln  p(\mathbf{X}| \mathbf{\mu}, \mathbf{\Sigma}) = \sum_{n=1}^{N} \sum_{n=1}^{N} \mathbf{\Sigma}^{-1} ( \mathbf{x}_{n} - \mathbf{\mu} )
+\end{equation}
+<p>
+令上式为零，则我们得到了关于高斯分布均值的最大似然解：
+</p>
+\begin{equation}
+\label{eq:3}
+\mathbf{\mu}_{ML} = \frac{1}{N}\sum_{n=1}^{N}\mathbf{x}_{n}
+\end{equation}
+<p>
+显然，这个最大似然解是观测数据集合的均值。
+</p>
+
+<p>
+对 (\ref{eq:1})的\(\mathbf{\Sigma}\)求导，有：
+</p>
+\begin{equation}
+\label{eq:4}
+\mathbf{\Sigma}_{ML} = \frac{1}{N} \sum_{n=1}^{N} (\mathbf{x}_{n}- \mathbf{\mu}_{ML})(\mathbf{x}_{n} - \mathbf{\mu}_{ML})^{T}
+\end{equation}
+<p>
+式~(\ref{eq:4})中出现了\(\mathbf{\mu}_{ML}\)，这是联合优化\(\mathbf{\mu}\)和\(\mathbf{\Sigma}\)的结果。另外注意到\(\mathbf{\mu}_{ML}\)与\(\mathbf{\Sigma}_{ML}\)无关，所以我们可以先得到\(\mathbf{\mu}_{ML}\)，然后求\(\mathbf{\Sigma}_{ML}\)。
+</p>
+
+<p>
+基于\(\mathbf{\mu}_{ML}\)和\(\mathbf{\Sigma}_{ML}\)，我们求高斯分布的期望和方差：
+</p>
+\begin{eqnarray}
+\label{eq:5}
+\mathbb{E}[\mathbf{\mu}_{ML}]&=& \mathbf{\mu} \\
+\mathbb{E}[\mathbf{\Sigma}_{ML}]&=& \frac{N-1}{N} \mathbf{\Sigma}
+\end{eqnarray}
+<p>
+我们发现最大似然估计的均值等于真实的均值，最大似然估计的方差总是小于真实值，因此这个估计是有偏的（biased）.我们可以定义一个不同的估计：
+</p>
+\begin{equation}
+\label{eq:6}
+\tilde{\mathbf{\Sigma}} = \frac{1}{N-1} \sum_{n=1}^{N} (\mathbf{x}_{n}- \mathbf{\mu}_{ML})(\mathbf{x}_{n} - \mathbf{\mu}_{ML})^{T}
+\end{equation}
+<p>
+显然\(\tilde{\mathbf{\Sigma}}\)的期望与\(\mathbf{\Sigma}\)相等。
+</p>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
