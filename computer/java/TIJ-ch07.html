@@ -64,18 +64,18 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org57b013e">1. <code>package</code> ：库的最小单元</a></li>
-<li><a href="#org7929f93">2. 组织你的代码</a></li>
-<li><a href="#org974f83a">3. 创建独一无二的 <code>package</code> 名字</a></li>
-<li><a href="#org2ff0b97">4. <code>Java</code> 访问关键字</a>
+<li><a href="#org21f06b0">1. <code>package</code> ：库的最小单元</a></li>
+<li><a href="#orgee11ce4">2. 组织你的代码</a></li>
+<li><a href="#org0053fe5">3. 创建独一无二的 <code>package</code> 名字</a></li>
+<li><a href="#orgd8a32bd">4. <code>Java</code> 访问关键字</a>
 <ul>
-<li><a href="#org6cdc251">4.1. <code>public</code></a></li>
-<li><a href="#org308a8c8">4.2. 默认的包</a></li>
-<li><a href="#org35c2176">4.3. <code>private</code></a></li>
-<li><a href="#org941aa79">4.4. <code>protected</code></a></li>
+<li><a href="#orga829c26">4.1. <code>public</code></a></li>
+<li><a href="#org0027d86">4.2. 默认的包</a></li>
+<li><a href="#org7eba6b2">4.3. <code>private</code></a></li>
+<li><a href="#org9d0e960">4.4. <code>protected</code></a></li>
 </ul>
 </li>
-<li><a href="#org82f2672">5. 总结</a></li>
+<li><a href="#org6021cf9">5. 总结</a></li>
 </ul>
 </div>
 </div>
@@ -87,8 +87,8 @@ for the JavaScript code in this tag.
 本章介绍 <code>Java</code> 是如何控制访问权限，从而达到 <code>Java</code> 在升级换代过程中维持函数接口不变的。按照访问权限从高到低排序， <code>Java</code> 提供了 <code>package</code> , <code>public</code> , <code>protected</code> ， <code>private</code> 这四个级别的访问控制。其中包访问规定了一组类是如何在一个库中打包的， <code>public</code> <code>protected</code> <code>private</code> 这三个关键词规定了类成员的访问方式。
 </p>
 
-<div id="outline-container-org57b013e" class="outline-2">
-<h2 id="org57b013e"><span class="section-number-2">1</span> <code>package</code> ：库的最小单元</h2>
+<div id="outline-container-org21f06b0" class="outline-2">
+<h2 id="org21f06b0"><span class="section-number-2">1</span> <code>package</code> ：库的最小单元</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -140,8 +140,8 @@ import java.util.*
 </p>
 </div>
 </div>
-<div id="outline-container-org7929f93" class="outline-2">
-<h2 id="org7929f93"><span class="section-number-2">2</span> 组织你的代码</h2>
+<div id="outline-container-orgee11ce4" class="outline-2">
+<h2 id="orgee11ce4"><span class="section-number-2">2</span> 组织你的代码</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -215,8 +215,8 @@ public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">
 </div>
 </div>
 
-<div id="outline-container-org974f83a" class="outline-2">
-<h2 id="org974f83a"><span class="section-number-2">3</span> 创建独一无二的 <code>package</code> 名字</h2>
+<div id="outline-container-org0053fe5" class="outline-2">
+<h2 id="org0053fe5"><span class="section-number-2">3</span> 创建独一无二的 <code>package</code> 名字</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -260,8 +260,8 @@ java.util.Vector v = new java.util.Vector();
 </div>
 
 
-<div id="outline-container-org2ff0b97" class="outline-2">
-<h2 id="org2ff0b97"><span class="section-number-2">4</span> <code>Java</code> 访问关键字</h2>
+<div id="outline-container-orgd8a32bd" class="outline-2">
+<h2 id="orgd8a32bd"><span class="section-number-2">4</span> <code>Java</code> 访问关键字</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -271,8 +271,8 @@ java.util.Vector v = new java.util.Vector();
 <code>java</code> 提供了 <code>public</code> <code>protected</code> 和 <code>private</code> 三个关键字用于控制对类的访问。这三个关键词控制了类中每一个成员的可访问程度，如果一个类的成员没有提供这三个关键字约束，那么这个成员的访问遵循 <code>package access</code> 也就是说，凡是能访问到这个类所属 <code>package</code> 的都可以访问到这个成员。 不过我们这里不准备再着墨 <code>package access</code> ，因为此前已有不少描述。 <code>public</code> <code>protected</code> 和 <code>private</code> 更值得关注。
 </p>
 </div>
-<div id="outline-container-org6cdc251" class="outline-3">
-<h3 id="org6cdc251"><span class="section-number-3">4.1</span> <code>public</code></h3>
+<div id="outline-container-orga829c26" class="outline-3">
+<h3 id="orga829c26"><span class="section-number-3">4.1</span> <code>public</code></h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 
@@ -316,8 +316,8 @@ public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">
 </p>
 </div>
 </div>
-<div id="outline-container-org308a8c8" class="outline-3">
-<h3 id="org308a8c8"><span class="section-number-3">4.2</span> 默认的包</h3>
+<div id="outline-container-org0027d86" class="outline-3">
+<h3 id="org0027d86"><span class="section-number-3">4.2</span> 默认的包</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 
@@ -357,8 +357,8 @@ public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">
 </p>
 </div>
 </div>
-<div id="outline-container-org35c2176" class="outline-3">
-<h3 id="org35c2176"><span class="section-number-3">4.3</span> <code>private</code></h3>
+<div id="outline-container-org7eba6b2" class="outline-3">
+<h3 id="org7eba6b2"><span class="section-number-3">4.3</span> <code>private</code></h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 
@@ -399,8 +399,8 @@ public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">
 </p>
 </div>
 </div>
-<div id="outline-container-org941aa79" class="outline-3">
-<h3 id="org941aa79"><span class="section-number-3">4.4</span> <code>protected</code></h3>
+<div id="outline-container-org9d0e960" class="outline-3">
+<h3 id="org9d0e960"><span class="section-number-3">4.4</span> <code>protected</code></h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
 
@@ -419,8 +419,8 @@ class Foo extends Bar{}
 </div>
 </div>
 </div>
-<div id="outline-container-org82f2672" class="outline-2">
-<h2 id="org82f2672"><span class="section-number-2">5</span> 总结</h2>
+<div id="outline-container-org6021cf9" class="outline-2">
+<h2 id="org6021cf9"><span class="section-number-2">5</span> 总结</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
