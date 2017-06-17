@@ -56,6 +56,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -64,17 +86,59 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf0d972e">1. 6.B.1</a></li>
+<li><a href="#org7244aec">1. 6.B.1</a></li>
+<li><a href="#org0412aaa">2. 6.B.2</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf0d972e" class="outline-2">
-<h2 id="orgf0d972e"><span class="section-number-2">1</span> 6.B.1</h2>
+<div id="outline-container-org7244aec" class="outline-2">
+<h2 id="org7244aec"><span class="section-number-2">1</span> 6.B.1</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
 </p>
+
+<div class="tikzproblem">
+<ol class="org-ol">
+<li>设\(\theta\in \mathbf{R}\),证明\((\cos\theta,\sin\theta),(-\sin\theta,\cos\theta)\)和\((\cos\theta,\sin\theta),(\sin\theta,-\cos\theta)\)都是\(\mathbf{R}^{2}\)的规范正交基。</li>
+<li>证明\(\mathbf{R}^{2}\)的规范正交基一定是第一步中的二者之一。</li>
+</ol>
+
+</div>
+
+<div class="tikzanswer">
+<p>
+对于第一步，我们只需要证明这两个向量组是规范正交向量组，然后因为其维度是2，而\(\mathbf{R}^{2}\)的维度也是\(2\)。很容易证明这两个向量组都是\(\mathbf{R}^{2}\)的规范正交基。
+</p>
+
+<p>
+对于第二步我们假设\((u,v)\)是\(\mathbf{R}^{2}\)规范正交基的一个向量，则必有\(u^{2} + v^{2} = 1\)，所以令\(u=\cos\theta\),\(v=\sin\theta\)。则与\((\cos\theta,\sin\theta)\)正交的向量有两种写法分别是\((\sin\theta,-\cos\theta)\)和\((-\sin\theta,\cos\theta)\).
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org0412aaa" class="outline-2">
+<h2 id="org0412aaa"><span class="section-number-2">2</span> 6.B.2</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<div class="tikzproblem">
+<p>
+设\(e_{1},\ldots ,e_{m}\)是\(V\)的规范正交组。设\(v\in V\)，证明：
+</p>
+\begin{equation}
+\label{eq:2}
+\| v \|^{2} = | \langle v,e_{1} \rangle  |^{2} + \ldots + | \langle v,e_{m} \rangle  |^{2}
+\end{equation}
+<p>
+当且仅当\(v\in \mathrm{span}(e_{1},\ldots ,e_{m}) \)
+</p>
+
+</div>
 </div>
 </div>
 </div>

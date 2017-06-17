@@ -1,0 +1,23 @@
+#+TITLE:   数学
+#+AUTHOR:    emacsun
+#+EMAIL:     emacsun@163.com
+#+DATE:      
+#+DESCRIPTION:  
+#+KEYWORDS:  
+#+CATEGORIES: 
+#+SETUPFILE: ~/.emacs.d/org-templates/level1.org   
+#+LaTeX_CLASS: cn-article  
+
+一个伪数学迷的数学笔记；
+
+一个工科生的数学视角；
+
+一个工程师的数学应用；
+
+被数学折磨之后的大彻大悟，这是我为自己写的数学教科书。
+
+#+BEGIN_MAIN
+     + [[file:./concreteMath/hanoi__toower.org][递归问题： 汉诺塔]]
+     + [[file:./concreteMath/pizza.org][递归问题：瑞士披萨]]
+     + [[file:./concreteMath/josephus.org][递归问题：约瑟夫问题]]
+#+END_MAIN
