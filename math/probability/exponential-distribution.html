@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>指数分布</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<meta name="keywords" content="probability" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf" href="exponential-distribution.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">指数分布</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgde92eb9">1. 定义</a></li>
+<li><a href="#orgb71c04b">2. 期望和方差</a></li>
+<li><a href="#org8cff76b">3. 永远年轻的分布</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgde92eb9" class="outline-2">
+<h2 id="orgde92eb9"><span class="section-number-2">1</span> 定义</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+如果一个连续性随机变量的密度函数如下：\(\forall \lambda > 0\)，有：
+</p>
+\begin{equation}
+\label{eq:1}
+f(x) =
+\begin{cases}
+\lambda e^{-\lambda x} & x \geq 0 \\
+0 & x < 0
+\end{cases}
+\end{equation}
+<p>
+则称该随机变量是参数为\(\lambda\)的指数分布。指数随机变量的分布函数\(F(a)\)如下：
+</p>
+\begin{equation}
+\label{eq:2}
+F(a) = P\{x \leq a\} = \int_{0}^{a}\lambda e^{-\lambda x}dx = 1 - e^{-\lambda a}, a\geq 0
+\end{equation}
+</div>
+</div>
+<div id="outline-container-orgb71c04b" class="outline-2">
+<h2 id="orgb71c04b"><span class="section-number-2">2</span> 期望和方差</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+令\(X\)是一参数为\(\lambda\)的指数随机变量，则\(\mathbb{E}[X]\)和\(\mathrm{Var}[X]\)的计算如下：
+</p>
+\begin{equation}
+\label{eq:3}
+\mathbb{E}[X^{n}] = \int_{0}^{\infty}x^{n}\lambda e^{-\lambda x}dx
+\end{equation}
+
+<p>
+利用分部积分我们可以得到：
+</p>
+\begin{equation}
+\label{eq:4}
+\mathbb{E}[X^{n}] = \frac{n}{\lambda}\mathbb{E}[X^{n-1}]
+\end{equation}
+<p>
+令\(n=1\)则有：
+</p>
+\begin{equation}
+\label{eq:5}
+\mathbb{E}[X] = \frac{1}{\lambda}
+\end{equation}
+<p>
+令\(n=2\)则有：
+</p>
+\begin{equation}
+\label{eq:6}
+\mathbb{E}[X^{2}] = \frac{2}{\lambda^{2}}
+\end{equation}
+<p>
+因此：\(\mathrm{Var}[X] = \frac{1}{\lambda^{2}} \)
+即指数分布的期望恰好等于参数\(\lambda\)的倒数，而方差等于期望的平方。
+</p>
+
+<p>
+在实际生活中，指数分布通常用来描述某个时间发生的等待时间的分布，例如地震发生的时间间隔；一场战争发生的时间间隔；从现在开始到你接到下一个误拨的电话的时间间隔。
+</p>
+</div>
+</div>
+<div id="outline-container-org8cff76b" class="outline-2">
+<h2 id="org8cff76b"><span class="section-number-2">3</span> 永远年轻的分布</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+我们称一个非负随机变量\(X\)是无记忆的，如果：
+</p>
+\begin{equation}
+\label{eq:7}
+P\{ X > s + t | X > t\} = P\{ X > s \}
+\end{equation}
+<p>
+设\(X\)是某个设备的寿命，上式说明在已知该设备已经使用\(t\)小时的条件下寿命至少为\(s+t\)的概率与开始时寿命至少为\(s\)小时的概率是一样的。换句话说，如果该设备在使用\(t\)小时后还能使用，那么剩余的寿命同一开始时的寿命的分布是一样的。就好像该设备对已经使用了\(t\)小时是无记忆似的。
+</p>
+
+<p>
+式 (\ref{eq:7})等效于：
+</p>
+\begin{equation}
+\label{eq:8}
+\frac{P\{X > s+t, X > t\}}{P\{X > t\}} = P\{ X > s \}
+\end{equation}
+<p>
+可以验证指数分布就是这样的无记忆分布。指数分布也叫作永远年轻的分布。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
