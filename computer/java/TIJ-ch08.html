@@ -60,6 +60,202 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <h1 class="title">Thinking in Java chapter8 类重用</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org262c0d4">1. 简介</a></li>
+<li><a href="#org1f0d88f">2. <code>composition</code></a></li>
+<li><a href="#org6cf3240">3. <code>inheritance</code></a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org262c0d4" class="outline-2">
+<h2 id="org262c0d4"><span class="section-number-2">1</span> 简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+Java的一个重要的特性就是可以方便的实现类重用。重用代码的概念在编程语言里早有体现：把常用的相对独立的功能以函数的形式保存，以备以后调用而不是重新编写。在Java语言中，重用代码的概念通过类重用得到了进一步的延伸。
+</p>
+
+<p>
+今天我们学习两种代码重用的技巧： <code>composition</code> 和 <code>inheritance</code> 。我们简单的把 <code>composition</code> 翻译成为 组合，把 <code>inheritance</code> 翻译为继承。大多时候我都倾向于保持使用 <code>composition</code> 和 <code>inheritance</code> ，这样一来虽然避免技术词汇翻译带来的不同意，但是却带来了语言的不中不洋。考虑到我们以技术讨论为主，我觉得保持技术文献的不中不洋没有什么不妥。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1f0d88f" class="outline-2">
+<h2 id="org1f0d88f"><span class="section-number-2">2</span> <code>composition</code></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+我们之前就接触过 <code>composition</code> 这种代码重用方式。简而言之， <code>composition</code> 就是在一个类中生成另一个类的对象。
+</p>
+
+<p>
+我们用一个例子来说明这个问题：
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">: reusing/SprinklerSystem.java</span>
+<span class="linenr"> 2: </span><span style="color: #586e75;">// </span><span style="color: #586e75;">Composition for code reuse.</span>
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">WaterSource</span> <span style="color: #2aa198;">{</span>
+<span class="linenr"> 5: </span>  private <span style="color: #b58900;">String</span> <span style="color: #268bd2;">s</span>;
+<span class="linenr"> 6: </span>  <span style="color: #268bd2;">WaterSource</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span>
+<span class="linenr"> 7: </span>    System.out.println<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"WaterSource()"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr"> 8: </span>    s = <span style="color: #2aa198;">"Constructed"</span>;
+<span class="linenr"> 9: </span>  <span style="color: #b58900;">}</span>
+<span class="linenr">10: </span>  public <span style="color: #b58900;">String</span> <span style="color: #268bd2;">toString</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span> <span style="color: #859900; font-weight: bold;">return</span> s; <span style="color: #b58900;">}</span>
+<span class="linenr">11: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">12: </span>
+<span class="linenr">13: </span>public <span style="color: #b58900;">class</span> <span style="color: #268bd2;">SprinklerSystem</span> <span style="color: #2aa198;">{</span>
+<span class="linenr">14: </span>  private <span style="color: #b58900;">String</span> <span style="color: #268bd2;">valve1</span>, <span style="color: #268bd2;">valve2</span>, <span style="color: #268bd2;">valve3</span>, <span style="color: #268bd2;">valve4</span>;
+<span class="linenr">15: </span>  private <span style="color: #b58900;">WaterSource</span> <span style="color: #268bd2;">source</span> = new WaterSource<span style="color: #b58900;">()</span>;
+<span class="linenr">16: </span>  private <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>;
+<span class="linenr">17: </span>  private <span style="color: #b58900;">float</span> <span style="color: #268bd2;">f</span>;
+<span class="linenr">18: </span>  public <span style="color: #b58900;">String</span> <span style="color: #268bd2;">toString</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span>
+<span class="linenr">19: </span>    <span style="color: #859900; font-weight: bold;">return</span>
+<span class="linenr">20: </span>      <span style="color: #2aa198;">"valve1 = "</span> + valve1 + <span style="color: #2aa198;">" "</span> +
+<span class="linenr">21: </span>      <span style="color: #2aa198;">"valve2 = "</span> + valve2 + <span style="color: #2aa198;">" "</span> +
+<span class="linenr">22: </span>      <span style="color: #2aa198;">"valve3 = "</span> + valve3 + <span style="color: #2aa198;">" "</span> +
+<span class="linenr">23: </span>      <span style="color: #2aa198;">"valve4 = "</span> + valve4 + <span style="color: #2aa198;">"\n"</span> +
+<span class="linenr">24: </span>      <span style="color: #2aa198;">"i = "</span> + i + <span style="color: #2aa198;">" "</span> + <span style="color: #2aa198;">"f = "</span> + f + <span style="color: #2aa198;">" "</span> +
+<span class="linenr">25: </span>      <span style="color: #2aa198;">"source = "</span> + source;
+<span class="linenr">26: </span>  <span style="color: #b58900;">}</span>
+<span class="linenr">27: </span>  public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+<span class="linenr">28: </span>    <span style="color: #b58900;">SprinklerSystem</span> <span style="color: #268bd2;">sprinklers</span> = new SprinklerSystem<span style="color: #268bd2;">()</span>;
+<span class="linenr">29: </span>    System.out.println<span style="color: #268bd2;">(</span>sprinklers<span style="color: #268bd2;">)</span>;
+<span class="linenr">30: </span>  <span style="color: #b58900;">}</span>
+<span class="linenr">31: </span><span style="color: #2aa198;">}</span> <span style="color: #586e75;">/* </span><span style="color: #586e75;">Output:</span>
+</pre>
+</div>
+<p>
+在上面的例子中类 <code>SprinklerSystem</code> 具有几个私有变量，除了 <code>privimitive</code> 类型外还有一个 <code>WaterSource</code> 类型的类索引。这个类索引指向另一个类 <code>WaterSource</code> 。这就是 <code>composition</code> 。
+</p>
+
+<p>
+在上面的例子中，我们还可以挖掘更多的东西。首先 <code>SprinklerSystem</code> 和 <code>WaterSource</code> 都定义了一个方法 <code>toString</code> 。当编译器需要一个 <code>String</code> 输入，但是给定的输入确实一个 object时，这个方法就会被调用。比如，在上面的例子中， <code>SprinklerSystem</code> 类中有一语句：
+</p>
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #2aa198;">"source = "</span> + source;
+</pre>
+</div>
+<p>
+编译器发现，你想把一个 <code>WaterSource</code> 对象与一个 <code>String</code> 相加。但是，我们知道只有 <code>String</code> 类型的才能相加。这个时候编译器就会得到一个消息：“调用 <code>toString</code> 把 <code>source</code> 变成 <code>String</code> ”。然后把 <code>toString</code> 的输出和  <code>"source = "</code> 相加。
+</p>
+
+<p>
+任何时候，如果你想要实现这种字符串和对象的相加，都需要在类定义中定义方法 <code>toString</code> 。
+</p>
+
+<p>
+上面一段代码的输出是：
+</p>
+<pre class="example">
+WaterSource()
+valve1 = null valve2 = null valve3 = null valve4 = null
+i = 0 f = 0.0 source = Constructed
+</pre>
+<p>
+我们看到字符串初始化为 <code>null</code> ，浮点数和整数初始化为 0.
+</p>
+</div>
+</div>
+<div id="outline-container-org6cf3240" class="outline-2">
+<h2 id="org6cf3240"><span class="section-number-2">3</span> <code>inheritance</code></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+<code>inheritance</code> 是面向对象语言重要组成部分。 实际上在Java中，你无时无刻不在使用继承。即使不是显示的实用，你也在隐式的实用。Java的所有对象都之间或者间接的继承于一个类 <code>Object</code> 。 在Java中使用 <code>extends</code> 来扩展原来的类（我们称之为基类）。
+</p>
+
+<p>
+接下来我们通过一个例子来了解 <code>inheritance</code> 的语法。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">: reusing/Detergent.java</span>
+<span class="linenr"> 2: </span><span style="color: #586e75;">// </span><span style="color: #586e75;">Inheritance syntax &amp; properties.</span>
+<span class="linenr"> 3: </span><span style="color: #b58900;">package</span> <span style="color: #268bd2;">reusing</span>;
+<span class="linenr"> 4: </span><span style="color: #b58900;">import</span> <span style="color: #859900; font-weight: bold;">static</span> net.mindview.util.Print.*;
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">Cleanser</span> <span style="color: #2aa198;">{</span>
+<span class="linenr"> 7: </span>    private <span style="color: #b58900;">String</span> <span style="color: #268bd2;">s</span> = <span style="color: #2aa198;">"Cleanser comes first"</span>;
+<span class="linenr"> 8: </span>    private <span style="color: #b58900;">String</span> <span style="color: #268bd2;">t</span> = <span style="color: #2aa198;">" Cleanser comes second"</span>;
+<span class="linenr"> 9: </span>    private <span style="color: #b58900;">String</span> <span style="color: #268bd2;">u</span> = <span style="color: #2aa198;">" Cleanser comes third"</span>;
+<span class="linenr">10: </span>    public <span style="color: #b58900;">void</span> <span style="color: #268bd2;">append</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">a</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span> s += t;s+=a; <span style="color: #b58900;">}</span>
+<span class="linenr">11: </span>    public <span style="color: #b58900;">void</span> <span style="color: #268bd2;">dilute</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span> append<span style="color: #268bd2;">(</span><span style="color: #2aa198;">" dilute()"</span><span style="color: #268bd2;">)</span>; <span style="color: #b58900;">}</span>
+<span class="linenr">12: </span>    public <span style="color: #b58900;">void</span> <span style="color: #268bd2;">apply</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span> append<span style="color: #268bd2;">(</span><span style="color: #2aa198;">" apply()"</span><span style="color: #268bd2;">)</span>; <span style="color: #b58900;">}</span>
+<span class="linenr">13: </span>    public <span style="color: #b58900;">void</span> <span style="color: #268bd2;">scrub</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span> append<span style="color: #268bd2;">(</span><span style="color: #2aa198;">" scrub()"</span><span style="color: #268bd2;">)</span>; <span style="color: #b58900;">}</span>
+<span class="linenr">14: </span>    public <span style="color: #b58900;">String</span> <span style="color: #268bd2;">toString</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span> <span style="color: #859900; font-weight: bold;">return</span> s; <span style="color: #b58900;">}</span>
+<span class="linenr">15: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+<span class="linenr">16: </span>        <span style="color: #b58900;">Cleanser</span> <span style="color: #268bd2;">x</span> = new Cleanser<span style="color: #268bd2;">()</span>;
+<span class="linenr">17: </span>        x.dilute<span style="color: #268bd2;">()</span>; x.apply<span style="color: #268bd2;">()</span>; x.scrub<span style="color: #268bd2;">()</span>;
+<span class="linenr">18: </span>        print<span style="color: #268bd2;">(</span>x<span style="color: #268bd2;">)</span>;
+<span class="linenr">19: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">20: </span><span style="color: #2aa198;">}</span>
+<span class="linenr">21: </span>
+<span class="linenr">22: </span>public <span style="color: #b58900;">class</span> Detergent <span style="color: #b58900;">extends</span> <span style="color: #268bd2;">Cleanser</span> <span style="color: #2aa198;">{</span>
+<span class="linenr">23: </span>    <span style="color: #586e75;">// </span><span style="color: #586e75;">Change a method:</span>
+<span class="linenr">24: </span>    public <span style="color: #b58900;">void</span> <span style="color: #268bd2;">scrub</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span>
+<span class="linenr">25: </span>        append<span style="color: #268bd2;">(</span><span style="color: #2aa198;">" Detergent.scrub()"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">26: </span>        super.scrub<span style="color: #268bd2;">()</span>; <span style="color: #586e75;">// </span><span style="color: #586e75;">Call base-class version</span>
+<span class="linenr">27: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">28: </span>    <span style="color: #586e75;">// </span><span style="color: #586e75;">Add methods to the interface:</span>
+<span class="linenr">29: </span>    public <span style="color: #b58900;">void</span> <span style="color: #268bd2;">foam</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span> append<span style="color: #268bd2;">(</span><span style="color: #2aa198;">" foam()"</span><span style="color: #268bd2;">)</span>; <span style="color: #b58900;">}</span>
+<span class="linenr">30: </span>    <span style="color: #586e75;">// </span><span style="color: #586e75;">Test the new class:</span>
+<span class="linenr">31: </span>    public <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
+<span class="linenr">32: </span>        <span style="color: #b58900;">Detergent</span> <span style="color: #268bd2;">x</span> = new Detergent<span style="color: #268bd2;">()</span>;
+<span class="linenr">33: </span>        x.dilute<span style="color: #268bd2;">()</span>;
+<span class="linenr">34: </span>        x.apply<span style="color: #268bd2;">()</span>;
+<span class="linenr">35: </span>        x.scrub<span style="color: #268bd2;">()</span>;
+<span class="linenr">36: </span>        x.foam<span style="color: #268bd2;">()</span>;
+<span class="linenr">37: </span>        print<span style="color: #268bd2;">(</span>x<span style="color: #268bd2;">)</span>;
+<span class="linenr">38: </span>        print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Testing base class:"</span><span style="color: #268bd2;">)</span>;
+<span class="linenr">39: </span>        Cleanser.main<span style="color: #268bd2;">(</span>args<span style="color: #268bd2;">)</span>;
+<span class="linenr">40: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">41: </span><span style="color: #2aa198;">}</span> <span style="color: #586e75;">/* </span><span style="color: #586e75;">Output:</span>
+<span class="linenr">42: </span><span style="color: #586e75;">     Cleanser dilute() apply() Detergent.scrub() scrub() foam()</span>
+<span class="linenr">43: </span><span style="color: #586e75;">     Testing base class:</span>
+<span class="linenr">44: </span><span style="color: #586e75;">     Cleanser dilute() apply() scrub()</span>
+<span class="linenr">45: </span><span style="color: #586e75;">  </span><span style="color: #586e75;">*///</span><span style="color: #586e75;">:~</span>
+</pre>
+</div>
+<p>
+在这个例子中 <code>Cleanser</code> 是基类， <code>Detergent</code> 是对基类的扩展。注意关键词 <code>extends</code> 。
+</p>
+
+<p>
+上面的例子中有几点需要我们特别注意。首先在 <code>Cleanser append()</code> 中 <code>String</code> 类型通过操作符 <code>+=</code> 来实现连接，这对操作符 <code>+=</code> 的重载。
+</p>
+
+<p>
+第二，在 <code>Cleanser</code> 和 <code>Detergent</code> 中都有 <code>main</code> 函数。这种在每个类中放一个 <code>main</code> 的做法有助于测试每一个类的功能。如果在一个java程序中有很多的类，意味着可能有多个 <code>main</code> 函数。只有命令行调用的那个类能够执行。在上面的代码中，只有 <code>Detergent.main()</code> 会被调用。
+</p>
+
+<p>
+第三，在 <code>Detergent.main()</code> 中显示的调用了 <code>Cleanser.main()</code> 。传给 <code>Cleanser.main()</code> 的参数，和传给 <code>Detergent.main()</code> 的参数是一样的。
+</p>
+
+<p>
+在 <code>Cleanser</code> 中的所有方法都是 <code>public</code> 的。如果对这些函数不指定 <code>public</code> 或者 <code>private</code> 这样的约束，这些函数的默认访问方式是 <code>package access</code> .也就是说这些函数只允许 <code>package</code> 的成员访问，也就是说在这个 <code>package</code> 中，任何一个类都可以访问这些成员函数。 <code>Detergent</code> 类在访问 <code>Cleanser</code> 类的方法过程中，即使 <code>Cleanser</code> 类中的方法没有指定 <code>public</code> 也不要紧，因为可以通过 <code>package access</code> 访问。但是假设如果其他 <code>package</code> 中的类（继承自 <code>Detergent</code> ）想要访问 <code>Detergent</code> 类中的方法，它只能访问 <code>Detergent</code> 中带有 <code>public</code> 标识的方法 。一个通用的规则是，把一个类中的数据私有化（打上 <code>private</code> 标签 ），把方法公有化(打上 <code>public</code> 标签)。
+</p>
+
+<p>
+在 <code>Detergent</code> 类中，重新定义了 <code>scrub</code> 函数（），注意到在基类 <code>Cleanser</code> 中也定义了 <code>scrub</code> 。那么在 <code>Detergent</code> 访问的 <code>scrub</code> 函数是在 <code>Detergent</code> 类中定义的。如果此时我想访问基类中的 <code>scrub</code> 函数怎么办？有个关键词 <code>super</code> .就像在 <code>Detergent</code> 的 <code>scrub</code> 函数中那样 <code>super.scrub()</code> . 显然，通过使用 <code>inheritance</code> ，在继承类中，我们不仅可以使用基类中的方法，也可以重新定义相同名字的方法，并通过 <code>super</code> 来访问基类中定义的方法。
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>
