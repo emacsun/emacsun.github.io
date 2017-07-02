@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>神经网络和后向传播算法</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./PRMLch5-neural-networks.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">神经网络和后向传播算法</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga0389ac">1. 简介</a></li>
+<li><a href="#org4e541db">2. 前向网络函数</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga0389ac" class="outline-2">
+<h2 id="orga0389ac"><span class="section-number-2">1</span> 简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+在分析过回归和分类问题过程中，我们的基本思路是通过对一些固定的基函数进行线性组合，然后针对某个损失函数进行最优化处理。这个分析方法帮助我们揭示了机器学习的基本原理，但是并不代表这些方法在实际应用过程中就有很大价值。它们的实用性因为<a href="PRMLch1dot4-curse-of-dimensionality.html">维度诅咒问题</a> 大打折扣。为了对大规模数据使用这些模型，我们需要针对数据调整基函数。基函数的优化在理论和工程领域都具有举足轻重的作用。
+</p>
+
+<p>
+支持向量机（Support vector machines,SVM）通过定义以数据为中心的基函数来解决这个问题，在训练过程中选择这些基函数的子集达到优化目的。SVM的一个优点是目标函数是凸的，因此可以按照凸优化的一套理论快速的获取最优解。相关向量机(Relevance Vector Machine, RVM)和SVM一样也是从一套固定的基函数中搜取一个子集。不同之处在于，RVM可以生成基于概率的输出。但是，这样做会导致训练过程中，RVM需要面对非凸目标函数的优化问题。
+</p>
+
+<p>
+不同于SVM或者RVM在优化过程中会改变基函数的个数，另一个办法是固定基函数的个数，在训练过程中优化这些基函数的系数，即：使这些基函数的系数自适应于训练数据。截止目前，模式识别问题中，最成功的固定基函数个数的模型是前向神经网络（feed-forward neural networks），也叫作多层感知机（multilayer perceptron）。在许多应用场景中多层神经网络都可以产生非常紧凑的模型，并且训练速度也很快。当然，这是需要付出代价的：在神经网络中，我们需要面对的很多问题不再是凸优化问题。这意味着：这些自适应基函数系数往往有很多局部最优解，我们要从这些局部最优解中找到那个全局最优解。
+</p>
+
+<p>
+本文首先考虑神经网络的数学模型及其对应的网络结构。然后，讨论非线性优化问题的最优解。对非线性问题的优化要求评估对数似然函数相对于网络系数的导数，这可不是一个小问题。对于较大规模的神经网络，网络系数构成的矩阵规模往往非常大（这样的矩阵往往是Jacobian矩阵或者Hessian矩阵）。所幸，我们有错误后向传递算法（error backpropagation）。这一算法可以高效的完成对导数矩阵的评估。最后我们考虑神经网络的多种正则化方法，并讨论这些方法之间的联系。
+</p>
+</div>
+</div>
+<div id="outline-container-org4e541db" class="outline-2">
+<h2 id="org4e541db"><span class="section-number-2">2</span> 前向网络函数</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+回归或者分类问题的数学模型可以表示为：
+</p>
+\begin{equation}
+\label{eq:1}
+y(\mathbf{x},\mathbf{w}) = f\bigg( \sum_{j=1}^{M} w_{j}\phi_{j}(\mathbf{x}) \bigg)
+\end{equation}
+<p>
+其中在分类问题中\(f(\cdot)\)是非线性激活函数，在回归问题中\(f(\cdot)\)是恒等函数。在神经网络中，我们的目标是在训练过程中调整基函数\(\phi_{j}(\mathbf{x})\)对应的参数使得模型达到最优。当然基函数的选择有好多种，基函数可以是输入的非线性函数。首先我们构建\(M\)个输入的线性组合：
+</p>
+\begin{equation}
+\label{eq:2}
+a_{j} = \sum_{i=1}^{D}w_{ji}^{1}x_{i} + w_{j0}^{1}
+\end{equation}
+<p>
+其中\(j = 1,\ldots ,M\)，上标\(1\)表示神经网络的第一层。其中\(w_{ji}^{1}\)是权重，\(w_{j0}^{1}\)是偏差。这些\(a_{j}\)叫做激活子，每一个激活子在下一层网络中通过一个可微的非线性激活函数\(h(\cdot)\)生成\(z_{j}\):
+</p>
+\begin{equation}
+\label{eq:3}
+z_{j} = h(a_{j})
+\end{equation}
+<p>
+这些量对应式 (\ref{eq:1})中的基函数输出。在神经网络中我们称\(z_{j}\)为隐单元。非线性函数\(h(\cdot)\)通常是具有\(S\)形状的函数比如logistic函数或者tanh函数。这些函数再一次的通过线性组合生成输出：
+</p>
+\begin{equation}
+\label{eq:4}
+a_{k} = \sum_{j=1}^{M}w_{kj}^{2}z_{j} + w_{k0}^{2}
+\end{equation}
+<p>
+其中\(k= 1,\ldots ,K\),并且\(K\)是输出的个数。式 (\ref{eq:4})对应第二层网络的变换。最后输出单元通过激活函数生成输出\(y_{k}\)。激活函数的选择依赖于数据的内在特征以及问题模型。对于回归问题，激活函数是恒等函数，即：
+</p>
+\begin{equation}
+\label{eq:5}
+y_{k} = a_{k}
+\end{equation}
+<p>
+对于二进制分类，输出激活函数是logistic函数：
+</p>
+\begin{eqnarray}
+\label{eq:6}
+y_{k}&=&\sigma(a_{k}) \\
+\sigma(a)  &=&\frac{1}{1+\exp(-a)}
+\end{eqnarray}
+<p>
+对于结果大于2的分类问题，使用softmax激活函数。综合式 (\ref{eq:2})和 (\ref{eq:4})我们得到整个网络函数的数学模型为：
+</p>
+\begin{equation}
+\label{eq:7}
+y_{k}(\mathbf{x},\mathbf{w}) = \sigma \bigg( \sum_{j=1}^{M}w_{kj}^{2} h\bigg(\sum_{i=1}^{D}w_{ji}^{1}x_{i} + w_{j0}^{1} \bigg) + w_{k0}^{2}\bigg)
+\end{equation}
+<p>
+从式 (\ref{eq:7})整体看来，这个网络就是从输入\(\mathbf{x}\)到输出\(\mathbf{y}\)的一个非线性函数，参数为\(\mathbf{w}\)。整个函数可以表示如图<a href="#org2ecadc6">1</a>所示。
+</p>
+
+
+<div id="org2ecadc6" class="figure">
+<p><img src="../../img/computer_prml/20170702neuralnetwork.png" alt="20170702neuralnetwork.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 1:</span> 式~(\ref{eq:7})所示的网络模型</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
