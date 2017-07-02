@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>冒泡排序</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./sort-insertion.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">冒泡排序</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org55533e0">1. 算法描述</a></li>
+<li><a href="#org0d8e774">2. 示例</a></li>
+<li><a href="#org2c2d761">3. 插入排序伪代码</a></li>
+<li><a href="#org2741b2e">4. 算法分析</a></li>
+<li><a href="#org739bf5f">5. 插入排序C代码实现</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org55533e0" class="outline-2">
+<h2 id="org55533e0"><span class="section-number-2">1</span> 算法描述</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+插入排序是一个简单的基于插入的排序算法。当输入的数据规模较小或者输入数据基本已经排好序时，这个算法比较有效。此算法也用来配合其他比较高级的算法完成排序。
+</p>
+
+<p>
+可以用这样一个场景来描述插入排序：假设待排序列的数字都印在卡片上，并且卡片叠在一起朝下扣在桌面上。此时你手中没有一张卡片。排序开始，你用右手从桌上揭起一张卡片放到左手中，此时左手中有一张卡片，当然这张卡片是排好序的。接着，你又揭起第二张卡片，此时你比较这张卡片和左手中的卡片。如果新揭起的卡片上数字大于第一次揭起的卡片上数字，就把第二张卡片放在第一张卡片右边，否则就放在左边。依次类推。这样，你左手的卡片始终是排好序的，右手那一张新揭起来的卡片是本次排序需要插入的，桌面上的剩余卡片是还没有来得及排序的。当桌面和右手都没有卡片时，左手的卡片就是全部排好序的卡片。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0d8e774" class="outline-2">
+<h2 id="org0d8e774"><span class="section-number-2">2</span> 示例</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+假设输入数据是(5,2,4,6,1,3)，图<a href="#orgd3e16d7">1</a>给出插入排序的排序过程。
+</p>
+
+<div id="orgd3e16d7" class="figure">
+<p><img src="../../img/computer_algorithms/20170702insertionSort.png" alt="20170702insertionSort.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 1:</span> (5,2,4,6,1,3)的插入排序过程</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2c2d761" class="outline-2">
+<h2 id="org2c2d761"><span class="section-number-2">3</span> 插入排序伪代码</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+插入排序的伪代码如图<a href="#orgb541235">2</a>所示：
+</p>
+
+
+<div id="orgb541235" class="figure">
+<p><img src="../../img/computer_algorithms/20170702insertionSortPseudoCode.png" alt="20170702insertionSortPseudoCode.png" width="500" align="center" />
+</p>
+<p><span class="figure-number">图 2:</span> 插入排序伪代码</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org2741b2e" class="outline-2">
+<h2 id="org2741b2e"><span class="section-number-2">4</span> 算法分析</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+图<a href="#orgd3e16d7">1</a> 给出(5,2,4,6,1,3)的插入排序过程。在伪代码中，索引\(j\)表示当前在右手中的扑克牌，它将要被插入到左手已经排好序的序列中去。在每一次的外部 <code>for</code> 循环中，有序子序列为\(A[1,\ldots,j-1]\)，未排序的序列为\(A[j+1,\ldots,n]\)，待排序的元素为\(A[j]\)。我们用循环不变式来陈述\(A[1,\ldots,j-1]\)的一些特性。
+</p>
+
+<p>
+在每一次外部 <code>for</code> 循环中，子序列 \(A[1,\ldots,j-1]\) 对应初始已排序列。
+</p>
+
+<ol class="org-ol">
+<li>Initialization 我们证明，在第一次循环中，即\(j=2\)时，循环不变式成立。这是显然的，当\(j=2\)时，子序列\(A[1,\ldots,j-1]=A[1]\)，只有一个元素，当然是成立的。</li>
+<li>Maintenance 我们证明：在接下来的每一次循环中，循环不变式成立。这是很显然的，每一次我们都移动\(A[j-1],A[j-2],\ldots\)为\(A[j]\)找到合适的位置。这样，下一次 <code>for</code> 循环开始时，子序列 \(A[1,\ldots,j-1]\) 是已经排好的子序列。</li>
+<li>Termination 最后我们检验当循环结束时排序结果。对于插入排序来说。当\(j > n\)时，排序结束。当\(j=n+1\)时子序列\(A[1,\ldots,n]\)对应已经排好序的子序列，显然这个序列就是我们需要的结果。</li>
+</ol>
+
+<p>
+以上，我们分析了插入排序的正确性，接下来我们分析插入排序的复杂度。此处我们只分析插入算法的时间复杂度。事实上，一个算法的时间复杂度取决于多种因素，比如输入的数组大小和输入数组的已排序程度。通常来讲一个算法需要的时间随着输入规模的增大而增大。在插入排序中，我们假定伪代码每一行运行需要的时间是固定的，第\(i\)行运行需要时间\(c_i\)。对于每一个\(j=2,3,\ldots,n\)，定义\(t_j\)为需要判断 <code>while</code> 循环条件的次数。当 <code>for</code> 循环和 <code>while</code> 循环结束时，判断条件要比循环体多执行一次。最后，我们标记伪代码中每一行需要的时间。
+</p>
+
+
+<div id="orgf722c59" class="figure">
+<p><img src="../../img/computer_algorithms/20170702insertionSortComplexity.png" alt="20170702insertionSortComplexity.png" width="600" align="center" />
+</p>
+<p><span class="figure-number">图 3:</span> 插入排序的时间复杂度</p>
+</div>
+
+
+<p>
+总的运行时间可以表示为:
+</p>
+\begin{equation}
+\label{eq:1}
+  T(n) = c_1n + c_2(n-1) + c_4(n-1) + c_5\sum_{j=2}^nt_j + c_6\sum_{j=2}^n(t_j-1) + c_7 \sum_{j=2}^n(t_j-1) + c_8(n-1)
+\end{equation}
+
+<p>
+需要注意的是，即使相同规模的输入，也会产生不同的运行时间。对于插入排序，当输入已经排好序时，运行时间最少，此时\(t_j=1,j=2,3,\ldots,n\)。
+</p>
+\begin{equation}
+\label{eq:2}
+  T(n) = (c_1 + c_2 + c_4 + c_5 + c_8)n - (c_2 + c_4 + c_5 + c_8) = An+B
+\end{equation}
+
+<p>
+如果输入序列是按逆序排好的序列，则运行时间最长。此时\(t_j=j,j=2,3,\ldots,n\)
+</p>
+\begin{equation}
+\label{eq:3}
+  T(n) = (\frac{c_5}{2} + \frac{c_6}{2} +\frac{c_7}{2} )n^2 + (c_1 + c_2 + c_4+\frac{c_5}{2}- \frac{c_6}{2}-\frac{c_7}{2}+c_8)n -(c_2 + c_4 + c_5 + c_8)
+\end{equation}
+
+<p>
+最差情况可以表述为\(T(n)=An^2+Bn+C\)。
+</p>
+
+<p>
+在插入排序的时间复杂度中，我们给出了最好情况和最差情况的复杂度。在以后的分析过程中，我们只分析最差运行时间，也就是对于输入规模为\(n\)的输入的最长运行时间。这样做有三点理由：
+</p>
+
+<ol class="org-ol">
+<li>最差运行时间给出了算法运行时间的上界。也即给出了算法运行永远不会超过的时间。</li>
+<li>对于一些算法，最差情况经常发生。</li>
+<li>平均时间复杂度通常趋近于最差情况，至少在数量级上是相同的。</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org739bf5f" class="outline-2">
+<h2 id="org739bf5f"><span class="section-number-2">5</span> 插入排序C代码实现</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+编辑环境:Emacs;编译:GCC;调试:GDB;操作系统:Windows XP SP3;CPU:Intel core i5-2400; memory:3.16GB
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #b58900;">int</span> *  <span style="color: #268bd2;">insertion_sort</span> <span style="color: #2aa198;">(</span><span style="color: #b58900;">int</span>   <span style="color: #268bd2;">a</span><span style="color: #b58900;">[]</span> <span style="color: #2aa198;">)</span>
+<span class="linenr"> 2: </span>  <span style="color: #2aa198;">{</span>
+<span class="linenr"> 3: </span>      <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>=<span style="color: #6c71c4;">0</span>,<span style="color: #268bd2;">j</span>=<span style="color: #6c71c4;">0</span>,<span style="color: #268bd2;">key</span>=<span style="color: #6c71c4;">0</span>;
+<span class="linenr"> 4: </span>      <span style="color: #859900; font-weight: bold;">for</span><span style="color: #b58900;">(</span>j=<span style="color: #6c71c4;">1</span>;j&lt;<span style="color: #6c71c4;">10</span>;j++<span style="color: #b58900;">)</span>
+<span class="linenr"> 5: </span>      <span style="color: #b58900;">{</span>
+<span class="linenr"> 6: </span>          key = a<span style="color: #268bd2;">[</span> j <span style="color: #268bd2;">]</span>;
+<span class="linenr"> 7: </span>          i = j-<span style="color: #6c71c4;">1</span>;
+<span class="linenr"> 8: </span>          <span style="color: #859900; font-weight: bold;">while</span> <span style="color: #268bd2;">(</span>i&gt;-<span style="color: #6c71c4;">1</span> &amp;&amp; a<span style="color: #6c71c4;">[</span> i <span style="color: #6c71c4;">]</span> &gt; key <span style="color: #268bd2;">)</span>
+<span class="linenr"> 9: </span>          <span style="color: #268bd2;">{</span>
+<span class="linenr">10: </span>              a<span style="color: #6c71c4;">[</span> i + <span style="color: #6c71c4;">1</span> <span style="color: #6c71c4;">]</span> = a <span style="color: #6c71c4;">[</span> i <span style="color: #6c71c4;">]</span>;
+<span class="linenr">11: </span>              i--;
+<span class="linenr">12: </span>          <span style="color: #268bd2;">}</span>
+<span class="linenr">13: </span>          a<span style="color: #268bd2;">[</span> i+<span style="color: #6c71c4;">1</span> <span style="color: #268bd2;">]</span> = key;
+<span class="linenr">14: </span>      <span style="color: #b58900;">}</span>
+<span class="linenr">15: </span>      <span style="color: #859900; font-weight: bold;">return</span> a;
+<span class="linenr">16: </span>  <span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
