@@ -88,6 +88,19 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orga0389ac">1. 简介</a></li>
 <li><a href="#org4e541db">2. 前向网络函数</a></li>
+<li><a href="#org50b4151">3. 训练网络</a>
+<ul>
+<li><a href="#orgf010010">3.1. 回归问题</a></li>
+<li><a href="#orgb9bf2ec">3.2. 二类分类问题</a></li>
+<li><a href="#org5e3f2c2">3.3. 多个二类分类问题</a></li>
+<li><a href="#orgfcf6f14">3.4. 多类分类问题</a></li>
+<li><a href="#orga4c295f">3.5. 激活函数选择</a></li>
+<li><a href="#org303a9e6">3.6. 寻找\(\mathbf{w}\)</a></li>
+<li><a href="#org9abe40c">3.7. 计算复杂度</a></li>
+<li><a href="#org0409d9e">3.8. 梯度下降法</a></li>
+</ul>
+</li>
+<li><a href="#org415285e">4. 错误后向传递算法</a></li>
 </ul>
 </div>
 </div>
@@ -183,6 +196,331 @@ y_{k}(\mathbf{x},\mathbf{w}) = \sigma \bigg( \sum_{j=1}^{M}w_{kj}^{2} h\bigg(\su
 </p>
 <p><span class="figure-number">图 1:</span> 式~(\ref{eq:7})所示的网络模型</p>
 </div>
+
+<p>
+图<a href="#org2ecadc6">1</a> 和式 (\ref{eq:7})表达的是一个同一概念：前向神经网络。在这个网络中信息从做到右传播。式 (\ref{eq:7})还可以写成更简洁的形式：
+</p>
+\begin{equation}
+\label{eq:8}
+y_{k}(\mathbf{x},\mathbf{w}) = \sigma \bigg( \sum_{j=0}^{M}w_{kj}^{2} h\bigg(\sum_{i=0}^{D}w_{ji}^{1}x_{i}  \bigg) \bigg)
+\end{equation}
+
+<p>
+接下来我们考虑一下式~(\ref{eq:8})中的系数个数，首先我们需要明白对于~(\ref{eq:8})所示的网络模型，找到一个最优解\(\mathbf{w}\)意味着找到了一堆最优解。考虑对 (\ref{eq:8})所示的网络模型有\(M\)个隐藏单元，这些隐藏单元采用\(tanh\)函数作为激活函数，这些隐藏单元和输入输出采用全连接。如果我们改变某一个隐藏单元对应的所有权重的符号（取反），则对于特定输入，激活单元的输出也取反。因为\(\tanh(-a) = -\tanh(a)\)，所以通过改变所有权重的符号和激活函数的符号，输入输出对应的网络模型没有发生变化。这样我们就找到了两个不一样的权重系数但是对应的映射关系是一样的。对于\(M\)个隐藏单元，有\(M\)个可以翻转符号的机会。因此任意给定的权重矢量都是\(2^{M}\)个等效的权重矢量中的一个。另一方面考虑\(M\)隐藏单元的排列，我们会有\(M!\)倍个解。因此对于每一个可能的解，我们都有\(M!2^{M}\)个等效的解。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org50b4151" class="outline-2">
+<h2 id="org50b4151"><span class="section-number-2">3</span> 训练网络</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+所谓的训练网络过程就是通过各种方法求得图 <a href="#org2ecadc6">1</a> 所示的网络中最优权重系数的过程。所谓的最优是针对各种误差函数而言的，一种常用的函数是平方和误差函数，给定一个大小为\(N\)的输入序列\(\mathbf{x}_{n},n=1,\ldots ,N\)，还有其对应的目标矢量\(\mathbf{t}_{n}\),那么误差函数可以表示为：
+</p>
+\begin{equation}
+\label{eq:9}
+E(\mathbf{w}) = \frac{1}{2}\sum_{n=1}^{N} \| \mathbf{y} ( \mathbf{x}_{n},\mathbf{w}) - \mathbf{t}_{n} \|^{2}
+\end{equation}
+</div>
+<div id="outline-container-orgf010010" class="outline-3">
+<h3 id="orgf010010"><span class="section-number-3">3.1</span> 回归问题</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+也可以从概率的角度证明通过最大化似然函数等效于式 (\ref{eq:9})所示的误差函数，为了保证行文的流畅，我不准备岔开细讲。接下来我们针对式 (\ref{eq:9})做优化。首先考虑回归问题，像之前那样我们可以把输出的激活函数定为恒等函数：
+</p>
+\begin{equation}
+\label{eq:10}
+y_{k} = a_{k}
+\end{equation}
+<p>
+这个时候式 (\ref{eq:9})对\(a_{k}\)求偏导就有：
+</p>
+\begin{equation}
+\label{eq:11}
+\frac{\partial E}{\partial a_{k}} = y_{k} - t_{k}
+\end{equation}
+<p>
+这个特性非常重要，将在错误后向传输算法中发挥重要作用。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb9bf2ec" class="outline-3">
+<h3 id="orgb9bf2ec"><span class="section-number-3">3.2</span> 二类分类问题</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+对于二类分类问题，我们有一个目标变量\(t\)，\(t=1\)对应第一类，\(t=0\)对应第二类。同样，像之前那样我们可以把输出的激活函数定为logistic函数：
+</p>
+\begin{equation}
+\label{eq:12}
+y =\sigma(a) = \frac{1}{1 + \exp(-a)}
+\end{equation}
+
+<p>
+因此\( 0 \leq y(\mathbf{x},\mathbf{w}) \leq 1\)，我们可以把\(y(\mathbf{x},\mathbf{w})\)解释为\(p(t=1| \mathbf{x})\)的条件概率，则\(p(t=0)| \mathbf{x} \)的条件概率是\(1-y(\mathbf{x},\mathbf{w})\)。那么目标变量的条件分布是一个伯努利分布：
+</p>
+\begin{equation}
+\label{eq:13}
+p(t|\mathbf{x},\mathbf{w}) = y(\mathbf{x},\mathbf{w})^{t} (1-y(\mathbf{x},\mathbf{w}))^{1-t}
+\end{equation}
+
+<p>
+假设训练集合是一些列相互独立的观察，误差函数（负对数似然函数）就是一个熵函数：
+</p>
+\begin{equation}
+\label{eq:14}
+E(\mathbf{w}) = -\sum_{n=1}^{N} \bigg( t_{n}\ln y_{n} + (1-t_{n}) \ln(1-y_{n}) \bigg)
+\end{equation}
+<p>
+其中\(y_{n} = y(\mathbf{x}_{n},\mathbf{w})\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5e3f2c2" class="outline-3">
+<h3 id="org5e3f2c2"><span class="section-number-3">3.3</span> 多个二类分类问题</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+假设我们有\(K\)个二类分类问题，我们可以使用一个有\(K\)个输出的网络来模拟。这\(K\)各输出都使用logistic激活函数。每一个输出都是一个二类标签\(t_{k}\in \{0,1\},k=1,\ldots ,K\)。假设这\(K\)个输出是相互独立的，则目标输出的分布可以表示为：
+</p>
+\begin{equation}
+\label{eq:15}
+p(\mathbf{t}|\mathbf{x},\mathbf{w}) =\prod_{k=1}^{K} y_{k}(\mathbf{x},\mathbf{w})^{t_{k}} (1-y_{k}(\mathbf{x},\mathbf{w}))^{1-t_{k}}
+\end{equation}
+<p>
+考虑负对数似然函数，误差函数可以表示为：
+</p>
+\begin{equation}
+\label{eq:16}
+E(\mathbf{w}) = -\sum_{n=1}^{N}\sum_{k=1}^{K} \bigg( t_{nk}\ln y_{nk} + (1-t_{nk}) \ln (1-y_{nk})\bigg)
+\end{equation}
+<p>
+其中\(y_{nk} = y_{k}(\mathbf{x}_{n},\mathbf{w})\)。
+</p>
+</div>
+</div>
+<div id="outline-container-orgfcf6f14" class="outline-3">
+<h3 id="orgfcf6f14"><span class="section-number-3">3.4</span> 多类分类问题</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+对于有多个类分类问题（每一个输入可能会被标记为\(K\)个中的一个），二进制目标变量\(t_{k}\in \{0,1\}\)有\(\tfrac{1}{K}\)的概率标记正确。网络输出可以解释为：
+</p>
+\begin{equation}
+\label{eq:17}
+y_{k}(\mathbf{x},\mathbf{w}) = p(t_{k} = 1 | \mathbf{x})
+\end{equation}
+<p>
+误差函数为：
+</p>
+\begin{equation}
+\label{eq:18}
+E(\mathbf{w}) = -\sum_{n=1}^{N}\sum_{k=1}^{K}t_{kn}\ln y_{k}(\mathbf{x}_{k},\mathbf{w})
+\end{equation}
+<p>
+其对应的输出激活函数是softmax函数：
+</p>
+\begin{equation}
+\label{eq:19}
+y_{k}(\mathbf{x},\mathbf{w}) = \frac{\exp(a_{k}(\mathbf{x},\mathbf{w}))}{\sum_{j}\exp(a_{j}(\mathbf{x},\mathbf{w}))}
+\end{equation}
+<p>
+其中\(0\leq y_{k} \leq 1\),\(\sum_{k} y_{k} = 1\)。
+</p>
+</div>
+</div>
+<div id="outline-container-orga4c295f" class="outline-3">
+<h3 id="orga4c295f"><span class="section-number-3">3.5</span> 激活函数选择</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+
+</p>
+
+<p>
+针对不同的问题类型，我们需要选择不同的激活函数和误差函数：
+</p>
+<ol class="org-ol">
+<li>对于回归问题，激活函数选择恒等函数，误差函数选择平方和误差；</li>
+<li>对于二类分类问题，激活函数选择logistic函数，误差函数为熵函数；</li>
+<li>对于多类分类问题，激活函数选择softmax函数，误差函数为多类熵函数；</li>
+</ol>
+
+<p>
+无论哪种误差函数，误差函数相对于激活单元输出的导数都具有式 (\ref{eq:11})的形式。这位我们实用误差后向传递算法提供了基础。
+</p>
+</div>
+</div>
+<div id="outline-container-org303a9e6" class="outline-3">
+<h3 id="org303a9e6"><span class="section-number-3">3.6</span> 寻找\(\mathbf{w}\)</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+
+</p>
+
+<p>
+从几何直观上理解\(E(\mathbf{w})\)的最小化问题会更容易。假设\(E(\mathbf{w})\)如图<a href="#orgbc0bc6f">2</a>所示.
+</p>
+
+<div id="orgbc0bc6f" class="figure">
+<p><img src="../../img/computer_prml/20170702errorfunction.png" alt="20170702errorfunction.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 2:</span> \(E(\mathbf{w})\)示意图</p>
+</div>
+
+<p>
+在图<a href="#orgbc0bc6f">2</a>中，如果我们在\(\mathbf{w}\)的空间上移动一小步从\(\mathbf{w}\)到\(\mathbf{w} + \delta \mathbf{w}\)，那么误差函数也会相应的发生变化\(\delta E \approx \delta \mathbf{w}^{T}\nabla E(\mathbf{w})\)，其中矢量\(\nabla E(\mathbf{w})\)指向错误增大速率最大的方向。因为\(E(\mathbf{w})\)是\(\mathbf{w}\)的平滑连续函数。误差函数的最小值出现在梯度为零的位置：
+</p>
+\begin{equation}
+\label{eq:20}
+\nabla E(\mathbf{w}) = 0
+\end{equation}
+<p>
+否则，我们可以把\(\mathbf{w}\)向\(-\nabla E(\mathbf{w})\)方向移动一小步减小误差，直到\(\nabla E(\mathbf{w}) = 0\)。我们的目的是为了找到\(\mathbf{w}\)使得\(E(\mathbf{w})\)取最小值。但是正如图<a href="#orgbc0bc6f">2</a> 所示，\(E(\mathbf{w})\)不是凸的，所以存在很多局部最小值。对于一个局部最小值，我们之前也分析过，有\(M!2^{M}\)个等效的解。
+</p>
+
+<p>
+在寻找\(E(\mathbf{w})\)最小值的过程中，解析解是不用指望了。我们只能通过数值计算来得到最小值对应的\(\mathbf{w}\)。非线性函数的优化问题是一个古老的问题，有很多现成的方法可以使用。许多方法都需要选择一些\(\mathbf{w}\)的初始值，然后逐步的移动\(\mathbf{w}\)：
+</p>
+\begin{equation}
+\label{eq:21}
+\mathbf{w}^{(\tau +1)} = \mathbf{w}^{(\tau)} + \Delta \mathbf{w}^{(\tau)}
+\end{equation}
+<p>
+其中\(\tau\)是迭代的步长。不同的算法会采用不同的\(\Delta \mathbf{w}^{(\tau)}\)。对于每一次迭代，这些算法都需要在\(\mathbf{w}^{(\tau +1)}\)处重新评估\(\nabla E(\mathbf{w})\)。
+</p>
+
+<p>
+为了理解梯度信息的作用，我们把误差函数进行泰勒展开。通过把误差函数进行泰勒展开，我们可以获得一个误差函数的局部近似：
+</p>
+\begin{equation}
+\label{eq:22}
+E(\mathbf{w}) \approx E(\hat(\mathbf{w})) + (\mathbf{w} - \hat{\mathbf{w}})^{T}\mathbf{b} + \frac{1}{2}(\mathbf{w} - \hat{\mathbf{w}})^{T} \mathbf{H} (\mathbf{w} - \hat{\mathbf{w}})
+\end{equation}
+<p>
+在展开的过程中我们删掉了高阶项。其中\(\mathbf{b}\)是误差函数在\(\hat{\mathbf{w}}\)出的梯度：
+</p>
+\begin{equation}
+\label{eq:23}
+\mathbf{b} = \nabla E|_{\mathbf{w} = \hat{\mathbf{w}}}
+\end{equation}
+<p>
+\(\mathbf{H}\)是Hessian矩阵，其定义为：
+</p>
+\begin{eqnarray}
+\label{eq:24}
+\mathbf{H}&=& \nabla \nabla E \\
+(\mathbf{H})_{ij} &=& \frac{\partial}{\partial w_{i}\partial w_{j}} \bigg|_{\mathbf{w} = \hat{\mathbf{w}}}
+\end{eqnarray}
+
+<p>
+把式 (\ref{eq:22})所示的泰勒近似对\(\mathbf{w}\)求梯度则有：
+</p>
+\begin{equation}
+\label{eq:25}
+\nabla E \approx \mathbf{b} + \mathbf{H} (\mathbf{w} - \hat{\mathbf{w}})
+\end{equation}
+
+<p>
+对于足够接近\(\mathbf{w}\)的点\(\hat{\mathbf{w}}\)，式 (\ref{eq:22})和 式 (\ref{eq:25})具有很好的精度。假设式 (\ref{eq:22})在\(\mathbf{w}^{*}\)处有一个最小值，则\(\nabla E = 0\)，式 (\ref{eq:22})变为：
+</p>
+\begin{equation}
+\label{eq:26}
+E(\mathbf{w}) = E(\mathbf{w}^{*}) + \frac{1}{2} (\mathbf{w} - \mathbf{w}^{*})^{T} \mathbf{H} (\mathbf{w} - {\mathbf{w}^{*}})
+\end{equation}
+<p>
+其中\(\mathbf{H}\)是在\(\mathbf{w}^{*}\)处的Hessian矩阵。为了从几何直观上解释式 (\ref{eq:26})，我们对\(\mathbf{H}\)进行SVD分解，则有：
+</p>
+\begin{equation}
+\label{eq:27}
+\mathbf{H}\mathbf{u}_{i} = \lambda_{i}\mathbf{u}_{i}
+\end{equation}
+<p>
+其中\(\mathbf{u}_{i}\)是规范正交基中的矢量。我们把\(\mathbf{w} - \mathbf{w}^{*}\)展开为特征向量的线性组合，则：
+</p>
+\begin{equation}
+\label{eq:28}
+\mathbf{w} - \mathbf{w}^{*} = \sum_{i}\alpha_{i}\mathbf{u}_{i}
+\end{equation}
+<p>
+这个过程可以看做把坐标系统转换到以\(\mathbf{w}^{*}\)为中心的过程。坐标轴的方向也旋转为特征矢量所指的方向，记得对<a href="PRMLch2dot3-gaussian-again.html">多维高斯随机变量的分析</a> 么？
+</p>
+
+<p>
+通过以上一些列变换，式 (\ref{eq:26})变为：
+</p>
+\begin{equation}
+\label{eq:29}
+E(\mathbf{w}) = E(\mathbf{w}^{*}) + \frac{1}{2}\sum_{i}\lambda_{i}\alpha_{i}^{2}
+\end{equation}
+</div>
+</div>
+<div id="outline-container-org9abe40c" class="outline-3">
+<h3 id="org9abe40c"><span class="section-number-3">3.7</span> 计算复杂度</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+现在我们回头看看式 (\ref{eq:22})，误差函数通过\(\mathbf{b}\)和\(\mathbf{H}\)确定，这里一共有\(W(W+3)/2\)个独立的元素（因为\(\mathbf{H}\)是对称的）,\(W\)是\(\mathbf{w}\)的维度。因此式 (\ref{eq:22})最小值的确定依赖于\(\mathcal{O}(W^{2})\)个参数。如果我们不利用梯度信息我们必须优化\(\mathcal{O}(W^{2})\)个方程，每一个都要\(\mathcal{O}(W)\)个步骤。因此如果不利用梯度信息，计算出式~(\ref{eq:22})最小值的计算复杂度是\(\mathcal{O}(W^{3})\)。
+</p>
+
+<p>
+现在考虑到梯度信息，因为每一次评估\(\nabla E\)带来\(W\)个新的信息，我们希望在\(\mathcal{O}(W)\)个梯度评估中找到误差函数最小值。在即将介绍的反向传递算法中，每一次评估\(\nabla E\)确实只需要\(\mathcal{O}(W)\)步计算。因此综合看来找到误差函数最小值只需要\(\mathcal{O}(W^{2})\)的计算量。因此，梯度信息的使用使得训练大规模神经网络成为可能。
+</p>
+</div>
+</div>
+<div id="outline-container-org0409d9e" class="outline-3">
+<h3 id="org0409d9e"><span class="section-number-3">3.8</span> 梯度下降法</h3>
+<div class="outline-text-3" id="text-3-8">
+<p>
+
+</p>
+
+<p>
+利用梯度信息的最简单方法是更新\(\nabla E(\mathbf{w})\)时选择一个小的步长，指向梯度减小的方向：
+</p>
+\begin{equation}
+\label{eq:30}
+\mathbf{w}^{(\tau+1)} = \mathbf{w}^{(\tau)} - \eta \nabla E(\mathbf{w}^{(\tau)})
+\end{equation}
+<p>
+其中\(\eta > 0\)是所谓的学习速率。每一次更新，对于新的权重矢量\(\mathbf{w}^{(\tau + 1)}\)都需要从新计算梯度。因为误差函数与所有的训练数据集合有关，所以每一步更新\(\nabla\)都需要重新操作所有的训练数据。这种算法叫做批量处理算法。每一步更新权重矢量\((\mathbf{w})\)都朝向误差函数降低的最小的方向。这叫做最大梯度下降法。
+</p>
+
+<p>
+对于批量优化算法，有许多高效的方案比如共轭梯度，准牛顿迭代。这些方法都比简单的梯度下降法要鲁棒且高效。但是不管哪种实现方法都不能改变神经网络优化的非凸性质。为了克服这个问题，我们可以同时跑多次梯度下降法，每次用不同的初始值。最后对收敛的多个\(\mathbf{w}\)进行性能对比。
+</p>
+
+<p>
+批量处理算法的缺点是显而易见的：需要一次性缓存大量数据。如果能够在线实时更新就好了。实际上，基于最大似然函数的误差函数是有一些列误差项求和获得的：
+</p>
+\begin{equation}
+\label{eq:31}
+E(\mathbf{w}) = \sum_{n=1}^{N} E_{n}(\mathbf{w})
+\end{equation}
+<p>
+在线的梯度下降法，一次根据一个数据点更新\(\mathbf{w}\)：
+</p>
+\begin{equation}
+\label{eq:32}
+\mathbf{w}^{(\tau + 1)} = \mathbf{w}^{(\tau)} - \eta \nabla E_{n}(\mathbf{w}^{(\tau)})
+\end{equation}
+<p>
+式~(\ref{eq:32})所示的更新过程一次只处理一个数据。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org415285e" class="outline-2">
+<h2 id="org415285e"><span class="section-number-2">4</span> 错误后向传递算法</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+本节的任务是找到一个评估误差函数\(E(\mathbf{w})\)梯度的高效算法。这个算法叫做错误后向传递算法。
+</p>
 </div>
 </div>
 </div>
