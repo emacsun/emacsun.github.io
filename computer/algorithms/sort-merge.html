@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>merge排序</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./sort-merge.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">merge排序</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org88a0734">1. 算法描述</a></li>
+<li><a href="#orgeb12663">2. 示例</a></li>
+<li><a href="#orgceb1e58">3. 伪代码</a></li>
+<li><a href="#org876f4df">4. 算法分析</a></li>
+<li><a href="#org223fe05">5. Merge排序C语言实现</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org88a0734" class="outline-2">
+<h2 id="org88a0734"><span class="section-number-2">1</span> 算法描述</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Merge排序算法是一种基于比较的排序算法。不同于插入排序和冒泡排序，Merge排序的时间复杂度\(T(n)=\mathcal{O}(n\log{n})\)。John Von Neumann在1945年发明了该算法。
+</p>
+
+<p>
+Merge排序算法是分治（Divide-and-Conquer）算法设计思想的典型代表。分治算法的思想是把原来的大问题递归的分解成相同类型的更小的问题，最后把这些小问题的解决方案组合起来从而解决原来的大问题。具体论及Merge算法，可以做如下描述：
+</p>
+
+<ol class="org-ol">
+<li>Divide: 把输入的长度为\(n\)的数组分成两个长度为\(n/2\)的子数组（若\(n\)不是偶数，则分层长度为\(\lceil \frac{n}{2} \rceil\)和\(\lfloor \frac{n}{2} \rfloor\)的两个数组）。</li>
+<li>Conquer：递归的使用Merge排序排列生成的子数组。</li>
+<li>Combine：把排好序的两个子序列合并成一个序列。最终生成想要得到的有序序列。</li>
+</ol>
+
+<p>
+Merge排序算法是一个递归算法，其递归式为：
+</p>
+\begin{equation}
+  \label{eq:20120704mergesort}
+  T(n) = \left\{
+  \begin{array}{ll}
+    c & \text{if}\quad n=1 \\
+    2T(n/2) + cn & \text{if} \quad n>1
+  \end{array} \right.
+\end{equation}
+<p>
+通过主方法(Master Method)可以解上边的递归式。\(T(n)=\Theta(n\log{n})\)。关于主方法在后文会给出论述，详见CLRS的教科书。
+</p>
+
+<p>
+下面通过一个例子简单的展示Merge排序的工作原理。
+</p>
+</div>
+</div>
+<div id="outline-container-orgeb12663" class="outline-2">
+<h2 id="orgeb12663"><span class="section-number-2">2</span> 示例</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+
+<p>
+假设\(A=\{ 5,2,4,7,1,3,2,6\}\)，则整个Merge排序过程如图<a href="#orgff1395b">1</a>所示。
+</p>
+
+
+<div id="orgff1395b" class="figure">
+<p><img src="../../img/computer_algorithms/20170703mergeSort.png" alt="20170703mergeSort.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 1:</span> merge排序示例</p>
+</div>
+
+
+<p>
+从图中可以看出，真个算法分为三部分，从下向上看为：divide，conquer，combine。divide部分完成排序问题的划分，数组\(A=\{ 5,2,4,7,1,3,2,6\}\)首先划分为\(A_1=\{ 5,2,4,7\}\)和\(A_2=\{1,3,2,6\}\)两个子数组，然后子数组\(A_1=\{ 5,2,4,7\}\)再划分为\(A_{11}=\{ 5,2\}\)和\(A_{12}=\{4,7\}\)两个子数组，子数组\(A_2=\{1,3,2,6\}\)再划分为为\(A_{21}=\{1,3\}\)和\(A_{22}=\{2,6\}\)两个子数组。至此，问题划分完毕，然后conquer的过程是很简单的过程：为只有两个元素的数组排序！！！combine的过程也就是merge的过程。这个过程也相当的简单，不再赘述。
+</p>
+
+<p>
+接下来给出最后一次merge的过程，即图<a href="#orgff1395b">1</a>中从上往下看前两行的过程。此过程如图<a href="#org9c3e2ab">2</a>所示。
+</p>
+
+
+<div id="org9c3e2ab" class="figure">
+<p><img src="../../img/computer_algorithms/20170703mergeSortExample.png" alt="20170703mergeSortExample.png" width="600" align="center" />
+</p>
+<p><span class="figure-number">图 2:</span> \(A=\{ 5,2,4,7,1,3,2,6\}\) merge过程</p>
+</div>
+
+<p>
+从图上可以看出merge排序不是一种稳定的排序算法，它会改变等值元素的位置，比如在本例中的两个2，最终排序结果中的2的顺序有可能不同于原始序列中的2的顺序。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgceb1e58" class="outline-2">
+<h2 id="orgceb1e58"><span class="section-number-2">3</span> 伪代码</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+
+<p>
+Merge排序的伪代码分两部分，分别如下所示。第一部分给出的是divide和conquer的过程，如图<a href="#org1b8255e">3</a>所示。
+</p>
+
+<div id="org1b8255e" class="figure">
+<p><img src="../../img/computer_algorithms/20170703mergeSortDevideandConquer.png" alt="20170703mergeSortDevideandConquer.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 3:</span> Merge排序伪代码divide and conquer过程</p>
+</div>
+
+
+<p>
+第二部分给出的是combine的过程,如图<a href="#org566a1fe">4</a>所示。
+</p>
+
+
+<div id="org566a1fe" class="figure">
+<p><img src="../../img/computer_algorithms/20170703mergeSortCombine.png" alt="20170703mergeSortCombine.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 4:</span> Merge排序伪代码conbine过程</p>
+</div>
+
+
+<p>
+伪代码中使用\(\infty\)来标识\(L,R\)数组的结束，在实际变成过程中可以使用\(L,R\)的长度来判决数组是否结束。
+</p>
+</div>
+</div>
+<div id="outline-container-org876f4df" class="outline-2">
+<h2 id="org876f4df"><span class="section-number-2">4</span> 算法分析</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+
+<p>
+在分析Merge排序过程中，为简化分析过程，我们假定\(n\)为偶数。这一假定并不影响最终的分析结果。
+</p>
+
+<p>
+同样我们使用Divide-and-Conquer的步骤来分析Merge排序算法。
+</p>
+<ol class="org-ol">
+<li>Divide： 问题划分过程需要计算序列索引的中位数。这个花费的时间是常量。因此\(D(n)=\Theta(1)\)</li>
+<li>Conquer: 在这一过程中，迭代的解决两个规模为\(n/2\)的子问题，花费时间为\(2T(n/2)\)。</li>
+<li>Combine： Merge的过程花费的时间与输入数组的规模线性相关，即\(C(n)=\Theta(n)\)。</li>
+</ol>
+
+<p>
+所以Merge排序的递归式可以写为：
+</p>
+\begin{equation}
+  \label{eq:20120704merge2}
+  T(n) = \left \{
+  \begin{array}{ll}
+    \Theta(1) &  \text{if} \quad n=1 \\
+    2T(n/2) + \Theta(n) & \text{if} \quad n>1
+  \end{array} \right.
+\end{equation}
+
+<p>
+通过主方法可以解式(\ref{eq:20120704merge2})，\(T(n)=\Theta(n\log{n})\).
+</p>
+</div>
+</div>
+<div id="outline-container-org223fe05" class="outline-2">
+<h2 id="org223fe05"><span class="section-number-2">5</span> Merge排序C语言实现</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+
+<p>
+首先给出Divide 和 Conquer的C语言实现。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span class="linenr"> 1: </span>  <span style="color: #b58900;">void</span> <span style="color: #268bd2;">merge_sort</span><span style="color: #2aa198;">(</span><span style="color: #b58900;">int</span> *<span style="color: #268bd2;">a</span> , <span style="color: #b58900;">int</span> <span style="color: #268bd2;">p</span> ,<span style="color: #b58900;">int</span> <span style="color: #268bd2;">r</span><span style="color: #2aa198;">)</span>
+<span class="linenr"> 2: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 3: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">q</span> =<span style="color: #6c71c4;">0</span>;
+<span class="linenr"> 4: </span>    <span style="color: #859900; font-weight: bold;">if</span><span style="color: #b58900;">(</span>p&lt;r<span style="color: #b58900;">)</span>
+<span class="linenr"> 5: </span>     <span style="color: #b58900;">{</span>
+<span class="linenr"> 6: </span>         q = floor<span style="color: #268bd2;">(</span> <span style="color: #6c71c4;">(</span>p + r<span style="color: #6c71c4;">)</span>/<span style="color: #6c71c4;">2</span> <span style="color: #268bd2;">)</span> ;
+<span class="linenr"> 7: </span>         merge_sort<span style="color: #268bd2;">(</span>a, p , q<span style="color: #268bd2;">)</span>;
+<span class="linenr"> 8: </span>         merge_sort<span style="color: #268bd2;">(</span>a,q+<span style="color: #6c71c4;">1</span>,r<span style="color: #268bd2;">)</span>;
+<span class="linenr"> 9: </span>         merge<span style="color: #268bd2;">(</span>a,p,q,r<span style="color: #268bd2;">)</span>;
+<span class="linenr">10: </span>     <span style="color: #b58900;">}</span>
+<span class="linenr">11: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+
+<p>
+注：用到了C的库函数floor。
+</p>
+
+<p>
+接下来给出Merge的C语言实现。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span class="linenr"> 1: </span>  <span style="color: #b58900;">void</span> <span style="color: #268bd2;">merge</span><span style="color: #2aa198;">(</span><span style="color: #b58900;">int</span> * <span style="color: #268bd2;">a</span> , <span style="color: #b58900;">int</span> <span style="color: #268bd2;">low</span> ,<span style="color: #b58900;">int</span> <span style="color: #268bd2;">middle</span> ,<span style="color: #b58900;">int</span> <span style="color: #268bd2;">high</span> <span style="color: #2aa198;">)</span>
+<span class="linenr"> 2: </span><span style="color: #2aa198;">{</span>
+<span class="linenr"> 3: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span>=<span style="color: #6c71c4;">0</span>,<span style="color: #268bd2;">k</span>=<span style="color: #6c71c4;">0</span>,<span style="color: #268bd2;">j</span>=<span style="color: #6c71c4;">0</span>;
+<span class="linenr"> 4: </span>    <span style="color: #586e75;">/// </span><span style="color: #586e75;">create two arrays and initialize them using array a</span>
+<span class="linenr"> 5: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">n1</span> = middle - low + <span style="color: #6c71c4;">1</span>;<span style="color: #b58900;">int</span> <span style="color: #268bd2;">n2</span> = high - middle ;
+<span class="linenr"> 6: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">L</span><span style="color: #b58900;">[</span> n1 <span style="color: #b58900;">]</span>;<span style="color: #b58900;">int</span> <span style="color: #268bd2;">R</span><span style="color: #b58900;">[</span> n2 <span style="color: #b58900;">]</span>;
+<span class="linenr"> 7: </span>    <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #b58900;">(</span>i=<span style="color: #6c71c4;">0</span>;i&lt;n1;i++<span style="color: #b58900;">)</span>
+<span class="linenr"> 8: </span>        L<span style="color: #b58900;">[</span> i <span style="color: #b58900;">]</span> = a<span style="color: #b58900;">[</span> low + i <span style="color: #b58900;">]</span>;
+<span class="linenr"> 9: </span>    <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #b58900;">(</span>j=<span style="color: #6c71c4;">0</span>;j&lt;n2;j++<span style="color: #b58900;">)</span>
+<span class="linenr">10: </span>        R<span style="color: #b58900;">[</span> j <span style="color: #b58900;">]</span> = a<span style="color: #b58900;">[</span> middle + j+ <span style="color: #6c71c4;">1</span> <span style="color: #b58900;">]</span>;
+<span class="linenr">11: </span>    <span style="color: #586e75;">/// </span><span style="color: #586e75;">merge process</span>
+<span class="linenr">12: </span>    i=<span style="color: #6c71c4;">0</span>;j=<span style="color: #6c71c4;">0</span>;
+<span class="linenr">13: </span>    <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #b58900;">(</span>k=low;k&lt;high;k++<span style="color: #b58900;">)</span>
+<span class="linenr">14: </span>        <span style="color: #b58900;">{</span>
+<span class="linenr">15: </span>            <span style="color: #859900; font-weight: bold;">if</span><span style="color: #268bd2;">(</span><span style="color: #6c71c4;">(</span>L<span style="color: #859900;">[</span> i <span style="color: #859900;">]</span>&lt;= R<span style="color: #859900;">[</span> j <span style="color: #859900;">]</span><span style="color: #6c71c4;">)</span> &amp;&amp; i &lt; n1 <span style="color: #268bd2;">)</span>
+<span class="linenr">16: </span>            <span style="color: #268bd2;">{</span>
+<span class="linenr">17: </span>                    a<span style="color: #6c71c4;">[</span> k <span style="color: #6c71c4;">]</span>=L<span style="color: #6c71c4;">[</span> i <span style="color: #6c71c4;">]</span>;
+<span class="linenr">18: </span>                     i++;
+<span class="linenr">19: </span>             <span style="color: #268bd2;">}</span>
+<span class="linenr">20: </span>            <span style="color: #859900; font-weight: bold;">else</span> <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span> <span style="color: #6c71c4;">(</span> L<span style="color: #859900;">[</span>i<span style="color: #859900;">]</span> &gt; R<span style="color: #859900;">[</span> j <span style="color: #859900;">]</span> <span style="color: #6c71c4;">)</span> &amp;&amp; j &lt; n2 <span style="color: #268bd2;">)</span>
+<span class="linenr">21: </span>                <span style="color: #268bd2;">{</span>
+<span class="linenr">22: </span>                    a<span style="color: #6c71c4;">[</span> k <span style="color: #6c71c4;">]</span> = R<span style="color: #6c71c4;">[</span> j <span style="color: #6c71c4;">]</span>;
+<span class="linenr">23: </span>                    j++;
+<span class="linenr">24: </span>                <span style="color: #268bd2;">}</span>
+<span class="linenr">25: </span>            <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>i==n1<span style="color: #268bd2;">)</span> <span style="color: #859900; font-weight: bold;">break</span>;
+<span class="linenr">26: </span>            <span style="color: #859900; font-weight: bold;">else</span> <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #268bd2;">(</span>j==n2<span style="color: #268bd2;">)</span> <span style="color: #859900; font-weight: bold;">break</span>;
+<span class="linenr">27: </span>       <span style="color: #b58900;">}</span>
+<span class="linenr">28: </span>    <span style="color: #859900; font-weight: bold;">while</span><span style="color: #b58900;">(</span>i&lt;n1<span style="color: #b58900;">)</span><span style="color: #586e75;">/// </span><span style="color: #586e75;">more numbers in L</span>
+<span class="linenr">29: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr">30: </span>        k++;
+<span class="linenr">31: </span>        a<span style="color: #268bd2;">[</span> k <span style="color: #268bd2;">]</span> = L<span style="color: #268bd2;">[</span> i <span style="color: #268bd2;">]</span>;
+<span class="linenr">32: </span>        i++;
+<span class="linenr">33: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">34: </span>    <span style="color: #859900; font-weight: bold;">while</span><span style="color: #b58900;">(</span>j&lt;n2<span style="color: #b58900;">)</span><span style="color: #586e75;">/// </span><span style="color: #586e75;">more numbers in R</span>
+<span class="linenr">35: </span>    <span style="color: #b58900;">{</span>
+<span class="linenr">36: </span>        k++;
+<span class="linenr">37: </span>        a<span style="color: #268bd2;">[</span> k <span style="color: #268bd2;">]</span> = R<span style="color: #268bd2;">[</span> j <span style="color: #268bd2;">]</span>;
+<span class="linenr">38: </span>        j++;
+<span class="linenr">39: </span>    <span style="color: #b58900;">}</span>
+<span class="linenr">40: </span><span style="color: #2aa198;">}</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
