@@ -56,6 +56,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -93,6 +115,78 @@ for the JavaScript code in this tag.
 <p>
 
 </p>
+
+<p>
+相对于\(n\times 1\)向量\(\mathbf{x}\)的梯度算子记作\(\nabla_{\mathbf{x}}\),定义为：
+</p>
+\begin{equation}
+\label{eq:1}
+\nabla_{\mathbf{x}} = \bigg[\frac{\partial}{\partial x_{1}}, \frac{\partial}{\partial x_{2}}, \ldots ,\frac{\partial}{\partial x_{n}} \bigg]^{T} = \frac{\partial}{\partial \mathbf{x}}
+\end{equation}
+
+<p>
+因此,\(n\times 1\)实向量\(\mathbf{x}\)为变元的实标量函数\(f(\mathbf{x})\)相对于\(\mathbf{x}\)的梯度为一\(n\times 1\)的列向量，定义为：
+</p>
+\begin{equation}
+\label{eq:2}
+\nabla_{\mathbf{x}} f(\mathbf{x}) = \bigg[\frac{\partial f(\mathbf{x})}{\partial x_{1}}, \frac{\partial  f(\mathbf{x})}{\partial x_{2}}, \ldots ,\frac{\partial  f(\mathbf{x})}{\partial x_{n}} \bigg]^{T} = \frac{\partial  f(\mathbf{x})}{\partial \mathbf{x}}
+\end{equation}
+
+<p>
+梯度方向的负方向成为变元\(\mathbf{x}\)的梯度流(gradient flow)，记为：
+</p>
+\begin{equation}
+\label{eq:3}
+\overset{\cdot}{\mathbf{x}} = -\nabla_{\mathbf{x}}f(\mathbf{x})
+\end{equation}
+
+<p>
+从梯度的定义式可以看出：
+</p>
+<ol class="org-ol">
+<li>一个以向量为变元的变量函数的梯度为一向量。</li>
+<li>梯度的每个分量给出了变量函数在该分量方向上的变化率</li>
+</ol>
+
+<p>
+梯度向量最重要的性质之一是，它指出了当变元增大时函数\(f\)的最大增大率。相反，梯度的负值（负梯度）指出了当变元增大时函数\(f\)的最大减小率。根据这样一种性质，即可设计出求一函数极小值的迭代算法。
+</p>
+
+<p>
+类似地，实值函数\(f(\mathbf{x})\)相对于\(1\times n\)行向量\(\mathbf{x}^{T}\)的梯度为\(1\times n\)行向量，定义为：
+</p>
+
+\begin{equation}
+\label{eq:4}
+\nabla_{\mathbf{x}^{T}} f(\mathbf{x}) = \bigg[\frac{\partial f(\mathbf{x})}{\partial x_{1}}, \frac{\partial  f(\mathbf{x})}{\partial x_{2}}, \ldots ,\frac{\partial  f(\mathbf{x})}{\partial x_{n}} \bigg] = \frac{\partial  f(\mathbf{x})}{\partial \mathbf{x}^{T}}
+\end{equation}
+
+<p>
+\(m\)维行向量函数\(f(\mathbf{x}) = [f_{1}(\mathbf{x}), \ldots ,f_{m}(\mathbf{x}) ]\)相对于\(n\)维实向量\(x\)的梯度为一\(n\times m\)矩阵定义为：
+</p>
+\begin{equation}
+\label{eq:5}
+\frac{\partial \mathbf{f}(\mathbf{x})}{\partial \mathbf{x}} =
+\begin{bmatrix}
+\frac{\partial f_{1}(\mathbf{x})}{\partial x_{1}} & \frac{\partial f_{2}(\mathbf{x})}{\partial x_{1}} & \ldots &\frac{\partial f_{m}(\mathbf{x})}{\partial x_{1}} \\
+\frac{\partial f_{1}(\mathbf{x})}{\partial x_{2}} & \frac{\partial f_{2}(\mathbf{x})}{\partial x_{2}} & \ldots &\frac{\partial f_{m}(\mathbf{x})}{\partial x_{2}} \\
+\vdots & \vdots & \ldots & \vdots \\
+\frac{\partial f_{1}(\mathbf{x})}{\partial x_{n}} & \frac{\partial f_{2}(\mathbf{x})}{\partial x_{n}} & \ldots &\frac{\partial f_{m}(\mathbf{x})}{\partial x_{n}} \\
+\end{bmatrix}
+= \nabla_{\mathbf{x}}\mathbf{f}(\mathbf{x})
+\end{equation}
+
+<p>
+若\(m\times 1\)向量函数\(\mathbf{f}(\mathbf{x}) = \mathbf{y} = [y_{1},\ldots ,y_{m}]^{T}\)，其中\(y_{1},y_{2},\ldots ,y_{m}\)是向量的标量函数，一节梯度：
+</p>
+\begin{equation}
+\label{eq:6}
+\frac{\partial \mathbf{y}}{\partial \mathbf{x}^{T}} =
+\begin{bmatrix}
+\frac{\partial y_{1}}{\partial x_{1}} & \frac{\partial y_{1}}{\partial x_{2}} & \ldots & \frac{\partial y_{1}}{\partial x_{n}} \\
+\frac{\partial y_{2}}{\partial x_{1}} & \frac{\partial y_{1}}{\partial x_{2}} & \ldots & \frac{\partial y_{1}}{\partial x_{n}} \\
+\end{bmatrix}
+\end{equation}
 </div>
 </div>
 
