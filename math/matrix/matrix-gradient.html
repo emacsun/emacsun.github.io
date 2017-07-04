@@ -104,7 +104,7 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-在信息论或者机器学习的论文中，有很多黑体矢量的微分或者积分，再加上梯度函数，简直让人眼花缭乱。于是下定决心把这些黑体的矩阵语言仔细学习一下。本文就是学习过程中的总结。
+在信息论或者机器学习的论文中，有很多黑体矢量的微分或者积分，再加上梯度函数，简直让人眼花缭乱。于是下定决心把这些黑体的矩阵语言仔细学习一下。出来混迟早是要还的，记得在大学的时候这个矩阵语言属于三不管：数学分析和线性代数都不管，其他课程就更不管了。今天属于还债日。
 </p>
 </div>
 </div>
@@ -177,7 +177,7 @@ for the JavaScript code in this tag.
 \end{equation}
 
 <p>
-若\(m\times 1\)向量函数\(\mathbf{f}(\mathbf{x}) = \mathbf{y} = [y_{1},\ldots ,y_{m}]^{T}\)，其中\(y_{1},y_{2},\ldots ,y_{m}\)是向量的标量函数，一节梯度：
+若\(m\times 1\)向量函数\(\mathbf{f}(\mathbf{x}) = \mathbf{y} = [y_{1},\ldots ,y_{m}]^{T}\)，其中\(y_{1},y_{2},\ldots ,y_{m}\)是向量的标量函数，一阶梯度：
 </p>
 \begin{equation}
 \label{eq:6}
@@ -187,8 +187,202 @@ for the JavaScript code in this tag.
 \frac{\partial y_{2}}{\partial x_{1}} & \frac{\partial y_{1}}{\partial x_{2}} & \ldots & \frac{\partial y_{1}}{\partial x_{n}} \\
 \end{bmatrix}
 \end{equation}
+<p>
+\(\frac{\partial \mathbf{y}}{\partial \mathbf{x}^{T}}\)是一个\(m\times n\)的矩阵，称为向量函数\(\mathbf{y} = [y_{1},y_{2},\ldots ,y_{m}]^{T}\)的Jacobi矩阵。
+</p>
+
+<p>
+若\(\mathbf{f}(\mathbf{x}) = [x_{1},x_{2},\ldots ,x_{n}]\)，则:
+</p>
+\begin{equation}
+\label{eq:7}
+\frac{\partial \mathbf{x}^{T}}{\partial \mathbf{x}} = \mathbf{I}
+\end{equation}
+<p>
+这是一个非常有用的结论，将帮助我们导出更多非常有用的结论。
+</p>
+
+<div class="tikzinstance">
+<p>
+
+</p>
+
+<p>
+若\(\mathbf{A}\)和\(\mathbf{y}\)均和\(\mathbf{x}\)无关，则：
+</p>
+\begin{equation}
+\label{eq:9}
+\frac{\partial \mathbf{x}^{T}\mathbf{A}\mathbf{y}}{\partial \mathbf{x}} = \frac{\partial \mathbf{x}^{T}}{\partial \mathbf{x}}\mathbf{A}\mathbf{y} = \mathbf{A}\mathbf{y}
+\end{equation}
+
+</div>
+
+<div class="tikzinstance">
+<p>
+
+</p>
+
+<p>
+因为\(\mathbf{y}^{T}\mathbf{A}\mathbf{x} = \langle \mathbf{A}^{T}\mathbf{y},\mathbf{x} \rangle  = \langle \mathbf{x},\mathbf{A}^{T}\mathbf{y} \rangle = \mathbf{x}^{T}\mathbf{A}^{T} \mathbf{y}\)，则：
+</p>
+\begin{equation}
+\label{eq:10}
+\frac{\partial \mathbf{y}^{T}\mathbf{A}\mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^{T}\mathbf{y}
+\end{equation}
+
+</div>
+
+<div class="tikzinstance">
+<p>
+由于：
+</p>
+\begin{equation}
+\label{eq:11}
+x^{T}\mathbf{A}\mathbf{x} = \sum_{i=1}^{n}\sum_{j=1}^{n}A_{ij}x_{i}x_{j}
+\end{equation}
+<p>
+所以梯度\(\frac{\partial \mathbf{x}^{T}\mathbf{A}\mathbf{x}}{\partial \mathbf{x}}\)的第\(k\)个分量为：
+</p>
+\begin{equation}
+\label{eq:12}
+\bigg[ \frac{\partial \mathbf{x}^{T}\mathbf{A}\mathbf{x}}{\partial \mathbf{x}} \bigg]_{k} = \frac{\partial}{\partial x_{k}} \sum_{i=1}^{n}\sum_{j=1}^{n}A_{ij}x_{i}x_{j} = \sum_{i=1}^{n}A_{ik}x_{i} + \sum_{j=1}^{n}A_{kj}x_{j}
+\end{equation}
+<p>
+即有：
+</p>
+\begin{equation}
+\label{eq:13}
+\frac{\partial \mathbf{x}^{T}\mathbf{A}\mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}\mathbf{x} + \mathbf{A}^{T}\mathbf{x}
+\end{equation}
+
+<p>
+特别的如果\(\mathbf{A}\)为对称矩阵则有：
+</p>
+\begin{equation}
+\label{eq:14}
+\frac{\partial \mathbf{x}^{T}\mathbf{A}\mathbf{x}}{\partial \mathbf{x}} = 2\mathbf{A}\mathbf{x}
+\end{equation}
+
+</div>
+
+<p>
+归纳以上三个例子的结果以及其他结果，便得到实值函数\(f(\mathbf{x})\)相对于列向量\(\mathbf{x}\)的一下几个常用的梯度公式。
+</p>
+<div class="tikzinstance">
+<p>
+若\(f(\mathbf{x}) = c\)为常数，则梯度\(\frac{\partial c}{\partial \mathbf{x}} = 0\)
+</p>
+
+</div>
+
+<div class="tikzinstance">
+<p>
+线性法则：若\(f(\mathbf{x})\)和\(g(\mathbf{x})\)分别是向量\(\mathbf{x}\)的实值函数，\(c_{1}\)和\(c_{2}\)为实常数，则：
+</p>
+\begin{equation}
+\label{eq:15}
+\frac{\partial[c_{1}f(\mathbf{x}) + c_{2}g(\mathbf{x})]}{\partial \mathbf{x}} = c_{1}\frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} + c_{2}\frac{\partial g(\mathbf{x})}{\partial \mathbf{x}}
+\end{equation}
+
+</div>
+<div class="tikzinstance">
+<p>
+乘法法则：若\(f(\mathbf{x})\)和\(g(\mathbf{x})\)都是向量\(\mathbf{x}\)的实值函数，则：
+</p>
+\begin{equation}
+\label{eq:16}
+\frac{f(\mathbf{x})g(\mathbf{x})}{\partial \mathbf{x}} = g(\mathbf{x})\frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} + f(\mathbf{x}) \frac{\partial g(\mathbf{x})}{\partial \mathbf{x}}
+\end{equation}
+
+</div>
+<div class="tikzinstance">
+<p>
+商法则：若\(g(\mathbf{x})\neq 0\)，则：
+</p>
+\begin{equation}
+\label{eq:17}
+\frac{\partial f(\mathbf{x})/g(\mathbf{x})}{\partial \mathbf{x}} = \frac{1}{g^{2}(\mathbf{x})}\bigg[ g(\mathbf{x})\frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} - f(\mathbf{x}) \frac{\partial g(\mathbf{x})}{\partial \mathbf{x}} \bigg]
+\end{equation}
+
+</div>
+<div class="tikzinstance">
+<p>
+链式法则：若\(\mathbf{y}(\mathbf{x})\)是\(\mathbf{x}\)的向量值函数，则：
+</p>
+\begin{equation}
+\label{eq:18}
+\frac{\partial f(\mathbf{y}(\mathbf{x}))}{\partial \mathbf{x}} = \frac{\partial \mathbf{y}^{T}(\mathbf{x})}{\partial \mathbf{x}}\frac{\partial f(\mathbf{y})}{\partial \mathbf{y}}
+\end{equation}
+<p>
+式中\(\frac{ \partial\mathbf{y}^{T}(\mathbf{x})}{\partial \mathbf{x}}\)为\(n\times n\)矩阵。
+</p>
+
+</div>
+<div class="tikzinstance">
+<p>
+若\(n\times 1\)向量\(\mathbf{a}\)与\(\mathbf{x}\)是无关的常数向量，则：
+</p>
+\begin{equation}
+\label{eq:19}
+\frac{\partial \mathbf{a}^{T}\mathbf{x}}{\partial \mathbf{x}} = \mathbf{a} \qquad \frac{\partial\mathbf{x}^{T}\mathbf{a}}{\partial \mathbf{x}} = \mathbf{a}
+\end{equation}
+
+</div>
+<div class="tikzinstance">
+<p>
+若\(n\times 1\)向量\(\mathbf{a}\)与\(\mathbf{x}\)是无关的常数向量，则：
+</p>
+\begin{equation}
+\label{eq:20}
+\frac{\partial\mathbf{a}^{T}\mathbf{y}(\mathbf{x})}{\partial \mathbf{x}} = \frac{\partial \mathbf{y}^{T}(\mathbf{x})}{\partial \mathbf{x}} \mathbf{a} \qquad \frac{\partial\mathbf{y}^{T}(\mathbf{x})\mathbf{a}}{\partial \mathbf{x}} =\frac{\partial\mathbf{y}^{T}(\mathbf{x})}{\partial \mathbf{x}} \mathbf{a}
+\end{equation}
+
+</div>
+
+<div class="tikzinstance">
+<p>
+若\(\mathbf{A}\)和\(\mathbf{y}\)均与\(\mathbf{x}\)无关，则：
+</p>
+\begin{equation}
+\label{eq:21}
+\frac{\partial \mathbf{x}^{T}\mathbf{A}\mathbf{y}}{\partial \mathbf{x}} = \mathbf{A}\mathbf{y} \qquad \frac{\partial \mathbf{y}^{T}\mathbf{A}\mathbf{x}}{\partial \mathbf{x}} = \mathbf{A}^{T}\mathbf{y}
+\end{equation}
+
+</div>
+<div class="tikzinstance">
+<p>
+若\(\mathbf{A}\)是与\(\mathbf{x}\)无关，而\(\mathbf{y}(\mathbf{x})\)与向量\(\mathbf{x}\)的元素有关，则：
+</p>
+\begin{equation}
+\label{eq:22}
+\frac{\partial[\mathbf{y}(\mathbf{x})]^{T} \mathbf{A}\mathbf{y}(\mathbf{x})}{\partial \mathbf{x}} = \frac{\partial[\mathbf{y}(\mathbf{x})]^{T}}{\partial \mathbf{x}}(\mathbf{A} + \mathbf{A}^{T})\mathbf{y}(\mathbf{x})
+\end{equation}
+
+</div>
+<div class="tikzinstance">
+<p>
+若\(\mathbf{A}\)是一个与向量\(\mathbf{x}\)无关的矩阵，而\(\mathbf{y}(\mathbf{x})\)和\(\mathbf{z}(\mathbf{x})\)是与向量\(\mathbf{x}\)的元素有关的列向量，则：
+</p>
+\begin{equation}
+\label{eq:23}
+\frac{[\mathbf{y}(\mathbf{x})]^{T} \mathbf{A}\mathbf{z}(\mathbf{x})}{\partial \mathbf{x}} = \frac{[\mathbf{y}(\mathbf{x})]^{T}}{\partial \mathbf{x}} \mathbf{A}\mathbf{z}(\mathbf{x}) + \frac{[\mathbf{z}(\mathbf{x})]^{T}}{\partial \mathbf{x}}\mathbf{A}^{T}\mathbf{y}(\mathbf{x})
+\end{equation}
+
+</div>
+
+<div class="tikzinstance">
+<p>
+令\(\mathbf{x}\)为\(n\times 1\)向量，\(\mathbf{a}\)为\(m\times 1\)常数向量，\(\mathbf{A}\)和\(\mathbf{B}\)分别为\(m\times n\)和\(m\times m\)常数矩阵，且\(\mathbf{B}\)为对称矩阵，则：
+</p>
+\begin{equation}
+\label{eq:24}
+\frac{\partial (\mathbf{a} - \mathbf{A} \mathbf{x})^{T}\mathbf{B}(\mathbf{a} - \mathbf{A}\mathbf{x})}{\partial \mathbf{x}} = -2\mathbf{A}^{T}\mathbf{B}(\mathbf{a} - \mathbf{A}\mathbf{x})
+\end{equation}
+
 </div>
 </div>
+</div>
+
 
 <div id="outline-container-org4e8ba78" class="outline-2">
 <h2 id="org4e8ba78"><span class="section-number-2">3</span> 实值函数的梯度矩阵</h2>
@@ -198,6 +392,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
+
+
 
 <div id="outline-container-orgef70d51" class="outline-2">
 <h2 id="orgef70d51"><span class="section-number-2">4</span> 迹函数的梯度矩阵</h2>
