@@ -90,8 +90,8 @@ for the JavaScript code in this tag.
 <li><a href="#org10eab15">2. 实值函数相对于实向量的梯度</a></li>
 <li><a href="#org4e8ba78">3. 实值函数的梯度矩阵</a></li>
 <li><a href="#orgef70d51">4. 迹函数的梯度矩阵</a></li>
-<li><a href="#org2993b7e">5. 行列式的梯度矩阵</a></li>
-<li><a href="#orgfc1d25b">6. Hessian矩阵</a></li>
+<li><a href="#orgfc1d25b">5. Hessian矩阵</a></li>
+<li><a href="#org9f8be62">6. 尾声</a></li>
 </ul>
 </div>
 </div>
@@ -556,23 +556,174 @@ x^{T}\mathbf{A}\mathbf{x} = \sum_{i=1}^{n}\sum_{j=1}^{n}A_{ij}x_{i}x_{j}
 <p>
 
 </p>
-</div>
-</div>
 
-<div id="outline-container-org2993b7e" class="outline-2">
-<h2 id="org2993b7e"><span class="section-number-2">5</span> 行列式的梯度矩阵</h2>
-<div class="outline-text-2" id="text-5">
+<p>
+有时候，二次型目标函数可以利用矩阵的迹加以重写。因为一标量可以视为\(1\times 1\)的矩阵，所以二次型目标函数的迹直接等同于函数本身，即\(f(\mathbf{x}) = \mathbf{x}^{T}\mathbf{A}\mathbf{x} = \mathrm{tr}(\mathbf{x}^{T}\mathbf{A}\mathbf{x}) \) 利用迹的性质，又可以将目标函数进一步表示为：
+</p>
+\begin{equation}
+\label{eq:35}
+f(\mathbf{x}) = \mathbf{x}^{T}\mathbf{A}\mathbf{x} = \mathrm{tr}(\mathbf{x}^{T}\mathbf{A}\mathbf{x}) = \mathrm{tr}(\mathbf{A}\mathbf{x}\mathbf{x}^{T})
+\end{equation}
+
+<p>
+因此，二次型目标函数\(\mathbf{x}^{T}\mathbf{A}\mathbf{x}\)等于核矩阵\(\mathbf{A}\)和向量外积\(\mathbf{x}\mathbf{x}^{T}\)的乘积的迹\(\mathrm{tr}(\mathbf{A}\mathbf{x}\mathbf{x}^{T})\)
+</p>
+
+<div class="tikzinstance">
 <p>
 
 </p>
+
+<p>
+对于\(n\times n\)矩阵\(\mathbf{A}\),由于\(\mathrm{tr}(\mathbf{A}) = \sum_{i=1}^{n}A_{ii}\)，故梯度\(\frac{\partial \mathrm{tr}(\mathbf{A})}{\partial \mathbf{A}}\)的\((i,j)\)元素为：
+</p>
+\begin{equation}
+\label{eq:37}
+\bigg[\frac{\partial \mathrm{tr}(\mathbf{A})}{\partial \mathbf{A}} \bigg]_{ij} = \frac{\partial}{\partial A_{ij}}\sum_{k=1}^{n}A_{kk} =
+\begin{cases}
+1 & j=i \\
+0 & j\neq i
+\end{cases}
+\end{equation}
+<p>
+所以有\(\frac{\partial \mathrm{tr}(\mathbf{A})}{\partial \mathbf{A}} = \mathbf{I}\)
+</p>
+
+</div>
+
+<div class="tikzinstance">
+<p>
+
+</p>
+
+<p>
+考察目标函数\(f(\mathbf{A}) = \mathrm{tr}(\mathbf{A}\mathbf{B})\)，其中\(\mathbf{A}\)和\(\mathbf{B}\)分别为\(m\times n\)和\(n\times m\)实矩阵。首先，矩阵乘积的元素为\([\mathbf{A}\mathbf{B}]_{ij} = \sum_{l=1}^{n}A_{il}B_{lj}\)，故矩阵乘积的迹\(\mathrm{tr}(\mathbf{A}\mathbf{B}) = \sum_{p=1}^{m}\sum_{l=1}^{n}A_{pl}B_{lp}\)，于是，梯度\(\frac{\partial \mathrm{tr}(\mathbf{A}\mathbf{B})}{\partial \mathbf{A}}\)是一个\(m\times n\)矩阵，其元素为：
+</p>
+\begin{equation}
+\label{eq:38}
+\bigg[ \frac{\partial \mathrm{tr}(\mathbf{A}\mathbf{B})}{\partial \mathbf{A}} \bigg]_{ij} = \frac{\partial }{\partial A_{ij}} \bigg(\sum_{p=1}^{m}\sum_{l=1}^{n}A_{pl}B_{lp} \bigg) = B_{ji}
+\end{equation}
+<p>
+所以有:
+</p>
+\begin{equation}
+\label{eq:39}
+\frac{\partial \mathrm{tr}(\mathbf{A}\mathrm{B})}{\partial \mathbf{A}} = \nabla_{\mathbf{A}} \mathrm{tr}(\mathbf{A}\mathrm{B}) = \mathbf{B}^{T}
+\end{equation}
+<p>
+由于\(\mathrm{tr}(\mathbf{B}\mathbf{A}) = \mathrm{tr}(\mathbf{A}\mathbf{B}) \)所以：
+</p>
+\begin{equation}
+\label{eq:40}
+\frac{ \partial \mathrm{tr}(\mathbf{A}\mathrm{B}) }{\partial \mathbf{A}} = \frac{\partial \mathrm{tr}(\mathbf{B}\mathbf{A})}{\partial \mathbf{A}} = \mathbf{B}^{T}
+\end{equation}
+<p>
+同理，由于\(\mathrm{tr}(\mathbf{x}\mathbf{y}^{T}) = \mathrm{tr}(\mathbf{y}\mathbf{x}^{T}) = \mathbf{x}^{T}\mathbf{y} \)，所以有：
+</p>
+\begin{equation}
+\label{eq:41}
+\frac{\partial \mathrm{tr}(\mathbf{x}\mathbf{y}^{T})}{\partial  \mathbf{x}} = \frac{\partial \mathrm{tr}(\mathbf{y}\mathbf{x}^{T})}{\partial  \mathbf{x}} = \mathbf{y}
+\end{equation}
+
+</div>
 </div>
 </div>
 
 <div id="outline-container-orgfc1d25b" class="outline-2">
-<h2 id="orgfc1d25b"><span class="section-number-2">6</span> Hessian矩阵</h2>
+<h2 id="orgfc1d25b"><span class="section-number-2">5</span> Hessian矩阵</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+实值函数\(f(\mathbf{x})\)相对于\(m\times 1\)实向量\(\mathbf{x}\)的二阶偏导是一个由\(m^{2}\)个二阶偏导组成的矩阵，称为Hessian矩阵，定义为：
+</p>
+\begin{equation}
+\label{eq:42}
+\frac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x} \partial \mathbf{x}^{T}} = \frac{\partial}{\partial \mathbf{x}^{T}} \bigg[\frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} \bigg]
+\end{equation}
+<p>
+或者简写为梯度的梯度：
+</p>
+\begin{equation}
+\label{eq:43}
+\nabla_{\mathbf{x}}^{2}f(\mathbf{x}) = \nabla_{\mathbf{x}} (\nabla_{\mathbf{x}} f(\mathbf{x}))
+\end{equation}
+<p>
+根据定义,Hessian矩阵的第\(j\)列是梯度\(\frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} = \nabla_{\mathbf{x}} f(\mathbf{x})\)第\(j\)个分量的梯度，即：
+</p>
+\begin{equation}
+\label{eq:44}
+\bigg[ \frac{\partial^{2}f(\mathbf{x}) }{\partial \mathbf{x} \partial \mathbf{x}^{T}} \bigg]_{i,j} = \frac{\partial^{2}f(\mathbf{x})}{\partial x_{i} \partial x_{j}}
+\end{equation}
+<p>
+或者可以写作：
+</p>
+\begin{equation}
+\label{eq:45}
+\frac{\partial^{2} f(\mathbf{x})}{\partial \mathbf{x} \partial \mathbf{x}^{T}} =
+\begin{bmatrix}
+\frac{\partial^{2}f}{\partial x_{1}\partial x_{1}} & \frac{\partial^{2}f}{\partial x_{1}\partial x_{2}} & \ldots & \frac{\partial^{2}f}{\partial x_{1}\partial x_{n}} \\
+\frac{\partial^{2}f}{\partial x_{2}\partial x_{1}} & \frac{\partial^{2}f}{\partial x_{2}\partial x_{2}} & \ldots & \frac{\partial^{2}f}{\partial x_{2}\partial x_{n}} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial^{2}f}{\partial x_{n}\partial x_{1}} & \frac{\partial^{2}f}{\partial x_{n}\partial x_{2}} & \ldots & \frac{\partial^{2}f}{\partial x_{n}\partial x_{n}} \\
+\end{bmatrix}
+
+\end{equation}
+<p>
+因此，Hessian矩阵可以通过两个步骤计算得出：
+</p>
+<ol class="org-ol">
+<li>求实值函数\(f(\mathbf{x})\)关于向量变元\(\mathbf{x}\)的偏导数，得到实值函数的梯度\(\frac{\partial f(\mathbf{x})}{\partial \mathbf{x}}\)</li>
+<li>再求梯度\(\frac{\partial f(\mathbf{x})}{\partial \mathbf{x}}\)相对于\(1\times n\)行向量\(\mathbf{x}^{T}\)的偏导数，得到梯度的梯度即Hessian矩阵</li>
+</ol>
+
+<p>
+根据以上步骤，得到Hessian矩阵的下列公式。
+</p>
+<div class="tikzinstance">
+<p>
+对于\(n\times 1\)的常数向量\(\mathbf{a}^{T}\)，有：
+</p>
+\begin{equation}
+\label{eq:47}
+\frac{\partial^{2} \mathbf{a}^{T}\mathbf{x}}{\partial \mathbf{x}\partial \mathbf{x}^{T}} = \mathbf{O}_{n\times n}
+\end{equation}
+
+</div>
+<div class="tikzinstance">
+<p>
+若\(\mathbf{A}\)是\(n\times n\)矩阵，则：
+</p>
+\begin{equation}
+\label{eq:48}
+\frac{\partial^{2} \mathbf{x}^{T}\mathbf{A}\mathbf{x}}{\partial \mathbf{x}\partial \mathbf{x}^{T}} = \mathbf{A} + \mathbf{A}^{T}
+\end{equation}
+
+</div>
+
+<div class="tikzinstance">
+<p>
+令\(\mathbf{x}\)为\(n\times 1\)向量，\(\mathbf{a}\)为\(m\times 1\)常数向量，\(\mathbf{A}\)和\(\mathbf{B}\)分别为\(m\times n\)和\(m\times m\)常数矩阵，且\(\mathbf{B}\)为对称矩阵，则：
+</p>
+\begin{equation}
+\label{eq:49}
+\frac{\partial^{2}(\mathbf{a} - \mathbf{A}\mathbf{x})^{T}\mathbf{B} (\mathbf{a} - \mathbf{A}\mathbf{x}) }{\partial \mathbf{x} \partial \mathbf{x}^{T}} = 2\mathbf{A}^{T}\mathbf{B}\mathbf{A}
+\end{equation}
+
+</div>
+</div>
+</div>
+<div id="outline-container-org9f8be62" class="outline-2">
+<h2 id="org9f8be62"><span class="section-number-2">6</span> 尾声</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 
+</p>
+
+<p>
+矩阵的语言非常的丰富，如果再加上随机矩阵，则又会有更多的结论。这些仅在一篇博文中恐怕难以详述。本文只大概的给出一些经常用到的结论。在实际应用中，还要多多查阅相关书籍。
 </p>
 </div>
 </div>
