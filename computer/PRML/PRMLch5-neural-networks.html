@@ -519,8 +519,37 @@ E(\mathbf{w}) = \sum_{n=1}^{N} E_{n}(\mathbf{w})
 </p>
 
 <p>
-本节的任务是找到一个评估误差函数\(E(\mathbf{w})\)梯度的高效算法。这个算法叫做错误后向传递算法。
+本节的任务是找到一个评估误差函数\(E(\mathbf{w})\)梯度的高效算法。这个算法叫做错误后向传递算法。接下来我们推导后向传递算法。这个推导过程适用于任何前向网络，任何非线性可微的激活函数和大多数误差函数。
 </p>
+
+<p>
+许多误差函数都可以表示称一些项的求和：
+</p>
+\begin{equation}
+\label{eq:33}
+E(\mathbf{w}) = \sum_{n=1}^{N}E_{n}(\mathbf{w})
+\end{equation}
+<p>
+这里我们考虑评估误差函数中的一项\(\nabla E_{n}(\mathbf{w})\)。考虑线性模型：
+</p>
+\begin{equation}
+\label{eq:34}
+y_{k} = \sum_{i} w_{ki}x_{i}
+\end{equation}
+<p>
+其中\(y_{k}\)是输入变量\(x_{i}\)的线性组合。对于误差函数，我们定义为：
+</p>
+\begin{equation}
+\label{eq:35}
+E_{n} = \frac{1}{2}\sum_{k}(y_{nk} - t_{nk})^{2}
+\end{equation}
+<p>
+其中\(y_{nk} = y_{k}(\mathbf{x}_{n},\mathbf{w})\).这个误差函数相对于\(w_{ji}\)的梯度是：
+</p>
+\begin{equation}
+\label{eq:36}
+\frac{\partial E_{n}}{\partial w_{ji}} = (y_{nj} - t_{nj})x_{ni}
+\end{equation}
 </div>
 </div>
 </div>
