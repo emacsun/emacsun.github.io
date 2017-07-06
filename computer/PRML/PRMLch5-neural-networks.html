@@ -550,6 +550,76 @@ E_{n} = \frac{1}{2}\sum_{k}(y_{nk} - t_{nk})^{2}
 \label{eq:36}
 \frac{\partial E_{n}}{\partial w_{ji}} = (y_{nj} - t_{nj})x_{ni}
 \end{equation}
+
+<p>
+在一个通用的前向网络中，每一个单元计算的更新公式为：
+</p>
+\begin{equation}
+\label{eq:37}
+a_{j} = \sum_{i}w_{ji}z_{i}
+\end{equation}
+<p>
+其中\(z_{i}\)是输入或者是激活单元。式 (\ref{eq:37})是一个通用的式子。式 (\ref{eq:37})通过一个非线性的更新函数\(h(\cdot)\)输出：
+</p>
+\begin{equation}
+\label{eq:38}
+z_{j} = h(a_{j})
+\end{equation}
+<p>
+式 (\ref{eq:38})(\ref{eq:37})的过程叫做前向传递过程，在这个过程中信息在网络中向前传递。
+</p>
+
+<p>
+现在我们考虑\(E_{n}\)相对于\(w_{ji}\)的导数:
+</p>
+\begin{equation}
+\label{eq:39}
+\frac{\partial E_{n}}{\partial w_{ji}} = \frac{\partial E_{n}}{\partial a_{j}} \frac{\partial a_{j}}{\partial w_{ji}}
+\end{equation}
+<p>
+引入记号：
+</p>
+\begin{equation}
+\label{eq:40}
+\delta_{j} = \frac{\partial E_{n}}{\partial a_{j}}
+\end{equation}
+<p>
+使用~(\ref{eq:37}),我们得到：
+</p>
+\begin{equation}
+\label{eq:41}
+\frac{\partial a_{j}}{\partial w_{ji}} = z_{j}
+\end{equation}
+<p>
+结合 (\ref{eq:40})(\ref{eq:41})(\ref{eq:39})，有：
+</p>
+\begin{equation}
+\label{eq:42}
+\frac{\partial E_{n}}{\partial w_{ji}} = \delta_{j} z_{i}
+\end{equation}
+<p>
+在前面我们知道，对于输出单元而言：
+</p>
+\begin{equation}
+\label{eq:43}
+\delta_{k} = y_{k} -t_{k}
+\end{equation}
+<p>
+为了求得隐藏单元的\(\delta\)，我们实用链式法则：
+</p>
+\begin{equation}
+\label{eq:44}
+\delta_{j} = \frac{\partial E_{n}}{\partial a_{j}} = \sum_{k} \frac{\partial E_{n}}{\partial a_{k}}\frac{\partial a_{k}}{\partial a_{j}}
+\end{equation}
+<p>
+式 (\ref{eq:44})可以通过图<a href="#org582fead">3</a>来表示。
+</p>
+
+<div id="org582fead" class="figure">
+<p><img src="../../img/computer_prml/20170706eq44.png" alt="20170706eq44.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 3:</span> 式 (\ref{eq:44})图示</p>
+</div>
 </div>
 </div>
 </div>
