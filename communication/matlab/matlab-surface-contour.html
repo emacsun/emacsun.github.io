@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>使用matlab的surface和contour画图</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<meta name="keywords" content="matlab surface contour" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./maltab-surface-contour.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "7em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "Neo-Euler"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "Neo-Euler"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">使用matlab的surface和contour画图</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org781d2d9">1. 简介</a></li>
+<li><a href="#orgeb5b4ba">2. surface</a></li>
+<li><a href="#org56f5521">3. contour</a></li>
+<li><a href="#org2477683">4. gradient</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org781d2d9" class="outline-2">
+<h2 id="org781d2d9"><span class="section-number-2">1</span> 简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+matlab提供了两个酷炫的函数<a href="https://www.mathworks.com/help/matlab/ref/surface.html?searchHighlight=surface&amp;s_tid=doc_srchtitle">surface</a> 和<a href="https://www.mathworks.com/help/matlab/ref/contour.html?searchHighlight=contour&amp;s_tid=doc_srchtitle">contour</a> 用来画多维函数的图形。通过这两个函数我们可以对多维函数进行更直观的观察。
+</p>
+
+<p>
+本文以函数：
+</p>
+\begin{equation}
+\label{eq:1}
+z = x\exp(-x^{2} + y^{2})
+\end{equation}
+<p>
+为例，介绍 surface和contour的实用方法。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgeb5b4ba" class="outline-2">
+<h2 id="orgeb5b4ba"><span class="section-number-2">2</span> surface</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab"><span class="linenr">1: </span>[X,Y] = meshgrid(<span style="color: #b58900;">-</span>2<span style="color: #b58900;">:</span>0.2<span style="color: #b58900;">:</span>2,<span style="color: #b58900;">-</span>2<span style="color: #b58900;">:</span>0.2<span style="color: #b58900;">:</span>2);
+<span class="linenr">2: </span>Z = X<span style="color: #b58900;">.*</span>exp(<span style="color: #b58900;">-</span>X<span style="color: #b58900;">.^</span>2 <span style="color: #b58900;">-</span> Y<span style="color: #b58900;">.^</span>2);
+<span class="linenr">3: </span><span style="color: #b58900;">figure</span>
+<span class="linenr">4: </span><span style="color: #b58900;">surface</span>(X,Y,Z)
+<span class="linenr">5: </span>view(3)
+</pre>
+</div>
+
+<p>
+结果如图：
+</p>
+
+<div id="orgc602153" class="figure">
+<p><img src="../../img/communication_matlab/20170708surface.png" alt="20170708surface.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 1:</span> surface示例</p>
+</div>
+
+<p>
+注意在画图的时候，最后一句 <code>view(3)</code> 是必须的。不然matlab会默认使用 <code>view(2)</code> ,看到的会是二维的平面截图。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org56f5521" class="outline-2">
+<h2 id="org56f5521"><span class="section-number-2">3</span> contour</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+contour 的功能是画一个多维函数的等高线。
+</p>
+
+<p>
+看代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab"><span class="linenr">1: </span>x = <span style="color: #b58900;">-</span>2<span style="color: #b58900;">:</span>0.2<span style="color: #b58900;">:</span>2;
+<span class="linenr">2: </span>y = <span style="color: #b58900;">-</span>2<span style="color: #b58900;">:</span>0.2<span style="color: #b58900;">:</span>3;
+<span class="linenr">3: </span>[X,Y] = meshgrid(x,y);
+<span class="linenr">4: </span>Z = X<span style="color: #b58900;">.*</span>exp(<span style="color: #b58900;">-</span>X<span style="color: #b58900;">.^</span>2<span style="color: #b58900;">-</span>Y<span style="color: #b58900;">.^</span>2);
+<span class="linenr">5: </span>
+<span class="linenr">6: </span><span style="color: #b58900;">figure</span>
+<span class="linenr">7: </span>contour(X,Y,Z,<span style="color: #2aa198;">'ShowText'</span>,<span style="color: #2aa198;">'on'</span>)
+</pre>
+</div>
+
+<p>
+结果如图：
+</p>
+
+<div id="org2080e04" class="figure">
+<p><img src="../../img/communication_matlab/20170708contour.png" alt="20170708contour.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 2:</span> contour示例</p>
+</div>
+
+<p>
+matlab的帮助手册中有关于contour的更详细的说明，包括一些画图的技巧，等高线的间隔，高亮某条等高线等等。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2477683" class="outline-2">
+<h2 id="org2477683"><span class="section-number-2">4</span> gradient</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+在contour的基础上，我们看看\(xe^{-x^{2} - y^{2}}\)的梯度示意图。
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab"><span class="linenr">1: </span>x = <span style="color: #b58900;">-</span>2<span style="color: #b58900;">:</span>0.2<span style="color: #b58900;">:</span>2;
+<span class="linenr">2: </span>y = x';
+<span class="linenr">3: </span>z = x <span style="color: #b58900;">.*</span> exp(<span style="color: #b58900;">-</span>x<span style="color: #b58900;">.^</span>2 <span style="color: #b58900;">-</span> y<span style="color: #b58900;">.^</span>2);
+<span class="linenr">4: </span>[px,py] = gradient(z);
+<span class="linenr">5: </span><span style="color: #b58900;">figure</span>
+<span class="linenr">6: </span>contour(x,y,z)
+<span class="linenr">7: </span>hold on
+<span class="linenr">8: </span>quiver(x,y,px,py)
+<span class="linenr">9: </span>hold off
+</pre>
+</div>
+
+<p>
+结果如下：
+</p>
+
+<div id="org8fea6ea" class="figure">
+<p><img src="../../img/communication_matlab/20170708gradient.png" alt="20170708gradient.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 3:</span> \(xe^{-x^{2} - y^{2}}\)的梯度示意图</p>
+</div>
+
+<p>
+图<a href="#org8fea6ea">3</a>中的箭头所指是图<a href="#orgc602153">1</a>中从蓝色到橙色，即箭头部分永远指向更高的位置。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
