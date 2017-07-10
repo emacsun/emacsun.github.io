@@ -4,11 +4,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>学习 Python Doc 第 11 天: 接下来做什么</title>
+<title>交换 ubuntu 的 ctrl 和 caps</title>
 <meta name="generator" content="Org mode" />
-<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<meta name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
 <a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
-<a id="pdf"  href="./learning-python-day11.pdf"><img src="../../img/assets/pdf.png"></a>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -58,13 +58,36 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">学习 Python Doc 第 11 天: 接下来做什么</h1>
-<p>
-接下来可能需要花费更多的时间在一些第三方库上，比如 numpy,scipy,scikit-learn.
-</p>
+<h1 class="title">交换 ubuntu 的 ctrl 和 caps</h1>
+<pre class="example">
+sudo vi /etc/default/keyboard
+</pre>
+
 
 <p>
-然后找个应用场景，比如人工智能，比如数值计算，比如图像处理。</p>
+修改下面这一行：（改变 capslock 为 ctrl）
+</p>
+
+<pre class="example">
+XKBOPTIONS="ctrl:nocaps"
+</pre>
+
+<p>
+或者可以交换 capslock 和 ctrl
+</p>
+
+<pre class="example">
+XKBOPTIONS="ctrl:swapcaps"
+</pre>
+
+
+<p>
+最后：
+</p>
+
+<pre class="example">
+sudo dpkg-reconfigure keyboard-configuration
+</pre>
 </div>
 <div id="postamble" class="status">
 <div id="disqus_thread"></div>

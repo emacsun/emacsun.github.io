@@ -86,27 +86,28 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orga0389ac">1. 简介</a></li>
-<li><a href="#org4e541db">2. 前向网络函数</a></li>
-<li><a href="#org50b4151">3. 训练网络</a>
+<li><a href="#org29e83bf">1. 简介</a></li>
+<li><a href="#org954f7cf">2. 前向网络函数</a></li>
+<li><a href="#org1a81b41">3. 训练网络</a>
 <ul>
-<li><a href="#orgf010010">3.1. 回归问题</a></li>
-<li><a href="#orgb9bf2ec">3.2. 二类分类问题</a></li>
-<li><a href="#org5e3f2c2">3.3. 多个二类分类问题</a></li>
-<li><a href="#orgfcf6f14">3.4. 多类分类问题</a></li>
-<li><a href="#orga4c295f">3.5. 激活函数选择</a></li>
-<li><a href="#org303a9e6">3.6. 寻找\(\mathbf{w}\)</a></li>
-<li><a href="#org9abe40c">3.7. 计算复杂度</a></li>
-<li><a href="#org0409d9e">3.8. 梯度下降法</a></li>
+<li><a href="#orgbd54b79">3.1. 回归问题</a></li>
+<li><a href="#org01a5618">3.2. 二类分类问题</a></li>
+<li><a href="#org5c19450">3.3. 多个二类分类问题</a></li>
+<li><a href="#orgbfcc01b">3.4. 多类分类问题</a></li>
+<li><a href="#org26e7056">3.5. 激活函数选择</a></li>
+<li><a href="#orge225f23">3.6. 寻找\(\mathbf{w}\)</a></li>
+<li><a href="#org9e074b8">3.7. 计算复杂度</a></li>
+<li><a href="#orga428ded">3.8. 梯度下降法</a></li>
 </ul>
 </li>
-<li><a href="#org415285e">4. 错误后向传递算法</a></li>
+<li><a href="#org628ceb3">4. 错误后向传递算法</a></li>
+<li><a href="#orgd1a223f">5. 一个简单的例子</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga0389ac" class="outline-2">
-<h2 id="orga0389ac"><span class="section-number-2">1</span> 简介</h2>
+<div id="outline-container-org29e83bf" class="outline-2">
+<h2 id="org29e83bf"><span class="section-number-2">1</span> 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -117,20 +118,20 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-支持向量机（Support vector machines,SVM）通过定义以数据为中心的基函数来解决这个问题，在训练过程中选择这些基函数的子集达到优化目的。SVM的一个优点是目标函数是凸的，因此可以按照凸优化的一套理论快速的获取最优解。相关向量机(Relevance Vector Machine, RVM)和SVM一样也是从一套固定的基函数中搜取一个子集。不同之处在于，RVM可以生成基于概率的输出。但是，这样做会导致训练过程中，RVM需要面对非凸目标函数的优化问题。
+支持向量机（Support vector machines,SVM）通过定义以数据为中心的基函数来解决这个问题，在训练过程中选择这些基函数的子集达到优化目的。SVM 的一个优点是目标函数是凸的，因此可以按照凸优化的一套理论快速的获取最优解。相关向量机(Relevance Vector Machine, RVM)和 SVM 一样也是从一套固定的基函数中搜取一个子集。不同之处在于，RVM 可以生成基于概率的输出。但是，这样做会导致训练过程中，RVM 需要面对非凸目标函数的优化问题。
 </p>
 
 <p>
-不同于SVM或者RVM在优化过程中会改变基函数的个数，另一个办法是固定基函数的个数，在训练过程中优化这些基函数的系数，即：使这些基函数的系数自适应于训练数据。截止目前，模式识别问题中，最成功的固定基函数个数的模型是前向神经网络（feed-forward neural networks），也叫作多层感知机（multilayer perceptron）。在许多应用场景中多层神经网络都可以产生非常紧凑的模型，并且训练速度也很快。当然，这是需要付出代价的：在神经网络中，我们需要面对的很多问题不再是凸优化问题。这意味着：这些自适应基函数系数往往有很多局部最优解，我们要从这些局部最优解中找到那个全局最优解。
+不同于 SVM 或者 RVM 在优化过程中会改变基函数的个数，另一个办法是固定基函数的个数，在训练过程中优化这些基函数的系数，即：使这些基函数的系数自适应于训练数据。截止目前，模式识别问题中，最成功的固定基函数个数的模型是前向神经网络（feed-forward neural networks），也叫作多层感知机（multilayer perceptron）。在许多应用场景中多层神经网络都可以产生非常紧凑的模型，并且训练速度也很快。当然，这是需要付出代价的：在神经网络中，我们需要面对的很多问题不再是凸优化问题。这意味着：这些自适应基函数系数往往有很多局部最优解，我们要从这些局部最优解中找到那个全局最优解。
 </p>
 
 <p>
-本文首先考虑神经网络的数学模型及其对应的网络结构。然后，讨论非线性优化问题的最优解。对非线性问题的优化要求评估对数似然函数相对于网络系数的导数，这可不是一个小问题。对于较大规模的神经网络，网络系数构成的矩阵规模往往非常大（这样的矩阵往往是Jacobian矩阵或者Hessian矩阵）。所幸，我们有错误后向传递算法（error backpropagation）。这一算法可以高效的完成对导数矩阵的评估。最后我们考虑神经网络的多种正则化方法，并讨论这些方法之间的联系。
+本文首先考虑神经网络的数学模型及其对应的网络结构。然后，讨论非线性优化问题的最优解。对非线性问题的优化要求评估对数似然函数相对于网络系数的导数，这可不是一个小问题。对于较大规模的神经网络，网络系数构成的矩阵规模往往非常大（这样的矩阵往往是 Jacobian 矩阵或者 Hessian 矩阵）。所幸，我们有错误后向传递算法（error backpropagation）。这一算法可以高效的完成对导数矩阵的评估。最后我们考虑神经网络的多种正则化方法，并讨论这些方法之间的联系。
 </p>
 </div>
 </div>
-<div id="outline-container-org4e541db" class="outline-2">
-<h2 id="org4e541db"><span class="section-number-2">2</span> 前向网络函数</h2>
+<div id="outline-container-org954f7cf" class="outline-2">
+<h2 id="org954f7cf"><span class="section-number-2">2</span> 前向网络函数</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -158,7 +159,7 @@ a_{j} = \sum_{i=1}^{D}w_{ji}^{1}x_{i} + w_{j0}^{1}
 z_{j} = h(a_{j})
 \end{equation}
 <p>
-这些量对应式 (\ref{eq:1})中的基函数输出。在神经网络中我们称\(z_{j}\)为隐单元。非线性函数\(h(\cdot)\)通常是具有\(S\)形状的函数比如logistic函数或者tanh函数。这些函数再一次的通过线性组合生成输出：
+这些量对应式 (\ref{eq:1})中的基函数输出。在神经网络中我们称\(z_{j}\)为隐单元。非线性函数\(h(\cdot)\)通常是具有\(S\)形状的函数比如 logistic 函数或者 tanh 函数。这些函数再一次的通过线性组合生成输出：
 </p>
 \begin{equation}
 \label{eq:4}
@@ -172,7 +173,7 @@ a_{k} = \sum_{j=1}^{M}w_{kj}^{2}z_{j} + w_{k0}^{2}
 y_{k} = a_{k}
 \end{equation}
 <p>
-对于二进制分类，输出激活函数是logistic函数：
+对于二进制分类，输出激活函数是 logistic 函数：
 </p>
 \begin{eqnarray}
 \label{eq:6}
@@ -180,25 +181,25 @@ y_{k}&=&\sigma(a_{k}) \\
 \sigma(a)  &=&\frac{1}{1+\exp(-a)}
 \end{eqnarray}
 <p>
-对于结果大于2的分类问题，使用softmax激活函数。综合式 (\ref{eq:2})和 (\ref{eq:4})我们得到整个网络函数的数学模型为：
+对于结果大于 2 的分类问题，使用 softmax 激活函数。综合式 (\ref{eq:2})和 (\ref{eq:4})我们得到整个网络函数的数学模型为：
 </p>
 \begin{equation}
 \label{eq:7}
 y_{k}(\mathbf{x},\mathbf{w}) = \sigma \bigg( \sum_{j=1}^{M}w_{kj}^{2} h\bigg(\sum_{i=1}^{D}w_{ji}^{1}x_{i} + w_{j0}^{1} \bigg) + w_{k0}^{2}\bigg)
 \end{equation}
 <p>
-从式 (\ref{eq:7})整体看来，这个网络就是从输入\(\mathbf{x}\)到输出\(\mathbf{y}\)的一个非线性函数，参数为\(\mathbf{w}\)。整个函数可以表示如图<a href="#org2ecadc6">1</a>所示。
+从式 (\ref{eq:7})整体看来，这个网络就是从输入\(\mathbf{x}\)到输出\(\mathbf{y}\)的一个非线性函数，参数为\(\mathbf{w}\)。整个函数可以表示如图<a href="#org83a851b">1</a>所示。
 </p>
 
 
-<div id="org2ecadc6" class="figure">
+<div id="org83a851b" class="figure">
 <p><img src="../../img/computer_prml/20170702neuralnetwork.png" alt="20170702neuralnetwork.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> 式~(\ref{eq:7})所示的网络模型</p>
 </div>
 
 <p>
-图<a href="#org2ecadc6">1</a> 和式 (\ref{eq:7})表达的是一个同一概念：前向神经网络。在这个网络中信息从做到右传播。式 (\ref{eq:7})还可以写成更简洁的形式：
+图<a href="#org83a851b">1</a> 和式 (\ref{eq:7})表达的是一个同一概念：前向神经网络。在这个网络中信息从做到右传播。式 (\ref{eq:7})还可以写成更简洁的形式：
 </p>
 \begin{equation}
 \label{eq:8}
@@ -211,23 +212,23 @@ y_{k}(\mathbf{x},\mathbf{w}) = \sigma \bigg( \sum_{j=0}^{M}w_{kj}^{2} h\bigg(\su
 </div>
 </div>
 
-<div id="outline-container-org50b4151" class="outline-2">
-<h2 id="org50b4151"><span class="section-number-2">3</span> 训练网络</h2>
+<div id="outline-container-org1a81b41" class="outline-2">
+<h2 id="org1a81b41"><span class="section-number-2">3</span> 训练网络</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
 </p>
 
 <p>
-所谓的训练网络过程就是通过各种方法求得图 <a href="#org2ecadc6">1</a> 所示的网络中最优权重系数的过程。所谓的最优是针对各种误差函数而言的，一种常用的函数是平方和误差函数，给定一个大小为\(N\)的输入序列\(\mathbf{x}_{n},n=1,\ldots ,N\)，还有其对应的目标矢量\(\mathbf{t}_{n}\),那么误差函数可以表示为：
+所谓的训练网络过程就是通过各种方法求得图 <a href="#org83a851b">1</a> 所示的网络中最优权重系数的过程。所谓的最优是针对各种误差函数而言的，一种常用的函数是平方和误差函数，给定一个大小为\(N\)的输入序列\(\mathbf{x}_{n},n=1,\ldots ,N\)，还有其对应的目标矢量\(\mathbf{t}_{n}\),那么误差函数可以表示为：
 </p>
 \begin{equation}
 \label{eq:9}
 E(\mathbf{w}) = \frac{1}{2}\sum_{n=1}^{N} \| \mathbf{y} ( \mathbf{x}_{n},\mathbf{w}) - \mathbf{t}_{n} \|^{2}
 \end{equation}
 </div>
-<div id="outline-container-orgf010010" class="outline-3">
-<h3 id="orgf010010"><span class="section-number-3">3.1</span> 回归问题</h3>
+<div id="outline-container-orgbd54b79" class="outline-3">
+<h3 id="orgbd54b79"><span class="section-number-3">3.1</span> 回归问题</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 也可以从概率的角度证明通过最大化似然函数等效于式 (\ref{eq:9})所示的误差函数，为了保证行文的流畅，我不准备岔开细讲。接下来我们针对式 (\ref{eq:9})做优化。首先考虑回归问题，像之前那样我们可以把输出的激活函数定为恒等函数：
@@ -249,11 +250,11 @@ y_{k} = a_{k}
 </div>
 </div>
 
-<div id="outline-container-orgb9bf2ec" class="outline-3">
-<h3 id="orgb9bf2ec"><span class="section-number-3">3.2</span> 二类分类问题</h3>
+<div id="outline-container-org01a5618" class="outline-3">
+<h3 id="org01a5618"><span class="section-number-3">3.2</span> 二类分类问题</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
-对于二类分类问题，我们有一个目标变量\(t\)，\(t=1\)对应第一类，\(t=0\)对应第二类。同样，像之前那样我们可以把输出的激活函数定为logistic函数：
+对于二类分类问题，我们有一个目标变量\(t\)，\(t=1\)对应第一类，\(t=0\)对应第二类。同样，像之前那样我们可以把输出的激活函数定为 logistic 函数：
 </p>
 \begin{equation}
 \label{eq:12}
@@ -281,11 +282,11 @@ E(\mathbf{w}) = -\sum_{n=1}^{N} \bigg( t_{n}\ln y_{n} + (1-t_{n}) \ln(1-y_{n}) \
 </div>
 </div>
 
-<div id="outline-container-org5e3f2c2" class="outline-3">
-<h3 id="org5e3f2c2"><span class="section-number-3">3.3</span> 多个二类分类问题</h3>
+<div id="outline-container-org5c19450" class="outline-3">
+<h3 id="org5c19450"><span class="section-number-3">3.3</span> 多个二类分类问题</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
-假设我们有\(K\)个二类分类问题，我们可以使用一个有\(K\)个输出的网络来模拟。这\(K\)各输出都使用logistic激活函数。每一个输出都是一个二类标签\(t_{k}\in \{0,1\},k=1,\ldots ,K\)。假设这\(K\)个输出是相互独立的，则目标输出的分布可以表示为：
+假设我们有\(K\)个二类分类问题，我们可以使用一个有\(K\)个输出的网络来模拟。这\(K\)各输出都使用 logistic 激活函数。每一个输出都是一个二类标签\(t_{k}\in \{0,1\},k=1,\ldots ,K\)。假设这\(K\)个输出是相互独立的，则目标输出的分布可以表示为：
 </p>
 \begin{equation}
 \label{eq:15}
@@ -303,8 +304,8 @@ E(\mathbf{w}) = -\sum_{n=1}^{N}\sum_{k=1}^{K} \bigg( t_{nk}\ln y_{nk} + (1-t_{nk
 </p>
 </div>
 </div>
-<div id="outline-container-orgfcf6f14" class="outline-3">
-<h3 id="orgfcf6f14"><span class="section-number-3">3.4</span> 多类分类问题</h3>
+<div id="outline-container-orgbfcc01b" class="outline-3">
+<h3 id="orgbfcc01b"><span class="section-number-3">3.4</span> 多类分类问题</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 对于有多个类分类问题（每一个输入可能会被标记为\(K\)个中的一个），二进制目标变量\(t_{k}\in \{0,1\}\)有\(\tfrac{1}{K}\)的概率标记正确。网络输出可以解释为：
@@ -321,7 +322,7 @@ y_{k}(\mathbf{x},\mathbf{w}) = p(t_{k} = 1 | \mathbf{x})
 E(\mathbf{w}) = -\sum_{n=1}^{N}\sum_{k=1}^{K}t_{kn}\ln y_{k}(\mathbf{x}_{k},\mathbf{w})
 \end{equation}
 <p>
-其对应的输出激活函数是softmax函数：
+其对应的输出激活函数是 softmax 函数：
 </p>
 \begin{equation}
 \label{eq:19}
@@ -332,8 +333,8 @@ y_{k}(\mathbf{x},\mathbf{w}) = \frac{\exp(a_{k}(\mathbf{x},\mathbf{w}))}{\sum_{j
 </p>
 </div>
 </div>
-<div id="outline-container-orga4c295f" class="outline-3">
-<h3 id="orga4c295f"><span class="section-number-3">3.5</span> 激活函数选择</h3>
+<div id="outline-container-org26e7056" class="outline-3">
+<h3 id="org26e7056"><span class="section-number-3">3.5</span> 激活函数选择</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 
@@ -344,8 +345,8 @@ y_{k}(\mathbf{x},\mathbf{w}) = \frac{\exp(a_{k}(\mathbf{x},\mathbf{w}))}{\sum_{j
 </p>
 <ol class="org-ol">
 <li>对于回归问题，激活函数选择恒等函数，误差函数选择平方和误差；</li>
-<li>对于二类分类问题，激活函数选择logistic函数，误差函数为熵函数；</li>
-<li>对于多类分类问题，激活函数选择softmax函数，误差函数为多类熵函数；</li>
+<li>对于二类分类问题，激活函数选择 logistic 函数，误差函数为熵函数；</li>
+<li>对于多类分类问题，激活函数选择 softmax 函数，误差函数为多类熵函数；</li>
 </ol>
 
 <p>
@@ -353,32 +354,32 @@ y_{k}(\mathbf{x},\mathbf{w}) = \frac{\exp(a_{k}(\mathbf{x},\mathbf{w}))}{\sum_{j
 </p>
 </div>
 </div>
-<div id="outline-container-org303a9e6" class="outline-3">
-<h3 id="org303a9e6"><span class="section-number-3">3.6</span> 寻找\(\mathbf{w}\)</h3>
+<div id="outline-container-orge225f23" class="outline-3">
+<h3 id="orge225f23"><span class="section-number-3">3.6</span> 寻找\(\mathbf{w}\)</h3>
 <div class="outline-text-3" id="text-3-6">
 <p>
 
 </p>
 
 <p>
-从几何直观上理解\(E(\mathbf{w})\)的最小化问题会更容易。假设\(E(\mathbf{w})\)如图<a href="#orgbc0bc6f">2</a>所示.
+从几何直观上理解\(E(\mathbf{w})\)的最小化问题会更容易。假设\(E(\mathbf{w})\)如图<a href="#orgb01c920">2</a>所示.
 </p>
 
-<div id="orgbc0bc6f" class="figure">
+<div id="orgb01c920" class="figure">
 <p><img src="../../img/computer_prml/20170702errorfunction.png" alt="20170702errorfunction.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> \(E(\mathbf{w})\)示意图</p>
 </div>
 
 <p>
-在图<a href="#orgbc0bc6f">2</a>中，如果我们在\(\mathbf{w}\)的空间上移动一小步从\(\mathbf{w}\)到\(\mathbf{w} + \delta \mathbf{w}\)，那么误差函数也会相应的发生变化\(\delta E \approx \delta \mathbf{w}^{T}\nabla E(\mathbf{w})\)，其中矢量\(\nabla E(\mathbf{w})\)指向错误增大速率最大的方向。因为\(E(\mathbf{w})\)是\(\mathbf{w}\)的平滑连续函数。误差函数的最小值出现在梯度为零的位置：
+在图<a href="#orgb01c920">2</a>中，如果我们在\(\mathbf{w}\)的空间上移动一小步从\(\mathbf{w}\)到\(\mathbf{w} + \delta \mathbf{w}\)，那么误差函数也会相应的发生变化\(\delta E \approx \delta \mathbf{w}^{T}\nabla E(\mathbf{w})\)，其中矢量\(\nabla E(\mathbf{w})\)指向错误增大速率最大的方向。因为\(E(\mathbf{w})\)是\(\mathbf{w}\)的平滑连续函数。误差函数的最小值出现在梯度为零的位置：
 </p>
 \begin{equation}
 \label{eq:20}
 \nabla E(\mathbf{w}) = 0
 \end{equation}
 <p>
-否则，我们可以把\(\mathbf{w}\)向\(-\nabla E(\mathbf{w})\)方向移动一小步减小误差，直到\(\nabla E(\mathbf{w}) = 0\)。我们的目的是为了找到\(\mathbf{w}\)使得\(E(\mathbf{w})\)取最小值。但是正如图<a href="#orgbc0bc6f">2</a> 所示，\(E(\mathbf{w})\)不是凸的，所以存在很多局部最小值。对于一个局部最小值，我们之前也分析过，有\(M!2^{M}\)个等效的解。
+否则，我们可以把\(\mathbf{w}\)向\(-\nabla E(\mathbf{w})\)方向移动一小步减小误差，直到\(\nabla E(\mathbf{w}) = 0\)。我们的目的是为了找到\(\mathbf{w}\)使得\(E(\mathbf{w})\)取最小值。但是正如图<a href="#orgb01c920">2</a> 所示，\(E(\mathbf{w})\)不是凸的，所以存在很多局部最小值。对于一个局部最小值，我们之前也分析过，有\(M!2^{M}\)个等效的解。
 </p>
 
 <p>
@@ -407,7 +408,7 @@ E(\mathbf{w}) \approx E(\hat(\mathbf{w})) + (\mathbf{w} - \hat{\mathbf{w}})^{T}\
 \mathbf{b} = \nabla E|_{\mathbf{w} = \hat{\mathbf{w}}}
 \end{equation}
 <p>
-\(\mathbf{H}\)是Hessian矩阵，其定义为：
+\(\mathbf{H}\)是 Hessian 矩阵，其定义为：
 </p>
 \begin{eqnarray}
 \label{eq:24}
@@ -431,7 +432,7 @@ E(\mathbf{w}) \approx E(\hat(\mathbf{w})) + (\mathbf{w} - \hat{\mathbf{w}})^{T}\
 E(\mathbf{w}) = E(\mathbf{w}^{*}) + \frac{1}{2} (\mathbf{w} - \mathbf{w}^{*})^{T} \mathbf{H} (\mathbf{w} - {\mathbf{w}^{*}})
 \end{equation}
 <p>
-其中\(\mathbf{H}\)是在\(\mathbf{w}^{*}\)处的Hessian矩阵。为了从几何直观上解释式 (\ref{eq:26})，我们对\(\mathbf{H}\)进行SVD分解，则有：
+其中\(\mathbf{H}\)是在\(\mathbf{w}^{*}\)处的 Hessian 矩阵。为了从几何直观上解释式 (\ref{eq:26})，我们对\(\mathbf{H}\)进行 SVD 分解，则有：
 </p>
 \begin{equation}
 \label{eq:27}
@@ -457,8 +458,8 @@ E(\mathbf{w}) = E(\mathbf{w}^{*}) + \frac{1}{2}\sum_{i}\lambda_{i}\alpha_{i}^{2}
 \end{equation}
 </div>
 </div>
-<div id="outline-container-org9abe40c" class="outline-3">
-<h3 id="org9abe40c"><span class="section-number-3">3.7</span> 计算复杂度</h3>
+<div id="outline-container-org9e074b8" class="outline-3">
+<h3 id="org9e074b8"><span class="section-number-3">3.7</span> 计算复杂度</h3>
 <div class="outline-text-3" id="text-3-7">
 <p>
 现在我们回头看看式 (\ref{eq:22})，误差函数通过\(\mathbf{b}\)和\(\mathbf{H}\)确定，这里一共有\(W(W+3)/2\)个独立的元素（因为\(\mathbf{H}\)是对称的）,\(W\)是\(\mathbf{w}\)的维度。因此式 (\ref{eq:22})最小值的确定依赖于\(\mathcal{O}(W^{2})\)个参数。如果我们不利用梯度信息我们必须优化\(\mathcal{O}(W^{2})\)个方程，每一个都要\(\mathcal{O}(W)\)个步骤。因此如果不利用梯度信息，计算出式~(\ref{eq:22})最小值的计算复杂度是\(\mathcal{O}(W^{3})\)。
@@ -469,8 +470,8 @@ E(\mathbf{w}) = E(\mathbf{w}^{*}) + \frac{1}{2}\sum_{i}\lambda_{i}\alpha_{i}^{2}
 </p>
 </div>
 </div>
-<div id="outline-container-org0409d9e" class="outline-3">
-<h3 id="org0409d9e"><span class="section-number-3">3.8</span> 梯度下降法</h3>
+<div id="outline-container-orga428ded" class="outline-3">
+<h3 id="orga428ded"><span class="section-number-3">3.8</span> 梯度下降法</h3>
 <div class="outline-text-3" id="text-3-8">
 <p>
 
@@ -511,8 +512,8 @@ E(\mathbf{w}) = \sum_{n=1}^{N} E_{n}(\mathbf{w})
 </div>
 </div>
 </div>
-<div id="outline-container-org415285e" class="outline-2">
-<h2 id="org415285e"><span class="section-number-2">4</span> 错误后向传递算法</h2>
+<div id="outline-container-org628ceb3" class="outline-2">
+<h2 id="org628ceb3"><span class="section-number-2">4</span> 错误后向传递算法</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -612,14 +613,87 @@ z_{j} = h(a_{j})
 \delta_{j} = \frac{\partial E_{n}}{\partial a_{j}} = \sum_{k} \frac{\partial E_{n}}{\partial a_{k}}\frac{\partial a_{k}}{\partial a_{j}}
 \end{equation}
 <p>
-式 (\ref{eq:44})可以通过图<a href="#org582fead">3</a>来表示。
+式 (\ref{eq:44})可以通过图<a href="#org5d7fb28">3</a>来表示。
 </p>
 
-<div id="org582fead" class="figure">
+<div id="org5d7fb28" class="figure">
 <p><img src="../../img/computer_prml/20170706eq44.png" alt="20170706eq44.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 3:</span> 式 (\ref{eq:44})图示</p>
 </div>
+
+<p>
+注意，节点单元\(k\)可能包含其他隐藏单元。
+</p>
+</div>
+</div>
+<div id="outline-container-orgd1a223f" class="outline-2">
+<h2 id="orgd1a223f"><span class="section-number-2">5</span> 一个简单的例子</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+接下来，我们给出一个简单的例子来展示后向错误传递算法。我们考虑和图 <a href="#org83a851b">1</a> 类似拓扑结构的神经网络。误差函数为平方和误差函数，输出单元采用线性激活函数，即：\(y_{k} = a_{k}\),  其中，隐藏节点的激活函数为：
+</p>
+\begin{equation}
+\label{eq:45}
+h(a) = \tanh(a)
+\end{equation}
+
+<p>
+其中，\(\tanh(a)\)定义为：
+</p>
+\begin{equation}
+\label{eq:46}
+\tanh(a) = \frac{e^{a} - e^{-a}}{e^{a} + e^{-a}}
+\end{equation}
+<p>
+对于\(\tanh(a)\)函数，一个重要的特性为：
+</p>
+\begin{equation}
+\label{eq:47}
+h^{'}(a) = 1- h(a)^{2}
+\end{equation}
+<p>
+我们考虑标准的误差函数：
+</p>
+\begin{equation}
+\label{eq:48}
+E_{n} = \frac{1}{2}\sum_{k=1}^{K}(y_{k} - t_{k})^{2}
+\end{equation}
+<p>
+其中，\(y_{k}\)是输出单元\(k\)的激活函数。对于每个训练集合的模式，我们执行前向传递算法：
+</p>
+\begin{eqnarray}
+\label{eq:49}
+a_{j}&=&\sum_{i=0}^{D}w_{ji}^{1}x_{i} \\
+z_{j}&=&\tanh(a_{j}) \\
+y_{k}&=&\sum_{j=0}^{M}w_{jk}^{2} z_{j}
+\end{eqnarray}
+<p>
+接下来，我们计算\(\delta\):
+</p>
+\begin{equation}
+\label{eq:50}
+\delta_{k} = y_{k} - t_{k}
+\end{equation}
+<p>
+然后，向后传递\(\delta\),对于隐藏节点使用：
+</p>
+\begin{equation}
+\label{eq:51}
+\delta_{j} = (1-z_{j}^{2}) \sum_{k=1}^{K}w_{jk}\delta_{k}
+\end{equation}
+<p>
+最后，误差函数相对于第一层和第二层权重的导数为：
+</p>
+\begin{eqnarray}
+\label{eq:52}
+\frac{\partial E_{n}}{\partial w_{ji}^{1}}&=&\delta_{j}x_{i} \\
+\frac{\partial E_{n}}{\partial w_{kj}^{2}}&=&\delta_{k}z_{j} \\
+\end{eqnarray}
 </div>
 </div>
 </div>
