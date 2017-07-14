@@ -64,6 +64,7 @@ for the JavaScript code in this tag.
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#org2faa01d">1. 分割字符串</a></li>
+<li><a href="#org1cab9b8">2. 一切都是对象</a></li>
 </ul>
 </div>
 </div>
@@ -88,6 +89,34 @@ line.rstrip<span style="color: #2aa198;">()</span>.split<span style="color: #2aa
 <pre class="example">
 ['aaa','bbb','cccc','dd']
 </pre>
+</div>
+</div>
+<div id="outline-container-org1cab9b8" class="outline-2">
+<h2 id="org1cab9b8"><span class="section-number-2">2</span> 一切都是对象</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+在 python 中，一切都是对象。这句话意味着 python 不是强类型语言。python 甚至不鼓励在写代码的时候进行类型检查。因为这会破坏代码的灵活性。
+</p>
+
+<p>
+在 python 中，代码处理的是对象而不是数据类型。这意味着，我们只需要处理好指向对象的所引即可。任何一个变量名都是指向对象的所引。
+</p>
+
+<p>
+比如：
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2;">a</span> = <span style="color: #2aa198;">[</span><span style="color: #6c71c4;">0</span>,<span style="color: #6c71c4;">1</span>,<span style="color: #6c71c4;">2</span><span style="color: #2aa198;">]</span>
+<span style="color: #268bd2;">b</span> = a
+</pre>
+</div>
+<p>
+这时，如果我们令 <code>b[0]=8</code> ,那么 <code>a</code> 就会变成 <code>[8,1,2]</code>, 这是因为 <code>a</code> 和 <code>b</code> 都指向同一个对象。这两个变量名就像两个指向同一块内存的指针一样，只不过没有像 C 语言那样有取地址和取数据的复杂操作。在 python 中传递的是引用，类似 C 中的指针。
+</p>
 </div>
 </div>
 </div>
