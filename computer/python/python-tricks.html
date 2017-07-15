@@ -65,6 +65,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#org2faa01d">1. 分割字符串</a></li>
 <li><a href="#org1cab9b8">2. 一切都是对象</a></li>
+<li><a href="#orgf72647e">3. 变量作用域</a></li>
 </ul>
 </div>
 </div>
@@ -116,6 +117,58 @@ line.rstrip<span style="color: #2aa198;">()</span>.split<span style="color: #2aa
 </div>
 <p>
 这时，如果我们令 <code>b[0]=8</code> ,那么 <code>a</code> 就会变成 <code>[8,1,2]</code>, 这是因为 <code>a</code> 和 <code>b</code> 都指向同一个对象。这两个变量名就像两个指向同一块内存的指针一样，只不过没有像 C 语言那样有取地址和取数据的复杂操作。在 python 中传递的是引用，类似 C 中的指针。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf72647e" class="outline-2">
+<h2 id="orgf72647e"><span class="section-number-2">3</span> 变量作用域</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+在 python 中，当你听到 global 时，你应该立即想到 module . 如果要在 module B 中使用 module A 的变量，需要使用 import 导入。
+</p>
+
+<p>
+在 def 中，所有的变量都是局部变量，其作用域仅限于当前函数。如果要在 def 中为一个全局变量赋值则需要在当前函数中使用 global 关键字把全局变量引入当前函数。当然，你也可以在 def 内使用 global 声明一个变量为 global. 这样就可以在 def 外作为 global 变量来发访问。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #268bd2;">X</span> = <span style="color: #6c71c4;">99</span>
+
+<span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">f1</span><span style="color: #2aa198;">()</span>:
+    <span style="color: #268bd2;">X</span>=<span style="color: #6c71c4;">88</span>
+    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">f2</span><span style="color: #2aa198;">()</span>:
+        <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>X<span style="color: #2aa198;">)</span>
+    f2<span style="color: #2aa198;">()</span>
+
+f1<span style="color: #2aa198;">()</span>
+</pre>
+</div>
+
+<p>
+注意，在上面的代码中， <code>f1()</code> 输出的结果是：88 . 为了理解这个结果，想象 f2 是 f1 内的一个 <code>local</code> 变量。 <code>f2</code> 只在 <code>f1</code> 内有效。在 <code>f2</code> 中，调用了变量 <code>X</code> ，这时，解释器会向上查找 <code>X</code> 的定义。在 <code>f1</code> 的定义中找到了 <code>X</code> 。
+</p>
+
+<p>
+在下面的代码中，我们会看到函数会及以变量的查找顺序。
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">f1</span><span style="color: #2aa198;">()</span>:
+    <span style="color: #268bd2;">X</span>=<span style="color: #6c71c4;">88</span>
+    <span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">f2</span><span style="color: #2aa198;">()</span>:
+        <span style="color: #859900; font-weight: bold;">print</span><span style="color: #2aa198;">(</span>X<span style="color: #2aa198;">)</span>
+    <span style="color: #859900; font-weight: bold;">return</span> f2
+
+<span style="color: #268bd2;">action</span> = f1<span style="color: #2aa198;">()</span>
+action<span style="color: #2aa198;">()</span>
+</pre>
+</div>
+<p>
+<code>f1</code> 返回的是一个函数 <code>f2</code> ，赋值给了 <code>action</code> 。调用 <code>action</code> 时， <code>action</code>  依然记得 <code>f1</code> 中的 <code>X</code> （尽管 <code>f1</code> 此时并未激活）。
 </p>
 </div>
 </div>
