@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs 联合 Hugo 管理博客</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs 联合 Hugo 管理博客</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf6a7cdb">1. 简介</a></li>
+<li><a href="#orgefc1ed4">2. 使用 Hugo</a></li>
+<li><a href="#org5dda16c">3. 使用 <code>easy-hugo</code></a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf6a7cdb" class="outline-2">
+<h2 id="orgf6a7cdb"><span class="section-number-2">1</span> 简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+Emacs 的强大自不必说。<a href="http://gohugo.io/">hugo</a> 是一个强大且轻量的静态博客发布工具。结合 Emacs 和 Hugo , <a href="https://github.com/masasam/emacs-easy-hugo">easy-hugo</a> 实现了 Emacs 作为 Hugo 的前端。本文介绍使用 Hugo 发布静态博客，并使用 Emacs 管理博客的流程。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgefc1ed4" class="outline-2">
+<h2 id="orgefc1ed4"><span class="section-number-2">2</span> 使用 Hugo</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+下载，安装过程免去，见官网的<a href="http://gohugo.io/getting-started/quick-start/">quick start</a> 。
+</p>
+
+<p>
+到 <code>~/zorg/hugo/</code> <b>生成一个静态站点</b> 使用命令：
+</p>
+<pre class="example">
+hugo new site bookshelf
+</pre>
+
+<p>
+这样，在 <code>hugo</code> 目录下就生成了一个目录 <code>bookshelf</code> ，里面目录的结构如下图：
+</p>
+
+<div id="orgaa5773b" class="figure">
+<p><img src="../../img/tools_emacs/20170722hugobookshelf.png" alt="20170722hugobookshelf.png" width="400" align="center" />
+</p>
+<p><span class="figure-number">图 1:</span> bookshelf 的结构图</p>
+</div>
+
+<p>
+好了，一个静态博客建成。让我们写一篇新的博客。
+</p>
+<pre class="example">
+hugo new post/godfather.md
+</pre>
+<p>
+在 bookshelf 下的 <code>content/post</code> 里有一篇博客生成，格式是 <code>markdown</code> 。写几句话吧。
+</p>
+
+<p>
+hugo 支持 <code>org-mode</code> <code>markdown</code> 还有其他格式。
+</p>
+
+<p>
+hugo 有一个内置的 server。通过这个 server 你可以在本地浏览器上预览博文。预览命令：
+</p>
+<pre class="example">
+hugo server --buildDrafts
+</pre>
+
+<p>
+你会看到输出：
+</p>
+<pre class="example">
+Started building sites ...
+Built site for language en:
+1 of 1 draft rendered
+0 future content
+0 expired content
+1 regular pages created
+8 other pages created
+0 non-page files copied
+0 paginator pages created
+0 tags created
+0 categories created
+total in 10 ms
+Watching for changes in /home/cliyh/zorg/hugo/bookshelf/{data,content,layouts,static}
+Serving pages from memory
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+</pre>
+
+<p>
+注意：
+</p>
+<pre class="example">
+1 of 1 draft rendered
+</pre>
+
+<p>
+这个 draft 就是刚刚的 <code>godfather.md</code> 。但是这个时候我们通过 <code>http://localhost:1313/</code> 不能预览博文，因为这个静态网站里有一个很重要的文件需要修改， <code>config.toml</code> .
+</p>
+
+<p>
+我使用主题 <code>mainroad</code> , <a href="https://github.com/Vimux/mainroad/tree/32ee86a83e61a61c9ec1c7e5b16461caec06a55d">在这里下载</a>。 这个主题里有一个现成的 <code>config.toml</code> 照着改一下。
+</p>
+
+<p>
+关于 Hugo 的使用，到此为止。接下来介绍使用 Emacs 的插件 <code>easy-hugo</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org5dda16c" class="outline-2">
+<h2 id="org5dda16c"><span class="section-number-2">3</span> 使用 <code>easy-hugo</code></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+<code>easy-hugo</code> 的配置：
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> easy-hugo-basedir <span style="color: #2aa198;">"~/zorg/hugo/bookshelf/"</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> easy-hugo-url <span style="color: #2aa198;">"https://yourblogdomain"</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> easy-hugo-sshdomain <span style="color: #2aa198;">"blogdomain"</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> easy-hugo-root <span style="color: #2aa198;">"/home/blog/"</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> easy-hugo-previewtime <span style="color: #2aa198;">"300"</span><span style="color: #2aa198;">)</span>
+<span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">setq</span> easy-hugo-default-ext <span style="color: #2aa198;">".org"</span><span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+<p>
+总体而言，在 ubuntu 使用 Emacs 要比在 windows 方便很多。免去诸多配置。接下来就是使用 <code>easy-hugo</code> . 需要注意，如果使用的是 <code>spacemacs</code> 要把， <code>easy-hugo-mode</code> 设置为默认 emacs 绑定的快捷键，而不是使用 <code>evil</code> 绑定的快捷键。
+</p>
+
+<p>
+另外，如果出现问题，还需要到命令行里使用 <code>hugo</code> ，那里有更多调试信息，告诉我们问题出现在哪里。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
