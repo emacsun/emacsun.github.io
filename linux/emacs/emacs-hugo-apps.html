@@ -64,7 +64,12 @@ for the JavaScript code in this tag.
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgf6a7cdb">1. 简介</a></li>
-<li><a href="#orgefc1ed4">2. 使用 Hugo</a></li>
+<li><a href="#orgefc1ed4">2. 使用 Hugo</a>
+<ul>
+<li><a href="#orge5f9678">2.1. 本地使用</a></li>
+<li><a href="#org6f73ae2">2.2. 发布到万维网</a></li>
+</ul>
+</li>
 <li><a href="#org5dda16c">3. 使用 <code>easy-hugo</code></a></li>
 </ul>
 </div>
@@ -92,6 +97,13 @@ Emacs 的强大自不必说。<a href="http://gohugo.io/">hugo</a> 是一个强�
 
 <p>
 下载，安装过程免去，见官网的<a href="http://gohugo.io/getting-started/quick-start/">quick start</a> 。
+</p>
+</div>
+<div id="outline-container-orge5f9678" class="outline-3">
+<h3 id="orge5f9678"><span class="section-number-3">2.1</span> 本地使用</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+
 </p>
 
 <p>
@@ -168,10 +180,94 @@ Press Ctrl+C to stop
 <p>
 我使用主题 <code>mainroad</code> , <a href="https://github.com/Vimux/mainroad/tree/32ee86a83e61a61c9ec1c7e5b16461caec06a55d">在这里下载</a>。 这个主题里有一个现成的 <code>config.toml</code> 照着改一下。
 </p>
+</div>
+</div>
+<div id="outline-container-org6f73ae2" class="outline-3">
+<h3 id="org6f73ae2"><span class="section-number-3">2.2</span> 发布到万维网</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+
+</p>
 
 <p>
-关于 Hugo 的使用，到此为止。接下来介绍使用 Emacs 的插件 <code>easy-hugo</code>
+写博客一是为了记录而是为了交流。发布到万维网上是交流的最好方式，全世界都是你的潜在读者。使用 hugo 发布到互联网的方式有很多，见<a href="http://gohugo.io/hosting-and-deployment/">这里</a>。我们重点讨论<a href="http://gohugo.io/hosting-and-deployment/hosting-on-github/">使用 github 放置博客</a>。
 </p>
+
+<p>
+即使使用 github，也有很多途径。我们使用 gh-pages 分支的方式。你可以配置 github 使用 master 分支或者 gh-pages 分支来存放博客。使用 gh-pages 方式有些复杂，但是这种方式有其独特优点：
+</p>
+<ol class="org-ol">
+<li>使用 gh-pages 可以使原文件和生成的静态博客在不同的分支上，进行独立的版本控制。</li>
+<li>使用 gh-pages 默认使用 Hugo 生成的 public 文件夹存放静态博客。</li>
+</ol>
+
+<p>
+我准备用 <code>https://emacsun.github.io/myblog</code> 来放置这个博客（或许你读这篇文章的时，这个站点已被删掉。这仅仅是一个测试博客，不影响你按照本文的步骤来建立你自己的博文站点）。你需要把这个地址放到 <code>config.toml</code> 里：
+</p>
+<pre class="example">
+baseurl = "https://emacsun.github.io/myblog"
+</pre>
+<p>
+然后在终端切换到 bookshelf 所在目录，执行：
+</p>
+<pre class="example">
+hugo
+</pre>
+<p>
+是的，只用执行 <code>hugo</code> 不带任何参数（当然，你也可以去 Hugo 的官网查查此时可以带哪些参数）。输出结果类似为：
+</p>
+
+<pre class="example">
+Started building sites ...
+Built site for language en:
+0 draft content
+0 future content
+0 expired content
+2 regular pages created
+10 other pages created
+0 non-page files copied
+3 paginator pages created
+1 tags created
+0 categories created
+total in 21 ms
+</pre>
+<p>
+可以看到我这里有两篇 regular pages created。这两篇博文是我刚刚创建的。另外，执行完 <code>hugo</code> 命令之后，你会在 bookshelf 目录下看到 public 目录，该目录存放了静态博客所需要的一切文件。
+</p>
+
+<p>
+为了分开管理原文件和静态博客文件，我们使用 gh-pages 分支来存放博客，使用 master 分支来存放原文件。我们需要达成的目标是在主目录里是 <code>master</code> 分支，在 <code>public</code> 目录里是 <code>gh-pages</code> 分支。
+</p>
+
+<p>
+这个过程需要执行一下命令，首先生成一个分支 <code>gh-pages</code>
+</p>
+<pre class="example">
+git checkout --orphan gh-pages
+</pre>
+
+<p>
+然后：
+</p>
+<pre class="example">
+git reset
+git commit --allow-empty -m "initial commit fro gh-pages"
+git checkout --force master
+git worktree add public gh-pages
+</pre>
+
+<p>
+如此我们进入主目录就是 <code>master</code> 分支，在这个分支中执行的 <code>add,commit,push</code> 都与 <code>master</code> 分支有关。 进入 <code>public</code> 子目录就是 <code>gh-pages</code> 分支，在这个分支中 <code>add,commit,push</code> 都与 <code>gh-pages</code> 分支有关。两个分支互不干扰。
+</p>
+
+<p>
+关于 Hugo 的使用，到此为止。
+</p>
+
+<p>
+接下来介绍使用 Emacs 的插件 <code>easy-hugo</code>
+</p>
+</div>
 </div>
 </div>
 <div id="outline-container-org5dda16c" class="outline-2">
@@ -199,7 +295,7 @@ Press Ctrl+C to stop
 </p>
 
 <p>
-另外，如果出现问题，还需要到命令行里使用 <code>hugo</code> ，那里有更多调试信息，告诉我们问题出现在哪里。
+另外，如果出现问题，还需要到命令行里使用 <code>hugo</code> 。 那里有更多调试信息，告诉我们问题出现在哪里。
 </p>
 </div>
 </div>
