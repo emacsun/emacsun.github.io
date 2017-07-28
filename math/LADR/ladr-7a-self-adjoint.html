@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>自伴算子和正规算子</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./ladr-6c-orthogonal-complements.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">自伴算子和正规算子</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf1745fe">1. 伴随</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf1745fe" class="outline-2">
+<h2 id="orgf1745fe"><span class="section-number-2">1</span> 伴随</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<div class="definition">
+<p>
+设 \(T\in \mathcal{L}(V,W)\), \(T\)的伴随是满足如下条件的函数\(T^{*}:W\to V,\forall v\in V , \forall w\in W, \langle Tv,w \rangle = \langle v,T^{*}w \rangle  \)
+</p>
+
+</div>
+
+<p>
+为了检验上述定义的意义，我们假设\(\mathcal{L}(V,W)\), 并取定\(w\in W\)，考虑\(V\)上将\(v\in V\)映射成\( \langle Tv,w \rangle  \)的线性泛函，这个线性泛函依赖于\(T\)和\(w\)。由里斯表示定理，存在\(V\)中唯一一个向量使得该线性泛函是通过与该向量做内积得到的。我们将这个唯一的向量记为\(T^{*}w\)，也就是说，\(T^{*}w\)是\(V\)中唯一一个满足下面条件的向量：对每个\(v\in V\)均有\( \langle Tv,w \rangle = \langle v,T^{*}w \rangle  \)
+</p>
+
+<div class="tikzinstance">
+<p>
+定义\(T:\mathbf{R}^{3}\to \mathbf{R}^{2}\)为\(T(x_{1},x_{2},x_{3}) = (x_{2}+3x_{3},2x_{1})\) 求\(T^{*}\)
+</p>
+
+<p>
+根据定义\(T^{*}\)是\(\mathbf{R}^{2}\)到\(\mathbf{R}^{3}\)的函数。要计算\(T^{*}\),取定一个点\((y_{1},y_{2})\in \mathbf{R}^{2}\),那么对于每个\((x_{1},x_{2},x_{3})\in \mathbf{R}^{3}\)有：
+</p>
+\begin{eqnarray}
+\label{eq:1}
+\langle (x_{1},x_{2},x_{3}),T^{*}(y_{1},y_{2}) \rangle &=& \langle T(x_{1},x_{2},x_{3}),(y_{1},y_{2}) \rangle \\
+&=& \langle (x_{2}+3x_{3},2x_{1},(y_{1},y_{2}) \rangle \\
+&=& x_{2}y_{1} + 3x_{3}y_{1} + 2x_{1}y_{2} \\
+&=& \langle (x_{1},x_{2},x_{3}) , (2y_{2},y_{1},3y_{1}) \rangle
+\end{eqnarray}
+<p>
+于是，\(T^{*}(y_{1},y_{2}) = (2y_{2},y_{1},3y_{1}) \)
+</p>
+
+</div>
+
+<div class="tikzinstance">
+<p>
+取定\(u\in V\)和\(x\in W\),定义\(T\in \mathcal{L}(V,W)\)如下：对每个\(v\in V\)有\(Tv = \langle v,u \rangle x \)，求\(T^{*}\)
+</p>
+
+<p>
+根据定义：
+</p>
+\begin{eqnarray}
+\label{eq:2}
+ \langle Tv,w \rangle  &=& \langle  \langle v,u \rangle x , w\rangle  \\
+&=& \langle v,u \rangle \langle x,w \rangle \\
+&=& \langle v,\langle w,x \rangle u  \rangle
+\end{eqnarray}
+
+<p>
+所以，\(T^{*}w = \langle w,x \rangle u \)
+</p>
+
+</div>
+<p>
+注意，在上面两个例子中\(T^{*}\)不只是函数而且还是线性映射。
+</p>
+<div class="tikztheorem">
+<p>
+若\(T\in \mathcal{L}(V,W)\)，则\(T^{*}\in \mathcal{L}(W,V)\)
+</p>
+
+</div>
+<div class="tikzproof">
+<p>
+设\(T\in \mathcal{L}(V,W)\)，取定\(w_{1},w_{2}\in W\)，若\(v\in V\)，则：
+</p>
+\begin{eqnarray}
+\label{eq:4}
+ \langle v,T^{*}(w_{1} + w_{2}) \rangle  &=& \langle Tv,w_{1}+w_{2} \rangle  \\
+&=& \langle Tv,w_{1} \rangle + \langle Tv,w_{2} \rangle \\
+&=& \langle v,T^{*}(w_{1}) \rangle  + \langle v,T^{*}W_{2} \rangle  \\
+&=& \langle v,T^{*}w_{1} + T^{*}w_{2} \rangle
+\end{eqnarray}
+<p>
+即，\(T^{*(w_{1} + w_{2})} = T^{*}w_{1} + T^{*}w_{2}\)
+</p>
+
+</div>
+<p>
+另一方面，若\(\lambda\in \mathbf{F},w\in W\)，则：
+</p>
+\begin{eqnarray}
+\label{eq:5}
+\langle v,T^{*}(\lambda w) \rangle  &=& \langle Tv,\lambda w \rangle   \\
+&=& \bar{\lambda} \langle Tv,w \rangle \\
+&=& \bar{\lambda} \langle v,T^{*}w \rangle \\
+&=& \langle v,\lambda T^{*}w \rangle
+\end{eqnarray}
+<p>
+即，\(T^{*}(\lambda w) = \lambda T^{*} w\).
+因此\(T^{*}\)是线性映射。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
