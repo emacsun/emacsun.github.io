@@ -88,6 +88,8 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgf1745fe">1. 伴随</a></li>
 <li><a href="#org1d62c01">2. 自伴算子</a></li>
+<li><a href="#orgb6b0276">3. 正规算子</a></li>
+<li><a href="#orgd97ddf8">4. 总结</a></li>
 </ul>
 </div>
 </div>
@@ -358,10 +360,18 @@ Te_{k} = \langle Te_{k},f_{1} \rangle f_{1} + \ldots + \langle T{e_{k}},f_{m} \r
 <p>
 设\(T\)是\(V\)上的自伴算子，\(\lambda\)是\(T\)的本征值，\(v\)是\(V\)中的非零向量使得\(Tv= \lambda v\)，则：
 </p>
-\begin{equation}
-\label{eq:12}
-\lambda \| v \|^{2} = \langle \lambda v,v \rangle = \langle Tv,v \rangle = \langle v,Tv \rangle = \langle v,\lambda v \rangle  = \bar{\lambda} \langle v,v \rangle = \bar{\lambda} \|v \|^{2}
-\end{equation}
+\begin{eqnarray}
+\label{eq:15}
+\lambda \lvert v \rvert^{2} &=& \langle \lambda v,v \rangle \\
+&=& \langle Tv,v \rangle \\
+&=& \langle v,Tv \rangle \\
+&=& \langle v,\lambda v \rangle  \\
+&=& \bar{\lambda} \langle v,v \rangle \\
+&=& \bar{\lambda} \lvert v \rvert^{2}
+\end{eqnarray}
+
+
+
 <p>
 于是，\(\lambda = \bar{\lambda}\)，即\(\lambda\)是实的。
 </p>
@@ -413,6 +423,92 @@ Te_{k} = \langle Te_{k},f_{1} \rangle f_{1} + \ldots + \langle T{e_{k}},f_{m} \r
 </p>
 
 </div>
+</div>
+</div>
+<div id="outline-container-orgb6b0276" class="outline-2">
+<h2 id="orgb6b0276"><span class="section-number-2">3</span> 正规算子</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<div class="definition">
+<p>
+内积空间上的算子称为正规的，如果它和它的伴随是交换的。也就是说，\(T\in \mathcal{L}(V)\)是正规的，如果\(T^{*}T=TT^{*}\)
+</p>
+
+</div>
+<p>
+注意一个算子如果是自伴的，那么\(T=T^{*}\)；如果是正规的，那么\(T^{*}T = TT^{*}\)。所以一个算子可以是正规的但不是自伴的。但是一个算子是自伴的肯定是正规的。
+</p>
+
+<div class="tikztheorem">
+<p>
+算子\(T\in \mathcal{L}(V)\)是正规的当且仅当对所有\(v\in V\)均有\(\lVert Tv \rVert = \lVert T^{*}v \rVert\)
+</p>
+
+</div>
+<div class="proof">
+<p>
+设\(T\in \mathcal{L}(V)\)：
+</p>
+\begin{eqnarray}
+\label{eq:16}
+TT^{*} - T^{*}T = 0&\Leftrightarrow& \langle (TT^{*} - T^{*}T )v,v \rangle =0 \\
+&\Leftrightarrow& \langle TT^{*}v,v \rangle = \langle T^{*}Tv,v \rangle \\
+&\Leftrightarrow& \langle T^{*}v,T^{*}v \rangle = \langle Tv,Tv \rangle
+\end{eqnarray}
+
+</div>
+<div class="tikztheorem">
+<p>
+设\(T\in \mathcal{L}(V)\)是正规的，且\(v\in V\)是\(T\)的相应于本征值\(\lambda\)的特征向量，则\(v\)也是\(T^{*}\)相应于\(\bar{\lambda}\)的本征向量
+</p>
+
+</div>
+<div class="proof">
+<p>
+因为\(T\)是正规的，所以\(T-\lambda I\)也是正规的。所以：
+</p>
+\begin{equation}
+\label{eq:17}
+0= \lVert (T-\lambda I)v \rVert = \lVert (T-\lambda I)^{*} v \rVert = \lVert (T^{*} - \bar{\lambda}I^{*})v \rVert
+\end{equation}
+
+</div>
+<div class="tikztheorem">
+<p>
+设\(T\in \mathcal{L}(V)\)是正规的，则\(T\)的相应于不同本征值的本征向量是正交的。
+</p>
+
+</div>
+<div class="proof">
+<p>
+设\(\alpha,\beta\)是\(T\)的不同本征值，\(u,v\)分别是相应的本征向量，于是\(Tu=\alpha u\)且\(Tv = \beta v\)。因此：
+</p>
+\begin{eqnarray}
+\label{eq:18}
+(\alpha - \beta) \langle u,v \rangle  &=& \langle au,v \rangle - \langle u,\bar{\beta}v \rangle  \\
+&=& \langle Tu,v \rangle - \langle u,T^{*}v \rangle \\
+&=& 0
+\end{eqnarray}
+<p>
+因为\(\alpha \neq \beta\)，上面的等式表明\( \langle u,v \rangle =0 \)。因此\(u\)和\(v\)是正交的。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgd97ddf8" class="outline-2">
+<h2 id="orgd97ddf8"><span class="section-number-2">4</span> 总结</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+自伴和正规都是针对内积空间上的算子而言，算子是自身到自身的线性映射。自伴算子对应的矩阵是实对称的。起对应的特征向量是实数。正规的算子，其伴随是可交换的，但是正规算子不一定是自伴的。
+</p>
 </div>
 </div>
 </div>
