@@ -86,18 +86,18 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org04d3de5">1. 简介</a></li>
-<li><a href="#org10eab15">2. 实值函数相对于实向量的梯度</a></li>
-<li><a href="#org4e8ba78">3. 实值函数的梯度矩阵</a></li>
-<li><a href="#orgef70d51">4. 迹函数的梯度矩阵</a></li>
-<li><a href="#orgfc1d25b">5. Hessian矩阵</a></li>
-<li><a href="#org9f8be62">6. 尾声</a></li>
+<li><a href="#orgf4c9ce4">1. 简介</a></li>
+<li><a href="#org59dc7ba">2. 实值函数相对于实向量的梯度</a></li>
+<li><a href="#org1ff793c">3. 实值函数的梯度矩阵</a></li>
+<li><a href="#orgdea85d3">4. 迹函数的梯度矩阵</a></li>
+<li><a href="#orgfcefbdd">5. Hessian 矩阵</a></li>
+<li><a href="#org31a3414">6. 尾声</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org04d3de5" class="outline-2">
-<h2 id="org04d3de5"><span class="section-number-2">1</span> 简介</h2>
+<div id="outline-container-orgf4c9ce4" class="outline-2">
+<h2 id="orgf4c9ce4"><span class="section-number-2">1</span> 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -109,8 +109,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org10eab15" class="outline-2">
-<h2 id="org10eab15"><span class="section-number-2">2</span> 实值函数相对于实向量的梯度</h2>
+<div id="outline-container-org59dc7ba" class="outline-2">
+<h2 id="org59dc7ba"><span class="section-number-2">2</span> 实值函数相对于实向量的梯度</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -162,7 +162,7 @@ for the JavaScript code in this tag.
 \end{equation}
 
 <p>
-\(m\)维行向量函数\(f(\mathbf{x}) = [f_{1}(\mathbf{x}), \ldots ,f_{m}(\mathbf{x}) ]\)相对于\(n\)维实向量\(x\)的梯度为一\(n\times m\)矩阵定义为：
+\(m\)维行向量函数\(f(\mathbf{x}) = [f_{1}(\mathbf{x}), \ldots ,f_{m}(\mathbf{x}) ]\)相对于\(n\)维实向量\(\mathbf{x}\)的梯度为一\(n\times m\)矩阵定义为：
 </p>
 \begin{equation}
 \label{eq:5}
@@ -184,11 +184,13 @@ for the JavaScript code in this tag.
 \frac{\partial \mathbf{y}}{\partial \mathbf{x}^{T}} =
 \begin{bmatrix}
 \frac{\partial y_{1}}{\partial x_{1}} & \frac{\partial y_{1}}{\partial x_{2}} & \ldots & \frac{\partial y_{1}}{\partial x_{n}} \\
-\frac{\partial y_{2}}{\partial x_{1}} & \frac{\partial y_{1}}{\partial x_{2}} & \ldots & \frac{\partial y_{1}}{\partial x_{n}} \\
+\frac{\partial y_{2}}{\partial x_{1}} & \frac{\partial y_{2}}{\partial x_{2}} & \ldots & \frac{\partial y_{2}}{\partial x_{n}} \\
+\vdots & \vdots & \ldots & \vdots \\
+\frac{\partial y_{m}}{\partial x_{1}} & \frac{\partial y_{m}}{\partial x_{2}} & \ldots & \frac{\partial y_{m}}{\partial x_{n}} \\
 \end{bmatrix}
 \end{equation}
 <p>
-\(\frac{\partial \mathbf{y}}{\partial \mathbf{x}^{T}}\)是一个\(m\times n\)的矩阵，称为向量函数\(\mathbf{y} = [y_{1},y_{2},\ldots ,y_{m}]^{T}\)的Jacobi矩阵。
+\(\frac{\partial \mathbf{y}}{\partial \mathbf{x}^{T}}\)是一个\(m\times n\)的矩阵，称为向量函数\(\mathbf{y} = [y_{1},y_{2},\ldots ,y_{m}]^{T}\)的 Jacobi 矩阵。
 </p>
 
 <p>
@@ -384,8 +386,8 @@ x^{T}\mathbf{A}\mathbf{x} = \sum_{i=1}^{n}\sum_{j=1}^{n}A_{ij}x_{i}x_{j}
 </div>
 
 
-<div id="outline-container-org4e8ba78" class="outline-2">
-<h2 id="org4e8ba78"><span class="section-number-2">3</span> 实值函数的梯度矩阵</h2>
+<div id="outline-container-org1ff793c" class="outline-2">
+<h2 id="org1ff793c"><span class="section-number-2">3</span> 实值函数的梯度矩阵</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -550,8 +552,8 @@ x^{T}\mathbf{A}\mathbf{x} = \sum_{i=1}^{n}\sum_{j=1}^{n}A_{ij}x_{i}x_{j}
 </div>
 </div>
 
-<div id="outline-container-orgef70d51" class="outline-2">
-<h2 id="orgef70d51"><span class="section-number-2">4</span> 迹函数的梯度矩阵</h2>
+<div id="outline-container-orgdea85d3" class="outline-2">
+<h2 id="orgdea85d3"><span class="section-number-2">4</span> 迹函数的梯度矩阵</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -629,15 +631,15 @@ f(\mathbf{x}) = \mathbf{x}^{T}\mathbf{A}\mathbf{x} = \mathrm{tr}(\mathbf{x}^{T}\
 </div>
 </div>
 
-<div id="outline-container-orgfc1d25b" class="outline-2">
-<h2 id="orgfc1d25b"><span class="section-number-2">5</span> Hessian矩阵</h2>
+<div id="outline-container-orgfcefbdd" class="outline-2">
+<h2 id="orgfcefbdd"><span class="section-number-2">5</span> Hessian 矩阵</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
 </p>
 
 <p>
-实值函数\(f(\mathbf{x})\)相对于\(m\times 1\)实向量\(\mathbf{x}\)的二阶偏导是一个由\(m^{2}\)个二阶偏导组成的矩阵，称为Hessian矩阵，定义为：
+实值函数\(f(\mathbf{x})\)相对于\(m\times 1\)实向量\(\mathbf{x}\)的二阶偏导是一个由\(m^{2}\)个二阶偏导组成的矩阵，称为 Hessian 矩阵，定义为：
 </p>
 \begin{equation}
 \label{eq:42}
@@ -651,7 +653,7 @@ f(\mathbf{x}) = \mathbf{x}^{T}\mathbf{A}\mathbf{x} = \mathrm{tr}(\mathbf{x}^{T}\
 \nabla_{\mathbf{x}}^{2}f(\mathbf{x}) = \nabla_{\mathbf{x}} (\nabla_{\mathbf{x}} f(\mathbf{x}))
 \end{equation}
 <p>
-根据定义,Hessian矩阵的第\(j\)列是梯度\(\frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} = \nabla_{\mathbf{x}} f(\mathbf{x})\)第\(j\)个分量的梯度，即：
+根据定义,Hessian 矩阵的第\(j\)列是梯度\(\frac{\partial f(\mathbf{x})}{\partial \mathbf{x}} = \nabla_{\mathbf{x}} f(\mathbf{x})\)第\(j\)个分量的梯度，即：
 </p>
 \begin{equation}
 \label{eq:44}
@@ -672,15 +674,15 @@ f(\mathbf{x}) = \mathbf{x}^{T}\mathbf{A}\mathbf{x} = \mathrm{tr}(\mathbf{x}^{T}\
 
 \end{equation}
 <p>
-因此，Hessian矩阵可以通过两个步骤计算得出：
+因此，Hessian 矩阵可以通过两个步骤计算得出：
 </p>
 <ol class="org-ol">
 <li>求实值函数\(f(\mathbf{x})\)关于向量变元\(\mathbf{x}\)的偏导数，得到实值函数的梯度\(\frac{\partial f(\mathbf{x})}{\partial \mathbf{x}}\)</li>
-<li>再求梯度\(\frac{\partial f(\mathbf{x})}{\partial \mathbf{x}}\)相对于\(1\times n\)行向量\(\mathbf{x}^{T}\)的偏导数，得到梯度的梯度即Hessian矩阵</li>
+<li>再求梯度\(\frac{\partial f(\mathbf{x})}{\partial \mathbf{x}}\)相对于\(1\times n\)行向量\(\mathbf{x}^{T}\)的偏导数，得到梯度的梯度即 Hessian 矩阵</li>
 </ol>
 
 <p>
-根据以上步骤，得到Hessian矩阵的下列公式。
+根据以上步骤，得到 Hessian 矩阵的下列公式。
 </p>
 <div class="tikzinstance">
 <p>
@@ -715,8 +717,8 @@ f(\mathbf{x}) = \mathbf{x}^{T}\mathbf{A}\mathbf{x} = \mathrm{tr}(\mathbf{x}^{T}\
 </div>
 </div>
 </div>
-<div id="outline-container-org9f8be62" class="outline-2">
-<h2 id="org9f8be62"><span class="section-number-2">6</span> 尾声</h2>
+<div id="outline-container-org31a3414" class="outline-2">
+<h2 id="org31a3414"><span class="section-number-2">6</span> 尾声</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 
