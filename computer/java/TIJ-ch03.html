@@ -64,22 +64,22 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org62b39b9">C++和Java变量作用域不同</a></li>
-<li><a href="#org996fe5c"><code>static</code> 关键字</a></li>
-<li><a href="#orgffa4fa9">当 <code>static</code> 遇到方法</a>
+<li><a href="#orge22bad8">C++和Java变量作用域不同</a></li>
+<li><a href="#org46072b7"><code>static</code> 关键字</a></li>
+<li><a href="#org455fdb8">当 <code>static</code> 遇到方法</a>
 <ul>
-<li><a href="#org6d5baa5">传统的方法</a></li>
-<li><a href="#orgca832aa"><code>static</code> 专用方法</a></li>
+<li><a href="#orgff2c124">传统的方法</a></li>
+<li><a href="#orgd2d8d0a"><code>static</code> 专用方法</a></li>
 </ul>
 </li>
-<li><a href="#orgdc685b1">Exercise1</a></li>
+<li><a href="#org1e844be">Exercise1</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org62b39b9" class="outline-2">
-<h2 id="org62b39b9">C++和Java变量作用域不同</h2>
-<div class="outline-text-2" id="text-org62b39b9">
+<div id="outline-container-orge22bad8" class="outline-2">
+<h2 id="orge22bad8">C++和Java变量作用域不同</h2>
+<div class="outline-text-2" id="text-orge22bad8">
 <p>
 
 </p>
@@ -119,9 +119,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org996fe5c" class="outline-2">
-<h2 id="org996fe5c"><code>static</code> 关键字</h2>
-<div class="outline-text-2" id="text-org996fe5c">
+<div id="outline-container-org46072b7" class="outline-2">
+<h2 id="org46072b7"><code>static</code> 关键字</h2>
+<div class="outline-text-2" id="text-org46072b7">
 <p>
 
 </p>
@@ -161,9 +161,9 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgffa4fa9" class="outline-2">
-<h2 id="orgffa4fa9">当 <code>static</code> 遇到方法</h2>
-<div class="outline-text-2" id="text-orgffa4fa9">
+<div id="outline-container-org455fdb8" class="outline-2">
+<h2 id="org455fdb8">当 <code>static</code> 遇到方法</h2>
+<div class="outline-text-2" id="text-org455fdb8">
 <p>
 
 </p>
@@ -182,9 +182,9 @@ for the JavaScript code in this tag.
 <code>Incrementable</code> 的方法 <code>increment</code> 把 <code>static</code> 变量加1. 我们有两种方法调用 <code>increment()</code>
 </p>
 </div>
-<div id="outline-container-org6d5baa5" class="outline-3">
-<h3 id="org6d5baa5">传统的方法</h3>
-<div class="outline-text-3" id="text-org6d5baa5">
+<div id="outline-container-orgff2c124" class="outline-3">
+<h3 id="orgff2c124">传统的方法</h3>
+<div class="outline-text-3" id="text-orgff2c124">
 <div class="org-src-container">
 <pre class="src src-java"><span style="color: #b58900;">Incrementable</span> <span style="color: #268bd2;">incr</span> = <span style="color: #859900; font-weight: bold;">new</span> <span style="color: #b58900;">Incrementable</span><span style="color: #2aa198;">()</span>;
 incr.increment<span style="color: #2aa198;">()</span>;
@@ -192,9 +192,9 @@ incr.increment<span style="color: #2aa198;">()</span>;
 </div>
 </div>
 </div>
-<div id="outline-container-orgca832aa" class="outline-3">
-<h3 id="orgca832aa"><code>static</code> 专用方法</h3>
-<div class="outline-text-3" id="text-orgca832aa">
+<div id="outline-container-orgd2d8d0a" class="outline-3">
+<h3 id="orgd2d8d0a"><code>static</code> 专用方法</h3>
+<div class="outline-text-3" id="text-orgd2d8d0a">
 <div class="org-src-container">
 <pre class="src src-java">Incrementable.increment<span style="color: #2aa198;">()</span>;
 </pre>
@@ -207,9 +207,9 @@ incr.increment<span style="color: #2aa198;">()</span>;
 </div>
 </div>
 
-<div id="outline-container-orgdc685b1" class="outline-2">
-<h2 id="orgdc685b1">Exercise1</h2>
-<div class="outline-text-2" id="text-orgdc685b1">
+<div id="outline-container-org1e844be" class="outline-2">
+<h2 id="org1e844be">Exercise1</h2>
+<div class="outline-text-2" id="text-org1e844be">
 <p>
 
 </p>
@@ -222,9 +222,9 @@ Create a class containing an int and a char that are not initialized, and print 
 代码如下：
 </p>
 <div class="org-src-container">
-<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">ut</span><span style="color: #b58900;">il.*;</span>
+<pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
 <span class="linenr"> 2: </span>
-<span class="linenr"> 3: </span><span style="color: #b58900;">pu</span><span style="color: #859900; font-weight: bold;">blic</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Main</span> <span style="color: #2aa198;">{</span>
+<span class="linenr"> 3: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Main</span> <span style="color: #2aa198;">{</span>
 <span class="linenr"> 4: </span>
 <span class="linenr"> 5: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> <span style="color: #268bd2;">args</span><span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
 <span class="linenr"> 6: </span>        <span style="color: #586e75;">// </span><span style="color: #586e75;">write your code here</span>
@@ -235,7 +235,7 @@ Create a class containing an int and a char that are not initialized, and print 
 <span class="linenr">11: </span><span style="color: #2aa198;">}</span>
 <span class="linenr">12: </span><span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">DataOnly</span><span style="color: #2aa198;">{</span>
 <span class="linenr">13: </span>    <span style="color: #b58900;">int</span> <span style="color: #268bd2;">a</span>;
-<span class="linenr">14: </span>    <span style="color: #b58900;">char</span> <span style="color: #b58900;">b</span>=<span style="color: #2aa198;">'x'</span>;
+<span class="linenr">14: </span>    <span style="color: #b58900;">char</span> <span style="color: #268bd2;">b</span>=<span style="color: #2aa198;">'x'</span>;
 <span class="linenr">15: </span><span style="color: #2aa198;">}</span>
 </pre>
 </div>

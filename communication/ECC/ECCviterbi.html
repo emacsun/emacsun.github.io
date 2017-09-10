@@ -18,7 +18,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -80,7 +80,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -89,18 +89,18 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgfffaa12">1. 引言</a></li>
-<li><a href="#orgcd36354">2. 编码</a></li>
-<li><a href="#org70f060c">3. 译码</a></li>
-<li><a href="#orgb0f82ed">4. 回溯</a></li>
-<li><a href="#org86b56c0">5. 尾声</a></li>
+<li><a href="#orgbd2ae3d">1. 引言</a></li>
+<li><a href="#org3a52833">2. 编码</a></li>
+<li><a href="#orge0a7c34">3. 译码</a></li>
+<li><a href="#org791648b">4. 回溯</a></li>
+<li><a href="#orgc02eef1">5. 尾声</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-orgfffaa12" class="outline-2">
-<h2 id="orgfffaa12"><span class="section-number-2">1</span> 引言</h2>
+<div id="outline-container-orgbd2ae3d" class="outline-2">
+<h2 id="orgbd2ae3d"><span class="section-number-2">1</span> 引言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -112,30 +112,30 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgcd36354" class="outline-2">
-<h2 id="orgcd36354"><span class="section-number-2">2</span> 编码</h2>
+<div id="outline-container-org3a52833" class="outline-2">
+<h2 id="org3a52833"><span class="section-number-2">2</span> 编码</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
 </p>
 
 <p>
-译码之前，先看如何卷积编码。描述卷积编码器的方法有很多，按照每种描述，我们都可以实现卷积编码。以约束长度为3，码率为1/2，生成多项式为 \(g_{0} = [1\quad 1\quad 1],g_{1}=[1  \quad 0 \quad 1]\)的卷积码为例，图<a href="#orge69a379">1</a>左侧给出了移位寄存器电路图表示，图<a href="#orge69a379">1</a> 中间的表格是左侧的等价描述，显然左侧的表示更直观，中间的表述更具体。图<a href="#orge69a379">1</a> 右侧是等效的状态机表示。
+译码之前，先看如何卷积编码。描述卷积编码器的方法有很多，按照每种描述，我们都可以实现卷积编码。以约束长度为3，码率为1/2，生成多项式为 \(g_{0} = [1\quad 1\quad 1],g_{1}=[1  \quad 0 \quad 1]\)的卷积码为例，图<a href="#orgdb648c1">1</a>左侧给出了移位寄存器电路图表示，图<a href="#orgdb648c1">1</a> 中间的表格是左侧的等价描述，显然左侧的表示更直观，中间的表述更具体。图<a href="#orgdb648c1">1</a> 右侧是等效的状态机表示。
 </p>
 
 
-<div id="orge69a379" class="figure">
+<div id="orgdb648c1" class="figure">
 <p><img src="../../img/20160101convolutionalEncoder3.jpg" alt="20160101convolutionalEncoder3.jpg" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> <b>卷积编码器的三种描述：移位寄存器，输入输出状态表和状态机</b></p>
 </div>
 
 <p>
-卷积编码器还有一种描述：篱笆图描述。篱笆图让Viterbi译码过程生动了许多，我认为是一个很伟大的发明，其作用和法拉力用磁感线表示磁场的存在一样，让难以理解的抽象过程瞬间活灵活现。另外，在Turbo码的译码分析过程中，篱笆图也发挥着非常重要的作用。图<a href="#orge69a379">1</a> 所示的卷积码可以表示如图<a href="#org42e6f8c">2</a>所示。
+卷积编码器还有一种描述：篱笆图描述。篱笆图让Viterbi译码过程生动了许多，我认为是一个很伟大的发明，其作用和法拉力用磁感线表示磁场的存在一样，让难以理解的抽象过程瞬间活灵活现。另外，在Turbo码的译码分析过程中，篱笆图也发挥着非常重要的作用。图<a href="#orgdb648c1">1</a> 所示的卷积码可以表示如图<a href="#orgbe71a30">2</a>所示。
 </p>
 
 
-<div id="org42e6f8c" class="figure">
+<div id="orgbe71a30" class="figure">
 <p><img src="../../img/20160101convolutionalEncoderTrellis.jpg" alt="20160101convolutionalEncoderTrellis.jpg" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> <b>卷积编码器篱笆图描述</b></p>
@@ -143,7 +143,7 @@ for the JavaScript code in this tag.
 
 
 <p>
-通过对篱笆图<a href="#org42e6f8c">2</a>进行时间上的延展，给定输入，我们可以很容易获得输出。假设输入为
+通过对篱笆图<a href="#orgbe71a30">2</a>进行时间上的延展，给定输入，我们可以很容易获得输出。假设输入为
 </p>
 \begin{equation}
 \label{eq:1}
@@ -158,18 +158,18 @@ for the JavaScript code in this tag.
 \end{equation}
 
 <p>
-输出的获得过程如图<a href="#org78ecabf">3</a>所示。值得注意的是，在图<a href="#org78ecabf">3</a>中， \(t=16\)和\(t=17\)时刻依然有0输入。这两个0的作用是冲洗编码器，使得编码器的状态归零。这样做的好处是Viterbi译码器知道编码器的最后一个状态是零状态。稍后我们会看到，Viterbi译码器译码有一个回溯的过程，如果知道编码器的最后一个状态是零状态，就避免了译码器瞎猜一个状态回溯，降低译码器的复杂度，尤其是减低了对内存的需求。稍后阐述译码过程时，我们会看到两个0的作用。在商用的通信协议中，比如3G和4G相关的协议，无论是采用Turbo码还是卷积码，都有译码器状态清零的操作。
+输出的获得过程如图<a href="#org886873a">3</a>所示。值得注意的是，在图<a href="#org886873a">3</a>中， \(t=16\)和\(t=17\)时刻依然有0输入。这两个0的作用是冲洗编码器，使得编码器的状态归零。这样做的好处是Viterbi译码器知道编码器的最后一个状态是零状态。稍后我们会看到，Viterbi译码器译码有一个回溯的过程，如果知道编码器的最后一个状态是零状态，就避免了译码器瞎猜一个状态回溯，降低译码器的复杂度，尤其是减低了对内存的需求。稍后阐述译码过程时，我们会看到两个0的作用。在商用的通信协议中，比如3G和4G相关的协议，无论是采用Turbo码还是卷积码，都有译码器状态清零的操作。
 </p>
 
 
-<div id="org78ecabf" class="figure">
+<div id="org886873a" class="figure">
 <p><img src="../../img/20160101convolutionalEncoderTrellisOutput1.jpg" alt="20160101convolutionalEncoderTrellisOutput1.jpg" width="530" align="center" />
 </p>
 <p><span class="figure-number">图 3:</span> <b>针对输入序列利用篱笆图获得输出</b></p>
 </div>
 
 <p>
-图<a href="#org78ecabf">3</a>中的那条黑色路径就是编码器输入比特序列在编码器中留下的足迹。在图<a href="#org78ecabf">3</a> 中，由于\(t=0\)时刻状态为00，从\(t=0\)到\(t=1\)，只有两条路径可走：从00到00（输入为0）；从00到10（输入为1）。从\(t=1\)到\(t=2\)有四条路径可走：从00和10出发各有两条路径。所以，在\(t,t>1\)时刻，编码器可能走过的路径有\(2^t\)。
+图<a href="#org886873a">3</a>中的那条黑色路径就是编码器输入比特序列在编码器中留下的足迹。在图<a href="#org886873a">3</a> 中，由于\(t=0\)时刻状态为00，从\(t=0\)到\(t=1\)，只有两条路径可走：从00到00（输入为0）；从00到10（输入为1）。从\(t=1\)到\(t=2\)有四条路径可走：从00和10出发各有两条路径。所以，在\(t,t>1\)时刻，编码器可能走过的路径有\(2^t\)。
 </p>
 
 <p>
@@ -182,19 +182,19 @@ Viterbi译码器译码就是根据收到的二进制比特，从最后一个状�
 </div>
 </div>
 
-<div id="outline-container-org70f060c" class="outline-2">
-<h2 id="org70f060c"><span class="section-number-2">3</span> 译码</h2>
+<div id="outline-container-orge0a7c34" class="outline-2">
+<h2 id="orge0a7c34"><span class="section-number-2">3</span> 译码</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
 </p>
 
 <p>
-由于信道的不理想特性（比如衰落和噪声的存在），编码器输出到达接收端总是要经历一定程度的畸变，变得和发射的符号不一样。在图<a href="#org70befce">4</a>中，接收符号在两个位置与发射比特不一致。
+由于信道的不理想特性（比如衰落和噪声的存在），编码器输出到达接收端总是要经历一定程度的畸变，变得和发射的符号不一样。在图<a href="#orgfd9007d">4</a>中，接收符号在两个位置与发射比特不一致。
 </p>
 
 
-<div id="org70befce" class="figure">
+<div id="orgfd9007d" class="figure">
 <p><img src="../../img/20160101convolutionalReceiver.jpg" alt="20160101convolutionalReceiver.jpg" width="500" align="center" />
 </p>
 <p><span class="figure-number">图 4:</span> <b>信道的不确定性导致接收比特和编码器输出比特不一致</b></p>
@@ -205,52 +205,52 @@ Viterbi译码器译码就是根据收到的二进制比特，从最后一个状�
 </p>
 
 <p>
-首先，当\(t=1\)时，接收到的符号为00。Viterbi译码器状态如图<a href="#org16b1942">5</a>所示。
+首先，当\(t=1\)时，接收到的符号为00。Viterbi译码器状态如图<a href="#org728d542">5</a>所示。
 </p>
 
 
-<div id="org16b1942" class="figure">
+<div id="org728d542" class="figure">
 <p><img src="../../img/20160101ViterbiT0.jpg" alt="20160101ViterbiT0.jpg" width="500" align="center" />
 </p>
 <p><span class="figure-number">图 5:</span> <b>\(t=1\)时的Viterbi译码器状态</b></p>
 </div>
 
 <p>
-图<a href="#org16b1942">5</a>中，路径度量表示汉明距离的累积，由于目前只走了一步，所以汉明距离的累积就是这一步的汉明距离：分别是0和2。
+图<a href="#org728d542">5</a>中，路径度量表示汉明距离的累积，由于目前只走了一步，所以汉明距离的累积就是这一步的汉明距离：分别是0和2。
 </p>
 
 <p>
-当\(t=2\)时，接收到的符号为11。Viterbi译码器状态如图<a href="#org24b0313">6</a> 所示，图中用红色标示了最小路径度量的轨迹。另外\(t=2\)时，编码器的四个状态都有路径到达。从此以后，每个状态都有两个可能状态跳转而来。
+当\(t=2\)时，接收到的符号为11。Viterbi译码器状态如图<a href="#orge246bc5">6</a> 所示，图中用红色标示了最小路径度量的轨迹。另外\(t=2\)时，编码器的四个状态都有路径到达。从此以后，每个状态都有两个可能状态跳转而来。
 </p>
 
 
-<div id="org24b0313" class="figure">
+<div id="orge246bc5" class="figure">
 <p><img src="../../img/20160101ViterbiT1.jpg" alt="20160101ViterbiT1.jpg" width="500" align="center" />
 </p>
 <p><span class="figure-number">图 6:</span> <b>\(t=2\)时的Viterbi译码器状态</b></p>
 </div>
 
 <p>
-当\(t=3\)时，接收到的符号为11。如图<a href="#org8be0371">7</a>所示，每一个\(t=3\)时的状态都有两个\(t=2\)时的状态可以到达。所以\(t=3\)时需要比较八条路径的度量。此时路径上的输出太密，写不下，我把当前状态到下一状态的篱笆图附到右边便于查看。
+当\(t=3\)时，接收到的符号为11。如图<a href="#org56f48e4">7</a>所示，每一个\(t=3\)时的状态都有两个\(t=2\)时的状态可以到达。所以\(t=3\)时需要比较八条路径的度量。此时路径上的输出太密，写不下，我把当前状态到下一状态的篱笆图附到右边便于查看。
 </p>
 
 
-<div id="org8be0371" class="figure">
+<div id="org56f48e4" class="figure">
 <p><img src="../../img/20160101ViterbiT3.jpg" alt="20160101ViterbiT3.jpg" width="500" align="center" />
 </p>
 <p><span class="figure-number">图 7:</span> <b>\(t=3\)时的Viterbi译码器状态</b></p>
 </div>
 
 <p>
-需要注意的是，第三对收到的二进制比特与发射的二进制比特有一个不同（发生了错误）。路径度量的计算结果中有两个最小的度量1，图<a href="#org8be0371">7</a>用红色标示了正确的路径，但是要记住还有一条路径的度量也是1。现在，接收机还不能判断收到的11是不是发射符号，即，译码器不确定从\(t=2\)到\(t=3\)发射端发射的是0还是1。只有当越来越多的二进制比特对到达译码器，译码器才能可靠的判断到底哪一条路径是正确的路径。
+需要注意的是，第三对收到的二进制比特与发射的二进制比特有一个不同（发生了错误）。路径度量的计算结果中有两个最小的度量1，图<a href="#org56f48e4">7</a>用红色标示了正确的路径，但是要记住还有一条路径的度量也是1。现在，接收机还不能判断收到的11是不是发射符号，即，译码器不确定从\(t=2\)到\(t=3\)发射端发射的是0还是1。只有当越来越多的二进制比特对到达译码器，译码器才能可靠的判断到底哪一条路径是正确的路径。
 </p>
 
 <p>
-我们接着往下看。当\(t=4\)时Viterbi译码器的状态如图<a href="#orgce91750">8</a>所示。从图中可以看出只有一条路径的度量最小为1，该路径也是编码器编码过程中所使用的路径。此时我们可以看出\(t=3\) 时的接收符号错误已经得到了纠正。
+我们接着往下看。当\(t=4\)时Viterbi译码器的状态如图<a href="#org0f342c4">8</a>所示。从图中可以看出只有一条路径的度量最小为1，该路径也是编码器编码过程中所使用的路径。此时我们可以看出\(t=3\) 时的接收符号错误已经得到了纠正。
 </p>
 
 
-<div id="orgce91750" class="figure">
+<div id="org0f342c4" class="figure">
 <p><img src="../../img/20160101ViterbiT4.jpg" alt="20160101ViterbiT4.jpg" width="500" align="center" />
 </p>
 <p><span class="figure-number">图 8:</span> <b>\(t=4\)时的Viterbi译码器状态</b></p>
@@ -261,33 +261,33 @@ Viterbi译码器译码就是根据收到的二进制比特，从最后一个状�
 </p>
 
 
-<div id="org2a57c90" class="figure">
+<div id="org39db773" class="figure">
 <p><img src="../../img/20160101ViterbiT17.jpg" alt="20160101ViterbiT17.jpg" width="500" align="center" />
 </p>
 <p><span class="figure-number">图 9:</span> <b>\(t=17\)时的Viterbi译码器状态</b></p>
 </div>
 
 <p>
-可以看出，图<a href="#org2a57c90">9</a>和图<a href="#org70befce">4</a>相同。这意味着Viterbi译码器找到了编码器走过的路，意味着接收符号序列中的两个错误没有对译码器正确译码造成影响，意味着译码器能克服信道对发送符号造成的这两次畸变。
+可以看出，图<a href="#org39db773">9</a>和图<a href="#orgfd9007d">4</a>相同。这意味着Viterbi译码器找到了编码器走过的路，意味着接收符号序列中的两个错误没有对译码器正确译码造成影响，意味着译码器能克服信道对发送符号造成的这两次畸变。
 </p>
 
 <p>
-当我们得到图<a href="#org2a57c90">9</a>时，整个译码过程还差一步就完成了。接下来我们要做的就是根据图<a href="#orge69a379">1</a>或者图<a href="#org42e6f8c">2</a>来找到最后这条路径上对应的输入比特即可。这一步做回溯。
+当我们得到图<a href="#org39db773">9</a>时，整个译码过程还差一步就完成了。接下来我们要做的就是根据图<a href="#orgdb648c1">1</a>或者图<a href="#orgbe71a30">2</a>来找到最后这条路径上对应的输入比特即可。这一步做回溯。
 </p>
 </div>
 </div>
-<div id="outline-container-orgb0f82ed" class="outline-2">
-<h2 id="orgb0f82ed"><span class="section-number-2">4</span> 回溯</h2>
+<div id="outline-container-org791648b" class="outline-2">
+<h2 id="org791648b"><span class="section-number-2">4</span> 回溯</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
 </p>
 
 <p>
-单独开一章讨论回溯过程。从图<a href="#org16b1942">5</a>到图<a href="#org2a57c90">9</a>的过程中，每一次都记录了到达四个状态的l最小累计分支度量。对于本文给出的例子中一共记录了15个信息比特和2个清理比特对应的最小累计度量，这些最小累计分支度量如表<a href="#org04475d5">1</a>所示。
+单独开一章讨论回溯过程。从图<a href="#org728d542">5</a>到图<a href="#org39db773">9</a>的过程中，每一次都记录了到达四个状态的l最小累计分支度量。对于本文给出的例子中一共记录了15个信息比特和2个清理比特对应的最小累计度量，这些最小累计分支度量如表<a href="#orgc402798">1</a>所示。
 </p>
 
-<table id="org04475d5" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgc402798" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">表 1:</span> 最小分支度量记录</caption>
 
 <colgroup>
@@ -445,14 +445,14 @@ Viterbi译码器译码就是根据收到的二进制比特，从最后一个状�
 
 
 <p>
-有意思的是，当\(t=16\)和\(t=17\)时, 最小累计度量和接收符号中错误比特的个数相同都是2. 从表<a href="#org04475d5">1</a>中我们知道了在\(t\)时刻，到达该状态的最小累计度量。我们还需要知道：在\(t\)时刻，到达该状态的前一个幸存状态是对少。比如在表<a href="#org04475d5">1</a>中，\(t=9\)时刻的状态10对应的最小分支度量是1，而\(t=9\)时刻的状态10是\(t=8\)时刻的状态00通过输入1跳转过来的，而不是状态01通过输入1跳转过来的。如果我们把表<a href="#org04475d5">1</a>中每一列中的最小值前后连起来，会发现，这条线和图<a href="#org2a57c90">9</a>中的线几乎吻合。
+有意思的是，当\(t=16\)和\(t=17\)时, 最小累计度量和接收符号中错误比特的个数相同都是2. 从表<a href="#orgc402798">1</a>中我们知道了在\(t\)时刻，到达该状态的最小累计度量。我们还需要知道：在\(t\)时刻，到达该状态的前一个幸存状态是对少。比如在表<a href="#orgc402798">1</a>中，\(t=9\)时刻的状态10对应的最小分支度量是1，而\(t=9\)时刻的状态10是\(t=8\)时刻的状态00通过输入1跳转过来的，而不是状态01通过输入1跳转过来的。如果我们把表<a href="#orgc402798">1</a>中每一列中的最小值前后连起来，会发现，这条线和图<a href="#org39db773">9</a>中的线几乎吻合。
 </p>
 
 <p>
-为什么用“几乎”而不是“完全”? 从 \(t=17\)回溯到 \(t=13\)都很顺利，因为在表<a href="#org04475d5">1</a>中第13列到17列都只有一个最小分支度量，但是第12列却有两个最小分支度量2. 第13列的2是从12列的状态01对应的2跳转过来的还是从第12列的状态11跳转过来的呢？显然，结合编码器跳结构，我们知道只有从状态01才能一步跳转到状态00（通过输入0），从状态11无论如何一步也跳不到状态00. 同理从第4列跳转到第3列，第4列的最小度量1在状态10的位置，而第三列有两个最小分支度量1，分别位于状态01和状态11，我们知道只有状态01能一步跳转到状态10（通过输入1），而状态11无论如何也不能一步跳转到状态10.
+为什么用“几乎”而不是“完全”? 从 \(t=17\)回溯到 \(t=13\)都很顺利，因为在表<a href="#orgc402798">1</a>中第13列到17列都只有一个最小分支度量，但是第12列却有两个最小分支度量2. 第13列的2是从12列的状态01对应的2跳转过来的还是从第12列的状态11跳转过来的呢？显然，结合编码器跳结构，我们知道只有从状态01才能一步跳转到状态00（通过输入0），从状态11无论如何一步也跳不到状态00. 同理从第4列跳转到第3列，第4列的最小度量1在状态10的位置，而第三列有两个最小分支度量1，分别位于状态01和状态11，我们知道只有状态01能一步跳转到状态10（通过输入1），而状态11无论如何也不能一步跳转到状态10.
 </p>
 
-<table id="org6be29c6" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="orgbaeb7a9" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">表 2:</span> 最小分支度量幸存状态表</caption>
 
 <colgroup>
@@ -609,10 +609,10 @@ Viterbi译码器译码就是根据收到的二进制比特，从最后一个状�
 </table>
 
 <p>
-结合表<a href="#org04475d5">1</a> 和表<a href="#org6be29c6">2</a> 我们可以得到图<a href="#org2a57c90">9</a>中红线所示的幸存路径对应的前后状态转换，如表<a href="#org557b5f6">3</a>所示。
+结合表<a href="#orgc402798">1</a> 和表<a href="#orgbaeb7a9">2</a> 我们可以得到图<a href="#org39db773">9</a>中红线所示的幸存路径对应的前后状态转换，如表<a href="#org3f9ddd1">3</a>所示。
 </p>
 
-<table id="org557b5f6" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org3f9ddd1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">表 3:</span> 幸存路径状态转换</caption>
 
 <colgroup>
@@ -703,7 +703,7 @@ Viterbi译码器译码就是根据收到的二进制比特，从最后一个状�
 </table>
 
 <p>
-有了表<a href="#org557b5f6">3</a>，我们就可以顺藤摸瓜，沿着篱笆图把状态转换对应的输入比特找出来，这些输入比特就是译码输出序列。
+有了表<a href="#org3f9ddd1">3</a>，我们就可以顺藤摸瓜，沿着篱笆图把状态转换对应的输入比特找出来，这些输入比特就是译码输出序列。
 </p>
 
 <p>
@@ -726,15 +726,15 @@ Viterbi译码器译码就是根据收到的二进制比特，从最后一个状�
 现在我们回顾一下Viterbi译码器工作的关键步骤。
 </p>
 <ol class="org-ol">
-<li>得到表<a href="#org04475d5">1</a> 。依赖篱笆图，我们可以使用纸和笔手动推演。</li>
-<li>记录跳转到当前状态的历史状态，即：得到表<a href="#org6be29c6">2</a>。在生成表<a href="#org04475d5">1</a> 的过程中，顺带记录历史状态，即可得到表<a href="#org6be29c6">2</a>。</li>
-<li>结合表<a href="#org04475d5">1</a> 和表<a href="#org6be29c6">2</a> 以及编码器状态转移图<a href="#org42e6f8c">2</a>,得到表<a href="#org557b5f6">3</a> 。根据表<a href="#org557b5f6">3</a>和图<a href="#org42e6f8c">2</a> 实现译码。</li>
+<li>得到表<a href="#orgc402798">1</a> 。依赖篱笆图，我们可以使用纸和笔手动推演。</li>
+<li>记录跳转到当前状态的历史状态，即：得到表<a href="#orgbaeb7a9">2</a>。在生成表<a href="#orgc402798">1</a> 的过程中，顺带记录历史状态，即可得到表<a href="#orgbaeb7a9">2</a>。</li>
+<li>结合表<a href="#orgc402798">1</a> 和表<a href="#orgbaeb7a9">2</a> 以及编码器状态转移图<a href="#orgbe71a30">2</a>,得到表<a href="#org3f9ddd1">3</a> 。根据表<a href="#org3f9ddd1">3</a>和图<a href="#orgbe71a30">2</a> 实现译码。</li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-org86b56c0" class="outline-2">
-<h2 id="org86b56c0"><span class="section-number-2">5</span> 尾声</h2>
+<div id="outline-container-orgc02eef1" class="outline-2">
+<h2 id="orgc02eef1"><span class="section-number-2">5</span> 尾声</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -745,7 +745,7 @@ Viterbi译码器译码就是根据收到的二进制比特，从最后一个状�
 </p>
 
 <ol class="org-ol">
-<li>在介绍译码过程中，我们把接收到的17对二进制比特全部送进译码器，计算累计路径度量，然后回溯，比较累计路径度量的大小，选择最小的那个路径。倘若输入译码器的二进制比特序列特别长，不是17对而是几千对，表<a href="#org04475d5">1</a>和表<a href="#org6be29c6">2</a> 就会变得特别大。怎么办？</li>
+<li>在介绍译码过程中，我们把接收到的17对二进制比特全部送进译码器，计算累计路径度量，然后回溯，比较累计路径度量的大小，选择最小的那个路径。倘若输入译码器的二进制比特序列特别长，不是17对而是几千对，表<a href="#orgc402798">1</a>和表<a href="#orgbaeb7a9">2</a> 就会变得特别大。怎么办？</li>
 <li>你听说过软判决么？如果Viterbi译码器的输入是软判决的输出，Viterbi译码器的性能会不会更好一些呢？</li>
 </ol>
 

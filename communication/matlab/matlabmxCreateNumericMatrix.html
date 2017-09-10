@@ -18,7 +18,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -80,7 +80,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -89,23 +89,23 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org213bd8b">1. 引言</a></li>
-<li><a href="#org8782fa1">2. 使用语法</a></li>
-<li><a href="#org278fd0f">3. 一个例子</a></li>
-<li><a href="#orgf8ed013">4. 创建矩阵的其它几个API</a>
+<li><a href="#orge288ee1">1. 引言</a></li>
+<li><a href="#orgfa1831c">2. 使用语法</a></li>
+<li><a href="#org1d932ed">3. 一个例子</a></li>
+<li><a href="#orgb21f22c">4. 创建矩阵的其它几个API</a>
 <ul>
-<li><a href="#org53adbfe">4.1. mxCreateUninitNumericMatrix</a></li>
-<li><a href="#orgf5b9cd5">4.2. mxCreateNumericArray</a></li>
-<li><a href="#org85f1980">4.3. mxCreateUninitNumericArray</a></li>
+<li><a href="#org83e394f">4.1. mxCreateUninitNumericMatrix</a></li>
+<li><a href="#org7c24127">4.2. mxCreateNumericArray</a></li>
+<li><a href="#org0cba919">4.3. mxCreateUninitNumericArray</a></li>
 </ul>
 </li>
-<li><a href="#org1a38c8a">5. 尾声</a></li>
+<li><a href="#org292f33c">5. 尾声</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org213bd8b" class="outline-2">
-<h2 id="org213bd8b"><span class="section-number-2">1</span> 引言</h2>
+<div id="outline-container-orge288ee1" class="outline-2">
+<h2 id="orge288ee1"><span class="section-number-2">1</span> 引言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -116,8 +116,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-org8782fa1" class="outline-2">
-<h2 id="org8782fa1"><span class="section-number-2">2</span> 使用语法</h2>
+<div id="outline-container-orgfa1831c" class="outline-2">
+<h2 id="orgfa1831c"><span class="section-number-2">2</span> 使用语法</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -133,7 +133,7 @@ mxArray *mxCreateNumericMatrix<span style="color: #2aa198;">(</span><span style=
 <p>
 输入参数 <code>m</code> <code>n</code> 和 <code>ComplexFlag</code> 就不做过多的介绍，请见<a href="matlabmxCreateDoulbeMatrix.html">Matlab与C混合编程API之mxCreateDoubleMatrix</a> 一文。这里着重介绍一下 <code>mxClassID</code> 。这个参数表示了矩阵中元素的类型，matlab根据这个类型解释内存中二进制比特的值。比如在C中设置这个值为 <code>mxINT16_CLASS</code> 表示矩阵元素都是16位整型。桥梁函数中的类型与matlab中类型对照表如下：
 </p>
-<table id="orgb905721" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org8dad0ac" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">表 1:</span> matlab和C类型对照表</caption>
 
 <colgroup>
@@ -201,8 +201,8 @@ mxArray *mxCreateNumericMatrix<span style="color: #2aa198;">(</span><span style=
 </table>
 </div>
 </div>
-<div id="outline-container-org278fd0f" class="outline-2">
-<h2 id="org278fd0f"><span class="section-number-2">3</span> 一个例子</h2>
+<div id="outline-container-org1d932ed" class="outline-2">
+<h2 id="org1d932ed"><span class="section-number-2">3</span> 一个例子</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -265,8 +265,8 @@ mxArray *mxCreateNumericMatrix<span style="color: #2aa198;">(</span><span style=
 </p>
 </div>
 </div>
-<div id="outline-container-orgf8ed013" class="outline-2">
-<h2 id="orgf8ed013"><span class="section-number-2">4</span> 创建矩阵的其它几个API</h2>
+<div id="outline-container-orgb21f22c" class="outline-2">
+<h2 id="orgb21f22c"><span class="section-number-2">4</span> 创建矩阵的其它几个API</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -276,8 +276,8 @@ mxArray *mxCreateNumericMatrix<span style="color: #2aa198;">(</span><span style=
 本想把matlab里创建数组的API一个一片博文写出来，后来发现这些API大同小异。如果我还坚持初衷，未免显得累赘，有凑数之嫌（我是那种靠数量取胜的人么？）。
 </p>
 </div>
-<div id="outline-container-org53adbfe" class="outline-3">
-<h3 id="org53adbfe"><span class="section-number-3">4.1</span> mxCreateUninitNumericMatrix</h3>
+<div id="outline-container-org83e394f" class="outline-3">
+<h3 id="org83e394f"><span class="section-number-3">4.1</span> mxCreateUninitNumericMatrix</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 
@@ -288,8 +288,8 @@ mxArray *mxCreateNumericMatrix<span style="color: #2aa198;">(</span><span style=
 </p>
 </div>
 </div>
-<div id="outline-container-orgf5b9cd5" class="outline-3">
-<h3 id="orgf5b9cd5"><span class="section-number-3">4.2</span> mxCreateNumericArray</h3>
+<div id="outline-container-org7c24127" class="outline-3">
+<h3 id="org7c24127"><span class="section-number-3">4.2</span> mxCreateNumericArray</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 
@@ -309,8 +309,8 @@ mxArray *mxCreateNumericArray<span style="color: #2aa198;">(</span><span style="
 </p>
 </div>
 </div>
-<div id="outline-container-org85f1980" class="outline-3">
-<h3 id="org85f1980"><span class="section-number-3">4.3</span> mxCreateUninitNumericArray</h3>
+<div id="outline-container-org0cba919" class="outline-3">
+<h3 id="org0cba919"><span class="section-number-3">4.3</span> mxCreateUninitNumericArray</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 
@@ -323,8 +323,8 @@ mxArray *mxCreateNumericArray<span style="color: #2aa198;">(</span><span style="
 </div>
 </div>
 
-<div id="outline-container-org1a38c8a" class="outline-2">
-<h2 id="org1a38c8a"><span class="section-number-2">5</span> 尾声</h2>
+<div id="outline-container-org292f33c" class="outline-2">
+<h2 id="org292f33c"><span class="section-number-2">5</span> 尾声</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 

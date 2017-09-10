@@ -86,20 +86,20 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgfd6ac10">1. 定义</a></li>
-<li><a href="#orgfdbc936">2. 高斯分布的形状</a></li>
-<li><a href="#orgfd62547">3. 二维高斯随机变量的形状</a></li>
-<li><a href="#orgffd538d">4. 多变量高斯分布的期望和方差</a></li>
-<li><a href="#orgf366f50">5. 高斯分布的局限</a></li>
+<li><a href="#org0cd7b66">1. 定义</a></li>
+<li><a href="#orgc8af930">2. 高斯分布的形状</a></li>
+<li><a href="#orge806dce">3. 二维高斯随机变量的形状</a></li>
+<li><a href="#org0e85150">4. 多变量高斯分布的期望和方差</a></li>
+<li><a href="#org1a8566d">5. 高斯分布的局限</a></li>
 </ul>
 </div>
 </div>
 <p>
-<a href="file:///c:/Users/cliyh/AppData/Roaming/zorg/output/math/probability/gauss-distribution.html">高斯分布</a> 在机器学习中是如此重要，我们必须对其进行透彻的理解和掌握。
+<a href="file:///home/cliyh/zorg/output/math/probability/gauss-distribution.html">高斯分布</a> 在机器学习中是如此重要，我们必须对其进行透彻的理解和掌握。
 </p>
 
-<div id="outline-container-orgfd6ac10" class="outline-2">
-<h2 id="orgfd6ac10"><span class="section-number-2">1</span> 定义</h2>
+<div id="outline-container-org0cd7b66" class="outline-2">
+<h2 id="org0cd7b66"><span class="section-number-2">1</span> 定义</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -113,7 +113,7 @@ for the JavaScript code in this tag.
 \mathcal{N}(x|\mu,\sigma^{2}) = \frac{1}{\sqrt{2\pi \sigma^{2}}} \exp\bigg\{-\frac{(x-\mu)^{2}}{2\sigma^{2}} \bigg\}
 \end{equation}
 <p>
-我们在 <a href="file:///c:/Users/cliyh/AppData/Roaming/zorg/output/math/probability/gauss-distribution.html">之前的博文</a> 中证明过这个形式的分布确实是概率分布，此处略去证明。
+我们在 <a href="file:///home/cliyh/zorg/output/math/probability/gauss-distribution.html">之前的博文</a> 中证明过这个形式的分布确实是概率分布，此处略去证明。
 </p>
 
 <p>
@@ -132,8 +132,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgfdbc936" class="outline-2">
-<h2 id="orgfdbc936"><span class="section-number-2">2</span> 高斯分布的形状</h2>
+<div id="outline-container-orgc8af930" class="outline-2">
+<h2 id="orgc8af930"><span class="section-number-2">2</span> 高斯分布的形状</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -201,10 +201,10 @@ y_{i} = \mathbf{u}_{i}^{T}( \mathbf{x} - \mathbf{\mu} )
 \mathbf{y} = \mathbf{U}(\mathbf{x}- \mathbf{\mu})
 \end{equation}
 <p>
-其中\(\mathbf{U}\)是一个矩阵，其每一行是\(\mathbf{u}_{i}^{T}\)，根据式 (\ref{eq:5})我们知道\(\mathbf{U}\)是一个正交矩阵，即\(\mathbf{U}\mathbf{U}^{T} = \mathbf{I}\)。 从式 (\ref{eq:8})我们可以知道二次型 (\ref{eq:3}) 在平面上是一个常量。如果所有的特征值\(\lambda_{i}\)是正数，那么这些二次型是椭圆, 其中心在\(\mathbf{\mu}\),其轴的方向是\(\mathbf{u}_{i}\)的方向，轴的长度与特征值\(\lambda_{i}\)有关。如图<a href="#org54cca37">1</a>所示：
+其中\(\mathbf{U}\)是一个矩阵，其每一行是\(\mathbf{u}_{i}^{T}\)，根据式 (\ref{eq:5})我们知道\(\mathbf{U}\)是一个正交矩阵，即\(\mathbf{U}\mathbf{U}^{T} = \mathbf{I}\)。 从式 (\ref{eq:8})我们可以知道二次型 (\ref{eq:3}) 在平面上是一个常量。如果所有的特征值\(\lambda_{i}\)是正数，那么这些二次型是椭圆, 其中心在\(\mathbf{\mu}\),其轴的方向是\(\mathbf{u}_{i}\)的方向，轴的长度与特征值\(\lambda_{i}\)有关。如图<a href="#orgc8f187f">1</a>所示：
 </p>
 
-<div id="org54cca37" class="figure">
+<div id="orgc8f187f" class="figure">
 <p><img src="../../img/computer_prml/20170614figure2dot7.png" alt="20170614figure2dot7.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> 二维高斯矢量在\(\exp(-1/2)\)时的图形</p>
@@ -252,8 +252,8 @@ p(\mathbf{y}) = p(\mathbf{x})|\mathbf{J}| = \prod_{j=1}^{D} \frac{1}{(2\pi\lambd
 \end{equation}
 </div>
 </div>
-<div id="outline-container-orgfd62547" class="outline-2">
-<h2 id="orgfd62547"><span class="section-number-2">3</span> 二维高斯随机变量的形状</h2>
+<div id="outline-container-orge806dce" class="outline-2">
+<h2 id="orge806dce"><span class="section-number-2">3</span> 二维高斯随机变量的形状</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -286,7 +286,7 @@ p(\mathbf{y}) = p(\mathbf{x})|\mathbf{J}| = \prod_{j=1}^{D} \frac{1}{(2\pi\lambd
 我们首先画出这样的二维高斯随机变量的图形：
 </p>
 
-<div id="org3901396" class="figure">
+<div id="org0798007" class="figure">
 <p><img src="../../img/computer_prml/20170625figure2dgaussFull.png" alt="20170625figure2dgaussFull.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> \(\mathbf{\Sigma}\)为一般矩阵时固定概率值\(\mathbf{x}\)的分布</p>
@@ -297,14 +297,14 @@ p(\mathbf{y}) = p(\mathbf{x})|\mathbf{J}| = \prod_{j=1}^{D} \frac{1}{(2\pi\lambd
 </p>
 
 
-<div id="org115f162" class="figure">
+<div id="org16750e5" class="figure">
 <p><img src="../../img/computer_prml/20170625figure2dgaussFullsurface.png" alt="20170625figure2dgaussFullsurface.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 3:</span> \(\mathbf{\Sigma}\)为一般矩阵时高斯分布的图形</p>
 </div>
 
 <p>
-图<a href="#org3901396">2</a> 是对图 <a href="#org115f162">3</a> 用  平行于\(x-y\)平面切割得到的。
+图<a href="#org0798007">2</a> 是对图 <a href="#org16750e5">3</a> 用  平行于\(x-y\)平面切割得到的。
 </p>
 
 <p>
@@ -330,34 +330,34 @@ p(\mathbf{y}) = p(\mathbf{x})|\mathbf{J}| = \prod_{j=1}^{D} \frac{1}{(2\pi\lambd
 \end{bmatrix}
 \end{equation}
 <p>
-此时，固定概率值的分布图和二维高斯分布图分别如图<a href="#org78bc9dd">4</a>和图<a href="#orgdade53f">5</a>所示：
+此时，固定概率值的分布图和二维高斯分布图分别如图<a href="#org9b4c3a1">4</a>和图<a href="#org2ed1425">5</a>所示：
 </p>
 
-<div id="org78bc9dd" class="figure">
+<div id="org9b4c3a1" class="figure">
 <p><img src="../../img/computer_prml/20170625figure2dgaussdiagnal.png" alt="20170625figure2dgaussdiagnal.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 4:</span> \(\mathbf{\Sigma}\)为对角矩阵时固定概率值的分布图形</p>
 </div>
 
 
-<div id="orgdade53f" class="figure">
+<div id="org2ed1425" class="figure">
 <p><img src="../../img/computer_prml/20170625figure2dgaussdiagnalsurface.png" alt="20170625figure2dgaussdiagnalsurface.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 5:</span> \(\mathbf{\Sigma}\)为对角矩阵时二维高斯分布图形</p>
 </div>
 
 <p>
-更进一步，如果\(\mathbf{\Sigma}\)是一个单位矩阵，或者是一个单位矩阵的标量倍，则固定概率值的分布图和二维高斯分布图分别如图<a href="#org15bf6c9">6</a>和图<a href="#org2232f32">7</a>所示：：
+更进一步，如果\(\mathbf{\Sigma}\)是一个单位矩阵，或者是一个单位矩阵的标量倍，则固定概率值的分布图和二维高斯分布图分别如图<a href="#orgeb01208">6</a>和图<a href="#org250b3d3">7</a>所示：：
 </p>
 
-<div id="org15bf6c9" class="figure">
+<div id="orgeb01208" class="figure">
 <p><img src="../../img/computer_prml/20170625figure2dgausseye.png" alt="20170625figure2dgausseye.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 6:</span> \(\mathbf{\Sigma}\)为单位矩阵时固定概率值的分布图形</p>
 </div>
 
 
-<div id="org2232f32" class="figure">
+<div id="org250b3d3" class="figure">
 <p><img src="../../img/computer_prml/20170625figure2dgausseyesurface.png" alt="20170625figure2dgausseyesurface.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 7:</span> \(\mathbf{\Sigma}\)为对角矩阵时二维高斯分布图形</p>
@@ -366,8 +366,8 @@ p(\mathbf{y}) = p(\mathbf{x})|\mathbf{J}| = \prod_{j=1}^{D} \frac{1}{(2\pi\lambd
 </div>
 
 
-<div id="outline-container-orgffd538d" class="outline-2">
-<h2 id="orgffd538d"><span class="section-number-2">4</span> 多变量高斯分布的期望和方差</h2>
+<div id="outline-container-org0e85150" class="outline-2">
+<h2 id="org0e85150"><span class="section-number-2">4</span> 多变量高斯分布的期望和方差</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -390,8 +390,7 @@ p(\mathbf{y}) = p(\mathbf{x})|\mathbf{J}| = \prod_{j=1}^{D} \frac{1}{(2\pi\lambd
 \mathbb{E}[\mathbf{x}] = \mathbf{\mu}
 \end{equation}
 <p>
-我们称\(\mathbf{\mu}\)为\(\mathbf{x}\)的均值。
-接下来，我们考虑高斯分布的二阶矩。在单变量场景下，二阶矩定义为\(\mathbb{E}[x^{2}]\)，在多变量时，有\(D^{2}\)个二阶矩\(\mathbb{E}[x_{i}x_{j}]\)，我们把这些二阶矩合在一起构成一个矩阵\(\mathbb{E}[\mathbf{x}\mathbf{x}^{T}]\)，这个矩阵的计算过程为：
+我们称\(\mathbf{\mu}\)为\(\mathbf{x}\)的均值。接下来，我们考虑高斯分布的二阶矩。在单变量场景下，二阶矩定义为\(\mathbb{E}[x^{2}]\)，在多变量时，有\(D^{2}\)个二阶矩\(\mathbb{E}[x_{i}x_{j}]\)，我们把这些二阶矩合在一起构成一个矩阵\(\mathbb{E}[\mathbf{x}\mathbf{x}^{T}]\)，这个矩阵的计算过程为：
 </p>
 \begin{eqnarray}
 \label{eq:18}
@@ -441,25 +440,25 @@ p(\mathbf{y}) = p(\mathbf{x})|\mathbf{J}| = \prod_{j=1}^{D} \frac{1}{(2\pi\lambd
 </div>
 </div>
 
-<div id="outline-container-orgf366f50" class="outline-2">
-<h2 id="orgf366f50"><span class="section-number-2">5</span> 高斯分布的局限</h2>
+<div id="outline-container-org1a8566d" class="outline-2">
+<h2 id="org1a8566d"><span class="section-number-2">5</span> 高斯分布的局限</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
 </p>
 
 <p>
-尽管高斯分布用途广泛，但其也不是放之四海而皆准的真理。高斯分布有其独有的缺陷。考虑一个一般的对称协方差矩阵\(\mathbf{\Sigma}\)，其有\(D(D+1)/2\)个独立的参数。对于\(\mathbf{\mu}\)，又有\(D\)个独立的参数。多以一共有\(D(D+3)/2\)个参数。当\(D\)变大时，其独立的参数个数以\(D\)的二次方增长。计算这么大矩阵的逆矩阵是一件非常困难的事情。解决办法？一个有效的办法是限制协方差矩阵的形式，如果我们只考虑\(\mathbf{\Sigma}\)是对角阵，即\(\mathbf{\Sigma} = \mathrm{diag}(\sigma_{i}^{2})\),我们就只用关心\(2D\)个独立的参数。对应的概率密度图像是一系列同心的且轴与坐标轴平行的椭圆。当我们限制协方差矩阵\(\mathbf{\Sigma} = \sigma^{2}\mathbf{I}\)时，这个协方差矩阵叫做各向同性协方差。这个时候我们只需要处理\(D+1\)个独立的参数。三个类型的高斯分布，在固定概率密度下的形状如图<a href="#orgc512af7">8</a>所示。
+尽管高斯分布用途广泛，但其也不是放之四海而皆准的真理。高斯分布有其独有的缺陷。考虑一个一般的对称协方差矩阵\(\mathbf{\Sigma}\)，其有\(D(D+1)/2\)个独立的参数。对于\(\mathbf{\mu}\)，又有\(D\)个独立的参数。多以一共有\(D(D+3)/2\)个参数。当\(D\)变大时，其独立的参数个数以\(D\)的二次方增长。计算这么大矩阵的逆矩阵是一件非常困难的事情。解决办法？一个有效的办法是限制协方差矩阵的形式，如果我们只考虑\(\mathbf{\Sigma}\)是对角阵，即\(\mathbf{\Sigma} = \mathrm{diag}(\sigma_{i}^{2})\),我们就只用关心\(2D\)个独立的参数。对应的概率密度图像是一系列同心的且轴与坐标轴平行的椭圆。当我们限制协方差矩阵\(\mathbf{\Sigma} = \sigma^{2}\mathbf{I}\)时，这个协方差矩阵叫做各向同性协方差。这个时候我们只需要处理\(D+1\)个独立的参数。三个类型的高斯分布，在固定概率密度下的形状如图<a href="#org0be6bdf">8</a>所示。
 </p>
 
-<div id="orgc512af7" class="figure">
+<div id="org0be6bdf" class="figure">
 <p><img src="../../img/computer_prml/20170615figure2dot8.png" alt="20170615figure2dot8.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 8:</span> 高斯分布在固定概率时的形状</p>
 </div>
 
 <p>
-有得必有失。图<a href="#orgc512af7">8</a> 中对高斯分布的近似限制了分布中的自由变量个数使得求逆变得异常简单，但是也限制了概率密度函数的形式，使我们很难捕捉到数据中的可能有用的相关性。
+有得必有失。图<a href="#org0be6bdf">8</a> 中对高斯分布的近似限制了分布中的自由变量个数使得求逆变得异常简单，但是也限制了概率密度函数的形式，使我们很难捕捉到数据中的可能有用的相关性。
 </p>
 
 <p>

@@ -86,17 +86,17 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org88a0734">1. 算法描述</a></li>
-<li><a href="#orgeb12663">2. 示例</a></li>
-<li><a href="#orgceb1e58">3. 伪代码</a></li>
-<li><a href="#org876f4df">4. 算法分析</a></li>
-<li><a href="#org223fe05">5. Merge排序C语言实现</a></li>
+<li><a href="#orgefd1ee1">1. 算法描述</a></li>
+<li><a href="#org520f7b2">2. 示例</a></li>
+<li><a href="#orgf121f23">3. 伪代码</a></li>
+<li><a href="#org9d45f09">4. 算法分析</a></li>
+<li><a href="#org8ec9952">5. Merge排序C语言实现</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org88a0734" class="outline-2">
-<h2 id="org88a0734"><span class="section-number-2">1</span> 算法描述</h2>
+<div id="outline-container-orgefd1ee1" class="outline-2">
+<h2 id="orgefd1ee1"><span class="section-number-2">1</span> 算法描述</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Merge排序算法是一种基于比较的排序算法。不同于插入排序和冒泡排序，Merge排序的时间复杂度\(T(n)=\mathcal{O}(n\log{n})\)。John Von Neumann在1945年发明了该算法。
@@ -132,8 +132,8 @@ Merge排序算法是一个递归算法，其递归式为：
 </p>
 </div>
 </div>
-<div id="outline-container-orgeb12663" class="outline-2">
-<h2 id="orgeb12663"><span class="section-number-2">2</span> 示例</h2>
+<div id="outline-container-org520f7b2" class="outline-2">
+<h2 id="org520f7b2"><span class="section-number-2">2</span> 示例</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -141,11 +141,11 @@ Merge排序算法是一个递归算法，其递归式为：
 
 
 <p>
-假设\(A=\{ 5,2,4,7,1,3,2,6\}\)，则整个Merge排序过程如图<a href="#orgff1395b">1</a>所示。
+假设\(A=\{ 5,2,4,7,1,3,2,6\}\)，则整个Merge排序过程如图<a href="#orge355c2e">1</a>所示。
 </p>
 
 
-<div id="orgff1395b" class="figure">
+<div id="orge355c2e" class="figure">
 <p><img src="../../img/computer_algorithms/20170703mergeSort.png" alt="20170703mergeSort.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> merge排序示例</p>
@@ -157,11 +157,11 @@ Merge排序算法是一个递归算法，其递归式为：
 </p>
 
 <p>
-接下来给出最后一次merge的过程，即图<a href="#orgff1395b">1</a>中从上往下看前两行的过程。此过程如图<a href="#org9c3e2ab">2</a>所示。
+接下来给出最后一次merge的过程，即图<a href="#orge355c2e">1</a>中从上往下看前两行的过程。此过程如图<a href="#org4deb467">2</a>所示。
 </p>
 
 
-<div id="org9c3e2ab" class="figure">
+<div id="org4deb467" class="figure">
 <p><img src="../../img/computer_algorithms/20170703mergeSortExample.png" alt="20170703mergeSortExample.png" width="600" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> \(A=\{ 5,2,4,7,1,3,2,6\}\) merge过程</p>
@@ -173,8 +173,8 @@ Merge排序算法是一个递归算法，其递归式为：
 </div>
 </div>
 
-<div id="outline-container-orgceb1e58" class="outline-2">
-<h2 id="orgceb1e58"><span class="section-number-2">3</span> 伪代码</h2>
+<div id="outline-container-orgf121f23" class="outline-2">
+<h2 id="orgf121f23"><span class="section-number-2">3</span> 伪代码</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -182,10 +182,10 @@ Merge排序算法是一个递归算法，其递归式为：
 
 
 <p>
-Merge排序的伪代码分两部分，分别如下所示。第一部分给出的是divide和conquer的过程，如图<a href="#org1b8255e">3</a>所示。
+Merge排序的伪代码分两部分，分别如下所示。第一部分给出的是divide和conquer的过程，如图<a href="#orgeac853c">3</a>所示。
 </p>
 
-<div id="org1b8255e" class="figure">
+<div id="orgeac853c" class="figure">
 <p><img src="../../img/computer_algorithms/20170703mergeSortDevideandConquer.png" alt="20170703mergeSortDevideandConquer.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 3:</span> Merge排序伪代码divide and conquer过程</p>
@@ -193,11 +193,11 @@ Merge排序的伪代码分两部分，分别如下所示。第一部分给出的
 
 
 <p>
-第二部分给出的是combine的过程,如图<a href="#org566a1fe">4</a>所示。
+第二部分给出的是combine的过程,如图<a href="#org03d4659">4</a>所示。
 </p>
 
 
-<div id="org566a1fe" class="figure">
+<div id="org03d4659" class="figure">
 <p><img src="../../img/computer_algorithms/20170703mergeSortCombine.png" alt="20170703mergeSortCombine.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 4:</span> Merge排序伪代码conbine过程</p>
@@ -209,8 +209,8 @@ Merge排序的伪代码分两部分，分别如下所示。第一部分给出的
 </p>
 </div>
 </div>
-<div id="outline-container-org876f4df" class="outline-2">
-<h2 id="org876f4df"><span class="section-number-2">4</span> 算法分析</h2>
+<div id="outline-container-org9d45f09" class="outline-2">
+<h2 id="org9d45f09"><span class="section-number-2">4</span> 算法分析</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -247,8 +247,8 @@ Merge排序的伪代码分两部分，分别如下所示。第一部分给出的
 </p>
 </div>
 </div>
-<div id="outline-container-org223fe05" class="outline-2">
-<h2 id="org223fe05"><span class="section-number-2">5</span> Merge排序C语言实现</h2>
+<div id="outline-container-org8ec9952" class="outline-2">
+<h2 id="org8ec9952"><span class="section-number-2">5</span> Merge排序C语言实现</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 

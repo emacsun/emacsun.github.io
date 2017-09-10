@@ -64,17 +64,17 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org563cde5">1. 引言</a></li>
-<li><a href="#org08ee358">2. 九个文件的工程</a></li>
-<li><a href="#orgac56a78">3. make</a></li>
-<li><a href="#orgfee1ea1">4. 静态链接库</a></li>
-<li><a href="#org0390892">5. 动态链接库</a></li>
+<li><a href="#orgd658998">1. 引言</a></li>
+<li><a href="#orgc07d1a3">2. 九个文件的工程</a></li>
+<li><a href="#org356f200">3. make</a></li>
+<li><a href="#orgbc4039b">4. 静态链接库</a></li>
+<li><a href="#org5a1c3ed">5. 动态链接库</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org563cde5" class="outline-2">
-<h2 id="org563cde5"><span class="section-number-2">1</span> 引言</h2>
+<div id="outline-container-orgd658998" class="outline-2">
+<h2 id="orgd658998"><span class="section-number-2">1</span> 引言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -85,8 +85,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-org08ee358" class="outline-2">
-<h2 id="org08ee358"><span class="section-number-2">2</span> 九个文件的工程</h2>
+<div id="outline-container-orgc07d1a3" class="outline-2">
+<h2 id="orgc07d1a3"><span class="section-number-2">2</span> 九个文件的工程</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -151,8 +151,8 @@ gcc main.c sum.c substract.c multiply.c divide.c -o main
 </ol>
 </div>
 </div>
-<div id="outline-container-orgac56a78" class="outline-2">
-<h2 id="orgac56a78"><span class="section-number-2">3</span> make</h2>
+<div id="outline-container-org356f200" class="outline-2">
+<h2 id="org356f200"><span class="section-number-2">3</span> make</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -185,8 +185,8 @@ make有很多特殊的变量，使用这些变量可以编写更加简洁的make
 </p>
 </div>
 </div>
-<div id="outline-container-orgfee1ea1" class="outline-2">
-<h2 id="orgfee1ea1"><span class="section-number-2">4</span> 静态链接库</h2>
+<div id="outline-container-orgbc4039b" class="outline-2">
+<h2 id="orgbc4039b"><span class="section-number-2">4</span> 静态链接库</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -225,8 +225,8 @@ gcc -o main main.c -L. -lmymath
 </ol>
 </div>
 </div>
-<div id="outline-container-org0390892" class="outline-2">
-<h2 id="org0390892"><span class="section-number-2">5</span> 动态链接库</h2>
+<div id="outline-container-org5a1c3ed" class="outline-2">
+<h2 id="org5a1c3ed"><span class="section-number-2">5</span> 动态链接库</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 较少人使用gcc在windows下构建动态链接库，其过程并不复杂。但是，鉴于动态链接库的优点，基于本文的工程，演示一下如何构建使用gcc构建动态链接库。

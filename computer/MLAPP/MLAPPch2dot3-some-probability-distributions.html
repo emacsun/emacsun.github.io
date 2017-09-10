@@ -86,21 +86,21 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org68d2989">1. 二项分布</a></li>
-<li><a href="#org2b00e1e">2. 多项分布</a></li>
-<li><a href="#org46f0c3a">3. 泊松分布</a></li>
-<li><a href="#org0394c62">4. 经验分布</a></li>
-<li><a href="#org797d1f6">5. 高斯分布</a>
+<li><a href="#orgc100475">1. 二项分布</a></li>
+<li><a href="#org54d1560">2. 多项分布</a></li>
+<li><a href="#orgfa802e7">3. 泊松分布</a></li>
+<li><a href="#org51555f0">4. 经验分布</a></li>
+<li><a href="#orgf3a2b7c">5. 高斯分布</a>
 <ul>
-<li><a href="#org5b06ce9">5.1. 高斯分布的退化</a></li>
+<li><a href="#orgbe16c38">5.1. 高斯分布的退化</a></li>
 </ul>
 </li>
-<li><a href="#org727a946">6. 学生分布</a></li>
-<li><a href="#orgdec4d8a">7. 拉普拉斯分布</a></li>
-<li><a href="#org91b9d64">8. 伽马分布</a></li>
-<li><a href="#org03ef2ec">9. 贝塔分布</a></li>
-<li><a href="#org803cf6f">10. Pareto分布</a></li>
-<li><a href="#org8630cbc">11. 机器学习中概率分布的用途</a></li>
+<li><a href="#orgd000ce7">6. 学生分布</a></li>
+<li><a href="#org3d944f4">7. 拉普拉斯分布</a></li>
+<li><a href="#orgfa8496d">8. 伽马分布</a></li>
+<li><a href="#org6f89147">9. 贝塔分布</a></li>
+<li><a href="#org0b7d8f7">10. Pareto分布</a></li>
+<li><a href="#orgfb737aa">11. 机器学习中概率分布的用途</a></li>
 </ul>
 </div>
 </div>
@@ -108,8 +108,8 @@ for the JavaScript code in this tag.
 本文蜻蜓点水般的过一下机器学习中用到的概率分布。这些分布不仅在机器学习中有广泛使用，而且在各个领域都有用到。
 </p>
 
-<div id="outline-container-org68d2989" class="outline-2">
-<h2 id="org68d2989"><span class="section-number-2">1</span> 二项分布</h2>
+<div id="outline-container-orgc100475" class="outline-2">
+<h2 id="orgc100475"><span class="section-number-2">1</span> 二项分布</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -138,8 +138,8 @@ for the JavaScript code in this tag.
 \end{equation}
 </div>
 </div>
-<div id="outline-container-org2b00e1e" class="outline-2">
-<h2 id="org2b00e1e"><span class="section-number-2">2</span> 多项分布</h2>
+<div id="outline-container-org54d1560" class="outline-2">
+<h2 id="org54d1560"><span class="section-number-2">2</span> 多项分布</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -160,12 +160,12 @@ for the JavaScript code in this tag.
 \binom{n}{x_{1},\ldots ,x_{K}} = \frac{n!}{x_{1}!x_{2}!\ldots x_{K}!}
 \end{equation}
 <p>
-是多项式系数。这个多项式系数是把\(n=\sum_{k=1}^{K}x_{k} \)分成\(x_{1},\ldots ,x_{K}\)的所有可能的分法。关于多项式系数更有意思的结论可以参见 <a href="file:///c:/Users/cliyh/AppData/Roaming/zorg/output/math/probability/afcp-01dot5-multinomial-coefficients.html">这篇博文</a>。
+是多项式系数。这个多项式系数是把\(n=\sum_{k=1}^{K}x_{k} \)分成\(x_{1},\ldots ,x_{K}\)的所有可能的分法。关于多项式系数更有意思的结论可以参见 <a href="file:///home/cliyh/zorg/output/math/probability/afcp-01dot5-multinomial-coefficients.html">这篇博文</a>。
 </p>
 </div>
 </div>
-<div id="outline-container-org46f0c3a" class="outline-2">
-<h2 id="org46f0c3a"><span class="section-number-2">3</span> 泊松分布</h2>
+<div id="outline-container-orgfa802e7" class="outline-2">
+<h2 id="orgfa802e7"><span class="section-number-2">3</span> 泊松分布</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -187,8 +187,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-org0394c62" class="outline-2">
-<h2 id="org0394c62"><span class="section-number-2">4</span> 经验分布</h2>
+<div id="outline-container-org51555f0" class="outline-2">
+<h2 id="org51555f0"><span class="section-number-2">4</span> 经验分布</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -225,15 +225,15 @@ p(x) = \sum_{i=1}^{N}w_{i}\delta_{x_{i}}(x)
 </div>
 </div>
 
-<div id="outline-container-org797d1f6" class="outline-2">
-<h2 id="org797d1f6"><span class="section-number-2">5</span> 高斯分布</h2>
+<div id="outline-container-orgf3a2b7c" class="outline-2">
+<h2 id="orgf3a2b7c"><span class="section-number-2">5</span> 高斯分布</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
 </p>
 
 <p>
-高斯分布是机器学习和统计学中使用最广泛的分布，关于高斯分布的八卦<a href="file:///c:/Users/cliyh/AppData/Roaming/zorg/output/math/probability/afcp-normal-distribution-history.html">见我的这篇博文</a> 。其密度函数是：
+高斯分布是机器学习和统计学中使用最广泛的分布，关于高斯分布的八卦<a href="file:///home/cliyh/zorg/output/math/probability/afcp-normal-distribution-history.html">见我的这篇博文</a> 。其密度函数是：
 </p>
 \begin{equation}
 \label{eq:10}
@@ -269,8 +269,8 @@ p(x) = \sum_{i=1}^{N}w_{i}\delta_{x_{i}}(x)
 </ol>
 </div>
 
-<div id="outline-container-org5b06ce9" class="outline-3">
-<h3 id="org5b06ce9"><span class="section-number-3">5.1</span> 高斯分布的退化</h3>
+<div id="outline-container-orgbe16c38" class="outline-3">
+<h3 id="orgbe16c38"><span class="section-number-3">5.1</span> 高斯分布的退化</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 当我们令式~(\ref{eq:10})中的\(\sigma^{2}\)趋近零的时候，高斯分布的精度会越来越高，意味着高斯分布越来越窄，窄到只在\(x=\mu\)处有值：
@@ -310,8 +310,8 @@ p(x) = \sum_{i=1}^{N}w_{i}\delta_{x_{i}}(x)
 </div>
 </div>
 </div>
-<div id="outline-container-org727a946" class="outline-2">
-<h2 id="org727a946"><span class="section-number-2">6</span> 学生分布</h2>
+<div id="outline-container-orgd000ce7" class="outline-2">
+<h2 id="orgd000ce7"><span class="section-number-2">6</span> 学生分布</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 
@@ -328,14 +328,14 @@ p(x) = \sum_{i=1}^{N}w_{i}\delta_{x_{i}}(x)
 其中\(\mu\)是均值，\(\sigma^{2} > 0\)是缩放因子，\(\nu > 0\)是自由度。稍后我们会发现学生分布的方差是\(\frac{\nu\sigma^{2}}{\nu-2}\)。
 </p>
 
-<div id="org92e2cf8" class="figure">
+<div id="orga568135" class="figure">
 <p><img src="../../img/computer_mlapp/20170524mlappfigure2dot7.png" alt="20170524mlappfigure2dot7.png" width="600" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> 高斯函数对异类敏感，学生分布更鲁棒</p>
 </div>
 
 <p>
-我们从图<a href="#org92e2cf8">1</a> 可以看出高斯分布对异类更敏感，而学生分布则要稳定的多。对于学生分布\(\nu=1\)时，我们也称其为柯西分布或者洛伦兹分布。这个分布的尾巴很重以至于求均值计算积分的时候根本不收敛。
+我们从图<a href="#orga568135">1</a> 可以看出高斯分布对异类更敏感，而学生分布则要稳定的多。对于学生分布\(\nu=1\)时，我们也称其为柯西分布或者洛伦兹分布。这个分布的尾巴很重以至于求均值计算积分的时候根本不收敛。
 </p>
 
 <p>
@@ -343,8 +343,8 @@ p(x) = \sum_{i=1}^{N}w_{i}\delta_{x_{i}}(x)
 </p>
 </div>
 </div>
-<div id="outline-container-orgdec4d8a" class="outline-2">
-<h2 id="orgdec4d8a"><span class="section-number-2">7</span> 拉普拉斯分布</h2>
+<div id="outline-container-org3d944f4" class="outline-2">
+<h2 id="org3d944f4"><span class="section-number-2">7</span> 拉普拉斯分布</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 
@@ -362,8 +362,8 @@ p(x) = \sum_{i=1}^{N}w_{i}\delta_{x_{i}}(x)
 </p>
 </div>
 </div>
-<div id="outline-container-org91b9d64" class="outline-2">
-<h2 id="org91b9d64"><span class="section-number-2">8</span> 伽马分布</h2>
+<div id="outline-container-orgfa8496d" class="outline-2">
+<h2 id="orgfa8496d"><span class="section-number-2">8</span> 伽马分布</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 
@@ -400,8 +400,8 @@ p(x) = \sum_{i=1}^{N}w_{i}\delta_{x_{i}}(x)
 </ol>
 </div>
 </div>
-<div id="outline-container-org03ef2ec" class="outline-2">
-<h2 id="org03ef2ec"><span class="section-number-2">9</span> 贝塔分布</h2>
+<div id="outline-container-org6f89147" class="outline-2">
+<h2 id="org6f89147"><span class="section-number-2">9</span> 贝塔分布</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 贝塔分布定义域在\([0,1]\)上，定义式为：
@@ -423,8 +423,8 @@ B(a,b) = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}
 </p>
 </div>
 </div>
-<div id="outline-container-org803cf6f" class="outline-2">
-<h2 id="org803cf6f"><span class="section-number-2">10</span> Pareto分布</h2>
+<div id="outline-container-org0b7d8f7" class="outline-2">
+<h2 id="org0b7d8f7"><span class="section-number-2">10</span> Pareto分布</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 
@@ -442,8 +442,8 @@ Pareto分布用于长尾数据量建模。例如英语里最常用的单词“th
 </p>
 </div>
 </div>
-<div id="outline-container-org8630cbc" class="outline-2">
-<h2 id="org8630cbc"><span class="section-number-2">11</span> 机器学习中概率分布的用途</h2>
+<div id="outline-container-orgfb737aa" class="outline-2">
+<h2 id="orgfb737aa"><span class="section-number-2">11</span> 机器学习中概率分布的用途</h2>
 <div class="outline-text-2" id="text-11">
 <p>
 

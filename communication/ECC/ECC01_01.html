@@ -18,7 +18,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -80,7 +80,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -89,17 +89,17 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org5ac87b8">1. 引言</a></li>
-<li><a href="#org8c381f7">2. 码的类型</a></li>
-<li><a href="#orgdd12ef5">3. 调制和编码</a></li>
-<li><a href="#org8cb4464">4. 最大似然译码</a></li>
+<li><a href="#orgccacb19">1. 引言</a></li>
+<li><a href="#org78cc803">2. 码的类型</a></li>
+<li><a href="#org8a99db4">3. 调制和编码</a></li>
+<li><a href="#orge4b7dc7">4. 最大似然译码</a></li>
 </ul>
 </div>
 </div>
 
 
-<div id="outline-container-org5ac87b8" class="outline-2">
-<h2 id="org5ac87b8"><span class="section-number-2">1</span> 引言</h2>
+<div id="outline-container-orgccacb19" class="outline-2">
+<h2 id="orgccacb19"><span class="section-number-2">1</span> 引言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -114,11 +114,11 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-数字信息的传输和存储有很多相似之处。他们都涉及从信息源头到目的地的数据搬移。一个典型的数据传输系统可以如图<a href="#org0da8728">1</a>所示。
+数字信息的传输和存储有很多相似之处。他们都涉及从信息源头到目的地的数据搬移。一个典型的数据传输系统可以如图<a href="#org7328de1">1</a>所示。
 </p>
 
 
-<div id="org0da8728" class="figure">
+<div id="org7328de1" class="figure">
 <p><img src="../../img/20161111figure01_01.png" alt="20161111figure01_01.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> 典型数字传输（存储）系统框图</p>
@@ -126,7 +126,7 @@ for the JavaScript code in this tag.
 
 
 <p>
-在图<a href="#org0da8728">1</a> 中，information source是指信源，信源可以是一个人也可以是一个数字终端。信源发出需要接收端接收的信息。承载信息的可以使连续的波形也可以是离散的符号。信源编码器把信源的输出变成一串二进制序列。我们把这串序列用 \(\mathbf{u}\) 表示。信道编码器有两个作用：
+在图<a href="#org7328de1">1</a> 中，information source是指信源，信源可以是一个人也可以是一个数字终端。信源发出需要接收端接收的信息。承载信息的可以使连续的波形也可以是离散的符号。信源编码器把信源的输出变成一串二进制序列。我们把这串序列用 \(\mathbf{u}\) 表示。信道编码器有两个作用：
 </p>
 <ol class="org-ol">
 <li>最小化表示信源序列的比特数。</li>
@@ -134,7 +134,7 @@ for the JavaScript code in this tag.
 </ol>
 
 <p>
-信源编码不是关注的重点。我只关注信道编码，也就是图 <a href="#org0da8728">1</a>中的channel encoder和channel decoder。信道编码把信息序列 \(\mathbf{u}\) 转换成一个离散序列 \(\mathbf{v}\) ,我们称 \(\mathbf{v}\) 为码字。在大多数情况下， \(\mathbf{v}\) 也是一个二进制序列（有时候 \(\mathbf{v}\)也可以是非二进制序列）。本书的一个重要关注点就是设计一个好的信道编码器用来对抗信道中的噪声。
+信源编码不是关注的重点。我只关注信道编码，也就是图 <a href="#org7328de1">1</a>中的channel encoder和channel decoder。信道编码把信息序列 \(\mathbf{u}\) 转换成一个离散序列 \(\mathbf{v}\) ,我们称 \(\mathbf{v}\) 为码字。在大多数情况下， \(\mathbf{v}\) 也是一个二进制序列（有时候 \(\mathbf{v}\)也可以是非二进制序列）。本书的一个重要关注点就是设计一个好的信道编码器用来对抗信道中的噪声。
 </p>
 
 <p>
@@ -146,11 +146,11 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-本书的重点在于设计信道编解码系统，所以，图<a href="#org0da8728">1</a> 可以简化为图<a href="#org004b426">2</a>
+本书的重点在于设计信道编解码系统，所以，图<a href="#org7328de1">1</a> 可以简化为图<a href="#org5eb5577">2</a>
 </p>
 
-<div id="org004b426" class="figure">
-<p><img src="../../img/20161112figure01_02.png" alt="20161112figure01_02.png" width="400" align="centerfig:20161111figure01_01fig:20161111figure01_01" /> 
+<div id="org5eb5577" class="figure">
+<p><img src="../../img/20161112figure01_02.png" alt="20161112figure01_02.png" width="400" align="centerfig:20161111figure01_01fig:20161111figure01_01" />
 </p>
 <p><span class="figure-number">图 2:</span> 简化的编解码系统</p>
 </div>
@@ -175,8 +175,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org8c381f7" class="outline-2">
-<h2 id="org8c381f7"><span class="section-number-2">2</span> 码的类型</h2>
+<div id="outline-container-org78cc803" class="outline-2">
+<h2 id="org78cc803"><span class="section-number-2">2</span> 码的类型</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -191,10 +191,10 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-在一个二进制码中，每一个码字 \(\mathbf{v}\)也是二进制的。为了让编码系统有效，必须保证每一个信息序列对应一个编码码字，也就是说 \(k \leq n\)，即 \(R \leq 1\)  。 当 \(k < n\) 时，有 \(n-k\) 个冗余比特产生，这些冗余比特赋予线性分组码对抗噪声干扰的能力。对于一个固定的码率 \(R\)， 可以通过增加码长添加更多的冗余比特。比如对于 \(R=1/2\) ，可以是 \(100/200\) 也可以是 \(1000/2000\) 。越长的码，添加的冗余比特越多。图<a href="#org800c56f">3</a>给出了一个 \((7,4)\) 线性分组码的所有码字。
+在一个二进制码中，每一个码字 \(\mathbf{v}\)也是二进制的。为了让编码系统有效，必须保证每一个信息序列对应一个编码码字，也就是说 \(k \leq n\)，即 \(R \leq 1\)  。 当 \(k < n\) 时，有 \(n-k\) 个冗余比特产生，这些冗余比特赋予线性分组码对抗噪声干扰的能力。对于一个固定的码率 \(R\)， 可以通过增加码长添加更多的冗余比特。比如对于 \(R=1/2\) ，可以是 \(100/200\) 也可以是 \(1000/2000\) 。越长的码，添加的冗余比特越多。图<a href="#orgb8938ab">3</a>给出了一个 \((7,4)\) 线性分组码的所有码字。
 </p>
 
-<div id="org800c56f" class="figure">
+<div id="orgb8938ab" class="figure">
 <p><img src="../../img/20161112tab01_01.png" alt="20161112tab01_01.png" width="400" align="centerfig:20161111figure01_01fig:20161111figure01_01" />
 </p>
 <p><span class="figure-number">图 3:</span> (7,4)线性分组码的码字构成</p>
@@ -206,23 +206,22 @@ for the JavaScript code in this tag.
 </p>
 
 <p>
-二进制卷积码也是通过添加冗余比特来对抗信道噪声，不同的是，二进制卷积码通过增大约束长度来实现更多冗余添加。通常我们可以保持 \(k\) 和 \(n\) 不变，增加约束长度来实现冗余比特的添加。如何利用卷积码的约束长度是工程实现时需要重点考虑的问题。一个 \(k=1\)， \(n=2\) ， \(m=2\) 的卷积码如图<a href="#orgc04fab1">4</a>所示。
+二进制卷积码也是通过添加冗余比特来对抗信道噪声，不同的是，二进制卷积码通过增大约束长度来实现更多冗余添加。通常我们可以保持 \(k\) 和 \(n\) 不变，增加约束长度来实现冗余比特的添加。如何利用卷积码的约束长度是工程实现时需要重点考虑的问题。一个 \(k=1\)， \(n=2\) ， \(m=2\) 的卷积码如图<a href="#orge53a28c">4</a>所示。
 </p>
 
-<div id="orgc04fab1" class="figure">
+<div id="orge53a28c" class="figure">
 <p><img src="../../img/20161113fig01_03.png" alt="20161113fig01_03.png" width="400" align="centerfig:20161111figure01_01fig:20161111figure01_01" />
 </p>
 <p><span class="figure-number">图 4:</span> \(k=1\)， \(n=2\) ， \(m=2\) 的卷积码</p>
 </div>
 
 <p>
-对于图<a href="#orgc04fab1">4</a> 所示的编码器，假设输入为 \(\mathbf{u} = 1101000\cdots \) (左边的信息比特最早进入编码器)， 假设编码器上边的输出是第一个输出比特，下面的输出是第二个编码比特，则 \(\mathbf{u}\) 对应的输出
-为 \(\mathbf{v} = (11,10,10,00,01,11,00,00,00,\cdots)\)
+对于图<a href="#orge53a28c">4</a> 所示的编码器，假设输入为 \(\mathbf{u} = 1101000\cdots \) (左边的信息比特最早进入编码器)， 假设编码器上边的输出是第一个输出比特，下面的输出是第二个编码比特，则 \(\mathbf{u}\) 对应的输出为 \(\mathbf{v} = (11,10,10,00,01,11,00,00,00,\cdots)\)
 </p>
 </div>
 </div>
-<div id="outline-container-orgdd12ef5" class="outline-2">
-<h2 id="orgdd12ef5"><span class="section-number-2">3</span> 调制和编码</h2>
+<div id="outline-container-org8a99db4" class="outline-2">
+<h2 id="org8a99db4"><span class="section-number-2">3</span> 调制和编码</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -255,7 +254,7 @@ y = \int_{0}^{T}r(t) \sqrt{\frac{2E_{s}}{T}}\cos{2\pi f_{0}t dt}
 </p>
 
 <p>
-在BPSK中，我们实用两个信号来传输信息，但是如果一共有 \(M=2^{l}\) 个信道波形可供选择，编码器输出的编码比特首先要分成一个新的序列，序列中的元素包含 \(l\) 个二进制比特构成的字节（这里的字节和计算机的字节有所不同，在计算机科学中一个字节一般是8个比特，在这里我们称 \(l\)个比特构成的二进制序列也为一个字节 ）。我们把每 \(l\) 个比特构成的一个字节成为一个符号，一共有 \(M=2^{l}\) 个符号。每个符号映射为符号集 \(\mathcal{S}\) 中的一个符号。每个符号是一个脉冲波形，时长为 \(T\) 。我们把这样的映射方式成为 MPSK。在MPSK调制中， 一共有 \(M\) 个相位的正弦信号。每个信号有相同的能量 \(E_{s}\) ，但是不同的相位 \(\phi_{i}\) ，可以表示为 \[s_{i}(t) = \sqrt{\frac{2E_{s}}{T}} \cos{(2\pi f_{0}t + \phi_{i})}, 0\leq t \leq T\] 其中， \(\phi_{i} = 2\phi(i-1)/M, 1\leq i \leq M\) 。由于MPSK具有恒定的包络，所以又叫恒包络调制。 
+在BPSK中，我们实用两个信号来传输信息，但是如果一共有 \(M=2^{l}\) 个信道波形可供选择，编码器输出的编码比特首先要分成一个新的序列，序列中的元素包含 \(l\) 个二进制比特构成的字节（这里的字节和计算机的字节有所不同，在计算机科学中一个字节一般是8个比特，在这里我们称 \(l\)个比特构成的二进制序列也为一个字节 ）。我们把每 \(l\) 个比特构成的一个字节成为一个符号，一共有 \(M=2^{l}\) 个符号。每个符号映射为符号集 \(\mathcal{S}\) 中的一个符号。每个符号是一个脉冲波形，时长为 \(T\) 。我们把这样的映射方式成为 MPSK。在MPSK调制中， 一共有 \(M\) 个相位的正弦信号。每个信号有相同的能量 \(E_{s}\) ，但是不同的相位 \(\phi_{i}\) ，可以表示为 \[s_{i}(t) = \sqrt{\frac{2E_{s}}{T}} \cos{(2\pi f_{0}t + \phi_{i})}, 0\leq t \leq T\] 其中， \(\phi_{i} = 2\phi(i-1)/M, 1\leq i \leq M\) 。由于MPSK具有恒定的包络，所以又叫恒包络调制。
 </p>
 
 <p>
@@ -272,7 +271,7 @@ y = \int_{0}^{T}r(t) \sqrt{\frac{2E_{s}}{T}}\cos{2\pi f_{0}t dt}
 </ol>
 
 
-<div id="org81bd61d" class="figure">
+<div id="org5d603a0" class="figure">
 <p><img src="../../img/20161113fig01_06a.png" alt="20161113fig01_06a.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 5:</span> BSC信道模型</p>
@@ -287,7 +286,7 @@ y = \int_{0}^{T}r(t) \sqrt{\frac{2E_{s}}{T}}\cos{2\pi f_{0}t dt}
 p = \mathcal{Q} (\sqrt{2E_{s}/N_{0}})
 \end{equation}
 <p>
-其中 \(\mathcal{Q}\) 函数定义为： \[\mathcal{Q}(x) = \frac{1}{\sqrt{2\pi}} \int_{x}^{\infty} e^{-y^{2}/2}dy\] 
+其中 \(\mathcal{Q}\) 函数定义为： \[\mathcal{Q}(x) = \frac{1}{\sqrt{2\pi}} \int_{x}^{\infty} e^{-y^{2}/2}dy\]
 \(\mathcal{Q}\) 函数的一个上界为： \[\mathcal{Q}(x) \leq \frac{1}{2} e^{-x^{2}/2}, x\geq 0\] 如果调制器的输出和解调器的输出都采用二进制，即 \(M=Q=2\) ，则称解调器的判决为硬判决。硬判决的调制器和译码器实现起来都非常简单。当 \(Q>2\) 或者解调器的输出不经量化，译码器必须能够接受多级输入（或者为量化的实数输入），我们称这样的译码为软译码。虽然软译码的复杂度比硬译码复杂度要高，但是软译码可以带来相当大的系统增益（AWGN信道下，典型的增益大约为2-3dB）。
 </p>
 
@@ -297,7 +296,7 @@ p = \mathcal{Q} (\sqrt{2E_{s}/N_{0}})
 \begin{eqnarray}
 \label{eq:20161113equ01_06}
 p(y|x=0)&=& \frac{1}{\sqrt{\pi N_{0}}} e^{-\frac{(y+\sqrt{E_{s}})^{2}}{N_{0}}} \\
-p(y|x=1)&=& \frac{1}{\sqrt{\pi N_{0}}} e^{-\frac{(y-\sqrt{E_{s}})^{2}}{N_{0}}} 
+p(y|x=1)&=& \frac{1}{\sqrt{\pi N_{0}}} e^{-\frac{(y-\sqrt{E_{s}})^{2}}{N_{0}}}
 \end{eqnarray}
 <p>
 其中， \(E_{s}\) 是信号能量。
@@ -313,19 +312,19 @@ p(y|x=1)&=& \frac{1}{\sqrt{\pi N_{0}}} e^{-\frac{(y-\sqrt{E_{s}})^{2}}{N_{0}}}
 </div>
 </div>
 
-<div id="outline-container-org8cb4464" class="outline-2">
-<h2 id="org8cb4464"><span class="section-number-2">4</span> 最大似然译码</h2>
+<div id="outline-container-orge4b7dc7" class="outline-2">
+<h2 id="orge4b7dc7"><span class="section-number-2">4</span> 最大似然译码</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
 </p>
 
 <p>
-AWGN信道下的编码系统如图<a href="#org617851d">6</a> 所示。
+AWGN信道下的编码系统如图<a href="#org4a6d00d">6</a> 所示。
 </p>
 
 
-<div id="org617851d" class="figure">
+<div id="org4a6d00d" class="figure">
 <p><img src="../../img/20161114fig01_07.png" alt="20161114fig01_07.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 6:</span> AWGN信道下的编码系统</p>

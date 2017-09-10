@@ -86,17 +86,17 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3be0051">1. 回忆</a></li>
-<li><a href="#org03c0c82">2. 最近邻算法</a></li>
-<li><a href="#orgada8172">3. 厚厚的西瓜皮</a></li>
-<li><a href="#org0fd2704">4. 高维空间的高斯分布</a></li>
-<li><a href="#orgbd8b04e">5. 怎么办？</a></li>
+<li><a href="#org629c72a">1. 回忆</a></li>
+<li><a href="#orga6033c4">2. 最近邻算法</a></li>
+<li><a href="#org58f6a79">3. 厚厚的西瓜皮</a></li>
+<li><a href="#orgfec5bf0">4. 高维空间的高斯分布</a></li>
+<li><a href="#orgd2bc7d2">5. 怎么办？</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org3be0051" class="outline-2">
-<h2 id="org3be0051"><span class="section-number-2">1</span> 回忆</h2>
+<div id="outline-container-org629c72a" class="outline-2">
+<h2 id="org629c72a"><span class="section-number-2">1</span> 回忆</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -108,32 +108,32 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org03c0c82" class="outline-2">
-<h2 id="org03c0c82"><span class="section-number-2">2</span> 最近邻算法</h2>
+<div id="outline-container-orga6033c4" class="outline-2">
+<h2 id="orga6033c4"><span class="section-number-2">2</span> 最近邻算法</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
 </p>
 
 <p>
-现在我们考虑一个分类问题，目标可以分三类。即，对于一个输入，输出是三个中的一个。为了简化问题，我们考虑输入是个二维向量\((x_{1},x_{2})\)。这么做仅仅是为了简化问题，并不代表所有输入都是这么低的维度。假设我们已经有了100个训练集，其分布如图<a href="#orga455989">1</a>所示。蓝色绿色和红色分别代表不同的分类。
+现在我们考虑一个分类问题，目标可以分三类。即，对于一个输入，输出是三个中的一个。为了简化问题，我们考虑输入是个二维向量\((x_{1},x_{2})\)。这么做仅仅是为了简化问题，并不代表所有输入都是这么低的维度。假设我们已经有了100个训练集，其分布如图<a href="#org1991e07">1</a>所示。蓝色绿色和红色分别代表不同的分类。
 </p>
 
-<div id="orga455989" class="figure">
+<div id="org1991e07" class="figure">
 <p><img src="../../img/computer_prml/20170503figure1dot19.png" alt="20170503figure1dot19.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> 二维输入的分类问题模型</p>
 </div>
 
 <p>
-对于输入（图<a href="#orga455989">1</a> 中用黑色叉表示），我们要估计其属于黑色，蓝色或者绿色中的哪一类。一个最直观的输出是看看它周围的都是什么类型。如何把这个思想转化位算法？一个最简单的实现就是把输入空间划分成大小相等的胞元，如图<a href="#org8d32db2">2</a>所示。
+对于输入（图<a href="#org1991e07">1</a> 中用黑色叉表示），我们要估计其属于黑色，蓝色或者绿色中的哪一类。一个最直观的输出是看看它周围的都是什么类型。如何把这个思想转化位算法？一个最简单的实现就是把输入空间划分成大小相等的胞元，如图<a href="#orga35c815">2</a>所示。
 </p>
 
 <p>
 通过对输入空间进行胞元划分，我们只需要统计新的输入落入的胞元中哪种类型占比最大就可以。这种方法叫做最近邻算法。这种简单粗暴的最近邻算法有很多的问题，但是最致命的一个就是当输入矢量维度变大时带来的复杂度问题，即维度诅咒。设想：我们现在的输入是二维向量，但是当输入是三维，四位甚至更高维呢？问题就变得复杂起来。因为输入的维度变高后，胞元的数量也成指数上升。
 </p>
 
-<div id="org8d32db2" class="figure">
+<div id="orga35c815" class="figure">
 <p><img src="../../img/computer_prml/20170503figure1dot20.png" alt="20170503figure1dot20.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> 最近邻算法的简单实现</p>
@@ -154,8 +154,8 @@ y(\mathbf{x}, \mathbf{w}) = w_{0} + \sum_{i=1}^{D}w_{i}x_{i} + \sum_{i=1}^{D}\su
 </div>
 </div>
 
-<div id="outline-container-orgada8172" class="outline-2">
-<h2 id="orgada8172"><span class="section-number-2">3</span> 厚厚的西瓜皮</h2>
+<div id="outline-container-org58f6a79" class="outline-2">
+<h2 id="org58f6a79"><span class="section-number-2">3</span> 厚厚的西瓜皮</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -180,36 +180,36 @@ V_{D}(r) = K_{D}r^{D}
 \frac{V_{D}(1) - V_{D}(1-\epsilon)}{V_{D}(1)} = 1- (1-\epsilon)^{D}
 \end{equation}
 <p>
-为了对这个问题有更直观的感觉，我们画出了不同\(D\)关于\(\epsilon\)的函数。如图<a href="#orgab584e6">3</a>所示。
+为了对这个问题有更直观的感觉，我们画出了不同\(D\)关于\(\epsilon\)的函数。如图<a href="#org019a4a3">3</a>所示。
 </p>
 
-<div id="orgab584e6" class="figure">
+<div id="org019a4a3" class="figure">
 <p><img src="../../img/computer_prml/20170503figure1dot22.png" alt="20170503figure1dot22.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 3:</span> 两球之间的体积</p>
 </div>
 
 <p>
-从图<a href="#orgab584e6">3</a> 我们可以看出对于固定的\(\epsilon\)，随着维度的提升，两球之间的体积占大球的体积的比例越来越大。比如对于\(\epsilon = 0.1\)，也就是说半径是\(0.9\)的\(D\)维空间中的球，当\(D\)是20 的时候两球之间的体积占了大球体积的85% .也就是说如果在\(20\)维空间的这个球是西瓜的话，这个西瓜的西瓜皮就占了这个西瓜相当大的体积。
+从图<a href="#org019a4a3">3</a> 我们可以看出对于固定的\(\epsilon\)，随着维度的提升，两球之间的体积占大球的体积的比例越来越大。比如对于\(\epsilon = 0.1\)，也就是说半径是\(0.9\)的\(D\)维空间中的球，当\(D\)是20 的时候两球之间的体积占了大球体积的85% .也就是说如果在\(20\)维空间的这个球是西瓜的话，这个西瓜的西瓜皮就占了这个西瓜相当大的体积。
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0fd2704" class="outline-2">
-<h2 id="org0fd2704"><span class="section-number-2">4</span> 高维空间的高斯分布</h2>
+<div id="outline-container-orgfec5bf0" class="outline-2">
+<h2 id="orgfec5bf0"><span class="section-number-2">4</span> 高维空间的高斯分布</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
 </p>
 
 <p>
-现在我们考虑高维空间的高斯分布。在高维空间上，如果从笛卡尔空间转换到极坐标空间并且积分掉方向变量（也就是那个角度变量），我们就得到了一个与从零点出发的半径\(r\)有关的密度函数\(p(r)\)。那么\(p(r)\delta r\)就是在半径\(p(r)\)处薄薄的一层\(\delta r\)代表的概率。从图<a href="#orgab584e6">3</a> 我们可以看到即使这薄薄的一层也占据了很大的概率空间。
+现在我们考虑高维空间的高斯分布。在高维空间上，如果从笛卡尔空间转换到极坐标空间并且积分掉方向变量（也就是那个角度变量），我们就得到了一个与从零点出发的半径\(r\)有关的密度函数\(p(r)\)。那么\(p(r)\delta r\)就是在半径\(p(r)\)处薄薄的一层\(\delta r\)代表的概率。从图<a href="#org019a4a3">3</a> 我们可以看到即使这薄薄的一层也占据了很大的概率空间。
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgbd8b04e" class="outline-2">
-<h2 id="orgbd8b04e"><span class="section-number-2">5</span> 怎么办？</h2>
+<div id="outline-container-orgd2bc7d2" class="outline-2">
+<h2 id="orgd2bc7d2"><span class="section-number-2">5</span> 怎么办？</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 

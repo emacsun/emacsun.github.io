@@ -14,7 +14,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -63,16 +63,16 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb9e6a6d">1. Magit</a></li>
-<li><a href="#org81e294c">2. 一个简单的流程</a></li>
-<li><a href="#orge20c5bd">3. 总结</a></li>
-<li><a href="#org9e29921">4. 注意事项</a></li>
+<li><a href="#org7cab548">1. Magit</a></li>
+<li><a href="#orgf68d800">2. 一个简单的流程</a></li>
+<li><a href="#org58fefe3">3. 总结</a></li>
+<li><a href="#org855a290">4. 注意事项</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgb9e6a6d" class="outline-2">
-<h2 id="orgb9e6a6d"><span class="section-number-2">1</span> Magit</h2>
+<div id="outline-container-org7cab548" class="outline-2">
+<h2 id="org7cab548"><span class="section-number-2">1</span> Magit</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -84,8 +84,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org81e294c" class="outline-2">
-<h2 id="org81e294c"><span class="section-number-2">2</span> 一个简单的流程</h2>
+<div id="outline-container-orgf68d800" class="outline-2">
+<h2 id="orgf68d800"><span class="section-number-2">2</span> 一个简单的流程</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -105,7 +105,7 @@ for the JavaScript code in this tag.
 现在以我的Emacs配置为例，记录这四个步骤涉及的快捷键。首先， 修改本地仓储不牵涉任何git操作。任何修改都会被保存， <code>spc g s</code> 会把当前仓储的状态显示出来：
 </p>
 
-<div id="orgab71db0" class="figure">
+<div id="org50a128e" class="figure">
 <p><img src="../../img/tools_emacs/20170507emacs_magit_beforestage.png" alt="20170507emacs_magit_beforestage.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> stage之前的 <code>spc g s</code> 结果</p>
@@ -115,7 +115,7 @@ for the JavaScript code in this tag.
 如果要 <code>stage</code> init.el中的修改，按下 <code>s</code> , 状态会变为：
 </p>
 
-<div id="org9343807" class="figure">
+<div id="org54e98b6" class="figure">
 <p><img src="../../img/tools_emacs/20170507emacs_magit_afterstage.png" alt="20170507emacs_magit_afterstage.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> stage之后</p>
@@ -125,7 +125,7 @@ for the JavaScript code in this tag.
 提交， <code>c</code> ,按下 <code>c</code> 的时候，会弹出一个与提交相关的选项列表：
 </p>
 
-<div id="org33fca06" class="figure">
+<div id="org9bc103b" class="figure">
 <p><img src="../../img/tools_emacs/20170507emacs_magit_commitoptions.png" alt="20170507emacs_magit_commitoptions.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 3:</span> commit 选项</p>
@@ -135,7 +135,7 @@ for the JavaScript code in this tag.
 如果此时你需要 stage all modified and deleted files （switches 中的第一项）,按下 <code>-a</code> ; 如果需要 override the author (Options 第一项), 按下  <b>=A</b> ，看到了么？就像自助餐一样，如果选项选择完毕，选中的那些选项会变成另外的颜色：
 </p>
 
-<div id="org57c3862" class="figure">
+<div id="org07214d8" class="figure">
 <p><img src="../../img/tools_emacs/20170507emacs_magit_commitoptions_ok.png" alt="20170507emacs_magit_commitoptions_ok.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 4:</span> commit 选项选择完毕</p>
@@ -147,7 +147,7 @@ for the JavaScript code in this tag.
 </p>
 
 
-<div id="org8524084" class="figure">
+<div id="org8f49850" class="figure">
 <p><img src="../../img/tools_emacs/20170507emacs_magit_commitmessage.png" alt="20170507emacs_magit_commitmessage.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 5:</span> 输入提交信息</p>
@@ -157,7 +157,7 @@ for the JavaScript code in this tag.
 提交信息输入完毕，在本地的修改记录算是修改完成。 <code>spc g s</code> 的状态是：
 </p>
 
-<div id="org8cc89cf" class="figure">
+<div id="orgc1e667a" class="figure">
 <p><img src="../../img/tools_emacs/20170507emacs_magit_aftercommit.png" alt="20170507emacs_magit_aftercommit.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 6:</span> 输入提交信息之后</p>
@@ -168,7 +168,7 @@ for the JavaScript code in this tag.
 </p>
 
 
-<div id="orgd1481e5" class="figure">
+<div id="orgbb28234" class="figure">
 <p><img src="../../img/tools_emacs/20170507emacs_magit_pushoptions.png" alt="20170507emacs_magit_pushoptions.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 7:</span> push 选项</p>
@@ -179,15 +179,15 @@ for the JavaScript code in this tag.
 </p>
 
 
-<div id="org54bc615" class="figure">
+<div id="org6bf7465" class="figure">
 <p><img src="../../img/tools_emacs/20170507emacs_magit_afterpush.png" alt="20170507emacs_magit_afterpush.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 8:</span> push完成</p>
 </div>
 </div>
 </div>
-<div id="outline-container-orge20c5bd" class="outline-2">
-<h2 id="orge20c5bd"><span class="section-number-2">3</span> 总结</h2>
+<div id="outline-container-org58fefe3" class="outline-2">
+<h2 id="org58fefe3"><span class="section-number-2">3</span> 总结</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -204,8 +204,8 @@ for the JavaScript code in this tag.
 </ol>
 </div>
 </div>
-<div id="outline-container-org9e29921" class="outline-2">
-<h2 id="org9e29921"><span class="section-number-2">4</span> 注意事项</h2>
+<div id="outline-container-org855a290" class="outline-2">
+<h2 id="org855a290"><span class="section-number-2">4</span> 注意事项</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 我的工作环境是：

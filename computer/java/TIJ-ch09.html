@@ -64,21 +64,21 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9a99b95">1. 简介</a></li>
-<li><a href="#org3cbd375">2. 重访 upcasting</a></li>
-<li><a href="#org1f7b8cd">3. 纠结</a>
+<li><a href="#orgcb2d00f">1. 简介</a></li>
+<li><a href="#orgbf1248f">2. 重访 upcasting</a></li>
+<li><a href="#orgab58016">3. 纠结</a>
 <ul>
-<li><a href="#org259353f">3.1. 方法调用 <code>binding</code></a></li>
-<li><a href="#org6ce22fe">3.2. 正确的行为</a></li>
-<li><a href="#org6667224">3.3. 可扩展性</a></li>
-<li><a href="#orgfb59084">3.4. <code>private</code> 无法被覆盖</a></li>
-<li><a href="#orgf775efc">3.5. 对域的处理</a></li>
-<li><a href="#org53dfbb3">3.6. 对 <code>static</code> 方法的处理</a></li>
+<li><a href="#orgf9b623f">3.1. 方法调用 <code>binding</code></a></li>
+<li><a href="#org5265d1a">3.2. 正确的行为</a></li>
+<li><a href="#org820b064">3.3. 可扩展性</a></li>
+<li><a href="#org4a055d8">3.4. <code>private</code> 无法被覆盖</a></li>
+<li><a href="#orgdb10848">3.5. 对域的处理</a></li>
+<li><a href="#org882c5b2">3.6. 对 <code>static</code> 方法的处理</a></li>
 </ul>
 </li>
-<li><a href="#org69cde3e">4. 构造函数和多态</a>
+<li><a href="#org7cdc29d">4. 构造函数和多态</a>
 <ul>
-<li><a href="#org52df59c">4.1. 构造函数的调用顺序</a></li>
+<li><a href="#org967127c">4.1. 构造函数的调用顺序</a></li>
 </ul>
 </li>
 </ul>
@@ -88,8 +88,8 @@ for the JavaScript code in this tag.
 #+KEYWORD
 </p>
 
-<div id="outline-container-org9a99b95" class="outline-2">
-<h2 id="org9a99b95"><span class="section-number-2">1</span> 简介</h2>
+<div id="outline-container-orgcb2d00f" class="outline-2">
+<h2 id="orgcb2d00f"><span class="section-number-2">1</span> 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -108,8 +108,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-org3cbd375" class="outline-2">
-<h2 id="org3cbd375"><span class="section-number-2">2</span> 重访 upcasting</h2>
+<div id="outline-container-orgbf1248f" class="outline-2">
+<h2 id="orgbf1248f"><span class="section-number-2">2</span> 重访 upcasting</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -249,8 +249,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-org1f7b8cd" class="outline-2">
-<h2 id="org1f7b8cd"><span class="section-number-2">3</span> 纠结</h2>
+<div id="outline-container-orgab58016" class="outline-2">
+<h2 id="orgab58016"><span class="section-number-2">3</span> 纠结</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -261,8 +261,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-org259353f" class="outline-3">
-<h3 id="org259353f"><span class="section-number-3">3.1</span> 方法调用 <code>binding</code></h3>
+<div id="outline-container-orgf9b623f" class="outline-3">
+<h3 id="orgf9b623f"><span class="section-number-3">3.1</span> 方法调用 <code>binding</code></h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 把方法调用和方法本身连接起来的过程叫做 <code>binding</code> 。程序执行之前的 binding 叫做 early binding (可能由编译器和链接器来完成)。 <code>C</code> 语言种的 binding 都是 early binding。但是，我们前面的例子告诉我们 <code>Java</code> 中， <code>binding</code> 的方式有些不一样。因为编译器不知道到底该调用哪个方法。所以 <code>Java</code> 中的 binding 方法是所谓的 late binding .意味着 binding 发生在程序运行时。late binding 也叫做 dynamic binding 或者 runtime binding。
@@ -274,14 +274,14 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </div>
 </div>
 
-<div id="outline-container-org6ce22fe" class="outline-3">
-<h3 id="org6ce22fe"><span class="section-number-3">3.2</span> 正确的行为</h3>
+<div id="outline-container-org5265d1a" class="outline-3">
+<h3 id="org5265d1a"><span class="section-number-3">3.2</span> 正确的行为</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 一旦知晓 Java 的动态绑定，我们就可以写出支持多态的漂亮代码。你的代码针对的类型不只是当前类，当前类的父类，父类的父类的对象都可以作为参数。这在 <code>Python</code> 中也有明显的体现（Python 是完全动态的语言）。 我们使用一个经常用到的例子来阐述与 动态绑定相关的概念。
 </p>
 
-<div id="org36591e3" class="figure">
+<div id="org70df2aa" class="figure">
 <p><img src="../../img/computer_TIJ/20170730shape.png" alt="20170730shape.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> 动态绑定</p>
@@ -323,7 +323,7 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 <div class="org-src-container">
 <pre class="src src-java"><span class="linenr">1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">: polymorphism/shape/Circle.java</span>
-<span class="linenr">2: </span><span style="color: #859900; font-weight: bold;">package</span> polymorphism.<span style="color: #b58900;">shape</span>;
+<span class="linenr">2: </span><span style="color: #859900; font-weight: bold;">package</span> polymorphism.<span style="color: #268bd2; font-weight: bold;">shape</span>;
 <span class="linenr">3: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr">4: </span>
 <span class="linenr">5: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Circle</span> <span style="color: #859900; font-weight: bold;">extends</span> <span style="color: #b58900;">Shape</span> <span style="color: #2aa198;">{</span>
@@ -337,7 +337,7 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 <div class="org-src-container">
 <pre class="src src-java"><span class="linenr">1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">: polymorphism/shape/Square.java</span>
-<span class="linenr">2: </span><span style="color: #859900; font-weight: bold;">package</span> polymorphism.<span style="color: #b58900;">shape</span>;
+<span class="linenr">2: </span><span style="color: #859900; font-weight: bold;">package</span> polymorphism.<span style="color: #268bd2; font-weight: bold;">shape</span>;
 <span class="linenr">3: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr">4: </span>
 <span class="linenr">5: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Square</span> <span style="color: #859900; font-weight: bold;">extends</span> <span style="color: #b58900;">Shape</span> <span style="color: #2aa198;">{</span>
@@ -351,7 +351,7 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 <div class="org-src-container">
 <pre class="src src-java"><span class="linenr">1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">: polymorphism/shape/Triangle.java</span>
-<span class="linenr">2: </span><span style="color: #859900; font-weight: bold;">package</span> polymorphism.<span style="color: #b58900;">shape</span>;
+<span class="linenr">2: </span><span style="color: #859900; font-weight: bold;">package</span> polymorphism.<span style="color: #268bd2; font-weight: bold;">shape</span>;
 <span class="linenr">3: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #268bd2; font-weight: bold;">net</span>.<span style="color: #268bd2; font-weight: bold;">mindview</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.<span style="color: #268bd2; font-weight: bold;">Print</span>.*;
 <span class="linenr">4: </span>
 <span class="linenr">5: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">Triangle</span> <span style="color: #859900; font-weight: bold;">extends</span> <span style="color: #b58900;">Shape</span> <span style="color: #2aa198;">{</span>
@@ -366,7 +366,7 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 <div class="org-src-container">
 <pre class="src src-java"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">: polymorphism/shape/RandomShapeGenerator.java</span>
 <span class="linenr"> 2: </span><span style="color: #586e75;">// </span><span style="color: #586e75;">A "factory" that randomly creates shapes.</span>
-<span class="linenr"> 3: </span><span style="color: #859900; font-weight: bold;">package</span> polymorphism.<span style="color: #b58900;">shape</span>;
+<span class="linenr"> 3: </span><span style="color: #859900; font-weight: bold;">package</span> polymorphism.<span style="color: #268bd2; font-weight: bold;">shape</span>;
 <span class="linenr"> 4: </span><span style="color: #859900; font-weight: bold;">import</span> <span style="color: #268bd2; font-weight: bold;">java</span>.<span style="color: #268bd2; font-weight: bold;">util</span>.*;
 <span class="linenr"> 5: </span>
 <span class="linenr"> 6: </span><span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">class</span> <span style="color: #b58900;">RandomShapeGenerator</span> <span style="color: #2aa198;">{</span>
@@ -398,7 +398,7 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 <span class="linenr">10: </span>    <span style="color: #586e75;">// </span><span style="color: #586e75;">Fill up the array with shapes:</span>
 <span class="linenr">11: </span>    <span style="color: #859900; font-weight: bold;">for</span><span style="color: #268bd2;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">i</span> = <span style="color: #6c71c4;">0</span>; i &lt; s.<span style="color: #b58900;">length</span>; i++<span style="color: #268bd2;">)</span>
 <span class="linenr">12: </span>      s<span style="color: #268bd2;">[</span>i<span style="color: #268bd2;">]</span> = gen.next<span style="color: #268bd2;">()</span>;
-<span class="linenr">13: </span>    <span style="color: #586e75;">// </span><span style="color: #586e75;">Make polymorphic met</span><span style="color: #b58900;">hod call</span><span style="color: #586e75;">s:</span>
+<span class="linenr">13: </span>    <span style="color: #586e75;">// </span><span style="color: #586e75;">Make polymorphic method calls:</span>
 <span class="linenr">14: </span>    <span style="color: #859900; font-weight: bold;">for</span><span style="color: #268bd2;">(</span><span style="color: #b58900;">Shape</span> <span style="color: #268bd2;">shp</span> : s<span style="color: #268bd2;">)</span>
 <span class="linenr">15: </span>      shp.draw<span style="color: #268bd2;">()</span>;
 <span class="linenr">16: </span>  <span style="color: #b58900;">}</span>
@@ -424,8 +424,8 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 </div>
 </div>
-<div id="outline-container-org6667224" class="outline-3">
-<h3 id="org6667224"><span class="section-number-3">3.3</span> 可扩展性</h3>
+<div id="outline-container-org820b064" class="outline-3">
+<h3 id="org820b064"><span class="section-number-3">3.3</span> 可扩展性</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 
@@ -436,10 +436,10 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 
 <p>
-图 <a href="#org78856ff">2</a>是一个扩展的例子。
+图 <a href="#org212dd88">2</a>是一个扩展的例子。
 </p>
 
-<div id="org78856ff" class="figure">
+<div id="org212dd88" class="figure">
 <p><img src="../../img/computer_TIJ/20170805extensibility.png" alt="20170805extensibility.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> extensibility</p>
@@ -450,7 +450,7 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 
 <p>
-图 <a href="#org78856ff">2</a> 所示的代码如下：
+图 <a href="#org212dd88">2</a> 所示的代码如下：
 </p>
 <div class="org-src-container">
 <pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">: polymorphism/music3/Music3.java</span>
@@ -537,8 +537,8 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 </div>
 </div>
-<div id="outline-container-orgfb59084" class="outline-3">
-<h3 id="orgfb59084"><span class="section-number-3">3.4</span> <code>private</code> 无法被覆盖</h3>
+<div id="outline-container-org4a055d8" class="outline-3">
+<h3 id="org4a055d8"><span class="section-number-3">3.4</span> <code>private</code> 无法被覆盖</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 
@@ -573,8 +573,8 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 </div>
 </div>
-<div id="outline-container-orgf775efc" class="outline-3">
-<h3 id="orgf775efc"><span class="section-number-3">3.5</span> 对域的处理</h3>
+<div id="outline-container-orgdb10848" class="outline-3">
+<h3 id="orgdb10848"><span class="section-number-3">3.5</span> 对域的处理</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 
@@ -621,8 +621,8 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 </div>
 </div>
-<div id="outline-container-org53dfbb3" class="outline-3">
-<h3 id="org53dfbb3"><span class="section-number-3">3.6</span> 对 <code>static</code> 方法的处理</h3>
+<div id="outline-container-org882c5b2" class="outline-3">
+<h3 id="org882c5b2"><span class="section-number-3">3.6</span> 对 <code>static</code> 方法的处理</h3>
 <div class="outline-text-3" id="text-3-6">
 <p>
 
@@ -675,8 +675,8 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </div>
 </div>
 </div>
-<div id="outline-container-org69cde3e" class="outline-2">
-<h2 id="org69cde3e"><span class="section-number-2">4</span> 构造函数和多态</h2>
+<div id="outline-container-org7cdc29d" class="outline-2">
+<h2 id="org7cdc29d"><span class="section-number-2">4</span> 构造函数和多态</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -686,8 +686,8 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 构造函数和其他函数不一样，当构造函数和多态碰撞，其发生的化学反应更是不同。首先，构造函数不具有多态属性，因为构造函数是不带 <code>static</code> 的 <code>static</code> 函数。理解构造函数和多态的结合至关重要，可以帮助我们减少很多不必要的麻烦。
 </p>
 </div>
-<div id="outline-container-org52df59c" class="outline-3">
-<h3 id="org52df59c"><span class="section-number-3">4.1</span> 构造函数的调用顺序</h3>
+<div id="outline-container-org967127c" class="outline-3">
+<h3 id="org967127c"><span class="section-number-3">4.1</span> 构造函数的调用顺序</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 

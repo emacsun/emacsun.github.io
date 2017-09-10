@@ -86,27 +86,27 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org785f0cd">1. 回忆</a>
+<li><a href="#org37ed18c">1. 回忆</a>
 <ul>
-<li><a href="#orgee812dc">1.1. 数学模型</a></li>
-<li><a href="#org019c394">1.2. 正则化过程</a></li>
+<li><a href="#orgd576dd6">1.1. 数学模型</a></li>
+<li><a href="#org5c46c49">1.2. 正则化过程</a></li>
 </ul>
 </li>
-<li><a href="#orgfa5bc1d">2. matlab实现</a>
+<li><a href="#org955d6ea">2. matlab实现</a>
 <ul>
-<li><a href="#orgb0dee09">2.1. 画出\(y = \sin (2\pi x)\)</a></li>
-<li><a href="#org1f2110d">2.2. 训练集合</a></li>
-<li><a href="#org83d1109">2.3. 曲线拟合</a></li>
-<li><a href="#org3b238c5">2.4. 正则化</a></li>
+<li><a href="#org8dba5b3">2.1. 画出\(y = \sin (2\pi x)\)</a></li>
+<li><a href="#org3a1b68c">2.2. 训练集合</a></li>
+<li><a href="#orgce34eae">2.3. 曲线拟合</a></li>
+<li><a href="#org7fae798">2.4. 正则化</a></li>
 </ul>
 </li>
-<li><a href="#org4e7994e">3. 下载完整的代码</a></li>
+<li><a href="#orgc2c44d2">3. 下载完整的代码</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org785f0cd" class="outline-2">
-<h2 id="org785f0cd"><span class="section-number-2">1</span> 回忆</h2>
+<div id="outline-container-org37ed18c" class="outline-2">
+<h2 id="org37ed18c"><span class="section-number-2">1</span> 回忆</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -125,8 +125,8 @@ for the JavaScript code in this tag.
 中我们介绍了多项式曲线拟合问题并从多方面对其进行了分析，顺便引入了机器学习领域的一些关键术语。今天我们针对多项式曲线拟合问题做一些matlab试验。
 </p>
 </div>
-<div id="outline-container-orgee812dc" class="outline-3">
-<h3 id="orgee812dc"><span class="section-number-3">1.1</span> 数学模型</h3>
+<div id="outline-container-orgd576dd6" class="outline-3">
+<h3 id="orgd576dd6"><span class="section-number-3">1.1</span> 数学模型</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 
@@ -179,8 +179,8 @@ T_{0} \\ \vdots \\ T_{M}
 </div>
 </div>
 
-<div id="outline-container-org019c394" class="outline-3">
-<h3 id="org019c394"><span class="section-number-3">1.2</span> 正则化过程</h3>
+<div id="outline-container-org5c46c49" class="outline-3">
+<h3 id="org5c46c49"><span class="section-number-3">1.2</span> 正则化过程</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 
@@ -235,40 +235,40 @@ T_{0} \\ \vdots \\ T_{M}
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa5bc1d" class="outline-2">
-<h2 id="orgfa5bc1d"><span class="section-number-2">2</span> matlab实现</h2>
+<div id="outline-container-org955d6ea" class="outline-2">
+<h2 id="org955d6ea"><span class="section-number-2">2</span> matlab实现</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
 </p>
 </div>
-<div id="outline-container-orgb0dee09" class="outline-3">
-<h3 id="orgb0dee09"><span class="section-number-3">2.1</span> 画出\(y = \sin (2\pi x)\)</h3>
+<div id="outline-container-org8dba5b3" class="outline-3">
+<h3 id="org8dba5b3"><span class="section-number-3">2.1</span> 画出\(y = \sin (2\pi x)\)</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
   <span class="timestamp-wrapper"><span class="timestamp">[2017-05-21 Sun 15:55]</span></span>
 首先我们画出\(y = \sin (2\pi x)\)，这个函数的图像:
 </p>
 <div class="org-src-container">
-<pre class="src src-matlab"><span class="linenr">1: </span>x = 0<span style="color: #b58900;">:</span>0.01<span style="color: #b58900;">:</span>1;<span style="color: #586e75;">%x</span>
-<span class="linenr">2: </span>y = sin(2<span style="color: #b58900;">*</span> <span style="color: #268bd2; font-weight: bold;">pi</span> <span style="color: #b58900;">*</span> x);
-<span class="linenr">3: </span><span style="color: #b58900;">figure</span>
-<span class="linenr">4: </span>plot(x,y,<span style="color: #2aa198;">'-r'</span>,<span style="color: #2aa198;">'linewidth'</span>,2),hold on;
+<pre class="src src-matlab"><span class="linenr">1: </span>x = 0:0.01:1;%x
+<span class="linenr">2: </span>y = sin(2* pi * x);
+<span class="linenr">3: </span>figure
+<span class="linenr">4: </span>plot(x,y,'-r','linewidth',2),hold on;
 </pre>
 </div>
 <p>
-结果如图<a href="#orga7c5b2d">1</a> 所示：
+结果如图<a href="#org18ccb04">1</a> 所示：
 </p>
 
-<div id="orga7c5b2d" class="figure">
+<div id="org18ccb04" class="figure">
 <p><img src="../../img/computer_prml/20170521figure1.png" alt="20170521figure1.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> \(y = \sin(2*\pi x) \)</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org1f2110d" class="outline-3">
-<h3 id="org1f2110d"><span class="section-number-3">2.2</span> 训练集合</h3>
+<div id="outline-container-org3a1b68c" class="outline-3">
+<h3 id="org3a1b68c"><span class="section-number-3">2.2</span> 训练集合</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
    <span class="timestamp-wrapper"><span class="timestamp">[2017-05-21 Sun 15:55]</span></span>
@@ -278,16 +278,16 @@ T_{0} \\ \vdots \\ T_{M}
 <pre class="src src-matlab"><span class="linenr">1: </span>numTraining = 100;
 <span class="linenr">2: </span>xTraining = rand(1,numTraining);
 <span class="linenr">3: </span>noiseVariance = 0.5;
-<span class="linenr">4: </span>noise = noiseVariance <span style="color: #b58900;">*</span>randn(1,numTraining);
-<span class="linenr">5: </span>yTraining = sin(2<span style="color: #b58900;">*</span><span style="color: #268bd2; font-weight: bold;">pi</span><span style="color: #b58900;">*</span>xTraining) <span style="color: #b58900;">+</span> noise;
-<span class="linenr">6: </span>plot(xTraining,yTraining,<span style="color: #2aa198;">'b+'</span>,<span style="color: #2aa198;">'linewidth'</span>,2),hold on;
+<span class="linenr">4: </span>noise = noiseVariance *randn(1,numTraining);
+<span class="linenr">5: </span>yTraining = sin(2*pi*xTraining) + noise;
+<span class="linenr">6: </span>plot(xTraining,yTraining,'b+','linewidth',2),hold on;
 </pre>
 </div>
 <p>
 和\(y = \sin(2\pi x)\)画在一张图上，如图所示：
 </p>
 
-<div id="org8027c61" class="figure">
+<div id="orgf847d92" class="figure">
 <p><img src="../../img/computer_prml/20170521figure2.png" alt="20170521figure2.png" width="600" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> 训练集合</p>
@@ -298,8 +298,8 @@ T_{0} \\ \vdots \\ T_{M}
 </p>
 </div>
 </div>
-<div id="outline-container-org83d1109" class="outline-3">
-<h3 id="org83d1109"><span class="section-number-3">2.3</span> 曲线拟合</h3>
+<div id="outline-container-orgce34eae" class="outline-3">
+<h3 id="orgce34eae"><span class="section-number-3">2.3</span> 曲线拟合</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 
@@ -317,13 +317,13 @@ T_{0} \\ \vdots \\ T_{M}
 这三步的代码：
 </p>
 <div class="org-src-container">
-<pre class="src src-matlab"><span class="linenr">1: </span><span style="color: #586e75; font-weight: bold; text-decoration: overline;">%%find the A and B for </span><span style="color: #586e75; font-weight: bold; text-decoration: overline;">Ax</span><span style="color: #586e75; font-weight: bold; text-decoration: overline;"> = </span><span style="color: #586e75; font-weight: bold; text-decoration: overline;">B</span>
-<span class="linenr">2: </span>A = getA(<span style="color: #268bd2;">xTraining</span>,modelOrder);
-<span class="linenr">3: </span>B = getB(<span style="color: #268bd2;">xTraining</span>,yTraining,modelOrder);
-<span class="linenr">4: </span>w = A<span style="color: #b58900;">\</span>B';
-<span class="linenr">5: </span><span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">1:length(x)</span>
-<span class="linenr">6: </span>yEstimation(<span style="color: #268bd2; font-weight: bold;">i</span>) = x(<span style="color: #268bd2; font-weight: bold;">i</span>)<span style="color: #b58900;">.^</span>(0<span style="color: #b58900;">:</span>modelOrder ) <span style="color: #b58900;">*</span> w  ;
-<span class="linenr">7: </span><span style="color: #859900; font-weight: bold;">end</span>
+<pre class="src src-matlab"><span class="linenr">1: </span>%%find the A and B for Ax = B
+<span class="linenr">2: </span>A = getA(xTraining,modelOrder);
+<span class="linenr">3: </span>B = getB(xTraining,yTraining,modelOrder);
+<span class="linenr">4: </span>w = A\B';
+<span class="linenr">5: </span>for i = 1:length(x)
+<span class="linenr">6: </span>yEstimation(i) = x(i).^(0:modelOrder ) * w  ;
+<span class="linenr">7: </span>end
 </pre>
 </div>
 
@@ -331,24 +331,24 @@ T_{0} \\ \vdots \\ T_{M}
 先是 <code>getA</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-matlab"><span class="linenr">1: </span><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">A</span> = <span style="color: #268bd2;">getA</span>(<span style="color: #268bd2;">xTraining</span>,<span style="color: #268bd2;">modelOrder</span>)
-<span class="linenr">2: </span>    <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">1:modelOrder + 1</span>
-<span class="linenr">3: </span>        <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">j</span> = <span style="color: #268bd2; font-weight: bold;">1:modelOrder + 1</span>
-<span class="linenr">4: </span>            A(<span style="color: #268bd2; font-weight: bold;">i</span>,<span style="color: #268bd2; font-weight: bold;">j</span>) = sum(xTraining<span style="color: #b58900;">.^</span>(<span style="color: #268bd2; font-weight: bold;">i</span><span style="color: #b58900;">+</span><span style="color: #268bd2; font-weight: bold;">j</span> <span style="color: #b58900;">-</span> 2));
-<span class="linenr">5: </span>        <span style="color: #859900; font-weight: bold;">end</span>
-<span class="linenr">6: </span>    <span style="color: #859900; font-weight: bold;">end</span>
-<span class="linenr">7: </span><span style="color: #859900; font-weight: bold;">end</span>
+<pre class="src src-matlab"><span class="linenr">1: </span>function A = getA(xTraining,modelOrder)
+<span class="linenr">2: </span>    for i = 1:modelOrder + 1
+<span class="linenr">3: </span>        for j = 1:modelOrder + 1
+<span class="linenr">4: </span>            A(i,j) = sum(xTraining.^(i+j - 2));
+<span class="linenr">5: </span>        end
+<span class="linenr">6: </span>    end
+<span class="linenr">7: </span>end
 </pre>
 </div>
 <p>
 然后 <code>getB</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-matlab"><span class="linenr">1: </span><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">B</span> = <span style="color: #268bd2;">getB</span>(<span style="color: #268bd2;">xTraining</span>,<span style="color: #268bd2;">yTraining</span>,<span style="color: #268bd2;">modelOrder</span>)
-<span class="linenr">2: </span>   <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">i</span> = <span style="color: #268bd2; font-weight: bold;">1:modelOrder + 1</span>
-<span class="linenr">3: </span>       B(<span style="color: #268bd2; font-weight: bold;">i</span>) = sum(yTraining <span style="color: #b58900;">.*</span> xTraining<span style="color: #b58900;">.^</span>(<span style="color: #268bd2; font-weight: bold;">i</span><span style="color: #b58900;">-</span>1));
-<span class="linenr">4: </span>   <span style="color: #859900; font-weight: bold;">end</span>
-<span class="linenr">5: </span><span style="color: #859900; font-weight: bold;">end</span>
+<pre class="src src-matlab"><span class="linenr">1: </span>function B = getB(xTraining,yTraining,modelOrder)
+<span class="linenr">2: </span>   for i = 1:modelOrder + 1
+<span class="linenr">3: </span>       B(i) = sum(yTraining .* xTraining.^(i-1));
+<span class="linenr">4: </span>   end
+<span class="linenr">5: </span>end
 </pre>
 </div>
 
@@ -356,7 +356,7 @@ T_{0} \\ \vdots \\ T_{M}
 我们给出 训练集合大小为20，模型阶数为9的训练结果：
 </p>
 
-<div id="org66110ed" class="figure">
+<div id="org0fdf49f" class="figure">
 <p><img src="../../img/computer_prml/20170521figure3.png" alt="20170521figure3.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 3:</span> 训练集合大小为20，模型阶数为9的训练结果</p>
@@ -366,15 +366,15 @@ T_{0} \\ \vdots \\ T_{M}
 图中绿色曲线就是训练结果，可以看出来这个结果显然是过拟合了。我们给出来训练集合大小为20，模型结束为5的训练结果：
 </p>
 
-<div id="org59a4f4b" class="figure">
+<div id="org1988331" class="figure">
 <p><img src="../../img/computer_prml/20170521figure4.png" alt="20170521figure4.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 4:</span> 训练集合大小为20，模型阶数为5的训练结果</p>
 </div>
 </div>
 </div>
-<div id="outline-container-org3b238c5" class="outline-3">
-<h3 id="org3b238c5"><span class="section-number-3">2.4</span> 正则化</h3>
+<div id="outline-container-org7fae798" class="outline-3">
+<h3 id="org7fae798"><span class="section-number-3">2.4</span> 正则化</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 
@@ -384,21 +384,21 @@ T_{0} \\ \vdots \\ T_{M}
 按照式 (\ref{eq:7}) 所给结果，设置\(\lambda = 0.001\)，设置模型阶数为9，训练集合大小为20，训练结果：
 </p>
 
-<div id="orgf136d77" class="figure">
+<div id="org9f3261f" class="figure">
 <p><img src="../../img/computer_prml/20170521figure5.png" alt="20170521figure5.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 5:</span> 训练集合大小为20，模型阶数为9的训练结果,\(\lambda = 0.001\)</p>
 </div>
 
 <p>
-从图<a href="#orgf136d77">5</a> 和 <a href="#org66110ed">3</a> 可以看到，正则化有效的遏制了拟合结果波动过大的情况。
+从图<a href="#org9f3261f">5</a> 和 <a href="#org0fdf49f">3</a> 可以看到，正则化有效的遏制了拟合结果波动过大的情况。
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org4e7994e" class="outline-2">
-<h2 id="org4e7994e"><span class="section-number-2">3</span> 下载完整的代码</h2>
+<div id="outline-container-orgc2c44d2" class="outline-2">
+<h2 id="orgc2c44d2"><span class="section-number-2">3</span> 下载完整的代码</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 

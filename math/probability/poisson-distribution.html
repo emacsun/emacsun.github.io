@@ -87,17 +87,17 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7452c57">1. 定义</a></li>
-<li><a href="#orgafb66a9">2. 泊松分布与二项分布之间的关系</a></li>
-<li><a href="#org9b42ecf">3. 泊松分布的期望和方差</a></li>
-<li><a href="#orge2d83f9">4. 计算泊松分布</a></li>
-<li><a href="#org5f8df99">5. 使用python做试验</a></li>
+<li><a href="#org1751eb6">1. 定义</a></li>
+<li><a href="#org6e2a753">2. 泊松分布与二项分布之间的关系</a></li>
+<li><a href="#orgbc680de">3. 泊松分布的期望和方差</a></li>
+<li><a href="#org6314245">4. 计算泊松分布</a></li>
+<li><a href="#orga624ce5">5. 使用python做试验</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7452c57" class="outline-2">
-<h2 id="org7452c57"><span class="section-number-2">1</span> 定义</h2>
+<div id="outline-container-org1751eb6" class="outline-2">
+<h2 id="org1751eb6"><span class="section-number-2">1</span> 定义</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -129,8 +129,8 @@ p(i) = P\{X=i\} = e^{-\lambda}\frac{\lambda^{i}}{i!}, i = 0,1,2,\ldots
 \end{equation}
 </div>
 </div>
-<div id="outline-container-orgafb66a9" class="outline-2">
-<h2 id="orgafb66a9"><span class="section-number-2">2</span> 泊松分布与二项分布之间的关系</h2>
+<div id="outline-container-org6e2a753" class="outline-2">
+<h2 id="org6e2a753"><span class="section-number-2">2</span> 泊松分布与二项分布之间的关系</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -183,8 +183,8 @@ P\{ X=i\} \approx e^{-\lambda} \frac{\lambda^{i}}{i!}
 </div>
 </div>
 
-<div id="outline-container-org9b42ecf" class="outline-2">
-<h2 id="org9b42ecf"><span class="section-number-2">3</span> 泊松分布的期望和方差</h2>
+<div id="outline-container-orgbc680de" class="outline-2">
+<h2 id="orgbc680de"><span class="section-number-2">3</span> 泊松分布的期望和方差</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 回忆在上一章节中我们假设\(np=\lambda\)，而二项分布的期望是\(np\)，另外二项分布的方差是\(np(1-p) = \lambda (1-p) \) 当\(p\)很小时，\(\lambda (1-p)\)近似为\(\lambda\)。所以我们猜测泊松分布的均值和方差都是\(\lambda\)。接下来，证明这一点：
@@ -217,8 +217,8 @@ E[X^{2}]&=& \sum_{i=0}^{\infty} \frac{i^{2} e^{-\lambda \lambda^{i}}}{i!} \\
 \end{eqnarray}
 </div>
 </div>
-<div id="outline-container-orge2d83f9" class="outline-2">
-<h2 id="orge2d83f9"><span class="section-number-2">4</span> 计算泊松分布</h2>
+<div id="outline-container-org6314245" class="outline-2">
+<h2 id="org6314245"><span class="section-number-2">4</span> 计算泊松分布</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -241,8 +241,8 @@ P\{ X = i +1 \} = \frac{\lambda}{i+1} P\{X=i\}
 \end{equation}
 </div>
 </div>
-<div id="outline-container-org5f8df99" class="outline-2">
-<h2 id="org5f8df99"><span class="section-number-2">5</span> 使用python做试验</h2>
+<div id="outline-container-orga624ce5" class="outline-2">
+<h2 id="orga624ce5"><span class="section-number-2">5</span> 使用python做试验</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -286,10 +286,10 @@ P\{ X = i +1 \} = \frac{\lambda}{i+1} P\{X=i\}
 </div>
 
 <p>
-结果如图<a href="#org0ad6eb4">1</a> 所示：
+结果如图<a href="#orgb26ca49">1</a> 所示：
 </p>
 
-<div id="org0ad6eb4" class="figure">
+<div id="orgb26ca49" class="figure">
 <p><img src="../../img/math_probability/20170701binomialvspoisson1.png" alt="20170701binomialvspoisson1.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> \((100,0.1)\)的二项分布和\(\lambda = 10\)的泊松分布</p>
@@ -297,10 +297,10 @@ P\{ X = i +1 \} = \frac{\lambda}{i+1} P\{X=i\}
 
 
 <p>
-可以看到当\(np = \lambda\)时，泊松分布和二项分布近似的相当好。事实上当\(n=10,p=0.1,\lambda = np = 1\)，或者\(n = 10, p = 0.2,\lambda = np =2\)时，泊松分布和二项分布近似的也相当好。图<a href="#org3a8c034">2</a> 直观的展示了这一结论。
+可以看到当\(np = \lambda\)时，泊松分布和二项分布近似的相当好。事实上当\(n=10,p=0.1,\lambda = np = 1\)，或者\(n = 10, p = 0.2,\lambda = np =2\)时，泊松分布和二项分布近似的也相当好。图<a href="#orgef7cd3f">2</a> 直观的展示了这一结论。
 </p>
 
-<div id="org3a8c034" class="figure">
+<div id="orgef7cd3f" class="figure">
 <p><img src="../../img/math_probability/20170701binomialvspoisson2.png" alt="20170701binomialvspoisson2.png" width="600" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> \(np=\lambda\)的二项分布和\(\lambda = 10\)的泊松分布</p>

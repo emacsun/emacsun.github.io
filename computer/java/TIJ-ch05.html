@@ -64,17 +64,17 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org34868da">1. 简介</a></li>
-<li><a href="#org18e8cb6">2. 只有 <code>boolean</code> 有真假</a></li>
-<li><a href="#orgbd6ef9a">3. 注意 <code>a=b</code> 问题</a></li>
-<li><a href="#orgbafe350">4. Random的导入</a></li>
-<li><a href="#org6ea5add">5. <code>foreach</code></a></li>
+<li><a href="#org22199a2">1. 简介</a></li>
+<li><a href="#org8c70d53">2. 只有 <code>boolean</code> 有真假</a></li>
+<li><a href="#org5aa7d0d">3. 注意 <code>a=b</code> 问题</a></li>
+<li><a href="#org3b10616">4. Random的导入</a></li>
+<li><a href="#orgb77a588">5. <code>foreach</code></a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org34868da" class="outline-2">
-<h2 id="org34868da"><span class="section-number-2">1</span> 简介</h2>
+<div id="outline-container-org22199a2" class="outline-2">
+<h2 id="org22199a2"><span class="section-number-2">1</span> 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 <b>Controlling Execution</b> 这一章涉及的大多知识点和 <code>C/C++</code> 中已经学过的类似，仅仅有一小部分不同，比如去掉了饱受争议的 <code>goto</code> 语句。本文记录控制语句学习过程中需要记录的知识点。
@@ -82,8 +82,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org18e8cb6" class="outline-2">
-<h2 id="org18e8cb6"><span class="section-number-2">2</span> 只有 <code>boolean</code> 有真假</h2>
+<div id="outline-container-org8c70d53" class="outline-2">
+<h2 id="org8c70d53"><span class="section-number-2">2</span> 只有 <code>boolean</code> 有真假</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -94,8 +94,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgbd6ef9a" class="outline-2">
-<h2 id="orgbd6ef9a"><span class="section-number-2">3</span> 注意 <code>a=b</code> 问题</h2>
+<div id="outline-container-org5aa7d0d" class="outline-2">
+<h2 id="org5aa7d0d"><span class="section-number-2">3</span> 注意 <code>a=b</code> 问题</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -122,7 +122,7 @@ for the JavaScript code in this tag.
 <span class="linenr">15: </span>        <span style="color: #268bd2;">}</span>
 <span class="linenr">16: </span>    <span style="color: #b58900;">}</span>
 <span class="linenr">17: </span>    <span style="color: #859900; font-weight: bold;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span> <span style="color: #268bd2;">args</span><span style="color: #268bd2;">[]</span><span style="color: #b58900;">)</span>
-<span class="linenr">18: </span><span style="color: #b58900;">    </span><span style="color: #b58900;">{</span>
+<span class="linenr">18: </span>    <span style="color: #b58900;">{</span>
 <span class="linenr">19: </span>        test<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">6</span>,<span style="color: #6c71c4;">5</span><span style="color: #268bd2;">)</span>;
 <span class="linenr">20: </span>        print<span style="color: #268bd2;">(</span>result<span style="color: #268bd2;">)</span>;
 <span class="linenr">21: </span>        test<span style="color: #268bd2;">(</span><span style="color: #6c71c4;">5</span>,<span style="color: #6c71c4;">6</span><span style="color: #268bd2;">)</span>;
@@ -145,8 +145,8 @@ IfElse.java:14: error: incompatible types: int cannot be converted to boolean
 </p>
 </div>
 </div>
-<div id="outline-container-orgbafe350" class="outline-2">
-<h2 id="orgbafe350"><span class="section-number-2">4</span> Random的导入</h2>
+<div id="outline-container-org3b10616" class="outline-2">
+<h2 id="org3b10616"><span class="section-number-2">4</span> Random的导入</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -166,7 +166,7 @@ IfElse.java:14: error: incompatible types: int cannot be converted to boolean
 <span class="linenr"> 8: </span>        <span style="color: #b58900;">int</span> <span style="color: #268bd2;">target</span> = rand.nextInt<span style="color: #268bd2;">()</span>;
 <span class="linenr"> 9: </span>        <span style="color: #b58900;">int</span> <span style="color: #268bd2;">source</span>;
 <span class="linenr">10: </span>        <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">(</span><span style="color: #b58900;">int</span> <span style="color: #268bd2;">j</span>=<span style="color: #6c71c4;">0</span>; j &lt; <span style="color: #6c71c4;">25</span>; j++<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
-<span class="linenr">11: </span>            source = r<span style="color: #b58900;">and.ne</span>xtInt<span style="color: #6c71c4;">()</span>;
+<span class="linenr">11: </span>            source = rand.nextInt<span style="color: #6c71c4;">()</span>;
 <span class="linenr">12: </span>            <span style="color: #859900; font-weight: bold;">if</span> <span style="color: #6c71c4;">(</span>source &gt; target<span style="color: #6c71c4;">)</span>
 <span class="linenr">13: </span>                System.out.println<span style="color: #6c71c4;">(</span> <span style="color: #2aa198;">"target "</span> + target +
 <span class="linenr">14: </span>                       <span style="color: #2aa198;">" &lt; "</span> + <span style="color: #2aa198;">" source "</span> + source<span style="color: #6c71c4;">)</span>;
@@ -184,8 +184,8 @@ IfElse.java:14: error: incompatible types: int cannot be converted to boolean
 </div>
 </div>
 </div>
-<div id="outline-container-org6ea5add" class="outline-2">
-<h2 id="org6ea5add"><span class="section-number-2">5</span> <code>foreach</code></h2>
+<div id="outline-container-orgb77a588" class="outline-2">
+<h2 id="orgb77a588"><span class="section-number-2">5</span> <code>foreach</code></h2>
 <div class="outline-text-2" id="text-5">
 <p>
 
@@ -206,7 +206,7 @@ IfElse.java:14: error: incompatible types: int cannot be converted to boolean
 <span class="linenr"> 9: </span>            f<span style="color: #6c71c4;">[</span>i<span style="color: #6c71c4;">]</span> = rand.nextFloat<span style="color: #6c71c4;">()</span>;
 <span class="linenr">10: </span>        <span style="color: #268bd2;">}</span>
 <span class="linenr">11: </span>        <span style="color: #859900; font-weight: bold;">for</span> <span style="color: #268bd2;">(</span><span style="color: #b58900;">float</span> <span style="color: #268bd2;">x</span> : f<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
-<span class="linenr">12: </span>            System.out.println<span style="color: #6c71c4;">(</span><span style="color: #b58900;">x</span><span style="color: #6c71c4;">)</span>;
+<span class="linenr">12: </span>            System.out.println<span style="color: #6c71c4;">(</span>x<span style="color: #6c71c4;">)</span>;
 <span class="linenr">13: </span>        <span style="color: #268bd2;">}</span>
 <span class="linenr">14: </span>
 <span class="linenr">15: </span>    <span style="color: #b58900;">}</span>

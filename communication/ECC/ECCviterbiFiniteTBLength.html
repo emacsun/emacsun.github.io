@@ -18,7 +18,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -80,7 +80,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -89,15 +89,15 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgdcc637a">1. 引言</a></li>
-<li><a href="#org4d92293">2. Viterbi译码过程回顾</a></li>
-<li><a href="#org0dca875">3. 有限回溯长度的Viterbi译码器</a></li>
+<li><a href="#orge657ec5">1. 引言</a></li>
+<li><a href="#org4cb7db9">2. Viterbi译码过程回顾</a></li>
+<li><a href="#org7f2dac1">3. 有限回溯长度的Viterbi译码器</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgdcc637a" class="outline-2">
-<h2 id="orgdcc637a"><span class="section-number-2">1</span> 引言</h2>
+<div id="outline-container-orge657ec5" class="outline-2">
+<h2 id="orge657ec5"><span class="section-number-2">1</span> 引言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -112,8 +112,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-org4d92293" class="outline-2">
-<h2 id="org4d92293"><span class="section-number-2">2</span> Viterbi译码过程回顾</h2>
+<div id="outline-container-org4cb7db9" class="outline-2">
+<h2 id="org4cb7db9"><span class="section-number-2">2</span> Viterbi译码过程回顾</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -136,26 +136,26 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org0dca875" class="outline-2">
-<h2 id="org0dca875"><span class="section-number-2">3</span> 有限回溯长度的Viterbi译码器</h2>
+<div id="outline-container-org7f2dac1" class="outline-2">
+<h2 id="org7f2dac1"><span class="section-number-2">3</span> 有限回溯长度的Viterbi译码器</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
 </p>
 
 <p>
-通常，我把有限回溯长度的Viterbi译码器叫做“两步一回头”译码器。两步的大小分别是译码长度和纯粹回溯长度，一回头是指走完两步后就回溯译码。现在，你可能还不是很明白到底什么是“两步一回头”。看图<a href="#org5b37e32">1</a>
+通常，我把有限回溯长度的Viterbi译码器叫做“两步一回头”译码器。两步的大小分别是译码长度和纯粹回溯长度，一回头是指走完两步后就回溯译码。现在，你可能还不是很明白到底什么是“两步一回头”。看图<a href="#org578b90f">1</a>
 </p>
 
 
-<div id="org5b37e32" class="figure">
+<div id="org578b90f" class="figure">
 <p><img src="../../img/20160117ViterbiFiniteTracebackLength.jpg" alt="20160117ViterbiFiniteTracebackLength.jpg" width="500" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> “两步一回头”有限回溯长度的Viterbi译码器</p>
 </div>
 
 <p>
-在图<a href="#org5b37e32">1</a>中，总长为 \(N+K-1\)长的篱笆图倍分成多段，每段长度为 \(D+TB\), 在译码过程中，每处理 \(2*(D+TB)\) 长度的接收比特(对应长度为  \(D+TB\) 的信息比特，记住我们的卷积编码码率为1/2.) 回溯 \(TB\)长度，然后开始译码，译码长度为 \(D\)。依次类推，直到译出长度为 \(N+K-1\)的信息序列。整个过程可以总结为：
+在图<a href="#org578b90f">1</a>中，总长为 \(N+K-1\)长的篱笆图倍分成多段，每段长度为 \(D+TB\), 在译码过程中，每处理 \(2*(D+TB)\) 长度的接收比特(对应长度为  \(D+TB\) 的信息比特，记住我们的卷积编码码率为1/2.) 回溯 \(TB\)长度，然后开始译码，译码长度为 \(D\)。依次类推，直到译出长度为 \(N+K-1\)的信息序列。整个过程可以总结为：
 </p>
 
 <ol class="org-ol">
@@ -165,7 +165,7 @@ for the JavaScript code in this tag.
 </ol>
 
 <p>
-注意在每\(D+TB\) 的幸存路径加比选过程中，都执行Viterbi算法。在图<a href="#org5b37e32">1</a>所示的译码算法过程中，只需要 \(D+2TB\)内存。另外，回溯过程中，初始状态的选择也很关键，通常有两种选择：
+注意在每\(D+TB\) 的幸存路径加比选过程中，都执行Viterbi算法。在图<a href="#org578b90f">1</a>所示的译码算法过程中，只需要 \(D+2TB\)内存。另外，回溯过程中，初始状态的选择也很关键，通常有两种选择：
 </p>
 
 <ol class="org-ol">

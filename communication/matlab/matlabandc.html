@@ -18,7 +18,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -80,7 +80,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -89,29 +89,29 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org78c9ff0">1. 引言</a></li>
-<li><a href="#orgae2e836">2. 使用mex编译c函数</a>
+<li><a href="#org231a718">1. 引言</a></li>
+<li><a href="#org8cf010a">2. 使用mex编译c函数</a>
 <ul>
-<li><a href="#org2076f9e">2.1. 一个例子</a></li>
-<li><a href="#org05d8583">2.2. 编写源代码</a></li>
-<li><a href="#org4ed702d">2.3. 创建桥梁变量</a></li>
-<li><a href="#org28a4c40">2.4. 创建 <code>MEX</code> 文件</a></li>
-<li><a href="#org14904cb">2.5. 调用 <code>MEX</code> 文件</a></li>
+<li><a href="#org9984465">2.1. 一个例子</a></li>
+<li><a href="#org531ce6c">2.2. 编写源代码</a></li>
+<li><a href="#org57ecb3e">2.3. 创建桥梁变量</a></li>
+<li><a href="#org59d2e4c">2.4. 创建 <code>MEX</code> 文件</a></li>
+<li><a href="#org200bc2d">2.5. 调用 <code>MEX</code> 文件</a></li>
 </ul>
 </li>
-<li><a href="#org7c011f4">3. Mex文件的数据流</a>
+<li><a href="#orgcba16b3">3. Mex文件的数据流</a>
 <ul>
-<li><a href="#org9b74855">3.1. 输入和输出</a></li>
-<li><a href="#org089aecd">3.2. <code>mexFunction</code> 的数据流动</a></li>
+<li><a href="#orgd5d496b">3.1. 输入和输出</a></li>
+<li><a href="#orgcde956a">3.2. <code>mexFunction</code> 的数据流动</a></li>
 </ul>
 </li>
-<li><a href="#orgc7daf26">4. 尾声</a></li>
+<li><a href="#org2a3f5fe">4. 尾声</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org78c9ff0" class="outline-2">
-<h2 id="org78c9ff0"><span class="section-number-2">1</span> 引言</h2>
+<div id="outline-container-org231a718" class="outline-2">
+<h2 id="org231a718"><span class="section-number-2">1</span> 引言</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -127,8 +127,8 @@ matlab是Mathworks公司推出的一款强大的仿真软件。由于其简单�
 </div>
 </div>
 
-<div id="outline-container-orgae2e836" class="outline-2">
-<h2 id="orgae2e836"><span class="section-number-2">2</span> 使用mex编译c函数</h2>
+<div id="outline-container-org8cf010a" class="outline-2">
+<h2 id="org8cf010a"><span class="section-number-2">2</span> 使用mex编译c函数</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -138,8 +138,8 @@ matlab是Mathworks公司推出的一款强大的仿真软件。由于其简单�
 我们知道在C语言编程过程中，每个程序都包含 <code>main</code> 函数。在 <code>main</code>  函数中，我们可以调用我们编写的其他函数。如果要在matlab脚本中调用c函数，需要一个特殊的函数将用户自己定义的函数封装起来。这个函数叫做 <code>mexFunction</code> ， <code>mexFunction</code> 就像一座桥梁一样链接了matlab脚本语言和C这种编译型语言，matlab调用 <code>mexFunction</code> ， <code>mexFunction</code> 调用用户自定义的函数。接下来用一个简单的例子演示如何使用 <code>mexFunction</code> 将我们定义的函数封装起来以及如何在matlab中调用这个C函数。
 </p>
 </div>
-<div id="outline-container-org2076f9e" class="outline-3">
-<h3 id="org2076f9e"><span class="section-number-3">2.1</span> 一个例子</h3>
+<div id="outline-container-org9984465" class="outline-3">
+<h3 id="org9984465"><span class="section-number-3">2.1</span> 一个例子</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 
@@ -169,8 +169,8 @@ matlab是Mathworks公司推出的一款强大的仿真软件。由于其简单�
 </div>
 </div>
 </div>
-<div id="outline-container-org05d8583" class="outline-3">
-<h3 id="org05d8583"><span class="section-number-3">2.2</span> 编写源代码</h3>
+<div id="outline-container-org531ce6c" class="outline-3">
+<h3 id="org531ce6c"><span class="section-number-3">2.2</span> 编写源代码</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 
@@ -201,8 +201,8 @@ matlab是Mathworks公司推出的一款强大的仿真软件。由于其简单�
 </p>
 </div>
 </div>
-<div id="outline-container-org4ed702d" class="outline-3">
-<h3 id="org4ed702d"><span class="section-number-3">2.3</span> 创建桥梁变量<a id="org9a9a9de"></a></h3>
+<div id="outline-container-org57ecb3e" class="outline-3">
+<h3 id="org57ecb3e"><span class="section-number-3">2.3</span> 创建桥梁变量<a id="orgf12f09f"></a></h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 
@@ -224,9 +224,9 @@ matlab是Mathworks公司推出的一款强大的仿真软件。由于其简单�
 </div>
 
 <p>
-初看 <code>mexFunction</code> 函数会感觉一头雾水， <code>main</code> 函数才最多两个输入参数，这个就有四个，而且指针的类型都没有见过。莫慌，表<a href="#org29b57f6">1</a>解释了 <code>mexFunction</code> 的参数，我在后文还会附上详细解释。
+初看 <code>mexFunction</code> 函数会感觉一头雾水， <code>main</code> 函数才最多两个输入参数，这个就有四个，而且指针的类型都没有见过。莫慌，表<a href="#org398d66e">1</a>解释了 <code>mexFunction</code> 的参数，我在后文还会附上详细解释。
 </p>
-<table id="org29b57f6" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org398d66e" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">表 1:</span> <code>mexFunction</code> 函数的参数含义</caption>
 
 <colgroup>
@@ -351,8 +351,8 @@ Z = arrayProduct(x,Y)
 </p>
 </div>
 </div>
-<div id="outline-container-org28a4c40" class="outline-3">
-<h3 id="org28a4c40"><span class="section-number-3">2.4</span> 创建 <code>MEX</code> 文件</h3>
+<div id="outline-container-org59d2e4c" class="outline-3">
+<h3 id="org59d2e4c"><span class="section-number-3">2.4</span> 创建 <code>MEX</code> 文件</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 
@@ -362,7 +362,7 @@ Z = arrayProduct(x,Y)
 创建 <code>MEX</code> 文件要使用 <code>mex</code> 命令。关于这个命令的使用可以在matlab的命令窗口里使用 <code>doc mex</code> 来查看其帮助文档。我们这里就仅仅使用 <code>mex</code> ，不对其进行详细介绍。
 </p>
 <div class="org-src-container">
-<pre class="src src-matlab">mex arrayProduct.c <span style="color: #b58900;">-</span>o arrayProduct
+<pre class="src src-matlab">mex arrayProduct.c -o arrayProduct
 </pre>
 </div>
 <p>
@@ -374,8 +374,8 @@ Z = arrayProduct(x,Y)
 </p>
 </div>
 </div>
-<div id="outline-container-org14904cb" class="outline-3">
-<h3 id="org14904cb"><span class="section-number-3">2.5</span> 调用 <code>MEX</code> 文件</h3>
+<div id="outline-container-org200bc2d" class="outline-3">
+<h3 id="org200bc2d"><span class="section-number-3">2.5</span> 调用 <code>MEX</code> 文件</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 
@@ -396,15 +396,15 @@ Z = arrayProduct(x,Y)
 输出：
 </p>
 <div class="org-src-container">
-<pre class="src src-matlab"><span style="color: #268bd2; font-weight: bold;">ans</span> =
+<pre class="src src-matlab">ans =
     42,7,14
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org7c011f4" class="outline-2">
-<h2 id="org7c011f4"><span class="section-number-2">3</span> Mex文件的数据流</h2>
+<div id="outline-container-orgcba16b3" class="outline-2">
+<h2 id="orgcba16b3"><span class="section-number-2">3</span> Mex文件的数据流</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -415,8 +415,8 @@ Z = arrayProduct(x,Y)
 </p>
 </div>
 
-<div id="outline-container-org9b74855" class="outline-3">
-<h3 id="org9b74855"><span class="section-number-3">3.1</span> 输入和输出</h3>
+<div id="outline-container-orgd5d496b" class="outline-3">
+<h3 id="orgd5d496b"><span class="section-number-3">3.1</span> 输入和输出</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 
@@ -430,10 +430,10 @@ Z = arrayProduct(x,Y)
 </pre>
 </div>
 <p>
-则 <code>mexFunction</code> 的四个输入参数解释如图<a href="#org1e97e4d">1</a>所示。
+则 <code>mexFunction</code> 的四个输入参数解释如图<a href="#org767026b">1</a>所示。
 </p>
 
-<div id="org1e97e4d" class="figure">
+<div id="org767026b" class="figure">
 <p><img src="../../img/20151110mexinputoutput.jpg" alt="20151110mexinputoutput.jpg" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> mexFunction输入输出参数</p>
@@ -444,18 +444,18 @@ Z = arrayProduct(x,Y)
 </p>
 </div>
 </div>
-<div id="outline-container-org089aecd" class="outline-3">
-<h3 id="org089aecd"><span class="section-number-3">3.2</span> <code>mexFunction</code> 的数据流动</h3>
+<div id="outline-container-orgcde956a" class="outline-3">
+<h3 id="orgcde956a"><span class="section-number-3">3.2</span> <code>mexFunction</code> 的数据流动</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 
 </p>
 
 <p>
-当我们调用 <code>[C,D]=func[A,B]</code> 时， 图<a href="#org9c61159">2</a>给出了输入输出的转换过程。
+当我们调用 <code>[C,D]=func[A,B]</code> 时， 图<a href="#org03ada12">2</a>给出了输入输出的转换过程。
 </p>
 
-<div id="org9c61159" class="figure">
+<div id="org03ada12" class="figure">
 <p><img src="../../img/20151110mexdataflow.jpg" alt="20151110mexdataflow.jpg" width="700" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> 调用[C,D]=func[A,B]对应的数据流程</p>
@@ -472,14 +472,14 @@ Z = arrayProduct(x,Y)
 </ol>
 
 <p>
-在上述步骤2和步骤3中，matlab为我们提供了很多API方便我们对输入和输出进行操作，比如<a href="#org9a9a9de">创建桥梁变量</a> 一节用到的 <code>mxGetN</code> 等函数，还有这一节用到的 <code>mxCreate</code> 函数。这些API是matlab提供的。通过 <code>#include “mex.h”</code> 我们可以在自己的C文件中使用，就像使用C语言自带的函数库一样。
+在上述步骤2和步骤3中，matlab为我们提供了很多API方便我们对输入和输出进行操作，比如<a href="#orgf12f09f">创建桥梁变量</a> 一节用到的 <code>mxGetN</code> 等函数，还有这一节用到的 <code>mxCreate</code> 函数。这些API是matlab提供的。通过 <code>#include “mex.h”</code> 我们可以在自己的C文件中使用，就像使用C语言自带的函数库一样。
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc7daf26" class="outline-2">
-<h2 id="orgc7daf26"><span class="section-number-2">4</span> 尾声</h2>
+<div id="outline-container-org2a3f5fe" class="outline-2">
+<h2 id="org2a3f5fe"><span class="section-number-2">4</span> 尾声</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 

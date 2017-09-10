@@ -18,7 +18,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -80,7 +80,7 @@ for the JavaScript code in this tag.
 });
 </script>
 <script type="text/javascript"
-        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -89,9 +89,9 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgb08e25d">1. 群</a></li>
-<li><a href="#org46535f2">2. 域</a></li>
-<li><a href="#orge96be16">3. 二进制域代数</a></li>
+<li><a href="#org9090a37">1. 群</a></li>
+<li><a href="#orgee17a32">2. 域</a></li>
+<li><a href="#org8d917a2">3. 二进制域代数</a></li>
 </ul>
 </div>
 </div>
@@ -103,8 +103,8 @@ for the JavaScript code in this tag.
 当然本章也并不是没有存在必要。本章以较快的节奏给出了信道编码理论中涉及的代数理论，便于有一定基础的专业人士快速复习和进入编码世界。
 </p>
 
-<div id="outline-container-orgb08e25d" class="outline-2">
-<h2 id="orgb08e25d"><span class="section-number-2">1</span> 群</h2>
+<div id="outline-container-org9090a37" class="outline-2">
+<h2 id="org9090a37"><span class="section-number-2">1</span> 群</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -135,7 +135,7 @@ for the JavaScript code in this tag.
 群中元素的个数叫做群的阶数。具有有限阶的群叫做有限群。接下来我们来阐述一个事实：对于任何的正整数\(m\)，我们都有可能定义一个有限群，群上的二元运算与实数加法非常相似。考虑一个整数集合\(G=\{0,1,2,\ldots,m-1\}\)  定义\(+\)是实数加法，定义\(\boxplus\)是\(G\)上的二元运算满足 \[i\boxplus j = r \] 其中 \(r = i+j \mod(m)\), 我们称其为模\(m\)加。显然\(0 \leq r \leq (m-1)\) 并且\(r\in G\).因此在二元运算符号\(\boxplus\)运算下 \(G\)是封闭的。对于 \(0 < i < m\) ， \(i\)和\(m-i\)都在\(G\)中. 因为 \[i + (m-i) = (m-i) + i = m\] 所以有\[i\boxplus (m-i) = (m-i)\boxplus i = 0\] 因此，\(i\)和\(m-i\)在\(\boxplus\)运算下互逆。\(0\)的逆是它本身。另外我们还可以证明模\(m\)加满足结合律，即\[(i\boxplus j)\boxplus k = i \boxplus ( j \boxplus k)\] 综上，我们可以说集合\(G=\{0,1,2,\ldots,m-1\}\)在模\(m\)加运算下是一个群。我们称这样的群为加法群。我们给出一个模4加群计算中的模4加表如下所示：
 </p>
 
-<table id="org4d6304f" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border">
+<table id="org374a13f" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border">
 <caption class="t-above"><span class="table-number">表 1:</span> 模4加法表</caption>
 
 <colgroup>
@@ -224,7 +224,7 @@ for the JavaScript code in this tag.
 0\boxplus H &=& \{0,4,8,12\} \\
 1\boxplus H &=& \{1,5,9,13\} \\
 2\boxplus H &=& \{2,6,10,14\} \\
-3\boxplus H &=& \{3,7,11,15\} 
+3\boxplus H &=& \{3,7,11,15\}
 \end{eqnarray*}
 <p>
 事实上，我们可以检验对于\(H\)只有这\(4\)个陪集。这\(4\)个陪集是互斥的，他们的并集构成了\(G\).
@@ -272,8 +272,8 @@ a*H&=& (b*h^{'})*H \\
 </div>
 </div>
 
-<div id="outline-container-org46535f2" class="outline-2">
-<h2 id="org46535f2"><span class="section-number-2">2</span> 域</h2>
+<div id="outline-container-orgee17a32" class="outline-2">
+<h2 id="orgee17a32"><span class="section-number-2">2</span> 域</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -314,7 +314,7 @@ a*H&=& (b*h^{'})*H \\
 <p>
 考虑带有模2加法和乘法的集合\(\{0,1\}\)
 </p>
-<table id="orgbe02686" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<table id="org935cc5d" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 2:</span> 模2加法表</caption>
 
 <colgroup>
@@ -346,7 +346,7 @@ a*H&=& (b*h^{'})*H \\
 </tbody>
 </table>
 
-<table id="orga9e4e81" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
+<table id="org35a8d7f" border="1" cellspacing="0" cellpadding="6" rules="all" frame="border" align="center">
 <caption class="t-above"><span class="table-number">表 3:</span> 模2乘法表</caption>
 
 <colgroup>
@@ -409,12 +409,11 @@ a*H&=& (b*h^{'})*H \\
 \sum_{i=1}^{k}1 &=& \underbrace{1+1+\ldots+1}_{k}
 \end{eqnarray*}
 <p>
-因为有限域在加法下是封闭的，这些和一定在有限域中；又由于有限域中的元素个数是有限的，这些和不可能无限的加下去而不出现重复。因此在些和组成的序列中一定存在重复，即一定存在两个正整数\(m\)和\(n, m < n\) 且满足\[\sum_{i=1}^{m}1=\sum_{i=1}^{n} 1\] 这意味着\(\sum_{i=1}^{n-m}1=0\)。因此一定存在一个最小的正整数\(\lambda\)满足\(\sum_{i=1}^{\lambda}1=0\)，我们称\(\lambda\)为\(GF(q)\)的特征值。二进制域\(GF(2)\)的特征值是2，因为\(1+1=0\)。更进一步，质数域\(GF(p)\)的特征值是\(p\)。因为\(\sum_{i=1}^{k}1 = k \neq 0, \forall 1\leq k < p\) 并且 \(\sum_{i=1}^{p}1 = 0\) 
+因为有限域在加法下是封闭的，这些和一定在有限域中；又由于有限域中的元素个数是有限的，这些和不可能无限的加下去而不出现重复。因此在些和组成的序列中一定存在重复，即一定存在两个正整数\(m\)和\(n, m < n\) 且满足\[\sum_{i=1}^{m}1=\sum_{i=1}^{n} 1\] 这意味着\(\sum_{i=1}^{n-m}1=0\)。因此一定存在一个最小的正整数\(\lambda\)满足\(\sum_{i=1}^{\lambda}1=0\)，我们称\(\lambda\)为\(GF(q)\)的特征值。二进制域\(GF(2)\)的特征值是2，因为\(1+1=0\)。更进一步，质数域\(GF(p)\)的特征值是\(p\)。因为\(\sum_{i=1}^{k}1 = k \neq 0, \forall 1\leq k < p\) 并且 \(\sum_{i=1}^{p}1 = 0\)
 </p>
 
 <p>
-<i>定理</i> 有限域的特征值\(\lambda\)是一个质数。
-假设\(\lambda\)不是一个质数，那么\(\lambda\)可以表示成两个整数的乘积\(\lambda = km\)，由于域在乘法下是封闭的，则有\[\left(\sum_{i=1}^{k}1  \right)\cdot \left(\sum_{i}^{m}1\right) \]也是域中的一个元素 利用分配率，有\[\left(\sum_{i=1}^{k}1  \right)\cdot \left(\sum_{i}^{m}1\right) = \sum_{i}^{km}1\] 由于\(\sum_{i}^{km}1 = 0\) 则，\(\sum_{i}^{k}1\)或者\(\sum_{i}^{m}1\)中至少有一个为0；然而这是不可能的，因为\(\lambda\)是满足\(\sum_{i}^{\lambda}1 = 0\)的最小整数。矛盾产生，因此\(\lambda\)是一个质数。
+<i>定理</i> 有限域的特征值\(\lambda\)是一个质数。假设\(\lambda\)不是一个质数，那么\(\lambda\)可以表示成两个整数的乘积\(\lambda = km\)，由于域在乘法下是封闭的，则有\[\left(\sum_{i=1}^{k}1  \right)\cdot \left(\sum_{i}^{m}1\right) \]也是域中的一个元素 利用分配率，有\[\left(\sum_{i=1}^{k}1  \right)\cdot \left(\sum_{i}^{m}1\right) = \sum_{i}^{km}1\] 由于\(\sum_{i}^{km}1 = 0\) 则，\(\sum_{i}^{k}1\)或者\(\sum_{i}^{m}1\)中至少有一个为0；然而这是不可能的，因为\(\lambda\)是满足\(\sum_{i}^{\lambda}1 = 0\)的最小整数。矛盾产生，因此\(\lambda\)是一个质数。
 </p>
 
 <p>
@@ -470,7 +469,7 @@ a^{q-1}\cdot (b_{1}\cdot b_{2}\ldots b_{q-1}) &=& b_{1}\cdot b_{2}\ldots b_{q-1}
 3^{3}&=&6 \\
 3^{4}&=&4 \\
 3^{5}&=&5 \\
-3^{6}&=&1 
+3^{6}&=&1
 \end{eqnarray*}
 <p>
 我们发现\(3\)的阶数是\(6\)，并且\(3\)生成了所有的\(GF(7)\)中的元素，所以\(3\)是\(GF(7)\)中的本源元。对于整数\(4\)，我们有
@@ -485,8 +484,8 @@ a^{q-1}\cdot (b_{1}\cdot b_{2}\ldots b_{q-1}) &=& b_{1}\cdot b_{2}\ldots b_{q-1}
 </p>
 </div>
 </div>
-<div id="outline-container-orge96be16" class="outline-2">
-<h2 id="orge96be16"><span class="section-number-2">3</span> 二进制域代数</h2>
+<div id="outline-container-org8d917a2" class="outline-2">
+<h2 id="org8d917a2"><span class="section-number-2">3</span> 二进制域代数</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -622,7 +621,7 @@ a(X)\cdot b(X)&=&b(X)\cdot a(X)
 </p>
 \begin{eqnarray*}
 a(X) + [b(X) + c(X)]&=& [a(X)+b(X)] + c(X) \\
-a(X)\cdot [b(X)\cdot c(X)] &=&[a(X)\cdot b(X)]\cdot c(X) 
+a(X)\cdot [b(X)\cdot c(X)] &=&[a(X)\cdot b(X)]\cdot c(X)
 \end{eqnarray*}
 <p>
 <b>分配率</b> :
