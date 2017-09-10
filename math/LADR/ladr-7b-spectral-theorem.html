@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>谱定理</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="张朝龙" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./ladr-7b-spectral-theorem.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">谱定理</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge8d270b">1. 简介</a></li>
+<li><a href="#org67c63b6">2. 复谱定理</a></li>
+<li><a href="#org910cd70">3. 实谱定理</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge8d270b" class="outline-2">
+<h2 id="orge8d270b"><span class="section-number-2">1</span> 简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+回想，对角矩阵是对角线之外的元素都是 0 的方阵：\(V\) 上的算子关于某个基有对角矩阵当且仅当这个基是由该算子的本征向量组成的。
+</p>
+
+<p>
+关于\(V\)的某个规范正交基具有对角矩阵的算子是\(V\)上最好的算子，它们恰好是具有如下性质的算子\(T\in \mathcal{L}(V)\):\(V\)有一个由\(T\)的本征向量组成的规范正交基。本文要证明的是谱定理。谱定理表明：具有上述性质的算子当\(\mathbf{F} = \mathbf{C}\)时恰为正规算子，当\(\mathbf{F} = \mathbf{R}\)时，恰为自伴算子。谱定理是研究内积空间上算子的最有用的工具。
+</p>
+
+<p>
+由于谱定理的结论依赖于\(\mathbf{F}\)，所以我们把谱定理分成两部分，分别叫做复谱定理和实谱定理。同线性代数中的大多数情形一样，处理复向量空间要比处理实向量空间容易，因此我们先分析复谱定理。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org67c63b6" class="outline-2">
+<h2 id="org67c63b6"><span class="section-number-2">2</span> 复谱定理</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+若\(\mathbf{F} = \mathbf{C}\)且\(T\in \mathcal{L}(V)\)是正规的，则\(T\)关于\(V\)的某个规范正交基具有对角矩阵。
+</p>
+
+<div class="tikzinstance">
+<p>
+考虑正规算子\(T\in \mathcal{L}(\mathbf{C}^{2})\)，它关于标准基的矩阵是：
+</p>
+\begin{equation}
+\label{eq:1}
+\begin{bmatrix}
+  2& -3 \\
+  3& 2
+\end{bmatrix}
+\end{equation}
+<p>
+可以验证，\(\tfrac{1}{\sqrt{2}}(i,1), \tfrac{1}{\sqrt{2}}(-i,1)\)是由\(T\)的本征向量构成的\(\mathcal{C}^{2}\)的规范正交基，\(T\)关于这个基的对角矩阵是：
+</p>
+\begin{equation}
+\label{eq:2}
+\begin{bmatrix}
+  2+3i & 0 \\
+  0 & 2-3i
+\end{bmatrix}
+\end{equation}
+
+</div>
+
+<div class="tikztheorem">
+<p>
+设\(\mathbf{F}=\mathbf{C}\)且\(T\in \mathcal{L}(V)\)，则以下条件等价：
+</p>
+<ol class="org-ol">
+<li>\(T\)是正规的。</li>
+<li>\(V\)有一个由\(T\)的本征向量构成的规范正交基。</li>
+<li>\(T\)关于\(V\)的某个规范正交基具有对角矩阵。</li>
+</ol>
+
+</div>
+<div class="proof">
+<p>
+首先假设第 3 条成立，则\(T\)在\(V\)的某个规范正交基下具有对角矩阵。\(T^{*}\)的矩阵是\(T\)的矩阵的共轭转置，所以\(T^{*}\)也具有对角矩阵。任意两个对角矩阵都是交换的，所以\(T\)和\(T^{*}\)是交换的，从而\(T\)是正规的。也就是说第一条成立。
+</p>
+
+<p>
+现在假设第一条成立，则\(T\)是正规的。由舒尔定理可知\(V\)有一个规范正交基\(e_{1},\ldots ,e_{n}\)使得\(T\)关于此基有上三角矩阵，于是：
+</p>
+\begin{equation}
+\label{eq:3}
+\mathcal{M}(T,(e_{1},\ldots ,e_{n})) =
+\begin{bmatrix}
+  a_{1,1} & \ldots & a_{1,n} \\
+          & \ddots & \vdots  \\
+    0     &        & a_{n,n}
+\end{bmatrix}
+\end{equation}
+<p>
+由上面的矩阵可得：
+</p>
+\begin{equation}
+\label{eq:4}
+\| Te_{1} \| ^{2} = |a_{1,1}|^{2}
+\end{equation}
+<p>
+且：
+</p>
+\begin{equation}
+\label{eq:5}
+\| T^{*} e_{1} \|^{2} = |a_{1,1}|^{2} + |a_{1,2}|^{2} + \ldots + |a_{1,n}|^{2}
+\end{equation}
+<p>
+因为\(T\)是正规得，所以\(\|Te_{1}\| = \|T^{*}e_{1}\|\)，于是由上面得两个等式可知，式~(\ref{eq:3}) 中矩阵的第一行除了第一个元素之外都是 0. 以此类推，~(\ref{eq:5})中除了对角线上的元素其他元素都为 0.
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org910cd70" class="outline-2">
+<h2 id="org910cd70"><span class="section-number-2">3</span> 实谱定理</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
