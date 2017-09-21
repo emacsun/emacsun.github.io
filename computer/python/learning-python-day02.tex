@@ -1,0 +1,274 @@
+% Intended LaTeX compiler: pdflatex
+\documentclass[10pt,a4paper,UTF8]{article}
+\usepackage{zclorg}
+\author{张朝龙}
+\date{}
+\title{学习Python Doc第二天:控制语句和函数}
+\hypersetup{
+ pdfauthor={张朝龙},
+ pdftitle={学习Python Doc第二天:控制语句和函数},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.0.50.1 (Org mode 9.0.5)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+今天是学习Python的第二天，主要内容涉及控制语句，函数定义以及代码风格。
+
+
+\section{控制语句}
+\label{sec:org50c70ff}
+
+
+除了之前学习过的 \texttt{while} ,典型的控制语句还有 \texttt{if,else} \texttt{for,break,continue} 
+
+\section{\texttt{if} 语句}
+\label{sec:orgb442611}
+
+看代码：
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+x = 23
+if x<0:
+    x = 0
+    print('Negative changed to zero')
+elif x==0:
+    print('zero')
+elif x == 1:
+    print('Single')
+else:
+    print('More')
+\end{lstlisting}
+可以有0个 \texttt{elif} ，也可以有多个 \texttt{elif} ，最后的　=else= 也是可选的。
+\section{\texttt{for} 语句}
+\label{sec:org1e52e1f}
+
+
+Python 的 \texttt{for} 语句和C语言中的 \texttt{for} 稍有不同。Python的 \texttt{for} 语句可以在任何 \texttt{list} 或者 \texttt{string} 之间循环。看代码：
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+words = ['cat','window','defenestrate']
+for w in words:
+    print(w,len(w))
+\end{lstlisting}
+输出为：
+\begin{verbatim}
+cat 3
+window 6
+defenestrate 12
+\end{verbatim}
+
+如果你需要在循环的过程中改变循环对象，建议首先创建一份寻欢对象的副本，看代码：
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+words = ['cat','window','defenestrate']
+for w in words[:]:
+    if len(w) > 6:
+        words.insert(0,w)
+\end{lstlisting}
+输出
+\begin{verbatim}
+['defenestrate', 'cat', 'window', 'defenestrate']
+\end{verbatim}
+从代码中可以看出，在 \texttt{for w in words[:]:} 这一样代码中，Python隐含的创建了 \texttt{words[:]} 的一份copy。
+\section{\texttt{range()} 函数}
+\label{sec:org5ec42e7}
+
+
+如果你需要在一个整数数组里循环， \texttt{range()} 函数使其易如反掌，看代码：
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+for i in range(5):
+    print(i)
+\end{lstlisting}
+
+输出:
+\begin{verbatim}
+0
+1
+2
+3
+4
+\end{verbatim}
+可以看到， \texttt{range(n)} 返回的是 \texttt{[0,n-1]} .  \texttt{range()}  函数非常灵活，比如：
+\begin{enumerate}
+\item \texttt{range(5,9)} 生成从5到9，包含5不包含9的整数列表
+\item \texttt{range(0,10,3)} 生成从0到10，包含0不包含10，间隔为3的整数列表
+\item \texttt{range(-10,-100,-30)} 生成从-10到-100，间隔30的整数列表
+\end{enumerate}
+
+为了索引字符串构成的list，我们可以结合 \texttt{range()} 和 \texttt{len()} ，看代码：
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+a = ['Mary','had','a' ,'little','lamb']
+for i in range(len(a)):
+    print(i,a[i])
+\end{lstlisting}
+输出：
+\begin{verbatim}
+0 Mary
+1 had
+2 a
+3 little
+4 lamb
+\end{verbatim}
+
+山外有山，人外有人，函数外有函数，大多数情况下 \texttt{enumerate()} 是更方便的选择。关于 \texttt{enumerate()} 就不展开了。
+
+关于 \texttt{range()} 有个非常奇怪的现象，大多数时候 \texttt{range()} 表现的像个 list，但是它不是。 \texttt{range()} 的返回是一个对象，这个对象可以用来迭代（这样的对象叫做迭代器，这个迭代器并不占用空间存储内容，因此比较节省空间）。 \texttt{list()} 函数也是迭代器( \texttt{iterator} ) .
+\section{循环中的 \texttt{break} \texttt{continue} 和 \texttt{else}}
+\label{sec:org60bf851}
+
+
+\texttt{break} \texttt{continue} 的表象和 C 语言中类似。不同的是 \texttt{for} ， \texttt{for} 可以有一个 \texttt{else} 。这个 \texttt{else} 在 \texttt{for} 循环结束后执行（ \texttt{break} 跳出除外， \texttt{break} 跳出不会执行 \texttt{for} 的 \texttt{else} ）。 看代码：
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+for n in range(2,10):
+    for x in range(2,n):
+        if n%x == 0:
+            print(n, 'equals', x ,'*', n//x)
+            break
+    else:
+        # loop fell through without finding a factor
+        print(n,'is a prime number')
+\end{lstlisting}
+
+输出为：
+\begin{verbatim}
+2 is a prime number
+3 is a prime number
+4 equals 2 * 2
+5 is a prime number
+6 equals 2 * 3
+7 is a prime number
+8 equals 2 * 4
+9 equals 3 * 3
+\end{verbatim}
+
+请再次注意： \texttt{else=　属于　=for} 不属于 \texttt{if} .
+
+\texttt{continue} 和C中的 \texttt{continue} 一样, 看代码：
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+for num in range(2,10):
+    if n%2 == 0:
+        print('find an even number',num)
+        continue
+    print('find a number',num)
+\end{lstlisting}
+
+输出为：
+\begin{verbatim}
+find an even number 2
+find a number 3
+find an even number 4
+find a number 5
+find an even number 6
+find a number 7
+find an even number 8
+find a number 9
+\end{verbatim}
+\section{什么也不做的 \texttt{pass}}
+\label{sec:orgf569f06}
+
+
+\texttt{pass} 语句什么也不做，常用来做语法占位，比如：
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+while True:
+    pass
+\end{lstlisting}
+
+或者,创建一个最小的 \texttt{class} 
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+class MyEmptyClass:
+    pass
+\end{lstlisting}
+另外 \texttt{pass} 也可以用来占位，稍后再回来实现相关功能。 比如：
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+def initlog(*args):
+    pass % Remember to come back and fill the pass
+\end{lstlisting}
+\section{定义函数}
+\label{sec:orge7c490f}
+
+
+在Python中使用 \texttt{def} 来定义函数，看代码：
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+def fib(n):
+    """Pring a Fibonacci series up to n"""
+    a,b = 0,1
+    while a<n:
+        print(a,end=' ')
+        a,b = b,a+b
+    print()
+\end{lstlisting}
+
+调用 \texttt{fib(2000)} 输出：
+\begin{verbatim}
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
+\end{verbatim}
+
+函数的第一行往往是这个函数的文档，一句话说明这个函数的功能。Python有相应的工具可以把用这些注释生成文档供用户查看。执行函数过程中，会为函数中的变量生成一个本地符号表。系统检索变量值的顺序是：1. 本地符号表; 2. 全局符号表；3. 内置变量符号表。所以全局变量不能在一个函数中直接赋值(因为函数内创建的是本地符号表)，但是全局变量在函数中确实可以被引用的。
+
+一个函数的定义在当前符号表中引入了这个函数的名字。解释器把函数名字识别为用户定义的函数。这个值可以赋给另外的名字。看代码：
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+def fib(n):
+    """Pring a Fibonacci series up to n"""
+    a,b = 0,1
+    while a<n:
+        print(a,end=' ')
+        a,b = b,a+b
+    print()
+
+f = fib
+f(1000)
+\end{lstlisting}
+
+输出为：
+\begin{verbatim}
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+\end{verbatim}
+
+如果有其他计算机语言的基础，你会疑惑： \texttt{fib} 只能是一个代码段，不能算一个函数，因为根本没有返回值。事实上，即使没有 \texttt{return} 语句的函数也有返回值，只不过这个返回值无关紧要。这个值是 \texttt{None} 。如果你一定要看到这个 \texttt{None} ，看代码：
+\begin{verbatim}
+>>>print(fib(0))
+
+None
+\end{verbatim}
+
+写一个返回菲波那切数列的函数很容易，看代码：
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+def fib(n):
+    """Pring a Fibonacci series up to n"""
+    result = []
+    a,b = 0,1
+    while a<n:
+        result.append(a)
+        a,b = b,a+b
+    return result
+\end{lstlisting}
+调用：
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> f100 = fib(100)
+>>> f100
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+\end{lstlisting}
+
+从这个例子，我们得知：
+\begin{enumerate}
+\item \texttt{return} 语句返回一个值。如果没有 \texttt{return} 语句，返回 \texttt{None} 。
+\item \texttt{result.append(a)}  调用了 \texttt{result} 对象的一个方法 \texttt{append} 。不同类型的对象有不同的方法，尽管这些方法可能名字相同，但是由于类型不同，所以在使用过程中也不会造成歧义。
+\end{enumerate}
+\end{document}

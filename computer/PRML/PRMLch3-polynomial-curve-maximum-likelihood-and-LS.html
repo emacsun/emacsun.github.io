@@ -86,9 +86,8 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge78f0cd">1. 问题模型</a></li>
-<li><a href="#org82a71e4">2. 问题分析：最大化斯然函数和最小化平方和误差函数的等效性</a></li>
-<li><a href="#org3db5b36">3. 最小二乘的几何意义</a></li>
+<li><a href="#org4fe8fda">1. 问题模型</a></li>
+<li><a href="#org3d05e61">2. 问题分析：最大化斯然函数和最小化平方和误差函数的等效性</a></li>
 </ul>
 </div>
 </div>
@@ -96,8 +95,8 @@ for the JavaScript code in this tag.
 <a href="PRMLch1dot1-polynomial-curve.html">之前</a>，我们讨论过关于曲线拟合的一些概念，提到了均方误差函数和<a href="PRMLch1dot1-polynomial-curve-probability-revist.html">贝叶斯估计</a> , 并在一篇<a href="PRMLch1dot1-polynomial-curve-matlab.html">博文</a>中介绍了 matlab 实现。今天，我们讨论通过最小二乘法对最大斯然估计进行深入的挖掘。
 </p>
 
-<div id="outline-container-orge78f0cd" class="outline-2">
-<h2 id="orge78f0cd"><span class="section-number-2">1</span> 问题模型</h2>
+<div id="outline-container-org4fe8fda" class="outline-2">
+<h2 id="org4fe8fda"><span class="section-number-2">1</span> 问题模型</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -119,8 +118,8 @@ p(t|\mathbf{x},\mathbf{w},\beta) = \mathcal{N}(t|y(\mathbf{x},\mathbf{w}),\beta^
 \end{equation}
 </div>
 </div>
-<div id="outline-container-org82a71e4" class="outline-2">
-<h2 id="org82a71e4"><span class="section-number-2">2</span> 问题分析：最大化斯然函数和最小化平方和误差函数的等效性</h2>
+<div id="outline-container-org3d05e61" class="outline-2">
+<h2 id="org3d05e61"><span class="section-number-2">2</span> 问题分析：最大化斯然函数和最小化平方和误差函数的等效性</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -237,32 +236,6 @@ w_{0} = \bar{t} -\sum_{j=1}^{M-1}w_{j}\bar{\phi_{j}}
 \label{eq:16}
 \frac{1}{\beta_{ML}} = \frac{1}{N}\sum_{n=1}^{N}\{t_{n}-\mathbf{w}_{ML}^{T}\phi(\mathbf{x}_{n})\}^{2}
 \end{equation}
-<p>
-我们看到噪声精度的倒数是目标值在回归函数周围的方差。
-</p>
-</div>
-</div>
-<div id="outline-container-org3db5b36" class="outline-2">
-<h2 id="org3db5b36"><span class="section-number-2">3</span> 最小二乘的几何意义</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-
-</p>
-
-
-<div id="orgd1bfb65" class="figure">
-<p><img src="../../img/computer_prml/20170806leastSquare.png" alt="20170806leastSquare.png" width="400" align="center" />
-</p>
-<p><span class="figure-number">图 1:</span> 最小二乘的几何意义</p>
-</div>
-
-<p>
-考虑\(N\)维空间，\(\mathbf{t}\)是其中一个矢量。每一个基函数\(\phi_{j}(\mathbf{x}_{n})\)取\(N\)个训练集合中的值也可以视作一个矢量，标记为\(\mathbf{\varphi}_{j}\)，如图 <a href="#orgd1bfb65">1</a>所示。注意\(\mathbf{\varphi}_{j}\)对应\(\mathbf{\Phi}\)的第\(j\)列。如果基函数的个数\(M\)小于训练集合的点数\(N\)，那么\(M\)个矢量\(\phi_{j}(\mathbf{x}_{n})\)张成一个\(M\)维的空间\(\mathcal{S}\)。我们定义\(\mathbf{y}\)是一个\(N\)维向量其第\(n\)个坐标为\(y(\mathbf{x}_{n},\mathbf{w})\)。因为\(\mathbf{y}\)是\(\mathbf{\varphi}_{j}\) 的线性组合。所以，\(\mathbf{y}\)可以在\(M\)维空间\(\mathcal{S}\)的任意位置。式~(\ref{eq:8})是\(\mathbf{y}\)和\(\mathbf{t}\)的欧几里得距离。所以\(\mathbf{w}\)的最小二乘解对应着\(\mathcal{S}\)中距离\(\mathbf{t}\)最近的\(\mathbf{y}\)。从图 <a href="#orgd1bfb65">1</a> 可以看出这个解对应着\(\mathbf{t}\)向\(\mathcal{S}\)的各个坐标系投影。
-</p>
-
-<p>
-在实际应用中，直接求解\(\mathbf{\Phi}^{T}\mathbf{\Phi}\)的逆比较困难（因为，这个矩阵的维度比较大），所以一些数学技巧比如 SVD 分解经常会被用到。
-</p>
 </div>
 </div>
 </div>

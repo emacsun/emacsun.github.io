@@ -1,0 +1,84 @@
+#+TITLE: Java Tweet 
+#+AUTHOR:    emacsun
+#+EMAIL:     emacsun@163.com
+#+DATE:      
+#+DESCRIPTION:  
+#+KEYWORDS:  
+#+CATEGORIES: 
+#+SETUPFILE: ~/.emacs.d/org-templates/java-tweet.org
+#+HTML_HEAD_EXTRA: <a id="pdf"  href="./java-tweet.pdf"><img src="../../img/assets/pdf.png"></a>
+#+LaTeX_CLASS: cn-article
+
+
+* C++和Java变量作用域不同
+  [2017-02-19 Sun 10:49] 
+
+  在C，C++和Java里，作用域是由花括号的位置决定的。参考下面这个例子：
+#+begin_src  C -n
+{
+  int x = 12;
+  /* only x available */
+  {
+    int q = 96;
+    /* both x & q available */
+  }
+  /* only x available */
+  /* q “out of scope” */
+}
+#+end_src
+在Java和C/C++中有一个重要区别，如下：
+#+begin_src C -n
+{
+  int x = 12;
+  {
+    int x = 96; /* illegal in Java but legal in C/C++ */
+  }
+}
+#+end_src
+
+*注意第4行在C/C++中是合法的，但是在Java中是非法的。* 编译器会认为变量x已被定义。所以C和C++能将一个变量“隐藏”在一个更大的作用域里。但这种做法在Java里是不允许的，因为Java的设计者认为这样做使程序产生了混淆。
+
+* =static= 关键字
+  [2017-02-19 Sun 16:03] 
+
+通常，当你定义一个 =class= ，你只是在描述这个 =class= 的 =object= 该有的样子或者具有的行为，即定义 =class= 时，你并没有创建任何 =object= 。只有用 =new= 这个关键字，你才创建了一个 =object= 。该 =object= 占用内存并且属于这个 =class= 的方法才可以被调用。
+
+=static= 是一个特例。 =static= 的诞生是为了满足两方面的需求：1）使变量不依赖于任何 =object= ;2）使方法不依赖于任何 =object= 。换句话说，当一个 =class= 的某个变量是 =static= 时，该变量自始至终都存在；当一个 =class= 的某个方法是 =static= 时，该方法的存在不依赖任何 =object= 。
+
+比如对于
+#+begin_src java 
+class StaticVariable{
+    static int i=47;
+}
+#+end_src
+此时即使有两个 =StaticVariable= 的对象，也只有一份内存保存变量 =StaticVariable.i= ，比如定义了两个 =StaticVariable= 对象：
+#+begin_src java
+StaticVariable sv1 = new StaticVariable();
+StaticVariable sv2 = new StaticVariable();
+#+end_src
+
+=sv1.i= 和 =sv2.i= 占用同一份内存，存储同样的内容。
+
+上面提供了一种访问 =StaticVariable= 变量 =i= 的一种方法，另外一种专门针对 =static= 变量的访问方法是: =StaticVariable.i= . 比如 =StaticVariable.i++= 会使 =i= 的值变为48, 当然此时如果用 =sv1.i=  或者 =sv2.i= 访问 =i= 也将得到48.
+* 当 =static= 遇到方法
+  [2017-02-19 Sun 17:07]
+
+当一个 =class= 的方法是 =static= 时， 我们也有两种访问方法，一种是常规的访问，另一种是 =ClassName.method()= 比如：
+#+begin_src java
+class Incrementable{
+    static void increment() {StaticVariable.i++;}
+}
+#+end_src
+
+=Incrementable= 的方法 =increment= 把 =static= 变量加1. 我们有两种方法调用 =increment()= 
+** 传统的方法
+#+begin_src java
+Incrementable incr = new Incrementable();
+incr.increment();
+#+end_src  
+** =static= 专用方法
+#+begin_src java
+Incrementable.increment();
+#+end_src
+
+通常， 无论是访问静态变量还是静态方法，我们都倾向于使用 =static= 的专用访问方法，因为这么做不仅可以一目了然变量或者方法的属性，而且有助于Java编译器优化代码。

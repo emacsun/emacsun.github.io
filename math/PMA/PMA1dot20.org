@@ -1,0 +1,13 @@
+#+TITLE:  实数的阿基米德性和有理数的稠密性
+#+AUTHOR:    zcl.space
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:  证明实数的阿基米德性和有理数的稠密性
+#+KEYWORDS:  PMA
+#+CATEGORIES: math
+#+SETUPFILE: ~/.emacs.d/org-templates/math-level2.org
+#+HTML_HEAD_EXTRA: <a id="pdf" href="PMA1dot20.pdf"><img src="../../img/assets/pdf.png"></a>
+
+\begin{theorem}[均值不等式]
+设$A,B$是两个实数, 则$2AB\leq A^2+B^2$.
+\end{theorem}

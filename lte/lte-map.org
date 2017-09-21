@@ -1,0 +1,16 @@
+#+TITLE: lte地图
+
+   + [[file:index.org][LTE笔记概述]]
+   + basic
+     + [[file:basic/lte-index.org][LTE笔记概述]]
+     + [[file:basic/bp1-fundamental-information.org][基本流程之一：基本信息]]
+     + [[file:basic/bp7-downlink-subframe-decoding.org][基本流程之七： 下行子帧译码]]
+     + [[file:basic/bp3-initialization-sequence.org][基本流程之三： LTE初始化流程（从上电到PRACH）]]
+     + [[file:basic/bp9-cell-search.org][基本流程之九：小区搜索]]
+     + [[file:basic/bp2-overall-lte-sequence.org][基本流程之二：LTE基本流程]]
+     + [[file:basic/bp5-time-sync-process.org][基本流程之五： 定时同步过程]]
+     + [[file:basic/bp8-sib-scheduling.org][基本流程之八：SIB规划]]
+     + [[file:basic/bp6-cellid-detection-and-sib-detection.org][基本流程之六： 小区ID检测和SIB检测]]
+     + [[file:basic/bp4-frequency-and-bandwidth-detection.org][基本流程之四： 频率和带宽检测]]
+   + physical
+     + [[file:physical/lte-physical-overview.org][LTE 物理层技术概要]]

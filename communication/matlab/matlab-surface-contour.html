@@ -87,17 +87,16 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org36f760a">1. 简介</a></li>
-<li><a href="#orge9874b5">2. surface</a></li>
-<li><a href="#org0fd15fe">3. contour</a></li>
-<li><a href="#orgdfad46e">4. gradient</a></li>
-<li><a href="#orgb3d9880">5. 高维高斯分布</a></li>
+<li><a href="#orgae71b6a">1. 简介</a></li>
+<li><a href="#org8a6e966">2. surface</a></li>
+<li><a href="#org89ccfaf">3. contour</a></li>
+<li><a href="#org172e287">4. gradient</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org36f760a" class="outline-2">
-<h2 id="org36f760a"><span class="section-number-2">1</span> 简介</h2>
+<div id="outline-container-orgae71b6a" class="outline-2">
+<h2 id="orgae71b6a"><span class="section-number-2">1</span> 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -120,8 +119,8 @@ z = x\exp(-x^{2} + y^{2})
 </div>
 </div>
 
-<div id="outline-container-orge9874b5" class="outline-2">
-<h2 id="orge9874b5"><span class="section-number-2">2</span> surface</h2>
+<div id="outline-container-org8a6e966" class="outline-2">
+<h2 id="org8a6e966"><span class="section-number-2">2</span> surface</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -143,7 +142,7 @@ z = x\exp(-x^{2} + y^{2})
 结果如图：
 </p>
 
-<div id="org470df4c" class="figure">
+<div id="org57b5513" class="figure">
 <p><img src="../../img/communication_matlab/20170708surface.png" alt="20170708surface.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> surface 示例</p>
@@ -155,8 +154,8 @@ z = x\exp(-x^{2} + y^{2})
 </div>
 </div>
 
-<div id="outline-container-org0fd15fe" class="outline-2">
-<h2 id="org0fd15fe"><span class="section-number-2">3</span> contour</h2>
+<div id="outline-container-org89ccfaf" class="outline-2">
+<h2 id="org89ccfaf"><span class="section-number-2">3</span> contour</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -181,10 +180,10 @@ contour 的功能是画一个多维函数的等高线。
 </div>
 
 <p>
-结果如图<a href="#org3f03d38">2</a>：
+结果如图<a href="#orgd3e73e4">2</a>：
 </p>
 
-<div id="org3f03d38" class="figure">
+<div id="orgd3e73e4" class="figure">
 <p><img src="../../img/communication_matlab/20170708contour.png" alt="20170708contour.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> contour 示例</p>
@@ -196,15 +195,15 @@ matlab 的帮助手册中有关于 contour 的更详细的说明，包括一些�
 </div>
 </div>
 
-<div id="outline-container-orgdfad46e" class="outline-2">
-<h2 id="orgdfad46e"><span class="section-number-2">4</span> gradient</h2>
+<div id="outline-container-org172e287" class="outline-2">
+<h2 id="org172e287"><span class="section-number-2">4</span> gradient</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
 </p>
 
 <p>
-在 contour 的基础上，我们看看\(xe^{-x^{2} - y^{2}}\)的梯度示意图<a href="#org324c0e4">3</a>。
+在 contour 的基础上，我们看看\(xe^{-x^{2} - y^{2}}\)的梯度示意图<a href="#orga1efa1b">3</a>。
 </p>
 <div class="org-src-container">
 <pre class="src src-matlab"><span class="linenr">1: </span>x = -2:0.2:2;
@@ -220,117 +219,17 @@ matlab 的帮助手册中有关于 contour 的更详细的说明，包括一些�
 </div>
 
 <p>
-结果如图<a href="#org324c0e4">3</a>所示：
+结果如图<a href="#orga1efa1b">3</a>所示：
 </p>
 
-<div id="org324c0e4" class="figure">
+<div id="orga1efa1b" class="figure">
 <p><img src="../../img/communication_matlab/20170708gradient.png" alt="20170708gradient.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 3:</span> \(xe^{-x^{2} - y^{2}}\)的梯度示意图</p>
 </div>
 
 <p>
-图<a href="#org324c0e4">3</a>中的箭头所指是图<a href="#org470df4c">1</a>中从蓝色到橙色，即箭头部分永远指向更高的位置。
-</p>
-</div>
-</div>
-<div id="outline-container-orgb3d9880" class="outline-2">
-<h2 id="orgb3d9880"><span class="section-number-2">5</span> 高维高斯分布</h2>
-<div class="outline-text-2" id="text-5">
-<p>
-
-</p>
-
-<p>
-为了图形直观，以二维为例。向更高维度的扩展是显而易见的，但是通过contourf这样的函数实现高维几何直观就显得超出人类能力范围。
-</p>
-
-<p>
-假设均值为\(\mathbf{\mu}\)，方差为\(\mathbf{\Sigma}\)，则高维高斯分布可以表示为：
-</p>
-\begin{equation}
-\label{eq:2}
-p(\mathbf{x}|\mathbf{\mu},\mathbf{\Sigma}) = \frac{1}{(2\pi)^{D/2} |\mathbf{\Sigma}|^{1/2} } \exp(- (\mathbf{x} - \mu)^{T}\mathbf{\Sigma}^{-1} (\mathbf{x} - \mathbf{\mu}) )
-\end{equation}
-
-<div class="org-src-container">
-<pre class="src src-matlab"><span class="linenr"> 1: </span>stepSize = 0.2; %0.05;
-<span class="linenr"> 2: </span>[x,y] = meshgrid(-1:stepSize:1,-1:stepSize:1); % Create grid.
-<span class="linenr"> 3: </span>[r,c]=size(x);
-<span class="linenr"> 4: </span>data = [x(:) y(:)];
-<span class="linenr"> 5: </span>p = func(data);
-<span class="linenr"> 6: </span>p = reshape(p, r, c);
-<span class="linenr"> 7: </span>
-<span class="linenr"> 8: </span>contourf(x,y,p,256,'LineColor','none');
-<span class="linenr"> 9: </span>colormap(jet(256));
-<span class="linenr">10: </span>axis square;
-<span class="linenr">11: </span>set(gca,'XTick',[-1,0,1]);
-<span class="linenr">12: </span>set(gca,'YTick',[-1,0,1]);
-<span class="linenr">13: </span>xlabel(' W0 ');
-<span class="linenr">14: </span>ylabel(' W1 ','Rotation',0);
-<span class="linenr">15: </span>
-</pre>
-</div>
-<p>
-这里的 <code>func</code> 是函数句柄。其原型为：
-</p>
-<div class="org-src-container">
-<pre class="src src-matlab"><span class="linenr">1: </span>priorMean = [0;0];
-<span class="linenr">2: </span>priorSigma = eye(2)./priorPrecision; %Covariance Matrix
-<span class="linenr">3: </span>priorPDF = @(W)gaussProb(W,priorMean',priorSigma);
-</pre>
-</div>
-<p>
-<code>gaussProb</code> 实现了式~(\ref{eq:2})。图<a href="#orgddb3815">4</a>展示了最终的结果：
-</p>
-
-<div id="orgddb3815" class="figure">
-<p><img src="../../img/communication_matlab/20170813contour.png" alt="20170813contour.png" width="400" align="center" />
-</p>
-<p><span class="figure-number">图 4:</span> 使用countourf画二维高斯图形。</p>
-</div>
-
-<p>
-颜色越靠近红色，概率越高；越靠近蓝色概率越低。
-</p>
-
-<p>
-当我们改变\(\mathbf{\mu}\)和\(\mathbf{\Sigma}\)的值时，其形状也会发生变化。比如，我们令:
-</p>
-\begin{equation}
-\label{eq:3}
-\mathbf{\mu} = [0.2 \quad 0.4]
-\end{equation}
-\begin{equation}
-\label{eq:4}
-\mathbf{\Sigma} =
-\begin{bmatrix}
-0.4 & 0 \\
-0 & 0.2
-\end{bmatrix}
-\end{equation}
-<p>
-其结果如图<a href="#orgc0c2bc4">5</a>所示：
-</p>
-
-<div id="orgc0c2bc4" class="figure">
-<p><img src="../../img/communication_matlab/20170813contour2.png" alt="20170813contour2.png" width="400" align="center" />
-</p>
-<p><span class="figure-number">图 5:</span> 使用countourf画二维高斯图形。</p>
-</div>
-
-<p>
-如果在上面的代码中使用 <code>contour</code> ，我们可以看到图<a href="#org84a36c3">6</a>：
-</p>
-
-<div id="org84a36c3" class="figure">
-<p><img src="../../img/communication_matlab/20170813contour3.png" alt="20170813contour3.png" width="400" align="center" />
-</p>
-<p><span class="figure-number">图 6:</span> 使用countour画二维高斯图形。</p>
-</div>
-
-<p>
-<code>contour</code> 又找回了等高线的感觉， <code>contourf</code> 则为这些等高线之间进行颜色插值蒙上一个表面。
+图<a href="#orga1efa1b">3</a>中的箭头所指是图<a href="#org57b5513">1</a>中从蓝色到橙色，即箭头部分永远指向更高的位置。
 </p>
 </div>
 </div>

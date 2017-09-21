@@ -1,0 +1,82 @@
+#+TITLE: 练习：排列组合分析
+#+AUTHOR:    张朝龙
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:  本文是Sheldon M. Ross的 概率论基础教程的一些习题总结
+#+KEYWORDS: probability
+#+CATEGORIES: math
+#+SETUPFILE: ~/.emacs.d/org-templates/math-level2.org
+#+HTML_HEAD_EXTRA: <a id="pdf" href="afcp-combinatorial-analysis.pdf"><img src="../../img/assets/pdf.png"></a>
+#+OPTIONS: toc:nil
+本文是Sheldon M. Ross的 概率论基础教程的第一章组合分析中个人感觉比较有意思的习题的总结。
+
+Sheldon M. Ross的教材习题都超多，做多了有点刷数据的感觉。不过，对于强化理解书中知识点大有裨益。在刷题的过程中，把个人感觉有意义的习题拿出来总结一下。在刷题的过程中，发现对于组合恒等式，如果能找到对应的模型，则问题就会简单的多。从分析的方向证明分析恒等式总显得有些暴力和笨拙。倘若，有一个精巧的模型可以使用，一切都会简单得多。比如本文的第一题和第一章习题中的理论习题1.10。
+
+
+
+#+begin_tikzproblem
+证明：
+\begin{equation}
+\label{eq:1}
+\binom{n+m}{r} = \binom{n}{0}\binom{m}{r} + \binom{n}{1}\binom{m}{r-1} + \ldots  + \binom{n}{r}\binom{m}{0}
+\end{equation}
+
+\begin{equation}
+\label{eq:2}
+\binom{2n}{n} = \sum_{k=0}^{n}\binom{n}{k}^{2}
+\end{equation}
+#+end_tikzproblem
+
+#+begin_tikzanswer
+第一个等式可以考虑为从\(n\)个男人和\(m\)个女人中选出\(r\)个人组成一个委员会。这样可以分两步走：先从\(n\)个男人中选取\(k\)个，再从\(m\)个女人中选取\(r-k\)个。其中\(k\)的取值范围是\(0\)到\(r\)的整数。
+
+第二个等式是第一个等式的特例\(m=n,r=n\)，再利用\(\binom{n}{k} = \binom{n}{n-k}\)，得证。
+#+end_tikzanswer
+
+#+begin_tikzproblem
+证明费马组合恒等式：
+\begin{equation}
+\label{eq:3}
+\binom{n}{k} = \sum_{i=k}^{n}\binom{i-1}{k-1}\quad n\geq k
+\end{equation}
+#+end_tikzproblem
+
+#+begin_tikzanswer
+等式左边表示从\(n\)个元素中选出\(k\)个的组合个数。我们可以考虑\(1,\ldots ,n\)的\(n\)个数，从中选出\(k\)个，这\(k\)个元素的最大值至少是\(k\)。所以\(\binom{n}{k}\)也可以表示\(\{1,\ldots ,n\}\)这个集合中\(k\)个元素的子集个数。这些子集天然的满足最大元素至少是\(k\)。
+
+右边就是\((x_{1},\ldots ,x_{k})\)的个数，其中\(x_{i}\)是正整数，且满足\(1\leq x_{i} \leq n\)，且\( x_{1} < x_{2} < \ldots < x_{k} \)。所以右边是：
+\begin{equation}
+\label{eq:4}
+\binom{k-1}{k-1} + \binom{k}{k-1} + \ldots + \binom{n-1}{k-1}
+\end{equation}
+#+end_tikzanswer
+
+#+begin_tikzproblem
+考虑恒等式：
+\begin{equation}
+\label{eq:5}
+\sum_{k=1}^{n} k\binom{n}{k} = n 2^{n-1}
+\end{equation}
+从组合的角度解释上式
+#+end_tikzproblem
+
+#+begin_tikzanswer
+1. 从\(n\)个人中选择\(k\)个人，在从\(k\)个人中选择一个做主席，就是\(k\binom{n}{k}\)
+2. 当\(k\)从\(1\)到\(n\)变化时就是等式左边。
+3. 考虑等式右边，把\(n\)个人排成一排，从中选出一个做主席一共有\(n\)个。在从剩余的\(n-1\)个人中选出\(k-1\)个构成委员会成员。一共\(\binom{n-1}{k-1}\)，当\(k\)从\(1\)到\(n\)变化时就是等式左边。因为\(\binom{n-1}{0} +\ldots +\binom{n-1}{n-1} = 2^{n-1}\)
+#+end_tikzanswer
+
+#+begin_tikzproblem
+考虑恒等式：
+\begin{equation}
+\label{eq:6}
+\sum_{k=1}^{n} k^{2}\binom{n}{k} = n(n+1) 2^{n-2}
+\end{equation}
+从组合角度解释上式。
+#+end_tikzproblem
+#+begin_tikzanswer
+1. 从\(n\)个人中选择\(k\)个人，在从\(k\)个人中选择一个做主席一个做秘书（秘书和主席可以是同一个人），就是\(k^{2}\binom{n}{k}\)
+2. 当\(k\)从\(1\)到\(n\)变化时就是等式左边。
+3. 考虑等式右边，把\(n\)个人排成一排：当主席和秘书是同一个人时，从中选出一共有\(n\)个。在从剩余的\(n-1\)个人中选出\(k-1\)个构成委员会成员。一共\(\binom{n-1}{k-1}\)，当\(k\)从\(1\)到\(n\)变化时就是等式左边。因为\(\binom{n-1}{0} +\ldots +\binom{n-1}{n-1} = 2^{n-1}\)； 当主席和秘书是两个人时一共有\(n(n-1)2^{n-2}\)种取法。综合考虑这两种情况。得证。
+4. 照这个方法归纳下去还可以证明\[ \sum_{k=1}^{n} k^{3}\binom{n}{k} = 2^{n-11}n^{2}(n+3) \]不过，我不想算下去了。
+#+end_tikzanswer

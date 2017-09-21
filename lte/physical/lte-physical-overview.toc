@@ -1,0 +1,35 @@
+\contentsline {section}{\numberline {1}引言}{3}{section.1}
+\contentsline {section}{\numberline {2}空口（Air Interface）}{3}{section.2}
+\contentsline {section}{\numberline {3}频谱资源}{3}{section.3}
+\contentsline {section}{\numberline {4}单播和多播}{4}{section.4}
+\contentsline {section}{\numberline {5}带宽划分}{5}{section.5}
+\contentsline {section}{\numberline {6}时域帧格式}{5}{section.6}
+\contentsline {section}{\numberline {7}信号的时频表示}{6}{section.7}
+\contentsline {section}{\numberline {8}OFDM 多载波传输}{7}{section.8}
+\contentsline {subsection}{\numberline {8.1}循环前缀}{8}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}子载波间隔}{9}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}RB大小}{9}{subsection.8.3}
+\contentsline {subsection}{\numberline {8.4}频率域划分}{9}{subsection.8.4}
+\contentsline {subsection}{\numberline {8.5}接收过程}{9}{subsection.8.5}
+\contentsline {section}{\numberline {9}单载波频分复用}{10}{section.9}
+\contentsline {section}{\numberline {10}LTE系统的资源栅格内容}{10}{section.10}
+\contentsline {section}{\numberline {11}物理信道}{11}{section.11}
+\contentsline {subsection}{\numberline {11.1}下行物理信道}{12}{subsection.11.1}
+\contentsline {subsection}{\numberline {11.2}下行物理信道的作用}{13}{subsection.11.2}
+\contentsline {subsection}{\numberline {11.3}上行信道}{14}{subsection.11.3}
+\contentsline {subsection}{\numberline {11.4}上行物理信道的功能}{15}{subsection.11.4}
+\contentsline {section}{\numberline {12}物理信号}{15}{section.12}
+\contentsline {subsection}{\numberline {12.1}下行参考信号}{16}{subsection.12.1}
+\contentsline {subsection}{\numberline {12.2}上行参考信号}{16}{subsection.12.2}
+\contentsline {subsection}{\numberline {12.3}同步信号}{16}{subsection.12.3}
+\contentsline {section}{\numberline {13}下行帧结构}{17}{section.13}
+\contentsline {section}{\numberline {14}上行帧结构}{17}{section.14}
+\contentsline {section}{\numberline {15}MIMO}{18}{section.15}
+\contentsline {subsection}{\numberline {15.1}接收分集}{18}{subsection.15.1}
+\contentsline {subsection}{\numberline {15.2}发射分集}{19}{subsection.15.2}
+\contentsline {subsection}{\numberline {15.3}空分复用}{19}{subsection.15.3}
+\contentsline {subsection}{\numberline {15.4}波束成型}{21}{subsection.15.4}
+\contentsline {subsection}{\numberline {15.5}循环延迟分集}{21}{subsection.15.5}
+\contentsline {section}{\numberline {16}MIMO模式}{22}{section.16}
+\contentsline {section}{\numberline {17}物理层信号处理流程}{22}{section.17}
+\contentsline {subsection}{\numberline {17.1}物理层下行信号处理流程}{22}{subsection.17.1}

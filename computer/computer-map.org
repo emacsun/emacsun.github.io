@@ -1,2 +1,50 @@
 #+TITLE: computer地图
 
+   + AIML
+     + [[file:AIML/BRMLch01.org][BRML第一章：概率推断]]
+     + [[file:AIML/BRMLch02.org][图论简介]]
+     + [[file:AIML/learn-aiml-by-yourself.org][自学AI 和ML资料汇总]]
+   + BRML
+     + [[file:BRML/Bayesian-reasoning-and-machine-learning.org][Bayesian Reasoning and Machine Learning]]
+   + MLAPP
+     + [[file:MLAPP/MLAPPch2dot3-some-probability-distributions.org][机器学习中常用的概率分布]]
+     + [[file:MLAPP/MLAPPch3-generative-models.org][生成模型(generative model)]]
+   + PRML
+     + [[file:PRML/PRMLch1dot1-polynomial-curve.org][从多项式曲线拟合到模式识别的相关概念]]
+     + [[file:PRML/PRMLch2dot3-gaussian-again.org][再看高斯]]
+     + [[file:PRML/first-impression-pattern-recognition.org][初识模式识别]]
+     + [[file:PRML/PRMLch2dot4-bayesian-inference-for-gaussian.org][对高斯分布的贝叶斯推断]]
+     + [[file:PRML/PRMLch2dot4-exponential-family.org][指数分布家族]]
+     + [[file:PRML/PRMLch1dot1-polynomial-curve-matlab.org][曲线拟合之matlab实现]]
+     + [[file:PRML/PRMLch1dot1-polynomial-curve-probability-revist.org][曲线拟合之概率回访]]
+     + [[file:PRML/PRMLch1dot1-polynomial-curve-appendix.org][曲线拟合过程中的欠定过定问题]]
+     + [[file:PRML/MLAPPch2dot3-some-probability-distributions.org][机器学习中常用的概率分布]]
+     + [[file:PRML/PRMLch2-conjugate-priors.org][机器学习中的共轭先验（conjugate prior）]]
+     + [[file:PRML/PRMLch1dot4-curse-of-dimensionality.org][维度诅咒]]
+     + [[file:PRML/PRMLch2dot3-maximum-likelihood-for-gaussian.org][高斯分布的最大似然估计]]
+   + algorithm
+     + [[file:algorithm/masterAlgoC_dataStructures.org][什么是数据结构？]]
+     + [[file:algorithm/masterAlgoC_algorithm.org][什么是算法？]]
+   + ccplusplus
+     + [[file:ccplusplus/compile-multiple-file-using-make.org][多文件编译]]
+   + java
+     + [[file:java/java-tweet.org][Java Tweet]]
+     + [[file:java/TIJ-ch03.org][Thinking in Java chapter3 笔记和习题]]
+     + [[file:java/TIJ-ch04.org][Thinking in Java chapter4 笔记和习题]]
+     + [[file:java/TIJ-ch05.org][Thinking in Java chapter5 笔记和习题]]
+     + [[file:java/TIJ-ch06.org][Thinking in Java chapter6 笔记和习题]]
+     + [[file:java/TIJ-ch07.org][Thinking in Java chapter7 笔记和习题]]
+     + [[file:java/TIJ-ch08.org][Thinking in Java chapter8 类重用]]
+   + python
+     + [[file:python/python-machine-learning.org][从Python开始机器学习]]
+     + [[file:python/learning-python-day11.org][学习Python Doc第11天: 接下来做什么]]
+     + [[file:python/learning-python-day01.org][学习Python Doc第一天:遇见Python]]
+     + [[file:python/learning-python-day07.org][学习Python Doc第七天: 错误和例外]]
+     + [[file:python/learning-python-day03.org][学习Python Doc第三天:函数]]
+     + [[file:python/learning-python-day09.org][学习Python Doc第九天: 标准库巡礼(一)]]
+     + [[file:python/learning-python-day02.org][学习Python Doc第二天:控制语句和函数]]
+     + [[file:python/learning-python-day05.org][学习Python Doc第五天: 模块]]
+     + [[file:python/learning-python-day08.org][学习Python Doc第八天: 类]]
+     + [[file:python/learning-python-day06.org][学习Python Doc第六天: 输入和输出]]
+     + [[file:python/learning-python-day10.org][学习Python Doc第十天: 标准库巡礼(二)]]
+     + [[file:python/learning-python-day04.org][学习Python Doc第四天:数据结构]]

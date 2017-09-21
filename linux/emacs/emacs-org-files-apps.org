@@ -1,0 +1,18 @@
+#+TITLE: 配置 Emacs 的默认文件打开方式
+#+AUTHOR:    emacsun
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+CATEGORIES:
+#+SETUPFILE: ~/.emacs.d/org-templates/emacs-level2.org
+#+LaTeX_CLASS: cn-article
+
+在使用 Ubuntu 上的 Emacs org 生成 pdf 时默认的打开程序是 emacs，Emacs 打开 pdf 文档时非常慢。那么我想使用系统自带的  pdf 阅读器来查看，Ubuntu 系统自带的阅读器是 evince . 配置 emacs 使用 evince 打开 pdf 需要如下配置：
+
+#+begin_src emacs-lisp
+(setq org-file-apps
+  (quote
+   ((auto-mode . emacs)
+    ("\\.pdf\\'" . "evince %s"))))
+#+end_src

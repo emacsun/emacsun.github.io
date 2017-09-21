@@ -1,0 +1,169 @@
+#+TITLE: 线性映射的对偶的零空间和值域
+#+AUTHOR:    张朝龙
+#+EMAIL:     emacsun@163.com
+#+DATE:      
+#+DESCRIPTION:  
+#+KEYWORDS:  
+#+CATEGORIES: 
+#+SETUPFILE: ~/.emacs.d/org-templates/math-level2.org
+#+LaTeX_CLASS: cn-article
+#+HTML_HEAD_EXTRA: <a id="pdf"  href="./duality1.pdf"><img src="../../img/assets/pdf.png"></a>
+#+OPTIONS: toc:nil
+
+我们在 [[file:duality.org][对偶空间与对偶映射]] 一节讨论了对偶空间和对偶映射的定义。对偶空间把线性泛函和一个特定的空间\(V\)联系起来，从对偶空间导出对偶基的概念。从一般的线性映射导出了对偶映射的概念，进而导出对偶映射的一些性质，这些性质和其对应的线性映射之间存在紧密的联系。
+
+今天学习线性映射的对偶的零空间和值域。顾名思义，线性映射\(T\)的对偶\(T^{'}\)指对偶空间\(\mathcal{L}(W^{'},V^{'})\)中的映射，其零空间和值域按照零空间和值域的记号可以写为：\(nullT^{'},rangeT^{'}\)。显然对偶映射与其对应的线性映射之间存在紧密的联系，则对偶空间的零空间和值域也必然与\(nullT\)和\(rangeT\)之间存在紧密的联系。
+
+#+begin_definition
+对于\(U\subset V\)，\(U\)的零化子(annihilator)\(U^{0}\)定义如下：\[U^{0} = \{\varphi\in V^{'}: \forall u\in U, \varphi(u) = 0\}\]
+#+end_definition
+
+从定义可以解读，零化子是线性泛函的集合，这个线性泛函是针对\(V\)的对偶空间。属于零化子的线性泛函具有\(\forall u\in U,\varphi(u) = 0\)的特性。
+
+#+begin_instance
+设\(U\)是\(\mathcal{P}(\mathbf{R})\)的用\(x^{2}\)乘以所有多项式所得到的子空间，若\(\varphi\)是\(\mathcal{P}(\mathbf{R})\)上由\(\varphi(p) = p^{'}(0)\)定义的线性泛函，则\(\varphi\in U^{0}\)
+#+end_instance
+
+对于\(U\subset V\)，零化子\(U^{0}\)是\(V^{'}\)的子集。于是\(U^{0}\)依赖于包含\(U\)的向量空间，所以记号\(U_{V}^{0}\)或许更准确，这个记号告诉我们\(U\subset V\)且零化子是属于\(V^{0}\)的子集。
+
+#+begin_instance
+用\(e_{1},e_{2},e_{3},e_{4},e_{5}\)表示\(\mathbf{R}^{5}\)的标准基，用\(\varphi_{1},\varphi_{2},\varphi_{3},\varphi_{4},\varphi_{5}\)表示\((\mathbf{R}^{5})^{'}\)的对偶基。设：
+\begin{equation}
+\label{eq:8}
+U = span(e_{1},e_{2}) = \{(x_{1},x_{2},0,0,0)\in \mathbf{R}^{5}:x_{1},x_{2}\in \mathbf{R}\}
+\end{equation}
+证明：\(U^{0}=span(\varphi_{3},\varphi_{4},\varphi_{5})\)
+#+end_instance
+
+#+begin_proof
+因为\(\varphi_{1},\varphi_{2},\varphi_{3},\varphi_{4},\varphi_{5}\)是\((\mathbf{R}^{5})^{'}\)的对偶基，则这个对偶基是把\(\mathbf{R}^{5}\)中的向量\(x=(x_{1},x_{2},x_{3},x_{4},x_{5})\)变为对应坐标元素的基，即：
+\(\varphi_{i}(x) =x_{i},\forall i\in \{1,2,3,4,5\} \)
+
+设线性泛函\(\varphi\in span(\varphi_{3},\varphi_{4},\varphi_{5})\)，则\(\exists c_{3},c_{4},c_{5}\)，使得:\(\varphi = c_{3}\varphi_{3}+c_{4}\varphi_{4} + c_{5}\varphi_{5}\)，显然\(\varphi\in (\mathbf{R}^{5})^{'}\)，又因为\(U = span(e_{1},e_{2})\)，则对于\(x=(x_{1},x_{2},0,0,0)\in U\)，有：
+\[\varphi(x) = c_{3}\varphi_{3}(x) + c_{4}\varphi_{4}(x) + c_{5}\varphi_{5}(x) = 0\]
+所以\(\varphi\in U^{0}\)，又由于\(\varphi\)的任意性，\(span(\varphi_{3},\varphi_{4},\varphi_{5})\subseteq U^{0}\)
+
+接下来我们证明另一方面：证明\(U^{0}\in span(\varphi_{3},\varphi_{4},\varphi_{5})\)。
+
+设\(\varphi\in U^{0}\)，因为\(U^{0}\)是\((\mathbf{R}^{5})^{'}\)的子集，则\(\varphi\)可以表示成\((\mathbf{R}^{5})^{'}\)的基的线性组合，即：\(\exists c_{1},c_{2},c_{3},c_{4},c_{5}\)使得：
+\(\varphi = c_{1}\varphi_{1} + c_{2}\varphi_{2} +\ldots + c_{5}\varphi_{5}\)，因为\(\varphi\in U^{0}\)，则对于\(u\in U\)，有\(\varphi(u) = 0\)。因为\(U=span(e_{1},e_{2})\)，\(\varphi(e_{1}) = 0, \varphi(e_{2}) = 0\)，进而\(c_{1} = 0,c_{2} = 0\)，所以：\[\varphi = c_{3}\varphi_{3} + c_{4}\varphi_{4} + c_{5}\varphi_{5}\] 即：\(U^{0}\subseteq span(\varphi_{3},\varphi_{4},\varphi_{5})\)
+
+
+综上有：\(U^{0} = span(\varphi_{3},\varphi_{4},\varphi_{5})\)
+#+end_proof
+
+#+begin_theorem
+设\(U\subset V\)，则\(U^{0}\)是\(V^{'}\)的子空间。
+#+end_theorem
+
+#+begin_proof
+证明这样的问题，我们可以从证明子空间的三点出发：1. 包含零元，2. 可加性，3. 齐次性。
+
+\(U^{0}\)中包含线性泛函\(0\)是显然的。接下来我们证明可加性和齐次性。
+
+设\(\varphi,\phi\in U^{0}\)，则对于\(u\in U\)，有：
+\begin{equation}
+\label{eq:1}
+(\varphi + \phi)(u) = \varphi(u) + \phi(u) = 0
+\end{equation}
+
+另外对于\(\lambda\in \mathbf{F},\phi\in U^{0}\)，则对于\((\lambda\phi)(u) = \lambda(\phi(u)) = \lambda 0 = 0\)
+
+所以零化子\(U^{0}\)是\(V^{'}\)的子空间。
+#+end_proof
+
+对于零化子的维数有一个结论：
+#+begin_theorem
+设\(V\)是有限维的，\(U\)是\(V\)的子空间，则：\[\dim U + \dim U^{0} = \dim V \]
+#+end_theorem
+
+#+begin_proof
+证明之前，明确一下\(U^{0}\)，\(U^{0}\)是\(U\)零化子，零化子是线性泛函的集合，零化子里的线性泛函把\(\forall u\in U\)映射为\(0\)。
+
+设\(i\in \mathcal{L}(U,V)\)是包含映射，定义如下：对\(u\in U\)有\(i(u) = u\)，则\(i^{'}\)是\(V^{'}\)到\(U^{'}\)的线性映射。对\(i^{'}\)应用线性映射基本定理有：
+\begin{equation}
+\label{eq:2}
+\dim range i^{'} +\dim null i^{'} = \dim V^{'} 
+\end{equation}
+而\(null i^{'} = U^{0}\)，且\(\dim V^{'} = \dim V\)，故上式变为：
+\begin{equation}
+\label{eq:3}
+\dim range i^{'} + \dim U^{0} = \dim V
+\end{equation}
+
+若\(\phi \in U^{'}\)，则\(\phi\)可以扩张为\(V\)上的线性泛函\(\psi\)，\(i^{'}\)的定义表明\(i^{'}(\psi) = \phi\).所以\(\phi \in range i^{'}\)，这表明\(range i^{'} = U^{'}\)。因此：\[\dim range i^{'} = \dim U^{'} = \dim U\]
+
+综上原命题得证。
+#+end_proof
+
+这个命题的证明过程综合了好多个知识点，现在我们慢慢消化它。首先：从定义\(i(u) = u\)和\(i^{'}\)是从\(V^{'}\)到\(U^{'}\)的线性映射出发。我们知道\(i^{'}(\phi) = 0,\phi\in V^{'}\)意味着\(\phi\circ i = 0\)，又因为\(i\)是包含映射，所以有：\(\phi\in U^{0}\)
+
+另外对于\(i^{'}\)的定义，这个线性映射把一个线性泛函映射为另外一个线性泛函，要紧扣对偶映射的定义。
+
+#+begin_theorem
+设\(V\)和\(W\)都是有限维，\(T\in \mathcal{L}(V,W)\)，则：
+1. \(null T^{'} = (rangeT)^{0}\)
+2. \(\dim nullT^{'} = \dim nullT  + \dim W - \dim V\)
+#+end_theorem
+
+#+begin_proof
+1. 首先假设\(\varphi \in nullT^{'}\)，则\( 0 = T^{'}(\varphi) = \varphi\circ T \)，对于\(v\in V\)，有：\[0 = (\varphi\circ T)(v) = \varphi(Tv)\]于是\(\varphi \in (rangeT)^{0}\)，即\[nullT^{'}\subseteq (rangeT)^{0}\] 为了证明另外一个方面,设\(\varphi\in (rangeT)^{0}\)，我们知道\((rangeT)^{0} =\{\phi\in W^{'}:\forall \omega\in rangeT, \phi(\omega) = 0\}\)，假设\(\varphi\in (rangeT)^{0}\),我们要证明\(\varphi \in nullT^{'}\)。因为\(\varphi \in (rangeT)^{0}\)，则有：\(\forall v \in rangeT, \varphi(Tv) = 0 = (\varphi \circ T)v\)，显然有\(\varphi\circ T = 0 = T^{'}(\varphi)\)，即，\[\varphi \in nullT^{'}\]，即\[(rangeT)^{0} \subseteq nullT^{'}\]
+2. 第二步的证明：
+\begin{eqnarray}
+\label{eq:5}
+\dim nullT^{'}&=&\dim (rangeT)^{0} \\
+&=& \dim W - \dim rangeT \\
+&=& \dim W - (\dim V - \dim nullT) \\
+&=& \dim nullT + \dim W - \dim V
+\end{eqnarray}
+第一个等式直接利用第一步的结果，第二个等式利用零化子的维数公式，第三个等式利用了线性映射基本定理。 
+#+end_proof
+
+#+begin_theorem
+设\(V\)和\(W\)是有限维的，\(T\in \mathcal{L}(V,W)\)，则\(T\)是满的当且仅当\(T^{'}\)是单的。
+#+end_theorem
+
+#+begin_proof
+我们之前有\(nullT^{'} = (rangeT)^{0}\)，所以\(rangeT = W\)当且仅当\((rangeT)^{0} = \{0\}\)，当且仅当\(nullT^{'} = \{0\}\)，即\(T^{'}\)是单的。
+#+end_proof
+
+#+begin_theorem
+设\(V\)和\(W\)都是有限维的，\(T\in \mathcal{L}(V,W)\)，则：
+1. \(\dim rangeT^{'} = \dim rangeT\)
+2. \(rangeT^{'} = (nullT)^{0}\)
+#+end_theorem
+
+#+begin_proof
+首先我们证明第一个问题：
+\begin{eqnarray}
+\label{eq:6}
+\dim rangeT^{'}&=& \dim  W^{'} - \dim nullT^{'} \\
+&=& \dim W - \dim (rangeT)^{0} \\
+&=& \dim rangeT
+\end{eqnarray}
+
+第一个等式是线性应设定里的直接使用。第二个等式是\(\dim W = \dim W^{'}\)和\(\dim nullT^{'} - \dim (rangeT)^{0}\)的实用。第三个等式是\(\dim U + \dim U^{0} = \dim V\)的直接使用。
+
+然后我们证明第二个问题：
+设\(\varphi\in rangeT^{'}\)，由于\(rangeT^{'}\subseteq V^{'}\),则\(\varphi\in V^{'}\)。存在\(\psi\in W^{'}\)，使得\(T^{'}(\psi) = \varphi\)，设\(v\in nullT\)，则有\(v \in V\)，所以\(\varphi(v) = T^{'}(\psi)(v) = \psi\circ T(v) = 0\)，所以\(\varphi \in (nullT)^{0}\)，即\(rangeT^{'} \subseteq (nullT)^{0}\)
+
+为了完成证明，我们需要证明\(\dim rangeT^{'} = \dim (nullT)^{0}\)，注意：
+\begin{eqnarray}
+\label{eq:7}
+\dim rangeT^{'}&=&\dim rangeT \\
+&=& \dim V - \dim nullT \\
+&=& \dim (nullT)^{0}
+\end{eqnarray}
+#+end_proof
+
+#+begin_theorem
+\(T\)是单的等价于\(T^{'}\)是满的。
+#+end_theorem
+
+#+begin_proof
+映射\(T\in \mathcal{L}(V,W)\)是单的当且仅当\(nullT = \{0\}\)，当且仅当\((nullT)^{0} = V^{'}\) (因为当\(nullT = \{0\}\)时，\(V^{'}\)中的任意一个线性泛函都可以把\(nullT\)中的元素映射为0) ，当且仅当\(\dim rangeT^{'} =\dim V^{'}\)，即\(rangeT^{'} = V^{'}\)
+#+end_proof
+
+
+
+

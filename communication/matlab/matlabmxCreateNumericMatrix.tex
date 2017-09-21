@@ -1,0 +1,141 @@
+\documentclass[10pt,a4paper,UTF8]{article}
+\usepackage{zclorg}
+\author{zcl.space}
+\date{}
+\title{Matlab与C混合编程API之mxCreateNumericMatrix}
+\hypersetup{
+ pdfauthor={zcl.space},
+ pdftitle={Matlab与C混合编程API之mxCreateNumericMatrix},
+ pdfkeywords={matlab communication simulation C},
+ pdfsubject={mxCreateNumericMatrix创建二维数组，可以指定类型},
+ pdfcreator={Emacs 25.0.50.1 (Org mode 8.3.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle\xiaosihao
+\tableofcontents\newpage\newpage
+
+
+\section{引言}
+\label{sec:orgheadline1}
+
+
+在\href{matlabmxCreateDoulbeMatrix.org}{Matlab与C混合编程API之mxCreateDoubleMatrix} 中，我们使用 \texttt{mxCreateDoubleMatrix} 创建二维双精度矩阵。本文要介绍的 \texttt{mxCreateNumericMatrix} 比  \texttt{mxCreateDoubleMatrix} 用途更广， \texttt{mxCreateNumericMatrix} 也用于创建二维矩阵，但是其可以指定矩阵元素的类型，包括整型和浮点类型。
+\section{使用语法}
+\label{sec:orgheadline2}
+
+
+\lstset{language=C,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+#include "mex.h"
+mxArray *mxCreateNumericMatrix(mwSize m, mwSize n,
+  mxClassID classid, mxComplexity ComplexFlag);
+\end{lstlisting}
+
+输入参数 \texttt{m} \texttt{n} 和 \texttt{ComplexFlag} 就不做过多的介绍，请见\href{matlabmxCreateDoulbeMatrix.org}{Matlab与C混合编程API之mxCreateDoubleMatrix} 一文。这里着重介绍一下 \texttt{mxClassID} 。这个参数表示了矩阵中元素的类型，matlab根据这个类型解释内存中二进制比特的值。比如在C中设置这个值为 \texttt{mxINT16\_CLASS} 表示矩阵元素都是16位整型。桥梁函数中的类型与matlab中类型对照表如下：
+\begin{table}[htb]
+\caption{\label{tab:orgtable1}
+matlab和C类型对照表}
+\centering
+\begin{tabular}{ll}
+\hline
+matlab类型 & 桥梁函数中对应类型\\
+\hline
+int8 & mxINT8\_CLASS\\
+uint8 & mxUINT8\_CLASS\\
+int16 & mxINT16\_CLASS\\
+uint16 & mxUINT16\_CLASS\\
+int32 & mxINT32\_CLASS\\
+uint32 & mxUINT32\_CLASS\\
+int64 & mxINT64\_CLASS\\
+uint64 & mxUINT64\_CLASS\\
+single & mxSINGLE\_CLASS\\
+double & mxDOUBLE\_CLASS\\
+\hline
+\end{tabular}
+\end{table}
+\section{一个例子}
+\label{sec:orgheadline3}
+
+
+在学习新东西的过程中，我比较喜欢例子。在和别人交流新概念的时候，我也比较喜欢使用例子。接下来，用一个小例子来阐述 \texttt{mxCreateNumericMatrix} 的使用。这个例子使用C创建一个矩阵被matlab使用。代码如下：
+\lstset{language=C,label= ,caption= ,captionpos=b,numbers=left}
+\begin{lstlisting}
+#include "mex.h"
+
+/* The mxArray in this example is 2x2 */
+#define ROWS 2
+#define COLUMNS 2
+#define ELEMENTS 4
+
+void mexFunction(int nlhs, mxArray *plhs[], int nrhs,
+		 const mxArray *prhs[])
+    /* pointer to real data in new array */
+    double  *pointer;
+    mwSize index;
+    /* existing data */
+    const double data[] = {2.1, 3.4, 2.3, 2.45};
+
+    /* Check for proper number of arguments. */
+    if ( nrhs != 0 ) {
+	mexErrMsgIdAndTxt("MATLAB:arrayFillGetPr:rhs",
+	    "This function takes no input arguments.");
+    }
+
+    /* Create an m-by-n mxArray; you will copy
+       existing data into it */
+    plhs[0] = mxCreateNumericMatrix(ROWS, COLUMNS,
+			   mxDOUBLE_CLASS, mxREAL);
+    pointer = mxGetPr(plhs[0]);
+
+    /* Copy data into the mxArray */
+    for ( index = 0; index < ELEMENTS; index++ ) {
+	pointer[index] = data[index];
+    }
+    return;
+}
+\end{lstlisting}
+
+由于功能简单，在桥梁函数中就没有重新调用函数。在这个例子中生成一个 \(2\times 2\)的矩阵，其中的元素为：[2.1 2.3;3.4 2.45]，注意这里的元素顺序，在matlab中元素的位置是按列存放的。所以matlab中的矩阵[2.1 2.3;3.4 2.45]，表示成一维数组就是[2.1 3.4 2.3 2.45]。
+
+代码的第24行调用了 \texttt{mxCreateNumericMatrix} ,并指定了 \texttt{mxClassID}  为 \texttt{mxDOUBLE\_CLASS} 。注意：代码的第34行的 \texttt{pointer} 不能用 \texttt{plhs[0]} 代替，即不能写成：
+\lstset{language=C,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+plhs[0][index] = data[index]
+\end{lstlisting}
+这是因为，在桥梁函数中 \texttt{plhs[0]} 是被matlab代码使用的地址，其指向 \texttt{mxArray} 类型变量。而  \texttt{pointer} 是被C使用的地址，其指向 \texttt{double} 类型变量。
+\section{创建矩阵的其它几个API}
+\label{sec:orgheadline7}
+
+
+本想把matlab里创建数组的API一个一片博文写出来，后来发现这些API大同小异。如果我还坚持初衷，未免显得累赘，有凑数之嫌（我是那种靠数量取胜的人么？）。
+\subsection{mxCreateUninitNumericMatrix}
+\label{sec:orgheadline4}
+
+
+与 \texttt{mxCreateNumericMatrix} 相比，这个API的唯一区别是创建的矩阵没有初始化，matlab你能告诉我为什么还要定义这样一个API么？我怎么发现matlab有凑数之嫌呢？用一个能说服我的理由拍醒我吧！
+\subsection{mxCreateNumericArray}
+\label{sec:orgheadline5}
+
+
+与 \texttt{mxCreateNumericMatrix} 相比，这个API的区别在于创建的矩阵不限于二维，可以是N维，所以其调用语法略有不同，如下：
+\lstset{language=C,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+#include "mex.h"
+mxArray *mxCreateNumericArray(mwSize ndim, const mwSize *dims,
+	 mxClassID classid, mxComplexity ComplexFlag);
+\end{lstlisting}
+其中 \texttt{ndim} 指定了要创建的矩阵维度， \texttt{dims} 是指向表示维度的数组的指针, \texttt{dim[0]} 表示第一维的大小，依次类推。该API创建的N维矩阵所有元素都被初始化为0.
+\subsection{mxCreateUninitNumericArray}
+\label{sec:orgheadline6}
+
+
+从名字上就可以看出来和 \texttt{mxCreateNumericArray} 的区别。不说了，matlab你定义这个API就是在耍流氓。
+
+\section{尾声}
+\label{sec:orgheadline8}
+
+
+
+本文介绍了 \texttt{mxCreateNumericMatrix} API的语法和使用过程，并指出 \texttt{plhs[0]} 的一个使用限制。
+\end{document}

@@ -1,0 +1,41 @@
+#+TITLE: spacemacs中支持的操作符和text object 
+#+AUTHOR:    emacsun
+#+EMAIL:     emacsun@163.com
+#+DATE:      
+#+DESCRIPTION:  
+#+KEYWORDS:  
+#+CATEGORIES: 
+#+SETUPFILE: ~/.emacs.d/org-templates/emacs-level2.org
+#+HTML_HEAD_EXTRA: <a id="pdf"  href="./emacs-do-what.pdf"><img src="../../img/assets/pdf.png"></a>
+#+LaTeX_CLASS: cn-article
+* 简介
+spacmeacs支持的 *操作符+操作对象* 这样的快速操作，这种组合方式允许快速的执行编辑操作，而且双手可以长期停留在键盘 =homeline= 上。
+  
+* spacemacs中支持的操作符
+  spacemacs中支持如下操作符
+  #+CAPTION: Spacemacs中支持的操作符
+  #+NAME: tab:20170226operators
+  #+ATTR_HTML: :border 1 :rules all :frame border :align center
+  #+ATTR_LATEX: :align center
+| 操作符 | 含义       |
+|--------+------------|
+| d      | 删除       |
+| c      | 修改       |
+| v      | 选择       |
+| y      | 复制       |
+| g~     | 大小写翻转 |
+| gu     | 转换为小写 |
+| gU     | 转换为大写 |
+
+* spacemacs中支持的操作对象
+
+操作对象在 =Vim= 中叫做text object. 关于 =Vim= 中text object的使用请见 《Vim使用技巧》 技巧51. 
+
+#+CAPTION: Spacemacs中支持的操作符
+#+ATTR_HTML:  :width 700 :align center
+#+NAME: fig:20161111figure01_01
+#+ATTR_LATEX: :width 0.6\textwidth :align center
+[[../../img/20170217spacemacsTxtObject.jpg]]
+
+在 =Spacemacs= 中添加了许多text object。这些操作对象极大的方便快速编辑。忍不住向大家安利 spacemacs，实在是Emacs和Vim的完美结合。
+

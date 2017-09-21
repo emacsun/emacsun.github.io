@@ -1,0 +1,218 @@
+\documentclass[10pt,a4paper,UTF8]{article}
+\usepackage{zclorg}
+\author{zcl.space}
+\date{}
+\title{Matlab与C混合编程API之mxCreateStructMatrix}
+\hypersetup{
+ pdfauthor={zcl.space},
+ pdftitle={Matlab与C混合编程API之mxCreateStructMatrix},
+ pdfkeywords={matlab communication simulation C},
+ pdfsubject={mxCreateNumericMatrix创建结构体数组},
+ pdfcreator={Emacs 25.0.50.1 (Org mode 8.3.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+
+\section{引言}
+\label{sec:orgheadline1}
+
+
+在matlab中创建和操作结构体非常便捷，mathwork公司把这种便捷延伸到了桥梁函数中。matlab为桥梁函数定义了创建结构体的API: \texttt{mxCreateStructMatrix} 。
+\section{调用语法}
+\label{sec:orgheadline2}
+
+
+\texttt{mxCreateStructMatrix} 的调用语法如下
+\lstset{language=C,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+#include "matrix.h"
+mxArray *mxCreateStructMatrix(mwSize m, mwSize n,
+     int nfields, const char **fieldnames);
+\end{lstlisting}
+
+输入参数表如下：
+\begin{table}[htb]
+\caption{\label{tab:orgtable1}
+\texttt{mxCreateStructMatrix} 输入参数对照表}
+\centering
+\begin{tabular}{ll}
+\hline
+参数名 & 描述\\
+\hline
+m & 结构体矩阵的行数\\
+n & 结构体矩阵的列数\\
+nfields & 结构体矩阵中每个结构体域的个数\\
+fieldnames & 结构体矩阵中每个结构体的域名\\
+\hline
+\end{tabular}
+\end{table}
+
+\texttt{mxCreateStructMatrix} 的返回值是一个指向 \texttt{mxArray} 的指针。我们还是通过一个例子来说明 \texttt{mxCreateStructMatrix} 的使用。
+
+\section{一个例子}
+\label{sec:orgheadline3}
+
+
+这个例子实现了电话本功能，是目前为止用到的最复杂的例子。
+\lstset{language=C,label= ,caption= ,captionpos=b,numbers=left}
+\begin{lstlisting}
+#include "mex.h"
+#include "string.h"
+
+#define MAXCHARS 80   /* max length of string contained in
+					 each field */
+
+/*  the gateway routine.  */
+void mexFunction( int nlhs, mxArray *plhs[],
+		  int nrhs, const mxArray *prhs[] )
+{
+     /* pointers to field names */
+    const char **fnames;
+    const mwSize *dims;
+    mxArray    *tmp, *fout;
+    char       *pdata=NULL;
+    int        ifield, nfields;
+    mxClassID  *classIDflags;
+    mwIndex    jstruct;
+    mwSize     NStructElems;
+    mwSize     ndim;
+
+    /* check proper input and output */
+    if(nrhs!=1)
+	mexErrMsgIdAndTxt(
+		"MATLAB:phonebook:invalidNumInputs",
+		"One input required.");
+    else if(nlhs > 1)
+	mexErrMsgIdAndTxt(
+		"MATLAB:phonebook:maxlhs",
+		"Too many output arguments.");
+    else if(!mxIsStruct(prhs[0]))
+	mexErrMsgIdAndTxt(
+		"MATLAB:phonebook:inputNotStruct",
+		"Input must be a structure.");
+    /* get input arguments */
+    nfields = mxGetNumberOfFields(prhs[0]);
+    NStructElems = mxGetNumberOfElements(prhs[0]);
+    /* allocate memory  for storing classIDflags */
+    classIDflags = mxCalloc(nfields, sizeof(mxClassID));
+
+    /* check empty field, proper data type,
+     * and data type consistency;
+     * and get classID for each field. */
+    for(ifield=0; ifield<nfields; ifield++) {
+	for(jstruct = 0; jstruct < NStructElems; jstruct++) {
+	    tmp = mxGetFieldByNumber(prhs[0], jstruct, ifield);
+	    if(tmp == NULL) {
+		mexPrintf("%s%d\t%s%d\n", "FIELD: ",
+			   ifield+1, "STRUCT INDEX :", jstruct+1);
+		mexErrMsgIdAndTxt( "MATLAB:phonebook:fieldEmpty",
+			"Above field is empty!");
+	    }
+	    if(jstruct==0) {
+		if( (!mxIsChar(tmp) && !mxIsNumeric(tmp))
+		     || mxIsSparse(tmp)) {
+		    mexPrintf("%s%d\t%s%d\n", "FIELD: ", ifield+1,
+			      "STRUCT INDEX :", jstruct+1);
+		    mexErrMsgIdAndTxt( "MATLAB:phonebook:invalidField",
+			    "Above field must have either string or
+			     numeric non-sparse data.");
+		}
+		classIDflags[ifield]=mxGetClassID(tmp);
+	    } else {
+		if (mxGetClassID(tmp) != classIDflags[ifield]) {
+		    mexPrintf("%s%d\t%s%d\n", "FIELD: ", ifield+1,
+		    "STRUCT INDEX :", jstruct+1);
+		    mexErrMsgIdAndTxt( "MATLAB:phonebook:invalidFieldType",
+			    "Inconsistent data type in above field!");
+		} else if(!mxIsChar(tmp) &&
+			((mxIsComplex(tmp) || mxGetNumberOfElements(tmp)!=1))){
+		    mexPrintf("%s%d\t%s%d\n", "FIELD: ", ifield+1,
+		    "STRUCT INDEX :", jstruct+1);
+		    mexErrMsgIdAndTxt( "MATLAB:phonebook:fieldNotRealScalar",
+			    "Numeric data in above field must be scalar
+			    and noncomplex!");
+		}
+	    }
+	}
+    }
+
+    /* allocate memory  for storing pointers */
+    fnames = mxCalloc(nfields, sizeof(*fnames));
+    /* get field name pointers */
+    for (ifield=0; ifield< nfields; ifield++){
+	fnames[ifield] = mxGetFieldNameByNumber(prhs[0],ifield);
+    }
+    /* create a 1x1 struct matrix for output  */
+    plhs[0] = mxCreateStructMatrix(1, 1, nfields, fnames);
+    mxFree((void *)fnames);
+    ndim = mxGetNumberOfDimensions(prhs[0]);
+    dims = mxGetDimensions(prhs[0]);
+    for(ifield=0; ifield<nfields; ifield++) {
+	/* create cell/numeric array */
+	if(classIDflags[ifield] == mxCHAR_CLASS) {
+	    fout = mxCreateCellArray(ndim, dims);
+	}else {
+	    fout = mxCreateNumericArray(ndim, dims,
+		   classIDflags[ifield], mxREAL);
+	    pdata = mxGetData(fout);
+	}
+	/* copy data from input structure array */
+	for (jstruct=0; jstruct<NStructElems; jstruct++) {
+	    tmp = mxGetFieldByNumber(prhs[0],jstruct,ifield);
+	    if( mxIsChar(tmp)) {
+		mxSetCell(fout, jstruct, mxDuplicateArray(tmp));
+	    }else {
+		mwSize     sizebuf;
+		sizebuf = mxGetElementSize(tmp);
+		memcpy(pdata, mxGetData(tmp), sizebuf);
+		pdata += sizebuf;
+	    }
+	}
+	/* set each field in output structure */
+	mxSetFieldByNumber(plhs[0], 0, ifield, fout);
+    }
+    mxFree(classIDflags);
+    return;
+}
+\end{lstlisting}
+代码中使用 \texttt{mxGetNumOfFields} 获得输入的结构体矩阵中每个结构体域的个数，使用 \texttt{mxGetNumberOfElements} 来获得输入结构体矩阵中结构体的个数。
+
+\lstset{language=C,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+plhs[0] = mxCreateStructMatrix(1, 1, nfields, fnames);
+\end{lstlisting}
+创建一个结构体保存输出。
+
+\lstset{language=C,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+mxSetFieldByNumber(plhs[0], 0, ifield, fout);
+\end{lstlisting}
+为输出结构体的每个域赋值。
+
+假设我们的输入是
+\begin{verbatim}
+a.a =1;
+a.b =4;
+a.c = 'hello world'
+\end{verbatim}
+
+调用 \texttt{phonebook}
+\begin{verbatim}
+n=phonebook(a);
+\end{verbatim}
+则 \texttt{n} 的值为：
+\begin{verbatim}
+n.a =1;
+n.b =4;
+n.c ='hello world'
+\end{verbatim}
+\section{尾声}
+\label{sec:orgheadline4}
+
+
+\texttt{mxCreateStructMatrix} 是matlab中创建结构体的API，方便了matlab和C之间结构体类型数据的传递。
+\end{document}

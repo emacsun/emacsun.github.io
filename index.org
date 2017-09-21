@@ -1,0 +1,325 @@
+#+TITLE:   张朝龙.空间
+#+AUTHOR:    zcl.space
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+CATEGORIES:
+#+SETUPFILE: ~/.emacs.d/org-templates/level0.org
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./css/ihover.css"  />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./css/worghome.css"  />
+#+LaTeX_CLASS: cn-article
+
+* [[file:math/index.org][数学]]
+  <2015-06-28 Sun 16:37>
+** 数学分析
+  <2015-11-25 Wed 21:33>
+
+  + [[file:math/PMA/PMAsqrt2.org][用两种方法证明 \(\sqrt{2}\) 是无理数]]
+  + [[file:math/PMA/PMAmetricSpace.org][度量空间以及由此引出的一些概念]]
+
+** 实分析
+   [2017-04-23 Sun 10:25]
+
+** 复分析
+   [2017-04-23 Sun 10:24]
+** 泛函分析
+   [2017-04-23 Sun 10:24]
+
+** 具体数学
+   <2015-11-08 Sun 19:52>
+
+   + [[file:math/concreteMath/hanoi__toower.org][递归问题： 汉诺塔]]
+   + [[file:math/concreteMath/pizza.org][递归问题：瑞士披萨]]
+   + [[file:math/concreteMath/josephus.org][递归问题：约瑟夫问题]]
+** 线性代数
+   <2015-11-08 Sun 19:52>
+ + [[file:math/LADR/ch01-vector-space.org][向量空间，子空间以及子空间的和与直和]]
+ + [[file:math/LADR/ch01-vector-space-exercise.org][练习：子空间的和与直和]]
+ + [[file:math/LADR/finite-demension-vector-space.org][有限维向量空间]]
+ + [[file:math/LADR/finite-demension-vector-space-span-exercise.org][练习：张成空间与线性无关]]
+ + [[file:math/LADR/finite-demension-vector-space-basis-exercise.org][练习：基]]
+ + [[file:math/LADR/finite-demension-vector-space-dimension-exercise.org][练习：维数]]
+ + [[file:math/LADR/linear-map-on-vector-space.org][线性映射]]
+ + [[file:math/LADR/linear-map-on-vector-space-linear-map.org][练习：线性映射]]
+ + [[file:math/LADR/linear-map-on-vector-space-null-range.org][练习：零空间和值域]]
+ + [[file:math/LADR/matrix-for-linear-map.org][矩阵和线性映射的关系]]
+ + [[file:math/LADR/linear-map-on-vector-space-matrix.org][练习：矩阵和线性映射的关系]]
+ + [[file:math/LADR/invertible-isomorphic.org][可逆性与同构]]
+ + [[file:math/LADR/linear-map-on-vector-space-invertible.org][练习：逆映射与同构]]
+ + [[file:math/LADR/vector-space-product.org][向量空间的积]]
+ + [[file:math/LADR/vector-space-quocient.org][向量空间的商]]
+ + [[file:math/LADR/linear-map-on-vector-space-product-quotient.org][练习：向量空间的积与商]]
+ + [[file:math/LADR/duality.org][对偶空间与对偶映射]]
+ + [[file:math/LADR/duality1.org][线性映射的对偶的零空间和值域]]
+ + [[file:math/LADR/duality2.org][对偶映射的矩阵]]
+ + [[file:math/LADR/linear-map-on-vector-space-product-duality.org][练习：对偶]]
+ + [[file:math/LADR/ladr-5a-invariant-subspace.org][不变子空间]]
+ + [[file:math/LADR/ladr-5a-invariant-subspace-exercise.org][练习：不变子空间]]
+ + [[file:math/LADR/ladr-5b-eigen.org][本证向量与上三角阵]]
+ + [[file:math/LADR/ladr-5b-eigen-exercise.org][练习：本证向量与上三角阵]]
+ + [[file:math/LADR/ladr-5c-eigen-space.org][本征空间]]
+ + [[file:math/LADR/ladr-5c-eigen-space-exercise.org][练习：本征空间]]
+ + [[file:math/LADR/ladr-6a-inner-product.org][内积与范数]]
+ + [[file:math/LADR/ladr-6a-inner-product-exercise.org][练习：内积与范数]]
+ + [[file:math/LADR/ladr-6b-orthonormal-bases.org][正交基]]
+ + [[file:math/LADR/ladr-6b-orthonormal-bases-exercise.org][练习：正交基]]
+ + [[file:math/LADR/ladr-6c-orthogonal-complements.org][正交补和极小化问题]]
+ + [[file:math/LADR/ladr-6c-orthogonal-complements-exercise.org][练习：正交补和极小化问题]]
+ + [[file:math/LADR/ladr-7a-self-adjoint.org][自伴算子和正规算子]]
+ + [[file:math/LADR/ladr-7a-self-adjoint-exercise.org][练习：自伴算子和正规算子]]
+ + [[file:math/LADR/ladr-7b-spectral-theorem.org][谱定理]]
+ + [[file:math/LADR/ladr-7b-spectral-theorem-exercise.org][练习：谱定理]]
+ + [[file:math/LADR/ladr-7c-positive-operator.org][正算子与等距同构]]
+ + [[file:math/LADR/ladr-7c-positive-operator-exercise.org][练习：正算子与等距同构]]
+ + [[file:math/LADR/ladr-7d-polar-decomposition.org][极分解与奇异值分解]]
+ + [[file:math/LADR/ladr-7d-polar-decomposition-exercise.org][练习：极分解与奇异值分解]]
+ + [[file:math/LADR/ladr-8a-general-eigenvector.org][广义本证向量和幂零算子]]
+ + [[file:math/LADR/ladr-8a-general-eigenvector-exercise.org][练习：广义本证向量和幂零算子]]
+ + [[file:math/LADR/ladr-8b-decompose-operator.org][分解算子]]
+ + [[file:math/LADR/ladr-8b-decompose-operator-exercise.org][练习：分解算子]]
+ + [[file:math/LADR/ladr-8c-eigenpolynomial.org][特征多项式与极小多项式]]
+ + [[file:math/LADR/ladr-8c-eigenpolynomial-exercise.org][练习：特征多项式与极小多项式]]
+ + [[file:math/LADR/ladr-8d-jordan-form.org][若尔当形]]
+ + [[file:math/LADR/ladr-8d-jordan-form-exercise.org][练习：若尔当形]]
+ + [[file:math/LADR/ladr-9a-complexification.org][复化]]
+ + [[file:math/LADR/ladr-9a-complexification-exercise.org][练习：复化]]
+ + [[file:math/LADR/ladr-9b-real-operator.org][实内积空间上的算子]]
+ + [[file:math/LADR/ladr-9b-real-operator-exercise.org][练习：实内积空间上的算子]]
+ + [[file:math/LADR/ladr-10a-trace.org][迹]]
+ + [[file:math/LADR/ladr-10a-trace-exercise.org][练习：迹]]
+ + [[file:math/LADR/ladr-10a-determinant.org][行列式]]
+ + [[file:math/LADR/ladr-10a-determinant-exercise.org][练习：行列式]]
+** 矩阵计算
+
+ + [[file:math/matrix/matrix-gradient.org][矩阵梯度]]
+ + [[file:math/matrix/matrix-differciate.org][矩阵微分]]
+** 抽象代数
+** 图论
+** 组合数学
+   <2015-11-08 Sun 19:52>
+
+
+
+** 概率论
+   <2015-11-08 Sun 19:55>
+
+
+   + [[file:math/probability/probability-evolution.org][概率定义的演进]]
+   + [[file:math/probability/afcp-combinatorial-analysis.org][组合分析]]
+   + [[file:math/probability/afcp-combinatorial-analysis-exercise.org][练习组合分析]]
+   + [[file:math/probability/afcp-01dot5-multinomial-coefficients.org][多项式系数及其妙用]]
+   + [[file:math/probability/afcp-normal-distribution-history.org][正态分布的历史八卦]]
+   + [[file:math/probability/binary-distribution.org][二项分布]]
+   + [[file:math/probability/poisson-distribution.org][泊松分布]]
+   + [[file:math/probability/geometry-distribution.org][几何分布]]
+   + [[file:math/probability/negative-binomial-distribution.org][负二项随机变量]]
+   + [[file:math/probability/hypergeometric-distribution.org][超几何分布]]
+   + [[file:math/probability/uniform-distribution.org][均匀分布]]
+   + [[file:math/probability/gauss-distribution.org][高斯分布]]
+   + [[file:math/probability/exponential-distribution.org][指数分布]]
+   + [[file:math/probability/function-of-random-distribution.org][随机变量函数的分布]]
+   + [[file:math/probability/weak-law-of-large-numbers.org][弱大数定理]]
+   + [[file:math/probability/strong-law-of-large-numbers.org][强大数定理]]
+   + [[file:math/probability/law-of-center-limit.org][中心极限定理]]
+
+** 随机过程
+   <2015-11-08 Sun 19:55>
+
+   + [[file:math/stochastic/definition-of-stochastic-process.org][随机过程的定义]]
+   + [[file:math/stochastic/one-dimension-random-walk.org][一维随机游动]]
+   + [[file:math/stochastic/parameter-continue-range-discrete.org][参数连续取值离散的随机过程]]
+   + [[file:math/stochastic/markov-process.org][/马尔科夫过程/]]
+   + [[file:math/stochastic/brown-motion.org][/布朗运动/]]
+* [[file:communication/index.org][通信]]
+  <2015-06-28 Sun 16:38>
+
+** 数字通信
+   <2015-11-08 Sun 19:50>
+
+    + [[file:communication/wireless/diversity.org][分集和合并技术之感性理解]]
+    + [[file:communication/wireless/four-parameters-for-wireless-channel.org][无线信道四个重要参数]]
+    + [[file:communication/wireless/Capacity-of-multi-antenna-gaussian-channels.org][多天线高斯信道容量]]
+** 数字信号处理
+   <2015-11-08 Sun 19:51>
+
+
+    + [[file:communication/DSP/fft-introduction.org][/快速傅里叶变换/]]
+    + [[file:communication/DSP/fft-two-in-one.org][/一次计算两个序列的 FFT/]]
+    + [[file:communication/DSP/least-squares.org][/最小二乘法/]]
+    + [[file:communication/DSP/least-mean-square.org][/最小均方误差/]]
+    + [[file:communication/DSP/filter-kalman.org][/卡尔曼滤波/]]
+    + [[file:communication/DSP/filter-wiener.org][/维纳滤波/]]
+    + [[file:communication/DSP/filter-match.org][/匹配滤波/]]
+    + [[file:communication/DSP/steepest-descend-method.org][/最陡梯度下降法/]]
+    + [[file:communication/DSP/annealing-method.org][/最优退火算法/]]
+    + [[file:communication/DSP/why-multirate-filter.org][/为什么要用多速率滤波器/]]
+** 自适应滤波理论
+   [2017-04-30 Sun 23:50]
+** 信道编码理论
+   <2015-11-08 Sun 19:51>
+
+    + [[file:communication/ECC/ECCviterbi.org][卷积编码和 Viterbi 译码]]
+    + [[file:communication/ECC/ECCviterbiFiniteTBLength.org][有限回溯长度的 Viterbi 译码器]]
+    + [[file:communication/ECC/ECC01_01.org][通信与存储系统中的可靠编码]]
+    + [[file:communication/ECC/ECC02.org][信道编码理论的代数基础]]
+    + [[file:communication/ECC/LDPC-introduction.org][/LDPC 简介/]]
+    + [[file:communication/ECC/LDPC-MPA.org][/消息(置信)传递算法/]]
+    + [[file:communication/ECC/LDPC-density-evolution.org][/密度演进算法/]]
+    + [[file:communication/ECC/LDPC-construction.org][/构建好的 LDPC 码/]]
+
+
+** 信息论
+   <2015-11-08 Sun 19:51>
+
+    + [[file:communication/IT/entropy.org][/什么是信息熵/]]
+    + [[file:communication/IT/channel-code-theory.org][/有噪信道编码定理/]]
+    + [[file:communication/IT/source-coding-theory.org][/信源编码定理/]]
+
+
+** matlab 仿真
+   <2015-11-08 Sun 19:49>
+    + [[file:communication/matlab/matlab-surface-contour.org][使用 matlab 的 surface 和 contour 画图]]
+    + [[file:communication/matlab/matlabandc.org][Matlab 与 C 混合编程之一：基本原理]]
+    + [[file:communication/matlab/matlabCMexAPI.org][Matlab 与 C 混合编程之二:C/C++ MEX API]]
+    + [[file:communication/matlab/matlabmxCreateDoulbeMatrix.org][Matlab 与 C 混合编程 API 之 mxCreateDoubleMatrix]]
+    + [[file:communication/matlab/matlabmxCreateNumericMatrix.org][Matlab 与 C 混合编程 API 之 mxCreateNumericMatrix]]
+    + [[file:communication/matlab/matlabmxCreateStructMatrix.org][Matlab 与 C 混合编程 API 之 mxCreateStructMatrix]]
+** 通信协议解读
+   <2015-06-28 Sun 13:56>
+
+  + [[file:lte/physical/lte-physical-overview.org][LTE 物理层技术概要]]
+  + [[file:communication/protocol/wifi-physical-overview.org][WIFI（802.11） 物理层技术概要]]
+  + [[file:communication/protocol/wifi-frame.org][WIFI（802.11） 成帧过程]]
+  + [[file:communication/protocol/wifi-csma.org][WIFI（802.11） 信道接入过程]]
+* 计算机
+  <2015-06-28 Sun 16:38>
+** 机器学习
+
+   + [[file:computer/PRML/first-impression-pattern-recognition.org][初始模式识别和机器学习]]
+   + [[file:computer/PRML/PRMLch1dot1-polynomial-curve.org][多项式拟合到模式识别的相关概念]]
+   + [[file:computer/PRML/PRMLch1dot1-polynomial-curve-appendix.org][曲线拟合过程中的欠定过定问题]]
+   + [[file:computer/PRML/PRMLch1dot1-polynomial-curve-probability-revist.org][曲线拟合之概率回访]]
+   + [[file:computer/PRML/PRMLch3-polynomial-curve-maximum-likelihood-and-LS.org][曲线拟合之最大斯然估计和最小二乘法]]
+   + [[file:computer/PRML/PRMLch1dot1-polynomial-curve-matlab.org][曲线拟合之 matlab 实现]]
+   + [[file:computer/PRML/PRMLch1dot4-curse-of-dimensionality.org][维度诅咒]]
+   + [[file:computer/MLAPP/MLAPPch2dot3-some-probability-distributions.org][机器学习中用到的概率分布]]
+   + [[file:computer/PRML/PRMLch2dot3-gaussian-again.org][再看高斯]]
+   + [[file:computer/PRML/PRMLch2dot3-maximum-likelihood-for-gaussian.org][高斯分布的最大似然估计]]
+   + [[file:computer/PRML/PRMLch2dot4-bayesian-inference-for-gaussian.org][对高斯分布的贝叶斯推断]]
+   + [[file:computer/PRML/PRMLch2dot4-exponential-family.org][指数分布家族]]
+   + [[file:computer/PRML/PRMLch2-conjugate-priors.org][机器学习中的共轭先验 conjugate priors]]
+   + [[file:computer/PRML/PRMLch3dot3-bayesian-linear-regression.org][基于贝叶斯估计的线性回归]]
+   + [[file:computer/MLAPP/MLAPPch3-generative-models.org][生成模型]]
+   + [[file:computer/AIML/learn-aiml-by-yourself.org][自学 AL 和 ML 资料汇总]]
+   + [[file:computer/AIML/BRMLch01.org][概率推断和贝叶斯公式]]
+   + [[file:computer/AIML/BRMLch02.org][图论简介]]
+   + [[file:computer/PRML/PRMLch5-neural-networks.org][神经网络和后向传播算法]]
+   + [[file:computer/AIML/Rosenblatt.org][Rosenblatt 感知器]]
+   + [[file:computer/AIML/SVM.org][支持向量机]]
+   + [[file:computer/AIML/CNN.org][卷积网络]]
+
+** 算法导论
+   <2015-11-08 Sun 19:53>
+   + [[file:computer/algorithms/sort-summary.org][排序概述]]
+   + [[file:computer/algorithms/sort-insertion.org][插入排序]]
+   + [[file:computer/algorithms/sort-bubble.org][冒泡排序]]
+   + [[file:computer/algorithms/sort-merge.org][merge 排序]]
+   + [[file:computer/algorithms/sort-quick.org][快速排序]]
+   + [[file:computer/algorithms/sort-heap.org][堆排序]]
+   + [[file:computer/algorithms/sort-selection.org][选择排序]]
+   + [[file:computer/algorithms/sort-shell.org][希尔排序]]
+
+** Java
+   [2017-02-18 Sat 07:21]
+
+   + [[file:computer/java/java-tweet.org][Java Tweet]]
+   + [[file:computer/java/TIJ-ch03.org][Thinking in Java Chapter 03:一切皆对象]]
+   + [[file:computer/java/TIJ-ch04.org][Thinking in Java Chapter 04：操作符]]
+   + [[file:computer/java/TIJ-ch05.org][Thinking in Java Chapter 05：控制语句]]
+   + [[file:computer/java/TIJ-ch06.org][Thinking in Java Chapter 06：初始化和清理]]
+   + [[file:computer/java/TIJ-ch07.org][Thinking in Java Chapter 07：访问控制]]
+   + [[file:computer/java/TIJ-ch08.org][Thinking in Java Chapter 08：类重用]]
+   + [[file:computer/java/TIJ-ch09.org][Thinking in Java Chapter 09：多态]]
+   + [[file:computer/java/TIJ-ch10.org][Thinking in Java Chapter 10：接口]]
+   + [[file:computer/java/TIJ-ch11.org][Thinking in Java Chapter 11：运行期类型鉴定]]
+   + [[file:computer/java/TIJ-ch12.org][Thinking in Java Chapter 12：传递和返回对象]]
+   + [[file:computer/java/TIJ-ch13.org][Thinking in Java Chapter 13：报错和例外]]
+   + [[file:computer/java/TIJ-ch14.org][Thinking in Java Chapter 14：字符串]]
+   + [[file:computer/java/TIJ-ch15.org][Thinking in Java Chapter 15：Type 信息]]
+   + [[file:computer/java/TIJ-ch16.org][Thinking in Java Chapter 16：原型]]
+   + [[file:computer/java/TIJ-ch17.org][Thinking in Java Chapter 17：数组]]
+   + [[file:computer/java/TIJ-ch18.org][Thinking in Java Chapter 18：深入了解容器]]
+   + [[file:computer/java/TIJ-ch19.org][Thinking in Java Chapter 19：IO 系统]]
+   + [[file:computer/java/TIJ-ch20.org][Thinking in Java Chapter 20：枚举类型]]
+   + [[file:computer/java/TIJ-ch21.org][Thinking in Java Chapter 21：元编程]]
+   + [[file:computer/java/TIJ-ch22.org][Thinking in Java Chapter 22：并行程序]]
+
+** C/C++
+   <2015-11-08 Sun 19:55>
+
+   + [[file:computer/ccplusplus/compile-multiple-file-using-make.org][使用 make 编译多个文件]]
+
+** Python
+   [2017-02-18 Sat 07:21]
+
+     + [[file:computer/python/python-machine-learning.org][从 Python 开始机器学习]]
+     + [[file:computer/python/learning-python-day01.org][学习 Python 第一天:遇见 Python]]
+     + [[file:computer/python/learning-python-day02.org][学习 Python Doc 第二天:控制语句和函数]]
+     + [[file:computer/python/learning-python-day03.org][学习 Python Doc 第三天:函数]]
+     + [[file:computer/python/learning-python-day04.org][学习 Python Doc 第四天:数据结构]]
+     + [[file:computer/python/learning-python-day05.org][学习 Python Doc 第五天:模块]]
+     + [[file:computer/python/learning-python-day06.org][学习 Python Doc 第六天:输入和输出]]
+     + [[file:computer/python/learning-python-day07.org][学习 Python Doc 第七天:错误和例外]]
+     + [[file:computer/python/learning-python-day08.org][学习 Python Doc 第八天:类]]
+     + [[file:computer/python/learning-python-day09.org][学习 Python Doc 第九天:标准库巡礼（一）]]
+     + [[file:computer/python/learning-python-day10.org][学习 Python Doc 第十天:标准库巡礼（二）]]
+     + [[file:computer/python/learning-python-day11.org][学习 Python Doc 第十一天:接下来做什么？]]
+     + [[file:computer/python/python-tricks.org][python 技巧收集]]
+
+
+** LISP
+   [2017-02-18 Sat 07:21]
+
+* 工具
+** Linux
+
+   + [[file:tools/ubuntu/ubuntu-swap-ctrl-caps.org][ubuntu 交换 caps 和 ctrl]]
+
+** Emacs
+   [2017-02-19 Sun 09:51]
+
+   + [[file:linux/emacs/emacs-do-what.org][我用 Emacs 做什么]]
+   + [[file:linux/emacs/spacemacs-text-object.org][spacemacs 中支持的操作符和操作对象]]
+   + [[file:linux/emacs/emacs-github.org][使用 github 记录本地仓储（Emacs 配置目录）]]
+   + [[file:linux/emacs/emacs-magit-workflow.org][Spacemacs + Magit 工作流程]]
+   + [[file:linux/emacs/emacs-open-file-fast.org][Spacemacs 快速打开常用文件]]
+   + [[file:linux/emacs/emacs-eclim.org][使用 Emacs 作为 Java IDE]]
+   + [[file:linux/emacs/emacs-org-files-apps.org][Emacs Org 打开 pdf 的默认程序]]
+   + [[file:linux/emacs/emacs-hugo-apps.org][Emacs 联合 hugo 管理静态博客 ]]
+   + [[file:linux/emacs/emacs-java.org][Emacs 作为 Java IDE ]]
+   + [[file:linux/emacs/emacs-tweet.org][Emacs Tweet]]
+
+** Git
+   [2017-02-19 Sun 09:51]
+
+   + [[file:tools/git/git-tweet.org][Git Tweet]]
+   + [[file:tools/git/git-crossplatform.org][Git 跨平台换行兼容问题]]
+   + [[file:tools/git/git-pull.org][Git pull 使用技巧]]
+** cygwin
+
+   + [[file:tools/linux/cygwin-alias.org][cygwin shell 加速文件切换和 git push]]
+* 读书
+  <2015-07-18 Sat 02:01>
+
+   + [[file:read/read_HowToReadABook.org][主动阅读 --《如何阅读一本书》]]
+   + [[file:read/read_the_painted_veil.org][面纱里的灵魂，面纱外的诱惑 --《面纱》]]
+   + [[file:read/read_the_razor_edge.org][向死而生 -- 《刀锋》]]
+   + [[file:me/me_workflow.org][深度学习的艺术]]
+
+* 关于我
+  <2015-07-18 Sat 02:01>
+
+  + [[file:me/me.org][关于我]]
+  + [[file:me/why.org][我为什么要写博客]]
+  + [[file:me/mytweet.org][我的 Tweet]]

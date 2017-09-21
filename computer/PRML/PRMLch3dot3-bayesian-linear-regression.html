@@ -86,21 +86,21 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org80b5441">1. 简介</a></li>
-<li><a href="#org2bf401a">2. 参数分布</a>
+<li><a href="#org637cebe">1. 简介</a></li>
+<li><a href="#org3b6fbc7">2. 参数分布</a>
 <ul>
-<li><a href="#orge217cbb">2.1. 共轭先验估计</a></li>
-<li><a href="#org2d79178">2.2. 后验估计</a></li>
+<li><a href="#orgf14fa2f">2.1. 共轭先验估计</a></li>
+<li><a href="#orgc530d57">2.2. 后验估计</a></li>
 </ul>
 </li>
-<li><a href="#org6edd4c7">3. 一个例子</a></li>
-<li><a href="#orge71189d">4. 后记</a></li>
+<li><a href="#orgfc9346e">3. 一个例子</a></li>
+<li><a href="#orgfaf779a">4. 后记</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org80b5441" class="outline-2">
-<h2 id="org80b5441"><span class="section-number-2">1</span> 简介</h2>
+<div id="outline-container-org637cebe" class="outline-2">
+<h2 id="org637cebe"><span class="section-number-2">1</span> 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -116,16 +116,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org2bf401a" class="outline-2">
-<h2 id="org2bf401a"><span class="section-number-2">2</span> 参数分布</h2>
+<div id="outline-container-org3b6fbc7" class="outline-2">
+<h2 id="org3b6fbc7"><span class="section-number-2">2</span> 参数分布</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
 </p>
 </div>
 
-<div id="outline-container-orge217cbb" class="outline-3">
-<h3 id="orge217cbb"><span class="section-number-3">2.1</span> 共轭先验估计</h3>
+<div id="outline-container-orgf14fa2f" class="outline-3">
+<h3 id="orgf14fa2f"><span class="section-number-3">2.1</span> 共轭先验估计</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 
@@ -143,8 +143,8 @@ p(\mathbf{w}) = \mathcal{N}(\mathbf{w}|\mathbf{m}_{0},\mathbf{S}_{0})
 </p>
 </div>
 </div>
-<div id="outline-container-org2d79178" class="outline-3">
-<h3 id="org2d79178"><span class="section-number-3">2.2</span> 后验估计</h3>
+<div id="outline-container-orgc530d57" class="outline-3">
+<h3 id="orgc530d57"><span class="section-number-3">2.2</span> 后验估计</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 
@@ -172,8 +172,8 @@ p(\mathbf{w}|\mathbf{t}) = \mathcal{N}(\mathbf{w}|\mathbf{m}_{N},\mathbf{S}_{N})
 </div>
 </div>
 </div>
-<div id="outline-container-org6edd4c7" class="outline-2">
-<h2 id="org6edd4c7"><span class="section-number-2">3</span> 一个例子</h2>
+<div id="outline-container-orgfc9346e" class="outline-2">
+<h2 id="orgfc9346e"><span class="section-number-2">3</span> 一个例子</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -211,17 +211,17 @@ p(\mathbf{w}|\alpha) = \mathcal{N}(\mathbf{w}|\mathbf{0},\alpha^{-1}\mathbf{I})
 </p>
 
 <p>
-图 <a href="#orga8f77bf">1</a> 演示了当数据量越来越多时先验估计和后验估计迭代更新的过程。
+图 <a href="#orgbfec1bf">1</a> 演示了当数据量越来越多时先验估计和后验估计迭代更新的过程。
 </p>
 
-<div id="orga8f77bf" class="figure">
+<div id="orgbfec1bf" class="figure">
 <p><img src="../../img/computer_prml/20170812prioriandpost.png" alt="20170812prioriandpost.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> 先验估计和后验估计迭代更新的过程</p>
 </div>
 
 <p>
-图  <a href="#orga8f77bf">1</a> 同时演示了当前的后验估计作为下一个数据到来时\(\mathbf{w}\)先验估计的过程。首先，第一行中间的图对应着还没有数据到达时\(\mathbf{w}\)域上的先验分布，最右边的图对应着随机取\(\mathbf{w}\)六次时\(y(\mathbf{w},x) = w_{0} + w_{1}x\)的图像。我们可以看到这个时候的图像完全是随机的，因为这个时候我们没有收到任何关于\(x\)的信息。
+图  <a href="#orgbfec1bf">1</a> 同时演示了当前的后验估计作为下一个数据到来时\(\mathbf{w}\)先验估计的过程。首先，第一行中间的图对应着还没有数据到达时\(\mathbf{w}\)域上的先验分布，最右边的图对应着随机取\(\mathbf{w}\)六次时\(y(\mathbf{w},x) = w_{0} + w_{1}x\)的图像。我们可以看到这个时候的图像完全是随机的，因为这个时候我们没有收到任何关于\(x\)的信息。
 </p>
 
 <p>
@@ -237,8 +237,8 @@ p(\mathbf{w}|\alpha) = \mathcal{N}(\mathbf{w}|\mathbf{0},\alpha^{-1}\mathbf{I})
 </p>
 </div>
 </div>
-<div id="outline-container-orge71189d" class="outline-2">
-<h2 id="orge71189d"><span class="section-number-2">4</span> 后记</h2>
+<div id="outline-container-orgfaf779a" class="outline-2">
+<h2 id="orgfaf779a"><span class="section-number-2">4</span> 后记</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 

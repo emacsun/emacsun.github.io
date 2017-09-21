@@ -1,0 +1,60 @@
+#+TITLE: 均匀分布
+#+AUTHOR:    zcl.space
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS: probability
+#+CATEGORIES: math
+#+SETUPFILE: ~/.emacs.d/org-templates/math-level2.org
+#+HTML_HEAD_EXTRA: <a id="pdf" href="uniform-distribution.pdf"><img src="../../img/assets/pdf.png"></a>
+
+
+* 定义
+  [2017-06-09 Fri 21:38]
+
+如果一个随机变量\(X\)的密度函数为：
+\begin{equation}
+\label{eq:1}
+f(x)  =
+\begin{cases}
+1 & 0 < x < 1 \\
+0 & \mathrm{others}
+\end{cases}
+\end{equation}
+则称随机变量\(X\)在\((0,1)\)区间上均匀分布。因为\(f(x) \geq 0\)，且\( \int_{-\infty}^{\infty} f(x)dx = 1 \)，所以\(f(x)\)是概率密度函数。因为仅当\(x\in (0,1)\)才有\(f(x) > 0\)，所以\(X\)必然取值在\(0,1\)之间。又因为在\((0,1)\)之间时，\(f(x)\)是常数，所以\(X\)等概的取\((0,1)\)的值。
+
+一般来讲，我们称\(X\)为区间\((\alpha,\beta)\)上服从均匀分布的随机变量，如果它的密度函数为：
+\begin{equation}
+\label{eq:2}
+f(x) =
+\begin{cases}
+\frac{1}{\beta - \alpha} & \alpha < x < \beta \\
+0 & \mathbf{others}
+\end{cases}
+\end{equation}
+
+* 期望和方差
+  [2017-06-09 Fri 21:45]
+
+令\(X\)在\((\alpha,\beta)\)上服从均匀分布，求\(E[X]\)和\(\mathrm{Var}[X]\)。
+
+按照期望公式：
+\begin{equation}
+\label{eq:3}
+E[X] = \int_{\infty}^{\infty} xf(x) dx = \int_{\alpha}^{\beta} \frac{x}{\beta-\alpha}dx = \frac{\alpha + \beta}{2}
+\end{equation}
+即某个区间上均匀分布随机变量的期望就等于该区间的中值。
+\begin{eqnarray}
+\label{eq:4}
+E[X^{2}]&=&\int_{\alpha}^{\beta} \frac{x^{2}}{\beta-\alpha} dx = \frac{\beta^{2} + \alpha \beta + \alpha^{2}}{3} \\
+\end{eqnarray}
+利用：
+\begin{equation}
+\label{eq:5}
+\mathrm{Var} = E[X^{2}] - (E[X])^{2}
+\end{equation}
+则：
+\begin{equation}
+\label{eq:6}
+\mathrm{Var}(X) = \frac{(\beta - \alpha)^{2}}{12}
+\end{equation}

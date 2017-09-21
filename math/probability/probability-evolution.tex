@@ -1,0 +1,54 @@
+\documentclass[10pt,a4paper,UTF8]{article}
+\usepackage{zclorg}
+\author{zcl.space}
+\date{}
+\title{概率定义的演进}
+\hypersetup{
+ pdfauthor={zcl.space},
+ pdftitle={概率定义的演进},
+ pdfkeywords={probability},
+ pdfsubject={本文简单阐述概率定义的演进过程},
+ pdfcreator={Emacs 25.0.50.1 (Org mode 8.3.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+
+
+
+\section{古典概型}
+\label{sec:orgheadline1}
+
+
+概率是描述事件出现或者发生可能性大小的数量指标，它是逐步形成和完善起来的。最初人们讨论的是古典概型试验中事件发生的概率。所谓古典概型试验是指样本空间中的样本点的个数是有限的且每个样本点发生的可能性是相同的，简称有限性与等可能性。
+
+例如丢一枚均匀的硬币，或者丢一枚均匀的骰子(你应该明白这里"均匀"的含义) ，这些试验都是古典概型试验。对于古典概型试验，定义如下：
+
+\begin{DEFINITION}
+\textbf{古典概型}  设试验\(E\)是古典概型的，其样本空间 \(\Omega\)由\(n\) 个样本点组成，其一时间 \(A\) 由\(r\)个样本点组成，则定义\(A\)发生的概率为\(\frac{r}{n}\)，即\[P(A) = \frac{r}{n}\]. 并称这样定义的概率为古典概率，称概率的这样定义为古典定义。
+\end{DEFINITION}
+
+古典概率具有三个性质：
+\begin{enumerate}
+\item 对任意事件 \(A\) 有，\(0 \leq P(A) \leq 1\)
+\item \(P(\Omega) = 1\)
+\item 设 \(A_{1},A_{2},\ldots,A_{m}\)为两两互斥的\(m\)个事件，则\[P(\bigcup_{i=1}^{m}A_{i}) = \sum_{i=1}^{m}P(A_{i})\]
+\end{enumerate}
+
+这三个性质称为概率的有界性，规范性和有限可加性。
+
+\section{几何概型}
+\label{sec:orgheadline2}
+
+
+古典概型的定义要求试验满足有限性与等可能性，这使得它在实际应用中受到了很大的限制。
+
+例如，对于旋转均匀陀螺的试验：在一个均匀的陀螺圆周上刻上 \([0,3]\)之内的数字(由于是圆周0和3刻在一个位置)，旋转陀螺，当陀螺停下时，其圆周上与桌面接触的刻度位于某个区间\([a,b]\subset [0,3]\)的概率有多大？对于这个试验，古典概率的定义就不适用。因为这个试验的样本点不是有限的，而是区间\([0,3]\)内的每个点，有无穷多个且不可数。为了克服古典概型的缺陷，人们引入了几何概型。
+
+\begin{DEFINITION}
+\textbf{几何概型} 设试验\(E\)的样本空间为某可度量的区域\(\Omega\)，且\(\Omega\)中任一区域出现的可能性大小与该区域的几何度量称正比，而与该区域的位置与形状无关，则称\(E\)为几何概型的试验。且定义\(E\)的时间\(A\)的概率为:\[P(A)=\frac{A的几何度量}{\Omega 的集合度量}\]
+\end{DEFINITION}
+\end{document}

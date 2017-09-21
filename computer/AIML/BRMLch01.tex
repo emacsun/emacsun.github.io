@@ -1,0 +1,230 @@
+% Intended LaTeX compiler: pdflatex
+\documentclass[10pt,a4paper,UTF8]{article}
+\usepackage{zclorg}
+\author{emacsun}
+\date{}
+\title{BRML第一章：概率推断}
+\hypersetup{
+ pdfauthor={emacsun},
+ pdftitle={BRML第一章：概率推断},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.0.50.1 (Org mode 9.0.5)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+最近我在阅读 David Barber 的 Bayesian Reasoning and Machine Learning（以后都用BRML来简称）。阅读过程中，随手记录了一些笔记。现在稍作整理，发表为一系列博文。本文是第一篇，也就是第一章的笔记整理。后续的博文都是各个章节的笔记整理，基本是一章一篇博文，个别重要的章节或许会作为多篇博文来写。
+
+BRML的第一章主要复习了概率的基本知识，通过贝叶斯公式（或者条件概率公式）引入概率推断的概念，然后对先验概率，后验概率和似然值做了详细介绍。从第一章就可以窥测本文将会用大量的例子来阐述概念，这是我比较喜欢的书籍的风格。
+
+
+\section{贝叶斯法则}
+\label{sec:org22c22ff}
+
+
+为了保证完整性，记录贝叶斯公式的定义。
+
+\begin{definition}
+已知事件 \(y\)时，事件\(x\)发生的概率，定义为：\[p(x|y) \triangleq \frac{p(x,y)}{p(y)} = \frac{p(x)p(y|x)}{p(y)}\]
+\end{definition}
+这个公式是如此重要，基本上撑起了机器学习的半壁江山。另外，这个公式在通信系统的信道译码算法中也频频出现，尤其在消息传递算法或者置信度传递算法中。关于其重要性，就不再多言。随着学习的深入，对这个公式及其扩展的理解会愈加深刻。
+
+从贝叶斯规则引入统计独立的概念，即当\[p(x,y) = p(x)p(y)\] \(x,y\)是相互独立的。此时\(x\)的发生不影响\(y\)发生的概率，即\[p(y|x) = p(y)\]
+
+\section{概率推断}
+\label{sec:orgdd14d83}
+
+
+概率推断的核心是识别环境中所有相关的随机变量\(x_{1},\ldots ,x_{N}\)，并且根据他们的关系创建一个概率模型\(p(x_{1},\ldots ,x_{N})\)。推断的过程是根据已知信息更新某个随机变量概率的过程。
+
+\begin{instance}
+医生发现一个人得KJ病的概率是相当低的大约是\(1/100000\)，但是得了Kreuzfeld-Jacob(KJ)病的人几乎都吃汉堡包，\(p(Hamburger Eater| KJ) = 0.9\)。
+\begin{enumerate}
+\item 假设一个人吃汉堡包的概率是0.5，\(p(Hamburtger Eater) = 0.5\)，那么一个吃汉堡包的人得KJ的概率是多少？
+
+这个概率可以表示为：
+\begin{eqnarray}
+\label{eq:1}
+p(KJ| Hamburtger Eater) &=& \frac{p(KJ,Hamburtger Eater)}{p(Hamburtger Eater)} \\
+ &=& \frac{p(Hamburtger Eater | KJ)p(KJ)}{p(Hamburtger Eater)} \\
+&=& \frac{0.9\times 1/100000}{1/2} \\
+&=& 1.8\times 10^{-5}
+\end{eqnarray}
+
+\item 如果吃汉堡包的人的概率比较低，不是0.5而是0.001，那么一个吃汉堡包的人得KJ的概率是多少？
+
+重复上面的计算
+\begin{eqnarray}
+\label{eq:2}
+p(KJ| Hamburtger Eater) &=& \frac{p(KJ,Hamburtger Eater)}{p(Hamburtger Eater)}\\ 
+&=& \frac{p(Hamburtger Eater | KJ)p(KJ)}{p(Hamburtger Eater)} \\
+&=& \frac{0.9\times 1/100000}{0.001} \\
+&\approx&  1/100
+\end{eqnarray}
+\end{enumerate}
+\end{instance}
+这个例子告诉我们不要为一些不大可能的事情担心:得了KJ的前提下吃汉堡包的概率和吃汉堡包的前提下得KJ的概率完全是两码事。
+
+
+\begin{instance}
+再给一个异或门的例子，我们知道一个标准的异或门电路的逻辑关系满足表\ref{tab:org226f04a}:
+\begin{table}[htbp]
+\caption{\label{tab:org226f04a}
+异或门逻辑}
+\centering
+\begin{tabular}{center}
+\hline
+\(A\) & \(B\) & \(C=A\oplus B\)\\
+\hline
+0 & 0 & 0\\
+0 & 1 & 1\\
+1 & 0 & 1\\
+1 & 1 & 1\\
+\hline
+\end{tabular}
+\end{table}
+
+当我们观测到异或门的输出是\(0\)时，对于\(A\)或者\(B\)的概率我们知道多少？在这样的情况下，可能\(A,B\)都是\(0\)，也可能\(A,B\)都是\(1\)。 \(A,B\)处于\(0\)或者\(1\)的概率是等该的。
+
+但是考虑一个软判决输出的异或门逻辑,其逻辑关系如表\ref{tab:orge6ef604}，我们假定\(A,B\)是独立的且\(p(A=1)=0.65,p(B=1)=0.77\)，那么求\(p(A=1|C=0)\)？
+\begin{table}[htbp]
+\caption{\label{tab:orge6ef604}
+异或门逻辑}
+\centering
+\begin{tabular}{center}
+\hline
+\(A\) & \(B\) & \(p(C=1  \vert  A,B)\)\\
+\hline
+0 & 0 & 0.1\\
+0 & 1 & 0.99\\
+1 & 0 & 0.8\\
+1 & 1 & 0.25\\
+\hline
+\end{tabular}
+\end{table}
+
+由条件概率公式，得：
+\begin{equation}
+\label{eq:3}
+p(A=1|C=0) = \frac{p(A=1,C=0)}{p(C=0)} = \frac{p(A=1,C=0)}{p(A=1,C=0) + p(A=0,C=0)}
+\end{equation}
+接下来，我们对\ref{eq:3}右边分母上的两个求和项进行展开：
+\begin{eqnarray}
+\label{eq:4}
+p(A=1,C=0) &=&\sum_{B}p(A=1,B,C=0) \\
+           &=& \sum_{B}p(C=0|B,A=1)p(B)p(A=1)
+\end{eqnarray}
+\begin{eqnarray}
+\label{eq:5}
+p(A=0,C=0) &=&\sum_{B}p(A=0,B,C=0) \\ 
+&=& \sum_{B}p(C=0|B,A=0)p(B)p(A=0)
+\end{eqnarray}
+带入表格中相应的概率数字得出\(p(A=1|C=0) = 0.8436\)
+\end{instance}
+\section{先验概率，似然值和后验概率}
+\label{sec:org37a9fb1}
+
+
+现实生活中非常多的问题可以归类为：当我知道数据\(D\)时，告诉我随机变量\(\theta\)的概率。这个问题可以归类为：
+\begin{equation}
+\label{eq:6}
+p(\theta |D) = \frac{p(D|\theta)p(\theta)}{p(D)} = \frac{p(D|\theta)p(\theta)}{\int_{\theta}p(D|\theta)p(\theta)} 
+\end{equation}
+这个模型在机器学习和信道编码理论中都有普遍的实用，甚至是其基础的基础。那么从式\ref{eq:6}我们可以读出什么信息呢？式\ref{eq:6}告诉我们，我们可以从数据生成模型\(p(D|\theta)\)和先验概率\(p(\theta)\)推断后验概率\(p(\theta |D)\)。最大后验概率准则(maximize a posteriori,MAP )准则，可以表示为：
+\begin{equation}
+\label{eq:7}
+\hat{\theta} = \arg \max_{\theta} p(\theta | D)
+\end{equation}
+
+对于等概率分布的先验概率\(p(\theta)\)，MAP准则和最大似然准则(maximum likelihood,ML) 是等效的，即最大化\(p(D|\theta)\)的\(\theta\)同样最大化\(p(\theta|D)\)。
+
+\begin{instance}
+现在针对\(p(D|\theta)\)我们给出一个例子。假设一个钟摆在摆动，我们用\(x_{t}\)来表示钟摆在\(t\)时刻的角度。假设每次测量都是独立的。假设每次测量都是精确的，则有
+\begin{equation}
+\label{eq:8}
+x_{t} = \sin(\theta t)
+\end{equation}
+这里假设系统没有阻尼则\(\theta = \sqrt{g/L}\)，其中\(g\)是地球引力场数，\(L\)是吊起钟摆的绳子的长度，但是我们是在测试\(\theta\)，是根据\(x_{1},\ldots ,x_{T}\)来测量\(\theta\)。另外，实际测量过程中(比如测量位置仪器质量很差或者定时器不准)，测量总是存在误差，假设误差是\(\epsilon_{t}\)，测量结果可以表示为：
+\begin{equation}
+\label{eq:9}
+x_{t} = \sin(\theta t) + \theta_{t}
+\end{equation}
+一般情况我们定义\(\epsilon_{t}\)服从均值为零方差为\(\delta^{2}\)的高斯随机变量。所以关于\(\theta\)的后验概率可以表示为：
+\begin{equation}
+\label{eq:10}
+p(\theta|x_{1},\ldots,x_{T}) \propto p(\theta)\prod_{t=1}^{T}\frac{1}{\sqrt{2\pi \delta^{2}}}e^{\frac{1}{2\delta^{2}}(x_{t}-\sin(\theta)t)^{2}}
+\end{equation}
+\end{instance}
+\begin{instance}
+我们来考虑投掷两个均匀骰子的场景。假设现在有人告诉你两个骰子的数字之和为\(9\)。求此时关于两个骰子上数字的后验概率分布。
+
+首先我们用\(s_{a},s_{b}\)代表两个骰子的数字，其取值范围是\(\{1,2,3,4,5,6\}\)。两者之和为\(t=s_{a} + s_{b}\)这三个随机变量的模型遵循：
+\begin{equation}
+\label{eq:11}
+p(t,s_{a},s_{b}) = \underbrace{p(t|s_{a},s_{b})}_{likelihood}\underbrace{p(s_{a},s_{b})}_{prior}
+\end{equation}
+假设两个骰子是均匀的\(p(s_{a},s_{b})\)则\(p(s_{a},s_{b}) = p(s_{a})p(s_{b})\)其概率分布表格为：
+
+\begin{table}[htbp]
+\caption{\label{tab:orgd5cd133}
+\(p(s_{a})p(s_{b})\)}
+\centering
+\begin{tabular}{lllllll}
+\hline
+ & \(s_{a} = 1\) & \(s_{a} = 2\) & \(s_{a} = 3\) & \(s_{a} = 4\) & \(s_{a} = 5\) & \(s_{a} = 6\)\\
+\hline
+\(s_{a} = 1\) & 1/36 & 1/36 & 1/36 & 1/36 & 1/36 & 1/36\\
+\(s_{a} = 2\) & 1/36 & 1/36 & 1/36 & 1/36 & 1/36 & 1/36\\
+\(s_{a} = 3\) & 1/36 & 1/36 & 1/36 & 1/36 & 1/36 & 1/36\\
+\(s_{a} = 4\) & 1/36 & 1/36 & 1/36 & 1/36 & 1/36 & 1/36\\
+\(s_{a} = 5\) & 1/36 & 1/36 & 1/36 & 1/36 & 1/36 & 1/36\\
+\(s_{a} = 6\) & 1/36 & 1/36 & 1/36 & 1/36 & 1/36 & 1/36\\
+\hline
+\end{tabular}
+\end{table}
+
+由于骰子是均匀的则\(p(s_{a}) = p(s_{b}) = 1/6\)。另外，我们有\(p(t|s_{a},s_{b})\)，表格如下：
+\begin{table}[htbp]
+\caption{\label{tab:org8562b97}
+\(p(t|s_{a},s_{b})\)}
+\centering
+\begin{tabular}{lrrrrrr}
+\hline
+ & \(s_{a} = 1\) & \(s_{a} = 2\) & \(s_{a} = 3\) & \(s_{a} = 4\) & \(s_{a} = 5\) & \(s_{a} = 6\)\\
+\hline
+\(s_{a} = 1\) & 0 & 0 & 0 & 0 & 0 & 0\\
+\(s_{a} = 2\) & 0 & 0 & 0 & 0 & 0 & 0\\
+\(s_{a} = 3\) & 0 & 0 & 0 & 0 & 0 & 1\\
+\(s_{a} = 4\) & 0 & 0 & 0 & 0 & 1 & 0\\
+\(s_{a} = 5\) & 0 & 0 & 0 & 1 & 0 & 0\\
+\(s_{a} = 6\) & 0 & 0 & 1 & 0 & 0 & 0\\
+\hline
+\end{tabular}
+\end{table}
+
+后验概率 \(p(s_{a},s_{b}|t=9) = \frac{p(t=9|s_{a},s_{b})p(s_{a})p(s_{b})}{p(t=9)}\)，其中\[p(t=9) = \sum_{s_{a}s_{b}} p(t=9| s_{a},s_{b})p(s_{a})p(s_{b})\] 
+
+综上我们可以得到后验概率表：
+
+\begin{table}[htbp]
+\caption{\label{tab:orgf8e976b}
+\(p(s_{a},s_{b}|t=9)\)}
+\centering
+\begin{tabular}{lrrrrrr}
+\hline
+ & \(s_{a} = 1\) & \(s_{a} = 2\) & \(s_{a} = 3\) & \(s_{a} = 4\) & \(s_{a} = 5\) & \(s_{a} = 6\)\\
+\hline
+\(s_{a} = 1\) & 0 & 0 & 0 & 0 & 0 & 0\\
+\(s_{a} = 2\) & 0 & 0 & 0 & 0 & 0 & 0\\
+\(s_{a} = 3\) & 0 & 0 & 0 & 0 & 0 & 1/4\\
+\(s_{a} = 4\) & 0 & 0 & 0 & 0 & 1/4 & 0\\
+\(s_{a} = 5\) & 0 & 0 & 0 & 1/4 & 0 & 0\\
+\(s_{a} = 6\) & 0 & 0 & 1/4 & 0 & 0 & 0\\
+\hline
+\end{tabular}
+\end{table}
+\end{instance}
+\end{document}

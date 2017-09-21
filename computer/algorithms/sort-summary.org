@@ -1,0 +1,15 @@
+#+TITLE: 排序算法概述
+#+AUTHOR:    emacsun
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+CATEGORIES:
+#+SETUPFILE: ~/.emacs.d/org-templates/math-level2.org
+#+HTML_HEAD_EXTRA: <a id="pdf"  href="./sort-summary.pdf"><img src="../../img/assets/pdf.png"></a>
+#+LaTeX_CLASS: cn-article
+
+* 简介
+  [2017-07-02 Sun 19:45]
+
+  [[https://en.wikipedia.org/wiki/Sorting_algorithm][排序算法]] 是计算机算法领域的一个经典话题。Knuth，CLRS和Sedgewick都对这一话题进行过深入而全面的分析。我再写此文完全是为了加深自己对这个话题的理解。

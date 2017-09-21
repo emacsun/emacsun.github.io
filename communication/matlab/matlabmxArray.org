@@ -1,0 +1,19 @@
+#+TITLE:  Matlab与C混合编程: 数据类型之 =mxArray=
+#+AUTHOR:    zcl.space
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:  本文描述matlab与C编程过程中要用到的的基本数据类型 =mxArray=
+#+KEYWORDS: matlab communication simulation C
+#+CATEGORIES: communication
+#+SETUPFILE: ~/.emacs.d/org-templates/matlab-level2.org
+#+HTML_HEAD_EXTRA: <a id="pdf"  href="./matlabCMexAPI.pdf"><img src="../../img/assets/pdf.png"></a>
+
+* 引言
+  <2015-11-12 Thu 07:11>
+
+  =mxArray= 是matlab的基本数据类型，对于C语言是一种透明的数据类型。所有的基于C的MEX文件都始于桥梁函数，名为 =mexFunction= ,在这个桥梁函数中输入输出的类型就是 =mxArray= 。在编写MEX函数过程中，需要传入matlab的数据时，使用matlab的 Matrix 库来处理这些数据，使用MEX库来完成一些matlab环境中才有的操作。在使用Matrix库和MEX库的过程中，我们使用 =mxArray= 作为传入传出数据的数据类型。包含 =mxArray= 定义的头文件是 =matrix.h= ,所以定义 =mxArray= 需要使用 =#include  “matrixx.h”= 。
+
+另外，我们使用 =mxCreate*= 类的函数来创建数据，使用对应的 =mxDestroyArray= 来释放内存。
+
+* 一个例子
+  <2015-11-12 Thu 07:22>

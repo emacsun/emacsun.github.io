@@ -1,0 +1,134 @@
+% Intended LaTeX compiler: pdflatex
+\documentclass[10pt,a4paper,UTF8]{article}
+\usepackage{zclorg}
+\date{}
+\title{本征空间}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={本征空间},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.0.50.1 (Org mode 9.0.5)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{definition}
+设\(T\in \mathcal{L}(V)\)且\(\lambda \in \mathbf{F}\)，\(T\)的相应于\(\lambda\)的本征空间定义为：
+\begin{equation}
+\label{eq:1}
+E(\lambda,T) = \mathrm{null}(T-\lambda I)
+\end{equation}
+也就是说，\(E(\lambda,T)\)是\(T\)的相应于\(\lambda\)的全体本证向量加上\(0\)构成的集合。
+\end{definition}
+
+对于\(T\in \mathcal{L}(V)\)和\(\lambda \in \mathbf{F}\)，本征空间\(E(\lambda,T)\)是\(V\)上的子空间，因为线性映射的零空间都是\(V\)的子空间。由定义可知，\(\lambda\)是\(T\)的特征值当且仅当\(E(\lambda,T)\neq \{0\}\)。
+
+\begin{theorem}
+设\(V\)是有限维的，\(T\in \mathcal{L}(V)\)，设\(\lambda_{1},\ldots ,\lambda_{m}\)是\(T\)的互异的本征值，则：
+\begin{equation}
+\label{eq:2}
+E(\lambda_{1},T) + \ldots E(\lambda_{m},T)
+\end{equation}
+是直和，此外：
+\begin{equation}
+\label{eq:3}
+\dim E(\lambda_{1},T) + \ldots + \dim E(\lambda_{m},T) \leq =dim V
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+假设
+\begin{equation}
+\label{eq:4}
+u_{1} +\ldots + u_{m} = 0
+\end{equation}
+其中每个\(u_{j}\)包含于\(E(\lambda_{j},T)\)，因为相应与互异的特征值的特征向量是线性无关的，所以上式中\(u_{j} = 0,\forall j\)。因此\(E(\lambda_{1},T) + \ldots + E(\lambda_{m},T)\)是直和。
+
+现在有：
+\begin{equation}
+\label{eq:5}
+\dim E(\lambda_{1},T) + \ldots + \dim E(\lambda_{m},T) = \dim (E(\lambda_{1},T) \oplus + \ldots + \oplus E(\lambda_{m},T)) \leq \dim V
+\end{equation}
+\end{proof}
+算子\(T\in \mathcal{L}(V)\)称为可对角化的，如果概算自关于\(V\)的某个基有对角矩阵。
+
+\begin{instance}
+定义\(T\in \mathcal{L}(\mathbf{R}^{2})\)为\(T(x,y)=(41x+7y,-20x+74y)\).\(T\)关于\(\mathbf{R}^{2}\)的标准基的矩阵为：
+\begin{equation}
+\label{eq:6}
+\begin{bmatrix}
+41 & 7 \\
+-20 & 74
+\end{bmatrix}
+\end{equation}
+这不是一个对角矩阵，但是\(T\)可以对角化，其关于\((1,4),(7,5)\)的矩阵为：
+\begin{equation}
+\label{eq:7}
+\begin{bmatrix}
+69 & 0 \\
+0 & 46
+\end{bmatrix}
+\end{equation}
+\end{instance}
+
+\begin{theorem}
+设\(V\)是有限维的，\(T\in \mathcal{L}(V)\)，用\(\lambda_{1},\ldots ,\lambda_{m}\)表示\(T\)的所有互异的本征值。则下列条件等价：
+\begin{enumerate}
+\item \(T\)可对角化；
+\item \(V\)有由\(T\)的本证向量构成的基；
+\item \(V\)有在\(T\)下不变的一维子空间\(U_{1},\ldots ,U_{n}\)使得\(V = U_{1}\oplus \ldots \oplus U_{n}\)
+\item \(V=E(\lambda_{1},T) \oplus \ldots + E(\lambda_{m},T)\)
+\item \(\dim V = \dim E(\lambda_{1},T) + \ldots + \dim E(\lambda_{m},T)\)
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+算子\(T\in \mathcal{L}(V)\)关于\(V\)的基\(v_{1},\ldots ,v_{n}\)有对角矩阵：
+\begin{equation}
+\label{eq:8}
+\begin{bmatrix}
+\lambda_{1} & & 0 \\
+&\ddots & \\
+0&&\lambda_{n}
+\end{bmatrix}
+\end{equation}
+显然有\(Tv_{j} = \lambda_{j}v_{j}\)。即，这些基也是\(T\)的本证向量。所以\(V\)的这些基由\(T\)的本证向量构成。
+
+假设第二步成立，则\(V\)有一个\(T\)的本证向量构成的基\(v_{1},\ldots ,v_{n}\)，对每个\(j\)，设\(U_{j} = \mathrm{span}(v_{j})\)，显然每个\(U_{j}\)都是\(V\)的一维子空间且在\(T\)下不变。因为\(v_{1},\ldots ,v_{n}\)是\(V\)的基，所以\(V\)中每个向量都可以唯一的写成\(v_{1},\ldots ,v_{n}\)的线性组合。也就是说\(V\)中的每个向量都可以写成\(u_{1}+\ldots +u_{n}\)的线性组合，其中每个\(u_{j}\in U_{j}\)，于是\(V= U_{1}\oplus \ldots \oplus U_{m}\)。
+
+假设第三步成立，则\(V\)有在\(T\)下不变的一维子空间\(U_{1},\ldots ,U_{n}\)使得\(V=U_{1}\oplus + \ldots + \oplus U_{n}\)。假设\(\forall~j,v_{j}\in U_{j},u_{j}\neq 0\)，则每个\(v_{j}\)都是\(T\)的特征向量。因为\(V\)中的每个向量都可以唯一地写成\(u_{1}+ \ldots u_{n}\)的形式，所以\(v_{1},\ldots ,v_{n}\)是\(V\)的基。
+
+现在我们证明了第一步，第二步和第三部是等价的，
+
+现在证明第二步蕴含第四步，第四步蕴含第五步，第五步蕴含第二步。
+
+假设第二步成立，则\(V\)有一个由\(T\)的本证向量组成的基。于是,\(V\)中每个向量都是\(T\)的本证向量的线性组合，因此：
+\begin{equation}
+\label{eq:9}
+V= E(\lambda_{1},T) + \ldots + E(\lambda_{n},T)
+\end{equation}
+又因为\(\lambda_{1},\ldots ,\lambda_{n}\)是互异的特征值，所以:
+\begin{equation}
+\label{eq:10}
+V= E(\lambda_{1},T) \oplus \ldots \oplus E(\lambda_{n},T)
+\end{equation}
+第四步成立，则根据2.C.16，第五步成立。
+\end{proof}
+
+\begin{instance}
+证明由\(T(w,z) = (z,0)\)定义的算子\(T\in \mathcal{L}(\mathbf{C}^{2})\)不可对角化
+\end{instance}
+
+\begin{proof}
+容易验证\(0\)是\(T\)的唯一本征值且\(E(0,T) = \{(w,0)\in \mathbf{C}^{2}:w\in \mathbf{C}\}\)，根据以上的证明，\(T\)不可对角化。
+\end{proof}
+
+\begin{theorem}
+若\(T\in \mathcal{L}(V)\)有\(\dim V\)个互异的本征值，则\(T\)可对角化。
+\end{theorem}
+
+\begin{proof}
+设\(T\in \mathcal{L}(V)\)有\(\dim V\)个互异的本征值\(\lambda_{1},\ldots ,\lambda_{\dim V}\)对每个\(j\)，设\(v_{j}\in V\)是相应于本征值\(\lambda_{j}\)的本证向量。因为相应与互异的特征值的特征向量是线性无关的,所以\(v_{1},\ldots ,v_{\dim V}\)线性无关。\(V\)中\(\dim V\)个向量组成的线性无关组是\(V\)的基。
+\end{proof}
+\end{document}

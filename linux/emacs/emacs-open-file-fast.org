@@ -1,0 +1,40 @@
+#+TITLE: spacemacs 快速打开常用文件
+#+AUTHOR:    emacsun
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+CATEGORIES:
+#+SETUPFILE: ~/.emacs.d/org-templates/emacs-level2.org
+#+LaTeX_CLASS: cn-article
+
+使用Emacs久了，总有几个文件是需要经常打开的，比如：emacs的配置文件 =init.el= 。我使用 =Org= 维护了一个本地静态博客，这个博客的home文件 =index.org= 也是我经常访问的文件。时间久了，即使用emacs的 =bookmark= 功能快速打开，也显得很繁琐无趣。
+
+所幸，spacemacs 已经为 =init.el= 配置了打开快捷键 =SPC f e d= 。今天我要为 =index.org= 绑定一个快捷键。这属于文件类方问快捷键，应该放在 =SPC f= 为前缀的快捷键下面。使用 =which-key= 发现 =SPC f i= 这个组合开没有使用，正好适合用来打开 =index.org=
+
+
+* 快捷键绑定
+  [2017-05-13 Sat 08:29]
+
+常规的绑定是这样的：
+#+begin_src emacs-lisp
+(global-set-key (kbd "<f6>") (lambda() (interactive)(find-file "~/.emacs")))
+#+end_src
+在spacemacs中，快捷键当然要分门别类，方便手指记忆：
+#+begin_src emacs-lisp
+(spacemacs/set-leader-keys "fi" (lambda() (interactive)(find-file "~/.spacemacs.d/init.el")))
+#+end_src
+
+这种方法用 =SPC f i= 调用一个 =lambda= 函数。
+* 好用的寄存器
+  [2017-05-13 Sat 08:34]
+
+谷歌告诉我还可以使用寄存器快速访问文件
+
+#+begin_src emacs-lisp
+(set-register ?e (cons 'file "~/.emacs"))
+#+end_src
+
+使用 =e= 命名一个寄存器，然后指向文件，使用 =C-x r j e= 就可以打开了. spacemacs 为helm配备了一个很好用的寄存器管理快捷键 =SPC r r= ,弹出的buffer一如既往的直观，单键可达。
+
+其实寄存器的妙用还不止于此，用到了再做记录。

@@ -1,0 +1,197 @@
+#+TITLE:  Matlab与C混合编程之二:C/C++ MEX API
+#+AUTHOR:    zcl.space
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:  本文简要列举matlab与C混合编程过程中，matlab提供的API。通过这些API，我们可以很方便的在matlab和C之间传递数据
+#+KEYWORDS: matlab communication simulation C
+#+CATEGORIES: communication
+#+SETUPFILE: ~/.emacs.d/org-templates/matlab-level2.org
+#+HTML_HEAD_EXTRA: <a id="pdf"  href="./matlabCMexAPI.pdf"><img src="../../img/assets/pdf.png"></a>
+
+
+
+* 引言
+  <2015-11-11 Wed 06:47>
+
+为方便matlab和C混合编程，matlab定义了一些可在C代码中使用的数据类型和函数。本文首先给出这些数据类型和函数，在随后的博文中举例演示这些数据类型和函数的使用过程。
+
+* matlab提供的数据类型
+  <2015-11-11 Wed 06:54>
+
+
+为了方便编写能够在matlab中调用的C代码（通过MEX文件调用），matlab定义了一些数据类型。在编写C代码过程中，程序员使用这些数据类型就像使用C语言的 =int= =char= 那样简单。表[[tab:20151111matlabCDataType]]给出了matlab提供的数据类型以及简单的描述。
+
+#+CAPTION:  matlab提供的数据类型
+#+NAME: tab:20151111matlabCDataType
+|-----------------+---------------------------------------------------------------------------------------------|
+| 数据类型        | 描述                                                                                        |
+|-----------------+---------------------------------------------------------------------------------------------|
+| =mxArray=       | matlab array，是的在C中可以定义matlab array                                                 |
+| =mwSize=        | 专门为描述matlab的矩阵大小定义的类型，主要是为了方便代码跨平台，大多数情况 =int= 也可以     |
+| =mxIndex=       | 为索引变量定义的类型，与 =mwSize= 差不多                                                    |
+| =mwSignedIndex= | 有符号整型，主要为描述矩阵大小定义                                                          |
+| =mwChar=        | 为 string 数组定义的类型                                                                    |
+| =mxLogical=     | 为 logical 数组定义的类型                                                                   |
+| =mxClassID=     |                                                                                             |
+| =mxComplexity=  | 指示数组元素是否包含复数的旗标（flag ）                                                     |
+| =mxGetEps=      | EPS                                                                                         |
+| =mxGetInf=      | 无穷大                                                                                      |
+| =mxGetNaN=      | NaN                                                                                         |
+|-----------------+---------------------------------------------------------------------------------------------|
+* matlab提供的函数API
+  <2015-11-11 Wed 07:09>
+
+  matlab为C编程提供了丰富的API。根据其功能，这些API主要可以分为以下四类：
+  1. 创建或者删除数组
+  2. 验证数据有效性
+  3. 存取数据
+  4. 数据类型转换
+
+我们分四个小节简要列出这些函数名称及其功能。
+
+** 创建或者删除数组
+   <2015-11-11 Wed 07:09>
+
+这一类API方便程序员在C代码中创建特定类型的数组，并为其分配或者释放内存。表[[tab:20151111CreateorDeleteArray]]给出了这类API的名称和相关定义。
+#+CAPTION:  创建删除矩阵API
+#+NAME: tab:20151111CreateorDeleteArray
+|---------------------------------+-------------------------------------------|
+| 名称                            | 功能                                      |
+|---------------------------------+-------------------------------------------|
+| =mxCreateDoubleMatrix=          | 创建二维双精度浮点矩阵！                  |
+| =mxCreateDoubleScalar=          | 标量，双精度矩阵（初始化为特定值）        |
+| =mxCreateNumericMatrix=         | 创建二维数值矩阵                          |
+| =mxCreateNumericArray=          | 创建N维数值矩阵                           |
+| =mxCreateUnitintNumericMatrix=  | 创建未初始化的2维矩阵                     |
+| =mxCreateUninintNumericArray=   | 创建未初始化的N维矩阵                     |
+| =mxCreateString=                | 一维符号矩阵，字符串                      |
+| =mxCreateCharMatrixFromStrings= | 二维字符串矩阵                            |
+| =mxStringCharArray=             | N维字符串矩阵                             |
+| =mxCreateLogicalScalar=         | 标量或者逻辑变量矩阵                      |
+| =mxCreatelogicalMatrix=         | 二维逻辑矩阵                              |
+| =mxCreateLogicalArray=          | N维逻辑矩阵                               |
+| =mxCreateSparseLogicalMatrix=   | 二维稀疏逻辑矩阵                          |
+| =mxCreateSparse=                | 二维稀疏矩阵                              |
+| =mxCreateStructMatrix=          | 二维structure矩阵                         |
+| =mxCreateStructArray=           | N维structure矩阵                          |
+| =mxCreateCellMatrix=            | 二维cell矩阵                              |
+| =mxCreateCellArray=             | N维structure矩阵                          |
+| =mxDestroyArray=                | 释放分配的内存空间                        |
+| =mxDuplicateArray=              | 复制矩阵空间                              |
+| =mxCalloc=                      | 使用matlab的内存管理器分配矩阵，初始化为0 |
+| =mxMalloc=                      | 使用matlab的内存管理器分配未初始化的矩阵  |
+| =mxRealloc=                     | 使用matlab的内存管理器再次动态分配内存    |
+| =mxFree=                        | 释放使用matlab内存管理器分配的内存        |
+|---------------------------------+-------------------------------------------|
+** 验证数据
+   <2015-11-11 Wed 21:01>
+
+matlab为验证数据也提供了一些API，这些API的主要作用是判断输入数据的类型。如表[[tab:20151111validateData]]所示。
+#+CAPTION:  验证数据API
+#+NAME: tab:20151111validateData
+|-------------------------+--------------------------------------|
+| 名称                    | 功能                                 |
+|-------------------------+--------------------------------------|
+| =mxIsDoulbe=            | 判断mxArray是不是双精度浮点数        |
+| =mxIsSingle=            | 判断mxArray是不是单精度浮点数        |
+| =mxIsComplex=           | 判断是否为复数                       |
+| =mxIsNumeric=           | 判断是否为numeric                    |
+| =mxIsInt64=             | 判断是不是64bit整型                  |
+| =mxIsUint64=            | 判断是不是无符号64bit整型            |
+| =mxIsInt32=             | 判断是不是32位整型                   |
+| =mxIsUint32=            | 判断是不是无符号32位整型             |
+| =mxIsInt16=             | 判断是不是16位整型                   |
+| =mxIsUint16=            | 判断是不是无符号16位整型             |
+| =mxIsInt8=              | 判断是不是16位整型                   |
+| =mxIsUint8=             | 判断是不是无符号16位整型             |
+| =mxIsScalar=            | 判断是不是scalar矩阵                 |
+| =mxIsChar=              | 判断是不是符号矩阵                   |
+| =mxIsLogical=           | 判断是不是逻辑                       |
+| =mxIsLogicalScalar=     | 判断是不是逻辑矩阵                   |
+| =mxIsLogicalScalarTrue= | 判断逻辑矩阵是不是真                 |
+| =mxIsStruct=            | 判断是否为sturcture矩阵              |
+| =mxIsCell=              | 判断是不是cell矩阵                   |
+| =mxIsClass=             | 判断是不是特定的类型                 |
+| =mxIsInf=               | 判断输入是不是无穷大                 |
+| =mxIsFinite=            | 判断输入是不是有限大                 |
+| =mxIsNaN=               | 判断输入是不是NaN                    |
+| =mxIsEmpty=             | 判断矩阵是否为空                     |
+| =mxIsSparse=            | 判断输入是否为稀疏矩阵               |
+| =mxIsFromGlobalWS=      | 判断矩阵是否从matlab全局空间传入     |
+| =mxAssert=              | 判断assertion值（用于debug）         |
+| =mxAssertS=             | 判断assertion值，不打印assertion文本 |
+|-------------------------+--------------------------------------|
+
+** 读取数据
+   <2015-11-11 Wed 21:25>
+
+matlab为数据读写定义了一些API。这些API在 =mexFunction= 函数中使用非常广泛，极大的方便了matlab和C之间的数据传递。表[[tab:20151111accessData]]给出了这些函数名称和功能简述
+
+#+CAPTION:  读取数据API
+#+NAME: tab:20151111accessData
+|---------------------------+--------------------------------------|
+| 名称                      | 功能简述                             |
+|---------------------------+--------------------------------------|
+| =mxGetNumberOfDimensions= | 获取矩阵的维度                       |
+| =mxGetElementSize=        | 每一个数据元素需要的字节数           |
+| =mxGetDimensions=         | 指向矩阵维度的指针                   |
+| =mxSetDimensions=         | 修改维度和每一维的大小               |
+| =mxGetNumberOfElements=   | 矩阵中元素的个数                     |
+| =mxCalcSingleSubscript=   | 相对于起始元素的偏移量               |
+| =mxGetM=                  | 矩阵元素的行数                       |
+| =mxGetN=                  | 矩阵元素的列数                       |
+| =mxSetM=                  | 设置矩阵元素的行数                   |
+| =mxSetN=                  | 设置矩阵元素的列数                   |
+| =mxGetScalsr=             | 第一个数据元素的实部                 |
+| =mxGetPr=                 | 矩阵的实部                           |
+| =mxSetPr=                 | 设置矩阵的实部                       |
+| =mxGetPi=                 | 矩阵的虚部                           |
+| =mxSetPi=                 | 设置矩阵的虚部                       |
+| =mxGetData=               | 指向矩阵中实部的指针                 |
+| =mxSetData=               | 设置指向矩阵中实部的指针             |
+| =mxGetImagData=           | 指向矩阵中虚部的指针                 |
+| =mxSetImagData=           | 设置指向矩阵中虚部的指针             |
+| =mxGetChars=              | 指向字符矩阵的指针                   |
+| =mxGetLogicals=           | 指向逻辑类型矩阵的指针               |
+| =mxGetClassID=            | 矩阵的类型                           |
+| =mxGetClassName=          | 矩阵的类型（以字符串返回）           |
+| =mxSetClassName=          | 把C中的Array指定为matlab中的array    |
+| =mxGetProperty=           | matlab对象的公共值                   |
+| =mxSetProperty=           | 设置matlab对象的公共值               |
+| =mxGetField=              | 获取structure的域（给定index和name） |
+| =mxSetField=              | 设置structure的域                    |
+| =mxGetNumberOfFields=     | structure中的域个数                  |
+| =mxGetFieldNameByNumber=  | 给定域编号获得域的名字               |
+| =mxGetFieldNumber=        | 给定域名字获得域编号                 |
+| =mxGetFieldByNumber=      | 给定域索引和域数值获得域值           |
+| =mxSetFieldByNumber=      | 给定索引和域数值，设置域值           |
+| =mxAddField=              | 在结构体中添加域                     |
+| =mxRemoveField=           | 在结构体中去除域                     |
+| =mxGetCell=               | 获取Cell矩阵的值                     |
+| =mxSetCell=               | 设置Cell矩阵的值                     |
+| =mxGetNzmax=              | IR，PR，PI矩阵的元素个数             |
+| =mxSetNzmax=              | 为非零元素设置空间数                 |
+| =mxGetIr=                 | 稀疏IR矩阵                           |
+| =mxSetIr=                 | 稀疏矩阵的IR矩阵                     |
+| =mxGetJc=                 | 稀疏JC矩阵                           |
+| =mxSetJc=                 | JC矩阵的稀疏矩阵                     |
+|---------------------------+--------------------------------------|
+
+** 数据类型转换
+   <2015-11-11 Wed 21:58>
+
+matlab为字符和矩阵之间的数据类型转换提供了API，如表[[tab:20151111ConvertDataTypes]]所示。
+#+CAPTION:  数据类型转换
+#+NAME: tab:20151111ConvertDataTypes
+|-----------------------+---------------------------------|
+| 名称                  | 功能简述                        |
+|-----------------------+---------------------------------|
+| =mxArrayToString=     | array向字符串转化               |
+| =mxArrayToUTF8String= | array向字符串转化（用UTF8编码） |
+| =mxGetString=         | 把string矩阵转化为C-style字符串 |
+| =mxSetClassName=      | 结构体矩阵转向matlab对象矩阵    |
+|-----------------------+---------------------------------|
+* 尾声
+  <2015-11-12 Thu 07:09>
+
+ 以上仅仅列举了API名称和一句话概述，详细的说明和使用方法还需要在实际使用中摸索。

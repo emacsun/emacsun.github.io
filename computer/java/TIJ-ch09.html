@@ -64,32 +64,25 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgcb2d00f">1. 简介</a></li>
-<li><a href="#orgbf1248f">2. 重访 upcasting</a></li>
-<li><a href="#orgab58016">3. 纠结</a>
+<li><a href="#org5060233">1. 简介</a></li>
+<li><a href="#org179f7d2">2. 重访 upcasting</a></li>
+<li><a href="#org3f24375">3. 纠结</a>
 <ul>
-<li><a href="#orgf9b623f">3.1. 方法调用 <code>binding</code></a></li>
-<li><a href="#org5265d1a">3.2. 正确的行为</a></li>
-<li><a href="#org820b064">3.3. 可扩展性</a></li>
-<li><a href="#org4a055d8">3.4. <code>private</code> 无法被覆盖</a></li>
-<li><a href="#orgdb10848">3.5. 对域的处理</a></li>
-<li><a href="#org882c5b2">3.6. 对 <code>static</code> 方法的处理</a></li>
+<li><a href="#orge12a537">3.1. 方法调用 <code>binding</code></a></li>
+<li><a href="#org1ac13b4">3.2. 正确的行为</a></li>
+<li><a href="#org61a895b">3.3. 可扩展性</a></li>
+<li><a href="#org60d505c">3.4. <code>private</code> 无法被覆盖</a></li>
+<li><a href="#org03e91fc">3.5. 对域的处理</a></li>
+<li><a href="#org1cc9478">3.6. 对 <code>static</code> 方法的处理</a></li>
 </ul>
 </li>
-<li><a href="#org7cdc29d">4. 构造函数和多态</a>
-<ul>
-<li><a href="#org967127c">4.1. 构造函数的调用顺序</a></li>
-</ul>
-</li>
+<li><a href="#orgcb04789">4. 构造函数和多态</a></li>
 </ul>
 </div>
 </div>
-<p>
-#+KEYWORD
-</p>
 
-<div id="outline-container-orgcb2d00f" class="outline-2">
-<h2 id="orgcb2d00f"><span class="section-number-2">1</span> 简介</h2>
+<div id="outline-container-org5060233" class="outline-2">
+<h2 id="org5060233"><span class="section-number-2">1</span> 简介</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -108,8 +101,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgbf1248f" class="outline-2">
-<h2 id="orgbf1248f"><span class="section-number-2">2</span> 重访 upcasting</h2>
+<div id="outline-container-org179f7d2" class="outline-2">
+<h2 id="org179f7d2"><span class="section-number-2">2</span> 重访 upcasting</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -249,8 +242,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 </div>
-<div id="outline-container-orgab58016" class="outline-2">
-<h2 id="orgab58016"><span class="section-number-2">3</span> 纠结</h2>
+<div id="outline-container-org3f24375" class="outline-2">
+<h2 id="org3f24375"><span class="section-number-2">3</span> 纠结</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 
@@ -261,8 +254,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgf9b623f" class="outline-3">
-<h3 id="orgf9b623f"><span class="section-number-3">3.1</span> 方法调用 <code>binding</code></h3>
+<div id="outline-container-orge12a537" class="outline-3">
+<h3 id="orge12a537"><span class="section-number-3">3.1</span> 方法调用 <code>binding</code></h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 把方法调用和方法本身连接起来的过程叫做 <code>binding</code> 。程序执行之前的 binding 叫做 early binding (可能由编译器和链接器来完成)。 <code>C</code> 语言种的 binding 都是 early binding。但是，我们前面的例子告诉我们 <code>Java</code> 中， <code>binding</code> 的方式有些不一样。因为编译器不知道到底该调用哪个方法。所以 <code>Java</code> 中的 binding 方法是所谓的 late binding .意味着 binding 发生在程序运行时。late binding 也叫做 dynamic binding 或者 runtime binding。
@@ -274,14 +267,14 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </div>
 </div>
 
-<div id="outline-container-org5265d1a" class="outline-3">
-<h3 id="org5265d1a"><span class="section-number-3">3.2</span> 正确的行为</h3>
+<div id="outline-container-org1ac13b4" class="outline-3">
+<h3 id="org1ac13b4"><span class="section-number-3">3.2</span> 正确的行为</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 一旦知晓 Java 的动态绑定，我们就可以写出支持多态的漂亮代码。你的代码针对的类型不只是当前类，当前类的父类，父类的父类的对象都可以作为参数。这在 <code>Python</code> 中也有明显的体现（Python 是完全动态的语言）。 我们使用一个经常用到的例子来阐述与 动态绑定相关的概念。
 </p>
 
-<div id="org70df2aa" class="figure">
+<div id="org0ecabcc" class="figure">
 <p><img src="../../img/computer_TIJ/20170730shape.png" alt="20170730shape.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 1:</span> 动态绑定</p>
@@ -424,8 +417,8 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 </div>
 </div>
-<div id="outline-container-org820b064" class="outline-3">
-<h3 id="org820b064"><span class="section-number-3">3.3</span> 可扩展性</h3>
+<div id="outline-container-org61a895b" class="outline-3">
+<h3 id="org61a895b"><span class="section-number-3">3.3</span> 可扩展性</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 
@@ -436,10 +429,10 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 
 <p>
-图 <a href="#org212dd88">2</a>是一个扩展的例子。
+图 <a href="#org7945c74">2</a>是一个扩展的例子。
 </p>
 
-<div id="org212dd88" class="figure">
+<div id="org7945c74" class="figure">
 <p><img src="../../img/computer_TIJ/20170805extensibility.png" alt="20170805extensibility.png" width="400" align="center" />
 </p>
 <p><span class="figure-number">图 2:</span> extensibility</p>
@@ -450,7 +443,7 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 
 <p>
-图 <a href="#org212dd88">2</a> 所示的代码如下：
+图 <a href="#org7945c74">2</a> 所示的代码如下：
 </p>
 <div class="org-src-container">
 <pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">: polymorphism/music3/Music3.java</span>
@@ -537,8 +530,8 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 </div>
 </div>
-<div id="outline-container-org4a055d8" class="outline-3">
-<h3 id="org4a055d8"><span class="section-number-3">3.4</span> <code>private</code> 无法被覆盖</h3>
+<div id="outline-container-org60d505c" class="outline-3">
+<h3 id="org60d505c"><span class="section-number-3">3.4</span> <code>private</code> 无法被覆盖</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 
@@ -573,8 +566,8 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 </div>
 </div>
-<div id="outline-container-orgdb10848" class="outline-3">
-<h3 id="orgdb10848"><span class="section-number-3">3.5</span> 对域的处理</h3>
+<div id="outline-container-org03e91fc" class="outline-3">
+<h3 id="org03e91fc"><span class="section-number-3">3.5</span> 对域的处理</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 
@@ -621,8 +614,8 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </p>
 </div>
 </div>
-<div id="outline-container-org882c5b2" class="outline-3">
-<h3 id="org882c5b2"><span class="section-number-3">3.6</span> 对 <code>static</code> 方法的处理</h3>
+<div id="outline-container-org1cc9478" class="outline-3">
+<h3 id="org1cc9478"><span class="section-number-3">3.6</span> 对 <code>static</code> 方法的处理</h3>
 <div class="outline-text-3" id="text-3-6">
 <p>
 
@@ -675,8 +668,8 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 </div>
 </div>
 </div>
-<div id="outline-container-org7cdc29d" class="outline-2">
-<h2 id="org7cdc29d"><span class="section-number-2">4</span> 构造函数和多态</h2>
+<div id="outline-container-orgcb04789" class="outline-2">
+<h2 id="orgcb04789"><span class="section-number-2">4</span> 构造函数和多态</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 
@@ -685,78 +678,6 @@ Java 中除了 <code>static</code> 和 <code>final</code> 方法外，所有的�
 <p>
 构造函数和其他函数不一样，当构造函数和多态碰撞，其发生的化学反应更是不同。首先，构造函数不具有多态属性，因为构造函数是不带 <code>static</code> 的 <code>static</code> 函数。理解构造函数和多态的结合至关重要，可以帮助我们减少很多不必要的麻烦。
 </p>
-</div>
-<div id="outline-container-org967127c" class="outline-3">
-<h3 id="org967127c"><span class="section-number-3">4.1</span> 构造函数的调用顺序</h3>
-<div class="outline-text-3" id="text-4-1">
-<p>
-
-</p>
-
-<p>
-基类的构造函数总是在继承类的构造过程中被调用。如果有多级的继承关系，那么最上面的类的构造函数会被首先调用，依次类推。这样做的好处是保证类被正确的创建。由于 <code>private</code> 只能通过构造函数设置，所以保证构造函数的调用至关重要。
-</p>
-
-<p>
-看代码：
-</p>
-<div class="org-src-container">
-<pre class="src src-c"><span class="linenr"> 1: </span><span style="color: #586e75;">//</span><span style="color: #586e75;">: polymorphism/Sandwich.java</span>
-<span class="linenr"> 2: </span><span style="color: #586e75;">// </span><span style="color: #586e75;">Order of constructor calls.</span>
-<span class="linenr"> 3: </span><span style="color: #b58900;">package</span> <span style="color: #268bd2;">polymorphism</span>;
-<span class="linenr"> 4: </span><span style="color: #b58900;">import</span> <span style="color: #859900; font-weight: bold;">static</span> net.mindview.util.Print.*;
-<span class="linenr"> 5: </span>
-<span class="linenr"> 6: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">Meal</span> <span style="color: #2aa198;">{</span>
-<span class="linenr"> 7: </span>  <span style="color: #268bd2;">Meal</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span> print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Meal()"</span><span style="color: #268bd2;">)</span>; <span style="color: #b58900;">}</span>
-<span class="linenr"> 8: </span><span style="color: #2aa198;">}</span>
-<span class="linenr"> 9: </span>
-<span class="linenr">10: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">Bread</span> <span style="color: #2aa198;">{</span>
-<span class="linenr">11: </span>  <span style="color: #268bd2;">Bread</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span> print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Bread()"</span><span style="color: #268bd2;">)</span>; <span style="color: #b58900;">}</span>
-<span class="linenr">12: </span><span style="color: #2aa198;">}</span>
-<span class="linenr">13: </span>
-<span class="linenr">14: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">Cheese</span> <span style="color: #2aa198;">{</span>
-<span class="linenr">15: </span>  <span style="color: #268bd2;">Cheese</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span> print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Cheese()"</span><span style="color: #268bd2;">)</span>; <span style="color: #b58900;">}</span>
-<span class="linenr">16: </span><span style="color: #2aa198;">}</span>
-<span class="linenr">17: </span>
-<span class="linenr">18: </span><span style="color: #b58900;">class</span> <span style="color: #268bd2;">Lettuce</span> <span style="color: #2aa198;">{</span>
-<span class="linenr">19: </span>  <span style="color: #268bd2;">Lettuce</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span> print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Lettuce()"</span><span style="color: #268bd2;">)</span>; <span style="color: #b58900;">}</span>
-<span class="linenr">20: </span><span style="color: #2aa198;">}</span>
-<span class="linenr">21: </span>
-<span class="linenr">22: </span><span style="color: #b58900;">class</span> Lunch <span style="color: #b58900;">extends</span> <span style="color: #268bd2;">Meal</span> <span style="color: #2aa198;">{</span>
-<span class="linenr">23: </span>  <span style="color: #268bd2;">Lunch</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span> print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Lunch()"</span><span style="color: #268bd2;">)</span>; <span style="color: #b58900;">}</span>
-<span class="linenr">24: </span><span style="color: #2aa198;">}</span>
-<span class="linenr">25: </span>
-<span class="linenr">26: </span><span style="color: #b58900;">class</span> PortableLunch <span style="color: #b58900;">extends</span> <span style="color: #268bd2;">Lunch</span> <span style="color: #2aa198;">{</span>
-<span class="linenr">27: </span>  <span style="color: #268bd2;">PortableLunch</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span> print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"PortableLunch()"</span><span style="color: #268bd2;">)</span>;<span style="color: #b58900;">}</span>
-<span class="linenr">28: </span><span style="color: #2aa198;">}</span>
-<span class="linenr">29: </span>
-<span class="linenr">30: </span>public <span style="color: #b58900;">class</span> Sandwich <span style="color: #b58900;">extends</span> <span style="color: #268bd2;">PortableLunch</span> <span style="color: #2aa198;">{</span>
-<span class="linenr">31: </span>  private <span style="color: #b58900;">Bread</span> <span style="color: #268bd2;">b</span> = new Bread<span style="color: #b58900;">()</span>;
-<span class="linenr">32: </span>  private <span style="color: #b58900;">Cheese</span> <span style="color: #268bd2;">c</span> = new Cheese<span style="color: #b58900;">()</span>;
-<span class="linenr">33: </span>  private <span style="color: #b58900;">Lettuce</span> <span style="color: #268bd2;">l</span> = new Lettuce<span style="color: #b58900;">()</span>;
-<span class="linenr">34: </span>  <span style="color: #b58900;">public</span> <span style="color: #268bd2;">Sandwich</span><span style="color: #b58900;">()</span> <span style="color: #b58900;">{</span> print<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"Sandwich()"</span><span style="color: #268bd2;">)</span>; <span style="color: #b58900;">}</span>
-<span class="linenr">35: </span>  <span style="color: #b58900;">public</span> <span style="color: #859900; font-weight: bold;">static</span> <span style="color: #b58900;">void</span> <span style="color: #268bd2;">main</span><span style="color: #b58900;">(</span><span style="color: #b58900;">String</span><span style="color: #268bd2;">[]</span> args<span style="color: #b58900;">)</span> <span style="color: #b58900;">{</span>
-<span class="linenr">36: </span>    <span style="color: #b58900;">new</span> <span style="color: #268bd2;">Sandwich</span><span style="color: #268bd2;">()</span>;
-<span class="linenr">37: </span>  <span style="color: #b58900;">}</span>
-<span class="linenr">38: </span><span style="color: #2aa198;">}</span> <span style="color: #586e75;">/* </span><span style="color: #586e75;">Output:</span>
-<span class="linenr">39: </span><span style="color: #586e75;">Meal()</span>
-<span class="linenr">40: </span><span style="color: #586e75;">Lunch()</span>
-<span class="linenr">41: </span><span style="color: #586e75;">PortableLunch()</span>
-<span class="linenr">42: </span><span style="color: #586e75;">Bread()</span>
-<span class="linenr">43: </span><span style="color: #586e75;">Cheese()</span>
-<span class="linenr">44: </span><span style="color: #586e75;">Lettuce()</span>
-<span class="linenr">45: </span><span style="color: #586e75;">Sandwich()</span>
-<span class="linenr">46: </span><span style="color: #586e75;">*///</span><span style="color: #586e75;">:~</span>
-</pre>
-</div>
-<p>
-在这个例子中，我们看到的层级关系是 <code>Meal-&gt;Lunch-&gt;PortableLunch-&gt;Sandwich</code> 。所以在创建 <code>Sandwich</code> 对象时，最先调用 <code>Meal</code> 的构造函数，然后是 <code>Lunch</code> , <code>PortableLunch</code> 接下来是类主体中的 <code>Bread</code> <code>Cheese</code> <code>Lettuce</code> 最后是 <code>main</code> 函数中的 <code>new Sandwich()</code> .
-</p>
-
-<p>
-当有继承过程时，你需要清楚所有的基类，并且可以访问所有基类的带有 <code>public</code> 和 <code>protected</code> 的成员。
-</p>
-</div>
 </div>
 </div>
 </div>

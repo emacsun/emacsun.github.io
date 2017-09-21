@@ -1,0 +1,27 @@
+#+TITLE:  我用Emacs做什么
+#+AUTHOR:    emacsun
+#+EMAIL:     emacsun@163.com
+#+DATE:      
+#+DESCRIPTION:  总结了我使用Emacs做的事情
+#+KEYWORDS:  
+#+CATEGORIES: 
+#+SETUPFILE: ~/.emacs.d/org-templates/emacs-level2.org
+#+HTML_HEAD_EXTRA: <a id="pdf"  href="./emacs-do-what.pdf"><img src="../../img/assets/pdf.png"></a>
+#+LaTeX_CLASS: cn-article
+
+Emacs已经是我工作和生活的瑞士军刀，我用Emacs做这些事情：
+
+  + 用Emacs做C编程IDE
+  + 用Emacs做matlab编程IDE
+  + 用Emacs做我的资源管理器
+  + 用Emacs控制firefox,查看css，js效果
+  + 用Emacs做git前端，magit就是神器
+  + 用Emacs收发邮件
+  + 用Org管理待办事项和日程，org是神器中的战斗器
+  + 用Org写博客并发表博客
+  + 用Org进行文学编程，文档和代码一气呵成
+  + 用Emacs做Java变成的IDE（通过eclimd做eclipse的前端）
+  + 用Emacs做Python的IDE（Anaconda-mode）
+
+
+Emacs为我的工作流提供了一站式的解决方案:基本上，打开电脑的第一件事情是打开Emacs，退出Emacs的时候就是关机的时候。

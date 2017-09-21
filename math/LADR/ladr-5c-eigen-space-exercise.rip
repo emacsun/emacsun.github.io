@@ -1,0 +1,6 @@
+% -*- mode: reftex-index-phrases; TeX-master: "ladr-5c-eigen-space-exercise.org" -*-
+%                              Key      Macro Format            Repeat
+%---------------------------------------------------------------------
+>>>INDEX_MACRO_DEFINITION:	i	\index{%s}          	t
+>>>INDEX_MACRO_DEFINITION:	g	\glossary{%s}       	t
+%---------------------------------------------------------------------

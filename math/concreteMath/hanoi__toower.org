@@ -1,17 +1,18 @@
 #+TITLE:  递归问题： 汉诺塔
-#+AUTHOR:    emacsun
+#+AUTHOR:    Eastern(ZCL)
 #+EMAIL:     emacsun@163.com
-#+DATE:      <2015-05-24 Sun>
+#+DATE:      
 #+DESCRIPTION:  本文探讨具体数学第一章递归问题中的第二个问题：瑞士披萨
 #+KEYWORDS:  
 #+CATEGORIES: 
 #+SETUPFILE: ~/.emacs.d/org-templates/math-level2.org
+#+HTML_HEAD_EXTRA: <a id="pdf" href="hanoi__toower.pdf"><img src="../../img/assets/pdf.png"></a>
 #+LaTeX_CLASS: cn-article  
                       
 * 问题描述
 <2014-06-21 Sat 15:00>
 
-  该问题由1883年法国数学家爱德华.卢卡斯。如下图所示
+  该问题由1883年法国数学家爱德华.卢卡斯提出。如下图所示
      #+CAPTION: 汉诺塔
      #+ATTR_HTML: :alt cat/spider image :align center
      #+ATTR_LATEX: :width 5cm
@@ -95,7 +96,7 @@ R_{n} =
 * 拓展2：双重汉诺塔
   <2014-06-25 Wed 15:44>
 
-双重汉诺塔有 \(2n\) 个圆盘，它们有 \(n\) 个不同的尺寸，每一种尺寸的圆盘有两个。如通常那样，要求每次只能移动一个圆盘，且不能把较大的圆盘放在较小的圆盘上面。
+ 双重汉诺塔有 \(2n\) 个圆盘，它们有 \(n\) 个不同的尺寸，每一种尺寸的圆盘有两个。如通常那样，要求每次只能移动一个圆盘，且不能把较大的圆盘放在较小的圆盘上面。
 
 a. 如果相同尺寸的圆盘是相互不可区分的，要把一个双重塔从一根桩柱移动到另一根桩柱需要移动多少次？
 b. 如果在最后的排列中要把所有同样尺寸的圆盘回复称原来从上到下的次序，需要移动多少次？

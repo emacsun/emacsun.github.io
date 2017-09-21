@@ -1,0 +1,156 @@
+#+TITLE: 对偶空间与对偶映射 
+#+AUTHOR:    张朝龙
+#+EMAIL:     emacsun@163.com
+#+DATE:      
+#+DESCRIPTION:  
+#+KEYWORDS:  
+#+CATEGORIES: 
+#+SETUPFILE: ~/.emacs.d/org-templates/math-level2.org
+#+LaTeX_CLASS: cn-article
+#+HTML_HEAD_EXTRA: <a id="pdf"  href="./duality.pdf"><img src="../../img/assets/pdf.png"></a>
+#+OPTIONS: toc:nil
+
+  在线性代数中，映射到标量域\(\mathbf{F}\)的线性映射具有非常重要的作用。
+#+begin_definition
+\(V\)上的线性泛函是从\(V\)到\(\mathbf{F}\)的线性映射。也就是说线性泛函是\(\mathcal{L}(V,\mathbf{F})\) 中的元素。
+#+end_definition
+
+#+begin_instance
+1. 定义\(\phi: \mathbf{R}^{3} \rightarrow \mathbf{R}\)为\(\phi(x,y,z) = 4x-5y + 2z\)，则\(\phi\)是\(\mathbf{R}^{3}\)上的线性泛函。
+2. 取定\((c_{1},\ldots ,c_{n})\in \mathbf{F}^{n}\)，定义\(\phi : \mathbf{F}^{n} \rightarrow \mathbf{F}\)为：\(\phi(x_{1},\ldots ,x_{n}) = c_{1}x_{x} + \ldots c_{n}x_{n}\)，则\(\phi\)是\(\mathbf{F}^{n}\)上的线性泛函。
+3. 定义\(\phi: \mathcal{P}( \mathbf{R}) \rightarrow \mathbf{R}\)为\(\phi(p) = 2p^{''}(5) + 7p(4)\)，则\(\phi\)是\(\mathcal{P}( \mathbf{R})\)上的线性泛函。
+4. 定义\(\phi: \mathcal{P}(\mathbf{R}) \rightarrow \mathbf{R}\)为\(\phi(p)=\int_{0}^{1} p(x)dx\)，则\(\phi\)是\(\mathcal{P}(\mathbf{R})\)上的线性泛函。
+#+end_instance
+
+#+begin_definition
+\(V\)上的所有线性泛函构成的向量空间称为\(V\)的对偶空间，记为\(V^{'}\)。也就是说，\(V^{'} = \mathcal{L}(V, \mathbf{F})\)
+#+end_definition
+
+#+begin_theorem
+\(\dim V^{'} = \dim V \)
+#+end_theorem
+
+#+begin_proof
+我们之前 3.61 证明过：\(\dim(\mathcal{L}(V,W)) = (\dim V)(\dim W) \)。
+
+对于这个命题因为\(V^{'} = \mathcal{L}(V,F)\) ，所以\(\dim(V^{'}) = \dim(V)\dim(\mathbf{F})\)，又因为\(\dim \mathbf{F} = 1\) .
+
+这里\(V^{'}\)是线性泛函的集合，(线性泛函都是从\(V\)到\(\mathbf{F}\)的映射。)
+
+#+end_proof
+
+#+begin_definition
+设\(v_{1},\ldots ,v_{n}\)是\(V\)的基，则\(v_{1},\ldots ,v_{n}\)的对偶基是\(V^{'}\)中的元素组\(\varphi_{1}, \ldots ,\varphi_{n}\)，其中每个\(\varphi_{j}\)都是\(V\)上的线性泛函，满足：
+\begin{equation}
+\label{eq:1}
+\varphi_{j}(v_{k}) = 
+\begin{cases}
+1, & k=j \\
+0, & k\neq j 
+\end{cases}
+\end{equation}
+
+#+end_definition
+
+#+begin_instance
+求\(\mathbf{F}^{n}\)的标准基\(e_{1},\ldots ,e_{n}\)的对偶基。
+
+对于\(1\leq j \leq n\)，定义\(\varphi_{j}\)是\(\mathbf{F}^{n}\)上的线性泛函，满足\(\forall (x_{1},\ldots ,x_{n})\in \mathbf{F}^{n}\):
+\begin{equation}
+\label{eq:2}
+\varphi_{j}(x_{1},\ldots ,x_{n}) = x^{j}
+\end{equation}
+
+显然：
+\begin{equation}
+\label{eq:3}
+\varphi_{j}(v_{k}) = 
+\begin{cases}
+1, & k=j \\
+0, & k\neq j 
+\end{cases}
+\end{equation}
+于是\(\varphi_{1},\ldots ,\varphi_{n}\)是\(\mathbf{F}^{n}\)的标准基\(e_{1},\ldots ,e_{n}\)的对偶基。
+
+从对偶基的定义可以看出对偶基与\(V\)的基紧密相关，由于对偶基是\(V^{'}\)中满足特定条件的线性映射，根据定义，对偶基是把\(V\)的基的各个元素映射称\(1\)或者\(0\)的线性泛函的集合。注意对偶基是把\(V\)中的基映射为\(\mathbf{F}\)中的\(1\)而不是其他元素，所以可以想见这个对偶基在以后有很多特殊的应用。
+
+#+end_instance
+
+#+begin_theorem
+设\(V\)是有限维的，则\(V\)的一个基的对偶基是\(V^{'}\)的基。
+#+end_theorem
+
+#+begin_proof
+还是从定义出发逐一解读这个命题的关键元素。
+
+首先\(V\)是有限维的，说明\(V\)的维度有限。\(V\)的一个基的对偶基是\(V^{'}\)中的元素，这些元素是线性泛函，这些线性泛函把\(V\)的基映射称\(\mathbf{F}\)中的\(1\)或者\(0\)，另外注意：\(1\)是\(\mathbf{F}\)中的乘法单位元，\(0\)是\(\mathbf{F}\)中的加法零元。
+
+所以我们假设\(v_{1},\ldots ,v_{n}\)是\(V\)的基，则\(V^{'}\)的对偶基也有\(n\)个元素，假设为\(\varphi_{1},\ldots ,\varphi_{n}\)。我们接下来要证明\(\varphi_{1},\ldots ,\varphi_{n}\)是线性无关且张成\(V^{'}\)。
+
+为了证明\(\varphi_{1},\ldots ,\varphi_{n}\)是线性独立的，令:
+\begin{equation}
+\label{eq:4}
+0 = a_{1}\varphi_{1} + \ldots + a_{n}\varphi_{n}
+\end{equation}
+我们只要得到\(a_{i},\forall i\)即可。注意上式左端的\(0\)是对偶空间中的\(0\)元素，是一个线性泛函。
+
+对上式两端我们作用于\(v_{i}\)，显然有\(0v_{i} = 0 = a_{i}\varphi_{i}(v_{i})\) . 根据对偶基的定义，我们有\(a_{i}\varphi_{i}(v_{i}) = a_{i}, a_{j}\varphi_{j}(v_{i}) = 0, \forall j\neq i\).
+
+所以\(a_{i} = 0, \forall i\)
+
+又因为，我们之前有\(\dim V^{'} = \dim V\)。而\(\dim span(\varphi_{1},\ldots ,\varphi_{n}) = n\)，所以\(\dim V^{'} = n\)。
+
+所以\(\varphi_{1},\ldots ,\varphi_{n}\)是\(V^{'}\)的一组基（若\(V^{'}\)是有限维的，则\(V^{'}\)中每个长度为\(\dim V^{'}\) 的线性无关向量组都是\(V^{'}\)的基）。
+#+end_proof
+
+#+begin_definition
+若\(T\in \mathcal{L}(V,W)\)，则\(T\)的对偶映射是线性映射\(T^{'} \in \mathcal{L}(W^{'},V^{'})\)：对于\(\varphi \in W^{'}\)， \(T^{'}(\varphi) = \varphi \circ T\)
+#+end_definition
+
+注意这里的\(W^{'},V^{'}\)分别是\(W,V\)上的所有线性泛函构成的向量空间，即\(W,V\)的对偶空间。\(\varphi\in W^{'}\)表明\(\varphi\)是从\(W\)到\(\mathbf{F}\)的线性映射。
+
+
+如果\(T\in \mathcal{L}(V,W)\)， \(\varphi \in W^{'}\)，那么\(T^{'}(\varphi)\)被定义为线性映射\(\varphi\)与\(T\)的复合。于是，由于\(T\)是从\(V\)到\(W\)的线性映射，而\(\varphi\)是从\(W\)到\(\mathbf{F}\)的线性泛函。所以\(\varphi\circ T\)是从\(V\)到\(\mathbf{F}\)的线性泛函，即 \(T^{'}(\varphi)\)的确是\(V\)到\(\mathbf{F}\)的线性映射。也就是说，\(T^{'}(\varphi)\in V^{'}\)
+
+验证\(T^{'}\)是\(W^{'}\)到\(V^{'}\)的线性映射：
+1. 若\(\varphi,\phi \in W^{'}\)，则\(T^{'}(\phi + \varphi) = ( \phi + \varphi )\circ T = \phi \circ T + \varphi \circ T = T^{'}(\phi) + T^{'}(\varphi)\)
+2. 若\(\lambda \in \mathbf{F}, \varphi\in W^{'}\)，则\(T^{'}(\lambda\varphi) = (\lambda\varphi)\circ T = \lambda(\varphi\circ T) = \lambda T^{'}(\varphi)\)
+
+在下面的例子中，\(^{'}\)有两种毫不相干的意义：\(D^{'}\)表示线性映射\(D\)的对偶映射，\(p^{'}\)则表示多项式\(p\)的导数。
+
+#+begin_instance
+定义：\(D: \mathcal{P}(\mathbf{R}) \rightarrow \mathcal{P}(\mathbf{R})\)为\(Dp = p^{'}\)
+1. 设\(\varphi\)是\(\mathcal{P}(\mathbf{R})\)上由\(\varphi(p) = p(3)\)定义的线性泛函。则\(D^{'}(\varphi)\)是\(\mathcal{P}(\mathbf{R})\)上如下定义的线性泛函：\[(D^{'}(\varphi))(p) =(\varphi\circ D)(p) = \varphi(Dp) = \varphi(p^{'}) = p^{'}(3) \]即：\(D^{'}(\varphi)\)是\(\mathcal{P}(\mathbf{R})\)上将\(p\)变成\(p^{'}(3)\)的线性泛函。
+2. 设\(\varphi\)是\(\mathcal{P}(\mathbf{R})\)上由\(\varphi(p) = \int_{0}^{1}p(x)dx\)定义的线性泛函。则\(D^{'}(\varphi)\)是\(\mathcal{P}(\mathbf{R})\)上如下定义的线性泛函：\[(D^{'}(\varphi)(p)) = (\varphi\circ D)(p) = \varphi(D(p)) = \varphi(p^{'}) = \int_{0}^{1} p^{'}(x)dx = p(1) - p(0)\]即：\(D^{'}(\varphi)\)是\(\mathcal{P}(\mathbf{R})\)上将\(p\)变为\(p(1)-p(0)\)的线性泛函。
+
+#+end_instance
+
+对偶映射的代数性质：
+1. 对所有\(S,T\in \mathcal{L}(V,W)\)有\( (S+T)^{'} = S^{'} + T^{'}\)
+2. 对所有\(\lambda \in \mathbf{F}\)和所有\(T\in \mathcal{L}(V,W)\)，有\((\lambda T)^{'} = \lambda T^{'}\)
+3. 对所有\(T\in \mathcal{L}(U,V)\)和所有\(S\in \mathcal{L}(V,W)\)，有\((ST)^{'} = T^{'}S^{'}\)
+
+#+begin_proof
+对于第一条，根据对偶映射的定义 (*若\(T\in \mathcal{L}(V,W)\),则\(T\)的对偶映射是线性映射\(T^{'}\in \mathcal{L}(W^{'},V^{'})\):对于\(\varphi\in W^{'}, T^{'}(\varphi)= \varphi\circ T\)*)，对于\(\varphi\in W^{'}\)，有：
+\begin{equation}
+\label{eq:5}
+(S^{'} + T^{'})(\varphi) = \varphi \circ (S + T) = \varphi \circ S + \varphi \circ T = S^{'})(\varphi) + T^{'}(\varphi)  = (S^{'} + T^{'})(\varphi)
+\end{equation}
+
+对于第二条，同样根据对偶映射的定义(若\(T\in \mathcal{L}(V,W)\),则\(T\)的对偶映射\(T^{'}\in \mathcal{L}(W^{'},V^{'})\)，对于\(\varphi\in W^{'}\)，有\(T^{'}(\varphi) = \varphi\circ T\)) ，对于\(\varphi \in W^{'}\)，有：
+\begin{equation}
+\label{eq:6}
+(\lambda T)^{'} (\varphi) = \varphi \circ (\lambda T) =\lambda (\varphi \circ T) = \lambda (T^{'}(\varphi))
+\end{equation}
+
+对于第三条：
+
+假设有\(\varphi\in W^{'}\)，则有：
+\begin{equation}
+\label{eq:7}
+(ST)^{'}(\varphi) = \varphi \circ ST = (\varphi \circ S )\circ T = T^{'}(\varphi \circ S) = T^{'}(S^{'}(\varphi)) = T^{'}S^{'}(\varphi)
+\end{equation}
+
+使用对偶映射的定义推导出第一个等号，使用映射的结合性推出第二个等号，使用对偶映射的定义推导出第三个等号，使用对偶映射的结合性对导出第四个等号，使用映射的结合性推出第五个等号。
+#+end_proof
+

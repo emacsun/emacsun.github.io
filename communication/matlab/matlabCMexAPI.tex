@@ -1,0 +1,236 @@
+\documentclass[10pt,a4paper,UTF8]{article}
+\usepackage{zclorg}
+\author{zcl.space}
+\date{}
+\title{Matlab与C混合编程之二:C/C++ MEX API}
+\hypersetup{
+ pdfauthor={zcl.space},
+ pdftitle={Matlab与C混合编程之二:C/C++ MEX API},
+ pdfkeywords={matlab communication simulation C},
+ pdfsubject={本文描述LTE-FDD和TDD的频带资源},
+ pdfcreator={Emacs 25.0.50.1 (Org mode 8.3.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle\xiaosihao
+\tableofcontents\newpage\newpage
+
+
+
+
+\section{引言}
+\label{sec:orgheadline1}
+
+
+为方便matlab和C混合编程，matlab定义了一些可以在C代码中使用的数据类型和函数。本文首先给出这些数据类型和函数，然后举例演示这些数据类型和函数的使用过程。由于各个API之间相对独立，在阅读本文的过程中，读者随时可以通过目录按钮跳转到自己感兴趣的内容。也可以通过留言板向我提问（我的主页地址是 \texttt{zcl.space} ）。
+
+\section{matlab提供的数据类型}
+\label{sec:orgheadline2}
+
+
+
+为了方便编写能够在matlab中调用的C代码（通过MEX文件调用），matlab定义了一些数据类型。在编写C代码过程中，程序员使用这些数据类型就像使用C语言的 \texttt{int} \texttt{char} 那样简单。表\ref{tab:orgtable1}给出了matlab提供的数据类型以及简单的描述。
+
+\begin{table}[htb]
+\caption{\label{tab:orgtable1}
+matlab提供的数据类型}
+\centering
+\begin{tabular}{ll}
+\hline
+数据类型 & 描述\\
+\hline
+\texttt{mxArray} & matlab array，是的在C中可以定义matlab array\\
+\texttt{mwSize} & 专门为描述matlab的矩阵大小定义的类型，主要是为了方便代码跨平台，大多数情况 \texttt{int} 也可以\\
+\texttt{mxIndex} & 为索引变量定义的类型，与 \texttt{mwSize} 差不多\\
+\texttt{mwSignedIndex} & 有符号整型，主要为描述矩阵大小定义\\
+\texttt{mwChar} & 为 string 数组定义的类型\\
+\texttt{mxLogical} & 为 logical 数组定义的类型\\
+\texttt{mxClassID} & \\
+\texttt{mxComplexity} & 指示数组元素是否包含复数的旗标（flag ）\\
+\texttt{mxGetEps} & EPS\\
+\texttt{mxGetInf} & 无穷大\\
+\texttt{mxGetNaN} & NaN\\
+\hline
+\end{tabular}
+\end{table}
+\section{matlab提供的函数API}
+\label{sec:orgheadline7}
+
+
+matlab为C编程提供了丰富的API。根据其功能，这些API主要可以分为以下四类：
+\begin{enumerate}
+\item 创建或者删除数组
+\item 验证数据有效性
+\item 存取数据
+\item 数据类型转换
+\end{enumerate}
+
+我们分四个小节简要列出这些函数名称及其功能。
+
+\subsection{创建或者删除数组}
+\label{sec:orgheadline3}
+
+
+这一类API方便程序员在C代码中创建特定类型的数组，并为其分配或者释放内存。表\ref{tab:orgtable2}给出了这类API的名称和相关定义。
+\begin{table}[htb]
+\caption{\label{tab:orgtable2}
+创建删除数组API}
+\centering
+\begin{tabular}{ll}
+\hline
+名称 & 功能\\
+\hline
+\texttt{mxCreateDoubleMatrix} & 创建二维双精度浮点数组\\
+\texttt{mxCreateDoubleScale} & 标量，双精度数组（初始化为特定值）\\
+\texttt{mxCreateNumericMatrix} & 创建二维数值矩阵\\
+\texttt{mxCreateNumericArray} & 创建N维数值数组\\
+\texttt{mxCreateUnitintNumericMatrix} & Unintialized 2-D numeric matrix\\
+\texttt{mxCreateUninintNumericArray} & 未初始化的N维数组\\
+\texttt{mxCreateString} & 一维符号数组，字符串\\
+\texttt{mxCreateCharMatrixFromStrings} & 二维字符串数组\\
+\texttt{mxStringCharArray} & N维字符串数组\\
+\texttt{mxCreateLogicalScalar} & 标量或者逻辑变量数组\\
+\texttt{mxCreatelogicalMatrix} & 二维逻辑数组\\
+\texttt{mxCreateLogicalArray} & N维逻辑数组\\
+\texttt{mxCreateSparseLogicalMatrix} & 二维稀疏逻辑数组\\
+\texttt{mxCreateSparse} & 二维稀疏数组\\
+\texttt{mxCreateStructMatrix} & 二维 structure数组\\
+\texttt{mxCreateStructArray} & N维structure数组\\
+\texttt{mxCreateCellMatrix} & 二维cell数组\\
+\texttt{mxCreateCellArray} & N维structure数组\\
+\texttt{mxDestroyArray} & 释放分配的内存空间\\
+\texttt{mxDuplicateArray} & 复制数组空间\\
+\texttt{mxCalloc} & 使用matlab的内存管理器分配数组，初始化为0\\
+\texttt{mxMalloc} & 使用matlab的内存管理器分配未初始化的数组\\
+\texttt{mxRealloc} & 使用matlab的内存管理器再次动态分配内存\\
+\texttt{mxFree} & 释放使用matlab内存管理器分配的内存\\
+\hline
+\end{tabular}
+\end{table}
+\subsection{验证数据}
+\label{sec:orgheadline4}
+
+
+matlab为验证数据也提供了一些API，这些API的主要作用是判断输入数据的类型。如表\ref{tab:orgtable3}所示。
+\begin{table}[htb]
+\caption{\label{tab:orgtable3}
+验证数据API}
+\centering
+\begin{tabular}{ll}
+\hline
+名称 & 功能\\
+\hline
+\texttt{mxIsDoulbe} & 判断mxArray是不是双精度浮点数\\
+\texttt{mxIsSingle} & 判断mxArray是不是单精度浮点数\\
+\texttt{mxIsComplex} & 判断是否为复数\\
+\texttt{mxIsNumeric} & 判断是否为numeric\\
+\texttt{mxIsInt64} & 判断是不是64bit整型\\
+\texttt{mxIsUint64} & 判断是不是无符号64bit整型\\
+\texttt{mxIsInt32} & 判断是不是32位整型\\
+\texttt{mxIsUint32} & 判断是不是无符号32位整型\\
+\texttt{mxIsInt16} & 判断是不是16位整型\\
+\texttt{mxIsUint16} & 判断是不是无符号16位整型\\
+\texttt{mxIsInt8} & 判断是不是16位整型\\
+\texttt{mxIsUint8} & 判断是不是无符号16位整型\\
+\texttt{mxIsScalar} & 判断是不是scalar数组\\
+\texttt{mxIsChar} & 判断是不是符号数组\\
+\texttt{mxIsLogical} & 判断是不是逻辑\\
+\texttt{mxIsLogicalScalar} & 判断是不是逻辑数组\\
+\texttt{mxIsLogicalScalarTrue} & 判断逻辑数组是不是真\\
+\texttt{mxIsStruct} & 判断是否为sturcture数组\\
+\texttt{mxIsCell} & 判断是不是cell数组\\
+\texttt{mxIsClass} & 判断是不是特定的类型\\
+\texttt{mxIsInf} & 判断输入是不是无穷大\\
+\texttt{mxIsFinite} & 判断输入是不是有限大\\
+\texttt{mxIsNaN} & 判断输入是不是NaN\\
+\texttt{mxIsEmpty} & 判断数组是否为空\\
+\texttt{mxIsSparse} & 判断输入是否为稀疏数组\\
+\texttt{mxIsFromGlobalWS} & 判断数组是否从matlab全局空间传入\\
+\texttt{mxAssert} & 判断assertion值（用于debug）\\
+\texttt{mxAssertS} & 判断assertion值，不打印assertion文本\\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{读取数据}
+\label{sec:orgheadline5}
+
+
+matlab为数据读写定义了一些API。这些API在 \texttt{mexFunction} 函数中使用非常广泛，极大的方便了matlab和C之间的数据传递。表\ref{tab:orgtable4}给出了这些函数名称和功能简述
+
+\begin{table}[htb]
+\caption{\label{tab:orgtable4}
+读取数据API}
+\centering
+\begin{tabular}{ll}
+\hline
+名称 & 功能简述\\
+\hline
+\texttt{mxGetNumberOfDimensions} & 获取数组的维度\\
+\texttt{mxGetElementSize} & 每一个数据元素需要的字节数\\
+\texttt{mxGetDimensions} & 指向数组维度的指针\\
+\texttt{mxSetDimensions} & 修改维度和每一维的大小\\
+\texttt{mxGetNumberOfElements} & 数组中元素的个数\\
+\texttt{mxCalcSingleSubscript} & 相对于起始元素的偏移量\\
+\texttt{mxGetM} & 数组元素的行数\\
+\texttt{mxGetN} & 数组元素的列数\\
+\texttt{mxSetM} & 设置数组元素的行数\\
+\texttt{mxSetN} & 设置数组元素的列数\\
+\texttt{mxGetScalsr} & 第一个数据元素的实部\\
+\texttt{mxGetPr} & 数组的实部\\
+\texttt{mxSetPr} & 设置数组的实部\\
+\texttt{mxGetPi} & 数组的虚部\\
+\texttt{mxSetPi} & 设置数组的虚部\\
+\texttt{mxGetData} & 指向数组中实部的指针\\
+\texttt{mxSetData} & 设置指向数组中实部的指针\\
+\texttt{mxGetImagData} & 指向数组中虚部的指针\\
+\texttt{mxSetImagData} & 设置指向数组中虚部的指针\\
+\texttt{mxGetChars} & 指向字符数组的指针\\
+\texttt{mxGetLogicals} & 指向逻辑类型数组的指针\\
+\texttt{mxGetClassID} & 数组的类型\\
+\texttt{mxGetClassName} & 数组的类型（以字符串返回）\\
+\texttt{mxSetClassName} & 把C中的Array指定为matlab中的array\\
+\texttt{mxGetProperty} & matlab对象的公共值\\
+\texttt{mxSetProperty} & 设置matlab对象的公共值\\
+\texttt{mxGetField} & 获取structure的域（给定index和name）\\
+\texttt{mxSetField} & 设置structure的域\\
+\texttt{mxGetNumberOfFields} & structure中的域个数\\
+\texttt{mxGetFieldNameByNumber} & 给定域编号获得域的名字\\
+\texttt{mxGetFieldNumber} & 给定域名字获得域编号\\
+\texttt{mxGetFieldByNumber} & 给定域索引和域数值获得域值\\
+\texttt{mxSetFieldByNumber} & 给定索引和域数值，设置域值\\
+\texttt{mxAddField} & 在结构体中添加域\\
+\texttt{mxRemoveField} & 在结构体中去除域\\
+\texttt{mxGetCell} & 获取Cell数组的值\\
+\texttt{mxSetCell} & 设置Cell数组的值\\
+\texttt{mxGetNzmax} & IR，PR，PI数组的元素个数\\
+\texttt{mxSetNzmax} & 为非零元素设置空间数\\
+\texttt{mxGetIr} & 稀疏IR数组\\
+\texttt{mxSetIr} & 稀疏数组的IR数组\\
+\texttt{mxGetJc} & 稀疏JC数组\\
+\texttt{mxSetJc} & JC数组的稀疏数组\\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{数据类型转换}
+\label{sec:orgheadline6}
+
+
+matlab为字符和数组之间的数据类型转换提供了API，如表tab:20151111ConvertDataTypes所示。
+\begin{table}[htb]
+\caption{\label{tab:orgtable5}
+数据类型转换}
+\centering
+\begin{tabular}{ll}
+\hline
+名称 & 功能简述\\
+\hline
+\texttt{mxArrayToString} & array向字符串转化\\
+\texttt{mxArrayToUTF8String} & array向字符串转化（用UTF8编码）\\
+\texttt{mxGetString} & 把string数组转化为C-style字符串\\
+\texttt{mxSetClassName} & 结构体数组转向matlab对象数组\\
+\hline
+\end{tabular}
+\end{table}
+\end{document}

@@ -1,0 +1,146 @@
+#+TITLE: Emacs 联合 Hugo 管理博客
+#+AUTHOR:    emacsun
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+CATEGORIES:
+#+SETUPFILE: ~/.emacs.d/org-templates/emacs-level2.org
+#+LaTeX_CLASS: cn-article
+
+* 简介
+  [2017-07-22 Sat 09:58]
+
+Emacs 的强大自不必说。[[http://gohugo.io/][hugo]] 是一个强大且轻量的静态博客发布工具。结合 Emacs 和 Hugo , [[https://github.com/masasam/emacs-easy-hugo][easy-hugo]] 实现了 Emacs 作为 Hugo 的前端。本文介绍使用 Hugo 发布静态博客，并使用 Emacs 管理博客的流程。
+
+* 使用 Hugo
+  [2017-07-22 Sat 10:05]
+
+  下载，安装过程免去，见官网的[[http://gohugo.io/getting-started/quick-start/][quick start]] 。
+** 本地使用
+  [2017-07-22 Sat 15:22]
+
+  到 =~/zorg/hugo/= *生成一个静态站点* 使用命令：
+#+begin_example
+hugo new site bookshelf
+#+end_example
+
+这样，在 =hugo= 目录下就生成了一个目录 =bookshelf= ，里面目录的结构如下图：
+#+CAPTION:  bookshelf 的结构图
+#+ATTR_HTML:  :width 400 :align center
+#+NAME: fig:20170722hugobookshelf
+#+ATTR_LATEX: :width 0.6\textwidth :align center
+[[../../img/tools_emacs/20170722hugobookshelf.png]]
+
+好了，一个静态博客建成。让我们写一篇新的博客。
+#+begin_example
+hugo new post/godfather.md
+#+end_example
+在 bookshelf 下的 =content/post= 里有一篇博客生成，格式是 =markdown= 。写几句话吧。
+
+ hugo 支持 =org-mode= =markdown= 还有其他格式。
+
+ hugo 有一个内置的 server。通过这个 server 你可以在本地浏览器上预览博文。预览命令：
+#+begin_example
+hugo server --buildDrafts
+#+end_example
+
+你会看到输出：
+#+begin_example
+Started building sites ...
+Built site for language en:
+1 of 1 draft rendered
+0 future content
+0 expired content
+1 regular pages created
+8 other pages created
+0 non-page files copied
+0 paginator pages created
+0 tags created
+0 categories created
+total in 10 ms
+Watching for changes in /home/cliyh/zorg/hugo/bookshelf/{data,content,layouts,static}
+Serving pages from memory
+Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+#+end_example
+
+注意：
+#+begin_example
+1 of 1 draft rendered
+#+end_example
+
+这个 draft 就是刚刚的 =godfather.md= 。但是这个时候我们通过 =http://localhost:1313/= 不能预览博文，因为这个静态网站里有一个很重要的文件需要修改， =config.toml= .
+
+我使用主题 =mainroad= , [[https://github.com/Vimux/mainroad/tree/32ee86a83e61a61c9ec1c7e5b16461caec06a55d][在这里下载]]。 这个主题里有一个现成的 =config.toml= 照着改一下。
+** 发布到万维网
+   [2017-07-22 Sat 15:22]
+
+   写博客一是为了记录二是为了交流。发布到万维网上是交流的最好方式，全世界都是你的潜在读者。使用 hugo 发布到互联网的方式有很多，见[[http://gohugo.io/hosting-and-deployment/][这里]]。我们重点讨论[[http://gohugo.io/hosting-and-deployment/hosting-on-github/][使用 github 放置博客]]。
+
+   即使使用 github，也有很多途径。我们使用 gh-pages 分支的方式。你可以配置 github 使用 master 分支或者 gh-pages 分支来存放博客。使用 gh-pages 方式有些复杂，但是这种方式有其独特优点：
+   1. 使用 gh-pages 可以使原文件和生成的静态博客在不同的分支上，进行独立的版本控制。
+   2. 使用 gh-pages 默认使用 Hugo 生成的 public 文件夹存放静态博客。
+
+我准备用 =https://emacsun.github.io/myblog= 来放置这个博客（或许你读这篇文章的时，这个站点已被删掉。这仅仅是一个测试博客，不影响你按照本文的步骤来建立你自己的博文站点）。你需要把这个地址放到 =config.toml= 里：
+#+begin_example
+baseurl = "https://emacsun.github.io/myblog"
+#+end_example
+然后在终端切换到 bookshelf 所在目录，执行：
+#+begin_example
+hugo
+#+end_example
+是的，只用执行 =hugo= 不带任何参数（当然，你也可以去 Hugo 的官网查查此时可以带哪些参数）。输出结果类似为：
+
+#+begin_example
+Started building sites ...
+Built site for language en:
+0 draft content
+0 future content
+0 expired content
+2 regular pages created
+10 other pages created
+0 non-page files copied
+3 paginator pages created
+1 tags created
+0 categories created
+total in 21 ms
+#+end_example
+可以看到我这里有两篇 regular pages created。这两篇博文是我刚刚创建的。另外，执行完 =hugo= 命令之后，你会在 bookshelf 目录下看到 public 目录，该目录存放了静态博客所需要的一切文件。
+
+为了分开管理原文件和静态博客文件，我们使用 gh-pages 分支来存放博客，使用 master 分支来存放原文件。我们需要达成的目标是在主目录里是 =master= 分支，在 =public= 目录里是 =gh-pages= 分支。
+
+这个过程需要执行一下命令，首先生成一个分支 =gh-pages=
+#+begin_example
+git checkout --orphan gh-pages
+#+end_example
+
+然后：
+#+begin_example
+git reset
+git commit --allow-empty -m "initial commit fro gh-pages"
+git checkout --force master
+git worktree add public gh-pages
+#+end_example
+
+如此我们进入主目录就是 =master= 分支，在这个分支中执行的 =add,commit,push= 都与 =master= 分支有关。 进入 =public= 子目录就是 =gh-pages= 分支，在这个分支中 =add,commit,push= 都与 =gh-pages= 分支有关。两个分支互不干扰。
+
+关于 Hugo 的使用，到此为止。
+
+接下来介绍使用 Emacs 的插件 =easy-hugo=
+* 使用 =easy-hugo=
+  [2017-07-22 Sat 11:35]
+
+=easy-hugo= 的配置：
+#+begin_src emacs-lisp
+(setq easy-hugo-basedir "~/zorg/hugo/bookshelf/")
+(setq easy-hugo-url "https://yourblogdomain")
+(setq easy-hugo-sshdomain "blogdomain")
+(setq easy-hugo-root "/home/blog/")
+(setq easy-hugo-previewtime "300")
+(setq easy-hugo-default-ext ".org")
+#+end_src
+
+总体而言，在 ubuntu 使用 Emacs 要比在 windows 方便很多。免去诸多配置。接下来就是使用 =easy-hugo= . 需要注意，如果使用的是 =spacemacs= 要把， =easy-hugo-mode= 设置为默认 emacs 绑定的快捷键，而不是使用 =evil= 绑定的快捷键。
+
+另外，如果出现问题，还需要到命令行里使用 =hugo= 。 那里有更多调试信息，告诉我们问题出现在哪里。
