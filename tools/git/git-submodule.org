@@ -8,7 +8,7 @@
 #+SETUPFILE: ~/.emacs.d/org-templates/emacs-level2.org
 #+HTML_HEAD_EXTRA: <a id="pdf"  href="./git-submodule.pdf"><img src="../../img/assets/pdf.png"></a>
 #+LaTeX_CLASS: cn-article
-#+options: toc:nil
+#+options: toc:t
 
 * 简介
 
@@ -37,6 +37,9 @@ $ git submodule update
   删除 submodule 的步骤：
 1. 删除 =.gitmodules= 文件。
 2. 执行 =git rm -cached= 把子模块从 git 中删除。
+* 针对多个 submodule 的操作
+
+见[[http://blog.csdn.net/wangjia55/article/details/24400501][这里]]
 
 * 参考
 
