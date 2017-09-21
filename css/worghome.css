@@ -163,14 +163,14 @@
     }
 
     h2 {
-	border-bottom: 2px solid LightGrey;
 	font-family:Arial,sans-serif;
 	font-size:1.5em;
 	line-height:16px;
 	padding:10px 0 20px 0px;
 	color: #6E2432;
 	/*background-color:#0b5586;*/
-	border-bottom:3px solid #d4d4d4;
+	border-bottom:0px solid #d4d4d4;
+	border-bottom: 0px solid LightGrey;
 	/*box-shadow: 3px 3px 3px #ccc;*/
     }
     .outline-text-2 {
@@ -853,9 +853,23 @@
 	/* outline-2 */
 	color: #b8860b;
     }
+    .outline-2 {
+        /* outline-2 */
+        color: #b8860b;
+        border: 2px solid gray;
+	      margin:5px 5px 5px 5px;
+	      padding:5px 5px 5px 5px;
+    }
     .org-outline-3 {
 	/* outline-3 */
 	color: #a020f0;
+    }
+    .outline-3 {
+        /* outline-2 */
+        color: #b8860b;
+        border: 1px solid gray;
+	      margin:5px 5px 5px 5px;
+	      padding:5px 5px 5px 5px;
     }
     .org-outline-4 {
 	/* outline-4 */
