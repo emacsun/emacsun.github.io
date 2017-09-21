@@ -306,6 +306,7 @@
    + [[file:tools/git/git-tweet.org][Git Tweet]]
    + [[file:tools/git/git-crossplatform.org][Git 跨平台换行兼容问题]]
    + [[file:tools/git/git-pull.org][Git pull 使用技巧]]
+   + [[file:tools/git/git-submodule.org][Git submoudle 使用技巧 ]]
 ** cygwin
 
    + [[file:tools/linux/cygwin-alias.org][cygwin shell 加速文件切换和 git push]]
