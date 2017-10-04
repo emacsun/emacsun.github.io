@@ -163,10 +163,10 @@
     + [[file:communication/ECC/ECCviterbiFiniteTBLength.org][有限回溯长度的 Viterbi 译码器]]
     + [[file:communication/ECC/ECC01_01.org][通信与存储系统中的可靠编码]]
     + [[file:communication/ECC/ECC02.org][信道编码理论的代数基础]]
-    + [[file:communication/ECC/LDPC-introduction.org][/LDPC 简介/]]
-    + [[file:communication/ECC/LDPC-MPA.org][/消息(置信)传递算法/]]
-    + [[file:communication/ECC/LDPC-density-evolution.org][/密度演进算法/]]
-    + [[file:communication/ECC/LDPC-construction.org][/构建好的 LDPC 码/]]
+    + [[file:communication/ECC/LDPC-introduction.org][LDPC 简介]]
+    + [[file:communication/ECC/LDPC-MPA.org][消息(置信)传递算法]]
+    + [[file:communication/ECC/LDPC-density-evolution.org][密度演进算法]]
+    + [[file:communication/ECC/LDPC-construction.org][构建好的 LDPC 码]]
 
 
 ** 信息论
