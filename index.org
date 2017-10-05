@@ -316,6 +316,7 @@
    + [[file:read/read_HowToReadABook.org][主动阅读 --《如何阅读一本书》]]
    + [[file:read/read_the_painted_veil.org][面纱里的灵魂，面纱外的诱惑 --《面纱》]]
    + [[file:read/read_the_razor_edge.org][向死而生 -- 《刀锋》]]
+   + [[file:read/how-to-arrange-your-free-time.org][如何管理自己的自由时间]]
    + [[file:me/me_workflow.org][深度学习的艺术]]
 
 * 关于我
