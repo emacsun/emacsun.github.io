@@ -88,3 +88,9 @@ git remote -v
 
 
 easy！
+* 更新
+  [2017-10-06 Fri 15:07]
+
+  如果从别的计算机终端在github上已经建有一个仓储，在当前的计算机终端上需要clone下来。使用git clone命令。
+
+  我使用git clone 加上ssh地址总是不成功，这里我采取曲线救国的办法：使用https 协议地址clone（需要用户名和密码），clone到本地之后再把remote的地址改成ssh协议的地址。
