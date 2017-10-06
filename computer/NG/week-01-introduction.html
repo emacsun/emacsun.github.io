@@ -1,0 +1,351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>导论</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./week-01-introduction.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "3em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">导论</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9b25d05">1. What is Machine Learning?</a></li>
+<li><a href="#org8cf33e4">2. Supervised Learning</a></li>
+<li><a href="#org2ddc6fa">3. Unsupervised Learning</a></li>
+<li><a href="#org0d6fdbc">4. Model Representation</a></li>
+<li><a href="#org246a628">5. Cost Function</a></li>
+<li><a href="#org8dc9e92">6. Cost Function - Intuition I</a></li>
+<li><a href="#org09605db">7. Cost Function - Intuition II</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9b25d05" class="outline-2">
+<h2 id="org9b25d05"><span class="section-number-2">1</span> What is Machine Learning?</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Two definitions of Machine Learning are offered. Arthur Samuel described it as: "the field of study that gives computers the ability to learn without being explicitly programmed." This is an older, informal definition.
+</p>
+
+<p>
+Tom Mitchell provides a more modern definition: "A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E."
+</p>
+
+<p>
+Example: playing checkers.
+</p>
+
+<p>
+E = the experience of playing many games of checkers
+</p>
+
+<p>
+T = the task of playing checkers.
+</p>
+
+<p>
+P = the probability that the program will win the next game.
+</p>
+
+<p>
+In general, any machine learning problem can be assigned to one of two broad classifications:
+</p>
+
+<p>
+Supervised learning and Unsupervised learning.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8cf33e4" class="outline-2">
+<h2 id="org8cf33e4"><span class="section-number-2">2</span> Supervised Learning</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+In supervised learning, we are given a data set and already know what our correct output should look like, having the idea that there is a relationship between the input and the output.
+</p>
+
+<p>
+Supervised learning problems are categorized into "regression" and "classification" problems. In a regression problem, we are trying to predict results within a continuous output, meaning that we are trying to map input variables to some continuous function. In a classification problem, we are instead trying to predict results in a discrete output. In other words, we are trying to map input variables into discrete categories.
+</p>
+
+<p>
+Example 1:
+</p>
+
+<p>
+Given data about the size of houses on the real estate market, try to predict their price. Price as a function of size is a continuous output, so this is a regression problem.
+</p>
+
+<p>
+We could turn this example into a classification problem by instead making our output about whether the house "sells for more or less than the asking price." Here we are classifying the houses based on price into two discrete categories.
+</p>
+
+<p>
+Example 2:
+</p>
+
+<p>
+(a) Regression - Given a picture of a person, we have to predict their age on the basis of the given picture
+</p>
+
+<p>
+(b) Classification - Given a patient with a tumor, we have to predict whether the tumor is malignant or benign.
+</p>
+</div>
+</div>
+<div id="outline-container-org2ddc6fa" class="outline-2">
+<h2 id="org2ddc6fa"><span class="section-number-2">3</span> Unsupervised Learning</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Unsupervised learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables.
+</p>
+
+<p>
+We can derive this structure by clustering the data based on relationships among the variables in the data.
+</p>
+
+<p>
+With unsupervised learning there is no feedback based on the prediction results.
+</p>
+
+<p>
+Example:
+</p>
+
+<p>
+Clustering: Take a collection of 1,000,000 different genes, and find a way to automatically group these genes into groups that are somehow similar or related by different variables, such as lifespan, location, roles, and so on.
+</p>
+
+<p>
+Non-clustering: The "Cocktail Party Algorithm", allows you to find structure in a chaotic environment. (i.e. identifying individual voices and music from a mesh of sounds at a cocktail party).
+</p>
+</div>
+</div>
+<div id="outline-container-org0d6fdbc" class="outline-2">
+<h2 id="org0d6fdbc"><span class="section-number-2">4</span> Model Representation</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+To establish notation for future use, we’ll use \(x(i)\) to denote the “input” variables (living area in this example), also called input features, and \(y(i)\) to denote the “output” or target variable that we are trying to predict (price). A pair \((x(i),y(i))\) is called a training example, and the dataset that we’ll be using to learn—a list of m training examples \((x(i),y(i));i=1,...,m\)—is called a training set. Note that the superscript “\((i)\)” in the notation is simply an index into the training set, and has nothing to do with exponentiation. We will also use X to denote the space of input values, and Y to denote the space of output values. In this example, \(X = Y = \mathbb{R}\).
+</p>
+
+<p>
+To describe the supervised learning problem slightly more formally, our goal is, given a training set, to learn a function\(h: X\to Y\)  so that \(h(x)\) is a “good” predictor for the corresponding value of \(y\). For historical reasons, this function \(h\)  is called a hypothesis. Seen pictorially, the process is therefore like this:
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171005.png" alt="20171005.png" width="400" align="center" />
+</p>
+</div>
+
+<p>
+When the target variable that we’re trying to predict is continuous, such as in our housing example, we call the learning problem a regression problem. When \(y\) can take on only a small number of discrete values (such as if, given the living area, we wanted to predict if a dwelling is a house or an apartment, say), we call it a classification problem.
+</p>
+</div>
+</div>
+<div id="outline-container-org246a628" class="outline-2">
+<h2 id="org246a628"><span class="section-number-2">5</span> Cost Function</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+We can measure the accuracy of our hypothesis function by using a cost function. This takes an average difference (actually a fancier version of an average) of all the results of the hypothesis with inputs from \(x\)'s and the actual output \(y\)'s.
+</p>
+
+\begin{equation}
+\label{eq:1}
+J(\theta_0, \theta_1) = \dfrac {1}{2m} \displaystyle \sum _{i=1}^m \left ( \hat{y}_{i}- y_{i} \right)^2 = \dfrac {1}{2m} \displaystyle \sum_{i=1}^m \left (h_\theta (x_{i}) - y_{i} \right)^2
+\end{equation}
+
+<p>
+To break it apart, it is \(\frac{1}{2}\tilde{x}\) where \(\tilde{x}\) is the mean of the squares of \(h_{\theta}(x_{i}) - y_{i} \), or the difference between the predicted value and the actual value.
+</p>
+
+<p>
+This function is otherwise called the "Squared error function", or "Mean squared error". The mean is havled as a convenience for the computation of the gradient decent, as the derivative term of the square function will cancel out the \(\frac{1}{2}\) term. The following image summarizes what the cost function does:
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171005costFunction.png" alt="20171005costFunction.png" width="600" align="center" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8dc9e92" class="outline-2">
+<h2 id="org8dc9e92"><span class="section-number-2">6</span> Cost Function - Intuition I</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+If we try to think of it in visual terms, our training data set is scattered on the x-y plane. We are trying to make a straight line (defined by \(h_{\theta}(x)\) ) which passes through these scattered data points.
+</p>
+
+<p>
+Our objective is to get the best possible line. The best possible line will be such so that the average squared vertical distances of the scattered points from the line will be the least. Ideally, the line should pass through all the points of our training data set. In such a case, the value of \(J(\theta_{0},\theta_{1})\) will be 0. The following example shows the ideal situation where we have a cost function of 0.
+</p>
+
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171005costFunctionof0.png" alt="20171005costFunctionof0.png" width="600" align="center" />
+</p>
+</div>
+
+<p>
+when \(\theta_{1}=1\), we get a slope of 1 which goes through every single data point in our model. Conversely, when \(\theta=0.5\), we see the vertical distance from our fit to the data points increase.
+</p>
+
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171005costFunctionof0dot5.png" alt="20171005costFunctionof0dot5.png" width="600" align="center" />
+</p>
+</div>
+
+<p>
+This increases our cost function to 0.58. Plotting several other points yields to the following graph:
+</p>
+
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171005costFunctionLine.png" alt="20171005costFunctionLine.png" width="600" align="center" />
+</p>
+</div>
+
+<p>
+Thus as a goal, we should try to minimize the cost function. In this case, \(\theta_{1}=1\) is our global minimum.
+</p>
+</div>
+</div>
+<div id="outline-container-org09605db" class="outline-2">
+<h2 id="org09605db"><span class="section-number-2">7</span> Cost Function - Intuition II</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+A contour plot is a graph that contains many contour lines. A contour line of a two variable function has a constant value at all points of the same line. An example of such a graph is the one to the right below.
+</p>
+
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171005costFunctionof2p1.png" alt="20171005costFunctionof2p1.png" width="600" align="center" />
+</p>
+</div>
+
+<p>
+Taking any color and going along the 'circle', one would expect to get the same value of the cost function. For example, the three green points found on the green line above have the same value for \(J(\theta_{0},\theta_{1})\) and as a result, they are found along the same line. The circled \(x\) displays the value of the cost function for the graph on the left when \(\theta_{0}=800\) and \(\theta_{1} = -0.15\). Taking another \(h(x)\) and plotting its contour plot, one gets the following graphs:
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171005costFunctionof2p2.png" alt="20171005costFunctionof2p2.png" width="600" align="center" />
+</p>
+</div>
+
+<p>
+When\(\theta_{0} = 360,\theta_{1}=0\), the value of \(J(\theta_{0},\theta_{1})\)  in the contour plot gets closer to the center thus reducing the cost function error. Now giving our hypothesis function a slightly positive slope results in a better fit of the data.
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171005costFunctionof2p3.png" alt="20171005costFunctionof2p3.png" width="600" align="center" />
+</p>
+</div>
+
+<p>
+The graph above minimizes the cost function as much as possible and consequently, the result of \(\theta_{1}\) and \(\theta_{0}\) tend to be around 0.12 and 250 respectively. Plotting those values on our graph to the right seems to put our point in the center of the inner most 'circle'.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>

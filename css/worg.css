@@ -1,7 +1,7 @@
 @media all
 {
     body {
-        font-family: STFangSong,Helvetica,Arial,Vernada,Tahoma,STXihei,"Microsoft YaHei","Songti SC",SimSun,Heiti,sans-serif;
+        font-family: Georgia, STFangSong,Helvetica,Arial,Vernada,Tahoma,STXihei,"Microsoft YaHei","Songti SC",SimSun,Heiti,sans-serif;
         /*line-height:150%;*/
         /*background-color:#ffffff;*/
         background-color:white;
@@ -154,7 +154,7 @@
    */
     h2 {
         border-bottom: 2px solid LightGrey;
-        font-family:Arial,sans-serif;
+        font-family:sans-serif,Arial;
         font-size:1.2em;
         line-height:16px;
         padding:20px 0 20px 0;
@@ -164,6 +164,17 @@
         /*box-shadow: 3px 3px 3px #ccc;*/
     }
 
+    h3 {
+        border-bottom: 2px solid LightGrey;
+        font-family:sans-serif,Arial;
+        font-size:1em;
+        line-height:16px;
+        padding:20px 0 20px 0;
+        color: #6E2432;
+        /*background-color:#0b5586;*/
+        border-bottom:0px solid #d4d4d4;
+        /*box-shadow: 3px 3px 3px #ccc;*/
+    }
     .outline-text-2 {
         margin-left: 0.1em
     }
@@ -173,7 +184,7 @@
     }
 
     h3 {
-        font-family:Arial,sans-serif;
+        font-family:sans-seri,Afrial;
         font-size:1.3em;
         color: #A34D32;
         margin-left: 0.6em;
@@ -184,7 +195,7 @@
     }
 
     h4 {
-        font-family:Arial,sans-serif;
+        font-family:sans-serif,Arial;
         font-size:1.2em;
         margin-left: 1.2em;
         color: #A5573E;

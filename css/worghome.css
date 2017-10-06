@@ -162,17 +162,6 @@
 	color: #6C5D4F;
     }
 
-    h2 {
-	font-family:Arial,sans-serif;
-	font-size:1.5em;
-	line-height:16px;
-	padding:10px 0 20px 0px;
-	color: #6E2432;
-	/*background-color:#0b5586;*/
-	border-bottom:0px solid #d4d4d4;
-	border-bottom: 0px solid LightGrey;
-	/*box-shadow: 3px 3px 3px #ccc;*/
-    }
     .outline-text-2 {
 	margin-left: 0.1em
     }
@@ -198,7 +187,7 @@
 
     h4 {
 	font-family:Arial,sans-serif;
-	font-size:1.2em;
+	font-size:1em;
 	margin-left: 1.2em;
 	color: #A5573E;
     }

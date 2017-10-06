@@ -196,6 +196,14 @@
   <2015-06-28 Sun 16:38>
 ** 机器学习
 
+*** 吴恩达coursera机器学习
+
+   + [[file:computer/NG/week-01-introduction.org][导论]]
+   + [[file:computer/NG/week-02-linear-regression-with-multiple-variables.org][多变量线性回归]]
+
+
+*** PRML学习笔记
+
    + [[file:computer/PRML/first-impression-pattern-recognition.org][初始模式识别和机器学习]]
    + [[file:computer/PRML/PRMLch1dot1-polynomial-curve.org][多项式拟合到模式识别的相关概念]]
    + [[file:computer/PRML/PRMLch1dot1-polynomial-curve-appendix.org][曲线拟合过程中的欠定过定问题]]
