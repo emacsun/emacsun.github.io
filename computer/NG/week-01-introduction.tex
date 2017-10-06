@@ -18,7 +18,7 @@
 \tableofcontents
 \titlepic{\includegraphics[scale=0.25]{../../img/sinc.PNG}}
 \section{What is Machine Learning?}
-\label{sec:org30457a9}
+\label{sec:orgad312ea}
 
 Two definitions of Machine Learning are offered. Arthur Samuel described it as: "the field of study that gives computers the ability to learn without being explicitly programmed." This is an older, informal definition.
 
@@ -37,7 +37,7 @@ In general, any machine learning problem can be assigned to one of two broad cla
 Supervised learning and Unsupervised learning.
 
 \section{Supervised Learning}
-\label{sec:org6b73de5}
+\label{sec:orgfe6b04f}
 
 In supervised learning, we are given a data set and already know what our correct output should look like, having the idea that there is a relationship between the input and the output.
 
@@ -55,7 +55,7 @@ Example 2:
 
 (b) Classification - Given a patient with a tumor, we have to predict whether the tumor is malignant or benign.
 \section{Unsupervised Learning}
-\label{sec:orga2e69c2}
+\label{sec:org3fa1923}
 
 Unsupervised learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables.
 
@@ -69,7 +69,7 @@ Clustering: Take a collection of 1,000,000 different genes, and find a way to au
 
 Non-clustering: The "Cocktail Party Algorithm", allows you to find structure in a chaotic environment. (i.e. identifying individual voices and music from a mesh of sounds at a cocktail party).
 \section{Model Representation}
-\label{sec:org5ce78eb}
+\label{sec:org60dec5b}
 
 To establish notation for future use, we’ll use \(x(i)\) to denote the “input” variables (living area in this example), also called input features, and \(y(i)\) to denote the “output” or target variable that we are trying to predict (price). A pair \((x(i),y(i))\) is called a training example, and the dataset that we’ll be using to learn—a list of m training examples \((x(i),y(i));i=1,...,m\)—is called a training set. Note that the superscript “\((i)\)” in the notation is simply an index into the training set, and has nothing to do with exponentiation. We will also use X to denote the space of input values, and Y to denote the space of output values. In this example, \(X = Y = \mathbb{R}\).
 
@@ -81,7 +81,7 @@ To describe the supervised learning problem slightly more formally, our goal is,
 
 When the target variable that we’re trying to predict is continuous, such as in our housing example, we call the learning problem a regression problem. When \(y\) can take on only a small number of discrete values (such as if, given the living area, we wanted to predict if a dwelling is a house or an apartment, say), we call it a classification problem.
 \section{Cost Function}
-\label{sec:orgb14dc38}
+\label{sec:orgfb73b45}
 
 We can measure the accuracy of our hypothesis function by using a cost function. This takes an average difference (actually a fancier version of an average) of all the results of the hypothesis with inputs from \(x\)'s and the actual output \(y\)'s.
 
@@ -99,7 +99,7 @@ This function is otherwise called the "Squared error function", or "Mean squared
 \end{center}
 
 \section{Cost Function - Intuition I}
-\label{sec:org56c29b9}
+\label{sec:org1dbac91}
 
 If we try to think of it in visual terms, our training data set is scattered on the x-y plane. We are trying to make a straight line (defined by \(h_{\theta}(x)\) ) which passes through these scattered data points.
 
@@ -126,7 +126,7 @@ This increases our cost function to 0.58. Plotting several other points yields t
 
 Thus as a goal, we should try to minimize the cost function. In this case, \(\theta_{1}=1\) is our global minimum.
 \section{Cost Function - Intuition II}
-\label{sec:orgfe70ef5}
+\label{sec:orgd1d535d}
 
 A contour plot is a graph that contains many contour lines. A contour line of a two variable function has a constant value at all points of the same line. An example of such a graph is the one to the right below.
 

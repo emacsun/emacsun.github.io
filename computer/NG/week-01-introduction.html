@@ -86,18 +86,18 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9b25d05">1. What is Machine Learning?</a></li>
-<li><a href="#org8cf33e4">2. Supervised Learning</a></li>
-<li><a href="#org2ddc6fa">3. Unsupervised Learning</a></li>
-<li><a href="#org0d6fdbc">4. Model Representation</a></li>
-<li><a href="#org246a628">5. Cost Function</a></li>
-<li><a href="#org8dc9e92">6. Cost Function - Intuition I</a></li>
-<li><a href="#org09605db">7. Cost Function - Intuition II</a></li>
+<li><a href="#orgcd16be2">1. What is Machine Learning?</a></li>
+<li><a href="#org2f3dcff">2. Supervised Learning</a></li>
+<li><a href="#org306d584">3. Unsupervised Learning</a></li>
+<li><a href="#orgf780d76">4. Model Representation</a></li>
+<li><a href="#orgcf45673">5. Cost Function</a></li>
+<li><a href="#org7f53a40">6. Cost Function - Intuition I</a></li>
+<li><a href="#orgfaa16ae">7. Cost Function - Intuition II</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9b25d05" class="outline-2">
-<h2 id="org9b25d05"><span class="section-number-2">1</span> What is Machine Learning?</h2>
+<div id="outline-container-orgcd16be2" class="outline-2">
+<h2 id="orgcd16be2"><span class="section-number-2">1</span> What is Machine Learning?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Two definitions of Machine Learning are offered. Arthur Samuel described it as: "the field of study that gives computers the ability to learn without being explicitly programmed." This is an older, informal definition.
@@ -133,8 +133,8 @@ Supervised learning and Unsupervised learning.
 </div>
 </div>
 
-<div id="outline-container-org8cf33e4" class="outline-2">
-<h2 id="org8cf33e4"><span class="section-number-2">2</span> Supervised Learning</h2>
+<div id="outline-container-org2f3dcff" class="outline-2">
+<h2 id="org2f3dcff"><span class="section-number-2">2</span> Supervised Learning</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 In supervised learning, we are given a data set and already know what our correct output should look like, having the idea that there is a relationship between the input and the output.
@@ -169,8 +169,8 @@ Example 2:
 </p>
 </div>
 </div>
-<div id="outline-container-org2ddc6fa" class="outline-2">
-<h2 id="org2ddc6fa"><span class="section-number-2">3</span> Unsupervised Learning</h2>
+<div id="outline-container-org306d584" class="outline-2">
+<h2 id="org306d584"><span class="section-number-2">3</span> Unsupervised Learning</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Unsupervised learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables.
@@ -197,8 +197,8 @@ Non-clustering: The "Cocktail Party Algorithm", allows you to find structure in 
 </p>
 </div>
 </div>
-<div id="outline-container-org0d6fdbc" class="outline-2">
-<h2 id="org0d6fdbc"><span class="section-number-2">4</span> Model Representation</h2>
+<div id="outline-container-orgf780d76" class="outline-2">
+<h2 id="orgf780d76"><span class="section-number-2">4</span> Model Representation</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 To establish notation for future use, we’ll use \(x(i)\) to denote the “input” variables (living area in this example), also called input features, and \(y(i)\) to denote the “output” or target variable that we are trying to predict (price). A pair \((x(i),y(i))\) is called a training example, and the dataset that we’ll be using to learn—a list of m training examples \((x(i),y(i));i=1,...,m\)—is called a training set. Note that the superscript “\((i)\)” in the notation is simply an index into the training set, and has nothing to do with exponentiation. We will also use X to denote the space of input values, and Y to denote the space of output values. In this example, \(X = Y = \mathbb{R}\).
@@ -219,8 +219,8 @@ When the target variable that we’re trying to predict is continuous, such as i
 </p>
 </div>
 </div>
-<div id="outline-container-org246a628" class="outline-2">
-<h2 id="org246a628"><span class="section-number-2">5</span> Cost Function</h2>
+<div id="outline-container-orgcf45673" class="outline-2">
+<h2 id="orgcf45673"><span class="section-number-2">5</span> Cost Function</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 We can measure the accuracy of our hypothesis function by using a cost function. This takes an average difference (actually a fancier version of an average) of all the results of the hypothesis with inputs from \(x\)'s and the actual output \(y\)'s.
@@ -247,8 +247,8 @@ This function is otherwise called the "Squared error function", or "Mean squared
 </div>
 </div>
 
-<div id="outline-container-org8dc9e92" class="outline-2">
-<h2 id="org8dc9e92"><span class="section-number-2">6</span> Cost Function - Intuition I</h2>
+<div id="outline-container-org7f53a40" class="outline-2">
+<h2 id="org7f53a40"><span class="section-number-2">6</span> Cost Function - Intuition I</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 If we try to think of it in visual terms, our training data set is scattered on the x-y plane. We are trying to make a straight line (defined by \(h_{\theta}(x)\) ) which passes through these scattered data points.
@@ -292,8 +292,8 @@ Thus as a goal, we should try to minimize the cost function. In this case, \(\th
 </p>
 </div>
 </div>
-<div id="outline-container-org09605db" class="outline-2">
-<h2 id="org09605db"><span class="section-number-2">7</span> Cost Function - Intuition II</h2>
+<div id="outline-container-orgfaa16ae" class="outline-2">
+<h2 id="orgfaa16ae"><span class="section-number-2">7</span> Cost Function - Intuition II</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 A contour plot is a graph that contains many contour lines. A contour line of a two variable function has a constant value at all points of the same line. An example of such a graph is the one to the right below.

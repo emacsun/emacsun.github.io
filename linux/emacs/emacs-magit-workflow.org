@@ -81,6 +81,17 @@
 #+NAME: fig:20170507emacs_magit_afterpush
 #+ATTR_LATEX: :width 0.6\textwidth :align center
 [[../../img/tools_emacs/20170507emacs_magit_afterpush.png]]
+
+当本地的修改和远端的修改需要合并的时候，如下状态，此时状态比较棘手，一方面我们需要把远端的origin/master pull到本地，在pull的过程中需要merge。
+
+#+CAPTION: need pull and merge
+#+ATTR_HTML:  :width 400 :align center
+#+NAME: fig:20171006needPullandMerge
+#+ATTR_LATEX: :width 0.6\textwidth :align center
+[[../../img/tools_emacs/20171006needPullandMerge.png]]
+
+在执行pull之前需要将本地所做的修改进行保存，有两种方式：1)stage;2)stash. 保存之后执行 =F u=  这个组合命令的作用是把远端的 origin/master 拉到本地并与本地的master进行merge。很多时候需要手工进行merge。magit对此也进行了简化。可以在magit窗口中完成所有的merge操作。
+
 * 总结
   [2017-05-07 Sun 16:57]
 
@@ -89,6 +100,7 @@
 2. =s= stage 当前修改。
 3. =c= 提交当前修改。
 4. =p= push当前修改。
+5. =F= pull 远端的修改
 * 注意事项
 
 我的工作环境是：
