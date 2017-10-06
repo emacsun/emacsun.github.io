@@ -82,6 +82,8 @@
 #+ATTR_LATEX: :width 0.6\textwidth :align center
 [[../../img/tools_emacs/20170507emacs_magit_afterpush.png]]
 
+注意在windows下使用git的windows版本，需要在emacs里使用ssh-agency 这个包，否则的话会推送失败。
+
 当本地的修改和远端的修改需要合并的时候，如下状态，此时状态比较棘手，一方面我们需要把远端的origin/master pull到本地，在pull的过程中需要merge。
 
 #+CAPTION: need pull and merge

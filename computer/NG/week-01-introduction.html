@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>导论</title>
+<title>Introduction</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="emacsun" />
 <link rel="stylesheet" type="text/css" href="../../css/worg.css" />
@@ -81,23 +81,26 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">导论</h1>
+<h1 class="title">Introduction</h1>
 <div id="table-of-contents">
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgcd16be2">1. What is Machine Learning?</a></li>
-<li><a href="#org2f3dcff">2. Supervised Learning</a></li>
-<li><a href="#org306d584">3. Unsupervised Learning</a></li>
-<li><a href="#orgf780d76">4. Model Representation</a></li>
-<li><a href="#orgcf45673">5. Cost Function</a></li>
-<li><a href="#org7f53a40">6. Cost Function - Intuition I</a></li>
-<li><a href="#orgfaa16ae">7. Cost Function - Intuition II</a></li>
+<li><a href="#org004ad79">1. What is Machine Learning?</a></li>
+<li><a href="#orgc76f8dd">2. Supervised Learning</a></li>
+<li><a href="#org02e533a">3. Unsupervised Learning</a></li>
+<li><a href="#org2341e19">4. Model Representation</a></li>
+<li><a href="#org5ccb8c7">5. Cost Function</a></li>
+<li><a href="#orgb199f3b">6. Cost Function - Intuition I</a></li>
+<li><a href="#org883c856">7. Cost Function - Intuition II</a></li>
+<li><a href="#org983c03e">8. Gradient Descent</a></li>
+<li><a href="#org0e184cc">9. Gradient Descent Intuition</a></li>
+<li><a href="#orgd68aa46">10. Gradient Descent For Linear Regression</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgcd16be2" class="outline-2">
-<h2 id="orgcd16be2"><span class="section-number-2">1</span> What is Machine Learning?</h2>
+<div id="outline-container-org004ad79" class="outline-2">
+<h2 id="org004ad79"><span class="section-number-2">1</span> What is Machine Learning?</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Two definitions of Machine Learning are offered. Arthur Samuel described it as: "the field of study that gives computers the ability to learn without being explicitly programmed." This is an older, informal definition.
@@ -133,8 +136,8 @@ Supervised learning and Unsupervised learning.
 </div>
 </div>
 
-<div id="outline-container-org2f3dcff" class="outline-2">
-<h2 id="org2f3dcff"><span class="section-number-2">2</span> Supervised Learning</h2>
+<div id="outline-container-orgc76f8dd" class="outline-2">
+<h2 id="orgc76f8dd"><span class="section-number-2">2</span> Supervised Learning</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 In supervised learning, we are given a data set and already know what our correct output should look like, having the idea that there is a relationship between the input and the output.
@@ -169,8 +172,8 @@ Example 2:
 </p>
 </div>
 </div>
-<div id="outline-container-org306d584" class="outline-2">
-<h2 id="org306d584"><span class="section-number-2">3</span> Unsupervised Learning</h2>
+<div id="outline-container-org02e533a" class="outline-2">
+<h2 id="org02e533a"><span class="section-number-2">3</span> Unsupervised Learning</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Unsupervised learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables.
@@ -197,8 +200,8 @@ Non-clustering: The "Cocktail Party Algorithm", allows you to find structure in 
 </p>
 </div>
 </div>
-<div id="outline-container-orgf780d76" class="outline-2">
-<h2 id="orgf780d76"><span class="section-number-2">4</span> Model Representation</h2>
+<div id="outline-container-org2341e19" class="outline-2">
+<h2 id="org2341e19"><span class="section-number-2">4</span> Model Representation</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 To establish notation for future use, we’ll use \(x(i)\) to denote the “input” variables (living area in this example), also called input features, and \(y(i)\) to denote the “output” or target variable that we are trying to predict (price). A pair \((x(i),y(i))\) is called a training example, and the dataset that we’ll be using to learn—a list of m training examples \((x(i),y(i));i=1,...,m\)—is called a training set. Note that the superscript “\((i)\)” in the notation is simply an index into the training set, and has nothing to do with exponentiation. We will also use X to denote the space of input values, and Y to denote the space of output values. In this example, \(X = Y = \mathbb{R}\).
@@ -219,8 +222,8 @@ When the target variable that we’re trying to predict is continuous, such as i
 </p>
 </div>
 </div>
-<div id="outline-container-orgcf45673" class="outline-2">
-<h2 id="orgcf45673"><span class="section-number-2">5</span> Cost Function</h2>
+<div id="outline-container-org5ccb8c7" class="outline-2">
+<h2 id="org5ccb8c7"><span class="section-number-2">5</span> Cost Function</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 We can measure the accuracy of our hypothesis function by using a cost function. This takes an average difference (actually a fancier version of an average) of all the results of the hypothesis with inputs from \(x\)'s and the actual output \(y\)'s.
@@ -247,8 +250,8 @@ This function is otherwise called the "Squared error function", or "Mean squared
 </div>
 </div>
 
-<div id="outline-container-org7f53a40" class="outline-2">
-<h2 id="org7f53a40"><span class="section-number-2">6</span> Cost Function - Intuition I</h2>
+<div id="outline-container-orgb199f3b" class="outline-2">
+<h2 id="orgb199f3b"><span class="section-number-2">6</span> Cost Function - Intuition I</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 If we try to think of it in visual terms, our training data set is scattered on the x-y plane. We are trying to make a straight line (defined by \(h_{\theta}(x)\) ) which passes through these scattered data points.
@@ -292,8 +295,8 @@ Thus as a goal, we should try to minimize the cost function. In this case, \(\th
 </p>
 </div>
 </div>
-<div id="outline-container-orgfaa16ae" class="outline-2">
-<h2 id="orgfaa16ae"><span class="section-number-2">7</span> Cost Function - Intuition II</h2>
+<div id="outline-container-org883c856" class="outline-2">
+<h2 id="org883c856"><span class="section-number-2">7</span> Cost Function - Intuition II</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 A contour plot is a graph that contains many contour lines. A contour line of a two variable function has a constant value at all points of the same line. An example of such a graph is the one to the right below.
@@ -328,6 +331,182 @@ When\(\theta_{0} = 360,\theta_{1}=0\), the value of \(J(\theta_{0},\theta_{1})\)
 
 <p>
 The graph above minimizes the cost function as much as possible and consequently, the result of \(\theta_{1}\) and \(\theta_{0}\) tend to be around 0.12 and 250 respectively. Plotting those values on our graph to the right seems to put our point in the center of the inner most 'circle'.
+</p>
+</div>
+</div>
+<div id="outline-container-org983c03e" class="outline-2">
+<h2 id="org983c03e"><span class="section-number-2">8</span> Gradient Descent</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+
+</p>
+
+<p>
+So we have our hypothesis function and we have a way of measuring how well it fits into the data. Now we need to estimate the parameters in the hypothesis function. That's where gradient descent comes in.
+</p>
+
+<p>
+Imagine that we graph our hypothesis function based on its fields \(\theta_{0}\) and \(\theta_{1}\) (actually we are graphing the cost function as a function of the parameter estimates). We are not graphing \(x\) and \(y\) itself, but the parameter range of our hypothesis function and the cost resulting from selecting a particular set of parameters.
+</p>
+
+<p>
+We put \(\theta_{0}\) on the \(x\) axis and\(\theta_{1}\) on the \(y\) axis, with the cost function on the vertical \(z\) axis. The points on our graph will be the result of the cost function using our hypothesis with those specific theta parameters. The graph below depicts such a setup.
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171006gradientDescent.png" alt="20171006gradientDescent.png" width="600" align="center" />
+</p>
+</div>
+
+<p>
+We will know that we have succeeded when our cost function is at the very bottom of the pits in our graph, i.e. when its value is the minimum. The red arrows show the minimum points in the graph.
+</p>
+
+<p>
+The way we do this is by taking the derivative (the tangential line to a function) of our cost function. The slope of the tangent is the derivative at that point and it will give us a direction to move towards. We make steps down the cost function in the direction with the steepest descent. The size of each step is determined by the parameter \(\alpha\), which is called the learning rate.
+</p>
+
+<p>
+For example, the distance between each 'star' in the graph above represents a step determined by our parameter \(\alpha\). A smaller \(\alpha\) would result in a smaller step and a larger \(\alpha\) results in a larger step. The direction in which the step is taken is determined by the partial derivative of \(J(\theta_{0},\theta_{1})\). Depending on where one starts on the graph, one could end up at different points. The image above shows us two different starting points that end up in two different places.
+</p>
+
+<p>
+The gradient descent algorithm is:
+</p>
+
+<p>
+repeat until convergence:
+</p>
+
+\begin{equation}
+\label{eq:2}
+\theta_j := \theta_j - \alpha \frac{\partial}{\partial \theta_j} J(\theta_0, \theta_1)
+\end{equation}
+
+<p>
+where
+</p>
+
+<p>
+\(j=0,1\) represents the feature index number.
+</p>
+
+<p>
+At each iteration \(j\), one should simultaneously update the parameters  \(\theta_{1},\theta_{2},\ldots ,\theta_{n}\). Updating a specific parameter prior to calculating another one on the j(th) iteration would yield to a wrong implementation.
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171006simultaneousUpdate.png" alt="20171006simultaneousUpdate.png" width="600" align="center" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0e184cc" class="outline-2">
+<h2 id="org0e184cc"><span class="section-number-2">9</span> Gradient Descent Intuition</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+
+</p>
+
+<p>
+In this video we explored the scenario where we used one parameter \(\theta_{1}\) and plotted its cost function to implement a gradient descent. Our formula for a single parameter was :
+</p>
+
+<p>
+Repeat until convergence:
+</p>
+
+\begin{equation}
+\label{eq:3}
+\theta_1:=\theta_1-\alpha \frac{d}{d\theta_1} J(\theta_1)
+\end{equation}
+
+<p>
+Regardless of the slope's sign for \(\frac{\partial J(\theta_{1})}{\partial \theta_{1}}\), \(\theta_{1}\) eventually converges to its minimum value. The following graph shows that when the slope is negative, the value of\(\theta_{1}\) increases and when it is positive, the value of \(\theta_{1}\) decreases.
+</p>
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171006gradientDescent1.png" alt="20171006gradientDescent1.png" width="600" align="center" />
+</p>
+</div>
+
+<p>
+On a side note, we should adjust our parameter \(\alpha\) to ensure that the gradient descent algorithm converges in a reasonable time. Failure to converge or too much time to obtain the minimum value imply that our step size is wrong.
+</p>
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171006gradientDescent2.png" alt="20171006gradientDescent2.png" width="600" align="center" />
+</p>
+</div>
+
+<p>
+How does gradient descent converge with a fixed step size \(\alpha\)?
+</p>
+
+<p>
+The intuition behind the convergence is that \(\frac{\partial J(\theta_{1})}{\partial \theta_{1}}\) approaches 0 as we approach the bottom of our convex function. At the minimum, the derivative will always be 0 and thus we get:
+</p>
+
+\begin{equation}
+\label{eq:4}
+\theta_1:=\theta_1-\alpha * 0
+\end{equation}
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171006gradientDescent3.png" alt="20171006gradientDescent3.png" width="600" align="center" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd68aa46" class="outline-2">
+<h2 id="orgd68aa46"><span class="section-number-2">10</span> Gradient Descent For Linear Regression</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+
+</p>
+
+<p>
+When specifically applied to the case of linear regression, a new form of the gradient descent equation can be derived. We can substitute our actual cost function and our actual hypothesis function and modify the equation to :
+</p>
+
+\begin{align*} \text{repeat until convergence: } \lbrace & \\ \theta_0 := & \theta_0 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m}(h_\theta(x_{i}) - y_{i}) \\ \theta_1 := & \theta_1 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m}\left((h_\theta(x_{i}) - y_{i}) x_{i}\right) \\ \rbrace& \end{align*}
+
+<p>
+here \(m\) is the size of the training set, \(\theta_{0}\) a constant that will be changing simultaneously with \(\theta_{1}\) and \(x_{i},y_{i}\)are values of the given training set (data).
+</p>
+
+<p>
+Note that we have separated out the two cases for \(\theta_{j}\) into separate equations for \(\theta_{0}\) and \(\theta_{1}\); and that for \(\theta_{1}\) we are multiplying \(x_{i}\) at the end due to the derivative. The following is a derivation of \(\frac{\partial J(\theta)}{\partial \theta_{j}}\) for a single example :
+</p>
+\begin{eqnarray*}
+\frac{\partial J(\theta)}{\partial \theta_{j}}&=&\frac{\partial}{\partial \theta_{j} }\frac{1}{2}(h_{\theta}(x)-y)^{2} \\
+&=& (h_{\theta}(x) - y)\frac{\partial}{\partial \theta_{j}} (h_{\theta}(x)-y) \\
+&=& (h_{\theta}(x) - y)\frac{\partial}{\partial \theta_{j}} (\sum_{i=1}^{m}\theta_{i}x_{i}-y) \\
+&=& (h_{\theta}(x) - y)x_{j}
+\end{eqnarray*}
+
+<p>
+The point of all this is that if we start with a guess for our hypothesis and then repeatedly apply these gradient descent equations, our hypothesis will become more and more accurate.
+</p>
+
+<p>
+So, this is simply gradient descent on the original cost function \(J\). This method looks at every example in the entire training set on every step, and is called batch gradient descent. Note that, while gradient descent can be susceptible to local minima in general, the optimization problem we have posed here for linear regression has only one global, and no other local, optima; thus gradient descent always converges (assuming the learning rate \(\alpha\) is not too large) to the global minimum. Indeed, \(J\) is a convex quadratic function. Here is an example of gradient descent as it is run to minimize a quadratic function.
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171006gradientDescent4.png" alt="20171006gradientDescent4.png" width="600" align="center" />
+</p>
+</div>
+
+
+<p>
+The ellipses shown above are the contours of a quadratic function. Also shown is the trajectory taken by gradient descent, which was initialized at (48,30). The x’s in the figure (joined by straight lines) mark the successive values of \(\theta\) that gradient descent went through as it converged to its minimum.
 </p>
 </div>
 </div>
