@@ -86,4 +86,27 @@ See `org-capture-templates' for more information."
 
 如此便完成了自定义变量的添加。
 
-2. 导出markdown时自动设置好标签和分类（tags and category）。这个需求可以通过设置标签来完成 =:tags:@category= 很简单。在headline中的没有携带 =@= 前缀的标签都会归类为 tags，携带了 =@category= 的标签都会归类为 =category= 。
+1. 导出markdown时自动设置好标签和分类（tags and category）。这个需求可以通过设置标签来完成 =:tags:@category= 很简单。在headline中的没有携带 =@= 前缀的标签都会归类为 tags，携带了 =@category= 的标签都会归类为 =category= 。
+
+* ox-hugo 技巧收集
+
+** 摘要
+通过添加
+
+ =#+HUGO: more=
+
+可以分开摘要和正文。这个语句在markdown里会被转化为：
+#+begin_example
+<!--more-->
+#+end_example
+** 更多变量
+
+如下所示：
+#+begin_example
+comments: false
+showTags: true
+showPagination: true
+showSocial: true
+showDate: true
+#+end_example
+根据变量名可以猜个大概。

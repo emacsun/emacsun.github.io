@@ -65,6 +65,12 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgf21cad8">1. ox-hugo</a></li>
 <li><a href="#org8b9cd4d">2. 我的需求与配置</a></li>
+<li><a href="#org5c3e78a">3. ox-hugo 技巧收集</a>
+<ul>
+<li><a href="#org278ef7b">3.1. 摘要</a></li>
+<li><a href="#orgde09335">3.2. 更多变量</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -194,6 +200,48 @@ ox-hugo 补充了org的输出后台，其可以把org输出为hugo支持的markd
 <ol class="org-ol">
 <li>导出markdown时自动设置好标签和分类（tags and category）。这个需求可以通过设置标签来完成 <code>:tags:@category</code> 很简单。在headline中的没有携带 <code>@</code> 前缀的标签都会归类为 tags，携带了 <code>@category</code> 的标签都会归类为 <code>category</code> 。</li>
 </ol>
+</div>
+</div>
+
+<div id="outline-container-org5c3e78a" class="outline-2">
+<h2 id="org5c3e78a"><span class="section-number-2">3</span> ox-hugo 技巧收集</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-org278ef7b" class="outline-3">
+<h3 id="org278ef7b"><span class="section-number-3">3.1</span> 摘要</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+通过添加
+</p>
+
+<p>
+<code>#+HUGO: more</code>
+</p>
+
+<p>
+可以分开摘要和正文。这个语句在markdown里会被转化为：
+</p>
+<pre class="example">
+&lt;!--more--&gt;
+</pre>
+</div>
+</div>
+<div id="outline-container-orgde09335" class="outline-3">
+<h3 id="orgde09335"><span class="section-number-3">3.2</span> 更多变量</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+如下所示：
+</p>
+<pre class="example">
+comments: false
+showTags: true
+showPagination: true
+showSocial: true
+showDate: true
+</pre>
+<p>
+根据变量名可以猜个大概。
+</p>
+</div>
 </div>
 </div>
 </div>
