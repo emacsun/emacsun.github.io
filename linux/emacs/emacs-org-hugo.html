@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Emacs 联合 org-hugo 撰写博客</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs 联合 org-hugo 撰写博客</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd2ddf80">1. ox-hugo</a></li>
+<li><a href="#org3a180bf">2. 我的需求与配置</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgd2ddf80" class="outline-2">
+<h2 id="orgd2ddf80"><span class="section-number-2">1</span> ox-hugo</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+ox-hugo 补充了org的输出后台，其可以把org输出为hugo支持的markdown格式文档（<a href="https://github.com/russross/blackfriday">Blackfriday</a>） ，从而在Hugo的静态网页中显示。其github仓库地址<a href="https://github.com/kaushalmodi/ox-hugo">在此</a> ，其主页<a href="https://ox-hugo.scripter.co/">在此</a>。
+</p>
+
+<p>
+其官网甚至提供了一个创建新文章的快捷方式。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="linenr"> 1: </span><span style="color: #2aa198;">(</span><span style="color: #859900; font-weight: bold;">with-eval-after-load</span> 'org-capture
+<span class="linenr"> 2: </span>  <span style="color: #b58900;">(</span><span style="color: #859900; font-weight: bold;">defun</span> <span style="color: #268bd2;">org-hugo-new-subtree-post-capture-template</span> <span style="color: #268bd2;">()</span>
+<span class="linenr"> 3: </span>    <span style="color: #2aa198;">"Returns `</span><span style="color: #268bd2; font-weight: bold;">org-capture</span><span style="color: #2aa198;">' template string for new Hugo post.</span>
+<span class="linenr"> 4: </span><span style="color: #2aa198;">See `</span><span style="color: #268bd2; font-weight: bold;">org-capture-templates</span><span style="color: #2aa198;">' for more information."</span>
+<span class="linenr"> 5: </span>    <span style="color: #268bd2;">(</span><span style="color: #859900; font-weight: bold;">let*</span> <span style="color: #6c71c4;">(</span><span style="color: #586e75;">;; </span><span style="color: #586e75;">http://www.holgerschurig.de/en/emacs-blog-from-org-to-hugo/</span>
+<span class="linenr"> 6: </span>           <span style="color: #859900;">(</span>date <span style="color: #b58900;">(</span>format-time-string <span style="color: #268bd2;">(</span>org-time-stamp-format <span style="color: #839496; font-weight: bold;">:long</span> <span style="color: #839496; font-weight: bold;">:inactive</span><span style="color: #268bd2;">)</span> <span style="color: #268bd2;">(</span>org-current-time<span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span>
+<span class="linenr"> 7: </span>           <span style="color: #859900;">(</span>title <span style="color: #b58900;">(</span>read-from-minibuffer <span style="color: #2aa198;">"Post Title: "</span><span style="color: #b58900;">)</span><span style="color: #859900;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75;">Prompt to enter the post title</span>
+<span class="linenr"> 8: </span>           <span style="color: #859900;">(</span>fname <span style="color: #b58900;">(</span>org-hugo-slug title<span style="color: #b58900;">)</span><span style="color: #859900;">)</span><span style="color: #6c71c4;">)</span>
+<span class="linenr"> 9: </span>      <span style="color: #6c71c4;">(</span>mapconcat #'identity
+<span class="linenr">10: </span>                 `<span style="color: #859900;">(</span>
+<span class="linenr">11: </span>                   ,<span style="color: #b58900;">(</span>concat <span style="color: #2aa198;">"* </span><span style="color: #cc9393;">TODO</span><span style="color: #2aa198;"> "</span> title<span style="color: #b58900;">)</span>
+<span class="linenr">12: </span>                   <span style="color: #2aa198;">":PROPERTIES:"</span>
+<span class="linenr">13: </span>                   ,<span style="color: #b58900;">(</span>concat <span style="color: #2aa198;">":EXPORT_FILE_NAME: "</span> fname<span style="color: #b58900;">)</span>
+<span class="linenr">14: </span>                   ,<span style="color: #b58900;">(</span>concat <span style="color: #2aa198;">":EXPORT_DATE: "</span> date<span style="color: #b58900;">)</span> <span style="color: #586e75;">;</span><span style="color: #586e75;">Enter current date and time</span>
+<span class="linenr">15: </span>                   <span style="color: #2aa198;">":END:"</span>
+<span class="linenr">16: </span>                   <span style="color: #2aa198;">"%?\n"</span><span style="color: #859900;">)</span>          <span style="color: #586e75;">;</span><span style="color: #586e75;">Place the cursor here finally</span>
+<span class="linenr">17: </span>                 <span style="color: #2aa198;">"\n"</span><span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+<span class="linenr">18: </span>
+<span class="linenr">19: </span>  <span style="color: #b58900;">(</span>add-to-list 'org-capture-templates
+<span class="linenr">20: </span>               '<span style="color: #268bd2;">(</span><span style="color: #2aa198;">"h"</span> <span style="color: #2aa198;">"Hugo post"</span>
+<span class="linenr">21: </span>                 entry <span style="color: #6c71c4;">(</span>file+olp <span style="color: #2aa198;">"all-posts.org"</span> <span style="color: #2aa198;">"Blog Ideas"</span><span style="color: #6c71c4;">)</span>
+<span class="linenr">22: </span>                 <span style="color: #6c71c4;">(</span><span style="color: #859900; font-weight: bold;">function</span> org-hugo-new-subtree-post-capture-template<span style="color: #6c71c4;">)</span><span style="color: #268bd2;">)</span><span style="color: #b58900;">)</span>
+<span class="linenr">23: </span>  <span style="color: #2aa198;">)</span>
+</pre>
+</div>
+
+
+<p>
+具体使用过程可以阅读其官方文档。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3a180bf" class="outline-2">
+<h2 id="org3a180bf"><span class="section-number-2">2</span> 我的需求与配置</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+目前我在使用hugo-tranquilpeak-theme 来
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>

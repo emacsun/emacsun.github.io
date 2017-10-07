@@ -196,13 +196,13 @@
   <2015-06-28 Sun 16:38>
 ** 机器学习
 
-*** 吴恩达coursera机器学习
+   吴恩达coursera机器学习笔记总结。作为coursera的联合创始人，吴恩达在coursera上的机器学习课程制作相当精良:每一个短视频为一个知识点，其间有小测试（防分心）。全部学下来毫无压力，简直业界良心。
 
    + [[file:computer/NG/week-01-introduction.org][导论]]
    + [[file:computer/NG/week-02-linear-regression-with-multiple-variables.org][多变量线性回归]]
 
 
-*** PRML学习笔记
+  PRML学习笔记
 
    + [[file:computer/PRML/first-impression-pattern-recognition.org][初始模式识别和机器学习]]
    + [[file:computer/PRML/PRMLch1dot1-polynomial-curve.org][多项式拟合到模式识别的相关概念]]
@@ -307,7 +307,7 @@
    + [[file:linux/emacs/emacs-hugo-apps.org][Emacs 联合 hugo 管理静态博客 ]]
    + [[file:linux/emacs/emacs-java.org][Emacs 作为 Java IDE ]]
    + [[file:linux/emacs/emacs-tweet.org][Emacs Tweet]]
-
+   + [[file:linux/emacs/emacs-org-hugo.org][Emacs 联合 org-hugo 输出撰写博客]]
 ** Git
    [2017-02-19 Sun 09:51]
 

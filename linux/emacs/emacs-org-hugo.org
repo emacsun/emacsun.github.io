@@ -1,0 +1,70 @@
+#+TITLE: Emacs 联合 org-hugo 撰写博客
+#+AUTHOR:    emacsun
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+CATEGORIES:
+#+SETUPFILE: ~/.emacs.d/org-templates/emacs-level2.org
+#+LaTeX_CLASS: cn-article
+
+* ox-hugo
+  [2017-10-07 Sat 11:24]
+
+  ox-hugo 补充了org的输出后台，其可以把org输出为hugo支持的markdown格式文档（[[https://github.com/russross/blackfriday][Blackfriday]]） ，从而在Hugo的静态网页中显示。其github仓库地址[[https://github.com/kaushalmodi/ox-hugo][在此]] ，其主页[[https://ox-hugo.scripter.co/][在此]]。
+
+  其官网甚至提供了一个创建新文章的快捷方式。
+
+#+begin_src elisp -n
+(with-eval-after-load 'org-capture
+  (defun org-hugo-new-subtree-post-capture-template ()
+    "Returns `org-capture' template string for new Hugo post.
+See `org-capture-templates' for more information."
+    (let* (;; http://www.holgerschurig.de/en/emacs-blog-from-org-to-hugo/
+           (date (format-time-string (org-time-stamp-format :long :inactive) (org-current-time)))
+           (title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
+           (fname (org-hugo-slug title)))
+      (mapconcat #'identity
+                 `(
+                   ,(concat "* TODO " title)
+                   ":PROPERTIES:"
+                   ,(concat ":EXPORT_FILE_NAME: " fname)
+                   ,(concat ":EXPORT_DATE: " date) ;Enter current date and time
+                   ":END:"
+                   "%?\n")          ;Place the cursor here finally
+                 "\n")))
+
+  (add-to-list 'org-capture-templates
+               '("h" "Hugo post"
+                 entry (file+olp "all-posts.org" "Blog Ideas")
+                 (function org-hugo-new-subtree-post-capture-template)))
+  )
+#+end_src
+
+基于官方给出的 =org-capture-templates= 我修改了自己的templates：
+#+begin_src lisp -n
+("h" "Hugo post")
+("hr" "Reading"
+ entry (file+olp "~/zorg/readingbar/content_org/all-posts.org" "Reading")
+ (function org-hugo-new-subtree-post-capture-template) :clock-in t :clock-resume t)
+
+("hm" "movie"
+ entry (file+olp "~/zorg/readingbar/content_org/all-posts.org" "movie")
+ (function org-hugo-new-subtree-post-capture-template) :clock-in t :clock-resume t)
+#+end_src
+通过这个设置，使用 =h r= 可以快速发布与 =Reading= 相关的博文，使用 =h m= 可以快速发布与 =movie= 相关的博文。
+
+更多使用细节可以阅读其官方文档。接下来我把我对 =ox-hugo= 的修改做一下总结。因为我的修改只针对Hugo 的 =hugo-tranquilpeak-theme= ，与诸位读者的可能不怎么相关，所以参考意义不大。如果你需要把 =ox-hugo= 加到自己的org export backend，只需要多多参考官方文档即可。
+
+* 我的需求与配置
+  [2017-10-07 Sat 11:32]
+
+  目前我在使用hugo-tranquilpeak-theme 来装点我的博客。
+
+  岔开几句介绍一下我的这个博客。这个博客存在于一个隐秘的地址（你当然看不到了），记录了我的soft life。 之所以说是soft life，是因为日常的工作都是非黑即白的理工类，而我的生活却不应该这样。
+
+  在通信领域对于解调器的输出有两种判决操作：一种判决叫做硬判决，一种叫做软判决。硬判决直接对解调输出做0-1处理，大于零就判为1，小于零就判为0；这种操作丢掉了信道的可靠度信息会导致译码器译码性能下降。而软判决则保留了信道的信息，其输出为实数，这个实数表示其是1或者0的可靠度。比如很大的正实数和很小的正实数在硬判决的时候无差别的做1处理，但是在软判决的时候这个实数被作为解调结果送给译码器，告诉译码器虽然这两个数都是正的，但是其大小是不一样的。
+
+  而我的生活，也应该有这样的软判决操作。非黑即白的生活多磨无聊。这个世界上很多事情不是非黑即白这么简单，对于一件事情，很多中操作都是正确的。正所谓，条条道路通罗马。方法总比问题多。
+
+  好了，回到ox-hugo与hugo-tranquilpeak-theme 的结合上来。
