@@ -13,7 +13,7 @@
 
   ox-hugo 补充了org的输出后台，其可以把org输出为hugo支持的markdown格式文档（[[https://github.com/russross/blackfriday][Blackfriday]]） ，从而在Hugo的静态网页中显示。其github仓库地址[[https://github.com/kaushalmodi/ox-hugo][在此]] ，其主页[[https://ox-hugo.scripter.co/][在此]]。
 
-  其官网甚至提供了一个创建新文章的快捷方式。
+  其官网甚至提供了一个创建新文章的 =org-capture-templates= 。对此稍加修改便可以为我所用。
 
 #+begin_src elisp -n
 (with-eval-after-load 'org-capture
@@ -41,7 +41,7 @@ See `org-capture-templates' for more information."
   )
 #+end_src
 
-基于官方给出的 =org-capture-templates= 我修改了自己的templates：
+基于官方给出的 =org-capture-templates= 稍作修改：
 #+begin_src lisp -n
 ("h" "Hugo post")
 ("hr" "Reading"
@@ -54,17 +54,36 @@ See `org-capture-templates' for more information."
 #+end_src
 通过这个设置，使用 =h r= 可以快速发布与 =Reading= 相关的博文，使用 =h m= 可以快速发布与 =movie= 相关的博文。
 
-更多使用细节可以阅读其官方文档。接下来我把我对 =ox-hugo= 的修改做一下总结。因为我的修改只针对Hugo 的 =hugo-tranquilpeak-theme= ，与诸位读者的可能不怎么相关，所以参考意义不大。如果你需要把 =ox-hugo= 加到自己的org export backend，只需要多多参考官方文档即可。
+更多细节可以阅读其官方文档。
+
+因为我使用的hugo主题是 =hugo-tranquilpeak-theme= ,这个主题中发布的文章markdown模板中有 =ox-hugo= 默认不支持的参数。因此需要修改 =ox-hugo= 的默认输出模板使其输出的markdown文档符合 =hugo-tranquilpeak-theme= 主题的需求。
+
+虽然我的修改只针对Hugo 的 =hugo-tranquilpeak-theme= ，但是接下来的技巧却适合所有的 =Hugo= 主题。这主要得益于 =ox-hugo= 的高度可定制性。
 
 * 我的需求与配置
   [2017-10-07 Sat 11:32]
 
-  目前我在使用hugo-tranquilpeak-theme 来装点我的博客。
+  目前我在使用hugo-tranquilpeak-theme 来装点我的soft life。
 
-  岔开几句介绍一下我的这个博客。这个博客存在于一个隐秘的地址（你当然看不到了），记录了我的soft life。 之所以说是soft life，是因为日常的工作都是非黑即白的理工类，而我的生活却不应该这样。
+  岔开几句介绍一下我的这个博客。这个博客存在于一个隐秘的地址（你当然看不到了），记录了我的soft life。 之所以说是soft life，是为了区别 hard life 。这里的 =soft= 不是指软饭生活 :D ; 这里的 =hard= 也不是指困难的生活。
 
-  在通信领域对于解调器的输出有两种判决操作：一种判决叫做硬判决，一种叫做软判决。硬判决直接对解调输出做0-1处理，大于零就判为1，小于零就判为0；这种操作丢掉了信道的可靠度信息会导致译码器译码性能下降。而软判决则保留了信道的信息，其输出为实数，这个实数表示其是1或者0的可靠度。比如很大的正实数和很小的正实数在硬判决的时候无差别的做1处理，但是在软判决的时候这个实数被作为解调结果送给译码器，告诉译码器虽然这两个数都是正的，但是其大小是不一样的。
+  容我岔开几句，简单的介绍一下 =soft life= 这个名字的来历。
 
-  而我的生活，也应该有这样的软判决操作。非黑即白的生活多磨无聊。这个世界上很多事情不是非黑即白这么简单，对于一件事情，很多中操作都是正确的。正所谓，条条道路通罗马。方法总比问题多。
+  在通信领域对于解调器的输出有两种判决操作：一种判决叫做硬判决，一种叫做软判决。硬判决直接对解调输出做0-1处理，大于零就判为1，小于零就判为0，没有中间态；这种操作丢掉了信道的可靠度信息，会导致译码器译码性能下降大约2-3dB。而软判决则保留了信道的信息，其输出为实数，这个实数表示编码比特是1或者0的可靠度。比如很大的正实数和很小的正实数在硬判决的时候无差别的做1处理，但是在软判决的时候这个实数被作为解调结果送给译码器，告诉译码器虽然这两个数都是正的，但是其大小是不一样的。即：在硬判决中判决为1的事件，在软判决中有无数可能的存在。
+
+  生活亦是如此，正确应该有多种方式。生活中大多数没有非对即错的道理。即使现在是错的，假以时日，剧情反转也有可能。对于一件事情，很多种处理方式都是正确的。正所谓，条条道路通罗马。方法总比问题多。soft life记录了我对问题的看法和感悟，可能和你的角度不同，但是在我的世界里确实有血有肉的丰满。
 
   好了，回到ox-hugo与hugo-tranquilpeak-theme 的结合上来。
+
+  基本上，我有两个需求：
+
+1. 使用ox-hugo就能导出带有 thumbnailImage , coverImage 以及 thumbnailImagePosition 参数的markdown。 而类似 thumbnailImage 这类的参数在 ox-hugo里是没有定义的，属于custom范畴。通过阅读ox-hugo的github中的样例，我发现可以在每一个headline的 =PROPERTY= 抽屉里添加：
+#+begin_example
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :thumbnailImage thumbnailImage.jpg
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :coverImage coverImage.png
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :thumbnailImagePosition left
+#+end_example
+
+如此便完成了自定义变量的添加。
+
+2. 导出markdown时自动设置好标签和分类（tags and category）。这个需求可以通过设置标签来完成 =:tags:@category= 很简单。在headline中的没有携带 =@= 前缀的标签都会归类为 tags，携带了 =@category= 的标签都会归类为 =category= 。
