@@ -63,20 +63,21 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgf21cad8">1. ox-hugo</a></li>
-<li><a href="#org8b9cd4d">2. 我的需求与配置</a></li>
-<li><a href="#org5c3e78a">3. ox-hugo 技巧收集</a>
+<li><a href="#orga5a5a74">1. ox-hugo</a></li>
+<li><a href="#orgdaebbb6">2. 我的需求与配置</a></li>
+<li><a href="#orgbf769ac">3. ox-hugo 技巧收集</a>
 <ul>
-<li><a href="#org278ef7b">3.1. 摘要</a></li>
-<li><a href="#orgde09335">3.2. 更多变量</a></li>
+<li><a href="#org2b7c392">3.1. 摘要</a></li>
+<li><a href="#org23430d2">3.2. 更多变量</a></li>
+<li><a href="#org068458c">3.3. img的位置</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf21cad8" class="outline-2">
-<h2 id="orgf21cad8"><span class="section-number-2">1</span> ox-hugo</h2>
+<div id="outline-container-orga5a5a74" class="outline-2">
+<h2 id="orga5a5a74"><span class="section-number-2">1</span> ox-hugo</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 
@@ -149,8 +150,8 @@ ox-hugo 补充了org的输出后台，其可以把org输出为hugo支持的markd
 </div>
 </div>
 
-<div id="outline-container-org8b9cd4d" class="outline-2">
-<h2 id="org8b9cd4d"><span class="section-number-2">2</span> 我的需求与配置</h2>
+<div id="outline-container-orgdaebbb6" class="outline-2">
+<h2 id="orgdaebbb6"><span class="section-number-2">2</span> 我的需求与配置</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -203,11 +204,12 @@ ox-hugo 补充了org的输出后台，其可以把org输出为hugo支持的markd
 </div>
 </div>
 
-<div id="outline-container-org5c3e78a" class="outline-2">
-<h2 id="org5c3e78a"><span class="section-number-2">3</span> ox-hugo 技巧收集</h2>
+<div id="outline-container-orgbf769ac" class="outline-2">
+<h2 id="orgbf769ac"><span class="section-number-2">3</span> ox-hugo 技巧收集</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-org278ef7b" class="outline-3">
-<h3 id="org278ef7b"><span class="section-number-3">3.1</span> 摘要</h3>
+</div>
+<div id="outline-container-org2b7c392" class="outline-3">
+<h3 id="org2b7c392"><span class="section-number-3">3.1</span> 摘要</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 通过添加
@@ -225,8 +227,8 @@ ox-hugo 补充了org的输出后台，其可以把org输出为hugo支持的markd
 </pre>
 </div>
 </div>
-<div id="outline-container-orgde09335" class="outline-3">
-<h3 id="orgde09335"><span class="section-number-3">3.2</span> 更多变量</h3>
+<div id="outline-container-org23430d2" class="outline-3">
+<h3 id="org23430d2"><span class="section-number-3">3.2</span> 更多变量</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 如下所示：
@@ -240,6 +242,23 @@ showDate: true
 </pre>
 <p>
 根据变量名可以猜个大概。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org068458c" class="outline-3">
+<h3 id="org068458c"><span class="section-number-3">3.3</span> img的位置</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+在hugo-tranquilpeak-theme主题中，所有的图片路径都是相对于static的路径。比如：
+</p>
+<pre class="example">
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :thumbnailImage /img/gone-with-the-wind.png
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :coverImage /img/gone-with-the-wind-cover.png
+</pre>
+
+<p>
+其中 <code>/img/gone-with-the-wind.png</code> 的绝对路径是 <code>/static/img/gone-with-the-wind.png</code> 。
 </p>
 </div>
 </div>

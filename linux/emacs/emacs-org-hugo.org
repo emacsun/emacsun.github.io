@@ -110,3 +110,13 @@ showSocial: true
 showDate: true
 #+end_example
 根据变量名可以猜个大概。
+
+** img的位置
+
+   在hugo-tranquilpeak-theme主题中，所有的图片路径都是相对于static的路径。比如：
+#+begin_example
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :thumbnailImage /img/gone-with-the-wind.png
+:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: :coverImage /img/gone-with-the-wind-cover.png
+#+end_example
+
+其中 =/img/gone-with-the-wind.png= 的绝对路径是 =/static/img/gone-with-the-wind.png= 。
