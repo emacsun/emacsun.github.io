@@ -1,21 +1,32 @@
-#+TITLE: Logistic Regression
-#+AUTHOR:    emacsun
-#+EMAIL:     emacsun@163.com
-#+DATE:
-#+DESCRIPTION:
-#+KEYWORDS:
-#+CATEGORIES:
-#+SETUPFILE: ~/.emacs.d/org-templates/math-level2.org
-#+HTML_HEAD_EXTRA: <a id="pdf"  href="./week-03-logistic-regression.pdf"><img src="../../img/assets/pdf.png"></a>
-#+LaTeX_CLASS: cn-article
-* Classion
-  [2017-10-08 Sun 22:26]
+% Intended LaTeX compiler: pdflatex
+\documentclass[10pt,a4paper,UTF8]{article}
+\usepackage{zclorg}
+\usepackage{tikztheorem}
+\author{emacsun}
+\date{}
+\title{Logistic Regression}
+\hypersetup{
+ pdfauthor={emacsun},
+ pdftitle={Logistic Regression},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.0.50.1 (Org mode 9.1.2)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+\titlepic{\includegraphics[scale=0.25]{../../img/sinc.PNG}}
+\section{Classion}
+\label{sec:orgdfc78c2}
+
 
 To attempt classification, one method is to use linear regression and map all predictions greater than 0.5 as a 1 and all less than 0.5 as a 0. However, this method doesn't work well because classification is not actually a linear function.
 
 The classification problem is just like the regression problem, except that the values we now want to predict take on only a small number of discrete values. For now, we will focus on the binary classification problem in which \(y\) can take on only two values, 0 and 1. (Most of what we say here will also generalize to the multiple-class case.) For instance, if we are trying to build a spam classifier for email, then \(x(i)\) may be some features of a piece of email, and \(y\) may be 1 if it is a piece of spam mail, and 0 otherwise. Hence,\(y\in \{0,1\}\) . 0 is also called the negative class, and 1 the positive class, and they are sometimes also denoted by the symbols “-” and “+.” Given \(x(i)\), the corresponding \(y(i)\) is also called the label for the training example.
-* Hypothesis Representation
-[2017-10-08 Sun 22:39]
+\section{Hypothesis Representation}
+\label{sec:orgee060ef}
+
 
 We could approach the classification problem ignoring the fact that y is discrete-valued, and use our old linear regression algorithm to try to predict y given x. However, it is easy to construct examples where this method performs very poorly. Intuitively, it also doesn't make sense for \(h_{\theta}(x)\)  to take values larger than \(1\) or smaller than \(0\) when we know that \(y\in \{0,1\}\). To fix this, let's change the form for our hypotheses\(h_{\theta}(x)\)  to satisfy \(\theta \leq h_{\theta}(\theta) \leq\) . This is accomplished by plugging \(\theta^{T}x\)  into the Logistic Function.
 
@@ -24,16 +35,18 @@ Our new form uses the "Sigmoid Function," also called the "Logistic Function":
 
 The following image shows us what the sigmoid function looks like:
 
-#+ATTR_HTML:  :width 400 :align center
-[[../../img/computer_ng/20171008logisticFunction.png]]
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171008logisticFunction.png}
+\end{center}
 
 The function \(g(z)\) , shown here, maps any real number to the \((0,1)\)  interval, making it useful for transforming an arbitrary-valued function into a function better suited for classification.
 
-\(h_{\theta}(x)\) will give us the probability that our output is 1. For example,\(h_{\theta}(x)=0.7\) gives us a probability of 70% that our output is 1. Our probability that our prediction is 0 is just the complement of our probability that it is 1 (e.g. if probability that it is 1 is 70%, then the probability that it is 0 is 30%).
+\(h_{\theta}(x)\) will give us the probability that our output is 1. For example,\(h_{\theta}(x)=0.7\) gives us a probability of 70\% that our output is 1. Our probability that our prediction is 0 is just the complement of our probability that it is 1 (e.g. if probability that it is 1 is 70\%, then the probability that it is 0 is 30\%).
 
 \begin{align*}& h_\theta(x) = P(y=1 | x ; \theta) = 1 - P(y=0 | x ; \theta) \\& P(y = 0 | x;\theta) + P(y = 1 | x ; \theta) = 1\end{align*}
-* Decision Boundary
-  [2017-10-08 Sun 23:16]
+\section{Decision Boundary}
+\label{sec:org34d6382}
+
 
 In order to get our discrete \(0\) or \(1\) classification, we can translate the output of the hypothesis function as follows:
 
@@ -63,11 +76,12 @@ Example:
 
 In this case, our decision boundary is a straight vertical line placed on the graph where \(x_{1}=5\), and everything to the left of that denotes \(y=1\), while everything to the right denotes \(y=0\).
 
-Again, the input to the sigmoid function \(g(z)\) (i.e. \(\theta^{T}x\)) doesn't need to be linear, and could be function that describes a circle (e.g. \(z = \theta_{0} + \theta_{1}x_{1}^{2} + \theta_{2}x_{1}^{2} \)) or any shape to fit our data.
-* Cost Function
-  [2017-10-08 Sun 23:51]
+Again, the input to the sigmoid function \(g(z)\) (i.e. \(\theta^{T}x\)) doesn't need to be linear, and could be function that describes a circle (e.g. \(z = \theta_{0} + \theta_{1}x_{1}^{2} + \theta_{2}x_{1}^{2}\)) or any shape to fit our data.
+\section{Cost Function}
+\label{sec:org8130664}
 
-We cannot use the same cost function that we use for linear regression because the Logistic Function will cause the output to be wavy, causing many *local optima* . In other words, it will not be a convex function.
+
+We cannot use the same cost function that we use for linear regression because the Logistic Function will cause the output to be wavy, causing many \textbf{local optima} . In other words, it will not be a convex function.
 
 Instead, our cost function for logistic regression looks like:
 
@@ -75,13 +89,15 @@ Instead, our cost function for logistic regression looks like:
 
 when \(y=1\), we get the following plot for \(J(\theta)\) vs \(h_{\theta}(x)\):
 
-#+ATTR_HTML:  :width 400 :align center
-[[../../img/computer_ng/20171008costFunction1.png]]
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171008costFunction1.png}
+\end{center}
 
 Similarly, when \(y=0\), we get the following plot for \(J(\theta)\) vs \(h_{\theta}(x)\):
 
-#+ATTR_HTML:  :width 400 :align center
-[[../../img/computer_ng/20171008costFunction2.png]]
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171008costFunction2.png}
+\end{center}
 
 \begin{align*}& \mathrm{Cost}(h_\theta(x),y) = 0 \text{ if } h_\theta(x) = y \\ & \mathrm{Cost}(h_\theta(x),y) \rightarrow \infty \text{ if } y = 0 \; \mathrm{and} \; h_\theta(x) \rightarrow 1 \\ & \mathrm{Cost}(h_\theta(x),y) \rightarrow \infty \text{ if } y = 1 \; \mathrm{and} \; h_\theta(x) \rightarrow 0 \\ \end{align*}
 
@@ -90,8 +106,9 @@ If our correct answer 'y' is 0, then the cost function will be 0 if our hypothes
 If our correct answer 'y' is 1, then the cost function will be 0 if our hypothesis function outputs 1. If our hypothesis approaches 0, then the cost function will approach infinity.
 
 Note that writing the cost function in this way guarantees that \(J(\theta)\) is convex for logistic regression.
-* Simplified Cost Function and Gradient Descent
-  [2017-10-09 Mon 00:21]
+\section{Simplified Cost Function and Gradient Descent}
+\label{sec:orgc2ffc3b}
+
 
 We can compress our cost function's two conditional cases into one case:
 
@@ -113,7 +130,8 @@ A vectorized implementation is:
 
 \begin{align*} & h = g(X\theta)\\ & J(\theta) = \frac{1}{m} \cdot \left(-y^{T}\log(h)-(1-y)^{T}\log(1-h)\right) \end{align*}
 
-** gradient decent
+\subsection{gradient decent}
+\label{sec:org77b8214}
 
 Remember that the general form of gradient descent is:
 
@@ -131,8 +149,9 @@ A vectorized implementation is:
 \label{eq:3}
 \theta := \theta - \frac{\alpha}{m} X^{T} (g(X \theta ) - \vec{y})
 \end{equation}
-* Advanced Optimization
-   [2017-10-09 Mon 19:27]
+\section{Advanced Optimization}
+\label{sec:orgb818a3c}
+
 
 "Conjugate gradient", "BFGS", and "L-BFGS" are more sophisticated, faster ways to optimize \(\theta\) that can be used instead of gradient descent. We suggest that you should not write these more sophisticated algorithms yourself (unless you are an expert in numerical computing) but use the libraries instead, as they're already tested and highly optimized. Octave provides them.
 
@@ -142,24 +161,25 @@ We first need to provide a function that evaluates the following two functions f
 
 We can write a single function that returns both of these:
 
-#+begin_example
+\begin{verbatim}
 function [jVal, gradient] = costFunction(theta)
   jVal = [...code to compute J(theta)...];
   gradient = [...code to compute derivative of J(theta)...];
 end
-#+end_example
+\end{verbatim}
 
 Then we can use octave's "fminunc()" optimization algorithm along with the "optimset()" function that creates an object containing the options we want to send to "fminunc()".
 
-#+begin_example
+\begin{verbatim}
 options = optimset('GradObj', 'on', 'MaxIter', 100);
 initialTheta = zeros(2,1);
    [optTheta, functionVal, exitFlag] = fminunc(@costFunction, initialTheta, options);
-#+end_example
+\end{verbatim}
 
 We give to the function "fminunc()" our cost function, our initial vector of theta values, and the "options" object that we created beforehand.
-* Multiclass Classification: One-vs-all
-  [2017-10-09 Mon 20:29]
+\section{Multiclass Classification: One-vs-all}
+\label{sec:org23efb37}
+
 
 Now we will approach the classification of data when we have more than two categories. Instead of \(y=\{0,1\}\) we will expand our definition so that \(y=\{0,1,\ldots ,n\}\).
 
@@ -171,37 +191,47 @@ We are basically choosing one class and then lumping all the others into a singl
 
 The following image shows how one could classify 3 classes:
 
-#+ATTR_HTML:  :width 400 :align center
-[[../../img/computer_ng/20171009multiclass.png]]
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171009multiclass.png}
+\end{center}
 
 To summarize:
 
 Train a logistic regression classifier \(h_{\theta}(x)\)  for each class  to predict the probability that \(y=i\)
 
 To make a prediction on a new \(x\), pick the class that maximizes \(h_{\theta}(x)\)
-* The Problem of Overfitting
-  [2017-10-09 Mon 21:55]
+\section{The Problem of Overfitting}
+\label{sec:org0d9393b}
+
 
 Consider the problem of predicting \(y\) from \(x\in \mathbf{R}\). The leftmost figure below shows the result of fitting a  \(y= \theta_{0} + \theta_{1}x\) to a dataset. We see that the data doesn’t really lie on straight line, and so the fit is not very good.
 
-#+ATTR_HTML:  :width 400 :align center
-[[../../img/computer_ng/20171009overfitting.png]]
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171009overfitting.png}
+\end{center}
 
-Instead, if we had added an extra feature \(x^{2}\) , and fit \(y = \theta_{0} + \theta_{1}x + \theta_{2}x^{2} \) , then we obtain a slightly better fit to the data (See middle figure). Naively, it might seem that the more features we add, the better. However, there is also a danger in adding too many features: The rightmost figure is the result of fitting a 5th order polynomial \(y=\sum_{j=0}^{5} \theta_{j}x^{j}\). We see that even though the fitted curve passes through the data perfectly, we would not expect this to be a very good predictor of, say, housing prices \(y\) for different living areas \(x\). Without formally defining what these terms mean, we'll say the figure on the left shows an instance of underfitting—in which the data clearly shows structure not captured by the model—and the figure on the right is an example of overfitting.
+Instead, if we had added an extra feature \(x^{2}\) , and fit \(y = \theta_{0} + \theta_{1}x + \theta_{2}x^{2}\) , then we obtain a slightly better fit to the data (See middle figure). Naively, it might seem that the more features we add, the better. However, there is also a danger in adding too many features: The rightmost figure is the result of fitting a 5th order polynomial \(y=\sum_{j=0}^{5} \theta_{j}x^{j}\). We see that even though the fitted curve passes through the data perfectly, we would not expect this to be a very good predictor of, say, housing prices \(y\) for different living areas \(x\). Without formally defining what these terms mean, we'll say the figure on the left shows an instance of underfitting—in which the data clearly shows structure not captured by the model—and the figure on the right is an example of overfitting.
 
 Underfitting, or high bias, is when the form of our hypothesis function \(h\) maps poorly to the trend of the data. It is usually caused by a function that is too simple or uses too few features. At the other extreme, overfitting, or high variance, is caused by a hypothesis function that fits the available data but does not generalize well to predict new data. It is usually caused by a complicated function that creates a lot of unnecessary curves and angles unrelated to the data.
 
 This terminology is applied to both linear and logistic regression. There are two main options to address the issue of overfitting:
 
-1) Reduce the number of features:
-   a. Manually select which features to keep.
-   b. Use a model selection algorithm (studied later in the course).
-2) Regularization
-   a. Keep all the features, but reduce the magnitude of parameters \(\theta_{j}\).
-   b. Regularization works well when we have a lot of slightly useful features.
+\begin{enumerate}
+\item Reduce the number of features:
+\begin{enumerate}
+\item Manually select which features to keep.
+\item Use a model selection algorithm (studied later in the course).
+\end{enumerate}
+\item Regularization
+\begin{enumerate}
+\item Keep all the features, but reduce the magnitude of parameters \(\theta_{j}\).
+\item Regularization works well when we have a lot of slightly useful features.
+\end{enumerate}
+\end{enumerate}
 
-* Cost Function
-  [2017-10-09 Mon 22:27]
+\section{Cost Function}
+\label{sec:org2973170}
+
 
 If we have overfitting from our hypothesis function, we can reduce the weight that some of the terms in our function carry by increasing their cost.
 
@@ -221,8 +251,9 @@ min_\theta\ \dfrac{1}{2m}\sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})^2 + 1000\cdo
 
 We've added two extra terms at the end to inflate the cost of \(\theta_{3}\) and \(\theta_{4}\). Now, in order for the cost function to get close to zero, we will have to reduce the values of \(\theta_{3}\) and \(\theta_{4}\) to near zero. This will in turn greatly reduce the values of \(\theta_{3}\) and \(\theta_{4}\) in our hypothesis function. As a result, we see that the new hypothesis (depicted by the pink curve) looks like a quadratic function but fits the data better due to the extra small terms \(\theta_{3}\) and \(\theta_{4}\).
 
-#+ATTR_HTML:  :width 400 :align center
-[[../../img/computer_ng/20171009regularization.png]]
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171009regularization.png}
+\end{center}
 
 We could also regularize all of our theta parameters in a single summation as:
 \begin{equation}
@@ -234,12 +265,14 @@ The \(\lambda\), or lambda, is the regularization parameter. It determines how m
 
 Using the above cost function with the extra summation, we can smooth the output of our hypothesis function to reduce overfitting. If lambda is chosen to be too large, it may smooth out the function too much and cause underfitting. Hence, what would happen if \(\lambda =0\) or is too small ?
 
-* Regularized Linear Regression
-  [2017-10-09 Mon 23:07]
+\section{Regularized Linear Regression}
+\label{sec:org4f9b6be}
+
 
 We can apply regularization to both linear regression and logistic regression. We will approach linear regression first.
 
-** Gradient Descent
+\subsection{Gradient Descent}
+\label{sec:orga0c9df0}
 
 We will modify our gradient descent function to separate out \(\theta_{0}\) from the rest of the parameters because we do not want to penalize \(\theta_{0}\).
 
@@ -253,7 +286,8 @@ The term \(\frac{\lambda}{m}\theta_{j}\) performs our regularization. With some 
 
 The first term in the above equation, \(1-\alpha\frac{\lambda}{m}\) will always be less than 1. Intuitively you can see it as reducing the value of \(\theta_{j}\) by some amount on every update. Notice that the second term is now exactly the same as it was before.
 
-** normal equation
+\subsection{normal equation}
+\label{sec:org362b0f6}
 
 Now let's approach regularization using the alternate method of the non-iterative normal equation.
 
@@ -264,14 +298,16 @@ To add in regularization, the equation is the same as our original, except that 
 \(L\) is a matrix with 0 at the top left and 1's down the diagonal, with 0's everywhere else. It should have dimension \((n+1)\times (n+1)\). Intuitively, this is the identity matrix (though we are not including \(x_{0}\)), multiplied with a single real number \(\lambda\).
 
 Recall that if\(m < n\) , then  \(X^{T}X\)  is non-invertible. However, when we add the term \(\lambda L\), then \(X^{T}X + \lambda L\) becomes invertible.
-*  Regularized Logistic Regression
-   [2017-10-09 Mon 23:32]
+\section{Regularized Logistic Regression}
+\label{sec:org1f49873}
+
 
 We can regularize logistic regression in a similar way that we regularize linear regression. As a result, we can avoid overfitting. The following image shows how the regularized function, displayed by the pink line, is less likely to overfit than the non-regularized function represented by the blue line:
 
 
-#+ATTR_HTML:  :width 400 :align center
-[[../../img/computer_ng/20171009LRregularized.png]]
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171009LRregularized.png}
+\end{center}
 
 Cost Function
 
@@ -291,5 +327,7 @@ J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})
 
 The second sum, \(\sum_{j=1}^{n}\theta_{j}^{2}\) means to explicitly exclude the bias term, \(\theta_{0}\). I.e. the \(\theta\) vector is indexed from \(0\) to \(n\) (holding \(n+1\) values, \(\theta_{0}\) through \(\theta_{n}\)), and this sum explicitly skips \(\theta_{0}\), by running from \(1\) to \(n\), skipping \(0\). Thus, when computing the equation, we should continuously update the two following equations:
 
-#+ATTR_HTML:  :width 400 :align center
-[[../../img/computer_ng/20171009gradientDescent.png]]
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171009gradientDescent.png}
+\end{center}
+\end{document}
