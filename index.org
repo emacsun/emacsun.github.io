@@ -185,6 +185,8 @@
     + [[file:communication/matlab/matlabmxCreateDoulbeMatrix.org][Matlab 与 C 混合编程 API 之 mxCreateDoubleMatrix]]
     + [[file:communication/matlab/matlabmxCreateNumericMatrix.org][Matlab 与 C 混合编程 API 之 mxCreateNumericMatrix]]
     + [[file:communication/matlab/matlabmxCreateStructMatrix.org][Matlab 与 C 混合编程 API 之 mxCreateStructMatrix]]
+    + [[file:communication/matlab/fminunc.org][快速优化无约束多变量函数利器:fminunc]]
+    + [[file:communication/matlab/banana.org][优化Rosenbrock香蕉函数]]
 ** 通信协议解读
    <2015-06-28 Sun 13:56>
 

@@ -1,0 +1,9 @@
+#+TITLE: Rosenbrock 香蕉函数的优化
+#+AUTHOR:    zcl.space
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:  Rosenbrock 香蕉函数的优化
+#+KEYWORDS: matlab optimization banana rosenbrock
+#+CATEGORIES: matlab
+#+SETUPFILE: ~/.emacs.d/org-templates/matlab-level2.org
+#+HTML_HEAD_EXTRA: <a id="pdf"  href="./banana.pdf"><img src="../../img/assets/pdf.png"></a>

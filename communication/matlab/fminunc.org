@@ -1,0 +1,9 @@
+#+TITLE:  优化多变量无约束函数利器：fminunc
+#+AUTHOR:    zcl.space
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:  使用 =fminunc= 优化无约束多变量函数
+#+KEYWORDS: matlab optimization
+#+CATEGORIES: matlab
+#+SETUPFILE: ~/.emacs.d/org-templates/matlab-level2.org
+#+HTML_HEAD_EXTRA: <a id="pdf"  href="./fminunc.pdf"><img src="../../img/assets/pdf.png"></a>
