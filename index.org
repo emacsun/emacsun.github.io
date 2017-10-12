@@ -201,6 +201,7 @@
    + [[file:computer/NG/week-01-introduction.org][导论]]
    + [[file:computer/NG/week-02-linear-regression-with-multiple-variables.org][多变量线性回归]]
    + [[file:computer/NG/week-03-logistic-regression.org][logistic回归]]
+   + [[file:computer/NG/week-04-neural-networks.org][神经网络]]
 
 
   PRML学习笔记
