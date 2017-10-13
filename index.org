@@ -204,6 +204,7 @@
    + [[file:computer/NG/week-02-linear-regression-with-multiple-variables.org][多变量线性回归]]
    + [[file:computer/NG/week-03-logistic-regression.org][logistic回归]]
    + [[file:computer/NG/week-04-neural-networks.org][神经网络]]
+   + [[file:computer/NG/vectorize-computation.org][矢量化计算过程]]
 
 
   PRML学习笔记
