@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>优化多变量无约束函数利器：fminunc</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<meta name="description" content="使用 =fminunc= 优化无约束多变量函数"
+ />
+<meta name="keywords" content="matlab optimization" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./fminunc.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "7em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "Neo-Euler"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "Neo-Euler"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">优化多变量无约束函数利器：fminunc</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf91fe92">1. fminunc</a></li>
+<li><a href="#org8e70414">2. 应用1： <code>x = fminunc(fun,x0)</code></a></li>
+<li><a href="#org2189baa">3. 应用2 ： <code>x = fminunc(fun,x0,options)</code></a></li>
+<li><a href="#org0f24e00">4. 应用3： <code>x = fminunc(problem)</code></a></li>
+<li><a href="#org1d79e23">5. 应用4： <code>[x,fval] = fminunc(fun,x0)</code></a></li>
+<li><a href="#orgf3bdaf8">6. 总结</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf91fe92" class="outline-2">
+<h2 id="orgf91fe92"><span class="section-number-2">1</span> fminunc</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+matlab提供了一个优化多变量无约束目标函数的利器：fminunc。
+</p>
+
+<p>
+其实现的功能是：
+</p>
+\begin{equation}
+\label{eq:1}
+\underset{x}{\min}f(x)
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org8e70414" class="outline-2">
+<h2 id="org8e70414"><span class="section-number-2">2</span> 应用1： <code>x = fminunc(fun,x0)</code></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+最简单的应用是：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">x = fminunc(fun,x0)
+</pre>
+</div>
+
+<p>
+其中 <code>x = fminunc(fun,x0)</code> 提供了一个起始点\(x_{0}\)，供 <code>fminunc</code> 使用。 <code>fminunc</code> 试图为目标函数找到局部最小解。
+</p>
+
+<p>
+举个例子，假设要寻找函数\(f(x) = 3x_{1}^{2} + 2x_{1}x_{2}+ x_{2}^{2} -4x_{1} +5x_{2}\)的最小值。我们首先为这个函数提供一个匿名函数句柄：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">fun = @(x)3<span style="color: #b58900;">*</span>x(1)<span style="color: #b58900;">^</span>2 <span style="color: #b58900;">+</span> 2<span style="color: #b58900;">*</span>x(1)<span style="color: #b58900;">*</span>x(2) <span style="color: #b58900;">+</span> x(2)<span style="color: #b58900;">^</span>2 <span style="color: #b58900;">-</span> 4<span style="color: #b58900;">*</span>x(1) <span style="color: #b58900;">+</span> 5<span style="color: #b58900;">*</span>x(2);
+</pre>
+</div>
+<p>
+调用 <code>fminunc</code> :
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">x0 =[1,1];
+[x,fval] = fminunc(fun,x0);
+</pre>
+</div>
+<p>
+经过若干次迭代后, <code>x</code> 返回最小值的位置， <code>fval</code> 返回目标函数在这个位置的最小值。
+</p>
+<pre class="example">
+x,fval
+
+x =
+
+    2.2500   -4.7500
+
+
+fval =
+
+  -16.3750
+</pre>
+</div>
+</div>
+<div id="outline-container-org2189baa" class="outline-2">
+<h2 id="org2189baa"><span class="section-number-2">3</span> 应用2 ： <code>x = fminunc(fun,x0,options)</code></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+当提供梯度结果的时候， <code>fmiunc</code> 的计算结果会大大加快。比如对于多变量Rosenbrock函数：
+</p>
+\begin{equation}
+\label{eq:2}
+f(x) = 100(x_{1} - x_{1}^{2})^{2} + (1-x_{1})^{2}
+\end{equation}
+
+<p>
+其梯度为：
+</p>
+\begin{equation}
+\label{eq:3}
+\partial f(x) =
+\begin{bmatrix}
+-400(x_{1} - x_{1}^{2})x_{1} - 2(1-x_{1}) \\
+200(x_{2} - x_{1}^{2})
+\end{bmatrix}
+\end{equation}
+
+<p>
+matlab 代码为：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">[f,g]</span> = <span style="color: #268bd2;">rosenbrockwithgrad</span>(<span style="color: #268bd2;">x</span>)
+<span style="color: #586e75;">% Calculate objective f</span>
+f = 100<span style="color: #b58900;">*</span>(x(2) <span style="color: #b58900;">-</span> x(1)<span style="color: #b58900;">^</span>2)<span style="color: #b58900;">^</span>2 <span style="color: #b58900;">+</span> (1<span style="color: #b58900;">-</span>x(1))<span style="color: #b58900;">^</span>2;
+
+<span style="color: #859900; font-weight: bold;">if</span> nargout <span style="color: #b58900;">&gt;</span> 1 <span style="color: #586e75;">% gradient required</span>
+    g = [<span style="color: #b58900;">-</span>400<span style="color: #b58900;">*</span>(x(2)<span style="color: #b58900;">-</span>x(1)<span style="color: #b58900;">^</span>2)<span style="color: #b58900;">*</span>x(1)<span style="color: #b58900;">-</span>2<span style="color: #b58900;">*</span>(1<span style="color: #b58900;">-</span>x(1));
+        200<span style="color: #b58900;">*</span>(x(2)<span style="color: #b58900;">-</span>x(1)<span style="color: #b58900;">^</span>2)];
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<p>
+为这个目标函数的梯度提供一些参数：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">options = optimoptions(<span style="color: #2aa198;">'fminunc'</span>,<span style="color: #2aa198;">'Algorithm'</span>,<span style="color: #2aa198;">'trust-region'</span>,<span style="color: #2aa198;">'SpecifyObjectiveGradient'</span>,true);
+</pre>
+</div>
+
+<p>
+设定初始值为 \([-1,2]\)，然后调用 <code>fminunc</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">x0 = [<span style="color: #b58900;">-</span>1,2];
+fun = @rosenbrockwithgrad;
+x = fminunc(fun,x0,options)
+</pre>
+</div>
+<p>
+当梯度的值小于预先设定的最小值时，优化过程结束，程序返回：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">x =
+  1.0000 1.0000
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org0f24e00" class="outline-2">
+<h2 id="org0f24e00"><span class="section-number-2">4</span> 应用3： <code>x = fminunc(problem)</code></h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+对于应用2 ，我们可以用更加结构化的方式来描述。首先还是针对Rosenbrock函数：
+</p>
+
+\begin{equation}
+\label{eq:30}
+f(x) = 100(x_{1} - x_{1}^{2})^{2} + (1-x_{1})^{2}
+\end{equation}
+
+<p>
+其梯度为：
+</p>
+\begin{equation}
+\label{eq:4}
+\partial f(x) =
+\begin{bmatrix}
+-400(x_{1} - x_{1}^{2})x_{1} - 2(1-x_{1}) \\
+200(x_{2} - x_{1}^{2})
+\end{bmatrix}
+\end{equation}
+
+<p>
+matlab代码跟之前一样：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab"><span style="color: #859900; font-weight: bold;">function</span> <span style="color: #268bd2;">[f,g]</span> = <span style="color: #268bd2;">rosenbrockwithgrad</span>(<span style="color: #268bd2;">x</span>)
+<span style="color: #586e75;">% Calculate objective f</span>
+f = 100<span style="color: #b58900;">*</span>(x(2) <span style="color: #b58900;">-</span> x(1)<span style="color: #b58900;">^</span>2)<span style="color: #b58900;">^</span>2 <span style="color: #b58900;">+</span> (1<span style="color: #b58900;">-</span>x(1))<span style="color: #b58900;">^</span>2;
+
+<span style="color: #859900; font-weight: bold;">if</span> nargout <span style="color: #b58900;">&gt;</span> 1 <span style="color: #586e75;">% gradient required</span>
+    g = [<span style="color: #b58900;">-</span>400<span style="color: #b58900;">*</span>(x(2)<span style="color: #b58900;">-</span>x(1)<span style="color: #b58900;">^</span>2)<span style="color: #b58900;">*</span>x(1)<span style="color: #b58900;">-</span>2<span style="color: #b58900;">*</span>(1<span style="color: #b58900;">-</span>x(1));
+        200<span style="color: #b58900;">*</span>(x(2)<span style="color: #b58900;">-</span>x(1)<span style="color: #b58900;">^</span>2)];
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<p>
+为目标函数梯度设定参数：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">options = optimoptions(<span style="color: #2aa198;">'fminunc'</span>,<span style="color: #2aa198;">'Algorithm'</span>,<span style="color: #2aa198;">'trust-region'</span>,<span style="color: #2aa198;">'SpecifyObjectiveGradient'</span>,true);
+</pre>
+</div>
+
+<p>
+为所有的参数创建一个结构体：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">problem.options = options;
+problem.x0 = [<span style="color: #b58900;">-</span>1,2];
+problem.objective = @rosenbrockwithgrad;
+problem.solver = <span style="color: #2aa198;">'fminunc'</span>;
+</pre>
+</div>
+
+<p>
+然后调用 <code>fminunc</code> ：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">x = fminunc(problem)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org1d79e23" class="outline-2">
+<h2 id="org1d79e23"><span class="section-number-2">5</span> 应用4： <code>[x,fval] = fminunc(fun,x0)</code></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+<code>fminunc</code> 函数不仅可以找到最小值的位置，也可以返回最小值。只要对其添加第二个输出，就是局部最小值。
+</p>
+
+<p>
+比如目标函数是：
+</p>
+\begin{equation}
+\label{eq:5}
+f(x) = x(1)e^{-||x||_{2}^{2}} + ||x||_{2}^{2}/20
+\end{equation}
+<p>
+其MATLAB代码为：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">fun = @(x)x(1)<span style="color: #b58900;">*</span>exp(<span style="color: #b58900;">-</span>(x(1)<span style="color: #b58900;">^</span>2 <span style="color: #b58900;">+</span> x(2)<span style="color: #b58900;">^</span>2)) <span style="color: #b58900;">+</span> (x(1)<span style="color: #b58900;">^</span>2 <span style="color: #b58900;">+</span> x(2)<span style="color: #b58900;">^</span>2)<span style="color: #b58900;">/</span>20;
+</pre>
+</div>
+<p>
+设定初始值，并调用 <code>fminunc</code> ：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">x0 = [1,2];
+[x,fval] = fminunc(fun,x0)
+</pre>
+</div>
+<p>
+迭代结束后，返回：
+</p>
+<pre class="example">
+x =
+
+   -0.6691    0.0000
+
+fval =
+
+   -0.4052
+</pre>
+</div>
+</div>
+<div id="outline-container-orgf3bdaf8" class="outline-2">
+<h2 id="orgf3bdaf8"><span class="section-number-2">6</span> 总结</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<p>
+matlab已经把优化过程封装为一个函数了。我们要做的就是对问题建模，输出问题的数学模型，然后调用优化函数。
+</p>
+
+<p>
+<code>fminunc</code> 的 <code>options</code> 选项还提供了更多的选择，比如是否显示迭代过程，采用的优化算法等等等等，这些可以通过查阅matlab的帮助文档悉知。
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
