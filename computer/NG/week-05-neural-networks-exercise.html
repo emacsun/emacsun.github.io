@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>神经网络要点理解</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="emacsun" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./week-05-neural-network-exercise.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "1em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">神经网络要点理解</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7612a59">1. 损失函数及其正则化</a></li>
+<li><a href="#orgf3bf9c1">2. 后向传递算法</a></li>
+</ul>
+</div>
+</div>
+<p>
+第一次接触神经网络总是被其诸多的符号弄的眼花缭乱。几个重要的符号包括：
+</p>
+
+<ol class="org-ol">
+<li>样本的个数\(m\);</li>
+<li>单个样本的feature个数\(n\);</li>
+<li>神经网络的层数\(L\);</li>
+<li>神经网络输出的类别数量\(K\);</li>
+</ol>
+
+<p>
+假设我们对5000幅\(20\times 20\)的手写数字灰度图像进行识别，则\(m=5000,n=400,K=10\)。对于本文用到的神经网络，\(L=3\)。
+</p>
+
+<div id="outline-container-org7612a59" class="outline-2">
+<h2 id="org7612a59"><span class="section-number-2">1</span> 损失函数及其正则化</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+一个未经正则化的神经网络损失函数为：
+</p>
+\begin{equation}
+\label{eq:1}
+J(\Theta) = \frac{1}{m} \sum_{i=1}^{m} \sum_{k=1}^{K} \big[ - y_{k}^{(i)}\log ((h_{\theta}(x^{(i)}))_{k}) - (1-y_{k}^{(i)})\log (1- (h_{\theta}(x^{(i)}))_{k} ) \big]
+\end{equation}
+
+<p>
+其中\(h_{\theta}(x)\)的计算如下：
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171014htheta.png" alt="20171014htheta.png" width="400" align="center" />
+</p>
+</div>
+
+<p>
+此处\(L=3\).
+</p>
+
+<p>
+针对上面的公式，我们有\(x^{(i)}\)表示第\(i\)个样本的矢量，这个矢量的大小是\(400\times 1\)。\(h_{\theta}(x^{(i)})_{k}\)表示第\(i\)个输入在第\(K\)个类上的输出。每一个输入样本\(x^{(i)}\)都会在神经网络的输出层产生\(K\)个输出，表示\(x^{(i)}\)属于这\(K\)个类中每个类的可能性。
+</p>
+
+<p>
+当我们给定\(\Theta_{1}\)，\(\Theta_{2}\)时，我们可以根据上图来计算每一个\(h_{\theta}(x^{i})\)，进而根据\(J(\Theta)\)的公式来计算损失函数。
+</p>
+
+<p>
+注意在计算的过程中，我们遇到的一些矩阵(从上图到\(J(\Theta)\)的计算过程中遇到的矩阵)的维度为：
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">矩阵</th>
+<th scope="col" class="org-left">维度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row" class="org-left">\(a^{(1)}\)</th>
+<td class="org-left">\(5000\times 401\)</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(\Theta^{(1)}\)</th>
+<td class="org-left">\(25\times 401\)</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(z^{(2)}\)</th>
+<td class="org-left">\(25\times 5000\)</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(a^{(2)}\)</th>
+<td class="org-left">\(26\times 5000\)</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(\Theta^{(2)}\)</th>
+<td class="org-left">\(10\times 26\)</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(z^{(3)}\)</th>
+<td class="org-left">\(10\times 5000\)</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(a^{(3)}\)</th>
+<td class="org-left">\(10\times 5000\)</td>
+</tr>
+
+<tr>
+<th scope="row" class="org-left">\(Y\)</th>
+<td class="org-left">\(10\times 5000\)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+其中\(a^{(1)}\) 为添加了\(a_{0}^{(1)}\)后的矩阵；\(a^{(2)}\)为添加了\(a_{0}^{(2)}\)后的矩阵；\(Y\)为把1,2,&#x2026;,10映射为矢量后的矩阵。
+</p>
+
+
+<p>
+\(J(\Theta)\)计算的是5000个用户在10个类上的cost之和。所以式~(\ref{eq:1})的方括号中如果是矩阵的话应该是一个\(10\times 5000\)的矩阵。
+</p>
+
+<p>
+计算\(J(\Theta)\)的部分代码为：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">a1 = [ones(m,1) X];
+z2 = Theta1<span style="color: #b58900;">*</span>a1';
+a2 = 1<span style="color: #b58900;">./</span>(1 <span style="color: #b58900;">+</span> exp(<span style="color: #b58900;">-</span>z2));
+a2 = [ones(1,size(a2,2));a2];<span style="color: #586e75;">%add a_0^(2)</span>
+z3 = Theta2 <span style="color: #b58900;">*</span> a2;
+
+a3 = 1<span style="color: #b58900;">./</span>(1 <span style="color: #b58900;">+</span> exp(<span style="color: #b58900;">-</span>z3));<span style="color: #586e75;">%10X5000</span>
+
+temp = eye(num_labels);
+Y = temp(<span style="color: #b58900;">:</span>,y);
+J = (Y <span style="color: #b58900;">.*</span> log(a3) <span style="color: #b58900;">+</span> (1<span style="color: #b58900;">-</span>Y)<span style="color: #b58900;">.*</span> log(1<span style="color: #b58900;">-</span>a3))<span style="color: #b58900;">./</span>m;
+J = <span style="color: #b58900;">-</span>1<span style="color: #b58900;">*</span>sum(sum(J));
+</pre>
+</div>
+<p>
+注意为了支持任何大于\(K>3\)的分类，代码中不允许出现任何的magic number。比如：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">temp = eye(num_labels);
+</pre>
+</div>
+<p>
+就不能写成：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">temp = eye(10);
+</pre>
+</div>
+<p>
+虽然在这个例子中 <code>num_labels=10</code> magic number 也是不被允许的。
+</p>
+
+<p>
+接下来是正则项的计算：
+</p>
+\begin{equation}
+\label{eq:2}
+\frac{\lambda}{2m} \big [ \sum_{j=1}^{25}\sum_{k=1}^{400} (\Theta_{j,k}^{(1)})^{2} + \sum_{j=1}^{10}\sum_{k=1}^{25}(\Theta_{j,k}^{2})^{2} \big]
+\end{equation}
+<p>
+同样magic number是不被允许的。
+</p>
+</div>
+</div>
+<div id="outline-container-orgf3bf9c1" class="outline-2">
+<h2 id="orgf3bf9c1"><span class="section-number-2">2</span> 后向传递算法</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+后向传递算法的步骤为：
+</p>
+<ol class="org-ol">
+<li>给定一个训练样本\(x^{(t)},y^{(t)}\) 首先计算前向过程，直到输出\(h_{\theta}(x)\)</li>
+<li>对每个层\(l\)的每个节点\(j\)，计算误差项\(\delta_{j}^{(l)}\)，这个误差项用来度量这个节点对输出负多大的“责任”；</li>
+<li>对于输出节点，我们直接计算网络的activation输出和真实的目标值之间的差即可。用这个差值作为\(\delta_{j}^{(3)}\)，对于隐藏的层，计算\(\delta_{j}^{(l)}\)时需要加权考虑层\(l+1\)上的错误。</li>
+</ol>
+
+
+<div class="figure">
+<p><img src="../../img/computer_ng/20171014BPimplement.png" alt="20171014BPimplement.png" width="400" align="center" />
+</p>
+</div>
+
+<p>
+根据上图，我们需要循环处理所有样本，一次处理一个，所以一定会有一个 <code>for t=1:m</code> 。在第\(t\)次迭代的时候处理第\(t\)个样本。循环内的步骤为：
+</p>
+
+<ol class="org-ol">
+<li>设定输入层的值为\(x^{t}\)，执行前向过程，计算\(z^{(2)},a^{2},z^{(3)},a^{(3)}\)。注意在计算过程中需要为\(a\)添加一个bias项。</li>
+<li>对于层3中的每一个输出单元，设定\(\delta_{k}^{(3)} = ( a_{k}^{(3)} - y_{k})\) 其中\(y_{k}\)是二进制数表示当前的训练样本是不是第\(k\)类，如果是\(y_{k} = 1\)，如果当前样本属于其他类则\(y_{k}=0\)。</li>
+<li>对隐藏层\(l=2\)，设定：\(\delta^{(2)} = (\Theta^{(2)})^{T}\delta^{(3)}.*g^{'}(z^{(2)})\)</li>
+<li>从这个样本中累计梯度值。\[ \Delta^{(l)} = \Delta^{(l)} +\delta^{(l+1)}(a^{(l)})^{T} \] 注意要去掉\(\delta_{0}^{(2)}\)</li>
+<li>获得梯度值：\[\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta) = D_{ij}^{(l)} = \frac{1}{m}\Delta_{ij}^{(l)}\]</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
