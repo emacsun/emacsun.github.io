@@ -179,14 +179,14 @@
 
 ** matlab 仿真
    <2015-11-08 Sun 19:49>
+    + [[file:communication/matlab/fminunc.org][快速优化无约束多变量函数利器:fminunc]]
+    + [[file:communication/matlab/banana.org][优化Rosenbrock香蕉函数]]
     + [[file:communication/matlab/matlab-surface-contour.org][使用 matlab 的 surface 和 contour 画图]]
     + [[file:communication/matlab/matlabandc.org][Matlab 与 C 混合编程之一：基本原理]]
     + [[file:communication/matlab/matlabCMexAPI.org][Matlab 与 C 混合编程之二:C/C++ MEX API]]
     + [[file:communication/matlab/matlabmxCreateDoulbeMatrix.org][Matlab 与 C 混合编程 API 之 mxCreateDoubleMatrix]]
     + [[file:communication/matlab/matlabmxCreateNumericMatrix.org][Matlab 与 C 混合编程 API 之 mxCreateNumericMatrix]]
     + [[file:communication/matlab/matlabmxCreateStructMatrix.org][Matlab 与 C 混合编程 API 之 mxCreateStructMatrix]]
-    + [[file:communication/matlab/fminunc.org][快速优化无约束多变量函数利器:fminunc]]
-    + [[file:communication/matlab/banana.org][优化Rosenbrock香蕉函数]]
 ** 通信协议解读
    <2015-06-28 Sun 13:56>
 
@@ -205,6 +205,7 @@
    + [[file:computer/NG/week-03-logistic-regression.org][logistic回归]]
    + [[file:computer/NG/week-04-neural-networks.org][神经网络]]
    + [[file:computer/NG/vectorize-computation.org][矢量化计算过程]]
+   + [[file:computer/NG/week-05-neural-networks.org][后向传递算法]]
 
 
   PRML学习笔记

@@ -1,0 +1,259 @@
+% Intended LaTeX compiler: pdflatex
+\documentclass[10pt,a4paper,UTF8]{article}
+\usepackage{zclorg}
+\usepackage{tikztheorem}
+\author{emacsun}
+\date{}
+\title{后向传递算法}
+\hypersetup{
+ pdfauthor={emacsun},
+ pdftitle={后向传递算法},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.0.50.1 (Org mode 9.1.2)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+\titlepic{\includegraphics[scale=0.25]{../../img/sinc.PNG}}
+\section{Cost Function}
+\label{sec:org255de25}
+
+
+Let's first define a few variables that we will need to use:
+
+\begin{enumerate}
+\item \(L\) = total number of layers in the network
+\item \(s_{l}\)= number of units (not counting bias unit) in layer l
+\item \(K\) = number of output units/classes
+\end{enumerate}
+
+Recall that in neural networks, we may have many output nodes. We denote \(h_{\Theta}\)(x)\_k as being a hypothesis that results in the \(k_{th}\) output. Our cost function for neural networks is going to be a generalization of the one we used for logistic regression. Recall that the cost function for regularized logistic regression was:
+\begin{equation}
+\label{eq:1}
+J(\theta) = - \frac{1}{m} \sum_{i=1}^m [ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))] + \frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2
+\end{equation}
+
+For neural networks, it is going to be slightly more complicated:
+
+\begin{gather*} J(\Theta) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \left[y^{(i)}_k \log ((h_\Theta (x^{(i)}))_k) + (1 - y^{(i)}_k)\log (1 - (h_\Theta(x^{(i)}))_k)\right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} ( \Theta_{j,i}^{(l)})^2\end{gather*}
+We have added a few nested summations to account for our multiple output nodes. In the first part of the equation, before the square brackets, we have an additional nested summation that loops through the number of output nodes.
+
+In the regularization part, after the square brackets, we must account for multiple theta matrices. The number of columns in our current theta matrix is equal to the number of nodes in our current layer (including the bias unit). The number of rows in our current theta matrix is equal to the number of nodes in the next layer (excluding the bias unit). As before with logistic regression, we square every term.
+
+Note:
+
+\begin{enumerate}
+\item the double sum simply adds up the logistic regression costs calculated for each cell in the output layer
+\item the triple sum simply adds up the squares of all the individual \(\Theta\)s in the entire network.
+\item the \(i\) in the triple sum does not refer to training example \(i\)
+\end{enumerate}
+\section{Backpropagation Algorithm}
+\label{sec:orgb6f2bfd}
+
+
+"Backpropagation" is neural-network terminology for minimizing our cost function, just like what we were doing with gradient descent in logistic and linear regression. Our goal is to compute:
+\begin{equation}
+\label{eq:3}
+\underset{\Theta}{\min} J(\Theta)
+\end{equation}
+
+That is ,we want to minimize our cost function \(J\) using an optimal set of parameters in theta. In this section we'll look at the equations we use to compute the partial derivative of \(J(\Theta)\):
+\begin{equation}
+\label{eq:4}
+\frac{\partial}{\partial \Theta_{i,j}^{(l)}}J(\Theta)
+\end{equation}
+To do so, we use the following algorithm:
+
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171014BP.png}
+\end{center}
+
+\subsection{Back propagation Algorithm}
+\label{sec:orgf2b30ce}
+
+Given training set \(\{(x^{(1)},y^{(1)}),\ldots , (x^{(m)},y^{(m)}) \}\)
+
+Set\(\Delta_{i,j}^{(l)}:=0\) for all\((l,i,j)\), hence you end up with a matrix full of zeros:
+
+For training example \(t=1\) to \(m\):
+\begin{enumerate}
+\item set \(a^{(1)}:=x^{(t)}\)
+\item Perform forward propagation to compute to compute \(a^{(l)},for l = 2,3,\ldots ,L\)
+\end{enumerate}
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171014gradientComputation.png}
+\end{center}
+
+Using \(y^{(t)}\), compute \(\delta^{(L)} = a^{(L)} - y(t)\)
+
+Where \(L\) is our total number of layers and \(a^{(L)}\) is the vector of outputs of the activation units for the last layer. So our "error values" for the last layer are simply the differences of our actual results in the last layer and the correct outputs in \(y\). To get the delta values of the layers before the last layer, we can use an eauqiton that steps up back from right to left:
+
+Compute \(\delta^{(L-1)},\delta^{(L-1)},\ldots ,\delta^{(2)}\) using \(\delta^{(l)} = ((\Theta^{(l)})^{T})\delta^{(l+1)}.* a^{(l)} .* (1-a^{(l)})\)
+
+The delta values of layer \(l\) are calculated by multiplying the delta values in the next layer with the theta matrix of layer \(l\). We then element-wise multiply that with a function called \(g^{'}\), which is the derivative of the activation function \(g\) evaluated with the input values given by \(z^{(l)}\).
+
+The \(g^{'}\)  derivative terms can also be written out as:
+\begin{equation}
+\label{eq:5}
+g^{'}(z^{(l)}) = a^{(l)}.* (1-a^{(l)})
+\end{equation}
+
+\(\Delta_{i,j}^{(l)}:=  \Delta_{i,j}^{(l)} + a_{j}^{(l)}\delta_{i}^{(l+1)}\) or with vectorization, \(\Delta^{(l)}:= \Delta^{(l)} + \delta^{(l+1)}(a^{(l)})^{T}\)
+
+Hence we can update our new \(\Delta\) matrix.:
+
+\begin{eqnarray*}
+D_{i,j}^{(l)}&=&\frac{1}{m} (\Delta_{i,j}^{(l)} + \lambda \Theta_{i,j}^{(l)}) \quad j\neq 0 \\
+D_{i,j}^{(l)}&=&\frac{1}{m}\Delta_{i,j}^{(l)}  \quad j=0
+\end{eqnarray*}
+
+The capital-delta matrix \(D\) is usd as an "accumulator" to add up our values as we go along and eventually compute our partial derivative. Thus we get \(\frac{\partial}{\partial \Theta_{i,j}^{(l)}}J(\Theta) = D_{i,j}^{(l)}\)
+\section{Backpropagation Intuition}
+\label{sec:orgd8d045a}
+
+
+Recall that the cost function for a neural network is :
+\begin{gather*}J(\Theta) = - \frac{1}{m} \sum_{t=1}^m\sum_{k=1}^K \left[ y^{(t)}_k \ \log (h_\Theta (x^{(t)}))_k + (1 - y^{(t)}_k)\ \log (1 - h_\Theta(x^{(t)})_k)\right] + \frac{\lambda}{2m}\sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_l+1} ( \Theta_{j,i}^{(l)})^2\end{gather*}
+
+If we consider simple non-multiclass classification (k=1) and disregard regularization, the cost is computed with:
+
+\begin{equation}
+\label{eq:6}
+cost(t) =y^{(t)} \ \log (h_\Theta (x^{(t)})) + (1 - y^{(t)})\ \log (1 - h_\Theta(x^{(t)}))
+\end{equation}
+
+Recall that our derivative is the slope of a line tangent to the cost function, so the steeper the slope the more incorrect we are. Let us consider the following neural network below and see how we could calculate some \(\delta_{j}^{(l)}\):
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171014BP2.png}
+\end{center}
+
+In the image above, to calculate \(\delta_{2}^{(2)}\), we multiply the weights \(\Theta_{12}^{(2)}\) and \(\Theta_{22}^{(2)}\) by their respective \(\delta\) values found to the right of each edge. So we get \(\delta_{2}^{(2)} = \Theta_{12}^{(2)}*\delta_{1}^{(3)} + \Theta_{22}^{(2)}*\delta_{2}^{(3)}\). To calculate every single possible \(\delta_{j}^{(l)}\), we could start from the right of our diagram. We can think of our edges as our \(\Theta_{ij}\). Going fromright toleft, to calculate the value of \(\delta_{j}^{(l)}\), you can just take the over all sum of each weight times the \(\delta\) it is coming from. Hence, another example would be \(\delta_{2}^{(3)} = \Theta_{12}^{(3)}*\delta_{1}^{(4)}\)
+\section{Implementation Note: Unrolling Parameters}
+\label{sec:orge9f1821}
+
+
+With neural networks, we are working with sets of matrices:
+\begin{align*} \Theta^{(1)}, \Theta^{(2)}, \Theta^{(3)}, \dots \\ D^{(1)}, D^{(2)}, D^{(3)}, \dots \end{align*}
+
+In order to use optimizing functions such as "fminunc()", we will want to "unroll" all the elements and put them into one long vector:
+
+\lstset{language=matlab,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+thetaVector = [ Theta1(:); Theta2(:); Theta3(:); ]
+deltaVector = [ D1(:); D2(:); D3(:) ]
+\end{lstlisting}
+
+If the dimensions of Theta1 is \(10\times 11\), Theta2 is \(10\times 11\)  and Theta3 is \(1\times 11\) , then we can get back our original matrices from the "unrolled" versions as follows:
+\lstset{language=matlab,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+Theta1 = reshape(thetaVector(1:110),10,11)
+Theta2 = reshape(thetaVector(111:220),10,11)
+Theta3 = reshape(thetaVector(221:231),1,11)
+\end{lstlisting}
+
+To summarize:
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171014unroll.png}
+\end{center}
+\section{Gradient Checking}
+\label{sec:org0ca1d8b}
+
+
+Gradient checking will assure that our backpropagation works as intended. We can approximate the derivative of our cost function with:
+\begin{equation}
+\label{eq:7}
+\dfrac{\partial}{\partial\Theta}J(\Theta) \approx \dfrac{J(\Theta + \epsilon) - J(\Theta - \epsilon)}{2\epsilon}
+\end{equation}
+
+With multiple theta matrices, we can approximate the derivative with respect to \(\Theta_{j}\) as follows:
+\begin{equation}
+\label{eq:8}
+\dfrac{\partial}{\partial\Theta_j}J(\Theta) \approx \dfrac{J(\Theta_1, \dots, \Theta_j + \epsilon, \dots, \Theta_n) - J(\Theta_1, \dots, \Theta_j - \epsilon, \dots, \Theta_n)}{2\epsilon}
+\end{equation}
+A small value for \(\epsilon\)  such as \(\epsilon=10^{-4}\) , guarantees that the math works out properly. If the value for \(\epsilon\) is too small, we can end up with numerical problems.
+Hence, we are only adding or subtracting epsilon to the \(\Theta_{j}\) matrix. In octave we can do it as follows:
+\lstset{language=matlab,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+epsilon = 1e-4;
+for i = 1:n,
+  thetaPlus = theta;
+  thetaPlus(i) += epsilon;
+  thetaMinus = theta;
+  thetaMinus(i) -= epsilon;
+  gradApprox(i) = (J(thetaPlus) - J(thetaMinus))/(2*epsilon)
+end;
+\end{lstlisting}
+We previously saw how to calculate the deltaVector. So once we compute our gradApprox vector, we can check that gradApprox ≈ deltaVector.
+
+Once you have verified once that your backpropagation algorithm is correct, you don't need to compute gradApprox again. The code to compute gradApprox can be very slow.
+\section{Random Initialization}
+\label{sec:org2f84609}
+
+
+Initializing all theta weights to zero does not work with neural networks. When we backpropagate, all nodes will update to the same value repeatedly. Instead we can randomly initialize our weights for our \(\Theta\) matrices using the following method:
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171014Random.png}
+\end{center}
+
+Hence, we initialize each \(\Theta_{i,j}^{(l)}\) to a random value between \([-\epsilon,+\epsilon]\) . Using the above formula guarantees that we get the desired bound. The same procedure applies to all the \(\Theta\)'s. Below is some working code you could use to experiment.
+
+\lstset{language=matlab,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+If the dimensions of Theta1 is 10x11, Theta2 is 10x11 and Theta3 is 1x11.
+
+Theta1 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
+Theta2 = rand(10,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
+Theta3 = rand(1,11) * (2 * INIT_EPSILON) - INIT_EPSILON;
+\end{lstlisting}
+
+\texttt{rand(x,y)} is just a function in octave that will initialize a matrix of random real numbers between 0 and 1.
+
+(Note: the epsilon used above is unrelated to the epsilon from Gradient Checking)
+\section{Putting it Together}
+\label{sec:orgefeb562}
+
+
+First, pick a network architecture; choose the layout of your neural network, including how many hidden units in each layer and how many layers in total you want to have.
+
+\begin{enumerate}
+\item Number of input units = dimension of features;
+\item Number of output units = number of clssses;
+\item Number of hidden units per layer = usually more the better (must balance with cost of computation as it increase with more hidden units)
+\item Defaults: 1 hidden layer. If you have more than 1 hidden layer, then it is recommended that you have the same number of units in every hidden layer.
+\end{enumerate}
+
+\subsection{training a Neural Network}
+\label{sec:orgd302627}
+
+\begin{enumerate}
+\item Randomly initially the weights
+\item Implement forward propagation to get \(H_{\Theta}(x^{(i)})\) for any \(x^{(i)}\)
+\item Implement the cost function.
+\item Implement the backpropagation to compute partial derivatives
+\item Use gradient checking to confirm that your backpropagation works. Then disable gradient checking.
+\item Use gradient descent or a built-in optimization function to minimize the cost function with the weights in theta.
+\end{enumerate}
+
+When we perform forward and back propagation, we loop on every training example:
+\lstset{language=matlab,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+for i = 1:m,
+   Perform forward propagation and backpropagation using example (x(i),y(i))
+   (Get activations a(l) and delta terms d(l) for l = 2,...,L
+\end{lstlisting}
+
+The following image gives us an intuition of what is happening as we are implementing our neural network:
+
+\begin{center}
+\includegraphics[width=.9\linewidth]{../../img/computer_ng/20171014all.png}
+\end{center}
+
+Ideally,  you want \(H_{\Theta}(x^{(i)}) \approx y^{(i)}\). This will minimize our cost function. However, keep in mind that \(J(\Theta)\) is not convex and thus we can end up in a local minimum instead.
+\end{document}
