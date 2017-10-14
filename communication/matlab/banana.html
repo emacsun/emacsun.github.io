@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rosenbrock 香蕉函数的优化</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<meta name="description" content="Rosenbrock 香蕉函数的优化"
+ />
+<meta name="keywords" content="matlab optimization banana rosenbrock" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./banana.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "7em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "Neo-Euler"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "Neo-Euler"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Rosenbrock 香蕉函数的优化</h1>
+<div id="table-of-contents">
+<h2>目录</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf1db4b4">1. 简介</a></li>
+<li><a href="#orgcc7d250">2. 优化方法1：无导数优化</a></li>
+<li><a href="#orgc43c69d">3. 优化方法2：通过估算导数优化</a></li>
+<li><a href="#org2791200">4. 优化方法3：最陡梯度下降法（估计梯度）</a></li>
+<li><a href="#org4511776">5. 优化方法4：最陡梯度下降法（解析梯度）</a></li>
+<li><a href="#org760e605">6. 优化方法5：使用Hessian矩阵</a></li>
+<li><a href="#org7f0c4bb">7. 优化方法6：使用最小二乘法</a></li>
+<li><a href="#org4011fb0">8. 优化方法7：使用最小二乘法和Jacobian矩阵</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf1db4b4" class="outline-2">
+<h2 id="orgf1db4b4"><span class="section-number-2">1</span> 简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+
+</p>
+
+<p>
+在数学最优化过程中，Rosenbrock函数是一个用来测试最优化算法性能的非凸函数，matlab称这个函数为香蕉函数。这个函数的定义为：
+</p>
+\begin{equation}
+\label{eq:1}
+f(x) = 100 (x(2) - x(1)^{2})^{2} + (1-x(1))^{2}
+\end{equation}
+<p>
+其形状大致为：
+</p>
+
+
+
+<div class="figure">
+<p><img src="../../img/communication_matlab/20171014rosenbrock.png" alt="20171014rosenbrock.png" width="400" align="center" />
+</p>
+</div>
+
+<p>
+其matlab生成代码为：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-matlab"><span class="linenr"> 1: </span>close all;
+<span class="linenr"> 2: </span>hfig = <span style="color: #b58900;">figure</span>(1);
+<span class="linenr"> 3: </span>
+<span class="linenr"> 4: </span>s = 0.05;
+<span class="linenr"> 5: </span>X = [<span style="color: #b58900;">-</span>2 <span style="color: #b58900;">:</span> s <span style="color: #b58900;">:</span> 2<span style="color: #b58900;">+</span>s];
+<span class="linenr"> 6: </span>Y = [<span style="color: #b58900;">-</span>1 <span style="color: #b58900;">:</span> s <span style="color: #b58900;">:</span> 3<span style="color: #b58900;">+</span>s];
+<span class="linenr"> 7: </span>[X, Y] = meshgrid(X, Y);
+<span class="linenr"> 8: </span>Z = (1<span style="color: #b58900;">-</span>X)<span style="color: #b58900;">.^</span>2 <span style="color: #b58900;">+</span> 100<span style="color: #b58900;">*</span>(Y<span style="color: #b58900;">-</span>X<span style="color: #b58900;">.^</span>2)<span style="color: #b58900;">.^</span>2;
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span><span style="color: #586e75;">% Use log scale of Z for a batter usage of the color spectrum</span>
+<span class="linenr">11: </span>minZ = min(Z(<span style="color: #b58900;">:</span>));
+<span class="linenr">12: </span>maxZ = max(Z(<span style="color: #b58900;">:</span>));
+<span class="linenr">13: </span>C = minZ <span style="color: #b58900;">+</span> (maxZ<span style="color: #b58900;">-</span>minZ)<span style="color: #b58900;">.*</span>log(1<span style="color: #b58900;">+</span>Z<span style="color: #b58900;">-</span>minZ)<span style="color: #b58900;">./</span>log(1<span style="color: #b58900;">+</span>maxZ<span style="color: #b58900;">-</span>minZ);
+<span class="linenr">14: </span><span style="color: #586e75;">% See</span>
+<span class="linenr">15: </span><span style="color: #586e75;">% http://stackoverflow.com/questions/5073865/how-to-color-surface-with-stronger-contrast</span>
+<span class="linenr">16: </span><span style="color: #586e75;">% for how to color a surface with a even stronger contrast.</span>
+<span class="linenr">17: </span><span style="color: #586e75;">% The method is as follows:</span>
+<span class="linenr">18: </span><span style="color: #586e75;">%C = Z;</span>
+<span class="linenr">19: </span><span style="color: #586e75;">%[~, index] = sort(C(:));</span>
+<span class="linenr">20: </span><span style="color: #586e75;">%C(index) = 1 : numel(index);</span>
+<span class="linenr">21: </span>
+<span class="linenr">22: </span>surf(X, Y, Z, C, <span style="color: #2aa198;">'EdgeColor'</span>, <span style="color: #2aa198;">'none'</span>, <span style="color: #2aa198;">'LineStyle'</span>, <span style="color: #2aa198;">'none'</span>);
+<span class="linenr">23: </span>colormap = jet;
+<span class="linenr">24: </span>
+<span class="linenr">25: </span><span style="color: #b58900;">axis</span>([<span style="color: #b58900;">-</span>2, 2, <span style="color: #b58900;">-</span>1, 3, 0, 2500]);
+<span class="linenr">26: </span>xlabel(<span style="color: #2aa198;">'x'</span>, <span style="color: #2aa198;">'fontsize'</span>, 18);
+<span class="linenr">27: </span>ylabel(<span style="color: #2aa198;">'y'</span>, <span style="color: #2aa198;">'fontsize'</span>, 18);
+<span class="linenr">28: </span>zlabel(<span style="color: #2aa198;">'f'</span>, <span style="color: #2aa198;">'fontsize'</span>, 18);
+<span class="linenr">29: </span>
+<span class="linenr">30: </span><span style="color: #586e75;">% Note that the `-dsvg' option is only supported for Simulink systems</span>
+<span class="linenr">31: </span>print(hfig, <span style="color: #2aa198;">'-dsvg'</span>, <span style="color: #2aa198;">'rosenbrock'</span>);
+<span class="linenr">32: </span><span style="color: #586e75;">% To produce eps and pdf, use the following code. Notice that `epstopdf' may not work on Windows.</span>
+<span class="linenr">33: </span><span style="color: #586e75;">% With octave 3.8.1, the pdf does not look very nice --- it is full of "scratches".</span>
+<span class="linenr">34: </span><span style="color: #586e75;">%print(hfig, '-depsc', 'rosenbrock');</span>
+<span class="linenr">35: </span><span style="color: #586e75;">%system('epstopdf rosenbrock.eps');</span>
+</pre>
+</div>
+
+
+
+<p>
+这个函数的每个等高线大致是抛物线形，其全局最小值在抛物线的山谷中，很容易找到这个山谷，但是由于山谷内的值变化不大，要找到全局最小值比较困难。 \(f(x)\) 有唯一的最小值在\((1,1)\)，最小值为\(f(x) = 0\)。在本例中，我们使用\(x_{0} = [-1.9,2]\)作为优化的初始值。
+</p>
+</div>
+</div>
+<div id="outline-container-orgcc7d250" class="outline-2">
+<h2 id="orgcc7d250"><span class="section-number-2">2</span> 优化方法1：无导数优化</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+
+</p>
+
+<p>
+这个方法使用 <code>fminsearch</code> 函数为无约束函数找到最小值。本函数采用一种基于几何搜索不需要计算导数的方法求得目标函数的最小值。
+</p>
+
+<p>
+matlab代码为：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">fun = @(x)(100<span style="color: #b58900;">*</span>(x(2) <span style="color: #b58900;">-</span> x(1)<span style="color: #b58900;">^</span>2)<span style="color: #b58900;">^</span>2 <span style="color: #b58900;">+</span> (1 <span style="color: #b58900;">-</span> x(1))<span style="color: #b58900;">^</span>2);
+options = optimset(<span style="color: #2aa198;">'OutputFcn'</span>,@bananaout,<span style="color: #2aa198;">'Display'</span>,<span style="color: #2aa198;">'off'</span>);
+x0 = [<span style="color: #b58900;">-</span>1.9,2];
+[x,fval,eflag,output] = fminsearch(fun,x0,options);
+title <span style="color: #2aa198;">'Rosenbrock solution via fminsearch'</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../../img/communication_matlab/20171014rosenbrockfminsearch.png" alt="20171014rosenbrockfminsearch.png" width="400" align="center" />
+</p>
+</div>
+
+<p>
+通过输出参数  <code>output.funcCount</code> 我们知道 <code>fminsearch</code> 估算了210次目标函数最小值；通过 <code>output.iterations</code> 我们知道 <code>fminsearch</code> 迭代了 114次。
+</p>
+</div>
+</div>
+<div id="outline-container-orgc43c69d" class="outline-2">
+<h2 id="orgc43c69d"><span class="section-number-2">3</span> 优化方法2：通过估算导数优化</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+
+</p>
+
+<p>
+<code>fminunc</code> 函数也可以优化无约束问题。它采用基于导数优化的算法。这个函数不仅估计目标函数的一阶导数，而且对目标函数的二阶导数也有考虑。 <code>fminunc</code> 通常比 <code>fminsearch</code> 更有效。
+</p>
+
+<p>
+matlab 代码为：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">options = optimoptions(<span style="color: #2aa198;">'fminunc'</span>,<span style="color: #2aa198;">'Display'</span>,<span style="color: #2aa198;">'off'</span>,<span style="text-decoration: underline;">...</span>
+    <span style="color: #2aa198;">'OutputFcn'</span>,@bananaout,<span style="color: #2aa198;">'Algorithm'</span>,<span style="color: #2aa198;">'quasi-newton'</span>);
+[x,fval,eflag,output] = fminunc(fun,x0,options);
+title <span style="color: #2aa198;">'Rosenbrock solution via fminunc'</span>
+</pre>
+</div>
+
+
+
+<div class="figure">
+<p><img src="../../img/communication_matlab/20171014rosenbrockfminunc.png" alt="20171014rosenbrockfminunc.png" width="400" align="center" />
+</p>
+</div>
+
+<p>
+同样， <code>output.funcCount = 150</code> <code>output.iterations=34</code> 。显然 <code>fminunc</code> 要比 <code>fminsearch</code> 更高效。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2791200" class="outline-2">
+<h2 id="org2791200"><span class="section-number-2">4</span> 优化方法3：最陡梯度下降法（估计梯度）</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+
+</p>
+
+<p>
+如果你尝试使用最陡梯度下降法优化香蕉函数，你会发现整个过程收敛的非常慢，这是因为香蕉函数的山谷非常平整，找到最小值绝非易事。
+</p>
+
+<p>
+可以为 <code>fminunc</code> 指定最陡梯度下降法。最终，使用最陡梯度下降法迭代了600次也没有收敛。
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">options = optimoptions(options,<span style="color: #2aa198;">'HessUpdate'</span>,<span style="color: #2aa198;">'steepdesc'</span>,<span style="text-decoration: underline;">...</span>
+    <span style="color: #2aa198;">'MaxFunctionEvaluations'</span>,600);
+[x,fval,eflag,output] = fminunc(fun,x0,options);
+title <span style="color: #2aa198;">'Rosenbrock solution via steepest descent'</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../../img/communication_matlab/20171014rosenbrockfminunc2.png" alt="20171014rosenbrockfminunc2.png" width="400" align="center" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4511776" class="outline-2">
+<h2 id="org4511776"><span class="section-number-2">5</span> 优化方法4：最陡梯度下降法（解析梯度）</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+
+</p>
+
+<p>
+如果能够为 <code>fminunc</code> 提供目标函数梯度的解析解， <code>fminunc</code> 使用较少的迭代次数就可以达到收敛状态。使用 <code>trust-region</code> 算法往往也比 <code>quasi-newton</code> 算法收敛更快，占用内存更少。
+</p>
+
+<p>
+matlab代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">grad = @(x)[<span style="color: #b58900;">-</span>400<span style="color: #b58900;">*</span>(x(2) <span style="color: #b58900;">-</span> x(1)<span style="color: #b58900;">^</span>2)<span style="color: #b58900;">*</span>x(1) <span style="color: #b58900;">-</span> 2<span style="color: #b58900;">*</span>(1 <span style="color: #b58900;">-</span> x(1));
+            200<span style="color: #b58900;">*</span>(x(2) <span style="color: #b58900;">-</span> x(1)<span style="color: #b58900;">^</span>2)];
+fungrad = @(x)deal(fun(x),grad(x));
+options = resetoptions(options,{<span style="color: #2aa198;">'HessUpdate'</span>,<span style="color: #2aa198;">'MaxFunctionEvaluations'</span>});
+options = optimoptions(options,<span style="color: #2aa198;">'SpecifyObjectiveGradient'</span>,true,<span style="text-decoration: underline;">...</span>
+    <span style="color: #2aa198;">'Algorithm'</span>,<span style="color: #2aa198;">'trust-region'</span>);
+[x,fval,eflag,output] = fminunc(fungrad,x0,options);
+title <span style="color: #2aa198;">'Rosenbrock solution via fminunc with gradient'</span>
+</pre>
+</div>
+
+
+
+<div class="figure">
+<p><img src="../../img/communication_matlab/20171014rosenbrockfminunc3.png" alt="20171014rosenbrockfminunc3.png" width="400" align="center" />
+</p>
+</div>
+
+<p>
+这一次： <code>output.funcCount=32</code> <code>output.iterations=31</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org760e605" class="outline-2">
+<h2 id="org760e605"><span class="section-number-2">6</span> 优化方法5：使用Hessian矩阵</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+
+</p>
+
+<p>
+如果你能为 <code>fminunc</code> 提供Hessian矩阵（二阶导数矩阵）， <code>fminunc</code> 能够收敛的更快。
+</p>
+
+
+<p>
+matlab代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">hess = @(x)[1200<span style="color: #b58900;">*</span>x(1)<span style="color: #b58900;">^</span>2 <span style="color: #b58900;">-</span> 400<span style="color: #b58900;">*</span>x(2) <span style="color: #b58900;">+</span> 2, <span style="color: #b58900;">-</span>400<span style="color: #b58900;">*</span>x(1);
+            <span style="color: #b58900;">-</span>400<span style="color: #b58900;">*</span>x(1), 200];
+fungradhess = @(x)deal(fun(x),grad(x),hess(x));
+options.HessianFcn = <span style="color: #2aa198;">'objective'</span>;
+[x,fval,eflag,output] = fminunc(fungradhess,x0,options);
+title <span style="color: #2aa198;">'Rosenbrock solution via fminunc with Hessian'</span>
+</pre>
+</div>
+
+
+
+<div class="figure">
+<p><img src="../../img/communication_matlab/20171014rosenbrockfminunc4.png" alt="20171014rosenbrockfminunc4.png" width="400" align="center" />
+</p>
+</div>
+
+<p>
+这一次： <code>output.funcCount=32</code> <code>output.iterations=31</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org7f0c4bb" class="outline-2">
+<h2 id="org7f0c4bb"><span class="section-number-2">7</span> 优化方法6：使用最小二乘法</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+
+</p>
+
+<p>
+优化非线性平方和函数的一个方法是 <code>lsqnonli</code> 。这个函数比 <code>fminunc</code> 更高效。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-matlab">options = optimoptions(<span style="color: #2aa198;">'lsqnonlin'</span>,<span style="color: #2aa198;">'Display'</span>,<span style="color: #2aa198;">'off'</span>,<span style="color: #2aa198;">'OutputFcn'</span>,@bananaout);
+vfun = @(x)[10<span style="color: #b58900;">*</span>(x(2) <span style="color: #b58900;">-</span> x(1)<span style="color: #b58900;">^</span>2),1 <span style="color: #b58900;">-</span> x(1)];
+[x,resnorm,residual,eflag,output] = lsqnonlin(vfun,x0,[],[],options);
+title <span style="color: #2aa198;">'Rosenbrock solution via lsqnonlin'</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="../../img/communication_matlab/20171014rosenbrockfminunc5.png" alt="20171014rosenbrockfminunc5.png" width="400" align="center" />
+</p>
+</div>
+
+<p>
+这一次： <code>output.funcCount=87</code> <code>output.iterations=28</code>
+</p>
+</div>
+</div>
+<div id="outline-container-org4011fb0" class="outline-2">
+<h2 id="org4011fb0"><span class="section-number-2">8</span> 优化方法7：使用最小二乘法和Jacobian矩阵</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+
+</p>
+
+<p>
+就像 <code>fminunc</code> 可以利用梯度信息降低迭代次数一样， <code>lsqnonlin</code> 可以也可以利用梯度信息加速优化过程。
+</p>
+
+<p>
+matlab 代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">jac = @(x)[<span style="color: #b58900;">-</span>20<span style="color: #b58900;">*</span>x(1),10;
+           <span style="color: #b58900;">-</span>1,0];
+vfunjac = @(x)deal(vfun(x),jac(x));
+options.SpecifyObjectiveGradient = true;
+[x,resnorm,residual,eflag,output] = lsqnonlin(vfunjac,x0,[],[],options);
+title <span style="color: #2aa198;">'Rosenbrock solution via lsqnonlin with Jacobian'</span>
+</pre>
+</div>
+
+
+
+<div class="figure">
+<p><img src="../../img/communication_matlab/20171014rosenbrockfminunc6.png" alt="20171014rosenbrockfminunc6.png" width="400" align="center" />
+</p>
+</div>
+
+<p>
+这一次： <code>output.funcCount=29</code> <code>output.iterations=28</code>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
