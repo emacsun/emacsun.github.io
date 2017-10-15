@@ -86,8 +86,8 @@ for the JavaScript code in this tag.
 <h2>目录</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7612a59">1. 损失函数及其正则化</a></li>
-<li><a href="#orgf3bf9c1">2. 后向传递算法</a></li>
+<li><a href="#org46495ee">1. 损失函数及其正则化</a></li>
+<li><a href="#org5eea513">2. 后向传递算法</a></li>
 </ul>
 </div>
 </div>
@@ -106,8 +106,8 @@ for the JavaScript code in this tag.
 假设我们对5000幅\(20\times 20\)的手写数字灰度图像进行识别，则\(m=5000,n=400,K=10\)。对于本文用到的神经网络，\(L=3\)。
 </p>
 
-<div id="outline-container-org7612a59" class="outline-2">
-<h2 id="org7612a59"><span class="section-number-2">1</span> 损失函数及其正则化</h2>
+<div id="outline-container-org46495ee" class="outline-2">
+<h2 id="org46495ee"><span class="section-number-2">1</span> 损失函数及其正则化</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 一个未经正则化的神经网络损失函数为：
@@ -257,8 +257,8 @@ J = <span style="color: #b58900;">-</span>1<span style="color: #b58900;">*</span
 </p>
 </div>
 </div>
-<div id="outline-container-orgf3bf9c1" class="outline-2">
-<h2 id="orgf3bf9c1"><span class="section-number-2">2</span> 后向传递算法</h2>
+<div id="outline-container-org5eea513" class="outline-2">
+<h2 id="org5eea513"><span class="section-number-2">2</span> 后向传递算法</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 
@@ -284,12 +284,32 @@ J = <span style="color: #b58900;">-</span>1<span style="color: #b58900;">*</span
 </p>
 
 <ol class="org-ol">
-<li>设定输入层的值为\(x^{t}\)，执行前向过程，计算\(z^{(2)},a^{2},z^{(3)},a^{(3)}\)。注意在计算过程中需要为\(a\)添加一个bias项。</li>
-<li>对于层3中的每一个输出单元，设定\(\delta_{k}^{(3)} = ( a_{k}^{(3)} - y_{k})\) 其中\(y_{k}\)是二进制数表示当前的训练样本是不是第\(k\)类，如果是\(y_{k} = 1\)，如果当前样本属于其他类则\(y_{k}=0\)。</li>
+<li>设定输入层的值为\(x^{t}\)，执行前向过程，计算\(z^{(2)},a^{(2)},z^{(3)},a^{(3)}\)。注意在计算过程中需要为\(a\)添加一个bias项。</li>
+<li>对于层3中的每一个输出单元，设定\(\delta_{k}^{(3)} = ( a_{k}^{(3)} - y_{k})\) 其中\(y_{k}\)是二进制数表示当前的训练样本是不是第\(k\)类，如果是，则\(y_{k} = 1\)；如果当前样本属于其他类则\(y_{k}=0\)。</li>
 <li>对隐藏层\(l=2\)，设定：\(\delta^{(2)} = (\Theta^{(2)})^{T}\delta^{(3)}.*g^{'}(z^{(2)})\)</li>
 <li>从这个样本中累计梯度值。\[ \Delta^{(l)} = \Delta^{(l)} +\delta^{(l+1)}(a^{(l)})^{T} \] 注意要去掉\(\delta_{0}^{(2)}\)</li>
 <li>获得梯度值：\[\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta) = D_{ij}^{(l)} = \frac{1}{m}\Delta_{ij}^{(l)}\]</li>
 </ol>
+
+<p>
+在matlab实现的过程中，也需要仔细核对相关变量的维度。由于我们在计算\(a^{(2)},a^{(3)},z^{(2)},z^{(3)}\)的过程中使用的是矢量计算，在计算\(\frac{\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta)\)的过程中我们也可以使用全矢量计算。
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab"><span style="color: #586e75; font-weight: bold; text-decoration: overline;">%% calculate the theta gradient</span>
+delta3 = a3 <span style="color: #b58900;">-</span> Y;
+temp = Theta2;
+temp(<span style="color: #b58900;">:</span>,1) = 0;
+Theta2_grad = delta3 <span style="color: #b58900;">*</span> a2'<span style="color: #b58900;">./</span>m <span style="color: #b58900;">+</span> lambda<span style="color: #b58900;">./</span>m<span style="color: #b58900;">*</span>temp ;
+
+delta2 = Theta2(<span style="color: #b58900;">:</span>,2<span style="color: #b58900;">:</span>end)'<span style="color: #b58900;">*</span>delta3 <span style="color: #b58900;">.*</span> sigmoidGradient(z2);
+temp = Theta1;
+temp(<span style="color: #b58900;">:</span>,1) = 0;
+Theta1_grad = delta2 <span style="color: #b58900;">*</span> a1<span style="color: #b58900;">./</span>m <span style="color: #b58900;">+</span> lambda<span style="color: #b58900;">./</span>m<span style="color: #b58900;">*</span>temp;
+</pre>
+</div>
+<p>
+需要注意的是在正则化过程中需要把\(\Theta\)中对应bias项的那些值去掉，在代码中我才用了置零处理。另外在计算\(\delta^{(2)}\)的过程中也需要把\(\Theta_{2}\)中与bias相关的项去掉。
+</p>
 </div>
 </div>
 </div>

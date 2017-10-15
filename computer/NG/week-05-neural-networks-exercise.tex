@@ -29,7 +29,7 @@
 假设我们对5000幅\(20\times 20\)的手写数字灰度图像进行识别，则\(m=5000,n=400,K=10\)。对于本文用到的神经网络，\(L=3\)。
 
 \section{损失函数及其正则化}
-\label{sec:orgf18f3ff}
+\label{sec:org8860247}
 一个未经正则化的神经网络损失函数为：
 \begin{equation}
 \label{eq:1}
@@ -105,7 +105,7 @@ temp = eye(10);
 \end{equation}
 同样magic number是不被允许的。
 \section{后向传递算法}
-\label{sec:orgb64c8c7}
+\label{sec:org63e4525}
 
 
 后向传递算法的步骤为：
@@ -122,10 +122,26 @@ temp = eye(10);
 根据上图，我们需要循环处理所有样本，一次处理一个，所以一定会有一个 \texttt{for t=1:m} 。在第\(t\)次迭代的时候处理第\(t\)个样本。循环内的步骤为：
 
 \begin{enumerate}
-\item 设定输入层的值为\(x^{t}\)，执行前向过程，计算\(z^{(2)},a^{2},z^{(3)},a^{(3)}\)。注意在计算过程中需要为\(a\)添加一个bias项。
+\item 设定输入层的值为\(x^{t}\)，执行前向过程，计算\(z^{(2)},a^{(2)},z^{(3)},a^{(3)}\)。注意在计算过程中需要为\(a\)添加一个bias项。
 \item 对于层3中的每一个输出单元，设定\(\delta_{k}^{(3)} = ( a_{k}^{(3)} - y_{k})\) 其中\(y_{k}\)是二进制数表示当前的训练样本是不是第\(k\)类，如果是，则\(y_{k} = 1\)；如果当前样本属于其他类则\(y_{k}=0\)。
 \item 对隐藏层\(l=2\)，设定：\(\delta^{(2)} = (\Theta^{(2)})^{T}\delta^{(3)}.*g^{'}(z^{(2)})\)
 \item 从这个样本中累计梯度值。\[ \Delta^{(l)} = \Delta^{(l)} +\delta^{(l+1)}(a^{(l)})^{T} \] 注意要去掉\(\delta_{0}^{(2)}\)
 \item 获得梯度值：\[\frac{\partial}{\partial \Theta_{ij}^{(l)}}J(\Theta) = D_{ij}^{(l)} = \frac{1}{m}\Delta_{ij}^{(l)}\]
 \end{enumerate}
+
+在matlab实现的过程中，也需要仔细核对相关变量的维度。由于我们在计算\(a^{(2)},a^{(3)},z^{(2)},z^{(3)}\)的过程中使用的是矢量计算，在计算\(\frac{\partial}{\partial \Theta_{ij}^{(l)}} J(\Theta)\)的过程中我们也可以使用全矢量计算。
+\lstset{language=matlab,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+%% calculate the theta gradient
+delta3 = a3 - Y;
+temp = Theta2;
+temp(:,1) = 0;
+Theta2_grad = delta3 * a2'./m + lambda./m*temp ;
+
+delta2 = Theta2(:,2:end)'*delta3 .* sigmoidGradient(z2);
+temp = Theta1;
+temp(:,1) = 0;
+Theta1_grad = delta2 * a1./m + lambda./m*temp;
+\end{lstlisting}
+需要注意的是在正则化过程中需要把\(\Theta\)中对应bias项的那些值去掉，在代码中我才用了置零处理。另外在计算\(\delta^{(2)}\)的过程中也需要把\(\Theta_{2}\)中与bias相关的项去掉。
 \end{document}
