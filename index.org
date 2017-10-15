@@ -207,6 +207,7 @@
    + [[file:computer/NG/vectorize-computation.org][矢量化计算过程]]
    + [[file:computer/NG/week-05-neural-networks.org][后向传递算法]]
    + [[file:computer/NG/week-05-neural-networks-exercise.org][神经网络要点理解]]
+   + [[file:computer/NG/week-06-advice-for-applying-machine-learning.org][机器学习锦囊妙计]]
 
 
   PRML学习笔记
