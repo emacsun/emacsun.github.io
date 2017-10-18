@@ -50,5 +50,121 @@
 
   不同于其他线性分组码，LPDC码编码端的码字生成和译码端的译码检错都与LDPC的校验矩阵(Parity Check Matrix, PCM)密切相关。
 
-* 不同类型的LDPC码
-  [2017-04-03 Mon 20:45]
+  前向纠错码的核心思想是通过对信息比特引入额外的校验比特生成编码码字。生成的这些编码码字我们希望距离越大越好，这样即便在信道传输过程中有干扰，接收机（更具体的说，译码器）也能够恢复信息比特。最简单的校验比特生成方案是单比特校验码（Single Parity Check Code, SPC）. SPC通过引入一个额外的二进制校验比特，这个二进制校验比特的奇偶由信息比特决定。在每一个校验比特码字中，额外比特的引入都保证生成的码字有偶数个1（我们成为偶校验，如果保证生成的码字中有奇数个1，则为奇校验）.
+
+比如字母“S”的7-bit ASCII 为“1010011”，我们通过校验方程生成第八个比特作为其校验比特，由于其已经有偶数个1，所以校验比特为0，所以“S”的码字为“10100110”。
+
+更正式的表达为，对于7-bit的偶校验码我们定义一个码字：
+\begin{equation}
+\label{eq:1}
+\mathbf{C} = [c_{1}\quad c_{2}\quad c_{3}\quad c_{4}\quad c_{5}\quad c_{6}\quad c_{7}\quad c_{8}\quad ]
+\end{equation}
+其中\(c_{i}\)是二进制数。每一个码字\(C\)满足：
+\begin{equation}
+\label{eq:2}
+c_{1}\oplus c_{2} \oplus c_{3}\oplus c_{4} \oplus c_{5} \oplus c_{6} \oplus c_{7}\oplus c_{8} \oplus = 0
+\end{equation}
+上式叫做偶校验方程。\(\oplus\)是模2加。这个方程是很弱的一个方程，智能检测一个比特的反转，不能告诉我们哪一个比特发生了反转，也不能告知我们是否有多个比特发生了反转。为了检验多个比特的反转，我们必须使用更强大的冗余添加方案。
+
+比如一个长为6的码字\(C\)：
+\begin{equation}
+\label{eq:3}
+\mathbf{C} = [c_{1}\quad c_{2}\quad c_{3}\quad c_{4}\quad c_{5}\quad c_{6} ]
+\end{equation}
+
+满足以下三个校验方程：
+\begin{eqnarray*}
+&&c_{1} \oplus c_{2} \oplus c_{4} = 0 \\
+&&c_{2} \oplus c_{3} \oplus c_{5} = 0 \\
+&&c_{1} \oplus c_{2} \oplus c_{3}\oplus c_{6} = 0
+\end{eqnarray*}
+
+上式的校验过程通常我们会写成矩阵的形式：
+\begin{equation}
+\label{eq:4}
+\begin{bmatrix}
+1 & 1 & 0  & 1 & 0 & 0 \\
+0 & 1 & 1  & 0 & 1 & 0 \\
+1 & 1 & 1  & 0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+c_{1} \\ c_{2} \\ c_{3} \\ c_{4} \\ c_{5} \\ c_{6}
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix}
+\end{equation}
+我们定义：
+\begin{equation}
+\label{eq:5}
+H =
+\begin{bmatrix}
+1 & 1 & 0  & 1 & 0 & 0 \\
+0 & 1 & 1  & 0 & 1 & 0 \\
+1 & 1 & 1  & 0 & 0 & 1
+\end{bmatrix}
+\end{equation}
+为校验矩阵，\(H\)的每一行对应一个校验方程，每一列生成码字的一个比特。一个有\(m\)个校验比特，长为\(n\)的二进制编码方案其校验矩阵是\(m\times n\)的二进制矩阵。如果\(\mathbf{y} = [c_{1} \quad c_{2}\quad c_{3} \quad c_{4} \quad c_{5} \quad c_{6}]\)是一个合法码字，那么：
+\begin{equation}
+\label{eq:6}
+H\mathbf{y}^{T} = 0
+\end{equation}
+* 编码过程
+[2017-10-17 Tue 00:41]
+
+为了区分编码比特和校验比特，我们重新把上面例子中的约束关系写下来：
+\begin{eqnarray*}
+c_{4}&=&  c_{1}\oplus c_{2} \\
+c_{5}&=& c_{2} \oplus c_{3} \\
+c_{6}&=& c_{1}\oplus c_{2} \oplus
+\end{eqnarray*}
+码字中的\(c_{1},c_{2},c_{3}\)是消息比特，\(c_{4},c_{5},c_{6}\)是校验比特，校验比特是有消息比特按照一定的约束关系生成的。例如三个消息比特为\(1,1,0\)，那么校验比特分别是：
+\begin{equation}
+\label{eq:7}
+c_{4} = 1\oplus 1 = 0 \\
+c_{5} = 1\oplus 0 = 1 \\
+c_{6} = 1\oplus 1\oplus 0 = 0
+\end{equation}
+
+所以\(1,1,0\)对应的码字是\(\mathbf{c}=[1,1,0,0,1,0]\)。这个编码过程可以写成：
+\begin{equation}
+\label{eq:8}
+[c_{1}\quad c_{2}\quad c_{3} \quad c_{4} \quad c_{5} \quad c_{6}] =[c_{1} \quad c_{2} \quad c_{3}]
+\underbrace{G}{
+\begin{bmatrix}
+1 & 0 & 0 & 1 & 0 & 1\\
+0 & 1 & 0 & 1 & 1 & 1\\
+0 & 0 & 1 & 0 & 1 & 1
+\end{bmatrix}}
+\end{equation}
+其中右边的矩阵叫做生成矩阵，消息比特通常写作\(\mathbf{u} = [u_{1},u_{2},\ldots ,u_{k}]\)，其中\(\mathbf{u}\)包含\(k\)个消息比特。上述编码过程可以写成：
+\begin{equation}
+\label{eq:9}
+\mathbf{c} = \mathbf{u}G
+\end{equation}
+对于一个二进制编码方案：消息比特个数为\(k\)，码字长度为\(n\)，则其生成矩阵\(G\)的大小为\(k\times n\)，码率为\(k/n\)。一个有\(k\)个信息比特的编码方案包含\(2^{k}\)个码字。这些码字是\(2^{n}\)个二进制矢量的子集。我们的目标设计一套编码方案使得这\(2^{k}\)个码字的距离尽可能的远。
+
+上个例子中一共有\(2^{3}=8\)个信息比特的组合\(c_{1}c_{2}c_{3}= 000,001,\ldots ,111\)，带入式~(\ref{eq:8})生成八个码字：
+\begin{eqnarray*}
+&&[000000] \quad [001011]\quad [010111]\quad [011100]\\
+&&[100101]\quad [101110]\quad [110010]\quad [111001]
+\end{eqnarray*}
+这个码叫做系统码，因为码字的前\(k\)个比特包含的是信息比特。对于系统码而言生成矩阵包含一个\(k\times k\)的单位矩阵，\(I_{k}\)。这个单位阵占据了生成矩阵的前\(k\)列。一个校验矩阵是\(K\)的线性分组码，可以通过高斯消元把校验矩阵变成生成矩阵。假设校验矩阵为\(H\):
+\begin{equation}
+\label{eq:10}
+H = [A,I_{n-k}]
+\end{equation}
+其中\(A\)是一个\(\((n-k)\times k\)\)的二进制矩阵,\(I_{n-k}\)是一个\(n-k\)的单位矩阵。生成矩阵为：
+\begin{equation}
+\label{eq:11}
+G =[I_{k},A^{T}]
+\end{equation}
+
+\(G\)的行空间和\(H\)的行空间是正交的，即：
+\begin{equation}
+\label{eq:12}
+GH^{T} = 0
+\end{equation}
+
+原则上讲，一个码字可以用任意数量的校验方程来描述，但是只有其中\(n-k\)个是线性独立的，\(n-k\)是\(H\)的秩。
