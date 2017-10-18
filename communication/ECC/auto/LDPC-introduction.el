@@ -7,10 +7,25 @@
     "latex2e"
     "article"
     "art10"
-    "zclorg")
+    "zclorg"
+    "tikztheorem")
    (LaTeX-add-labels
-    "sec:org9c4bdcc"
-    "sec:org4bad585"
-    "sec:org359425d"))
+    "sec:org7649099"
+    "sec:org22c7b0c"
+    "sec:orgfea162c"
+    "eq:1"
+    "eq:2"
+    "eq:3"
+    "eq:4"
+    "eq:5"
+    "eq:6"
+    "sec:org611473a"
+    "eq:7"
+    "eq:8"
+    "eq:9"
+    "eq:10"
+    "eq:11"
+    "eq:12"
+    "sec:org4aa35e9"))
  :latex)
 
