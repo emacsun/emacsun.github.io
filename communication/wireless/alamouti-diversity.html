@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alamouti分集技术</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<meta name="keywords" content="communication" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css"  />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf"  href="./alamouti-diversity.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "5em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Alamouti分集技术</h1>
+<p>
+Alamouti分集技术阐述一种简单的两发射天线分集方案。该方案使用双发射天线和单接收天线，获得采用最大比接收技术的单发射天线双接收天线一样的分集阶数。Alamouti在其论文中证明该方案很容易扩展到双发射天线 \(M\) 接收天线系统，此时可以获得的分集阶数是 \(2M\) 。 这种新的分集方案不需要任何带宽展宽和反馈信息，其计算复杂度和MRRC相似。
+</p>
+
+
+<p>
+天线分集是一种经典的涉及空间维度的分集。该技术在接收端使用多条天线，当信号到达接收机时接收机通过合并技术增强信号。这是一种接收分集技术，因为在接收端要处理多跟天线收集的信号，该技术的缺陷在于终端的成本，尺寸和功耗。因此，接收分集技术基本上都用于基站。在Alamouti提出他的分集方案之前，已经有Tarokh提出了空时编码概念，Tarokh引入了空时Trellis编码。
+</p>
+
+
+<p>
+Alamouti基于现有的无线通信系统（基站有多跟天线，终端有单根天线），提出了一种简单的发送分集方案（发送端有两根天线，接收端有一根天线）。
+</p>
+
+
+<div id="orgac7cc9a" class="figure">
+<p><img src="../../img/communication_wireless/20171018alamouti1.png" alt="20171018alamouti1.png" width="600" align="center" />
+</p>
+</div>
+
+
+<p>
+传统的基于MRRC接收算法的接收分集系统框图如图(<a href="#orgac7cc9a">1</a>)。图中 \(\mathbf{r}_0 = \mathbf{h}_0\mathbf{s}_0 + \mathbf{n}_0,\mathbf{r}_1 =\mathbf{h}_1\mathbf{s}_1 + \mathbf{n}_1\) ，其中 \(\mathbf{s}_0\) 表示发射信号， \(\mathbf{n}_0,\mathbf{n}_1\) 表示复高斯噪声信号。接收端的最大似然判决准则是：
+</p>
+\begin{equation}
+  \label{eq:d2r0h0si}
+  d^2(\pmb{r}_0,\pmb{h}_0\pmb{s}_i) + d^2(\pmb{r}_1,\pmb{h}_1\pmb{s}_i) \le d^2 (\pmb{r_0},\pmb{h_0s_k}) + d^2 (\pmb{r_1},\pmb{h_1s_k}), \quad \forall \pmb{i}\neq \pmb{k}
+\end{equation}
+<p>
+其中
+</p>
+\begin{equation}
+d^2(\pmb{x},\pmb{y}) = (\pmb{x}- \pmb{y})(\pmb{x^*}- \pmb{y^*})\label{eq:d2xy}
+\end{equation}
+<p>
+MRRC的合并方案是：
+</p>
+\begin{eqnarray}
+  \tilde{\pmb{s}}_0&=& \pmb{h_0^*r_0} + \pmb{h_1^*r_1} \nonumber \\
+                      &=& \pmb{h_0^*}(\pmb{h_0s_0}+ \pmb{n_0}) +\pmb{h_1^*}(\pmb{h_1s_0}+ \pmb{n_1})  \nonumber \\
+                      &=& (\alpha_0^2 + \alpha_1^2) \pmb{s_0} + \pmb{h_0^*n_0} + \pmb{h_1^*n_1}
+\end{eqnarray}
+<p>
+把上式和~(\ref{eq:d2xy})带入~(\ref{eq:d2r0h0si})得到
+</p>
+\begin{equation}
+  \label{eq:alpha0alpha1}
+  (\alpha_0^2+ \alpha_1^2) |\pmb{s_i}|^2 -\pmb{\tilde{s_0}s_i^*} - \pmb{\tilde{s_0}^*s_i}\le (\alpha_0^2+ \alpha_1^2) |\pmb{s_k}|^2 -\pmb{\tilde{s_0}s_k^*} - \pmb{\tilde{s_0}^*s_k}  \quad \forall \pmb{i}\neq \pmb{k}
+\end{equation}
+<p>
+考虑~(\ref{eq:d2xy})，有：
+</p>
+\begin{equation}
+  \label{eq:alpha02plusalpha12}
+  (\alpha_0^2 + \alpha_1^2 -1) |\pmb{s_i}|^2 + d^2 (\pmb{\tilde{s_0}},\pmb{s_i} ) \le   (\alpha_0^2 + \alpha_1^2 -1) |\pmb{s_k}|^2 + d^2 (\pmb{\tilde{s_0}},\pmb{s_k} )
+\end{equation}
+<p>
+对于等幅度调制方式(例如PSK,FSK)有（\textbf{此处我可以考虑QAM的情形}）：
+</p>
+\begin{equation}
+  \label{eq:si2equationsk2}
+  |\pmb{s_i}|^2 = |\pmb{s_k}|^2 =E_s, \quad \forall \pmb{i} \ne \pmb{k}
+\end{equation}
+<p>
+等幅度调制方式情况下，式~(\ref{eq:alpha02plusalpha12})可以简化为：
+</p>
+\begin{equation}
+  \label{eq:d2s0si}
+  d^2(\tilde{\pmb{s_0}},\pmb{s_i}) \le d^2(\tilde{\pmb{s_0}},\pmb{s_k}), \quad \forall \pmb{i}\neq \pmb{k}
+\end{equation}
+<p>
+最大比合并技术生成 \(\pmb{\tilde{s}_0}\) 作为 \(\pmb{s_0}\) 的最大似然估计。
+</p>
+
+
+<div id="orga6a0481" class="figure">
+<p><img src="../../img/communication_wireless/20171018alamouti1.png" alt="20171018alamouti1.png" width="600" align="center" />
+</p>
+</div>
+
+<p>
+Alamouti发送分集方案框图如图(<a href="#orga6a0481">2</a>)。Alamouti分集方案可以分为三部分：1）发送端的编码，2）接收端合并，3）最大似然判决准则。
+</p>
+
+
+<div class="figure">
+<p><img src="../../img/communication_wireless/20171018alamouti3.png" alt="20171018alamouti3.png" width="600" align="center" />
+</p>
+</div>
+
+
+<p>
+Alamouti分集编码方案要求信道在两个连续符号内不变。
+</p>
+\begin{eqnarray}
+  \label{eq:h0th1t}
+  \pmb{h_0}(t) &=& \pmb{h_0}(t+T) =  \pmb{h_0}= \alpha_0e^{j\theta_0} \nonumber \\
+  \pmb{h_1}(t) &=& \pmb{h_1}(t+T) =  \pmb{h_1}= \alpha_1e^{j\theta_1}
+\end{eqnarray}
+<p>
+接收到的信号可以表示为
+</p>
+\begin{eqnarray}
+  \label{eq:r0r1}
+  \pmb{r_0} &=& \pmb{r}(t) = \pmb{h_0s_0+ h_1s_1+n_0} \nonumber \\
+  \pmb{r_1} &=& \pmb{r}(t+T) = \pmb{-h_0s_1^* + h_1s_0^* +n_1}
+\end{eqnarray}
+
+<p>
+合并方案：图(<a href="#orga6a0481">2</a>)中的combiner生成以下两个信号：
+</p>
+\begin{eqnarray}
+
+  \pmb{\tilde{s}_0} &=& \pmb{h_0^* r_0} + \pmb{h_1r_1^*}  \\
+  \pmb{\tilde{s}_1} &=& \pmb{h_1^*r_0} -\pmb{h_0r_1^*}
+\end{eqnarray}
+<p>
+需要注意的是该合并方案和之前的合并方案不同，继而有：
+</p>
+\begin{eqnarray}
+  \pmb{\tilde{s}_0} &=& (\alpha_0^2 + \alpha_1^2) \pmb{s_0} + \pmb{h_0^*n_0} + \pmb{h_1n_1^*}  \\
+ \pmb{\tilde{s}_1} &=& (\alpha_0^2 + \alpha_1^2)\pmb{s_1} -\pmb{h_0n_1^*} + \pmb{h_1^*n_0}
+\end{eqnarray}
+
+<p>
+最大似然判决准则：发送分集的最大似然合并准则和前面提到的接收分集的最大似然准则使用过程一样。
+</p>
+
+<p>
+另外，不管发射分集还是接收分集，最后通过combiner生成的信号对于最大似然判决器是等效的。唯一不同在于噪声相位有一个旋转。所以这两者的分集阶数是一样的。
+</p>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
