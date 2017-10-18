@@ -247,8 +247,6 @@
    + [[file:computer/algorithms/sort-bubble.org][冒泡排序]]
    + [[file:computer/algorithms/sort-merge.org][merge 排序]]
    + [[file:computer/algorithms/sort-quick.org][快速排序]]
-   + [[file:computer/algorithms/sort-heap.org][堆排序]]
-   + [[file:computer/algorithms/sort-selection.org][选择排序]]
    + [[file:computer/algorithms/sort-shell.org][希尔排序]]
 
 ** Java
