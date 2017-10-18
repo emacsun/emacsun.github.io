@@ -194,6 +194,8 @@
   + [[file:communication/protocol/wifi-physical-overview.org][WIFI（802.11） 物理层技术概要]]
   + [[file:communication/protocol/wifi-frame.org][WIFI（802.11） 成帧过程]]
   + [[file:communication/protocol/wifi-csma.org][WIFI（802.11） 信道接入过程]]
+  + [[file:communication/protocol/wifi-sampling-timing.org][WIFI（802.11） 采样定时偏差]]
+
 * 计算机
   <2015-06-28 Sun 16:38>
 ** 机器学习
