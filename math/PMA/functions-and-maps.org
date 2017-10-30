@@ -1,0 +1,69 @@
+#+TITLE:  Functions and Maps
+#+AUTHOR:    zcl.space
+#+EMAIL:     emacsun@163.com
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:  PMA
+#+CATEGORIES: math
+#+SETUPFILE: ~/.emacs.d/org-templates/math-level2.org
+#+HTML_HEAD_EXTRA: <a id="pdf" href="functions-and-maps.pdf"><img src="../../img/assets/pdf.png"></a>
+
+ A =function= is a rule which assigns a value
+$f(x)$ to every point $x$ from a set called the =domain= of the function.
+The set
+$$
+  \mathrm{graph}(f):=\{(x,y): y=f(x)\}
+$$
+of all pairs $(x,y)$ such that $y=f(x)$ is called the =graph= of the function $f$.
+Two functions are equal iff they have the same graph.
+
+Let $X$ and $Y$ be sets.
+We say that $f$ is a =map=  from $X$ to $Y$
+and  write $f:X\to Y$ when $f$ is a function which assigns
+a point $y=f(x)\in Y$ to each point $x\in X$.
+Two maps $f:X\to Y$ and $f':X'\to Y'$ are
+said to be =equal=
+when $X=X'$, $Y=Y'$, and $f(x)=f'(x)$ for all $x\in X$.
+Thus if $f$ and $f'$ equal maps, then $\mathrm{graph}(f)=\mathrm{graph}(f')$
+but not conversely (because $Y=Y'$ is part of the definition of equality for maps).
+However most authors would say that two functions are equal iff they have the same graph.
+
+ Some authors
+use the notation $x\mapsto f(x)$
+to define a map. This allows them to avoid introducing a name for the map. Thus instead of writing
+#+begin_quote
+   Consider the map $f:\mathbf{R}\to \mathbf{R}$ defined by $f(x)=x^5+x$.
+#+end_quote
+
+they may write
+#+begin_quote
+  Consider the map $\mathbf{R}\to \mathbf{R}:x\mapsto x^5+x$.
+#+end_quote
+
+When $A\subseteq X$, $B\subseteq Y$, and $f:X\to Y$, the sets
+
+\begin{aligned}
+  & f(A):=\{y\in Y: \exists x\in A \mbox{ such that }y=f(x)\}, \\
+  & f^{-1}(B):=\{x\in X: f(x)\in B\},
+\end{aligned}
+
+are called respectively the =image= of $A$  by $f$
+and  =inverse image=  of $B$ by $f$.
+
+The sets $X$  and $Y$ are sometimes called the
+=source= and =target= of a map $f:X\to Y$.
+The image $f(X)$ of the source is what is called the {range}
+of the function $f$ in calculus.
+Thus the domain of a map is the same as its source
+while the range is a subset of its target.
+
+There are slight variations in terminology among  authors.
+Morgan avoids the word =map= and Lang sometimes
+uses the word =mapping=.  Buck uses the term the =preimage=
+instead of =inverse image=. Lang  uses the $\mapsto$
+notation but the other authors apparently avoid it.
+For Lang a function is a map whose target is $\mathbf{R}$.
+In precalculus courses a function is usually defined by an expression
+and the domain is implicitly taken to be the largest set of numbers
+for which the expression is meaningful, but in advanced mathematics
+authors usually make the domain explicit.

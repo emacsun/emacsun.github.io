@@ -7,15 +7,16 @@
     "latex2e"
     "article"
     "art10"
-    "zclorg")
+    "zclorg"
+    "tikztheorem")
    (LaTeX-add-labels
-    "sec:orge15f051"
-    "sec:org27d3026"
+    "sec:orgba4bfa4"
+    "sec:org582964e"
     "eq:pequal2"
     "eq:2"
-    "sec:orgb3d15df"
+    "sec:orgf9ea3a6"
     "eq:q"
     "eq:q2"
-    "sec:org11f6fff"))
+    "sec:org63881f3"))
  :latex)
 

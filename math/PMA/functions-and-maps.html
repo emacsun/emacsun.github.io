@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Functions and Maps</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<meta name="description" content="用两种方法证明 \(\sqrt{2}\)是无理数"
+ />
+<meta name="keywords" content="PMA" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf" href="functions-and-maps.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "1em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Functions and Maps</h1>
+<p>
+ A <code>function</code> is a rule which assigns a value
+\(f(x)\) to every point \(x\) from a set called the <code>domain</code> of the function.
+The set
+\[
+  \mathrm{graph}(f):=\{(x,y): y=f(x)\}
+\]
+of all pairs \((x,y)\) such that \(y=f(x)\) is called the <code>graph</code> of the function \(f\).
+Two functions are equal iff they have the same graph.
+</p>
+
+<p>
+Let \(X\) and \(Y\) be sets.
+We say that \(f\) is a <code>map</code>  from \(X\) to \(Y\)
+and  write \(f:X\to Y\) when \(f\) is a function which assigns
+a point \(y=f(x)\in Y\) to each point \(x\in X\).
+Two maps \(f:X\to Y\) and \(f':X'\to Y'\) are
+said to be <code>equal</code>
+when \(X=X'\), \(Y=Y'\), and \(f(x)=f'(x)\) for all \(x\in X\).
+Thus if \(f\) and \(f'\) equal maps, then \(\mathrm{graph}(f)=\mathrm{graph}(f')\)
+but not conversely (because \(Y=Y'\) is part of the definition of equality for maps).
+However most authors would say that two functions are equal iff they have the same graph.
+</p>
+
+<p>
+ Some authors
+use the notation \(x\mapsto f(x)\)
+to define a map. This allows them to avoid introducing a name for the map. Thus instead of writing
+</p>
+<blockquote>
+<p>
+Consider the map \(f:\mathbf{R}\to \mathbf{R}\) defined by \(f(x)=x^5+x\).
+</p>
+</blockquote>
+
+<p>
+they may write
+</p>
+<blockquote>
+<p>
+Consider the map \(\mathbf{R}\to \mathbf{R}:x\mapsto x^5+x\).
+</p>
+</blockquote>
+
+<p>
+When \(A\subseteq X\), \(B\subseteq Y\), and \(f:X\to Y\), the sets
+</p>
+
+\begin{aligned}
+  & f(A):=\{y\in Y: \exists x\in A \mbox{ such that }y=f(x)\}, \\
+  & f^{-1}(B):=\{x\in X: f(x)\in B\},
+\end{aligned}
+
+<p>
+are called respectively the <code>image</code> of \(A\)  by \(f\)
+and  <code>inverse image</code>  of \(B\) by \(f\).
+</p>
+
+<p>
+The sets \(X\)  and \(Y\) are sometimes called the
+<code>source</code> and <code>target</code> of a map \(f:X\to Y\).
+The image \(f(X)\) of the source is what is called the {range}
+of the function \(f\) in calculus.
+Thus the domain of a map is the same as its source
+while the range is a subset of its target.
+</p>
+
+<p>
+There are slight variations in terminology among  authors.
+Morgan avoids the word <code>map</code> and Lang sometimes
+uses the word <code>mapping</code>.  Buck uses the term the <code>preimage</code>
+instead of <code>inverse image</code>. Lang  uses the \(\mapsto\)
+notation but the other authors apparently avoid it.
+For Lang a function is a map whose target is \(\mathbf{R}\).
+In precalculus courses a function is usually defined by an expression
+and the domain is implicitly taken to be the largest set of numbers
+for which the expression is meaningful, but in advanced mathematics
+authors usually make the domain explicit.
+</p>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
