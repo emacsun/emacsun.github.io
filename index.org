@@ -320,6 +320,7 @@
    + [[file:linux/emacs/emacs-java.org][Emacs 作为 Java IDE ]]
    + [[file:linux/emacs/emacs-tweet.org][Emacs Tweet]]
    + [[file:linux/emacs/emacs-org-hugo.org][Emacs 联合 org-hugo 输出撰写博客]]
+   + [[file:linux/emacs/emacs-theme.org][漂亮的 Emacs 主题 ]]
 ** Git
    [2017-02-19 Sun 09:51]
 
