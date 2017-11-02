@@ -323,6 +323,7 @@
    + [[file:linux/emacs/emacs-tweet.org][Emacs Tweet]]
    + [[file:linux/emacs/emacs-org-hugo.org][Emacs 联合 org-hugo 输出撰写博客]]
    + [[file:linux/emacs/emacs-theme.org][漂亮的 Emacs 主题 ]]
+   + [[file:linux/emacs/emacs-org-highlight.org][高亮Org中的latex]]
 ** Git
    [2017-02-19 Sun 09:51]
 
