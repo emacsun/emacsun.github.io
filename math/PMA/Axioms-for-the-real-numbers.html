@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Axioms for the Real Numbers</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<meta name="keywords" content="PMA" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf" href="Axioms-for-the-real-numbers.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "1em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Axioms for the Real Numbers</h1>
+<p>
+We state here the axioms for the real number system \(\mathbb{R}\).
+We shall accept these axioms without proof but
+it can proved (from more general axioms)
+that there is an essentially unique structure satisfying them.
+</p>
+
+
+<p>
+<b>Algebraic Axioms</b> .
+The set \(\mathbb{R}\) of <b>real numbers</b>  is equipped with two operations
+\[
+\mathbb{R}\times\mathbb{R}\to\mathbb{R}:(a,b)\mapsto a+b,\qquad\mathbb{R}\times\mathbb{R}\to\mathbb{R}:(a,b)\mapsto a\cdot b
+\]
+such that the usual laws of grade school arithmetic hold:
+</p>
+
+<ol class="org-ol">
+<li><b>Commutative Laws</b> \(a+b=b+a\) and \(a\cdot b=b\cdot a\).</li>
+<li><b>Associative Laws</b>  \((a+b)+c=a+(b+c)\) and \((a\cdot b)\cdot c= a\cdot (b\cdot c)\).</li>
+<li><b>Distributive Law</b> \((a+b)\cdot c= (a\cdot c)+(b\cdot c)\).</li>
+<li><b>Zero,One</b> There are (necessarily unique) distinct elements \(0,1\in\mathbb{R}\) such that \(a+0=a\) and \(a\cdot 1=a\) for all \(a\in\mathbb{R}\).</li>
+<li><b>Inverses</b> For every \(a\in\mathbb{R}\) there is a (necessarily unique) element \(-a\) such that \(a+(-a)=0\). For every \(a\in\mathbb{R}\setminus\{0\}\) there is a (necessarily unique) element \(a^{-1}\) such that \(a\cdot a^{-1}=1\).</li>
+</ol>
+
+<p>
+The standard notations from high school algebra are used:
+ in particular, \(ab:=a\cdot b\), \(a-b:=a+(-b)\), and \(a/b=a\cdot b^{-1}\).
+</p>
+
+
+<p>
+<b>Order Axioms</b> .   The set \(\mathbb{R}\) has an order relation
+denoted $ a &lt; b$ satisfying the following laws for all \(a,b,c\in\mathbb{R}\):
+</p>
+
+<p>
+<b>Trichotomy</b>   Exactly one of the alternatives    $ a &lt; b$, \(a=b\), \(b < a\), holds.
+<b>Transitivity</b>    \(a < b,\;b < c\implies a < c\).
+<b>Addition</b>    \(a < b\implies a+c < b+c\).
+<b>Multiplication</b>     \(0 < a,b\implies 0 < ab\).
+</p>
+
+<p>
+The other order notations are defined as usual, i.e.
+\(a < b\iff b>a\) and \(a\le b\iff b\ge a\iff\) either \(a < b\) or \(a=b\).
+</p>
+
+
+<p>
+All the rules of algebra used in College Algebra
+ follow from the Algebraic Axioms and Order Axioms.
+For example, \((a+b)^2=a^2+2ab+b^2\), \(a^2\ge 0\), etc.
+</p>
+
+
+<p>
+A set \(S\)  of real numbers is said to be <b>bounded above</b> iff there is
+a  number \(b\in\mathbb{R}\) such that $x&le; b $ for all \(x\in S\);
+the number \(b\) is  then called an <b>upper bound</b>  for \(S\).
+A number \(b\in\mathbb{R}\) is called a <b>least upper bound</b>  for \(S\) iff
+it is an upper bound for \(S\) and
+\(b\le b'\) for every other upper bound \(b'\) for \(S\).
+</p>
+
+<p>
+ Similarly  the set \(S\) is said to be <b>bounded below</b>  iff there is
+an number \(a\in\mathbb{R}\) such that \(a\le x\) for all \(x\in S\);
+the element \(b\) is  then called a  <b>lower bound</b>  for \(S\).
+</p>
+
+<p>
+An element \(a\in\mathbb{R}\) is called a <b>greatest lower bound</b>
+iff it is an lower bound for \(S\) and  \(a'\le a\) for every other lower bound
+\(a'\) for \(S\).  The words <b>infimum</b>  and <b>greatest lower bound</b> are synonymous
+as are the   words <b>supremum</b>  and <b>least upper bound</b>.
+The least upperbound of the set \(S\) will be denoted \(\sup(S)\)
+and
+the greatest lower bound of the set \(S\) will be denoted \(\inf(S)\).
+We write \(\sup(S)=\infty\) when \(S\) is not bounded above and \(\inf(S)=-\infty\)
+when \(S\) is not bounded below.
+</p>
+
+
+<p>
+<b>Completeness Axiom</b> .
+Every set \(S\) of real numbers which is bounded above has a least upper bound, i.e.
+</p>
+
+<p>
+if \(x\le b\) for all \(x\in S\), then \(x\le \sup(S)\le b\) for all \(x\in S\).
+</p>
+
+<p>
+Because multiplication by \(-1\) reverses the order it is the same to say that every set which is bounded below has a greatest lower bound. Thus
+</p>
+
+<p>
+if \(a\le x\) for all \(x\in S\), then
+\(a\le \inf(S)\le x\) for all \(x\in S\).
+</p>
+
+<p>
+For Morgan the completeness axiom is a theorem (see page~44 of his book)
+but most authors of undergraduate texts don't prove it.
+Of course it can't be proved until we give a precise construction (definition)
+of the real numbers.
+</p>
+
+<p>
+Morgan takes the view that a real number is a number with
+a decimal expansion, but avoids certain subtle issues connected
+with this view.
+</p>
+
+<p>
+Actually making his definition precise would involve defining how to do
+the arithmetic operations with decimal expansions and would be
+a bit tedious.  To see why, imagine that \(a+b=c\) and that
+\[
+  a=\sum_{n=1}^\infty a_n10^{-n},\qquad
+  b=\sum_{n=1}^\infty b_n10^{-n},\qquad
+  c=\sum_{n=1}^\infty c_n10^{-n},
+\]
+where the coefficients, \(a_n,b_n,c_n\) are integers between \(0\) and \(9\)
+and try to express \(c_n\) in terms the \(a_n\)'s and the \(b_n\)'s.
+In an appendix to his book, Buck sketches a construction the real numbers
+by something called <b>Dedekind cuts</b>   but leaves out many details.
+Rudin explains cuts in an appendix to his chapter~1.
+(The book {\em Foundations of Analysis} by Edmund Landau gives all the details.)
+The completeness axiom is an easy consequence of this construction.
+One can also define the real numbers using `equivalence classes of Cauchy sequences'
+ and again the completeness axiom is a consequence;
+</p>
+
+<p>
+if we get to the topic of completion of metric spaces, I'll explain it then.
+</p>
+
+<p>
+The crucial point is the uniqueness `up to isomorphism'.
+</p>
+
+<p>
+It means that if we start from  the axioms, it doesn't matter what
+definition of the real numbers we use.
+</p>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
