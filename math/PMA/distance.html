@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Distance</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="zcl.space" />
+<meta name="keywords" content="PMA" />
+<link rel="stylesheet" type="text/css" href="../../css/worg.css" />
+<a id="home" href="../../index.html"><img src="../../img/assets/home.png" ></a>
+<a id="pdf" href="Distance.pdf"><img src="../../img/assets/pdf.png"></a>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "left",
+        displayIndent: "1em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Distance</h1>
+<p>
+The <b>distance</b>  \(d(p,q)\) between two points \(p=(x_1,x_2,\ldots,x_n)\)
+and \(q=(y_1,y_2,\ldots,y_n)\) in \(\mathbb{R}^n\) is  defined by\footnote{
+In Chapters I-V Buck  writes \(|p-q|\) instead of \(d(p,q)\) but
+uses  the notation \(d(p,q)\) starting in Chapter~VI  (page~304) in
+a more general setting.}
+\[
+ d(p,q)=\sqrt{(x_1-y_1)^2+(x_2-y_2)^2+\cdots+(x_n-y_n)^2}.
+\]
+The distance \(d(v,0)\) from a vector \(v\in\mathbb{R}^n\) to
+the origin is  called the <b>norm</b>  of \(v\) denoted by \(|v|\) so
+\[
+      d(p,q):=|p-q|.
+\]
+The norm satisfies the following laws for \(v,w\in\mathbb{R}^n\):
+</p>
+
+<ol class="org-ol">
+<li><b>zero norm</b>  \(|v|=0\iff v=0\),</li>
+<li><b>homogeneity</b> \(|av|=a\,|v|\) if \(a>0\),</li>
+<li><b>symmetry</b> \(|-v|=|v|\),</li>
+<li><b>triangle inequality</b> \(|v+w| \le |v|+|w|\).</li>
+</ol>
+
+<p>
+The zero norm law holds  because a sum of squares vanishes
+</p>
+
+<p>
+The laws for the norm imply that
+the distance function satisfies the following:
+</p>
+
+<ol class="org-ol">
+<li><b>zero distance</b> \(d(p,q)=0\iff p=q\),</li>
+<li><b>symmetry</b> \(d(p,q)=d(q,p)\),</li>
+<li><b>triangle inequality</b> \(d(p,r)\le d(p,q)+d(q,r)\).</li>
+</ol>
+
+<p>
+These are proved by reading \(v=p-q\) and \(w=q-r\) in the corresponding
+law for the norm.
+</p>
+
+
+<p>
+  Define the <b>inner product</b>  of two vectors in \(\mathbb{R}^n\)
+by
+\[
+    \langle u,v \rangle =u_1v_1+u_2v_2+\cdots+u_nv_n
+\]
+for \(u=(u_1,u_2,\ldots,u_n)\), \(v=(v_1,v_2,\ldots,v_n)\). In freshman calculus you called this the <b>dot product</b>
+and learned that the angle \(\theta\) between the two vectors \(u\) and \(v\) satisfies
+\[
+    \langle u,v \rangle =\cos\theta\,|u|\,|v|.
+\]
+Since the cosine takes values between -1 and +1, it follows that
+</p>
+\begin{equation}
+\label{eq:1}
+    |\langle u,v \rangle | \le |u|\,|v|.
+\end{equation}
+
+<p>
+This inequality is called the <b>Schwarz inequalityr</b>.
+</p>
+
+
+
+<p>
+For \(p\in\mathbb{R}^n\) and \(\delta>0\) the set
+\[
+    B(p,\delta):=\{q\in\mathbb{R}^n:d(p,q)<\delta\}
+\]
+is called the <b>open ball</b>  centered at \(p\) with radius \(\delta\).
+When \(X\subseteq\mathbb{R}^n\) we often use the abbreviation
+\[
+    B_X(p,\delta):=B(p,\delta)\cap X:=\{q\in X: d(p,q)<\delta\}
+\]
+</p>
+
+<p>
+When \(n=1\) the open ball is an open interval:
+</p>
+\begin{eqnarray*}
+ B(a,\delta)&=&\{x\in\mathbb{R}: |x-a| < \delta\}\\
+            &=&\{x\in\mathbb{R}: a-\delta < x < a+\delta\}\\
+            &=&(a-\delta,a+\delta)
+\end{eqnarray*}
+<p>
+for \(a\in\mathbb{R}\)
+</p>
+
+
+<p>
+ A set \(S\) is <b>bounded</b>  iff it is contained
+in some large ball, i.e. iff there exists \(M>0\) such that
+\(|p|<M\) for all \(p\in S\). Thus a set of real numbers
+is bounded if and only if it is bounded above and bounded below.
+</p>
+</div>
+<div id="postamble" class="status">
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'zclspace';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+</body>
+</html>
