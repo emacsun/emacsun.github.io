@@ -6,7 +6,7 @@
 #+KEYWORDS:  PMA
 #+CATEGORIES: math
 #+SETUPFILE: ~/.emacs.d/org-templates/math-level2.org
-#+HTML_HEAD_EXTRA: <a id="pdf" href="Distance.pdf"><img src="../../img/assets/pdf.png"></a>
+#+HTML_HEAD_EXTRA: <a id="pdf" href="distance.pdf"><img src="../../img/assets/pdf.png"></a>
 
 
 
