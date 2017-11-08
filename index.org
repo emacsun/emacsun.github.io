@@ -19,7 +19,8 @@
   + [[file:math/PMA/composition-and-inverse.org][Composition and Inverse]]
   + [[file:math/PMA/Axioms-for-the-real-numbers.org][Axioms for the Real Numbers]]
   + [[file:math/PMA/distance.org][Distance ]]
-  + [[file:math/PMA/limits.org][limits]]
+  + [[file:math/PMA/limits.org][Limits]]
+  + [[file:math/PMA/convergence-of-sequence.org][Convergence of Sequence]]
   + [[file:math/PMA/PMAsqrt2.org][用两种方法证明 \(\sqrt{2}\) 是无理数]]
   + [[file:math/PMA/PMAmetricSpace.org][度量空间以及由此引出的一些概念]]
 
