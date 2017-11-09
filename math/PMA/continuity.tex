@@ -1,0 +1,119 @@
+% Intended LaTeX compiler: pdflatex
+\documentclass[10pt,a4paper,UTF8]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{zcl.space}
+\date{}
+\title{Continuity}
+\hypersetup{
+ pdfauthor={zcl.space},
+ pdftitle={Continuity},
+ pdfkeywords={PMA},
+ pdfsubject={},
+ pdfcreator={Emacs 25.0.50.1 (Org mode 9.1.2)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+Throughout this chapter
+\(f:X\to Y\) where \(X\subseteq\mathbb{R}^n\) and \(Y\subseteq\mathbb{R}^m\).
+\begin{definition}
+The map  \(f\) is said to be \jdef{continuous} at
+a point  \(p\in X\)  iff
+for every \(\epsilon > 0\) there exists \(\delta > 0\)
+such that \(f(B_X(p,\delta))\subseteq B(f(p),\epsilon)\).
+\end{definition}
+\begin{tikztheorem}
+The map \(f\) is continuous at \(p\in X\) if and only if
+for every sequence \(\{p_n\}\) of points in \(X\) we have
+\begin{equation}\label{eq:limpif}
+    \lim_{n\to\infty}p_n=p\implies \lim_{n\to\infty}f(p_n)=f(p).
+\end{equation}
+\end{tikztheorem}
+
+\begin{proof}
+Assume \(f\) is continuous at \(p\).
+Choose sequence \(\{p_n\}\) of points in \(X\).
+Assume
+\begin{equation}\label{eq:limp}
+\lim_{n\to\infty}p_n=p.
+\end{equation}
+Choose \(\epsilon > 0\). Because \(f\) is assumed to be
+continuous at \(p\) there is a \(\delta > 0\) such that
+for all \(q\in X\)
+\%
+\begin{equation}\label{eq:imp}
+|q-p| < \delta\implies |f(q)-f(p)| < \epsilon.
+\end{equation}
+\%
+there is an \(N\) such that
+\(|p_n-p| < \delta\) for \(n > N\). Hence
+\(|f(p_n)-f(q)| < \epsilon\) for \(n > N\). This proves
+\%\%
+\begin{equation}\label{eq:limf}
+\lim_{n\to\infty} f(p_n)=f(p).
+\end{equation}
+as required.
+
+ Assume that \(f\) is not continuous at \(p\in X\).
+Then there is an \(\epsilon > 0\) such that for every \(\delta > 0\) there
+is a \(q\in X\) such that \[  |q-p| < \delta\mbox{ but }  |f(q)-f(p)|\ge\epsilon\] .
+
+In particular, for each \(n\in\mathbb{Z}^+\) there is a \(q_n\) such that \[  |q_n-p| < \frac1n \mbox{ but }  |f(q_n)-f(p)|\ge\epsilon \].
+\end{proof}
+\begin{definition}
+The map  \(f\) is said to be \jdef{continuous}
+iff it is continuous at every  point  of \(X\), i.e. iff
+$$
+\forall p\in X\;\forall \epsilon > 0\;\exists\delta > 0 \mbox{ such that }
+f(B(p,\delta))\subseteq B(f(p),\epsilon).
+$$
+The map  \(f\) is said to be \textbf{uniformly continuous}
+iff
+$$
+\forall \epsilon > 0\;\exists\delta > 0\; \mbox{ such that } \forall p\in X
+\mbox{ we have } f(B(p,\delta))\subseteq B(f(p),\epsilon).
+$$
+(For continuity \(\delta=\delta(p,\epsilon)\);
+ for uniform continuity \(\delta=\delta(\epsilon)\).)
+\end{definition}
+\begin{proof}
+\note{(Buck Theorem~23 and its corollary on pages~62-63.)}
+\end{proof}
+
+\begin{proposition}
+ If \(f:X\to Y\) and \(g:Y\to Z\) are both continuous, then so is the
+composition \(g\circ f:X\to Z\).
+\end{proposition}
+
+\begin{proof}
+ Choose \(p_0\in X\) and \(\epsilon > 0\). As \(g\) is continuous there exists \(\eta > 0\)
+such that \(|g(q)-g(f(p_0))| < \epsilon\) whenever \(q\in Y\) and \(|q-f(p_0)| < \eta\).
+As \(f\) is continuous, there exists \(\delta > 0\) such that \(|f(p)-f(p_0)| < \eta\)
+whenever \(p\in X\) and \(|p-p_0| < \delta\). For \(p\in X\) we have \(q=f(p)\in Y\) so
+
+\[ |p-p_0| < \delta\implies |f(p)=f(p_0)| < \eta\implies |(g\circ f)(p)-(g\circ f)(p_0)| < \epsilon\]
+
+
+as required.
+\end{proof}
+
+
+
+  The map \(f\) is said to be \textbf{Lipschitz} iff there is
+a constant \(M\) such that \[   |f(p)-f(q)|\le M|p-q|\]
+for all \(p,q\in X\). A Lipschitz function is uniformly continuous.
+(Proof: \(\delta=\epsilon/M\).)
+\end{document}
