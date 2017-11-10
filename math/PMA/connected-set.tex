@@ -1,0 +1,128 @@
+% Intended LaTeX compiler: pdflatex
+\documentclass[10pt,a4paper,UTF8]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{zcl.space}
+\date{}
+\title{Connected sets}
+\hypersetup{
+ pdfauthor={zcl.space},
+ pdftitle={Connected sets},
+ pdfkeywords={PMA},
+ pdfsubject={},
+ pdfcreator={Emacs 25.0.50.1 (Org mode 9.1.2)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+\begin{definition}
+A set \(S\) is \textbf{disconnected} iff there are disjoint open sets \(U\) and \(V\) such that \(S\subseteq U\cup V\) and both \(S\cap U\) and \(S\cap V\) are nonempty.
+
+A set is \textbf{connected} iff it is not disconnected.
+\end{definition}
+\begin{tikztheorem}
+A subset \(S\subseteq\mathbb{R}\)  of the real line is connected if and only if \(S\) is an interval, i.e.
+\([a,b]\subseteq S\) whenever \(a,b\in S\).
+\end{tikztheorem}
+\begin{proof}
+Assume \(S\) is not an interval, i.e. that there exist \(a,b\in S\) with \([a,b]\not\subseteq S\). Then there is a \(c\in[a,b]\) with \(c\notin S\).
+
+Let \(U=(-\infty,c)\) and \(V=(c,\infty)\). The point \(c\) lies in the open interval \((a,b)\) as \(a,b\in S\) so \(a\in U\) and \(b\in V\). Hence both \(S\cap U\) and \(S\cap V\) are nonempty and clearly \(S\subseteq U\cup V\) (as \(c\notin S\)). Hence the open sets \(U\) and \(V\) separate \(S\)
+so \(S\) is disconnected as required.
+
+ Assume that \(S\) is disconnected, i.e. that there exist open sets \(U,V\subseteq\mathbb{R}\) with \(S\subseteq U\cup V\), \(S\cap U\ne\emptyset\), \(S\cap V\ne\emptyset\), and  \(U\cap V=\emptyset\). We must show that \(S\) is not an interval. Choose \(a\in S\cap U\) and \(b\in S\cap V\). Then \(a\ne b\) as \(U\cap V=\emptyset\). Assume without loss of generality that \(a < b\).
+(The case \(b < a\) is the same.)
+
+The set \([a,b]\cap U\) is nonempty (it contains \(a\)) and bounded above (\(b\) is an upper bound).
+Let \(c=\sup([a,b]\cap U)\).
+Since \(a\in U\) there is an \(\epsilon > 0\) with \((a-\epsilon,a+\epsilon)\subseteq U\).
+Making \(\epsilon\) smaller we also have \(a+\epsilon < b\).
+Therefore \([a,a+\epsilon)\subseteq [a,b]\cap U)\)
+so \(a+\epsilon=\sup\,[a,a+\epsilon)\le\sup\, [a,b]\cap U=c\).
+Since \(b\in V\) there is an(other) \(\epsilon > 0\) with \((b-\epsilon,b+\epsilon)\subseteq V\).
+Making \(\epsilon\) smaller we also have \(a < b-\epsilon\).
+Therefore \((b-\epsilon,b]\subseteq [a,b]\cap V)\) so
+\([b-\epsilon,b]\cap V=\emptyset\) so \(b-\epsilon\) is an upperbound for \([a,b]\cap U\),
+so \(c\le b-\epsilon\). We have proved that \(a < c < b\).
+If \(c\in U\) there is an \(\epsilon > 0\)
+with \(a < c-\epsilon < c < c+\epsilon < b\) and \((c-\epsilon,c+\epsilon)\subseteq U\) contradicting the fact
+that \(c\) is an upper bound of \([a,b]\cap U\).
+If \(c\in V\) there is an \(\epsilon > 0\)
+with \(a < c-\epsilon < c < c+\epsilon < b\) and \((c-\epsilon,c+\epsilon)\subseteq V\)
+so \(c-\epsilon\) is an upperbound for \([a,b]\cap U\)
+contradicting the fact
+that \(c\) is the least upper bound of \([a,b]\cap U\). Hence \(c\notin U\cup V\) so
+(as \(S\subseteq U\cup V\)) \(c\notin S\). Thus \(a < c < b\), \(a\in S\), \(b\in S\), \(c\notin S\),
+so \(S\) is not an interval.
+\end{proof}
+
+\begin{tikztheorem}
+ The continuous image of  a connected set is connected:
+ If \(f:X\to\mathbb{R}^m\) is continuous and \(X\) is connected,
+then \(f(X)\) is connected.
+\end{tikztheorem}
+\begin{tikztheorem}
+ Assume that \(S\) is connected and that \(f:S\to\mathbb{R}\)
+is continuous. Suppose that \(a,b\in f(S)\)
+and that \(a <  c  < b\). Then \(c\in f(S)\).
+\end{tikztheorem}
+
+ The Intermediate Value Theorem from calculus
+is a special case. It says that if
+\(f:[\alpha,\beta]\to\mathbb{R}\) is a real valued continuous
+function on the closed interval \([\alpha,\beta]\subseteq\mathbb{R}\),
+\(\{a,b\}=\{f(\alpha),f(\beta)\}\), and \(a\le c\le b\), then the equation
+\(f(x)=c\) has a solution \(x\in[\alpha,\beta]\).
+\begin{tikztheorem}
+ A continuous function \(f:I\to\mathbb{R}\) defined on an interval \(I\subseteq\mathbb{R}\)
+is injective if and only if it is strictly monotonic.
+When these equivalent conditions hold, the image \(J=f(I)\) is
+again an interval and the inverse function is continuous.
+\end{tikztheorem}
+
+\begin{tikztheorem}
+Let \(I\subseteq\mathbb{R}\) be an interval and \(f:I\to\mathbb{R}\) be  \(f\) is continuous.
+Then the set \[\mathrm{graph}(f):=\{(x,y)\in I\times\mathbb{R}: y=f(x)\}\] is connected.
+\end{tikztheorem}
+
+\begin{proof}
+ Define \(F:I\to\mathbb{R}\) by \(F(x)=(x,f(x))\) so that \(F(I)=\mathrm{graph}(f)\).
+Clearly \(f\) is continuous if and only if \(F\) is continuous.
+We will assume that \(I\) is an open interval; the case where \(I\) contains one of its endpoints is similar.
+Assume that  \(F(I)\) is not connected. Then  there are open sets \(U,V\subseteq\mathbb{R}^2\) with
+\(F(I)\subseteq U\cup V\), \(U\cap V=\emptyset\),
+\(F(I)\cap U\ne\emptyset\), \(F(I)\cap V\ne\emptyset\).
+Then \(F^{-1}(U),F^{-1}(V)\subseteq\mathbb{R}^2\) are open, \(I\subseteq F^{-1}(U)\cup F^{-1}(V)\),
+and \(F^{-1}(U)\cup F^{-1}(V)=F^{-1}(U\cap V)=\emptyset\).
+This contradicts the fact that \(I\) is an interval and therefore connected.
+\end{proof}
+
+
+
+ The converse is false. Consider the function \(f:\mathbb{R}\to\mathbb{R}\) defined by
+$$
+ f(x)=\left\{\begin{array}{ll} \sin(1/x) & \mbox{ if } x > 0,\\
+                                0 & \mbox{ if } x\le 0.
+             \end{array}\right.
+$$
+This function is not continuous as follows. Let \(x_n=(2n\pi+\pi/2)^{-1}\).
+Then \(f(x_n)=1\),  \(\lim_{n\to\infty}x_n=0\), but \(\lim_{n\to\infty} f(x_n)=1\ne 0=f(0)\).
+However, the graph of \(f\) is connected.
+To see this suppose \(U\) and \(V\) are open subsets of \(\mathbb{R}^2\) and
+\(\mathrm{graph}(f)\subseteq U\cup V\) with \(U\cup V=\emptyset\). Suppose that \((0,0)\in U\).
+Then \((x,f(x))\in U\) for \(x\le 0\) as \(f\) is continuous on \((-\infty,0]\) and
+\((x,f(x))\in U\) in \(U\) for \(x > 0\)  as \(f\) is continuous on \((0,\infty)\). But then
+\(\mathrm{graph}(f)\subset U\) so \(\mathrm{graph}(f)\cap V=\emptyset\).
+\end{document}
