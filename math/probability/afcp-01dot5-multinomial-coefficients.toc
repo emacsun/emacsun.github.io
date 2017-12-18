@@ -1,5 +1,0 @@
-\contentsline {section}{\numberline {1}多项式系数}{1}{section.1}
-\contentsline {section}{\numberline {2}多项式定理}{2}{section.2}
-\contentsline {section}{\numberline {3}淘汰赛场次问题}{3}{section.3}
-\contentsline {section}{\numberline {4}方程整数解个数}{3}{section.4}
-\contentsline {section}{\numberline {5}一个应用}{4}{section.5}

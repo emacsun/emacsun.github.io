@@ -1,7 +1,0 @@
-#+TITLE: linux地图
-
-   + emacs
-     + [[file:emacs/emacs-tweet.org][Emacs Tweet]]
-     + [[file:emacs/spacemacs-text-object.org][spacemacs中支持的操作符和text object]]
-     + [[file:emacs/emacs-github.org][使用github记录Emacs配置目录]]
-     + [[file:emacs/emacs-do-what.org][我用Emacs做什么]]

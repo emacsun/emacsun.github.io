@@ -1,3 +1,0 @@
-#+TITLE: znotes地图
-
-   + [[file:index.org][星火笔记]]
