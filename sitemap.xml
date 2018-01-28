@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://zcl.space/tools/my-blog-workflow/</loc>
+      <lastmod>2018-01-28T22:13:00+08:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://zcl.space/computer/a-test-of-computer-section/</loc>
       <lastmod>2017-12-18T20:11:00+08:00</lastmod>
     </url>
@@ -87,6 +96,15 @@
     <url>
     
       <loc>https://zcl.space/telecommunication/</loc>
+      <lastmod>2017-01-01T00:00:00+08:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/tools/</loc>
       <lastmod>2017-01-01T00:00:00+08:00</lastmod>
     </url>
     
@@ -221,6 +239,26 @@
     
     <url>
     
+      <loc>https://zcl.space/tags/emacs/</loc>
+      <lastmod>2018-01-28T22:13:00+08:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/tags/hugo/</loc>
+      <lastmod>2018-01-28T22:13:00+08:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://zcl.space/tags/life/</loc>
       <lastmod>2017-12-18T18:03:00+08:00</lastmod>
       <priority>0</priority>
@@ -251,6 +289,16 @@
     
     <url>
     
+      <loc>https://zcl.space/tags/org/</loc>
+      <lastmod>2018-01-28T22:13:00+08:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://zcl.space/project/</loc>
       <lastmod>2016-04-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -273,6 +321,26 @@
     
       <loc>https://zcl.space/tags/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/categories/tools/</loc>
+      <lastmod>2018-01-28T22:13:00+08:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/tags/tools/</loc>
+      <lastmod>2018-01-28T22:13:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     

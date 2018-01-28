@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tools on ZCL.SPACE</title>
+    <link>https://zcl.space/tools/</link>
+    <description>Recent content in Tools on ZCL.SPACE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 ZCL</copyright>
+    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0800</lastBuildDate>
+    <atom:link href="/tools/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Blogging with Emacs Org</title>
+      <link>https://zcl.space/tools/my-blog-workflow/</link>
+      <pubDate>Sun, 28 Jan 2018 18:01:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/my-blog-workflow/</guid>
+      <description>
+
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#writing-with-emacs-org-publish&#34;&gt;Writing with Emacs Org publish&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#writing-with-hugo&#34;&gt;Writing with Hugo&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#architecture-of-the-site&#34;&gt;architecture of the site&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#settings-for-ox-hugo&#34;&gt;Settings for ox-hugo&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#settings-for-each-section-based-on-ox-hugo&#34;&gt;settings for each section based on ox-hugo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#settings-for-each-article-based-on-ox-hugo&#34;&gt;settings for each article based on ox-hugo&lt;/a&gt;
+&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Right Now, I use two blog systems to post articles. First, I use the Emacs
+built-in Org to record my learning on math, computer and wireless
+communication. For me, the built-in publishing system is obsolete (I am not
+saying Org is obsolete. My life rely heavily on Org.) because I find the
+second one is more interesting and flexible to config. The second one is
+Hugo. Naturally, the Hugo support markdown format. However, I want to use
+Emacs Org to maintain a tools consistency. Fortunately, there is &lt;a href=&#34;https://ox-hugo.scripter.co/&#34; target=&#34;_blank&#34;&gt;ox-hugo&lt;/a&gt;, a
+project bridging Emacs org and Hugo markdown. Ox-hugo allows you to write
+your blog using Emacs Org then publish them in the markdwon format
+automatically.&lt;/p&gt;
+
+&lt;h2 id=&#34;writing-with-emacs-org-publish&#34;&gt;Writing with Emacs Org publish&lt;/h2&gt;
+
+&lt;p&gt;It&amp;rsquo;s easy to build a static website using &lt;a href=&#34;https://orgmode.org/manual/Publishing.html&#34; target=&#34;_blank&#34;&gt;Emacs Org&lt;/a&gt;. &lt;a href=&#34;https://orgmode.org/worg/&#34; target=&#34;_blank&#34;&gt;Worg&lt;/a&gt;, the Org-mode
+community, also have comprehensive tutorials about using Org to build your
+own static site. To be honest, worg should be every serious Org users&amp;rsquo;
+starting point. So many Org experts contribute their summary of Org in
+high-quality articles on the Worg.&lt;/p&gt;
+
+&lt;p&gt;In general, through Emacs Org mode, all you need is to set the variable
+&lt;code&gt;org-publish-project-alist&lt;/code&gt; . Of course, if you want your site beautiful,
+some knowledge about CSS and JavaScript is necessary.&lt;/p&gt;
+
+&lt;h2 id=&#34;writing-with-hugo&#34;&gt;Writing with Hugo&lt;/h2&gt;
+
+&lt;p&gt;Now, I moved from the Emacs built-in publishing system to Hugo because of
+Hugo&amp;rsquo;s efficiency and flexibility. You can build your static site in just a
+few minutues. One major problem of the built-in publishing system is that
+you have to wait for a long time as your site gets larger and larger. When
+you have only several posts, there is no problem. However, when you have more
+than one hundred posts, you want to kill yourself during waiting the
+publishing.&lt;/p&gt;
+
+&lt;p&gt;Using Hugo, everything is easy. Post an article is at the fingure.However,
+if you want to write a post, it is prioritized to finished it in the github
+format markdown. For a guy who rarely use markdown and is familiar with
+Emacs Org, this constraint is not human. Fortunately, &lt;a href=&#34;https://github.com/kaushalmodi/ox-hugo&#34; target=&#34;_blank&#34;&gt;Ox-hugo&lt;/a&gt;, a carefuly
+crafted Org exporter backend for Hugo, is definitely worth a try. Ox-hugo
+bridge the Emacs Org and Hugo and make the workflow at a fly. Even though,
+Hugo supports to write the posts in Org format, Ox-hugo still is a sharp
+tool which I will not give up and highly recommend it.&lt;/p&gt;
+
+&lt;p&gt;Especially, there is tons of themes for you. Also, you can set up your own
+theme.&lt;/p&gt;
+
+&lt;h3 id=&#34;architecture-of-the-site&#34;&gt;architecture of the site&lt;/h3&gt;
+
+&lt;p&gt;Using &lt;code&gt;hugo&lt;/code&gt; , there is a default architecture. Using &lt;code&gt;ox-hugo&lt;/code&gt; , I store
+the Org file in the subdirectory &lt;code&gt;content-org&lt;/code&gt; . There are several sections
+for my static site such &lt;code&gt;math&lt;/code&gt; , &lt;code&gt;computer&lt;/code&gt; and &lt;code&gt;communication&lt;/code&gt; . I store
+the articles in the corresponding category. For example I will put an
+article on &lt;em&gt;mathematical analysis&lt;/em&gt; in the file named &lt;code&gt;content-org/math.org&lt;/code&gt;
+so that after exporting, the markdown file will be put in the subdirectory
+&lt;code&gt;content/math/&lt;/code&gt; .&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;orge37fca0&#34;&gt;&lt;/a&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://zcl.space/tools/20180126HugoArchitecture.png&#34; alt=&#34;architecture of Hugo project&#34; width=&#34;400&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        architecture of Hugo project
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;settings-for-ox-hugo&#34;&gt;Settings for ox-hugo&lt;/h2&gt;
+
+&lt;h3 id=&#34;settings-for-each-section-based-on-ox-hugo&#34;&gt;settings for each section based on ox-hugo&lt;/h3&gt;
+
+&lt;p&gt;As mentioned before, there are several sections for my site and I use
+ox-hugo to handle articles for this sections. In the subdirectory
+&lt;code&gt;content-org/&lt;/code&gt; , there are several &lt;code&gt;*.org&lt;/code&gt; files such as &lt;code&gt;math.org&lt;/code&gt; ,
+&lt;code&gt;computer.org&lt;/code&gt; , &lt;code&gt;communications.org&lt;/code&gt; and &lt;code&gt;tools.org&lt;/code&gt; . All these &lt;code&gt;.org&lt;/code&gt;
+files have multiple level-1 headlines. for each level-1 headline, there is
+one article. I use one-post-per-Org-subtree style preferred in the ox-hugo
+&lt;a href=&#34;https://ox-hugo.scripter.co/&#34; target=&#34;_blank&#34;&gt;document&lt;/a&gt; but one-section-per-Org-file style for each section. The
+one-section-per-Org-file style is kind of like one-post-per-Org-file
+mentioned in the ox-hugo &lt;a href=&#34;https://ox-hugo.scripter.co/&#34; target=&#34;_blank&#34;&gt;document&lt;/a&gt;. So I have a hybrid style.&lt;/p&gt;
+
+&lt;p&gt;For each section, I have to set some parameters properly so that the
+articles goes to the right postion. Take &lt;code&gt;math.org&lt;/code&gt; for example, the
+beginning of this file is like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;#+HUGO_BASE_DIR: ../
+#+HUGO_SECTION: math
+#+SEQ_TODO: TODO NEXT DRAFT DONE
+#+FILETAGS: math
+#+OPTIONS:   *:t &amp;lt;:nil timestamp:nil toc:t
+#+HUGO_AUTO_SET_LASTMOD: t
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;the first line tells &lt;code&gt;ox-hugo&lt;/code&gt; the targeting directory is &lt;code&gt;../content/&lt;/code&gt; .&lt;/li&gt;
+&lt;li&gt;the second line tells &lt;code&gt;ox-hugo&lt;/code&gt; the article goes to &lt;code&gt;../content/math&lt;/code&gt; .&lt;/li&gt;
+&lt;li&gt;the third line is the Org state of the article, &lt;code&gt;TODO&lt;/code&gt; will render the
+article a draft while &lt;code&gt;DONE&lt;/code&gt; a finished post.&lt;/li&gt;
+&lt;li&gt;the fourth line will tell the Org all the headlines of this file has the
+tag &lt;code&gt;math&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;at the fifth line. &lt;code&gt;*:t&lt;/code&gt; will toggle emphasized text. &lt;code&gt;&amp;lt;:nil&lt;/code&gt; means the
+timestamp will not be exported. &lt;code&gt;timestamp:nil&lt;/code&gt; means the creation time
+will not be exported. &lt;code&gt;toc:t&lt;/code&gt; means for the articles table of content is
+generated. More settings like these will be detailed in the &lt;code&gt;Org&lt;/code&gt;
+manual. (You can open the Org manual by &lt;code&gt;C-h i&lt;/code&gt; ,then seclect the Org
+section.) On table of contents, ox-hugo has an &lt;a href=&#34;https://ox-hugo.scripter.co/doc/org-toc&#34; target=&#34;_blank&#34;&gt;article&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;the sixth line tells ox-hugo to export the latest time when the article
+is modified.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;settings-for-each-article-based-on-ox-hugo&#34;&gt;settings for each article based on ox-hugo&lt;/h3&gt;
+
+&lt;p&gt;I use the &lt;code&gt;org-capture&lt;/code&gt; to start a article. The emacs-lisp:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;(setq org-capture-templates
+      &#39;(
+        (&amp;quot;t&amp;quot; &amp;quot;todo&amp;quot; entry (file &amp;quot;~/zorg/Dropbox/base/zrefile.org&amp;quot;)
+         &amp;quot;* TODO %? :TODO: \n Added:%T\n&amp;quot;
+         :clock-in t :clock-resume t)
+        (&amp;quot;h&amp;quot; &amp;quot;Hugo post&amp;quot;)
+        (&amp;quot;hm&amp;quot; &amp;quot;Math&amp;quot;
+         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/math.org&amp;quot; &amp;quot;Math&amp;quot;)
+         (function org-hugo-new-subtree-post-capture-template)
+         &amp;quot;:math:&amp;quot;
+         :clock-in t :clock-resume t)
+        (&amp;quot;hc&amp;quot; &amp;quot;Computer&amp;quot;
+         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/computer.org&amp;quot; &amp;quot;Computer&amp;quot;)
+         (function org-hugo-new-subtree-post-capture-template)
+         :clock-in t :clock-resume t)
+        (&amp;quot;ht&amp;quot; &amp;quot;Telecommunication&amp;quot;
+         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/telecommunication.org&amp;quot; &amp;quot;Telecommunication&amp;quot;)
+         (function org-hugo-new-subtree-post-capture-template)
+         :clock-in t :clock-resume t)
+        (&amp;quot;hl&amp;quot; &amp;quot;Life&amp;quot;
+         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/life.org&amp;quot; &amp;quot;Life&amp;quot;)
+         (function org-hugo-new-subtree-post-capture-template)
+         :clock-in t :clock-resume t)
+        (&amp;quot;ho&amp;quot; &amp;quot;Tools&amp;quot;
+         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/tools.org&amp;quot; &amp;quot;Tools&amp;quot;)
+         (function org-hugo-new-subtree-post-capture-template)
+         :clock-in t :clock-resume t)
+        ))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;From the above code, you can see that I rely heavily on ox-hugo. there is one
+function named &lt;code&gt;org-hugo-new-subtree-post-capture-template&lt;/code&gt; which is shown
+as below:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;  (defun org-hugo-new-subtree-post-capture-template ()
+    &amp;quot;Returns `org-capture&#39; template string for new Hugo post.
+See `org-capture-templates&#39; for more information.&amp;quot;
+    (let* (;; http://www.holgerschurig.de/en/emacs-blog-from-org-to-hugo/
+           (date (format-time-string (org-time-stamp-format  :inactive) (org-current-time)))
+           (title (read-from-minibuffer &amp;quot;Post Title: &amp;quot;)) ;Prompt to enter the post title
+           (fname (org-hugo-slug title)))
+      (mapconcat #&#39;identity
+                 `(
+                   ,(concat &amp;quot;* TODO &amp;quot; title)
+                   &amp;quot;:PROPERTIES:&amp;quot;
+                   ,(concat &amp;quot;:EXPORT_FILE_NAME: &amp;quot; fname)
+                   ,(concat &amp;quot;:EXPORT_DATE: &amp;quot; date) ;Enter current date and time
+                   ,(concat &amp;quot;:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: &amp;quot;  &amp;quot;:summary \&amp;quot;summary\&amp;quot;&amp;quot;)
+                   &amp;quot;:END:&amp;quot;
+                   &amp;quot;%?\n&amp;quot;)          ;Place the cursor here finally
+                 &amp;quot;\n&amp;quot;)))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;One more point, it is awesome to preview each article after saveing it.
+Yes! you can do it according &lt;a href=&#34;https://ox-hugo.scripter.co/doc/auto-export-on-saving&#34; target=&#34;_blank&#34;&gt;this article&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
