@@ -10,15 +10,5 @@
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0800</lastBuildDate>
     <atom:link href="/math/" rel="self" type="application/rss+xml" />
     
-    <item>
-      <title>test the capture template</title>
-      <link>https://zcl.space/math/test-the-capture-template/</link>
-      <pubDate>Mon, 18 Dec 2017 17:47:00 +0800</pubDate>
-      
-      <guid>https://zcl.space/math/test-the-capture-template/</guid>
-      <description>&lt;p&gt;this is a test of the capture template by org&lt;/p&gt;
-</description>
-    </item>
-    
   </channel>
 </rss>

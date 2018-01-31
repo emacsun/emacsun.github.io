@@ -34,10 +34,11 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#settings-for-each-section-based-on-ox-hugo&#34;&gt;settings for each section based on ox-hugo&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#settings-for-each-article-based-on-ox-hugo&#34;&gt;settings for each article based on ox-hugo&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;#settings-for-each-article-based-on-ox-hugo&#34;&gt;settings for each article based on ox-hugo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#settings-for-hugo-themes&#34;&gt;Settings for Hugo themes&lt;/a&gt;
 &lt;/div&gt;
 &lt;!--endtoc--&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Right Now, I use two blog systems to post articles. First, I use the Emacs
@@ -95,7 +96,7 @@ article on &lt;em&gt;mathematical analysis&lt;/em&gt; in the file named &lt;code
 so that after exporting, the markdown file will be put in the subdirectory
 &lt;code&gt;content/math/&lt;/code&gt; .&lt;/p&gt;
 
-&lt;p&gt;&lt;a id=&#34;orge37fca0&#34;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a id=&#34;orge96a2ab&#34;&gt;&lt;/a&gt;
 
 &lt;figure &gt;
     
@@ -161,7 +162,7 @@ is modified.&lt;/li&gt;
 
 &lt;p&gt;I use the &lt;code&gt;org-capture&lt;/code&gt; to start a article. The emacs-lisp:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;(setq org-capture-templates
+&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(setq org-capture-templates
       &#39;(
         (&amp;quot;t&amp;quot; &amp;quot;todo&amp;quot; entry (file &amp;quot;~/zorg/Dropbox/base/zrefile.org&amp;quot;)
          &amp;quot;* TODO %? :TODO: \n Added:%T\n&amp;quot;
@@ -195,7 +196,7 @@ is modified.&lt;/li&gt;
 function named &lt;code&gt;org-hugo-new-subtree-post-capture-template&lt;/code&gt; which is shown
 as below:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;  (defun org-hugo-new-subtree-post-capture-template ()
+&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;  (defun org-hugo-new-subtree-post-capture-template ()
     &amp;quot;Returns `org-capture&#39; template string for new Hugo post.
 See `org-capture-templates&#39; for more information.&amp;quot;
     (let* (;; http://www.holgerschurig.de/en/emacs-blog-from-org-to-hugo/
@@ -216,6 +217,39 @@ See `org-capture-templates&#39; for more information.&amp;quot;
 
 &lt;p&gt;One more point, it is awesome to preview each article after saveing it.
 Yes! you can do it according &lt;a href=&#34;https://ox-hugo.scripter.co/doc/auto-export-on-saving&#34; target=&#34;_blank&#34;&gt;this article&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;settings-for-hugo-themes&#34;&gt;Settings for Hugo themes&lt;/h2&gt;
+
+&lt;p&gt;Now, there are more than 190+ &lt;a href=&#34;https://themes.gohugo.io/&#34; target=&#34;_blank&#34;&gt;themes&lt;/a&gt; for Hugo. It is pretty straightforward
+to &lt;a href=&#34;https://gohugo.io/themes/&#34; target=&#34;_blank&#34;&gt;install and config&lt;/a&gt; a theme as you wish. I prefer the &lt;a href=&#34;https://sourcethemes.com/academic/&#34; target=&#34;_blank&#34;&gt;Academic theme&lt;/a&gt; which I
+adopt for the following reasons:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;It is easy manage my post according to different categories.&lt;/li&gt;
+&lt;li&gt;I love the widget most.&lt;/li&gt;
+&lt;li&gt;support of \(\mathrm{\LaTeX}\) so I can with the mathematical expressions
+fluently.&lt;/li&gt;
+&lt;li&gt;Responsive and mobile friendly.&lt;/li&gt;
+&lt;li&gt;easy to update.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;There are &lt;a href=&#34;https://sourcethemes.com/academic/docs/install/&#34; target=&#34;_blank&#34;&gt;several ways&lt;/a&gt; to install the Academic theme. I use the Academic
+Kickstart way:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;git clone https://github.com/sourcethemes/academic-kickstart.git My_Website
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The very reason I use the Kickstart way lies in the updatation of Academic.
+In the Kickstart way, Academic is installed as a Git sub-module.&lt;/p&gt;
+
+&lt;p&gt;If you want to update the theme,all you have to do is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;git submodule update --remote --merge
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Also, for different methods of updating the theme, you can check &lt;a href=&#34;https://sourcethemes.com/academic/docs/update/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;这是一个中文测试。显示新的字体。&lt;/p&gt;
 </description>
     </item>
     

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+    
+    
+    <url>
+    
+      <xhtml:link rel="alternate" href="https://zcl.space/zh/categories/" hreflang="zh"/>
+      <xhtml:link rel="alternate" href="https://zcl.space/categories/" hreflang="en"/>
+    
+      <loc>https://zcl.space/zh/categories/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <xhtml:link rel="alternate" href="https://zcl.space/zh/publication_types/" hreflang="zh"/>
+      <xhtml:link rel="alternate" href="https://zcl.space/publication_types/" hreflang="en"/>
+    
+      <loc>https://zcl.space/zh/publication_types/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <xhtml:link rel="alternate" href="https://zcl.space/zh/tags/" hreflang="zh"/>
+      <xhtml:link rel="alternate" href="https://zcl.space/tags/" hreflang="en"/>
+    
+      <loc>https://zcl.space/zh/tags/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <xhtml:link rel="alternate" href="https://zcl.space/zh/" hreflang="zh"/>
+      <xhtml:link rel="alternate" href="https://zcl.space/" hreflang="en"/>
+    
+      <loc>https://zcl.space/zh/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+</urlset>
