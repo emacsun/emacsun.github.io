@@ -11,6 +11,65 @@
     <atom:link href="/tools/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Organize you life in Emacs Org</title>
+      <link>https://zcl.space/tools/organize-you-life-in-org/</link>
+      <pubDate>Sun, 04 Feb 2018 20:45:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/organize-you-life-in-org/</guid>
+      <description>
+
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;introduction&lt;/a&gt;
+&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;introduction&#34;&gt;introduction&lt;/h2&gt;
+
+&lt;p&gt;Using &lt;a href=&#34;http://spacemacs.org/&#34; target=&#34;_blank&#34;&gt;spacemacs&lt;/a&gt; I divide my Org config into servel private layers for
+the sake of easy maintenance and flexibility. You can check my
+&lt;a href=&#34;https://github.com/emacsun/.spacemacs.d&#34; target=&#34;_blank&#34;&gt;.spacemacs.d&lt;/a&gt; on github. I suggest you excerpt some of my config
+instead of copying all of them because some of them maybe not what you
+want.&lt;/p&gt;
+
+&lt;p&gt;Based on the comprehensive tutorial &lt;a href=&#34;http://doc.norang.ca/org-mode.html&#34; target=&#34;_blank&#34;&gt;Organize Your Life In Plain Text&lt;/a&gt;,
+I build my own GTD system using Org. Actually, there exists quite a
+few posts on building personal GTD system through Emacs Org. Some
+excellent ones are listed as below:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://doc.norang.ca/org-mode.html&#34; target=&#34;_blank&#34;&gt;Organize Your Life In Plain Text&lt;/a&gt; . This article is the starting
+point of my serious using of Emacs Org as GTD tool. It is quite
+long, but deserves spending time to read it. It pays off.
+Furthermore, reading just one time is not enough. Perhaps you
+will visit this post several times before your GTD system is
+handy.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://newartisans.com/2007/08/using-org-mode-as-a-day-planner/&#34; target=&#34;_blank&#34;&gt;Using org-mode as a Day Planner&lt;/a&gt; . This article describe how the
+author replace pen-and-paper day planner with the Emacs Org.
+After trying many software available, the author choose Emacs
+Org.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://members.optusnet.com.au/~charles57/GTD/gtd_workflow.html&#34; target=&#34;_blank&#34;&gt;How I use Emacs and Org-mode to implement GTD&lt;/a&gt; . The author&amp;rsquo;s job
+is developing classroom training materials and E-Learning
+solutions for a software company based in North Sydney. It&amp;rsquo;s
+also worthwhile to give the article a shot.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I am not going to list all the articles, even some popular articles
+ are missed. What I want to say is that you need to define your need
+ first. After that you can excerpt the config from other&amp;rsquo;s
+ implement. Most of the time you will modify other&amp;rsquo;s config before
+ Org is handy for you. So some knowledge of Elisp is desirable.
+&lt;strong&gt;*&lt;/strong&gt;
+&lt;span class=&#34;timestamp-wrapper&#34;&gt;&lt;span class=&#34;timestamp&#34;&gt;[2018-02-04 Sun 21:24]&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Blogging with Emacs Org</title>
       <link>https://zcl.space/tools/my-blog-workflow/</link>
       <pubDate>Sun, 28 Jan 2018 18:01:00 +0800</pubDate>
@@ -96,7 +155,7 @@ article on &lt;em&gt;mathematical analysis&lt;/em&gt; in the file named &lt;code
 so that after exporting, the markdown file will be put in the subdirectory
 &lt;code&gt;content/math/&lt;/code&gt; .&lt;/p&gt;
 
-&lt;p&gt;&lt;a id=&#34;orge96a2ab&#34;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a id=&#34;orgd0a639c&#34;&gt;&lt;/a&gt;
 
 &lt;figure &gt;
     
@@ -230,8 +289,8 @@ adopt for the following reasons:&lt;/p&gt;
 &lt;li&gt;support of \(\mathrm{\LaTeX}\) so I can with the mathematical expressions
 fluently.&lt;/li&gt;
 &lt;li&gt;Responsive and mobile friendly.&lt;/li&gt;
-&lt;li&gt;easy to update.&lt;/li&gt;
-&lt;/ol&gt;
+
+&lt;li&gt;&lt;p&gt;easy to update.&lt;/p&gt;
 
 &lt;p&gt;There are &lt;a href=&#34;https://sourcethemes.com/academic/docs/install/&#34; target=&#34;_blank&#34;&gt;several ways&lt;/a&gt; to install the Academic theme. I use the Academic
 Kickstart way:&lt;/p&gt;
@@ -247,9 +306,8 @@ In the Kickstart way, Academic is installed as a Git sub-module.&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;git submodule update --remote --merge
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Also, for different methods of updating the theme, you can check &lt;a href=&#34;https://sourcethemes.com/academic/docs/update/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;这是一个中文测试。显示新的字体。&lt;/p&gt;
+&lt;p&gt;Also, for different methods of updating the theme, you can check &lt;a href=&#34;https://sourcethemes.com/academic/docs/update/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
 </description>
     </item>
     
