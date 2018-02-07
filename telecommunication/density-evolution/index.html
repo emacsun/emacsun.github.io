@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.31.1" />
+  <meta name="author" content="Eason Zhang">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content=".ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Introduction 2 Density evolution on the BEC  2.1 Regular LDPC codes 2.2 Irregular LDPC codes  3 threshold and stability of density evolution on BEC 4 Density evolution on general memoryless channels  4.1 get an excellent degree distribution  5 Summary    1 Introduction For a given Tanner graph, it is still an open question to tell for which channel noise level the message passing algorithm will be able to reach a reliable transmission.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://zcl.space/telecommunication/density-evolution/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#795548">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7cMerriweather%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+
+  
+  <link rel="alternate" href="https://zcl.space/index.xml" type="application/rss+xml" title="ZCL.SPACE">
+  <link rel="feed" href="https://zcl.space/index.xml" type="application/rss+xml" title="ZCL.SPACE">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://zcl.space/telecommunication/density-evolution/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="ZCL.SPACE">
+  <meta property="og:url" content="https://zcl.space/telecommunication/density-evolution/">
+  <meta property="og:title" content="Density Evolution | ZCL.SPACE">
+  <meta property="og:description" content=".ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Introduction 2 Density evolution on the BEC  2.1 Regular LDPC codes 2.2 Irregular LDPC codes  3 threshold and stability of density evolution on BEC 4 Density evolution on general memoryless channels  4.1 get an excellent degree distribution  5 Summary    1 Introduction For a given Tanner graph, it is still an open question to tell for which channel noise level the message passing algorithm will be able to reach a reliable transmission.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-02-07T20:02:00&#43;08:00">
+  
+  <meta property="article:modified_time" content="2018-02-07T22:26:00&#43;08:00">
+  
+
+  
+
+  <title>Density Evolution | ZCL.SPACE</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">ZCL.SPACE</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#math">
+            
+            <span>Math</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#computer">
+            
+            <span>Computer</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#telecommunication">
+            
+            <span>Telecommunication</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>About</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#life">
+            
+            <span>Life</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#tools">
+            
+            <span>Tools</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Density Evolution</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+        Last updated on
+    
+    <time datetime="2018-02-07 20:02:00 &#43;0800 CST" itemprop="datePublished dateModified">
+      Feb 7, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Eason Zhang">
+  </span>
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    11 min read
+  </span>
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="https://zcl.space/telecommunication/density-evolution/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/telecommunication">telecommunication</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Density%20Evolution&amp;url=https%3a%2f%2fzcl.space%2ftelecommunication%2fdensity-evolution%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fzcl.space%2ftelecommunication%2fdensity-evolution%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fzcl.space%2ftelecommunication%2fdensity-evolution%2f&amp;title=Density%20Evolution"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fzcl.space%2ftelecommunication%2fdensity-evolution%2f&amp;title=Density%20Evolution"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Density%20Evolution&amp;body=https%3a%2f%2fzcl.space%2ftelecommunication%2fdensity-evolution%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p><style>
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+</style>
+<div class="ox-hugo-toc toc">
+<div></div></p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+<li><span class="section-num">1</span> <a href="#introduction">Introduction</a></li>
+<li><span class="section-num">2</span> <a href="#density-evolution-on-the-bec">Density evolution on the BEC</a>
+
+<ul>
+<li><span class="section-num">2.1</span> <a href="#regular-ldpc-codes">Regular LDPC codes</a></li>
+<li><span class="section-num">2.2</span> <a href="#irregular-ldpc-codes">Irregular LDPC codes</a></li>
+</ul></li>
+<li><span class="section-num">3</span> <a href="#threshold-and-stability-of-density-evolution-on-bec">threshold and stability of density evolution on BEC</a></li>
+<li><span class="section-num">4</span> <a href="#density-evolution-on-general-memoryless-channels">Density evolution on general memoryless channels</a>
+
+<ul>
+<li><span class="section-num">4.1</span> <a href="#get-an-excellent-degree-distribution">get an excellent degree distribution</a></li>
+</ul></li>
+<li><span class="section-num">5</span> <a href="#summary">Summary</a>
+</div>
+<!--endtoc--></li>
+</ul>
+
+<h2 id="introduction"><span class="section-num">1</span> Introduction</h2>
+
+<p>For a given Tanner graph, it is still an open question to tell for
+which channel noise level the message passing algorithm will be able
+to reach a reliable transmission. Fortunately, it is possible to tell
+how an ensemble of Tanner graphs is likely to behave given that the
+channel is memoryless and the Tanner graphs are all cycle free. We
+could do this by tracking the evolution of probability density
+functions during the message passing procedure. We call this method
+<strong>Density Evolution</strong> which is first invented by Richardson and Urbanke
+in their papers in 2001.</p>
+
+<p>Now there are some effective ways to decide whether a LDPC ensemble is
+good or not, but most of them are based on density evolution. We
+define <strong>threshold</strong> as the maximum level of channel noise under which
+the MPA(message passing algorithm) can reach a reliable transmission.
+By watching the threshold, we can design some excellent LDPC ensemble,
+from which a good LDPC matrix can be selected.</p>
+
+<h2 id="density-evolution-on-the-bec"><span class="section-num">2</span> Density evolution on the BEC</h2>
+
+<p>On the BEC, an erased bit can be corrected if that bit was the only
+bit in the parity check equation. We assume that the MPA is passing
+messages down through the layers of a Tanner graph which is a tree.
+Under such assumption the bit-to-check message to check node in a
+lower level of the graph is determined by the check-to-bit message
+from all the incoming edges in the level above.</p>
+
+<h3 id="regular-ldpc-codes"><span class="section-num">2.1</span> Regular LDPC codes</h3>
+
+<p>Problem: given an ensemble \(\mathcal{T}(w_{c},w_{r})\), which sonsists of all
+regular LDPC Tanner graphs with bit nodes of degree \(w_{c}\) and check nodes of
+degree \(w_{r}\), show the maximum erasure probability at which the MPA can
+recover all the erasure bit.</p>
+
+<p>For BEC, the message hold either the current value of the bit ( can be &ldquo;1&rdquo; or
+&ldquo;0&rdquo;) or &ldquo;x&rdquo; (the bit value is unknown). Define \(q_{l}\) as the probability that
+at iteration \(l\) a check to bit message is an \(x\) and \(p_{l}\) as the
+probability that at iteration \(l\) a bit to check message is an \(x\).</p>
+
+<p>For a regular LDPC ensemble, the C2B (check to bit) message on an edge is \(x\)
+if one or more of the incoming messages on the other \(w_{r} - 1\) edges into
+that check node is an \(x\). Suppose that all the incoming messages are
+identical and independent of each other, i.e. they have i.i.d. So,</p>
+
+<p>\begin{equation}
+\label{eq:2}
+q_{l} = 1 - (1-p_{l})^{(w_{r} - 1)}
+\end{equation}</p>
+
+<p>At iteration \(l\), the B2C message will be \(x\) if the origin message from the
+channel was an erasure and all the incoming message from check at iteration
+\(l-1\) are erasures. So,</p>
+
+<p>\begin{equation}
+\label{eq3}
+p_{l} = \epsilon(q_{l-1})^{w_{c} - 1}
+\end{equation}</p>
+
+<p>Here, \(\epsilon\) is the probability of \(x\) for the origin message from the
+channel. We use \(w_{c} - 1\) instead of \(w_{c}\), because we have to remove
+the message coming from the check node to which the bit node will send the new
+message. We do this to make the messages uncorrelated.</p>
+
+<p>Combining the \(q_{l}\) and \(p_{l}\), we get:</p>
+
+<p>\begin{equation}
+\label{eq:6}
+p_{l} = \epsilon \big( 1 - (1-p_{l-1})^{(w_{r} - 1)}\big)^{(w_{c} -1)}
+\end{equation}</p>
+
+<p>Before the iteration, we have \(p_{0} = \epsilon\) which is the probability that
+a bit is erased by the channel.</p>
+
+<p>Thus, for a \((w_{c},w_{r})\) regular ensemble, we have a recursion:</p>
+
+<p>\begin{eqnarray}
+\label{eq:3}
+p_{0}&amp;=&amp;\epsilon \newline
+p_{l}&amp;=&amp; \epsilon \big( 1 - (1-p_{l-1})^{(w_{r} - 1)}\big)^{(w_{c} -1)}
+\end{eqnarray}</p>
+
+<p>The above recursion describes how the erasure probability of MPA evolves as a
+function of the iteration number \(l\). For example, we can find that with
+\(\epsilon = 0.3\) the decoder can correct the erasure after \(l = 7\). With \(l
+\to \infty\), we find that \(\epsilon \in (0.4293,0.4294)\) is OK. So we can say
+that the threshold for a \((3,6)\) regular LDPC code is between \(0.4293\) and
+\(0.4294\).</p>
+
+<h3 id="irregular-ldpc-codes"><span class="section-num">2.2</span> Irregular LDPC codes</h3>
+
+<p>For an irregular LDPC codes, the columns and rows have varying weights. So we
+describe an irregular LDPC ensemble in a different way. We designated the
+fraction of columns of weight \(i\) by \(v_{i}\) and the fraction of rows of
+weight \(i\) by \(h_{i}\). An irregular LDPC ensemble can be described using
+\(v_{i}\) and \(h_{i}\)</p>
+
+<p>To develop the irregular version of density evolution, we define fraction of
+edges connecting to degree-\(i\) bit nodes as \(\lambda_{i}\) and \(\rho_{i}\)
+the fraction of edges connecting to degree-\(i\) check nodes.</p>
+
+<p>It&rsquo;s easy to get:</p>
+
+<p>\begin{eqnarray}
+\label{eq:7}
+\sum_{i}\lambda_{i}&amp;=&amp; 1 \newline
+\sum_{i}\rho_{i} &amp;=&amp; 1
+\end{eqnarray}</p>
+
+<p>We also define the <strong>degree distrubution functions</strong> as:</p>
+
+<p>\begin{eqnarray}
+\label{eq:8}
+\lambda(x)&amp;=&amp;\lambda_{2} x + \lambda_{3}x^{2} + \ldots + \lambda_{i}x^{i-1} + \ldots \newline
+\rho(x) &amp;=&amp; \rho_{2}(x) + \rho_{3}x^{2} + \ldots + \rho_{i}x^{i-1} + \ldots
+\end{eqnarray}</p>
+
+<p>We can transform between node degrees and edge degrees by:</p>
+
+<p>\begin{eqnarray}
+\label{eq9}
+v_{i}&amp;=&amp; \frac{\lambda_{i}/i}{\sum_{j}\lambda_{j}/j} \newline
+h_{i}&amp;=&amp; \frac{\rho_{i}/i}{\sum_{j}\rho_{j}/j}
+\end{eqnarray}</p>
+
+<p>About the above equation, take
+\[v_{i}=\frac{\lambda_{i}/i}{\sum_{j}\lambda_{j}/j} \] for example,
+suppose the number of degree \(i\) bit nodes is \(n_{i}\), so
+\(\lambda_{i} = \frac{ n_{i} i }{\sum_{j}n_{j}j} \). Then</p>
+
+<p>\begin{equation}
+\label{eq:1}
+\lambda_{i}/i  = \frac{n_{i}}{\sum_{j}n_{j}j}
+\end{equation}</p>
+
+<p>Thus,</p>
+
+<p>\begin{equation}
+\label{eq:9}
+\sum_{k}\lambda_{k}/k = \sum_{k} \frac{n_{k}}{\sum_{j}n_{j}j}
+\end{equation}</p>
+
+<p>Then,</p>
+
+<p>\begin{eqnarray}
+\label{eq:10}
+\frac{\lambda_{i}/i}{\sum_{k} \lambda_{k}/k } &amp;=&amp; \frac{ \frac{n_{i}}{\sum_{j}n_{j}j}  }{ \sum_{k} \frac{n_{k}}{\sum_{j}n_{j}j}} \newline
+&amp;=&amp; \frac{n_{i}}{\sum_{k}n_{k}} \newline
+&amp;=&amp; v_{i}
+\end{eqnarray}</p>
+
+<p>At the regular LDPC codes section, we get that, at the \(l\)
+iteration of MPA decoding, the probability that C2B is \(x\), is:</p>
+
+<p>\begin{equation}
+\label{eq:11}
+q_{l} = 1- (1-p_{l})^{(w_{r} -1)}
+\end{equation}</p>
+
+<p>for an edge connected to a degree \(w_{r}\) check node. When it comes
+to an irregular Tanner graph, the probability that an edge is
+connected to a degree \(w_{r}\) check node is \( \rho_{w_{r}} \).</p>
+
+<p>So,</p>
+
+<p>\begin{equation}
+\label{eq:12}
+q_{l} =\sum_{i} \rho_{i} ( 1 - (1-p_{l})^{(i-1)} ) = 1 - \sum_{i}\rho_{i} (1-p_{l})^{(i-1)}
+\end{equation}</p>
+
+<p>Before, we define</p>
+
+<p>\begin{equation}
+\label{eq:13}
+\rho(x) = \rho_{2}(x) + \rho_{3}x^{2} + \ldots + \rho_{i}x^{i-1} + \ldots
+\end{equation}</p>
+
+<p>So,</p>
+
+<p>\begin{equation}
+\label{eq:14}
+q_{l} = 1-\rho(1-p_{l})
+\end{equation}</p>
+
+<p>Now, let&rsquo;s check the \(p_{l}\). In the regular LDPC codes on BEC with
+erasure probability \(\epsilon\), at the \(l\)-th iteration of MPA
+decoding if all incoming messages are independent, is :</p>
+
+<p>\begin{equation}
+\label{eq:15}
+p_{l} = \epsilon (q_{l-1})^{(w_{c} -1)}
+\end{equation}</p>
+
+<p>When it comes to irregular LDPC codes with the probability that an
+edge is connected to a bit node of degree \(w_{c}\) is
+\(\lambda_{w_{c}}\), the \(p_{l}\) can be derived in a straightforward
+way:</p>
+
+<p>\begin{equation}
+\label{eq:16}
+p_{l} = \epsilon\sum_{i}\lambda_{i} (q_{l-1})^{i-1}
+\end{equation}</p>
+
+<p>We also have the definition of \(\lambda(x)\), So,</p>
+
+<p>\begin{equation}
+\label{eq:17}
+p_{l} = \epsilon \lambda(q_{l-1})
+\end{equation}</p>
+
+<p>At last, we get</p>
+
+<p>\begin{equation}
+\label{eq:18}
+p_{l} = \epsilon \lambda \big( 1- \rho(1-p_{l-1}) \big)
+\end{equation}</p>
+
+<p>with \(p_{0}=\epsilon\)</p>
+
+<h2 id="threshold-and-stability-of-density-evolution-on-bec"><span class="section-num">3</span> threshold and stability of density evolution on BEC</h2>
+
+<p>According to \ref{eq:18}, we can evaluate the ensemble code with given
+degree distribution \(\lambda,\rho\) assuming that the graphs are
+cycle free.</p>
+
+<p>To examine the influence of \(\epsilon\), we define the function:</p>
+
+<p>\begin{equation}
+\label{eq:24}
+f(p,\epsilon) = \epsilon\lambda(1- \rho(1-p))
+\end{equation}</p>
+
+<p>The erasure probability at iteration \(l\) is then</p>
+
+<p>\begin{equation}
+\label{eq:25}
+p_{l}(\epsilon) = f(p_{l-1},\epsilon)
+\end{equation}</p>
+
+<p>\(f(p,\epsilon)\) is a strictly increasing function in \(p\) for
+\(\epsilon &gt; 0\) so \(p_{l+1} &gt; p_{l}\).</p>
+
+<p>In particular,</p>
+
+<p>\begin{eqnarray}
+\label{eq:26}
+f(0,\epsilon)&amp;=&amp;\epsilon \lambda(1-\rho(1)) = 0 <br />
+f(1,\epsilon)&amp;=&amp;\epsilon \lambda(1-\rho(1-1)) = \epsilon
+\end{eqnarray}</p>
+
+<p>Since \(f(p,\epsilon)\) is a strictly increasing function in \(p\)</p>
+
+<p>\begin{equation}
+\label{eq:27}
+0 \leq f(p,\epsilon) \leq \epsilon, \quad \forall p\in [0,1], \forall \epsilon\in [0,1]
+\end{equation}</p>
+
+<p>Thus, \(p_{\infty}\) will definitely converges to an element
+\(p_{\infty} \in [0,\epsilon]\).Further, for a degree distribution
+pair \(\lambda,\rho\) and an \(\epsilon\in [0,1]\), it can be proven
+that if \(p_{l}(\epsilon) \to 0\) then \(p_{l}(\epsilon^{&lsquo;}) \to 0\)
+for all \(\epsilon &lt; \epsilon^{&lsquo;}\). Indeed, there is a value
+\(\epsilon^{*}\) called the threshold such that for values of
+\(\epsilon\) below \(\epsilon^{*}\), \(p_{l}\) approaches zero as the
+number of iterations goes to infinity while for values of \(\epsilon &gt;
+\epsilon^{*}\) it does not. The threshold, \(\epsilon^{*}\), for
+\((\lambda,\rho)\) is defined as the supremum of \(\epsilon\) for
+which \(p_{l}(\epsilon) \to 0\):</p>
+
+<p>\begin{equation}
+\label{eq:28}
+\epsilon^{*} (\lambda,\rho) = \sup { \epsilon\in [0.1] :p_{l}(\epsilon)_{l\to \infty} \to 0 }
+\end{equation}</p>
+
+<p>We wish to find the threshold of an irregular LDPC ensemble with
+degree distributions:</p>
+
+<p>\begin{equation}
+\label{eq:29}
+\lambda(x) = 0.1x + 0.4x^{2} + 0.5x^{19}
+\end{equation}</p>
+
+<p>and</p>
+
+<p>\begin{equation}
+\label{eq:30}
+\rho(x) = 0.5 x^{7} + 0.5 x^{8}
+\end{equation}</p>
+
+<p>This code has rate:</p>
+
+<p>\begin{equation}
+\label{eq:31}
+1- \frac{\sum_{i}\lambda_{i}/i}{\sum_{i}\rho_{i}/i} \approx 0.5
+\end{equation}</p>
+
+<p>By using the recursion of Density evolution, we find that the
+threshold for this ensemble is an erasure probability between 0.465
+and 0.475.</p>
+
+<p>It is easy to find that the density evolution quickly results in very
+high order as the iteration number is increased. However, to
+understand its behavior when \(p_{l}\) is small we can approximate it
+by a Taylor series expansion of the right hand side around 0. i.e.</p>
+
+<p>\begin{equation}
+\label{eq:32}
+p_{l} = f(p_{l-1},\epsilon)\approx f^{&lsquo;}(p,\epsilon) p_{l-1}
+\end{equation}</p>
+
+<p>A function \(f(x) = g(h(x))\) has a derivative with respect to \(x\)
+given by:</p>
+
+<p>\begin{equation}
+\label{eq:34}
+\frac{df}{dx} = \frac{dg}{dh} \frac{dh}{dx}
+\end{equation}</p>
+
+<p>Thus for:</p>
+
+<p>\begin{equation}
+\label{eq:35}
+f(p,\epsilon) = \epsilon \lambda(h(p)) \quad h(p) = 1-\rho(1-p)
+\end{equation}</p>
+
+<p>the derivative with respect to \(p\) is :</p>
+
+<p>\begin{equation}
+\label{eq:36}
+\frac{df(p,\epsilon)}{dp} = \frac{d\lambda}{dh} \frac{dh}{dp}
+\end{equation}</p>
+
+<p>Evaluating this derivative at \(p = 0\) we have that</p>
+
+<p>\begin{equation}
+\label{eq:37}
+h(p=0) = 1-\rho(1) =0
+\end{equation}</p>
+
+<p>and so</p>
+
+<p>\begin{equation}
+\label{eq:38}
+\frac{d\lambda}{dh}\bigg|_{p=0} =  \lambda_{2} + 2\lambda_{3}h + \ldots + (i-1)\lambda_{i}h^{(i-2)} + \ldots \bigg|_{h=0} = \lambda_{2}
+\end{equation}</p>
+
+<p>and</p>
+
+<p>\begin{equation}
+\label{eq:39}
+\frac{dh}{dp}\bigg|_{p=0} = \frac{d(1-\rho(1-p)}{dp} \bigg|_{(1-p)=1} = \rho^{&lsquo;}(1)
+\end{equation}</p>
+
+<p>So, we get:</p>
+
+<p>\begin{equation}
+\label{eq:40}
+p_{l} \approx \epsilon \lambda_{2}\rho^{&lsquo;}(1)p_{l-1}, \quad p_{l} \to 0
+\end{equation}</p>
+
+<p>For \(p_{l} \to 0\) as \(l\to \infty\), must have \(p_{l} &lt; p_{l-1}
+\), and so requires:</p>
+
+<p>\begin{equation}
+\label{eq:41}
+\epsilon \lambda_{2}\rho^{&lsquo;}(1) &lt; 1
+\end{equation}</p>
+
+<p>So \(\lambda_{2}\) is upper bounded by:</p>
+
+<p>\begin{equation}
+\label{eq:42}
+\lambda_{2} &lt;  \frac{1}{\epsilon \rho^{&lsquo;}(1)}
+\end{equation}</p>
+
+<p>We call (\ref{eq:42}) the <em>stability constraint</em> of density evolution.</p>
+
+<h2 id="density-evolution-on-general-memoryless-channels"><span class="section-num">4</span> Density evolution on general memoryless channels</h2>
+
+<p>On general memoryless channels, the B2C messages are the LLRs during
+the MPA. We define LLR as</p>
+
+<p>\begin{equation}
+\label{eq:19}
+L(x) = \log \big( \frac{p(x=0)}{p(x=1)} \big)
+\end{equation}</p>
+
+<p>So the sign of \(L(x)\) determine it is \(0\) or \(1\) and the
+magnatue of \(|L(x)|\) tell us how sure we are about the decision.</p>
+
+<p>Figure <a href="#org23fcb38">1</a> shows a gaussian PDF for
+\(\mathcal{p}( r)\) and the probability that the bit is &ldquo;1&rdquo; is the area
+of the shade.</p>
+
+<p><a id="org23fcb38"></a>
+
+<figure >
+    
+        <img src="/img/telecommunication/20180205gaussian.png" alt="a Gaussian PDF" width="400" />
+    
+    
+    <figcaption>
+        <p>
+        a Gaussian PDF
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+</p>
+
+<p>The LLR are real numbers, so it can be illustrated using a probability
+density function. We define the PDF for a B2C message at iteration as
+\(p(M_{l})\) and C2B \(p(E_{l})\). Also, \(p( r)\) as the PDF for the
+LLR of the received signal corrupted by the channel. Also, we suppose
+that the message along the edges are I.I.D (This constraint can can
+be removed when it comes to MET-LDPC).</p>
+
+<p>The output of a bit node is the sum of incoming LLRs on the other
+edges into that node:</p>
+
+<p>\begin{equation}
+\label{eq:20}
+M_{j,i} = \sum_{j^{&lsquo;}\in A_{i},j^{&lsquo;}\neq j} E_{j^{&lsquo;},i} + r_{i}
+\end{equation}</p>
+
+<p>The probability textbook told us that the PDF of summation of I.I.D random
+variables is the convolution of the PDF of these random variables. So the PDF of
+the B2C message can be expressed as:</p>
+
+<p>\begin{equation}
+p_{M} = p( r) \otimes p(E_{l})^{\otimes(w_{c}-1)}
+\end{equation}</p>
+
+<p>Considering the irregular LDPC codes and the bit degree distribution
+\(\lambda(x)\):</p>
+
+<p>\begin{equation}
+\label{eq:21}
+p(M_{l}) = p( r) \otimes\sum_{i}\lambda_{i} p(E_{l})^{\otimes(i-1)} = p( r)\otimes \lambda^{\otimes}(p(E_{l}))
+\end{equation}</p>
+
+<p>Now, there are many efficient ways to evaluate the convolution.</p>
+
+<p>For belief propagation, the function to be evaluated at each check node is show
+as below:</p>
+
+<p>\begin{equation}
+\label{eq:22}
+E_{j,i} = \log \big(  \frac{ 1+ \prod_{i^{&lsquo;}\in B_{j,i^{&lsquo;} \neq i} } tanh (M_{j,i^{&lsquo;}}/2)}{ 1- \prod_{i^{&lsquo;}\in B_{j,i^{&lsquo;} \neq i} } tanh (M_{j,i^{&lsquo;}}/2)} \big)
+\end{equation}</p>
+
+<p>So, to get the PDF of two messages \(x\) and \(y\), we have to caculate the
+function:</p>
+
+<p>\begin{equation}
+\label{eq:23}
+f(x,y) = \log \frac{ 1 + tanh(x/2) tanh(y/2) }{ 1- tanh(x/2)tanh(y/2)} = -\log \frac{ e^{x} + e^{y} }{ 1 + e^{x+y}}
+\end{equation}</p>
+
+<p>One simple way to use the density evolution on general channels is to assume tht
+the original codeword was all zeros. So that the probability that the bit is in
+error is the probability that the LLR is negative.</p>
+
+<p>One more thing, although the PDFs at the beginning of iteration is Gaussian, the
+result of the convolution of Gaussian PDFs is not Gaussian except in the limit.
+However, for the sake of simplicity, we assume that after convolution the PDFs
+remain Gaussian. The truth make Gaussian easy to use that we can use mean and
+variance to describe Gaussian. So that we can only track the mean and variance
+of the PDFs during the iteration.</p>
+
+<h3 id="get-an-excellent-degree-distribution"><span class="section-num">4.1</span> get an excellent degree distribution</h3>
+
+<p>Using density evolution, we can analyze the threshold of an LDPC ensemble.
+However, for a code designers, the question more urging is which degree
+distribution will produce the best threshold.</p>
+
+<p>In general, the more irregular, the better. Accroding to work of Sae-Young
+Chung, Forney, Richardson and Urbanke, there is only an 0.0045dB gap between
+Shannon limit and the irregular LDPC they designed. For that LDPC code, it has a
+codewordlength of \(10^{7}\) and degree varying from 2 to 8000.</p>
+
+<p>Because \(H\) is sparse, a large proportion of degree-2 bit nodes are required
+to guarentee the low density. It can be shown that a degree distribution with a
+good threshold will contain a few very high degree bit nodes, many degree two
+nodes, but no more than allowed for by stability, and some nodes with degree
+between these.</p>
+
+<h2 id="summary"><span class="section-num">5</span> Summary</h2>
+
+<p>In this post, we analyze density evolution for regular and irregular
+LDPC codes based on BEC and memoryless channel. As a tool for
+designing and analyzing LDPC matrix, density evolution plays a
+foundamental role and helps researchers find many LDPC matrices of
+good performance.</p>
+
+<p>However, the drawback of density evolution includes: 1. assumption of
+cycle-free tanner graph, which is hard to be satisfied in reality; 2.
+assumption of infinite length of codeword, which is also hard to be
+satisfied; 3. extremely high computational complexity, which makes it
+hard to use and results in many simplied and effective alternatives
+which are out of this post&rsquo;s scope.</p>
+
+<p>We will meet density evolution again!!!</p>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/tags/telecommunication">telecommunication</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/ldpc">LDPC</a>
+  
+</div>
+
+
+
+
+    
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zclspace" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 ZCL &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script id="dsq-count-scr" src="//zclspace.disqus.com/count.js" async></script>
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lisp.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c&#43;&#43;.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/matlab.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/emacs-lisp.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+      <script type="text/x-mathjax-config">
+       MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] },
+                            TeX: { equationNumbers: {autoNumber: "AMS"},
+                                   MultLineWidth: "85%",
+                                   TagSide: "right",
+                                   TagIndent: ".8em"
+                            }
+       });
+      </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+
