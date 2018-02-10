@@ -17,8 +17,8 @@
       
     
   
-  <meta name="description" content="Table of Contents  introduction    introduction Using spacemacs I divide my Org config into servel private layers for the sake of easy maintenance and flexibility. You can check my .spacemacs.d on github. I suggest you excerpt some of my config instead of copying all of them because some of them maybe not what you want.
-Based on the comprehensive tutorial Organize Your Life In Plain Text, I build my own GTD system using Org.">
+  <meta name="description" content=".ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 introduction 2 My GTD workflow 3 some preparations  3.1 set the agenda file 3.2 set the refile targets 3.3 set the org capture templates 3.4 set the org agenda custom commands     1 introduction Using spacemacs I divide my Org config into servel private layers for the sake of easy maintenance and flexibility.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://zcl.space/tools/organize-you-life-in-org/">
@@ -75,13 +75,13 @@ Based on the comprehensive tutorial Organize Your Life In Plain Text, I build my
   <meta property="og:site_name" content="ZCL.SPACE">
   <meta property="og:url" content="https://zcl.space/tools/organize-you-life-in-org/">
   <meta property="og:title" content="Organize you life in Emacs Org | ZCL.SPACE">
-  <meta property="og:description" content="Table of Contents  introduction    introduction Using spacemacs I divide my Org config into servel private layers for the sake of easy maintenance and flexibility. You can check my .spacemacs.d on github. I suggest you excerpt some of my config instead of copying all of them because some of them maybe not what you want.
-Based on the comprehensive tutorial Organize Your Life In Plain Text, I build my own GTD system using Org.">
+  <meta property="og:description" content=".ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 introduction 2 My GTD workflow 3 some preparations  3.1 set the agenda file 3.2 set the refile targets 3.3 set the org capture templates 3.4 set the org agenda custom commands     1 introduction Using spacemacs I divide my Org config into servel private layers for the sake of easy maintenance and flexibility.">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-02-04T20:45:00&#43;08:00">
   
-  <meta property="article:modified_time" content="2018-02-05T12:41:00&#43;08:00">
+  <meta property="article:modified_time" content="2018-02-11T00:55:00&#43;08:00">
   
 
   
@@ -275,7 +275,7 @@ Based on the comprehensive tutorial Organize Your Life In Plain Text, I build my
         Last updated on
     
     <time datetime="2018-02-04 20:45:00 &#43;0800 CST" itemprop="datePublished dateModified">
-      Feb 5, 2018
+      Feb 11, 2018
     </time>
   </span>
   <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
@@ -285,7 +285,7 @@ Based on the comprehensive tutorial Organize Your Life In Plain Text, I build my
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    2 min read
+    6 min read
   </span>
   
 
@@ -362,18 +362,32 @@ Based on the comprehensive tutorial Organize Your Life In Plain Text, I build my
     <div class="article-style" itemprop="articleBody">
       
 
+<p><style>
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+</style>
 <div class="ox-hugo-toc toc">
-<div></div>
+<div></div></p>
 
 <h2 id="table-of-contents">Table of Contents</h2>
 
 <ul>
-<li><a href="#introduction">introduction</a>
+<li><span class="section-num">1</span> <a href="#introduction">introduction</a></li>
+<li><span class="section-num">2</span> <a href="#my-gtd-workflow">My GTD workflow</a></li>
+<li><span class="section-num">3</span> <a href="#some-preparations">some preparations</a>
+
+<ul>
+<li><span class="section-num">3.1</span> <a href="#set-the-agenda-file">set the agenda file</a></li>
+<li><span class="section-num">3.2</span> <a href="#set-the-refile-targets">set the refile targets</a></li>
+<li><span class="section-num">3.3</span> <a href="#set-the-org-capture-templates">set the org capture templates</a></li>
+<li><span class="section-num">3.4</span> <a href="#set-the-org-agenda-custom-commands">set the org agenda custom commands</a>
 </div>
 <!--endtoc--></li>
+</ul></li>
 </ul>
 
-<h2 id="introduction">introduction</h2>
+<h2 id="introduction"><span class="section-num">1</span> introduction</h2>
 
 <p>Using <a href="http://spacemacs.org/" target="_blank">spacemacs</a> I divide my Org config into servel private layers for
 the sake of easy maintenance and flexibility. You can check my
@@ -403,13 +417,251 @@ solutions for a software company based in North Sydney. It&rsquo;s
 also worthwhile to give the article a shot.</li>
 </ol>
 
-<p>I am not going to list all the articles, even some popular articles
- are missed. What I want to say is that you need to define your need
- first. After that you can excerpt the config from other&rsquo;s
- implement. Most of the time you will modify other&rsquo;s config before
- Org is handy for you. So some knowledge of Elisp is desirable.
-<strong>*</strong>
-<span class="timestamp-wrapper"><span class="timestamp">[2018-02-04 Sun 21:24]</span></span></p>
+<p>I am not interested in listing all the articles. What I want to say
+is that you need to define your need first. After that you can
+excerpt the config from other&rsquo;s implement. Most of the time you
+will modify other&rsquo;s config before Org is handy for you. So some
+knowledge of Elisp is desirable.</p>
+
+<h2 id="my-gtd-workflow"><span class="section-num">2</span> My GTD workflow</h2>
+
+<p>First let me introduce my GTD workflow. In general, a task in my GTD
+workflow will go the road shown as below whick is the same as show in
+<a href="http://doc.norang.ca/org-mode.html" target="_blank">Organize Your Life In Plain Text</a> but with different triggering
+conditions:</p>
+
+<p><a id="orgca2c240"></a>
+
+<figure >
+    
+        <img src="/img/tools/20180210myworkflow.png" alt="state transitions for a task in my workflow" width="400" />
+    
+    
+    <figcaption>
+        <p>
+        state transitions for a task in my workflow
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+</p>
+
+<p>The main features are listed below.</p>
+
+<ol>
+<li>Every moment, for the sake of clearing my head, I capture all the
+ideas or some todos jumping into my head during my handling one
+event. I will handle the capture later.</li>
+<li>Every morning, I check the my agenda which is generated by a
+combination of ten commends.</li>
+<li>I check the scheduled tasks and the tasks which is near the
+deadline.</li>
+<li>After the scheduled one and the deadlined one, I take a <code>NEXT</code>
+task, which is in <code>NEXT</code> status. Also, I start a clock under such
+task.</li>
+<li>After finished the <code>NEXT</code> tasks, the <code>NEXT</code> status will be changed
+to <code>DONE</code> automatically. Then I pick a new task in the <code>TODO</code> lists
+and change the <code>TODO</code> status into <code>NEXT</code>. Everytime I change a
+<code>TODO</code>  task into a <code>NEXT</code> task, clock is running under that task
+automatically.</li>
+<li>After finished all the <code>TODO</code> tasks, I check the <code>DONE</code> list to see
+if there is any tasks need to be archived.</li>
+</ol>
+
+<h2 id="some-preparations"><span class="section-num">3</span> some preparations</h2>
+
+<p>In order to run the GTD, some preparations are needed.</p>
+
+<h3 id="set-the-agenda-file"><span class="section-num">3.1</span> set the agenda file</h3>
+
+<p>To use Org as a GTD tool, the first thing is to setup the
+<code>org-agenda-files</code> ;</p>
+
+<pre><code class="language-lisp">;;set up the agenda files
+(setq org-agenda-files (list &quot;~/zorg/Dropbox/base/zlife.org&quot;
+                             &quot;~/zorg/Dropbox/base/zwork.org&quot;
+                             &quot;~/zorg/Dropbox/base/zrefile.org&quot;
+                             &quot;~/zorg/Dropbox/base/zdiary.org&quot;
+                             &quot;~/zorg/Dropbox/base/ztimelog.org&quot;))
+</code></pre>
+
+<p>As you can see, I put my configs into the Dropbox directory, so that
+my config will never lose even if I delete them from the local
+carelessly.</p>
+
+<p>Notice that there is a file named &ldquo;zrefile.org&rdquo; which is the entrance
+of all my todos and some other captures. It plays as an inbox.
+Everytime I check this file and take actions to clean it. All this can
+be done in the agenda buffer, which I will explain later. To refile
+the items in the refile.org, I need to set up the refile targets.</p>
+
+<h3 id="set-the-refile-targets"><span class="section-num">3.2</span> set the refile targets</h3>
+
+<pre><code class="language-lisp">(setq org-refile-targets (quote (
+          (&quot;~/zorg/Dropbox/base/zwork.org&quot; :maxlevel . 6)
+          (&quot;~/zorg/Dropbox/base/zlife.org&quot; :maxlevel . 6)
+          (&quot;~/zorg/zcl.space/content_org/math.org&quot; :maxlevel . 6)
+          (&quot;~/zorg/zcl.space/content_org/computer.org&quot; :maxlevel . 6)
+          (&quot;~/zorg/zcl.space/content_org/telecommunication.org&quot; :maxlevel . 6)
+          (&quot;~/zorg/zcl.space/content_org/life.org&quot; :maxlevel . 6)
+          (&quot;~/zorg/zcl.space/content_org/tools.org&quot; :maxlevel . 6))))
+</code></pre>
+
+<p>Notice that, besides the zwork.org and zlife.org which are the agenda
+files, there are other five org files. These five org files are for my
+personal blog. Sometime, I capture a draft or outline of a new post in
+the zrefile.org, so I need to refile these drafts into the right
+category.</p>
+
+<p>To understand why I add these extra five org files as the refile
+targets, you need to see my <code>org-capture-templates</code></p>
+
+<h3 id="set-the-org-capture-templates"><span class="section-num">3.3</span> set the org capture templates</h3>
+
+<pre><code class="language-lisp">(setq org-capture-templates
+      '(
+        (&quot;t&quot; &quot;todo&quot; entry (file &quot;~/zorg/Dropbox/base/zrefile.org&quot;)
+         &quot;* TODO %? :TODO: \n Added:%T\n&quot;
+         :clock-in t :clock-resume t)
+        (&quot;h&quot; &quot;Hugo post&quot;)
+        (&quot;hm&quot; &quot;Math&quot;
+         entry (file+olp &quot;~/zorg/zcl.space/content_org/math.org&quot; &quot;Math&quot;)
+         (function org-hugo-new-subtree-post-capture-template)
+         &quot;:math:&quot;
+         :clock-in t :clock-resume t)
+        (&quot;hc&quot; &quot;Computer&quot;
+         entry (file+olp &quot;~/zorg/zcl.space/content_org/computer.org&quot; &quot;Computer&quot;)
+         (function org-hugo-new-subtree-post-capture-template)
+         :clock-in t :clock-resume t)
+        (&quot;ht&quot; &quot;Telecommunication&quot;
+         entry (file+olp &quot;~/zorg/zcl.space/content_org/telecommunication.org&quot; &quot;Telecommunication&quot;)
+         (function org-hugo-new-subtree-post-capture-template)
+         :clock-in t :clock-resume t)
+        (&quot;hl&quot; &quot;Life&quot;
+         entry (file+olp &quot;~/zorg/zcl.space/content_org/life.org&quot; &quot;Life&quot;)
+         (function org-hugo-new-subtree-post-capture-template)
+         :clock-in t :clock-resume t)
+        (&quot;ho&quot; &quot;Tools&quot;
+         entry (file+olp &quot;~/zorg/zcl.space/content_org/tools.org&quot; &quot;Tools&quot;)
+         (function org-hugo-new-subtree-post-capture-template)
+         :clock-in t :clock-resume t)
+        (&quot;hm&quot; &quot;movie&quot;
+         entry (file+olp &quot;~/zorg/zcl.space/content_org/all-posts.org&quot; &quot;Movie&quot;)
+         (function org-hugo-new-subtree-post-capture-template)
+         :clock-in t :clock-resume t)
+        (&quot;hl&quot; &quot;life&quot;
+         entry (file+olp &quot;~/zorg/zcl.space/content_org/all-posts.org&quot; &quot;Life&quot;)
+         (function org-hugo-new-subtree-post-capture-template)
+         :clock-in t :clock-resume t)
+         (&quot;l&quot; &quot;my Log Time&quot; entry (file+datetree &quot;~/zorg/Dropbox/base/ztimelog.org&quot; ) &quot;** %T - %?  :timelog:&quot; :clock-in t :clock-resume t)
+        (&quot;d&quot; &quot;diary&quot; entry (file+datetree &quot;~/zorg/Dropbox/base/zdiary.org&quot; ) &quot;* %t - %?  :diary:&quot; :clock-in t :clock-resume t)
+        (&quot;x&quot; &quot;org-protocol&quot; entry (file &quot;~/zorg/Dropbox/base/zrefile.org&quot;)
+         &quot;* TODO Review %c \n Added:%T\n&quot;)
+        ))
+</code></pre>
+
+<p>I have a template for <code>zrefile.org</code> which is :</p>
+
+<pre><code class="language-lisp">(&quot;t&quot; &quot;todo&quot; entry (file &quot;~/zorg/Dropbox/base/zrefile.org&quot;)
+ &quot;* TODO %? :TODO: \n Added:%T\n&quot;
+ :clock-in t :clock-resume t)
+</code></pre>
+
+<p>To understand the meaning of this template, you need to read the doc
+for variable <code>org-capture-templates</code>.</p>
+
+<p>whenever I check the org-agenda, I will see a block contains all the
+need-to-refile tasks. So you may curious about my set of
+<code>org-agenda-custom-commands</code></p>
+
+<h3 id="set-the-org-agenda-custom-commands"><span class="section-num">3.4</span> set the org agenda custom commands</h3>
+
+<pre><code class="language-lisp">(setq org-agenda-custom-commands
+        (quote (
+                (&quot; &quot; &quot;Agenda&quot;
+                 ((agenda &quot;&quot; )
+                  (tags &quot;NOTES&quot;
+                        ((org-agenda-overriding-header &quot;NOTES to Refile&quot;)
+                         (org-tags-match-list-sublevels nil)))
+                  (tags &quot;REFILE&quot;
+                        ((org-agenda-overriding-header &quot;Tasks to Refile&quot;)
+                         (org-tags-match-list-sublevels nil)))
+                  (tags-todo &quot;-CANCELLED/!&quot;
+                             ((org-agenda-overriding-header &quot;Stuck Projects&quot;)
+                              (org-agenda-skip-function 'bh/skip-non-stuck-projects)
+                              (org-agenda-sorting-strategy
+                               '(priority-down category-keep))))
+                  (tags-todo &quot;-HOLD-CANCELLED/!&quot;
+                             ((org-agenda-overriding-header &quot;Projects&quot;)
+                              (org-agenda-skip-function 'bh/skip-non-projects)
+                              (org-agenda-sorting-strategy
+                               '(priority-down category-keep))))
+                  (tags-todo &quot;-CANCELLED/!NEXT&quot;
+                             ((org-agenda-overriding-header &quot;Project NEXT Tasks&quot;)
+                              (org-agenda-skip-function 'bh/skip-projects-and-habits-and-single-tasks)
+                              (org-tags-match-list-sublevels t)
+                              (org-agenda-sorting-strategy
+                               '(priority-down todo-state-down effort-up category-keep))))
+                  (todo &quot;TODO&quot;
+                        ((org-agenda-overriding-header &quot;Project Subtasks TODO&quot;)
+                         (org-tags-match-list-sublevels t)))
+                  (todo &quot;DONE&quot;
+                        ((org-agenda-overriding-header &quot;Project Subtasks DONE&quot;)
+                         (org-tags-match-list-sublevels t)))
+                  ;;;;(tags-todo &quot;-CANCELLED+WAITING+HOLD/!&quot;
+                  (todo &quot;HOLD&quot;
+                        ((org-agenda-overriding-header &quot;Waiting and Postponed Tasks&quot;)
+                         (org-agenda-skip-function 'bh/skip-stuck-projects)
+                         (org-tags-match-list-sublevels nil)
+                         (org-agenda-todo-ignore-scheduled 'future)
+                         (org-agenda-todo-ignore-deadlines 'future)))
+                  (tags &quot;-REFILE/&quot;
+                        ((org-agenda-overriding-header &quot;Tasks to Archive&quot;)
+                         (org-agenda-skip-function 'bh/skip-non-archivable-tasks)
+                         (org-tags-match-list-sublevels nil))))
+                 nil))))
+</code></pre>
+
+<p>You should never copy the above snippet, because there are some
+functions whose definitions are not contained in the snippet.
+Actually, you should go to my Github page to get the repository if you
+are interested in my .spacemacs.d</p>
+
+<p>According to the command, one of the sample of my org agenda may look
+like:</p>
+
+<p><a id="org4310c5b"></a>
+
+<figure >
+    
+        <img src="/img/tools/20180210orgagenda.png" alt="my org agenda sample" width="900" />
+    
+    
+    <figcaption>
+        <p>
+        my org agenda sample
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+</p>
+
+<p>I have three projects: math,computer and communication
+(telecommunication). For each projects, there are some tasks. All the
+projects appear as level-1 headlines in the org file and the tasks
+appear as sub-level headlines. If all the tasks under one project are
+in <code>TODO</code> state, the project is stuck. If at least one of the task
+under one project is in <code>NEXT</code> state, the project is running.</p>
+
+<p>I think the structure of my agenda buffer is straightforward. you can
+define your own <code>org-agenda-custom-commands</code> by reading the manual and
+<a href="https://orgmode.org/worg/org-tutorials/org-custom-agenda-commands.html" target="_blank">this post</a>.</p>
 
     </div>
 
