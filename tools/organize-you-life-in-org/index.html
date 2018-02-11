@@ -18,7 +18,7 @@
     
   
   <meta name="description" content=".ox-hugo-toc ul { list-style: none; }  
-Table of Contents  1 introduction 2 My GTD workflow 3 some preparations  3.1 set the agenda file 3.2 set the refile targets 3.3 set the org capture templates 3.4 set the org agenda custom commands     1 introduction Using spacemacs I divide my Org config into servel private layers for the sake of easy maintenance and flexibility.">
+Table of Contents  1 introduction 2 My GTD workflow 3 some preparations  3.1 set the agenda file 3.2 set the refile targets 3.3 set the org capture templates 3.4 set the org agenda custom commands  4 One day based on my workflow  4.1 Punch In 4.2 check out the agenda 4.3 focus on certain project 4.4 change the state of one task 4.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://zcl.space/tools/organize-you-life-in-org/">
@@ -76,12 +76,12 @@ Table of Contents  1 introduction 2 My GTD workflow 3 some preparations  3.1 set
   <meta property="og:url" content="https://zcl.space/tools/organize-you-life-in-org/">
   <meta property="og:title" content="Organize you life in Emacs Org | ZCL.SPACE">
   <meta property="og:description" content=".ox-hugo-toc ul { list-style: none; }  
-Table of Contents  1 introduction 2 My GTD workflow 3 some preparations  3.1 set the agenda file 3.2 set the refile targets 3.3 set the org capture templates 3.4 set the org agenda custom commands     1 introduction Using spacemacs I divide my Org config into servel private layers for the sake of easy maintenance and flexibility.">
+Table of Contents  1 introduction 2 My GTD workflow 3 some preparations  3.1 set the agenda file 3.2 set the refile targets 3.3 set the org capture templates 3.4 set the org agenda custom commands  4 One day based on my workflow  4.1 Punch In 4.2 check out the agenda 4.3 focus on certain project 4.4 change the state of one task 4.">
   <meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2018-02-04T20:45:00&#43;08:00">
+  <meta property="article:published_time" content="2018-02-11T21:52:00&#43;08:00">
   
-  <meta property="article:modified_time" content="2018-02-11T00:55:00&#43;08:00">
+  <meta property="article:modified_time" content="2018-02-11T21:57:00&#43;08:00">
   
 
   
@@ -274,7 +274,7 @@ Table of Contents  1 introduction 2 My GTD workflow 3 some preparations  3.1 set
     
         Last updated on
     
-    <time datetime="2018-02-04 20:45:00 &#43;0800 CST" itemprop="datePublished dateModified">
+    <time datetime="2018-02-11 21:52:00 &#43;0800 CST" itemprop="datePublished dateModified">
       Feb 11, 2018
     </time>
   </span>
@@ -285,7 +285,7 @@ Table of Contents  1 introduction 2 My GTD workflow 3 some preparations  3.1 set
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    6 min read
+    10 min read
   </span>
   
 
@@ -381,10 +381,20 @@ Table of Contents  1 introduction 2 My GTD workflow 3 some preparations  3.1 set
 <li><span class="section-num">3.1</span> <a href="#set-the-agenda-file">set the agenda file</a></li>
 <li><span class="section-num">3.2</span> <a href="#set-the-refile-targets">set the refile targets</a></li>
 <li><span class="section-num">3.3</span> <a href="#set-the-org-capture-templates">set the org capture templates</a></li>
-<li><span class="section-num">3.4</span> <a href="#set-the-org-agenda-custom-commands">set the org agenda custom commands</a>
+<li><span class="section-num">3.4</span> <a href="#set-the-org-agenda-custom-commands">set the org agenda custom commands</a></li>
+</ul></li>
+<li><span class="section-num">4</span> <a href="#one-day-based-on-my-workflow">One day based on my workflow</a>
+
+<ul>
+<li><span class="section-num">4.1</span> <a href="#punch-in">Punch In</a></li>
+<li><span class="section-num">4.2</span> <a href="#check-out-the-agenda">check out the agenda</a></li>
+<li><span class="section-num">4.3</span> <a href="#focus-on-certain-project">focus on certain project</a></li>
+<li><span class="section-num">4.4</span> <a href="#change-the-state-of-one-task">change the state of one task</a></li>
+<li><span class="section-num">4.5</span> <a href="#using-the-mobile-phone-to-take-capture">using the mobile phone to take capture</a></li>
+</ul></li>
+<li><span class="section-num">5</span> <a href="#conclusion">conclusion</a>
 </div>
 <!--endtoc--></li>
-</ul></li>
 </ul>
 
 <h2 id="introduction"><span class="section-num">1</span> introduction</h2>
@@ -430,7 +440,7 @@ workflow will go the road shown as below whick is the same as show in
 <a href="http://doc.norang.ca/org-mode.html" target="_blank">Organize Your Life In Plain Text</a> but with different triggering
 conditions:</p>
 
-<p><a id="orgca2c240"></a>
+<p><a id="org60a044f"></a>
 
 <figure >
     
@@ -462,12 +472,12 @@ deadline.</li>
 <li>After the scheduled one and the deadlined one, I take a <code>NEXT</code>
 task, which is in <code>NEXT</code> status. Also, I start a clock under such
 task.</li>
-<li>After finished the <code>NEXT</code> tasks, the <code>NEXT</code> status will be changed
+<li>After finishing the <code>NEXT</code> tasks, the <code>NEXT</code> status will be changed
 to <code>DONE</code> automatically. Then I pick a new task in the <code>TODO</code> lists
 and change the <code>TODO</code> status into <code>NEXT</code>. Everytime I change a
 <code>TODO</code>  task into a <code>NEXT</code> task, clock is running under that task
 automatically.</li>
-<li>After finished all the <code>TODO</code> tasks, I check the <code>DONE</code> list to see
+<li>After finishing all the <code>TODO</code> tasks, I check the <code>DONE</code> list to see
 if there is any tasks need to be archived.</li>
 </ol>
 
@@ -633,7 +643,7 @@ are interested in my .spacemacs.d</p>
 <p>According to the command, one of the sample of my org agenda may look
 like:</p>
 
-<p><a id="org4310c5b"></a>
+<p><a id="orgce6e879"></a>
 
 <figure >
     
@@ -662,6 +672,186 @@ under one project is in <code>NEXT</code> state, the project is running.</p>
 <p>I think the structure of my agenda buffer is straightforward. you can
 define your own <code>org-agenda-custom-commands</code> by reading the manual and
 <a href="https://orgmode.org/worg/org-tutorials/org-custom-agenda-commands.html" target="_blank">this post</a>.</p>
+
+<h2 id="one-day-based-on-my-workflow"><span class="section-num">4</span> One day based on my workflow</h2>
+
+<h3 id="punch-in"><span class="section-num">4.1</span> Punch In</h3>
+
+<p>At the beginning of every day, I use <code>F8 I</code> to punch in, which starts
+a clock under a task called Organization:</p>
+
+<pre><code class="language-lisp">(defvar bh/organization-task-id &quot;eb155a82-92b2-4f25-a3c6-0304591af2f9&quot;)
+</code></pre>
+
+<h3 id="check-out-the-agenda"><span class="section-num">4.2</span> check out the agenda</h3>
+
+<p>Check out the agenda, using <code>org-agenda</code> which is bound to <code>SPC a o o
+SPC</code> or <code>SPC o a SPC</code> or <code>F5 SPC</code> . Because the <code>org-agenda</code> buffer
+will be visited quite a few times, I bind this command to several
+shortcuts. Using the customed command <code>SPC</code> , I collect all the
+projects,  tasks with <code>TODO</code> and <code>NEXT</code> states in the project which
+give me an overview of what should be done next and what should be
+started next.</p>
+
+<p><a id="org44a51bf"></a>
+
+<figure >
+    
+        <img src="/img/tools/20180210orgagenda2.png" alt="my org agenda overview" width="900" />
+    
+    
+    <figcaption>
+        <p>
+        my org agenda overview
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+</p>
+
+<p>As we can see from the screenshot, the agenda of today is listed at
+the beginning with scheduled task and deadline task.</p>
+
+<p>Following today&rsquo;s agenda, several blocks are displayed with each
+headline in green color and large font size. Those blocks shows:</p>
+
+<ol>
+<li><strong>Notes to Refile</strong>, which is the draft of a post which should be
+refile to math.org computer.org or telecommunication.org.</li>
+<li><strong>Tasks to Refile</strong>, which is the Ideas or tasks hitting my head
+during handling one tasks. I store these tasks in zrefile.org then
+process them later after finishing current tasks.</li>
+<li><strong>Stuck Projects</strong>, which are the projects have no sub-tasks in
+<code>NEXT</code> state.</li>
+<li><strong>Projects</strong>, which are the projects have at least one sub-tasks in
+<code>NEXT</code> state.</li>
+<li><strong>Project Next Tasks</strong>, which are <code>NEXT</code> sub-tasks in all Projects.
+In particular, you can filter out the <code>NEXT</code> tasks belonging to
+certain project.</li>
+<li><strong>Project Subtasks TODO</strong>, which are all the <code>TODO</code> sub-tasks
+belonging to all projects.</li>
+<li><strong>Project Subtasks DONE</strong>, which are all the <code>DONE</code> sub-tasks
+belonging to all projects.</li>
+<li><strong>Waiting and Postponed Tasks</strong>, which are all the tasks in <code>WAITING</code>
+and <code>HOLD</code> state.</li>
+<li><strong>Tasks to Archive</strong>, which are the tasks being tagged as <code>DONE</code> for
+a period and need to be archived.</li>
+</ol>
+
+<h3 id="focus-on-certain-project"><span class="section-num">4.3</span> focus on certain project</h3>
+
+<p>If you have many <code>TODO</code> tasks, it is desirable to focus on certain
+project at one time. Just move the cursor on the Project you want to
+focus, then press <code>^</code> . If you want to focus on another project, press
+<code>^</code> again then select another project, press <code>^</code>.</p>
+
+<p><a id="org0626b05"></a>
+
+<figure >
+    
+        <img src="/img/tools/20180210orgagenda3.png" alt="focus on certain project" width="900" />
+    
+    
+    <figcaption>
+        <p>
+        focus on certain project
+        
+            
+        
+        </p> 
+    </figcaption>
+    
+</figure>
+</p>
+
+<p>Actually, there are quite a few commands helping you coin your own
+view of the agenda buffer. some handy are listed below:</p>
+
+<p><a id="org22a9818"></a></p>
+
+<div class="table-caption">
+  <span class="table-number">Table 1:</span>
+  some handy agenda commands
+</div>
+
+<table>
+<thead>
+<tr>
+<th>shortcuts</th>
+<th>command</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td>org-agenda-filter-by-tag</td>
+<td>Filter the agenda view with respect to a tag</td>
+</tr>
+
+<tr>
+<td><code>&lt;</code></td>
+<td>org-agenda-filter-by-category</td>
+<td>Filter the current agenda view with respect to the category of the item at point</td>
+</tr>
+
+<tr>
+<td><code>^</code></td>
+<td>org-agenda-filter-by-top-headline</td>
+<td>Filter the current agenda view and only display the siblings and the parent headline of the one at point</td>
+</tr>
+
+<tr>
+<td><code>=</code></td>
+<td>org-agenda-filter-by-regexp</td>
+<td>Filter the agenda view by a regular expression</td>
+</tr>
+
+<tr>
+<td><code>_</code></td>
+<td>org-agenda-filter-by-effort</td>
+<td>filter the agenda view with respect to effort estimates</td>
+</tr>
+</tbody>
+</table>
+
+<p>You can find more agenda commands by reading <code>Agenda views</code> part of
+the Org manual which is built in the Emacs.</p>
+
+<h3 id="change-the-state-of-one-task"><span class="section-num">4.4</span> change the state of one task</h3>
+
+<p>It is quite easy to change the state of one task. By default, the
+state is in <code>TODO</code> state. After start clocking the task, the task will
+be in <code>NEXT</code> state automatically.</p>
+
+<p>From <code>NEXT</code> to other state, you just use <code>C-c C-t</code> . If you are in the
+org agenda buffer, press <code>t</code> one the line of the task.</p>
+
+<p>Once the task is set as <code>DONE</code> , a temporary buffer will jump out and
+let you take some note to record the task.</p>
+
+<h3 id="using-the-mobile-phone-to-take-capture"><span class="section-num">4.5</span> using the mobile phone to take capture</h3>
+
+<p>In general, there are two app one is <code>Org-mobile</code> and the another one
+is <code>BeOrg</code>. I prefer to the later because of is easy to use. All you
+have to do is put your agenda files in a Dropbox directory.</p>
+
+<p><code>Org-mobile</code> is kind of complex, and need to config both on the phone
+and the PC. I finally make it run on both my iPhone and Surface pro 4.
+However, I resort to <code>BeOrg</code> because you will never forget how to use
+<code>BeOrg</code> . Unfortunately, I forget how to use <code>Org-mobile</code> after I did
+not use it for a month.</p>
+
+<h2 id="conclusion"><span class="section-num">5</span> conclusion</h2>
+
+<p>My GTD workflow based on Org is summarized. To be honest, I change my
+workflow quite often. So the configuration will change subsequently
+which is the source of joy using Emacs. You can always config it as
+handy as possible.</p>
 
     </div>
 

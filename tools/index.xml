@@ -13,7 +13,7 @@
     <item>
       <title>Organize you life in Emacs Org</title>
       <link>https://zcl.space/tools/organize-you-life-in-org/</link>
-      <pubDate>Sun, 04 Feb 2018 20:45:00 +0800</pubDate>
+      <pubDate>Sun, 11 Feb 2018 21:52:00 +0800</pubDate>
       
       <guid>https://zcl.space/tools/organize-you-life-in-org/</guid>
       <description>
@@ -37,10 +37,20 @@
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.1&lt;/span&gt; &lt;a href=&#34;#set-the-agenda-file&#34;&gt;set the agenda file&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.2&lt;/span&gt; &lt;a href=&#34;#set-the-refile-targets&#34;&gt;set the refile targets&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.3&lt;/span&gt; &lt;a href=&#34;#set-the-org-capture-templates&#34;&gt;set the org capture templates&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.4&lt;/span&gt; &lt;a href=&#34;#set-the-org-agenda-custom-commands&#34;&gt;set the org agenda custom commands&lt;/a&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.4&lt;/span&gt; &lt;a href=&#34;#set-the-org-agenda-custom-commands&#34;&gt;set the org agenda custom commands&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; &lt;a href=&#34;#one-day-based-on-my-workflow&#34;&gt;One day based on my workflow&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4.1&lt;/span&gt; &lt;a href=&#34;#punch-in&#34;&gt;Punch In&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4.2&lt;/span&gt; &lt;a href=&#34;#check-out-the-agenda&#34;&gt;check out the agenda&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4.3&lt;/span&gt; &lt;a href=&#34;#focus-on-certain-project&#34;&gt;focus on certain project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4.4&lt;/span&gt; &lt;a href=&#34;#change-the-state-of-one-task&#34;&gt;change the state of one task&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4.5&lt;/span&gt; &lt;a href=&#34;#using-the-mobile-phone-to-take-capture&#34;&gt;using the mobile phone to take capture&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; &lt;a href=&#34;#conclusion&#34;&gt;conclusion&lt;/a&gt;
 &lt;/div&gt;
 &lt;!--endtoc--&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;introduction&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; introduction&lt;/h2&gt;
@@ -86,7 +96,7 @@ workflow will go the road shown as below whick is the same as show in
 &lt;a href=&#34;http://doc.norang.ca/org-mode.html&#34; target=&#34;_blank&#34;&gt;Organize Your Life In Plain Text&lt;/a&gt; but with different triggering
 conditions:&lt;/p&gt;
 
-&lt;p&gt;&lt;a id=&#34;orgca2c240&#34;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a id=&#34;org60a044f&#34;&gt;&lt;/a&gt;
 
 &lt;figure &gt;
     
@@ -118,12 +128,12 @@ deadline.&lt;/li&gt;
 &lt;li&gt;After the scheduled one and the deadlined one, I take a &lt;code&gt;NEXT&lt;/code&gt;
 task, which is in &lt;code&gt;NEXT&lt;/code&gt; status. Also, I start a clock under such
 task.&lt;/li&gt;
-&lt;li&gt;After finished the &lt;code&gt;NEXT&lt;/code&gt; tasks, the &lt;code&gt;NEXT&lt;/code&gt; status will be changed
+&lt;li&gt;After finishing the &lt;code&gt;NEXT&lt;/code&gt; tasks, the &lt;code&gt;NEXT&lt;/code&gt; status will be changed
 to &lt;code&gt;DONE&lt;/code&gt; automatically. Then I pick a new task in the &lt;code&gt;TODO&lt;/code&gt; lists
 and change the &lt;code&gt;TODO&lt;/code&gt; status into &lt;code&gt;NEXT&lt;/code&gt;. Everytime I change a
 &lt;code&gt;TODO&lt;/code&gt;  task into a &lt;code&gt;NEXT&lt;/code&gt; task, clock is running under that task
 automatically.&lt;/li&gt;
-&lt;li&gt;After finished all the &lt;code&gt;TODO&lt;/code&gt; tasks, I check the &lt;code&gt;DONE&lt;/code&gt; list to see
+&lt;li&gt;After finishing all the &lt;code&gt;TODO&lt;/code&gt; tasks, I check the &lt;code&gt;DONE&lt;/code&gt; list to see
 if there is any tasks need to be archived.&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -289,7 +299,7 @@ are interested in my .spacemacs.d&lt;/p&gt;
 &lt;p&gt;According to the command, one of the sample of my org agenda may look
 like:&lt;/p&gt;
 
-&lt;p&gt;&lt;a id=&#34;org4310c5b&#34;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a id=&#34;orgce6e879&#34;&gt;&lt;/a&gt;
 
 &lt;figure &gt;
     
@@ -318,6 +328,186 @@ under one project is in &lt;code&gt;NEXT&lt;/code&gt; state, the project is runn
 &lt;p&gt;I think the structure of my agenda buffer is straightforward. you can
 define your own &lt;code&gt;org-agenda-custom-commands&lt;/code&gt; by reading the manual and
 &lt;a href=&#34;https://orgmode.org/worg/org-tutorials/org-custom-agenda-commands.html&#34; target=&#34;_blank&#34;&gt;this post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;one-day-based-on-my-workflow&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; One day based on my workflow&lt;/h2&gt;
+
+&lt;h3 id=&#34;punch-in&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4.1&lt;/span&gt; Punch In&lt;/h3&gt;
+
+&lt;p&gt;At the beginning of every day, I use &lt;code&gt;F8 I&lt;/code&gt; to punch in, which starts
+a clock under a task called Organization:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(defvar bh/organization-task-id &amp;quot;eb155a82-92b2-4f25-a3c6-0304591af2f9&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;check-out-the-agenda&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4.2&lt;/span&gt; check out the agenda&lt;/h3&gt;
+
+&lt;p&gt;Check out the agenda, using &lt;code&gt;org-agenda&lt;/code&gt; which is bound to &lt;code&gt;SPC a o o
+SPC&lt;/code&gt; or &lt;code&gt;SPC o a SPC&lt;/code&gt; or &lt;code&gt;F5 SPC&lt;/code&gt; . Because the &lt;code&gt;org-agenda&lt;/code&gt; buffer
+will be visited quite a few times, I bind this command to several
+shortcuts. Using the customed command &lt;code&gt;SPC&lt;/code&gt; , I collect all the
+projects,  tasks with &lt;code&gt;TODO&lt;/code&gt; and &lt;code&gt;NEXT&lt;/code&gt; states in the project which
+give me an overview of what should be done next and what should be
+started next.&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;org44a51bf&#34;&gt;&lt;/a&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda2.png&#34; alt=&#34;my org agenda overview&#34; width=&#34;900&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        my org agenda overview
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;As we can see from the screenshot, the agenda of today is listed at
+the beginning with scheduled task and deadline task.&lt;/p&gt;
+
+&lt;p&gt;Following today&amp;rsquo;s agenda, several blocks are displayed with each
+headline in green color and large font size. Those blocks shows:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Notes to Refile&lt;/strong&gt;, which is the draft of a post which should be
+refile to math.org computer.org or telecommunication.org.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tasks to Refile&lt;/strong&gt;, which is the Ideas or tasks hitting my head
+during handling one tasks. I store these tasks in zrefile.org then
+process them later after finishing current tasks.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stuck Projects&lt;/strong&gt;, which are the projects have no sub-tasks in
+&lt;code&gt;NEXT&lt;/code&gt; state.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Projects&lt;/strong&gt;, which are the projects have at least one sub-tasks in
+&lt;code&gt;NEXT&lt;/code&gt; state.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Next Tasks&lt;/strong&gt;, which are &lt;code&gt;NEXT&lt;/code&gt; sub-tasks in all Projects.
+In particular, you can filter out the &lt;code&gt;NEXT&lt;/code&gt; tasks belonging to
+certain project.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Subtasks TODO&lt;/strong&gt;, which are all the &lt;code&gt;TODO&lt;/code&gt; sub-tasks
+belonging to all projects.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Subtasks DONE&lt;/strong&gt;, which are all the &lt;code&gt;DONE&lt;/code&gt; sub-tasks
+belonging to all projects.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Waiting and Postponed Tasks&lt;/strong&gt;, which are all the tasks in &lt;code&gt;WAITING&lt;/code&gt;
+and &lt;code&gt;HOLD&lt;/code&gt; state.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tasks to Archive&lt;/strong&gt;, which are the tasks being tagged as &lt;code&gt;DONE&lt;/code&gt; for
+a period and need to be archived.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;focus-on-certain-project&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4.3&lt;/span&gt; focus on certain project&lt;/h3&gt;
+
+&lt;p&gt;If you have many &lt;code&gt;TODO&lt;/code&gt; tasks, it is desirable to focus on certain
+project at one time. Just move the cursor on the Project you want to
+focus, then press &lt;code&gt;^&lt;/code&gt; . If you want to focus on another project, press
+&lt;code&gt;^&lt;/code&gt; again then select another project, press &lt;code&gt;^&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;org0626b05&#34;&gt;&lt;/a&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda3.png&#34; alt=&#34;focus on certain project&#34; width=&#34;900&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        focus on certain project
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Actually, there are quite a few commands helping you coin your own
+view of the agenda buffer. some handy are listed below:&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;org22a9818&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&#34;table-caption&#34;&gt;
+  &lt;span class=&#34;table-number&#34;&gt;Table 1:&lt;/span&gt;
+  some handy agenda commands
+&lt;/div&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;shortcuts&lt;/th&gt;
+&lt;th&gt;command&lt;/th&gt;
+&lt;th&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;/&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;org-agenda-filter-by-tag&lt;/td&gt;
+&lt;td&gt;Filter the agenda view with respect to a tag&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;org-agenda-filter-by-category&lt;/td&gt;
+&lt;td&gt;Filter the current agenda view with respect to the category of the item at point&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;^&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;org-agenda-filter-by-top-headline&lt;/td&gt;
+&lt;td&gt;Filter the current agenda view and only display the siblings and the parent headline of the one at point&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;=&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;org-agenda-filter-by-regexp&lt;/td&gt;
+&lt;td&gt;Filter the agenda view by a regular expression&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;_&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;org-agenda-filter-by-effort&lt;/td&gt;
+&lt;td&gt;filter the agenda view with respect to effort estimates&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;You can find more agenda commands by reading &lt;code&gt;Agenda views&lt;/code&gt; part of
+the Org manual which is built in the Emacs.&lt;/p&gt;
+
+&lt;h3 id=&#34;change-the-state-of-one-task&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4.4&lt;/span&gt; change the state of one task&lt;/h3&gt;
+
+&lt;p&gt;It is quite easy to change the state of one task. By default, the
+state is in &lt;code&gt;TODO&lt;/code&gt; state. After start clocking the task, the task will
+be in &lt;code&gt;NEXT&lt;/code&gt; state automatically.&lt;/p&gt;
+
+&lt;p&gt;From &lt;code&gt;NEXT&lt;/code&gt; to other state, you just use &lt;code&gt;C-c C-t&lt;/code&gt; . If you are in the
+org agenda buffer, press &lt;code&gt;t&lt;/code&gt; one the line of the task.&lt;/p&gt;
+
+&lt;p&gt;Once the task is set as &lt;code&gt;DONE&lt;/code&gt; , a temporary buffer will jump out and
+let you take some note to record the task.&lt;/p&gt;
+
+&lt;h3 id=&#34;using-the-mobile-phone-to-take-capture&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4.5&lt;/span&gt; using the mobile phone to take capture&lt;/h3&gt;
+
+&lt;p&gt;In general, there are two app one is &lt;code&gt;Org-mobile&lt;/code&gt; and the another one
+is &lt;code&gt;BeOrg&lt;/code&gt;. I prefer to the later because of is easy to use. All you
+have to do is put your agenda files in a Dropbox directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Org-mobile&lt;/code&gt; is kind of complex, and need to config both on the phone
+and the PC. I finally make it run on both my iPhone and Surface pro 4.
+However, I resort to &lt;code&gt;BeOrg&lt;/code&gt; because you will never forget how to use
+&lt;code&gt;BeOrg&lt;/code&gt; . Unfortunately, I forget how to use &lt;code&gt;Org-mobile&lt;/code&gt; after I did
+not use it for a month.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; conclusion&lt;/h2&gt;
+
+&lt;p&gt;My GTD workflow based on Org is summarized. To be honest, I change my
+workflow quite often. So the configuration will change subsequently
+which is the source of joy using Emacs. You can always config it as
+handy as possible.&lt;/p&gt;
 </description>
     </item>
     
