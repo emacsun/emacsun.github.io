@@ -18,7 +18,7 @@
     
   
   <meta name="description" content=".ox-hugo-toc ul { list-style: none; }  
-Table of Contents  1 writing a book in Emacs 2 Extensions that facilitate writing  2.1 Working Environment 2.2 Org 2.3 Spell Checking 2.4 Moving around 2.5 count words  3 Reference    1 writing a book in Emacs I am not going to preach the powerful tool, Org. In this post, I want to write something on the tools which facilitate the literature writing.">
+Table of Contents  1 writing a book in Emacs 2 Extensions that facilitate writing  2.1 Working Environment 2.2 Org 2.3 Spell Checking 2.4 Moving around 2.5 count words 2.6 focus on current section  3 Reference    1 writing a book in Emacs I am not going to preach the powerful tool, Org. In this post, I want to write something on the tools which facilitate the literature writing.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://zcl.space/tools/write-in-emacs/">
@@ -30,7 +30,7 @@ Table of Contents  1 writing a book in Emacs 2 Extensions that facilitate writin
 
   
   
-  <meta name="theme-color" content="#795548">
+  <meta name="theme-color" content="hsl(339, 90%, 68%)">
   
   
   
@@ -76,12 +76,12 @@ Table of Contents  1 writing a book in Emacs 2 Extensions that facilitate writin
   <meta property="og:url" content="https://zcl.space/tools/write-in-emacs/">
   <meta property="og:title" content="Write in Emacs | ZCL.SPACE">
   <meta property="og:description" content=".ox-hugo-toc ul { list-style: none; }  
-Table of Contents  1 writing a book in Emacs 2 Extensions that facilitate writing  2.1 Working Environment 2.2 Org 2.3 Spell Checking 2.4 Moving around 2.5 count words  3 Reference    1 writing a book in Emacs I am not going to preach the powerful tool, Org. In this post, I want to write something on the tools which facilitate the literature writing.">
+Table of Contents  1 writing a book in Emacs 2 Extensions that facilitate writing  2.1 Working Environment 2.2 Org 2.3 Spell Checking 2.4 Moving around 2.5 count words 2.6 focus on current section  3 Reference    1 writing a book in Emacs I am not going to preach the powerful tool, Org. In this post, I want to write something on the tools which facilitate the literature writing.">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-02-20T22:13:00&#43;08:00">
   
-  <meta property="article:modified_time" content="2018-02-21T09:18:00&#43;08:00">
+  <meta property="article:modified_time" content="2018-02-21T14:53:00&#43;08:00">
   
 
   
@@ -89,7 +89,7 @@ Table of Contents  1 writing a book in Emacs 2 Extensions that facilitate writin
   <title>Write in Emacs | ZCL.SPACE</title>
 
 </head>
-<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" class="dark">
 
 <nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
   <div class="container">
@@ -374,6 +374,7 @@ Table of Contents  1 writing a book in Emacs 2 Extensions that facilitate writin
 <li><span class="section-num">2.3</span> <a href="#spell-checking">Spell Checking</a></li>
 <li><span class="section-num">2.4</span> <a href="#moving-around">Moving around</a></li>
 <li><span class="section-num">2.5</span> <a href="#count-words">count words</a></li>
+<li><span class="section-num">2.6</span> <a href="#focus-on-current-section">focus on current section</a></li>
 </ul></li>
 <li><span class="section-num">3</span> <a href="#reference">Reference</a>
 </div>
@@ -467,7 +468,7 @@ to be distracted by other parts of your article.</p>
 <p>Through the writing of this post, I also using the commands moving
 around sentences and paragraphs often.</p>
 
-<p><a id="org0edb567"></a></p>
+<p><a id="orgac7136d"></a></p>
 
 <div class="table-caption">
   <span class="table-number">Table 1:</span>
@@ -510,12 +511,12 @@ around sentences and paragraphs often.</p>
 
 <tr>
 <td><code>M-k</code></td>
-<td>move a paragraph up</td>
+<td>move a paragraph up  when cursor stays in a paragraph</td>
 </tr>
 
 <tr>
 <td><code>M-j</code></td>
-<td>move a paragraph down</td>
+<td>move a paragraph down when cursor stays in a paragraph</td>
 </tr>
 
 <tr>
@@ -530,16 +531,87 @@ around sentences and paragraphs often.</p>
 </tbody>
 </table>
 
+<p>In the Org mode, the following commands are also very convenient.</p>
+
+<table>
+<thead>
+<tr>
+<th><code>M-j</code></th>
+<th>org metadown when cursor stays in a headline</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>M-k</code></td>
+<td>org metaup when cursor stays in a headline</td>
+</tr>
+
+<tr>
+<td><code>&lt;</code></td>
+<td>promote a headline when cursor stays in a headline</td>
+</tr>
+
+<tr>
+<td><code>&gt;</code></td>
+<td>demote a headline when cursor stays in a headline</td>
+</tr>
+
+<tr>
+<td><code>C-c C-f</code></td>
+<td>goto the next headline of the same level</td>
+</tr>
+
+<tr>
+<td><code>C-c C-b</code></td>
+<td>goto the previous headline of the same level</td>
+</tr>
+
+<tr>
+<td><code>C-c C-n</code></td>
+<td>goto the next headline, not necessarily the same level</td>
+</tr>
+
+<tr>
+<td><code>C-c C-p</code></td>
+<td>goto the previous headline, not necessarily the same level</td>
+</tr>
+</tbody>
+</table>
+
 <h3 id="count-words"><span class="section-num">2.5</span> count words</h3>
 
 <p><code>count-words</code> is a command built in Emacs. There is a github
 repository <a href="https://github.com/LdBeth/advance-words-count.el" target="_blank">&ldquo;advance words count&rdquo;</a> which helps count the CJK word. If
 you write in CJK language, it will be handy.</p>
 
+<h3 id="focus-on-current-section"><span class="section-num">2.6</span> focus on current section</h3>
+
+<p>Three handy functions help me focus on what I am working on.</p>
+
+<ol>
+<li>the fullscreen <code>spacemacs/toggle-fullscreen-frame</code> which block
+distractions from other apps.</li>
+<li>the org-capture which allow me capture the ideas or
+aspirations hitting my head.</li>
+<li>the narrow function. This is extremely useful especially when
+your article or post have quite a lot sections. You can narrow
+your buffer to the very section you are working on.</li>
+</ol>
+
 <h2 id="reference"><span class="section-num">3</span> Reference</h2>
 
 <ol>
 <li><a href="https://www.masteringemacs.org/article/how-to-write-a-book-in-emacs" target="_blank">how-to-write-a-book-in-emacs</a></li>
+<li><a href="https://www.reddit.com/r/emacs/comments/4kj7cv/emacs_for_writing_tell_me_your_tricks/" target="_blank">Emacs for writing ? Tell me your tricks !</a></li>
+<li><a href="http://www.tonyballantyne.com/EmacsWritingTips.html" target="_blank">My Emacs Writing Setup</a> . This is an old post by Tony
+Ballantyne, a writer, whose blog <a href="http://tonyballantyne.com/" target="_blank">http://tonyballantyne.com/</a>
+provides a lot of information on how to write.</li>
+<li>On <a href="http://irreal.org/blog/?p=4664" target="_blank">irreal.org</a> , you can always find something unexpectedly.</li>
+<li><a href="https://ontologicalblog.com/2016/10/14/an-absolute-beginners-guide-to-spacemacs-for-academic-writing/" target="_blank">An Absolute Beginners Guide to Spacemacs for Academic Writing</a>  .
+This post is a comprehensive guide for beginners using spacemacs. I
+learn quite a lot from it.</li>
+<li><a href="https://pandoc.org/" target="_blank">Pandoc</a>, the swiss-army knife for file format conversion.</li>
 </ol>
 
     </div>
@@ -573,6 +645,24 @@ you write in CJK language, it will be handy.</p>
     </div>
     
 
+    
+    <div class="article-widget">
+      <div class="post-nav">
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="https://zcl.space/tools/version-control-emacs-magit/" rel="next">Version Control Using Magit in Spacemacs</a>
+  </div>
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="https://zcl.space/tools/calc-in-emacs/" rel="prev">Using Emacs as a calculator through Cals</a>
+  </div>
+  
+</div>
+
+    </div>
     
 
     

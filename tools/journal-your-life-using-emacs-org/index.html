@@ -18,7 +18,7 @@
     
   
   <meta name="description" content=".ox-hugo-toc ul { list-style: none; }  
-Table of Contents  1 Introduction 2 Install 3 Keys  3.1 Global Bindings 3.2 Major Mode Bindings 3.3 Calendar Mode Bindings  4 After a Period    1 Introduction [2018-02-21 Wed 07:48] Long time ago, I read a post about taking daily journal using Emacs. Until recently, I realized that I need to take journals on my work.">
+Table of Contents  1 Introduction 2 Install 3 Keys  3.1 Global Bindings 3.2 Major Mode Bindings 3.3 Calendar Mode Bindings  4 Take a Journal 5 Browse Your Journal 6 Search Your Journal 7 After a Period    1 Introduction Long time ago, I read a post about taking daily journal using Emacs. Until recently, I realized that I need to take journals on my work.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://zcl.space/tools/journal-your-life-using-emacs-org/">
@@ -30,7 +30,7 @@ Table of Contents  1 Introduction 2 Install 3 Keys  3.1 Global Bindings 3.2 Majo
 
   
   
-  <meta name="theme-color" content="#795548">
+  <meta name="theme-color" content="hsl(339, 90%, 68%)">
   
   
   
@@ -76,12 +76,12 @@ Table of Contents  1 Introduction 2 Install 3 Keys  3.1 Global Bindings 3.2 Majo
   <meta property="og:url" content="https://zcl.space/tools/journal-your-life-using-emacs-org/">
   <meta property="og:title" content="Journal your life Using Emacs Org | ZCL.SPACE">
   <meta property="og:description" content=".ox-hugo-toc ul { list-style: none; }  
-Table of Contents  1 Introduction 2 Install 3 Keys  3.1 Global Bindings 3.2 Major Mode Bindings 3.3 Calendar Mode Bindings  4 After a Period    1 Introduction [2018-02-21 Wed 07:48] Long time ago, I read a post about taking daily journal using Emacs. Until recently, I realized that I need to take journals on my work.">
+Table of Contents  1 Introduction 2 Install 3 Keys  3.1 Global Bindings 3.2 Major Mode Bindings 3.3 Calendar Mode Bindings  4 Take a Journal 5 Browse Your Journal 6 Search Your Journal 7 After a Period    1 Introduction Long time ago, I read a post about taking daily journal using Emacs. Until recently, I realized that I need to take journals on my work.">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-02-20T22:21:00&#43;08:00">
   
-  <meta property="article:modified_time" content="2018-02-21T09:18:00&#43;08:00">
+  <meta property="article:modified_time" content="2018-02-21T10:21:00&#43;08:00">
   
 
   
@@ -89,7 +89,7 @@ Table of Contents  1 Introduction 2 Install 3 Keys  3.1 Global Bindings 3.2 Majo
   <title>Journal your life Using Emacs Org | ZCL.SPACE</title>
 
 </head>
-<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" class="dark">
 
 <nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
   <div class="container">
@@ -374,18 +374,23 @@ Table of Contents  1 Introduction 2 Install 3 Keys  3.1 Global Bindings 3.2 Majo
 <li><span class="section-num">3.2</span> <a href="#major-mode-bindings">Major Mode Bindings</a></li>
 <li><span class="section-num">3.3</span> <a href="#calendar-mode-bindings">Calendar Mode Bindings</a></li>
 </ul></li>
-<li><span class="section-num">4</span> <a href="#after-a-period">After a Period</a>
+<li><span class="section-num">4</span> <a href="#take-a-journal">Take a Journal</a></li>
+<li><span class="section-num">5</span> <a href="#browse-your-journal">Browse Your Journal</a></li>
+<li><span class="section-num">6</span> <a href="#search-your-journal">Search Your Journal</a></li>
+<li><span class="section-num">7</span> <a href="#after-a-period">After a Period</a>
 </div>
 <!--endtoc--></li>
 </ul>
 
 <h2 id="introduction"><span class="section-num">1</span> Introduction</h2>
 
-<p><span class="timestamp-wrapper"><span class="timestamp">[2018-02-21 Wed 07:48]</span></span>
-Long time ago, I read a post about <a href="https://www.emacswiki.org/emacs/PersonalDiary" target="_blank">taking daily journal using Emacs</a>.
+<p>Long time ago, I read a post about <a href="https://www.emacswiki.org/emacs/PersonalDiary" target="_blank">taking daily journal using Emacs</a>.
 Until recently, I realized that I need to take journals on my work.
 So I read the post again and integrate the configuration into my
 .spacemacs.d.</p>
+
+<p>In general, I use this journal system to note down my work. This
+journal system is simple and easy to use and maintain.</p>
 
 <p>Here, I am not going to preach why you should keep a daily
 journal. Google will tell you more.</p>
@@ -560,7 +565,62 @@ handy.</p>
 </tbody>
 </table>
 
-<h2 id="after-a-period"><span class="section-num">4</span> After a Period</h2>
+<h2 id="take-a-journal"><span class="section-num">4</span> Take a Journal</h2>
+
+<p>After setting, you can take journal anywhere and anytime. In the
+buffer not in <code>Org</code> mode, <code>SPC a j j</code> will generate and new
+journal entry. In <code>Org</code> mode, <code>SPC m j j</code> or <code>, j j</code> will also
+bring a new journal entry.</p>
+
+<h2 id="browse-your-journal"><span class="section-num">5</span> Browse Your Journal</h2>
+
+<p>To browse your journal, you&rsquo;d better in the Calendar buffer using
+<code>calendar</code> which I bind to <code>SPC o C</code> . In this buffer, press <code>J</code>
+there will be a menu popping up for you.
+<img src="/img/tools/20180221orgjournal.png" alt="" /></p>
+
+<p>As you can see, the day with a journal is highlighted in yellow (
+you can custom it to other colors ).</p>
+
+<table>
+<thead>
+<tr>
+<th>keys</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>J n</code></td>
+<td>jump to next day having a journal</td>
+</tr>
+
+<tr>
+<td><code>J p</code></td>
+<td>jump to previous day having a journal</td>
+</tr>
+
+<tr>
+<td><code>J v</code></td>
+<td>display journal of current day</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="search-your-journal"><span class="section-num">6</span> Search Your Journal</h2>
+
+<p>The key I use most is <code>org-journal-search-forever</code> which I bind to
+<code>SPC a j S</code> and you can search all your journals anytime and
+anywhere. You can also search a certain period by <code>SPC a j s</code>
+with which you need to enter the begin and end of the period in
+the minibuffer.</p>
+
+<p>There are other search options which allow you search in a week,
+month and a year. However, to search your journal in a week, a
+month and a year, you need in the Calendar buffer.</p>
+
+<h2 id="after-a-period"><span class="section-num">7</span> After a Period</h2>
 
 <p>After a Period, say a month, there are quite a lot journals under
 the <code>org-journal-dir</code> . One day One journal.</p>
@@ -602,6 +662,24 @@ the <code>org-journal-dir</code> . One day One journal.</p>
     </div>
     
 
+    
+    <div class="article-widget">
+      <div class="post-nav">
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Next</div>
+    <a href="https://zcl.space/tools/take-a-diary-using-emacs-org/" rel="next">Take a Diary Using Emacs Org</a>
+  </div>
+  
+  
+  <div class="post-nav-item">
+    <div class="meta-nav">Previous</div>
+    <a href="https://zcl.space/tools/version-control-emacs-magit/" rel="prev">Version Control Using Magit in Spacemacs</a>
+  </div>
+  
+</div>
+
+    </div>
     
 
     

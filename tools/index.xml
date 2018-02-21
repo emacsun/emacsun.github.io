@@ -83,18 +83,23 @@ calendar buffer after pressing &lt;code&gt;i&lt;/code&gt;.&lt;/p&gt;
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.2&lt;/span&gt; &lt;a href=&#34;#major-mode-bindings&#34;&gt;Major Mode Bindings&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.3&lt;/span&gt; &lt;a href=&#34;#calendar-mode-bindings&#34;&gt;Calendar Mode Bindings&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; &lt;a href=&#34;#after-a-period&#34;&gt;After a Period&lt;/a&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; &lt;a href=&#34;#take-a-journal&#34;&gt;Take a Journal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; &lt;a href=&#34;#browse-your-journal&#34;&gt;Browse Your Journal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;6&lt;/span&gt; &lt;a href=&#34;#search-your-journal&#34;&gt;Search Your Journal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;7&lt;/span&gt; &lt;a href=&#34;#after-a-period&#34;&gt;After a Period&lt;/a&gt;
 &lt;/div&gt;
 &lt;!--endtoc--&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;introduction&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; Introduction&lt;/h2&gt;
 
-&lt;p&gt;&lt;span class=&#34;timestamp-wrapper&#34;&gt;&lt;span class=&#34;timestamp&#34;&gt;[2018-02-21 Wed 07:48]&lt;/span&gt;&lt;/span&gt;
-Long time ago, I read a post about &lt;a href=&#34;https://www.emacswiki.org/emacs/PersonalDiary&#34; target=&#34;_blank&#34;&gt;taking daily journal using Emacs&lt;/a&gt;.
+&lt;p&gt;Long time ago, I read a post about &lt;a href=&#34;https://www.emacswiki.org/emacs/PersonalDiary&#34; target=&#34;_blank&#34;&gt;taking daily journal using Emacs&lt;/a&gt;.
 Until recently, I realized that I need to take journals on my work.
 So I read the post again and integrate the configuration into my
 .spacemacs.d.&lt;/p&gt;
+
+&lt;p&gt;In general, I use this journal system to note down my work. This
+journal system is simple and easy to use and maintain.&lt;/p&gt;
 
 &lt;p&gt;Here, I am not going to preach why you should keep a daily
 journal. Google will tell you more.&lt;/p&gt;
@@ -269,7 +274,62 @@ handy.&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&#34;after-a-period&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; After a Period&lt;/h2&gt;
+&lt;h2 id=&#34;take-a-journal&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; Take a Journal&lt;/h2&gt;
+
+&lt;p&gt;After setting, you can take journal anywhere and anytime. In the
+buffer not in &lt;code&gt;Org&lt;/code&gt; mode, &lt;code&gt;SPC a j j&lt;/code&gt; will generate and new
+journal entry. In &lt;code&gt;Org&lt;/code&gt; mode, &lt;code&gt;SPC m j j&lt;/code&gt; or &lt;code&gt;, j j&lt;/code&gt; will also
+bring a new journal entry.&lt;/p&gt;
+
+&lt;h2 id=&#34;browse-your-journal&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; Browse Your Journal&lt;/h2&gt;
+
+&lt;p&gt;To browse your journal, you&amp;rsquo;d better in the Calendar buffer using
+&lt;code&gt;calendar&lt;/code&gt; which I bind to &lt;code&gt;SPC o C&lt;/code&gt; . In this buffer, press &lt;code&gt;J&lt;/code&gt;
+there will be a menu popping up for you.
+&lt;img src=&#34;https://zcl.space/img/tools/20180221orgjournal.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see, the day with a journal is highlighted in yellow (
+you can custom it to other colors ).&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;keys&lt;/th&gt;
+&lt;th&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;J n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;jump to next day having a journal&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;J p&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;jump to previous day having a journal&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;J v&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;display journal of current day&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;search-your-journal&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;6&lt;/span&gt; Search Your Journal&lt;/h2&gt;
+
+&lt;p&gt;The key I use most is &lt;code&gt;org-journal-search-forever&lt;/code&gt; which I bind to
+&lt;code&gt;SPC a j S&lt;/code&gt; and you can search all your journals anytime and
+anywhere. You can also search a certain period by &lt;code&gt;SPC a j s&lt;/code&gt;
+with which you need to enter the begin and end of the period in
+the minibuffer.&lt;/p&gt;
+
+&lt;p&gt;There are other search options which allow you search in a week,
+month and a year. However, to search your journal in a week, a
+month and a year, you need in the Calendar buffer.&lt;/p&gt;
+
+&lt;h2 id=&#34;after-a-period&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;7&lt;/span&gt; After a Period&lt;/h2&gt;
 
 &lt;p&gt;After a Period, say a month, there are quite a lot journals under
 the &lt;code&gt;org-journal-dir&lt;/code&gt; . One day One journal.&lt;/p&gt;
@@ -511,6 +571,7 @@ will popup for you to choose where to push.&lt;/p&gt;
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.3&lt;/span&gt; &lt;a href=&#34;#spell-checking&#34;&gt;Spell Checking&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.4&lt;/span&gt; &lt;a href=&#34;#moving-around&#34;&gt;Moving around&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.5&lt;/span&gt; &lt;a href=&#34;#count-words&#34;&gt;count words&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.6&lt;/span&gt; &lt;a href=&#34;#focus-on-current-section&#34;&gt;focus on current section&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#reference&#34;&gt;Reference&lt;/a&gt;
 &lt;/div&gt;
@@ -604,7 +665,7 @@ to be distracted by other parts of your article.&lt;/p&gt;
 &lt;p&gt;Through the writing of this post, I also using the commands moving
 around sentences and paragraphs often.&lt;/p&gt;
 
-&lt;p&gt;&lt;a id=&#34;org0edb567&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;orgac7136d&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&#34;table-caption&#34;&gt;
   &lt;span class=&#34;table-number&#34;&gt;Table 1:&lt;/span&gt;
@@ -647,12 +708,12 @@ around sentences and paragraphs often.&lt;/p&gt;
 
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;M-k&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;move a paragraph up&lt;/td&gt;
+&lt;td&gt;move a paragraph up  when cursor stays in a paragraph&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;M-j&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;move a paragraph down&lt;/td&gt;
+&lt;td&gt;move a paragraph down when cursor stays in a paragraph&lt;/td&gt;
 &lt;/tr&gt;
 
 &lt;tr&gt;
@@ -667,16 +728,87 @@ around sentences and paragraphs often.&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
+&lt;p&gt;In the Org mode, the following commands are also very convenient.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;code&gt;M-j&lt;/code&gt;&lt;/th&gt;
+&lt;th&gt;org metadown when cursor stays in a headline&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;M-k&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;org metaup when cursor stays in a headline&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;promote a headline when cursor stays in a headline&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;demote a headline when cursor stays in a headline&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;C-c C-f&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;goto the next headline of the same level&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;C-c C-b&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;goto the previous headline of the same level&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;C-c C-n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;goto the next headline, not necessarily the same level&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;C-c C-p&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;goto the previous headline, not necessarily the same level&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
 &lt;h3 id=&#34;count-words&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.5&lt;/span&gt; count words&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;count-words&lt;/code&gt; is a command built in Emacs. There is a github
 repository &lt;a href=&#34;https://github.com/LdBeth/advance-words-count.el&#34; target=&#34;_blank&#34;&gt;&amp;ldquo;advance words count&amp;rdquo;&lt;/a&gt; which helps count the CJK word. If
 you write in CJK language, it will be handy.&lt;/p&gt;
 
+&lt;h3 id=&#34;focus-on-current-section&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.6&lt;/span&gt; focus on current section&lt;/h3&gt;
+
+&lt;p&gt;Three handy functions help me focus on what I am working on.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;the fullscreen &lt;code&gt;spacemacs/toggle-fullscreen-frame&lt;/code&gt; which block
+distractions from other apps.&lt;/li&gt;
+&lt;li&gt;the org-capture which allow me capture the ideas or
+aspirations hitting my head.&lt;/li&gt;
+&lt;li&gt;the narrow function. This is extremely useful especially when
+your article or post have quite a lot sections. You can narrow
+your buffer to the very section you are working on.&lt;/li&gt;
+&lt;/ol&gt;
+
 &lt;h2 id=&#34;reference&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; Reference&lt;/h2&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.masteringemacs.org/article/how-to-write-a-book-in-emacs&#34; target=&#34;_blank&#34;&gt;how-to-write-a-book-in-emacs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.reddit.com/r/emacs/comments/4kj7cv/emacs_for_writing_tell_me_your_tricks/&#34; target=&#34;_blank&#34;&gt;Emacs for writing ? Tell me your tricks !&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.tonyballantyne.com/EmacsWritingTips.html&#34; target=&#34;_blank&#34;&gt;My Emacs Writing Setup&lt;/a&gt; . This is an old post by Tony
+Ballantyne, a writer, whose blog &lt;a href=&#34;http://tonyballantyne.com/&#34; target=&#34;_blank&#34;&gt;http://tonyballantyne.com/&lt;/a&gt;
+provides a lot of information on how to write.&lt;/li&gt;
+&lt;li&gt;On &lt;a href=&#34;http://irreal.org/blog/?p=4664&#34; target=&#34;_blank&#34;&gt;irreal.org&lt;/a&gt; , you can always find something unexpectedly.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ontologicalblog.com/2016/10/14/an-absolute-beginners-guide-to-spacemacs-for-academic-writing/&#34; target=&#34;_blank&#34;&gt;An Absolute Beginners Guide to Spacemacs for Academic Writing&lt;/a&gt;  .
+This post is a comprehensive guide for beginners using spacemacs. I
+learn quite a lot from it.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pandoc.org/&#34; target=&#34;_blank&#34;&gt;Pandoc&lt;/a&gt;, the swiss-army knife for file format conversion.&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>
