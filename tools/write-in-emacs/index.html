@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.31.1" />
+  <meta name="author" content="Eason Zhang">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content=".ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 writing a book in Emacs 2 Extensions that facilitate writing  2.1 Working Environment 2.2 Org 2.3 Spell Checking 2.4 Moving around 2.5 count words  3 Reference    1 writing a book in Emacs I am not going to preach the powerful tool, Org. In this post, I want to write something on the tools which facilitate the literature writing.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://zcl.space/tools/write-in-emacs/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#795548">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7cMerriweather%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+
+  
+  <link rel="alternate" href="https://zcl.space/index.xml" type="application/rss+xml" title="ZCL.SPACE">
+  <link rel="feed" href="https://zcl.space/index.xml" type="application/rss+xml" title="ZCL.SPACE">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://zcl.space/tools/write-in-emacs/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="ZCL.SPACE">
+  <meta property="og:url" content="https://zcl.space/tools/write-in-emacs/">
+  <meta property="og:title" content="Write in Emacs | ZCL.SPACE">
+  <meta property="og:description" content=".ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 writing a book in Emacs 2 Extensions that facilitate writing  2.1 Working Environment 2.2 Org 2.3 Spell Checking 2.4 Moving around 2.5 count words  3 Reference    1 writing a book in Emacs I am not going to preach the powerful tool, Org. In this post, I want to write something on the tools which facilitate the literature writing.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-02-20T22:13:00&#43;08:00">
+  
+  <meta property="article:modified_time" content="2018-02-21T09:18:00&#43;08:00">
+  
+
+  
+
+  <title>Write in Emacs | ZCL.SPACE</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">ZCL.SPACE</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#math">
+            
+            <span>Math</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#computer">
+            
+            <span>Computer</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#telecommunication">
+            
+            <span>Telecommunication</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#about">
+            
+            <span>About</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#life">
+            
+            <span>Life</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#tools">
+            
+            <span>Tools</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Write in Emacs</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+        Last updated on
+    
+    <time datetime="2018-02-20 22:13:00 &#43;0800 CST" itemprop="datePublished dateModified">
+      Feb 21, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Eason Zhang">
+  </span>
+
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="https://zcl.space/tools/write-in-emacs/#disqus_thread"></a>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fa fa-folder"></i>
+    
+    <a href="/categories/emacs">Emacs</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Write%20in%20Emacs&amp;url=https%3a%2f%2fzcl.space%2ftools%2fwrite-in-emacs%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fzcl.space%2ftools%2fwrite-in-emacs%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fzcl.space%2ftools%2fwrite-in-emacs%2f&amp;title=Write%20in%20Emacs"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fzcl.space%2ftools%2fwrite-in-emacs%2f&amp;title=Write%20in%20Emacs"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Write%20in%20Emacs&amp;body=https%3a%2f%2fzcl.space%2ftools%2fwrite-in-emacs%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p><style>
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+</style>
+<div class="ox-hugo-toc toc">
+<div></div></p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+<li><span class="section-num">1</span> <a href="#writing-a-book-in-emacs">writing a book in Emacs</a></li>
+<li><span class="section-num">2</span> <a href="#extensions-that-facilitate-writing">Extensions that facilitate writing</a>
+
+<ul>
+<li><span class="section-num">2.1</span> <a href="#working-environment">Working Environment</a></li>
+<li><span class="section-num">2.2</span> <a href="#org">Org</a></li>
+<li><span class="section-num">2.3</span> <a href="#spell-checking">Spell Checking</a></li>
+<li><span class="section-num">2.4</span> <a href="#moving-around">Moving around</a></li>
+<li><span class="section-num">2.5</span> <a href="#count-words">count words</a></li>
+</ul></li>
+<li><span class="section-num">3</span> <a href="#reference">Reference</a>
+</div>
+<!--endtoc--></li>
+</ul>
+
+<h2 id="writing-a-book-in-emacs"><span class="section-num">1</span> writing a book in Emacs</h2>
+
+<p>I am not going to preach the powerful tool, Org. In this post, I want
+to write something on the tools which facilitate the literature
+writing. Indeed, if I am going to write a book someday (when time is
+not a problem), the very tool I will adopt definitely is Emacs.</p>
+
+<p>With high probability, I will adopt the <a href="https://www.masteringemacs.org/article/how-to-write-a-book-in-emacs" target="_blank">workflow like Mickey Petersen
+did</a>. Also, Emacs has many extensions that make writing a book or an
+article in large size possible. In general, I will write it in Org
+mode, and export the book to other format with just a <code>C-c C-e</code>, which
+is a convenient shortcut memorized by my muscle.</p>
+
+<h2 id="extensions-that-facilitate-writing"><span class="section-num">2</span> Extensions that facilitate writing</h2>
+
+<h3 id="working-environment"><span class="section-num">2.1</span> Working Environment</h3>
+
+<p>My working Environment is listed as below:</p>
+
+<ol>
+<li>Windows 10 on Surface Pro 4;</li>
+<li>Emacs 25.0.5;</li>
+<li>Org 9.1.6;</li>
+<li>Also, I use spacemacs, a comprehensive configuration with many
+functions organized as layers.</li>
+</ol>
+
+<h3 id="org"><span class="section-num">2.2</span> Org</h3>
+
+<p>The Org mode, the killer extension, makes Emacs great again. I surely
+did quite a few customization on Org. However, I use the org layer
+shipped with spacemacs.</p>
+
+<p>Also, you can <a href="http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html" target="_blank">configure Org like a word processor</a>. Org-bullet package
+make Org mode beautiful. I set Org bullets as:</p>
+
+<pre><code class="language-lisp">(setq org-bullets-bullet-list '(&quot;✿&quot; &quot;❀&quot; &quot;♣&quot; &quot;♧&quot; ))
+</code></pre>
+
+<p>As mentioned before, you can export your Org file using several
+formats such as HTML,TeX, PDF, Markdown and so on.</p>
+
+<p>I use Org writing my own blog through <a href="https://github.com/kaushalmodi/ox-hugo" target="_blank">ox-hugo</a>. Of course, I use Hugo.
+Why not? Hugo is fast and disk-space-friend. Hugo also has its windows
+distribution. ox-hugo export the org files as markdown files which are
+supported by hugo.</p>
+
+<p>I use Org to export PDF based on the latex class defined <a href="https://github.com/emacsun/org-article" target="_blank">org-article</a>
+,which is a latex class I forked from <a href="https://github.com/tsdye/org-article" target="_blank">tsdye/org-article</a> and added the
+support for Chinese characters. Org-article is a flexible latex class
+and export beautiful PDF with the good-looking fonts and architecture.</p>
+
+<h3 id="spell-checking"><span class="section-num">2.3</span> Spell Checking</h3>
+
+<p>Using flyspell, spell checking is easy. There is a layer named
+spell-checking distributed with spacemacs.</p>
+
+<p>I use aspell instead of ispell. So, I set:</p>
+
+<pre><code class="language-lisp">(setq-default ispell-program-name &quot;C:/Aspell/bin/aspell.exe&quot;)
+</code></pre>
+
+<p>Of course, you have to install aspell and the dictionaries. I use the
+<a href="http://aspell.net/win32/" target="_blank">Win32 version</a>.</p>
+
+<p>Using flyspell mode, you can also insert some word into your personal
+dictionary.</p>
+
+<h3 id="moving-around"><span class="section-num">2.4</span> Moving around</h3>
+
+<p>Using Spacemacs, moving around is easy because it has almost all the
+jumping shortcuts used in Vim (if you use the Vim mode in spacemacs).</p>
+
+<p>On the other hand, using Org, you can jump from headline to headline
+easily. Promoting and demoting a headline is also fast. You can even
+change the head level of a headline using just a few keystrokes.</p>
+
+<p>The <code>tab</code> key is a useful shortcut to change the face of how the Org
+buffer looks like. I use the <code>tab</code> key to give me a sketch view of the
+post I am working on. Furthermore, you can even use the narrow
+function to restrict the buffer showing only the section of subsection
+part you are working if your file is getting large and you don&rsquo;t want
+to be distracted by other parts of your article.</p>
+
+<p>Through the writing of this post, I also using the commands moving
+around sentences and paragraphs often.</p>
+
+<p><a id="org0edb567"></a></p>
+
+<div class="table-caption">
+  <span class="table-number">Table 1:</span>
+  move around in Org files
+</div>
+
+<table>
+<thead>
+<tr>
+<th>commands</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>h,j,k,l</code></td>
+<td>the basic Vim keys, need no description</td>
+</tr>
+
+<tr>
+<td><code>0</code></td>
+<td>goto the beginning of a line</td>
+</tr>
+
+<tr>
+<td><code>$</code></td>
+<td>goto the end of a line</td>
+</tr>
+
+<tr>
+<td><code>M-a</code></td>
+<td>goto the beginning of a sentence</td>
+</tr>
+
+<tr>
+<td><code>M-e</code></td>
+<td>goto the end of a sentence</td>
+</tr>
+
+<tr>
+<td><code>M-k</code></td>
+<td>move a paragraph up</td>
+</tr>
+
+<tr>
+<td><code>M-j</code></td>
+<td>move a paragraph down</td>
+</tr>
+
+<tr>
+<td><code>M-{</code></td>
+<td>goto the beginning of previous paragraph</td>
+</tr>
+
+<tr>
+<td><code>M-}</code></td>
+<td>goto the beginning of next paragraph</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="count-words"><span class="section-num">2.5</span> count words</h3>
+
+<p><code>count-words</code> is a command built in Emacs. There is a github
+repository <a href="https://github.com/LdBeth/advance-words-count.el" target="_blank">&ldquo;advance words count&rdquo;</a> which helps count the CJK word. If
+you write in CJK language, it will be handy.</p>
+
+<h2 id="reference"><span class="section-num">3</span> Reference</h2>
+
+<ol>
+<li><a href="https://www.masteringemacs.org/article/how-to-write-a-book-in-emacs" target="_blank">how-to-write-a-book-in-emacs</a></li>
+</ol>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/tags/tools">tools</a>
+  
+</div>
+
+
+
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/tools/calc-in-emacs/">Using Emacs as a calculator through Cals</a></li>
+        
+        <li><a href="/tools/organize-you-life-in-org/">Organize you life in Emacs Org</a></li>
+        
+        <li><a href="/tools/my-blog-workflow/">Blogging with Emacs Org</a></li>
+        
+      </ul>
+    </div>
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zclspace" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 ZCL &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script id="dsq-count-scr" src="//zclspace.disqus.com/count.js" async></script>
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lisp.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c&#43;&#43;.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/matlab.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/emacs-lisp.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+      <script type="text/x-mathjax-config">
+       MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] },
+                            TeX: { equationNumbers: {autoNumber: "AMS"},
+                                   MultLineWidth: "85%",
+                                   TagSide: "right",
+                                   TagIndent: ".8em"
+                            }
+       });
+      </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

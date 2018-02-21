@@ -17,7 +17,8 @@
       
     
   
-  <meta name="description" content="Table of Contents  Writing with Emacs Org publish Writing with Hugo  architecture of the site  Settings for ox-hugo  settings for each section based on ox-hugo settings for each article based on ox-hugo  Settings for Hugo themes    Right Now, I use two blog systems to post articles. First, I use the Emacs built-in Org to record my learning on math, computer and wireless communication.">
+  <meta name="description" content=".ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Writing with Emacs Org publish 2 Writing with Hugo  2.1 architecture of the site  3 Settings for ox-hugo  3.1 settings for each section based on ox-hugo 3.2 settings for each article based on ox-hugo  4 Settings for Hugo themes    Right Now, I use two blog systems to post articles.">
 
   
   <link rel="alternate" hreflang="en-us" href="https://zcl.space/tools/my-blog-workflow/">
@@ -74,12 +75,13 @@
   <meta property="og:site_name" content="ZCL.SPACE">
   <meta property="og:url" content="https://zcl.space/tools/my-blog-workflow/">
   <meta property="og:title" content="Blogging with Emacs Org | ZCL.SPACE">
-  <meta property="og:description" content="Table of Contents  Writing with Emacs Org publish Writing with Hugo  architecture of the site  Settings for ox-hugo  settings for each section based on ox-hugo settings for each article based on ox-hugo  Settings for Hugo themes    Right Now, I use two blog systems to post articles. First, I use the Emacs built-in Org to record my learning on math, computer and wireless communication.">
+  <meta property="og:description" content=".ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Writing with Emacs Org publish 2 Writing with Hugo  2.1 architecture of the site  3 Settings for ox-hugo  3.1 settings for each section based on ox-hugo 3.2 settings for each article based on ox-hugo  4 Settings for Hugo themes    Right Now, I use two blog systems to post articles.">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-01-28T18:01:00&#43;08:00">
   
-  <meta property="article:modified_time" content="2018-02-04T20:57:00&#43;08:00">
+  <meta property="article:modified_time" content="2018-02-21T09:18:00&#43;08:00">
   
 
   
@@ -273,7 +275,7 @@
         Last updated on
     
     <time datetime="2018-01-28 18:01:00 &#43;0800 CST" itemprop="datePublished dateModified">
-      Feb 4, 2018
+      Feb 21, 2018
     </time>
   </span>
   <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
@@ -355,25 +357,30 @@
     <div class="article-style" itemprop="articleBody">
       
 
+<p><style>
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+</style>
 <div class="ox-hugo-toc toc">
-<div></div>
+<div></div></p>
 
 <h2 id="table-of-contents">Table of Contents</h2>
 
 <ul>
-<li><a href="#writing-with-emacs-org-publish">Writing with Emacs Org publish</a></li>
-<li><a href="#writing-with-hugo">Writing with Hugo</a>
+<li><span class="section-num">1</span> <a href="#writing-with-emacs-org-publish">Writing with Emacs Org publish</a></li>
+<li><span class="section-num">2</span> <a href="#writing-with-hugo">Writing with Hugo</a>
 
 <ul>
-<li><a href="#architecture-of-the-site">architecture of the site</a></li>
+<li><span class="section-num">2.1</span> <a href="#architecture-of-the-site">architecture of the site</a></li>
 </ul></li>
-<li><a href="#settings-for-ox-hugo">Settings for ox-hugo</a>
+<li><span class="section-num">3</span> <a href="#settings-for-ox-hugo">Settings for ox-hugo</a>
 
 <ul>
-<li><a href="#settings-for-each-section-based-on-ox-hugo">settings for each section based on ox-hugo</a></li>
-<li><a href="#settings-for-each-article-based-on-ox-hugo">settings for each article based on ox-hugo</a></li>
+<li><span class="section-num">3.1</span> <a href="#settings-for-each-section-based-on-ox-hugo">settings for each section based on ox-hugo</a></li>
+<li><span class="section-num">3.2</span> <a href="#settings-for-each-article-based-on-ox-hugo">settings for each article based on ox-hugo</a></li>
 </ul></li>
-<li><a href="#settings-for-hugo-themes">Settings for Hugo themes</a>
+<li><span class="section-num">4</span> <a href="#settings-for-hugo-themes">Settings for Hugo themes</a>
 </div>
 <!--endtoc--></li>
 </ul>
@@ -389,7 +396,7 @@ project bridging Emacs org and Hugo markdown. Ox-hugo allows you to write
 your blog using Emacs Org then publish them in the markdwon format
 automatically.</p>
 
-<h2 id="writing-with-emacs-org-publish">Writing with Emacs Org publish</h2>
+<h2 id="writing-with-emacs-org-publish"><span class="section-num">1</span> Writing with Emacs Org publish</h2>
 
 <p>It&rsquo;s easy to build a static website using <a href="https://orgmode.org/manual/Publishing.html" target="_blank">Emacs Org</a>. <a href="https://orgmode.org/worg/" target="_blank">Worg</a>, the Org-mode
 community, also have comprehensive tutorials about using Org to build your
@@ -401,7 +408,7 @@ high-quality articles on the Worg.</p>
 <code>org-publish-project-alist</code> . Of course, if you want your site beautiful,
 some knowledge about CSS and JavaScript is necessary.</p>
 
-<h2 id="writing-with-hugo">Writing with Hugo</h2>
+<h2 id="writing-with-hugo"><span class="section-num">2</span> Writing with Hugo</h2>
 
 <p>Now, I moved from the Emacs built-in publishing system to Hugo because of
 Hugo&rsquo;s efficiency and flexibility. You can build your static site in just a
@@ -423,7 +430,7 @@ tool which I will not give up and highly recommend it.</p>
 <p>Especially, there is tons of themes for you. Also, you can set up your own
 theme.</p>
 
-<h3 id="architecture-of-the-site">architecture of the site</h3>
+<h3 id="architecture-of-the-site"><span class="section-num">2.1</span> architecture of the site</h3>
 
 <p>Using <code>hugo</code> , there is a default architecture. Using <code>ox-hugo</code> , I store
 the Org file in the subdirectory <code>content-org</code> . There are several sections
@@ -433,16 +440,16 @@ article on <em>mathematical analysis</em> in the file named <code>content-org/ma
 so that after exporting, the markdown file will be put in the subdirectory
 <code>content/math/</code> .</p>
 
-<p><a id="orgd0a639c"></a>
+<p><a id="org799910a"></a>
 
 <figure >
     
-        <img src="/tools/20180126HugoArchitecture.png" alt="architecture of Hugo project" width="400" />
+        <img src="/tools/20180126HugoArchitecture.png" alt="Figure 1: architecture of Hugo project" width="400" />
     
     
     <figcaption>
         <p>
-        architecture of Hugo project
+        Figure 1: architecture of Hugo project
         
             
         
@@ -452,9 +459,9 @@ so that after exporting, the markdown file will be put in the subdirectory
 </figure>
 </p>
 
-<h2 id="settings-for-ox-hugo">Settings for ox-hugo</h2>
+<h2 id="settings-for-ox-hugo"><span class="section-num">3</span> Settings for ox-hugo</h2>
 
-<h3 id="settings-for-each-section-based-on-ox-hugo">settings for each section based on ox-hugo</h3>
+<h3 id="settings-for-each-section-based-on-ox-hugo"><span class="section-num">3.1</span> settings for each section based on ox-hugo</h3>
 
 <p>As mentioned before, there are several sections for my site and I use
 ox-hugo to handle articles for this sections. In the subdirectory
@@ -495,7 +502,7 @@ section.) On table of contents, ox-hugo has an <a href="https://ox-hugo.scripter
 is modified.</li>
 </ol>
 
-<h3 id="settings-for-each-article-based-on-ox-hugo">settings for each article based on ox-hugo</h3>
+<h3 id="settings-for-each-article-based-on-ox-hugo"><span class="section-num">3.2</span> settings for each article based on ox-hugo</h3>
 
 <p>I use the <code>org-capture</code> to start a article. The emacs-lisp:</p>
 
@@ -555,7 +562,7 @@ See `org-capture-templates' for more information.&quot;
 <p>One more point, it is awesome to preview each article after saveing it.
 Yes! you can do it according <a href="https://ox-hugo.scripter.co/doc/auto-export-on-saving" target="_blank">this article</a>.</p>
 
-<h2 id="settings-for-hugo-themes">Settings for Hugo themes</h2>
+<h2 id="settings-for-hugo-themes"><span class="section-num">4</span> Settings for Hugo themes</h2>
 
 <p>Now, there are more than 190+ <a href="https://themes.gohugo.io/" target="_blank">themes</a> for Hugo. It is pretty straightforward
 to <a href="https://gohugo.io/themes/" target="_blank">install and config</a> a theme as you wish. I prefer the <a href="https://sourcethemes.com/academic/" target="_blank">Academic theme</a> which I

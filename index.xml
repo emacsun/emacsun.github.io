@@ -11,6 +11,803 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Take a Diary Using Emacs Org</title>
+      <link>https://zcl.space/tools/take-a-diary-using-emacs-org/</link>
+      <pubDate>Wed, 21 Feb 2018 09:03:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/take-a-diary-using-emacs-org/</guid>
+      <description>
+
+&lt;p&gt;&lt;style&gt;
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+&lt;/style&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#set-up&#34;&gt;Set up&lt;/a&gt;
+&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;introduction&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; Introduction&lt;/h2&gt;
+
+&lt;p&gt;There is one diary system built in Emacs. When you are in the
+Calendar buffer, press &lt;code&gt;i&lt;/code&gt; will bring you a menu to select what
+kind of diary you want to take. However, as a loyal fan of Emacs
+Org, I want to take diary using Org. When I am in the org agenda
+buffer, press &lt;code&gt;i&lt;/code&gt; will bring me a menu like what show in the
+calendar buffer after pressing &lt;code&gt;i&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;set-up&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; Set up&lt;/h2&gt;
+
+&lt;p&gt;It seems that all you need to do is set the
+  &lt;code&gt;org-agenda-diary-file&lt;/code&gt;, so that Org knows where to put the
+  diary file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(setq org-agenda-diary-file  &amp;quot;~/zorg/Dropbox/base/zdiary.org&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Journal your life Using Emacs Org</title>
+      <link>https://zcl.space/tools/journal-your-life-using-emacs-org/</link>
+      <pubDate>Tue, 20 Feb 2018 22:21:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/journal-your-life-using-emacs-org/</guid>
+      <description>
+
+&lt;p&gt;&lt;style&gt;
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+&lt;/style&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#install&#34;&gt;Install&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#keys&#34;&gt;Keys&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.1&lt;/span&gt; &lt;a href=&#34;#global-bindings&#34;&gt;Global Bindings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.2&lt;/span&gt; &lt;a href=&#34;#major-mode-bindings&#34;&gt;Major Mode Bindings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.3&lt;/span&gt; &lt;a href=&#34;#calendar-mode-bindings&#34;&gt;Calendar Mode Bindings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; &lt;a href=&#34;#after-a-period&#34;&gt;After a Period&lt;/a&gt;
+&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;introduction&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; Introduction&lt;/h2&gt;
+
+&lt;p&gt;&lt;span class=&#34;timestamp-wrapper&#34;&gt;&lt;span class=&#34;timestamp&#34;&gt;[2018-02-21 Wed 07:48]&lt;/span&gt;&lt;/span&gt;
+Long time ago, I read a post about &lt;a href=&#34;https://www.emacswiki.org/emacs/PersonalDiary&#34; target=&#34;_blank&#34;&gt;taking daily journal using Emacs&lt;/a&gt;.
+Until recently, I realized that I need to take journals on my work.
+So I read the post again and integrate the configuration into my
+.spacemacs.d.&lt;/p&gt;
+
+&lt;p&gt;Here, I am not going to preach why you should keep a daily
+journal. Google will tell you more.&lt;/p&gt;
+
+&lt;h2 id=&#34;install&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; Install&lt;/h2&gt;
+
+&lt;p&gt;If you want to Install the org-journal layer, just clone my
+&lt;a href=&#34;https://github.com/emacsun/.spacemacs.d&#34; target=&#34;_blank&#34;&gt;.spacemacs.d&lt;/a&gt; there is a layer named &lt;code&gt;zcljournal&lt;/code&gt;, which is forked
+from &lt;a href=&#34;https://github.com/borgnix/spacemacs-journal&#34; target=&#34;_blank&#34;&gt;spacemacs-journal&lt;/a&gt; with a little modified.&lt;/p&gt;
+
+&lt;p&gt;To use this journal system, you need set &lt;code&gt;org-journal-dir&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(setq org-journal-dir &amp;quot;~/.spacemacs.d/journal/&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;keys&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; Keys&lt;/h2&gt;
+
+&lt;h3 id=&#34;global-bindings&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3.1&lt;/span&gt; Global Bindings&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key Binding&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC a j j&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;new journal entry&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC a j v&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;view journal of today&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC a j s&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;search journals within a specified time interval&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC a j S&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;search all journal for a string&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;major-mode-bindings&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3.2&lt;/span&gt; Major Mode Bindings&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key Binding&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC m j j&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;new journal entry&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC m j n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;next journal file&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC m j p&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;previous journal file&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC m j s&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;search the current journal file&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC m j v&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;read journal entry&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC m j V&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;display journal entry&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC m j S&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;search all journals&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC m j w&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;search calendar week&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC m j m&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;search calendar month&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;SPC m j y&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;search calendar year&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Also, you can replace the prefix &lt;code&gt;SPC m&lt;/code&gt; with &lt;code&gt;,&lt;/code&gt; which is more
+handy.&lt;/p&gt;
+
+&lt;h3 id=&#34;calendar-mode-bindings&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3.3&lt;/span&gt; Calendar Mode Bindings&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Key Binding&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;J j&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;new journal entry&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;J v&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;view an entry in a new buffer&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;J V&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;view an entry but do not switch to it&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;J n&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;go to next day with journal entries&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;J p&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;go to previous day with journal entries&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;J S&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;search in all entries of all time&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;J w&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;search in all entries of the current week&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;J m&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;search in all entries of the current month&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;J y&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;search in all entries of the current year&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;after-a-period&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; After a Period&lt;/h2&gt;
+
+&lt;p&gt;After a Period, say a month, there are quite a lot journals under
+the &lt;code&gt;org-journal-dir&lt;/code&gt; . One day One journal.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Version Control Using Magit in Spacemacs</title>
+      <link>https://zcl.space/tools/version-control-emacs-magit/</link>
+      <pubDate>Tue, 20 Feb 2018 22:14:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/version-control-emacs-magit/</guid>
+      <description>
+
+&lt;p&gt;&lt;style&gt;
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+&lt;/style&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#commit-your-changes&#34;&gt;Commit Your Changes&lt;/a&gt;
+&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There is an &lt;a href=&#34;http://spacemacs.org/layers/+source-control/git/README.html&#34; target=&#34;_blank&#34;&gt;official layer&lt;/a&gt; called &lt;a href=&#34;http://spacemacs.org/layers/+source-control/git/README.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;git&lt;/code&gt;&lt;/a&gt;builtin spacemacs. The &lt;code&gt;git&lt;/code&gt;
+layer is based on &lt;code&gt;magit&lt;/code&gt; . Actually, on the magit website, you can
+always find what you want. This post is a summary of How I use magit
+in spacemacs.&lt;/p&gt;
+
+&lt;p&gt;I like the magit website because of the beautiful font and pleasing
+color combination. More important is the maintainor Jonas Bernoulli
+who devotes his yearly efforts to coin the magit great for Emacsers.
+Now, after &lt;a href=&#34;https://www.kickstarter.com/projects/1681258897/its-magit-the-magical-git-client/posts/1988383&#34; target=&#34;_blank&#34;&gt;a successful campaign on the Kickstarter&lt;/a&gt;, Jonas Bernoulli
+was able to work on Magit full-time for another year, which was he&amp;rsquo;d
+love to.&lt;/p&gt;
+
+&lt;p&gt;Lets&amp;rsquo;s goto my daily use of Magit in Spacemacs. If you are not using
+&lt;a href=&#34;http://spacemacs.org/layers/+source-control/git/README.html&#34; target=&#34;_blank&#34;&gt;Spacemacs&lt;/a&gt;, I highly recommend it for you.&lt;/p&gt;
+
+&lt;h2 id=&#34;commit-your-changes&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; Commit Your Changes&lt;/h2&gt;
+
+&lt;p&gt;Suppose you have already make some changes on a project version
+controlled using Git, the next step is to stage the changes and then
+commit the changes.&lt;/p&gt;
+
+&lt;p&gt;If your cursor are in the buffer of a file belonging to that project,
+press &lt;code&gt;SPC g s&lt;/code&gt; will bring you to the magit buffer of current project.&lt;/p&gt;
+
+&lt;p&gt;If your cursor are not in the buffer of a file belongint to that
+project, using &lt;code&gt;SPC p p&lt;/code&gt; goto the helm-projectile buffer, then move
+cursor to the project, then press &lt;code&gt;M-g&lt;/code&gt;, you will goto the magit
+buffer of current project.&lt;/p&gt;
+
+&lt;p&gt;Taking my &lt;code&gt;.spacemacs.d&lt;/code&gt; project for example, after some modifications
+on the config, I want to commit the changes. The mentioned two ways
+bring me to a magit buffer like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;org5295721&#34;&gt;&lt;/a&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://zcl.space/img/tools/20180219magitbuffer1.png&#34; alt=&#34;Figure 1: magit buffer of my .spacemacs.d&#34; width=&#34;400&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        Figure 1: magit buffer of my .spacemacs.d
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;From the above buffer, it records that I have one untracted file and
+two unstaged changes on two existing files. On the headlines of the
+untracted files and unstaged changes, press &lt;code&gt;s&lt;/code&gt; will stage all the
+untracted files and unstaged changes. If you are not at the headlines,
+to stage all the changes you need to press &lt;code&gt;S&lt;/code&gt;. After this, the buffer
+become:&lt;/p&gt;
+
+&lt;div align=&#34;center&#34;&gt;
+  &lt;div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a id=&#34;org0ea80ea&#34;&gt;&lt;/a&gt;
+&lt;img src=&#34;https://zcl.space/img/tools/20180219magitbuffer2.png&#34; alt=&#34;20180219magitbuffer2.png&#34; width=&#34;400&#34; align=&#34;center&#34; /&gt;
+If you regret, press &lt;code&gt;u&lt;/code&gt; to unstage the changes. If you want to
+commit, just press &lt;code&gt;c&lt;/code&gt;, you will get a menu.&lt;/p&gt;
+
+&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;orgd124ad0&#34;&gt;&lt;/a&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://zcl.space/img/tools/20180219magitbuffer3.png&#34; alt=&#34;Figure 3: press `c`  to commit&#34; width=&#34;400&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        Figure 3: press `c`  to commit
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The menu is clear for you to choose. If nothing to change, just press
+&lt;code&gt;c&lt;/code&gt; again, and there will a buffer pop up for you to take some notes
+on this commit. Also, there is a buffer showing the diff of this
+commit. If you regret at this moment, just press &lt;code&gt;C-c C-k&lt;/code&gt; to abort
+the commit.&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;org9fdf700&#34;&gt;&lt;/a&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://zcl.space/img/tools/20180219magitbuffer4.png&#34; alt=&#34;Figure 4: press `c` to commit&#34; width=&#34;400&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        Figure 4: press `c` to commit
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;After finishing the notes, press &lt;code&gt;C-c C-c&lt;/code&gt; to finish the commit. you
+are in a buffer showing the current state of the project.&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;org6d0c626&#34;&gt;&lt;/a&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://zcl.space/img/tools/20180219magitbuffer5.png&#34; alt=&#34;Figure 5: after commit&#34; width=&#34;400&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        Figure 5: after commit
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;It shows that I am ahead one commit of the remote/master. So, If you
+want to push the commit to the remote/master, press &lt;code&gt;p&lt;/code&gt; , a buffer
+will popup for you to choose where to push.&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;org25db75a&#34;&gt;&lt;/a&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://zcl.space/img/tools/20180219magitbuffer6.png&#34; alt=&#34;Figure 6: press `u`  to push&#34; width=&#34;400&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        Figure 6: press `u`  to push
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Press &lt;code&gt;u&lt;/code&gt; to push the commit to the origin/master, and you get:&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;org34e0b94&#34;&gt;&lt;/a&gt;
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://zcl.space/img/tools/20180219magitbuffer7.png&#34; alt=&#34;Figure 7: after pushing to the origin/master&#34; width=&#34;400&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        Figure 7: after pushing to the origin/master
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Then a commit is finished locally and remotely.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Write in Emacs</title>
+      <link>https://zcl.space/tools/write-in-emacs/</link>
+      <pubDate>Tue, 20 Feb 2018 22:13:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/write-in-emacs/</guid>
+      <description>
+
+&lt;p&gt;&lt;style&gt;
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+&lt;/style&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#writing-a-book-in-emacs&#34;&gt;writing a book in Emacs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#extensions-that-facilitate-writing&#34;&gt;Extensions that facilitate writing&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.1&lt;/span&gt; &lt;a href=&#34;#working-environment&#34;&gt;Working Environment&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.2&lt;/span&gt; &lt;a href=&#34;#org&#34;&gt;Org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.3&lt;/span&gt; &lt;a href=&#34;#spell-checking&#34;&gt;Spell Checking&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.4&lt;/span&gt; &lt;a href=&#34;#moving-around&#34;&gt;Moving around&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.5&lt;/span&gt; &lt;a href=&#34;#count-words&#34;&gt;count words&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#reference&#34;&gt;Reference&lt;/a&gt;
+&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;writing-a-book-in-emacs&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; writing a book in Emacs&lt;/h2&gt;
+
+&lt;p&gt;I am not going to preach the powerful tool, Org. In this post, I want
+to write something on the tools which facilitate the literature
+writing. Indeed, if I am going to write a book someday (when time is
+not a problem), the very tool I will adopt definitely is Emacs.&lt;/p&gt;
+
+&lt;p&gt;With high probability, I will adopt the &lt;a href=&#34;https://www.masteringemacs.org/article/how-to-write-a-book-in-emacs&#34; target=&#34;_blank&#34;&gt;workflow like Mickey Petersen
+did&lt;/a&gt;. Also, Emacs has many extensions that make writing a book or an
+article in large size possible. In general, I will write it in Org
+mode, and export the book to other format with just a &lt;code&gt;C-c C-e&lt;/code&gt;, which
+is a convenient shortcut memorized by my muscle.&lt;/p&gt;
+
+&lt;h2 id=&#34;extensions-that-facilitate-writing&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; Extensions that facilitate writing&lt;/h2&gt;
+
+&lt;h3 id=&#34;working-environment&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.1&lt;/span&gt; Working Environment&lt;/h3&gt;
+
+&lt;p&gt;My working Environment is listed as below:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Windows 10 on Surface Pro 4;&lt;/li&gt;
+&lt;li&gt;Emacs 25.0.5;&lt;/li&gt;
+&lt;li&gt;Org 9.1.6;&lt;/li&gt;
+&lt;li&gt;Also, I use spacemacs, a comprehensive configuration with many
+functions organized as layers.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;org&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.2&lt;/span&gt; Org&lt;/h3&gt;
+
+&lt;p&gt;The Org mode, the killer extension, makes Emacs great again. I surely
+did quite a few customization on Org. However, I use the org layer
+shipped with spacemacs.&lt;/p&gt;
+
+&lt;p&gt;Also, you can &lt;a href=&#34;http://www.howardism.org/Technical/Emacs/orgmode-wordprocessor.html&#34; target=&#34;_blank&#34;&gt;configure Org like a word processor&lt;/a&gt;. Org-bullet package
+make Org mode beautiful. I set Org bullets as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(setq org-bullets-bullet-list &#39;(&amp;quot;✿&amp;quot; &amp;quot;❀&amp;quot; &amp;quot;♣&amp;quot; &amp;quot;♧&amp;quot; ))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As mentioned before, you can export your Org file using several
+formats such as HTML,TeX, PDF, Markdown and so on.&lt;/p&gt;
+
+&lt;p&gt;I use Org writing my own blog through &lt;a href=&#34;https://github.com/kaushalmodi/ox-hugo&#34; target=&#34;_blank&#34;&gt;ox-hugo&lt;/a&gt;. Of course, I use Hugo.
+Why not? Hugo is fast and disk-space-friend. Hugo also has its windows
+distribution. ox-hugo export the org files as markdown files which are
+supported by hugo.&lt;/p&gt;
+
+&lt;p&gt;I use Org to export PDF based on the latex class defined &lt;a href=&#34;https://github.com/emacsun/org-article&#34; target=&#34;_blank&#34;&gt;org-article&lt;/a&gt;
+,which is a latex class I forked from &lt;a href=&#34;https://github.com/tsdye/org-article&#34; target=&#34;_blank&#34;&gt;tsdye/org-article&lt;/a&gt; and added the
+support for Chinese characters. Org-article is a flexible latex class
+and export beautiful PDF with the good-looking fonts and architecture.&lt;/p&gt;
+
+&lt;h3 id=&#34;spell-checking&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.3&lt;/span&gt; Spell Checking&lt;/h3&gt;
+
+&lt;p&gt;Using flyspell, spell checking is easy. There is a layer named
+spell-checking distributed with spacemacs.&lt;/p&gt;
+
+&lt;p&gt;I use aspell instead of ispell. So, I set:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(setq-default ispell-program-name &amp;quot;C:/Aspell/bin/aspell.exe&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course, you have to install aspell and the dictionaries. I use the
+&lt;a href=&#34;http://aspell.net/win32/&#34; target=&#34;_blank&#34;&gt;Win32 version&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Using flyspell mode, you can also insert some word into your personal
+dictionary.&lt;/p&gt;
+
+&lt;h3 id=&#34;moving-around&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.4&lt;/span&gt; Moving around&lt;/h3&gt;
+
+&lt;p&gt;Using Spacemacs, moving around is easy because it has almost all the
+jumping shortcuts used in Vim (if you use the Vim mode in spacemacs).&lt;/p&gt;
+
+&lt;p&gt;On the other hand, using Org, you can jump from headline to headline
+easily. Promoting and demoting a headline is also fast. You can even
+change the head level of a headline using just a few keystrokes.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;tab&lt;/code&gt; key is a useful shortcut to change the face of how the Org
+buffer looks like. I use the &lt;code&gt;tab&lt;/code&gt; key to give me a sketch view of the
+post I am working on. Furthermore, you can even use the narrow
+function to restrict the buffer showing only the section of subsection
+part you are working if your file is getting large and you don&amp;rsquo;t want
+to be distracted by other parts of your article.&lt;/p&gt;
+
+&lt;p&gt;Through the writing of this post, I also using the commands moving
+around sentences and paragraphs often.&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;org0edb567&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&#34;table-caption&#34;&gt;
+  &lt;span class=&#34;table-number&#34;&gt;Table 1:&lt;/span&gt;
+  move around in Org files
+&lt;/div&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;commands&lt;/th&gt;
+&lt;th&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;h,j,k,l&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;the basic Vim keys, need no description&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;0&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;goto the beginning of a line&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;$&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;goto the end of a line&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;M-a&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;goto the beginning of a sentence&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;M-e&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;goto the end of a sentence&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;M-k&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;move a paragraph up&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;M-j&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;move a paragraph down&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;M-{&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;goto the beginning of previous paragraph&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;M-}&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;goto the beginning of next paragraph&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;count-words&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.5&lt;/span&gt; count words&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;count-words&lt;/code&gt; is a command built in Emacs. There is a github
+repository &lt;a href=&#34;https://github.com/LdBeth/advance-words-count.el&#34; target=&#34;_blank&#34;&gt;&amp;ldquo;advance words count&amp;rdquo;&lt;/a&gt; which helps count the CJK word. If
+you write in CJK language, it will be handy.&lt;/p&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; Reference&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.masteringemacs.org/article/how-to-write-a-book-in-emacs&#34; target=&#34;_blank&#34;&gt;how-to-write-a-book-in-emacs&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using Emacs as a calculator through Cals</title>
+      <link>https://zcl.space/tools/calc-in-emacs/</link>
+      <pubDate>Tue, 20 Feb 2018 17:13:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/calc-in-emacs/</guid>
+      <description>
+
+&lt;p&gt;&lt;style&gt;
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+&lt;/style&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#main-features&#34;&gt;Main Features&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#switch-between-the-algebraic-and-rpn-mode&#34;&gt;switch between the algebraic and RPN mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; &lt;a href=&#34;#adding-two-numbers&#34;&gt;adding two numbers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; &lt;a href=&#34;#reference&#34;&gt;reference&lt;/a&gt;
+&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;introduction&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; Introduction&lt;/h2&gt;
+
+&lt;p&gt;In Emacs, execute &lt;code&gt;M-x calc&lt;/code&gt; and you are in a &lt;code&gt;Calc&lt;/code&gt; buffer. At first
+time, perhaps you will be confused how begin. Press &lt;code&gt;?&lt;/code&gt; you will get a
+help manual.&lt;/p&gt;
+
+&lt;p&gt;Normally, Calc uses the RPN (Reverse Polish Notation) notation, which
+is not the natation what I am familiar with. However, It did not take
+me much time to get used to it. Generally, the core of an RPN
+calculator is the stack. A calculator stack is like a stack of dishes.
+New dishes are added at the top of the stack, and numbers are normally
+only removed from the top of the stack. Also, in a RPN calculator,
+operands are always entered first, the operator second. The calculator
+pops the appropriate number of operands from the stack and pushes back
+the result.&lt;/p&gt;
+
+&lt;p&gt;Take &lt;code&gt;2+3&lt;/code&gt; for example, first, you enter 2;second , 3; at last, you
+enter &lt;code&gt;+&lt;/code&gt; . Then the 2 and 3 pops from the stack and 5 are pushed on
+the top of the stack.&lt;/p&gt;
+
+&lt;h2 id=&#34;main-features&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; Main Features&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Choice of algebraic or RPN entry of calculations;&lt;/li&gt;
+&lt;li&gt;Arbitrary precision integers and floating-point numbers.&lt;/li&gt;
+&lt;li&gt;Arithmetic on rational numbers, complex numbers (rectangular and
+polar), error forms with standard deviations, open and closed
+intervals, vectors and matrices, dates and times, infinities, sets,
+quantities with units, and algebraic formulas.&lt;/li&gt;
+&lt;li&gt;Mathematical operations such as logarithms and trigonometric
+functions.&lt;/li&gt;
+&lt;li&gt;Programmer&amp;rsquo;s features (bitwise operations, non-decimal numbers).&lt;/li&gt;
+&lt;li&gt;Financial functions such as future value and internal rate of
+return.&lt;/li&gt;
+&lt;li&gt;Number theoretical features such as prime factorization and
+arithmetic modulo m for any m.&lt;/li&gt;
+&lt;li&gt;Algebraic manipulation features, including symbolic calculus.&lt;/li&gt;
+&lt;li&gt;Moving data to and from regular editing buffers.&lt;/li&gt;
+&lt;li&gt;Embedded mode for manipulating Calc formulas and data directly
+inside any editing buffer.&lt;/li&gt;
+&lt;li&gt;Graphics using GNUPLOT, a versatile (and free) plotting program.&lt;/li&gt;
+&lt;li&gt;Easy programming using keyboard macros, algebraic formulas,
+algebraic rewrite rules, or extended Emacs Lisp.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;From the features listed above, we can see Calc is a versatile
+calculator. It is almost impossible for me to touch all the features
+during daily use. Calc is large and maybe intimidating to the
+first-time user. My knowledge of Calc grows as time goes by. I use
+Calc every time when I want to calculate something. Day by day, I
+learn more and more about Calc.&lt;/p&gt;
+
+&lt;p&gt;This post is the record of my use of Calc.&lt;/p&gt;
+
+&lt;h2 id=&#34;switch-between-the-algebraic-and-rpn-mode&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; switch between the algebraic and RPN mode&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;calc-algebraic-entry&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This command is used to input an expression in the algebraic mode
+temporally. After this the Calc is in RPN mode. When you execute
+the &lt;code&gt;calc-algebraic-entry&lt;/code&gt; the minibuffer will be leading by the
+word &lt;strong&gt;Algebraic:&lt;/strong&gt; instead of &lt;strong&gt;Calc:&lt;/strong&gt;, which is used in the RPN
+mode.&lt;/p&gt;
+
+&lt;p&gt;After the &lt;strong&gt;Algebraic:&lt;/strong&gt; you can enter your algebraic expression.&lt;/p&gt;
+
+&lt;p&gt;In the Calc buffer, press &lt;code&gt;&#39;&lt;/code&gt; also bring you the algebraic mode.
+Press &lt;code&gt;&#39;&lt;/code&gt; two times bring you the last algebraic expression you
+entered.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;calc-algebraic-mode&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This command will turn the Calc into algebraic mode. After calling
+this command, every time you enter something in the Calc buffer,
+the Calc is in the algebraic mode i.e. every time you enter
+something , the minibuffer will be leading &lt;strong&gt;Algebraic:&lt;/strong&gt; . So any
+algebraic expression is accepted. I even try the &lt;code&gt;2 + log10(100)&lt;/code&gt;
+and it returns &lt;code&gt;4&lt;/code&gt; .&lt;/p&gt;
+
+&lt;h2 id=&#34;adding-two-numbers&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; adding two numbers&lt;/h2&gt;
+
+&lt;p&gt;In the RPN mode, you enter the first operand and the second
+operand, at last you enter &lt;code&gt;+&lt;/code&gt; , then the first operand and the
+second operand pops out of the stack and the result is pushed
+back.&lt;/p&gt;
+
+&lt;p&gt;subtraction, multiplication and divide are in a straightforward
+way.&lt;/p&gt;
+
+&lt;h2 id=&#34;reference&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; reference&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://nullprogram.com/blog/2009/06/23/&#34; target=&#34;_blank&#34;&gt;The Emacs Calculator.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gnu.org/software/emacs/manual/html_node/calc/index.html#Top&#34; target=&#34;_blank&#34;&gt;The manual: The GNU Emacs Calculator.&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
       <title>极简欧洲史</title>
       <link>https://zcl.space/life/brief-history-of-europe/</link>
       <pubDate>Mon, 19 Feb 2018 14:39:00 +0800</pubDate>
@@ -498,16 +1295,16 @@ workflow will go the road shown as below whick is the same as show in
 &lt;a href=&#34;http://doc.norang.ca/org-mode.html&#34; target=&#34;_blank&#34;&gt;Organize Your Life In Plain Text&lt;/a&gt; but with different triggering
 conditions:&lt;/p&gt;
 
-&lt;p&gt;&lt;a id=&#34;org60a044f&#34;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a id=&#34;org6e81c32&#34;&gt;&lt;/a&gt;
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://zcl.space/img/tools/20180210myworkflow.png&#34; alt=&#34;state transitions for a task in my workflow&#34; width=&#34;400&#34; /&gt;
+        &lt;img src=&#34;https://zcl.space/img/tools/20180210myworkflow.png&#34; alt=&#34;Figure 1: state transitions for a task in my workflow&#34; width=&#34;400&#34; /&gt;
     
     
     &lt;figcaption&gt;
         &lt;p&gt;
-        state transitions for a task in my workflow
+        Figure 1: state transitions for a task in my workflow
         
             
         
@@ -701,16 +1498,16 @@ are interested in my .spacemacs.d&lt;/p&gt;
 &lt;p&gt;According to the command, one of the sample of my org agenda may look
 like:&lt;/p&gt;
 
-&lt;p&gt;&lt;a id=&#34;orgce6e879&#34;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a id=&#34;orgb6363e7&#34;&gt;&lt;/a&gt;
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda.png&#34; alt=&#34;my org agenda sample&#34; width=&#34;900&#34; /&gt;
+        &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda.png&#34; alt=&#34;Figure 2: my org agenda sample&#34; width=&#34;900&#34; /&gt;
     
     
     &lt;figcaption&gt;
         &lt;p&gt;
-        my org agenda sample
+        Figure 2: my org agenda sample
         
             
         
@@ -751,16 +1548,16 @@ projects,  tasks with &lt;code&gt;TODO&lt;/code&gt; and &lt;code&gt;NEXT&lt;/cod
 give me an overview of what should be done next and what should be
 started next.&lt;/p&gt;
 
-&lt;p&gt;&lt;a id=&#34;org44a51bf&#34;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a id=&#34;orgb1042c6&#34;&gt;&lt;/a&gt;
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda2.png&#34; alt=&#34;my org agenda overview&#34; width=&#34;900&#34; /&gt;
+        &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda2.png&#34; alt=&#34;Figure 3: my org agenda overview&#34; width=&#34;900&#34; /&gt;
     
     
     &lt;figcaption&gt;
         &lt;p&gt;
-        my org agenda overview
+        Figure 3: my org agenda overview
         
             
         
@@ -806,16 +1603,16 @@ project at one time. Just move the cursor on the Project you want to
 focus, then press &lt;code&gt;^&lt;/code&gt; . If you want to focus on another project, press
 &lt;code&gt;^&lt;/code&gt; again then select another project, press &lt;code&gt;^&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;a id=&#34;org0626b05&#34;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a id=&#34;org88f3fa1&#34;&gt;&lt;/a&gt;
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda3.png&#34; alt=&#34;focus on certain project&#34; width=&#34;900&#34; /&gt;
+        &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda3.png&#34; alt=&#34;Figure 4: focus on certain project&#34; width=&#34;900&#34; /&gt;
     
     
     &lt;figcaption&gt;
         &lt;p&gt;
-        focus on certain project
+        Figure 4: focus on certain project
         
             
         
@@ -828,7 +1625,7 @@ focus, then press &lt;code&gt;^&lt;/code&gt; . If you want to focus on another p
 &lt;p&gt;Actually, there are quite a few commands helping you coin your own
 view of the agenda buffer. some handy are listed below:&lt;/p&gt;
 
-&lt;p&gt;&lt;a id=&#34;org22a9818&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;org2b4b0ac&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&#34;table-caption&#34;&gt;
   &lt;span class=&#34;table-number&#34;&gt;Table 1:&lt;/span&gt;
@@ -1467,25 +2264,30 @@ which are out of this post&amp;rsquo;s scope.&lt;/p&gt;
       <guid>https://zcl.space/tools/my-blog-workflow/</guid>
       <description>
 
+&lt;p&gt;&lt;style&gt;
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+&lt;/style&gt;
 &lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
-&lt;div&gt;&lt;/div&gt;
+&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#writing-with-emacs-org-publish&#34;&gt;Writing with Emacs Org publish&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#writing-with-hugo&#34;&gt;Writing with Hugo&lt;/a&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#writing-with-emacs-org-publish&#34;&gt;Writing with Emacs Org publish&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#writing-with-hugo&#34;&gt;Writing with Hugo&lt;/a&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#architecture-of-the-site&#34;&gt;architecture of the site&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.1&lt;/span&gt; &lt;a href=&#34;#architecture-of-the-site&#34;&gt;architecture of the site&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#settings-for-ox-hugo&#34;&gt;Settings for ox-hugo&lt;/a&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#settings-for-ox-hugo&#34;&gt;Settings for ox-hugo&lt;/a&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#settings-for-each-section-based-on-ox-hugo&#34;&gt;settings for each section based on ox-hugo&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#settings-for-each-article-based-on-ox-hugo&#34;&gt;settings for each article based on ox-hugo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.1&lt;/span&gt; &lt;a href=&#34;#settings-for-each-section-based-on-ox-hugo&#34;&gt;settings for each section based on ox-hugo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.2&lt;/span&gt; &lt;a href=&#34;#settings-for-each-article-based-on-ox-hugo&#34;&gt;settings for each article based on ox-hugo&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#settings-for-hugo-themes&#34;&gt;Settings for Hugo themes&lt;/a&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; &lt;a href=&#34;#settings-for-hugo-themes&#34;&gt;Settings for Hugo themes&lt;/a&gt;
 &lt;/div&gt;
 &lt;!--endtoc--&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -1501,7 +2303,7 @@ project bridging Emacs org and Hugo markdown. Ox-hugo allows you to write
 your blog using Emacs Org then publish them in the markdwon format
 automatically.&lt;/p&gt;
 
-&lt;h2 id=&#34;writing-with-emacs-org-publish&#34;&gt;Writing with Emacs Org publish&lt;/h2&gt;
+&lt;h2 id=&#34;writing-with-emacs-org-publish&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; Writing with Emacs Org publish&lt;/h2&gt;
 
 &lt;p&gt;It&amp;rsquo;s easy to build a static website using &lt;a href=&#34;https://orgmode.org/manual/Publishing.html&#34; target=&#34;_blank&#34;&gt;Emacs Org&lt;/a&gt;. &lt;a href=&#34;https://orgmode.org/worg/&#34; target=&#34;_blank&#34;&gt;Worg&lt;/a&gt;, the Org-mode
 community, also have comprehensive tutorials about using Org to build your
@@ -1513,7 +2315,7 @@ high-quality articles on the Worg.&lt;/p&gt;
 &lt;code&gt;org-publish-project-alist&lt;/code&gt; . Of course, if you want your site beautiful,
 some knowledge about CSS and JavaScript is necessary.&lt;/p&gt;
 
-&lt;h2 id=&#34;writing-with-hugo&#34;&gt;Writing with Hugo&lt;/h2&gt;
+&lt;h2 id=&#34;writing-with-hugo&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; Writing with Hugo&lt;/h2&gt;
 
 &lt;p&gt;Now, I moved from the Emacs built-in publishing system to Hugo because of
 Hugo&amp;rsquo;s efficiency and flexibility. You can build your static site in just a
@@ -1535,7 +2337,7 @@ tool which I will not give up and highly recommend it.&lt;/p&gt;
 &lt;p&gt;Especially, there is tons of themes for you. Also, you can set up your own
 theme.&lt;/p&gt;
 
-&lt;h3 id=&#34;architecture-of-the-site&#34;&gt;architecture of the site&lt;/h3&gt;
+&lt;h3 id=&#34;architecture-of-the-site&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.1&lt;/span&gt; architecture of the site&lt;/h3&gt;
 
 &lt;p&gt;Using &lt;code&gt;hugo&lt;/code&gt; , there is a default architecture. Using &lt;code&gt;ox-hugo&lt;/code&gt; , I store
 the Org file in the subdirectory &lt;code&gt;content-org&lt;/code&gt; . There are several sections
@@ -1545,16 +2347,16 @@ article on &lt;em&gt;mathematical analysis&lt;/em&gt; in the file named &lt;code
 so that after exporting, the markdown file will be put in the subdirectory
 &lt;code&gt;content/math/&lt;/code&gt; .&lt;/p&gt;
 
-&lt;p&gt;&lt;a id=&#34;orgd0a639c&#34;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a id=&#34;org799910a&#34;&gt;&lt;/a&gt;
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://zcl.space/tools/20180126HugoArchitecture.png&#34; alt=&#34;architecture of Hugo project&#34; width=&#34;400&#34; /&gt;
+        &lt;img src=&#34;https://zcl.space/tools/20180126HugoArchitecture.png&#34; alt=&#34;Figure 1: architecture of Hugo project&#34; width=&#34;400&#34; /&gt;
     
     
     &lt;figcaption&gt;
         &lt;p&gt;
-        architecture of Hugo project
+        Figure 1: architecture of Hugo project
         
             
         
@@ -1564,9 +2366,9 @@ so that after exporting, the markdown file will be put in the subdirectory
 &lt;/figure&gt;
 &lt;/p&gt;
 
-&lt;h2 id=&#34;settings-for-ox-hugo&#34;&gt;Settings for ox-hugo&lt;/h2&gt;
+&lt;h2 id=&#34;settings-for-ox-hugo&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; Settings for ox-hugo&lt;/h2&gt;
 
-&lt;h3 id=&#34;settings-for-each-section-based-on-ox-hugo&#34;&gt;settings for each section based on ox-hugo&lt;/h3&gt;
+&lt;h3 id=&#34;settings-for-each-section-based-on-ox-hugo&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3.1&lt;/span&gt; settings for each section based on ox-hugo&lt;/h3&gt;
 
 &lt;p&gt;As mentioned before, there are several sections for my site and I use
 ox-hugo to handle articles for this sections. In the subdirectory
@@ -1607,7 +2409,7 @@ section.) On table of contents, ox-hugo has an &lt;a href=&#34;https://ox-hugo.s
 is modified.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h3 id=&#34;settings-for-each-article-based-on-ox-hugo&#34;&gt;settings for each article based on ox-hugo&lt;/h3&gt;
+&lt;h3 id=&#34;settings-for-each-article-based-on-ox-hugo&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3.2&lt;/span&gt; settings for each article based on ox-hugo&lt;/h3&gt;
 
 &lt;p&gt;I use the &lt;code&gt;org-capture&lt;/code&gt; to start a article. The emacs-lisp:&lt;/p&gt;
 
@@ -1667,7 +2469,7 @@ See `org-capture-templates&#39; for more information.&amp;quot;
 &lt;p&gt;One more point, it is awesome to preview each article after saveing it.
 Yes! you can do it according &lt;a href=&#34;https://ox-hugo.scripter.co/doc/auto-export-on-saving&#34; target=&#34;_blank&#34;&gt;this article&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;settings-for-hugo-themes&#34;&gt;Settings for Hugo themes&lt;/h2&gt;
+&lt;h2 id=&#34;settings-for-hugo-themes&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; Settings for Hugo themes&lt;/h2&gt;
 
 &lt;p&gt;Now, there are more than 190+ &lt;a href=&#34;https://themes.gohugo.io/&#34; target=&#34;_blank&#34;&gt;themes&lt;/a&gt; for Hugo. It is pretty straightforward
 to &lt;a href=&#34;https://gohugo.io/themes/&#34; target=&#34;_blank&#34;&gt;install and config&lt;/a&gt; a theme as you wish. I prefer the &lt;a href=&#34;https://sourcethemes.com/academic/&#34; target=&#34;_blank&#34;&gt;Academic theme&lt;/a&gt; which I
