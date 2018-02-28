@@ -167,7 +167,7 @@
     
     <url>
     
-      <loc>https://zcl.space/project/deep-learning/</loc>
+      <loc>https://zcl.space/project/spacemacs_external/</loc>
       <lastmod>2016-04-27T00:00:00+00:00</lastmod>
     </url>
     
@@ -176,7 +176,25 @@
     
     <url>
     
-      <loc>https://zcl.space/project/example-external-project/</loc>
+      <loc>https://zcl.space/project/reading/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/project/search/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/project/sort/</loc>
       <lastmod>2016-04-27T00:00:00+00:00</lastmod>
     </url>
     
@@ -223,6 +241,16 @@
     
     <url>
     
+      <loc>https://zcl.space/tags/algorithm/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://zcl.space/tags/calc/</loc>
       <lastmod>2018-02-21T09:18:00+08:00</lastmod>
       <priority>0</priority>
@@ -242,27 +270,17 @@
     
     <url>
     
-      <loc>https://zcl.space/tags/deep-learning/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://zcl.space/tags/demo/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://zcl.space/tags/diary/</loc>
+      <lastmod>2018-02-21T10:22:00+08:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/categories/emacs/</loc>
       <lastmod>2018-02-21T10:22:00+08:00</lastmod>
       <priority>0</priority>
     </url>
@@ -282,16 +300,6 @@
     
     <url>
     
-      <loc>https://zcl.space/categories/emacs/</loc>
-      <lastmod>2018-02-21T10:22:00+08:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://zcl.space/tags/europe/</loc>
       <lastmod>2018-02-19T14:45:00+08:00</lastmod>
       <priority>0</priority>
@@ -302,7 +310,7 @@
     
     <url>
     
-      <loc>https://zcl.space/tags/git/</loc>
+      <loc>https://zcl.space/categories/git/</loc>
       <lastmod>2018-02-21T09:18:00+08:00</lastmod>
       <priority>0</priority>
     </url>
@@ -312,7 +320,7 @@
     
     <url>
     
-      <loc>https://zcl.space/categories/git/</loc>
+      <loc>https://zcl.space/tags/git/</loc>
       <lastmod>2018-02-21T09:18:00+08:00</lastmod>
       <priority>0</priority>
     </url>
@@ -362,8 +370,8 @@
     
     <url>
     
-      <loc>https://zcl.space/tags/life/</loc>
-      <lastmod>2018-02-19T14:45:00+08:00</lastmod>
+      <loc>https://zcl.space/categories/life/</loc>
+      <lastmod>2018-02-19T14:43:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -372,8 +380,8 @@
     
     <url>
     
-      <loc>https://zcl.space/categories/life/</loc>
-      <lastmod>2018-02-19T14:43:00+08:00</lastmod>
+      <loc>https://zcl.space/tags/life/</loc>
+      <lastmod>2018-02-19T14:45:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -422,8 +430,8 @@
     
     <url>
     
-      <loc>https://zcl.space/tags/reading/</loc>
-      <lastmod>2018-02-19T14:43:00+08:00</lastmod>
+      <loc>https://zcl.space/categories/reading/</loc>
+      <lastmod>2018-02-19T14:45:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -432,8 +440,38 @@
     
     <url>
     
-      <loc>https://zcl.space/categories/reading/</loc>
-      <lastmod>2018-02-19T14:45:00+08:00</lastmod>
+      <loc>https://zcl.space/tags/reading/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/tags/reading/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/tags/sort/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/tags/spacemacs/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -452,16 +490,6 @@
     
     <url>
     
-      <loc>https://zcl.space/tags/telecommunication/</loc>
-      <lastmod>2018-02-07T22:26:00+08:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://zcl.space/categories/telecommunication/</loc>
       <lastmod>2018-02-07T22:26:00+08:00</lastmod>
       <priority>0</priority>
@@ -472,8 +500,8 @@
     
     <url>
     
-      <loc>https://zcl.space/tags/tools/</loc>
-      <lastmod>2018-02-21T10:22:00+08:00</lastmod>
+      <loc>https://zcl.space/tags/telecommunication/</loc>
+      <lastmod>2018-02-07T22:26:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -484,6 +512,16 @@
     
       <loc>https://zcl.space/categories/tools/</loc>
       <lastmod>2018-02-21T09:18:00+08:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/tags/tools/</loc>
+      <lastmod>2018-02-21T10:22:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
