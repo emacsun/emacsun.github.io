@@ -11,9 +11,265 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Repeated Tasks in Emacs Org</title>
+      <link>https://zcl.space/tools/repeated-tasks-in-emacs-org/</link>
+      <pubDate>Sun, 04 Mar 2018 09:32:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/repeated-tasks-in-emacs-org/</guid>
+      <description>
+
+&lt;p&gt;&lt;style&gt;
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+&lt;/style&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#repeater-in-org&#34;&gt;Repeater in Org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#a-special-repeater&#34;&gt;a special repeater&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#the-dot-repeater&#34;&gt;the &lt;code&gt;.+&lt;/code&gt; repeater&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; &lt;a href=&#34;#repeated-period&#34;&gt;repeated period&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/p&gt;
+
+&lt;p&gt;Timestamps in Emacs Org are easy. Setting timestamps for repeated
+tasks are more interesting. It is quite often in daily life that some
+tasks will be repeated day by day, such as having lunch and afternoon
+nap, taking exercise. Org has a repeater in a task with a deadline or
+scheduled.&lt;/p&gt;
+
+&lt;h2 id=&#34;repeater-in-org&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; Repeater in Org&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;**TODO take a noon nap
+DEADLINE:&amp;lt;2018-03-04 Sun 12:30 +1d&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;+1d&lt;/code&gt; is a time repeater. The task &lt;code&gt;take a noon nap&lt;/code&gt; is intened to be done
+every day at 12:30. The interesting part is that everytime the state
+of the task is changed from TODO to DONE. The task will be changed to
+TODO again with the timestamp changed for the next day automatically.
+For the user, you will never see the DONE state. The task with a
+repeater is always in TODO state.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;d&lt;/code&gt; in &lt;code&gt;+1d&lt;/code&gt; means day. In a straightforward way, it can be &lt;code&gt;h&lt;/code&gt;  for
+an hour, &lt;code&gt;w&lt;/code&gt; for a week, &lt;code&gt;m&lt;/code&gt; for a month, &lt;code&gt;y&lt;/code&gt; for a year.&lt;/p&gt;
+
+&lt;p&gt;Deadlines and scheduled items generate an agenda item. If you want to
+be warned before a period you can add a warning period in the
+timestamp.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;**TODO take a noon nap
+DEADLINE:&amp;lt;2018-03-04 Sun 12:30 +1d -10m&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;-3h&lt;/code&gt; means that the task will appear ten minutes before 12:30.  For a
+traditional task with a TODO having a deadline or scheduled time, once
+it was done, the item will disappear from the agenda. However, for a
+task with a repeater, Org will increase the date of the timestamp by
+the interval indicated by the repeater then set the task to TODO state
+immediately. The task will appear in all the agenda from the timestamp
+on.&lt;/p&gt;
+
+&lt;h2 id=&#34;a-special-repeater&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; a special repeater&lt;/h2&gt;
+
+&lt;p&gt;For &lt;code&gt;+1d&lt;/code&gt; the repeater will always adding one day every time you change
+the task from TODO to DONE. However, for the task like taking a nap,
+having a deadline at 2018-03-04, if you forget to change it from TODO
+to DONE on 2018-03-04 and you do this on 2018-03-05, The timestamp
+will not change to 2018-03-06. It will be 2018-03-05, this is werid
+because you have already done the task on 2018-03-05. You have to
+chage the task from TODO to DONE again so that the deadline timestamp
+will be 2018-03-06.&lt;/p&gt;
+
+&lt;p&gt;For the scenario mentioned above, Org has repeaters with a special
+format &lt;code&gt;++&lt;/code&gt;  and &lt;code&gt;.+&lt;/code&gt; .&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;**TODO take a noon nap
+DEADLINE:&amp;lt;2018-03-04 Sun 12:30 ++1d&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With &lt;code&gt;++1d&lt;/code&gt; the deadline of a repeated task will always be tomorrow
+everytime you change the state from TODO to DONE even you forget to
+finish it several times.&lt;/p&gt;
+
+&lt;p&gt;Actually, this kind of task is quite common in daily life. Taking
+calling your father weakly for example, if you forget to call him
+three weeks, it is impossible to call him three times in a week to
+make things up.&lt;/p&gt;
+
+&lt;h2 id=&#34;the-dot-repeater&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; the &lt;code&gt;.+&lt;/code&gt; repeater&lt;/h2&gt;
+
+&lt;p&gt;Similar with &lt;code&gt;++&lt;/code&gt; , &lt;code&gt;.+&lt;/code&gt; will shift the date to the future after &lt;strong&gt;today&lt;/strong&gt; .
+Take the following task for example,&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;**TODO pay the telephone fee
+DEADLINE: &amp;lt;2018-03-04 Sun 09:17 .+1m&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you finish this task on 2018-03-01, Org will shift the task like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;**TODO pay the telephone fee
+DEADLINE: &amp;lt;2018-04-01 Sun 09:17 .+1m&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;repeated-period&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; repeated period&lt;/h2&gt;
+
+&lt;p&gt;Sometimes, you know how long the repeated task will last. Take the
+noon nap for example, usually I will set up a alarm to wake me up half
+an hour later. So, I can set the task with repeated period instead of
+repeated timestamp.&lt;/p&gt;
+
+&lt;p&gt;So the noon nap event will be like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;**TODO take a noon nap
+SCHEDULE:&amp;lt;2018-03-04 Sun 12:30-13:30 ++1d&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will schedule a noon nap every day from 12:30 to 13:00.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Extends Emacs Org Mode on iOS Device</title>
+      <link>https://zcl.space/tools/using-emacs-org-mode-on-ios-device/</link>
+      <pubDate>Sun, 04 Mar 2018 09:31:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/using-emacs-org-mode-on-ios-device/</guid>
+      <description>
+
+&lt;p&gt;&lt;style&gt;
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+&lt;/style&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#beorg&#34;&gt;BeOrg&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#drafts&#34;&gt;Drafts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#dropbox&#34;&gt;Dropbox&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/p&gt;
+
+&lt;p&gt;I use two APPs &lt;a href=&#34;https://itunes.apple.com/us/app/beorg/id1238649962?mt=8&#34; target=&#34;_blank&#34;&gt;BeOrg&lt;/a&gt; and &lt;a href=&#34;https://itunes.apple.com/us/app/drafts-quick-capture/id905337691?mt=8&#34; target=&#34;_blank&#34;&gt;Drafts&lt;/a&gt; as Org&amp;rsquo;s extension on my iOS device.
+Oh, almost foget it. Another one: dropbox. Beorg and Drafts stores the
+captures of ideas into dropbox. I retrive them when I am home on
+Windows 10 using my Surface Pro.&lt;/p&gt;
+
+&lt;p&gt;The relationship among all the APPs I mentioned above is like&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;org719fbfe&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://zcl.space/img/tools/20180225orgmobile.png&#34; alt=&#34;Figure 1: My using of Org mode through mobile device&#34; width=&#34;600&#34; /&gt;
+    
+    
+    &lt;figcaption&gt;
+        &lt;p&gt;
+        Figure 1: My using of Org mode through mobile device
+        
+            
+        
+        &lt;/p&gt; 
+    &lt;/figcaption&gt;
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Actually, I also tried another APP named MobileOrg, but dislike it
+because of its inflexibility ,boring GUI and hard-to-config. The
+combination of Beorg and Drafts works well for me with their playing
+each&amp;rsquo;s own role.&lt;/p&gt;
+
+&lt;h2 id=&#34;beorg&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; BeOrg&lt;/h2&gt;
+
+&lt;p&gt;Using BeOrg, I only capture a TODO. I leave capturing a note to Drafts
+which is good at notes.&lt;/p&gt;
+
+&lt;p&gt;One screenshot of Beorg is shown as:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://zcl.space/img/tools/20180225beorg.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;The green button is used to add a todo capture. As you can see, Beorg
+can also read the todos from your iOS calendar (I am sorry for whom
+cannot read Chinese. That item in Chinese comes from iOS calendar
+reminding me to pick up the magazines and newspaper).&lt;/p&gt;
+
+&lt;p&gt;By default, Beorg display the week agenda. The TODO states are also
+can be customized. I set the file synchronization method as dropbox
+and set the org directory which is shared with Drafts and my windows.
+So I can keep the org files consistent.&lt;/p&gt;
+
+&lt;p&gt;Beorg also has an option for quick capture. Naturally, I also set it
+as the inbox of my Org mode on Drafts and Windows. You can also
+control the vivibility of your iOS calendars, i.e. which part shoule
+be integrated into BeOrg agenda view, the family? personal? work? You
+name it, as you wish.&lt;/p&gt;
+
+&lt;h2 id=&#34;drafts&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; Drafts&lt;/h2&gt;
+
+&lt;p&gt;Drafts is the most efficient tool for taking a note. All you need is
+to focus on writing. Furthermore, you can even export your notes to
+way many other APPs such as evernote, markdown, oneDrive, google drive
+and so on. There are tons of commands available on the &lt;a href=&#34;http://drafts4-actions.agiletortoise.com/&#34; target=&#34;_blank&#34;&gt;action
+directory of Drafts&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Combined with dropbox, I config several commands of my own. One
+screenshot is like:&lt;/p&gt;
+
+
+&lt;figure &gt;
+    
+        &lt;img src=&#34;https://zcl.space/img/tools/20180225drafts.png&#34; /&gt;
+    
+    
+&lt;/figure&gt;
+
+
+&lt;p&gt;Take my command &lt;code&gt;Drafts TODO BeOrg&lt;/code&gt; for example, the step is append
+files on Dropbox and the content is shown as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt; * TODO  [[title]]
+SCHEDULED: &amp;lt;[[created|%Y-%m-%d %a]]&amp;gt;
+[[body]]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that, I set the format of creating timestamp the same as Emacs
+Org so that Emacs Org can follow the todo from Drafts.&lt;/p&gt;
+
+&lt;p&gt;Of course, you can define your own command in Drafts just read the document.&lt;/p&gt;
+
+&lt;h2 id=&#34;dropbox&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; Dropbox&lt;/h2&gt;
+
+&lt;p&gt;The configuration of Dropbox is easy. All you have todo is to put the
+org files in a directory where Beorg, Drafts and Windows knows.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Take a Diary Using Emacs Org</title>
       <link>https://zcl.space/tools/take-a-diary-using-emacs-org/</link>
-      <pubDate>Wed, 21 Feb 2018 09:03:00 +0800</pubDate>
+      <pubDate>Sun, 25 Feb 2018 19:47:00 +0800</pubDate>
       
       <guid>https://zcl.space/tools/take-a-diary-using-emacs-org/</guid>
       <description>
@@ -30,28 +286,32 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#set-up&#34;&gt;Set up&lt;/a&gt;
-&lt;/div&gt;
-&lt;!--endtoc--&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#set-up&#34;&gt;Set up&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;introduction&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; Introduction&lt;/h2&gt;
 
 &lt;p&gt;There is one diary system built in Emacs. When you are in the
 Calendar buffer, press &lt;code&gt;i&lt;/code&gt; will bring you a menu to select what
 kind of diary you want to take. However, as a loyal fan of Emacs
-Org, I want to take diary using Org. When I am in the org agenda
-buffer, press &lt;code&gt;i&lt;/code&gt; will bring me a menu like what show in the
-calendar buffer after pressing &lt;code&gt;i&lt;/code&gt;.&lt;/p&gt;
+Org, I want to take diary using Org.&lt;/p&gt;
+
+&lt;p&gt;When I am in the org agenda buffer, press &lt;code&gt;i&lt;/code&gt; will bring me a menu
+like what show in the calendar buffer after pressing &lt;code&gt;i&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;set-up&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; Set up&lt;/h2&gt;
 
-&lt;p&gt;It seems that all you need to do is set the
-  &lt;code&gt;org-agenda-diary-file&lt;/code&gt;, so that Org knows where to put the
-  diary file.&lt;/p&gt;
+&lt;p&gt;It seems that all you need to do is set the &lt;code&gt;org-agenda-diary-file&lt;/code&gt;,
+  so that Org knows where to put the diary file.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(setq org-agenda-diary-file  &amp;quot;~/zorg/Dropbox/base/zdiary.org&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After this, everything is left for Org mode. All you have to do
+is writing your diary.&lt;/p&gt;
 </description>
     </item>
     
@@ -1197,10 +1457,11 @@ way.&lt;/p&gt;
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.2&lt;/span&gt; &lt;a href=&#34;#第二次波粒世界大战&#34;&gt;第二次波粒世界大战&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.3&lt;/span&gt; &lt;a href=&#34;#第三次波粒世界大战&#34;&gt;第三次波粒世界大战&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#杂记&#34;&gt;杂记&lt;/a&gt;
-&lt;/div&gt;
-&lt;!--endtoc--&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#杂记&#34;&gt;杂记&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;简介&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; 简介&lt;/h2&gt;
 
@@ -2660,26 +2921,6 @@ In the Kickstart way, Academic is installed as a Git sub-module.&lt;/p&gt;
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://zcl.space/project/reading/</guid>
-      <description>&lt;p&gt;the test of project.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Search</title>
-      <link>https://zcl.space/project/search/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zcl.space/project/search/</guid>
-      <description>&lt;p&gt;the test of project2.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Sort</title>
-      <link>https://zcl.space/project/sort/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zcl.space/project/sort/</guid>
       <description>&lt;p&gt;the test of project.&lt;/p&gt;
 </description>
     </item>
