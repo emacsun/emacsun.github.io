@@ -11,6 +11,136 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>toeplitz matrix</title>
+      <link>https://zcl.space/math/toeplitz-matrix/</link>
+      <pubDate>Wed, 14 Mar 2018 19:53:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/math/toeplitz-matrix/</guid>
+      <description>
+
+&lt;p&gt;&lt;style&gt;
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+&lt;/style&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#toeplitz-matrices&#34;&gt;Toeplitz Matrices&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#some-asymptotic-properties-of-matrices&#34;&gt;Some Asymptotic Properties of Matrices&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.1&lt;/span&gt; &lt;a href=&#34;#eigenvalues&#34;&gt;Eigenvalues&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/p&gt;
+
+&lt;p&gt;For such a long time, I have it on my list to write something for
+Toeplitz matrix. I want to derive the fundamental theorems on the
+asymptotic behavvior of eigenvalues, inverses, and products of banded
+Toeplitz matrices. To achieve this goal, I read the famous paper
+&lt;em&gt;Toeplitz and Circulant Matrices: A review&lt;/em&gt; by Robert M. Gray
+&lt;sup id=&#34;ac945247a9e861b9ce0958daa357b943&#34;&gt;&lt;a href=&#34;#Gray_2005&#34; title=&#34;Gray, Toeplitz and Circulant Matrices: A Review, {Foundations and Trends&amp;#174; in Communications and Information
+                  Theory}, v(3), 155&amp;#8211;239 (2005).&#34;&gt;Gray_2005&lt;/a&gt;&lt;/sup&gt; . I am fond of matrices with the style like Toeplitz
+matrices imagining that there must be something special existing in
+the square matrices. During writing this post, Matlab is also used to
+finish some mathematical test.&lt;/p&gt;
+
+&lt;h2 id=&#34;toeplitz-matrices&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; Toeplitz Matrices&lt;/h2&gt;
+
+&lt;p&gt;A Toeplitz matrix \(T\) is an square matrix with size \(n\times n\).
+\(T_{n} = [t_{k,j}; k,j= 0,1,\ldots,n-1]\) where \(t_{k,j} =
+t_{k-j}\).&lt;/p&gt;
+
+&lt;p&gt;In matrix form, A toeplitz matrix can be expressed as:&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\label{eq:1}
+T_{n} =
+\begin{pmatrix}
+t_{0} &amp;amp; t_{-1} &amp;amp; t_{-2} &amp;amp;\ldots &amp;amp; t_{-(n-1)} \\&lt;br /&gt;
+t_{1} &amp;amp; t_{0}  &amp;amp; t_{-1} &amp;amp; \ldots &amp;amp;\vdots \\&lt;br /&gt;
+t_{2} &amp;amp; t_{1}  &amp;amp; t_{0} &amp;amp; \ldots &amp;amp;\vdots \\&lt;br /&gt;
+\vdots &amp;amp; \vdots &amp;amp;\vdots &amp;amp; \ddots &amp;amp; \vdots \\&lt;br /&gt;
+t_{n-1} &amp;amp; \ldots &amp;amp; \ldots &amp;amp; \ldots &amp;amp; t_{0}
+\end{pmatrix}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;Because we dive into the details of Toeplitz matrix, some keypoints of
+matrices are recaptured, such as the eigenvalues, Norms and
+asymptotically equivalent matrices.&lt;/p&gt;
+
+&lt;h2 id=&#34;some-asymptotic-properties-of-matrices&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; Some Asymptotic Properties of Matrices&lt;/h2&gt;
+
+&lt;p&gt;Most often, we can study the asymptotic behavior of complicated
+matrices by studying a more structured and simplier asymptotically
+equivalent matirx. This method is used in many fields. A toy model is
+studied comprehensively before a more complicated one comes in.&lt;/p&gt;
+
+&lt;h3 id=&#34;eigenvalues&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.1&lt;/span&gt; Eigenvalues&lt;/h3&gt;
+
+&lt;p&gt;Scalor \(\alpha\) and vector \(x\) satisfied \(Ax = \alpha x\) are
+called the eigenvalue and the corresponding eigenvector. We can get
+the eigenvalues by solving&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\label{eq:2}
+\det(A-\alpha I) = 0
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;For the sake of simplicity, we assume that the eigenvalues are ordered
+in noincreasing format, i.e. \(\alpha_{1} &amp;gt; \alpha_{2} &amp;gt; \ldots \).&lt;/p&gt;
+
+&lt;p&gt;Any complex matrix \(A\) can be written as:&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\label{eq:3}
+A = URU^{*}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;where the asterisk \(*\) denotes conjugate transpose, \(U\) is
+unitary, i.e., \(U^{-1} = U^{*}\) and \(R\) is  an upper triangular
+matrix. The eigenvalues of \(A\) are the principle diagonal elements
+of \(R\). if \(A\) is normal, i.e. if\(A^{*}A = AA^{*}\), then \(R\) is
+a diagonal matrix, which we denote as \(R = diag(\alpha_{k})\). If
+\(A\) is Hermitian, i.e. if \(A^{*} = A\), then the eigenvalues are
+real. If a matrix is Hermitian, then it is also normal.&lt;/p&gt;
+
+&lt;p&gt;For the case of Hermitian matrices, a useful description of the
+eigenvalues is the variational description given by the
+Courant-Fischer theorem.&lt;/p&gt;
+
+&lt;div class=&#34;corollary&#34;&gt;
+&lt;div&gt;&lt;/div&gt;
+
+&lt;p&gt;Define the Rayleigh quotient of an Hermitian matrix \(X\) and a vector
+(complex \(n\)-tuple ) x by&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\label{eq:4}
+R_{H}(x) = (x^{*}Hx)/ (x^{*}x)
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;Let \(\eta_{M}\) and \(\eta_{m}\) be the maximum and minimum
+eigenvalues of \(H\), respectively.&lt;/p&gt;
+
+&lt;p&gt;Then&lt;/p&gt;
+
+&lt;p&gt;\begin{eqnarray}
+\label{eq:5}
+\eta_{m}&amp;amp;=&amp;amp; \min_{x} R_{H}(x) = \min_{x:x^{*}x = 1} x^{*}Hx \\&lt;br /&gt;
+\eta_{M}&amp;amp;=&amp;amp; \max_{x} R_{H}(x) = \max_{x:x^{* }x = 1} x^{*}Hx
+\end{eqnarray}
+&lt;/div&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Repeated Tasks in Emacs Org</title>
       <link>https://zcl.space/tools/repeated-tasks-in-emacs-org/</link>
       <pubDate>Sun, 04 Mar 2018 09:32:00 +0800</pubDate>
@@ -2916,16 +3046,6 @@ In the Kickstart way, Academic is installed as a Git sub-module.&lt;/p&gt;
       
       <guid>https://zcl.space/project/spacemacs_external/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Reading</title>
-      <link>https://zcl.space/project/reading/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://zcl.space/project/reading/</guid>
-      <description>&lt;p&gt;the test of project.&lt;/p&gt;
-</description>
     </item>
     
   </channel>
