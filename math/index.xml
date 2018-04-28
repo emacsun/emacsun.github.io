@@ -11,6 +11,16 @@
     <atom:link href="/math/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>linear algebra done right</title>
+      <link>https://zcl.space/math/linear-algebra-done-right/</link>
+      <pubDate>Sat, 28 Apr 2018 22:00:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/math/linear-algebra-done-right/</guid>
+      <description>&lt;p&gt;By far, the best tutorial I read on linear algebra.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>toeplitz matrix</title>
       <link>https://zcl.space/math/toeplitz-matrix/</link>
       <pubDate>Wed, 14 Mar 2018 19:53:00 +0800</pubDate>
@@ -34,6 +44,7 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.1&lt;/span&gt; &lt;a href=&#34;#eigenvalues&#34;&gt;Eigenvalues&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.2&lt;/span&gt; &lt;a href=&#34;#matrix-norms&#34;&gt;Matrix Norms&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -119,7 +130,7 @@ Courant-Fischer theorem.&lt;/p&gt;
 &lt;div&gt;&lt;/div&gt;
 
 &lt;p&gt;Define the Rayleigh quotient of an Hermitian matrix \(X\) and a vector
-(complex \(n\)-tuple ) x by&lt;/p&gt;
+(complex \(n\)-tuple ) \(x\) by&lt;/p&gt;
 
 &lt;p&gt;\begin{equation}
 \label{eq:4}
@@ -137,6 +148,94 @@ eigenvalues of \(H\), respectively.&lt;/p&gt;
 \eta_{M}&amp;amp;=&amp;amp; \max_{x} R_{H}(x) = \max_{x:x^{* }x = 1} x^{*}Hx
 \end{eqnarray}
 &lt;/div&gt;&lt;/p&gt;
+
+&lt;p&gt;This corollary will be useful in specifying the interval containing
+the eigenvalues of an Hermitian matrix.&lt;/p&gt;
+
+&lt;p&gt;The following lemma is usefull when studying non-Hermitian matrices
+and products of Hermitian matrices.&lt;/p&gt;
+
+&lt;p&gt;Let \(A\) be a matrix with eigenvalues \(\alpha_{k}\). Define the
+eigenvalues of the Hermitian matrix \(A^{*}A\) to be \(\lambda_{k}\).
+Then:&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\label{eq:6}
+\sum_{k=0}^{n-1} \lambda_{k} \geq \sum_{k=0}^{n-1}|\alpha_{k}|^{2}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;with equality iff \(A\) is normal.&lt;/p&gt;
+
+&lt;p&gt;Proff. The trace of a matrix is the sum of the diagonal elements of a
+matrix. The trace is invariant to unitary operations so that it also
+is equal to the sum of the eigenvalues of amatrix. i.e.,&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\label{eq:7}
+Tr (A^{*}A) = \sum_{k=0}^{n-1}(A^{*}A)_{k,k}  = \sum_{k=0}^{n-1} \lambda_{k}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;We have&lt;/p&gt;
+
+&lt;p&gt;\begin{eqnarray*}
+Tr( {A^{*}A} ) &amp;amp;=&amp;amp; Tr( {R^{*}R} )  \\&lt;br /&gt;
+&amp;amp;=&amp;amp; \sum_{k=0}^{n-1}\sum_{j=0}^{n-1} |r_{j,k}|^{2} \\&lt;br /&gt;
+&amp;amp;=&amp;amp; \sum_{k=0}^{n-1} |\alpha_{k}|^{2} + \sum_{k\neq j} |r_{j,k}|^{2} \\&lt;br /&gt;
+&amp;amp;\geq&amp;amp; \sum_{k=0}^{n-1} |\alpha_{k}|^{2}
+\end{eqnarray*}&lt;/p&gt;
+
+&lt;h3 id=&#34;matrix-norms&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.2&lt;/span&gt; Matrix Norms&lt;/h3&gt;
+
+&lt;p&gt;To study the asymptotic equivalence of matrices we require a metric or
+equivalently a norm of the appropriate kind. Here we use two norms the
+operator and the Hilbert-Schmidt. We call the former the strong norm
+and later the weak norm.&lt;/p&gt;
+
+&lt;p&gt;Let \(A\) be a matrix with eigenvalues \(\alpha_{k}\) and let
+\(\lambda_{k}\) be the eigenvalues of the Hermitian matrix \(A^{*}A\).
+The strong norm \(\|A\|\) is difined by:&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\label{eq:8}
+\|A\| = \max_{x} R_{A^{*}A}(x)^{&lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2&lt;/sub&gt;} = \max_{x:x^{*}x=1} [x^{*}A^{*}Ax]^{&lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;2&lt;/sub&gt;}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;According the corollary mentioned before, we have:&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\label{eq:9}
+\|A\|^{2} = \max_{k}\lambda_{k} = \lambda_{M}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;The strong norm of \(A\) can be bounded below by letting \(e_{M}\) be
+the eigenvector of \(A\) corresponding to \(\alpha_{M}\), the
+eigenvalue of \(A\) having largest absolute value:&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\label{eq:10}
+\|A\|^{2} = \max_{x:x^{*}x = 1} x^{*}A^{*}Ax \geq (e_{M}^{*}A^{*}) (Ae_{M}) = |\alpha_{M}|^{2}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;If \(A\) is itself Hermitian, then its eigenvalues \(\alpha_{k}\) are
+real and the eigenvalues \(\lambda_{k}\) of \(A^{*}A\) are simply
+\(\lambda_{k} = \alpha_{k}^{2}\). This follows since if \(e^{(k)}\) is
+an eigenvector of \(A\) with eigenvalue \(\alpha_{k}\), then
+\(A^{*}Ae^{(k)} = \alpha_{k}A^{*}e^{(k)} = \alpha_{k}^{2}e^{(k)}\).
+Thus, in particular, if \(A\) is Hermitian then&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\label{eq:11}
+\|A\| = \max_{k} |\alpha_{k}| = |\alpha_{M}|
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;The Hilbert-Schmidt norm of an \(n\times n\) matrix \(A =
+{a_{k,j}}\) is defined by:&lt;/p&gt;
+
+&lt;p&gt;\begin{eqnarray*}
+|A| &amp;amp;=&amp;amp; \bigg(n^{-1}\sum_{k=0}^{n-1} \sum_{j=0}^{n-1} |a_{k,j}|^{2}\bigg)^{\tfrac{1}{2}} \\&lt;br /&gt;
+&amp;amp;=&amp;amp; \bigg(n^{-1} Tr[A^{*}A] \bigg)^{\tfrac{1}{2}} \\&lt;br /&gt;
+&amp;amp;=&amp;amp; \bigg( n^{-1} \sum_{k=0}^{n-1} \lambda_{k} \bigg)^{\tfrac{1}{2}}
+\end{eqnarray*}&lt;/p&gt;
 </description>
     </item>
     

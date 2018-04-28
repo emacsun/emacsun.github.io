@@ -42,10 +42,11 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4.1&lt;/span&gt; &lt;a href=&#34;#get-an-excellent-degree-distribution&#34;&gt;get an excellent degree distribution&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; &lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;
-&lt;/div&gt;
-&lt;!--endtoc--&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; &lt;a href=&#34;#summary&#34;&gt;Summary&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;introduction&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; Introduction&lt;/h2&gt;
 
@@ -125,7 +126,7 @@ a bit is erased by the channel.&lt;/p&gt;
 
 &lt;p&gt;\begin{eqnarray}
 \label{eq:3}
-p_{0}&amp;amp;=&amp;amp;\epsilon \newline
+p_{0}&amp;amp;=&amp;amp;\epsilon \\&lt;br /&gt;
 p_{l}&amp;amp;=&amp;amp; \epsilon \big( 1 - (1-p_{l-1})^{(w_{r} - 1)}\big)^{(w_{c} -1)}
 \end{eqnarray}&lt;/p&gt;
 
@@ -152,7 +153,7 @@ the fraction of edges connecting to degree-\(i\) check nodes.&lt;/p&gt;
 
 &lt;p&gt;\begin{eqnarray}
 \label{eq:7}
-\sum_{i}\lambda_{i}&amp;amp;=&amp;amp; 1 \newline
+\sum_{i}\lambda_{i}&amp;amp;=&amp;amp; 1 \\&lt;br /&gt;
 \sum_{i}\rho_{i} &amp;amp;=&amp;amp; 1
 \end{eqnarray}&lt;/p&gt;
 
@@ -160,7 +161,7 @@ the fraction of edges connecting to degree-\(i\) check nodes.&lt;/p&gt;
 
 &lt;p&gt;\begin{eqnarray}
 \label{eq:8}
-\lambda(x)&amp;amp;=&amp;amp;\lambda_{2} x + \lambda_{3}x^{2} + \ldots + \lambda_{i}x^{i-1} + \ldots \newline
+\lambda(x)&amp;amp;=&amp;amp;\lambda_{2} x + \lambda_{3}x^{2} + \ldots + \lambda_{i}x^{i-1} + \ldots \\&lt;br /&gt;
 \rho(x) &amp;amp;=&amp;amp; \rho_{2}(x) + \rho_{3}x^{2} + \ldots + \rho_{i}x^{i-1} + \ldots
 \end{eqnarray}&lt;/p&gt;
 
@@ -168,7 +169,7 @@ the fraction of edges connecting to degree-\(i\) check nodes.&lt;/p&gt;
 
 &lt;p&gt;\begin{eqnarray}
 \label{eq9}
-v_{i}&amp;amp;=&amp;amp; \frac{\lambda_{i}/i}{\sum_{j}\lambda_{j}/j} \newline
+v_{i}&amp;amp;=&amp;amp; \frac{\lambda_{i}/i}{\sum_{j}\lambda_{j}/j} \\&lt;br /&gt;
 h_{i}&amp;amp;=&amp;amp; \frac{\rho_{i}/i}{\sum_{j}\rho_{j}/j}
 \end{eqnarray}&lt;/p&gt;
 
@@ -193,8 +194,8 @@ suppose the number of degree \(i\) bit nodes is \(n_{i}\), so
 
 &lt;p&gt;\begin{eqnarray}
 \label{eq:10}
-\frac{\lambda_{i}/i}{\sum_{k} \lambda_{k}/k } &amp;amp;=&amp;amp; \frac{ \frac{n_{i}}{\sum_{j}n_{j}j}  }{ \sum_{k} \frac{n_{k}}{\sum_{j}n_{j}j}} \newline
-&amp;amp;=&amp;amp; \frac{n_{i}}{\sum_{k}n_{k}} \newline
+\frac{\lambda_{i}/i}{\sum_{k} \lambda_{k}/k } &amp;amp;=&amp;amp; \frac{ \frac{n_{i}}{\sum_{j}n_{j}j}  }{ \sum_{k} \frac{n_{k}}{\sum_{j}n_{j}j}} \\&lt;br /&gt;
+&amp;amp;=&amp;amp; \frac{n_{i}}{\sum_{k}n_{k}} \\&lt;br /&gt;
 &amp;amp;=&amp;amp; v_{i}
 \end{eqnarray}&lt;/p&gt;
 
@@ -293,7 +294,7 @@ p_{l}(\epsilon) = f(p_{l-1},\epsilon)
 
 &lt;p&gt;\begin{eqnarray}
 \label{eq:26}
-f(0,\epsilon)&amp;amp;=&amp;amp;\epsilon \lambda(1-\rho(1)) = 0 &lt;br /&gt;
+f(0,\epsilon)&amp;amp;=&amp;amp;\epsilon \lambda(1-\rho(1)) = 0 \\&lt;br /&gt;
 f(1,\epsilon)&amp;amp;=&amp;amp;\epsilon \lambda(1-\rho(1-1)) = \epsilon
 \end{eqnarray}&lt;/p&gt;
 
@@ -437,20 +438,21 @@ L(x) = \log \big( \frac{p(x=0)}{p(x=1)} \big)
 &lt;p&gt;So the sign of \(L(x)\) determine it is \(0\) or \(1\) and the
 magnatue of \(|L(x)|\) tell us how sure we are about the decision.&lt;/p&gt;
 
-&lt;p&gt;Figure &lt;a href=&#34;#org23fcb38&#34;&gt;1&lt;/a&gt; shows a gaussian PDF for
+&lt;p&gt;Figure &lt;a href=&#34;#orgea4b30b&#34;&gt;1&lt;/a&gt; shows a gaussian PDF for
 \(\mathcal{p}( r)\) and the probability that the bit is &amp;ldquo;1&amp;rdquo; is the area
 of the shade.&lt;/p&gt;
 
-&lt;p&gt;&lt;a id=&#34;org23fcb38&#34;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;a id=&#34;orgea4b30b&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
 
 &lt;figure &gt;
     
-        &lt;img src=&#34;https://zcl.space/img/telecommunication/20180205gaussian.png&#34; alt=&#34;a Gaussian PDF&#34; width=&#34;400&#34; /&gt;
+        &lt;img src=&#34;https://zcl.space/img/telecommunication/20180205gaussian.png&#34; alt=&#34;Figure 1: a Gaussian PDF&#34; width=&#34;400&#34; /&gt;
     
     
     &lt;figcaption&gt;
         &lt;p&gt;
-        a Gaussian PDF
+        Figure 1: a Gaussian PDF
         
             
         
@@ -458,7 +460,7 @@ of the shade.&lt;/p&gt;
     &lt;/figcaption&gt;
     
 &lt;/figure&gt;
-&lt;/p&gt;
+
 
 &lt;p&gt;The LLR are real numbers, so it can be illustrated using a probability
 density function. We define the PDF for a B2C message at iteration as

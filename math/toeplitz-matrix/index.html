@@ -18,7 +18,7 @@
     
   
   <meta name="description" content=".ox-hugo-toc ul { list-style: none; }  
-Table of Contents  1 Toeplitz Matrices 2 Some Asymptotic Properties of Matrices  2.1 Eigenvalues    
+Table of Contents  1 Toeplitz Matrices 2 Some Asymptotic Properties of Matrices  2.1 Eigenvalues 2.2 Matrix Norms    
 For such a long time, I have it on my list to write something for Toeplitz matrix. I want to derive the fundamental theorems on the asymptotic behavvior of eigenvalues, inverses, and products of banded Toeplitz matrices. To achieve this goal, I read the famous paper Toeplitz and Circulant Matrices: A review by Robert M.">
 
   
@@ -77,13 +77,13 @@ For such a long time, I have it on my list to write something for Toeplitz matri
   <meta property="og:url" content="https://zcl.space/math/toeplitz-matrix/">
   <meta property="og:title" content="toeplitz matrix | ZCL.SPACE">
   <meta property="og:description" content=".ox-hugo-toc ul { list-style: none; }  
-Table of Contents  1 Toeplitz Matrices 2 Some Asymptotic Properties of Matrices  2.1 Eigenvalues    
+Table of Contents  1 Toeplitz Matrices 2 Some Asymptotic Properties of Matrices  2.1 Eigenvalues 2.2 Matrix Norms    
 For such a long time, I have it on my list to write something for Toeplitz matrix. I want to derive the fundamental theorems on the asymptotic behavvior of eigenvalues, inverses, and products of banded Toeplitz matrices. To achieve this goal, I read the famous paper Toeplitz and Circulant Matrices: A review by Robert M.">
   <meta property="og:locale" content="en-us">
   
   <meta property="article:published_time" content="2018-03-14T19:53:00&#43;08:00">
   
-  <meta property="article:modified_time" content="2018-03-18T22:25:00&#43;08:00">
+  <meta property="article:modified_time" content="2018-03-21T23:21:00&#43;08:00">
   
 
   
@@ -279,7 +279,7 @@ For such a long time, I have it on my list to write something for Toeplitz matri
         Last updated on
     
     <time datetime="2018-03-14 19:53:00 &#43;0800 CST" itemprop="datePublished dateModified">
-      Mar 18, 2018
+      Mar 21, 2018
     </time>
   </span>
   <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
@@ -362,6 +362,7 @@ For such a long time, I have it on my list to write something for Toeplitz matri
 
 <ul>
 <li><span class="section-num">2.1</span> <a href="#eigenvalues">Eigenvalues</a></li>
+<li><span class="section-num">2.2</span> <a href="#matrix-norms">Matrix Norms</a></li>
 </ul></li>
 </ul>
 
@@ -447,7 +448,7 @@ Courant-Fischer theorem.</p>
 <div></div>
 
 <p>Define the Rayleigh quotient of an Hermitian matrix \(X\) and a vector
-(complex \(n\)-tuple ) x by</p>
+(complex \(n\)-tuple ) \(x\) by</p>
 
 <p>\begin{equation}
 \label{eq:4}
@@ -465,6 +466,94 @@ eigenvalues of \(H\), respectively.</p>
 \eta_{M}&amp;=&amp; \max_{x} R_{H}(x) = \max_{x:x^{* }x = 1} x^{*}Hx
 \end{eqnarray}
 </div></p>
+
+<p>This corollary will be useful in specifying the interval containing
+the eigenvalues of an Hermitian matrix.</p>
+
+<p>The following lemma is usefull when studying non-Hermitian matrices
+and products of Hermitian matrices.</p>
+
+<p>Let \(A\) be a matrix with eigenvalues \(\alpha_{k}\). Define the
+eigenvalues of the Hermitian matrix \(A^{*}A\) to be \(\lambda_{k}\).
+Then:</p>
+
+<p>\begin{equation}
+\label{eq:6}
+\sum_{k=0}^{n-1} \lambda_{k} \geq \sum_{k=0}^{n-1}|\alpha_{k}|^{2}
+\end{equation}</p>
+
+<p>with equality iff \(A\) is normal.</p>
+
+<p>Proff. The trace of a matrix is the sum of the diagonal elements of a
+matrix. The trace is invariant to unitary operations so that it also
+is equal to the sum of the eigenvalues of amatrix. i.e.,</p>
+
+<p>\begin{equation}
+\label{eq:7}
+Tr (A^{*}A) = \sum_{k=0}^{n-1}(A^{*}A)_{k,k}  = \sum_{k=0}^{n-1} \lambda_{k}
+\end{equation}</p>
+
+<p>We have</p>
+
+<p>\begin{eqnarray*}
+Tr( {A^{*}A} ) &amp;=&amp; Tr( {R^{*}R} )  \\<br />
+&amp;=&amp; \sum_{k=0}^{n-1}\sum_{j=0}^{n-1} |r_{j,k}|^{2} \\<br />
+&amp;=&amp; \sum_{k=0}^{n-1} |\alpha_{k}|^{2} + \sum_{k\neq j} |r_{j,k}|^{2} \\<br />
+&amp;\geq&amp; \sum_{k=0}^{n-1} |\alpha_{k}|^{2}
+\end{eqnarray*}</p>
+
+<h3 id="matrix-norms"><span class="section-num">2.2</span> Matrix Norms</h3>
+
+<p>To study the asymptotic equivalence of matrices we require a metric or
+equivalently a norm of the appropriate kind. Here we use two norms the
+operator and the Hilbert-Schmidt. We call the former the strong norm
+and later the weak norm.</p>
+
+<p>Let \(A\) be a matrix with eigenvalues \(\alpha_{k}\) and let
+\(\lambda_{k}\) be the eigenvalues of the Hermitian matrix \(A^{*}A\).
+The strong norm \(\|A\|\) is difined by:</p>
+
+<p>\begin{equation}
+\label{eq:8}
+\|A\| = \max_{x} R_{A^{*}A}(x)^{<sup>1</sup>&frasl;<sub>2</sub>} = \max_{x:x^{*}x=1} [x^{*}A^{*}Ax]^{<sup>1</sup>&frasl;<sub>2</sub>}
+\end{equation}</p>
+
+<p>According the corollary mentioned before, we have:</p>
+
+<p>\begin{equation}
+\label{eq:9}
+\|A\|^{2} = \max_{k}\lambda_{k} = \lambda_{M}
+\end{equation}</p>
+
+<p>The strong norm of \(A\) can be bounded below by letting \(e_{M}\) be
+the eigenvector of \(A\) corresponding to \(\alpha_{M}\), the
+eigenvalue of \(A\) having largest absolute value:</p>
+
+<p>\begin{equation}
+\label{eq:10}
+\|A\|^{2} = \max_{x:x^{*}x = 1} x^{*}A^{*}Ax \geq (e_{M}^{*}A^{*}) (Ae_{M}) = |\alpha_{M}|^{2}
+\end{equation}</p>
+
+<p>If \(A\) is itself Hermitian, then its eigenvalues \(\alpha_{k}\) are
+real and the eigenvalues \(\lambda_{k}\) of \(A^{*}A\) are simply
+\(\lambda_{k} = \alpha_{k}^{2}\). This follows since if \(e^{(k)}\) is
+an eigenvector of \(A\) with eigenvalue \(\alpha_{k}\), then
+\(A^{*}Ae^{(k)} = \alpha_{k}A^{*}e^{(k)} = \alpha_{k}^{2}e^{(k)}\).
+Thus, in particular, if \(A\) is Hermitian then</p>
+
+<p>\begin{equation}
+\label{eq:11}
+\|A\| = \max_{k} |\alpha_{k}| = |\alpha_{M}|
+\end{equation}</p>
+
+<p>The Hilbert-Schmidt norm of an \(n\times n\) matrix \(A =
+{a_{k,j}}\) is defined by:</p>
+
+<p>\begin{eqnarray*}
+|A| &amp;=&amp; \bigg(n^{-1}\sum_{k=0}^{n-1} \sum_{j=0}^{n-1} |a_{k,j}|^{2}\bigg)^{\tfrac{1}{2}} \\<br />
+&amp;=&amp; \bigg(n^{-1} Tr[A^{*}A] \bigg)^{\tfrac{1}{2}} \\<br />
+&amp;=&amp; \bigg( n^{-1} \sum_{k=0}^{n-1} \lambda_{k} \bigg)^{\tfrac{1}{2}}
+\end{eqnarray*}</p>
 
     </div>
 

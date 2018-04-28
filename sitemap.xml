@@ -5,8 +5,17 @@
     
     <url>
     
+      <loc>https://zcl.space/math/linear-algebra-done-right/</loc>
+      <lastmod>2018-04-28T22:01:00+08:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://zcl.space/math/toeplitz-matrix/</loc>
-      <lastmod>2018-03-18T22:25:00+08:00</lastmod>
+      <lastmod>2018-03-21T23:21:00+08:00</lastmod>
     </url>
     
   
@@ -105,7 +114,7 @@
     <url>
     
       <loc>https://zcl.space/telecommunication/density-evolution/</loc>
-      <lastmod>2018-02-07T22:26:00+08:00</lastmod>
+      <lastmod>2018-04-28T22:14:00+08:00</lastmod>
     </url>
     
   
@@ -307,8 +316,8 @@
     
     <url>
     
-      <loc>https://zcl.space/categories/emacs/</loc>
-      <lastmod>2018-03-04T09:41:00+08:00</lastmod>
+      <loc>https://zcl.space/tags/emacs/</loc>
+      <lastmod>2018-02-21T09:18:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -317,8 +326,8 @@
     
     <url>
     
-      <loc>https://zcl.space/tags/emacs/</loc>
-      <lastmod>2018-02-21T09:18:00+08:00</lastmod>
+      <loc>https://zcl.space/categories/emacs/</loc>
+      <lastmod>2018-03-04T09:41:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -337,7 +346,7 @@
     
     <url>
     
-      <loc>https://zcl.space/categories/git/</loc>
+      <loc>https://zcl.space/tags/git/</loc>
       <lastmod>2018-02-21T09:18:00+08:00</lastmod>
       <priority>0</priority>
     </url>
@@ -347,7 +356,7 @@
     
     <url>
     
-      <loc>https://zcl.space/tags/git/</loc>
+      <loc>https://zcl.space/categories/git/</loc>
       <lastmod>2018-02-21T09:18:00+08:00</lastmod>
       <priority>0</priority>
     </url>
@@ -388,17 +397,7 @@
     <url>
     
       <loc>https://zcl.space/tags/ldpc/</loc>
-      <lastmod>2018-02-07T22:26:00+08:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://zcl.space/categories/life/</loc>
-      <lastmod>2018-03-03T15:34:00+08:00</lastmod>
+      <lastmod>2018-04-28T22:14:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -409,6 +408,16 @@
     
       <loc>https://zcl.space/tags/life/</loc>
       <lastmod>2018-03-04T10:03:00+08:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/categories/life/</loc>
+      <lastmod>2018-03-03T15:34:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -428,7 +437,7 @@
     <url>
     
       <loc>https://zcl.space/tags/math/</loc>
-      <lastmod>2018-03-18T22:25:00+08:00</lastmod>
+      <lastmod>2018-04-28T22:01:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -467,28 +476,28 @@
     
     <url>
     
+      <loc>https://zcl.space/tags/reading/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/tags/reading/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://zcl.space/categories/reading/</loc>
       <lastmod>2018-03-04T10:03:00+08:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://zcl.space/tags/reading/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
-      <loc>https://zcl.space/tags/reading/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -527,18 +536,8 @@
     
     <url>
     
-      <loc>https://zcl.space/categories/telecommunication/</loc>
-      <lastmod>2018-02-07T22:26:00+08:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-    
       <loc>https://zcl.space/tags/telecommunication/</loc>
-      <lastmod>2018-02-07T22:26:00+08:00</lastmod>
+      <lastmod>2018-04-28T22:14:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -547,8 +546,8 @@
     
     <url>
     
-      <loc>https://zcl.space/categories/tools/</loc>
-      <lastmod>2018-03-04T09:41:00+08:00</lastmod>
+      <loc>https://zcl.space/categories/telecommunication/</loc>
+      <lastmod>2018-04-28T22:14:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -558,6 +557,16 @@
     <url>
     
       <loc>https://zcl.space/tags/tools/</loc>
+      <lastmod>2018-03-04T09:41:00+08:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/categories/tools/</loc>
       <lastmod>2018-03-04T09:41:00+08:00</lastmod>
       <priority>0</priority>
     </url>
