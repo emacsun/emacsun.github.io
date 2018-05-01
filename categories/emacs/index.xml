@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Emacs on ZCL.SPACE</title>
+    <link>https://zcl.space/categories/emacs/</link>
+    <description>Recent content in Emacs on ZCL.SPACE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 ZCL</copyright>
+    <lastBuildDate>Sun, 04 Mar 2018 09:32:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://zcl.space/categories/emacs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Repeated Tasks in Emacs Org</title>
+      <link>https://zcl.space/tools/repeated-tasks-in-emacs-org/</link>
+      <pubDate>Sun, 04 Mar 2018 09:32:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/repeated-tasks-in-emacs-org/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Repeater in Org 2 a special repeater 3 the .+ repeater 4 repeated period   
+Timestamps in Emacs Org are easy. Setting timestamps for repeated tasks are more interesting. It is quite often in daily life that some tasks will be repeated day by day, such as having lunch and afternoon nap, taking exercise.</description>
+    </item>
+    
+    <item>
+      <title>Extends Emacs Org Mode on iOS Device</title>
+      <link>https://zcl.space/tools/using-emacs-org-mode-on-ios-device/</link>
+      <pubDate>Sun, 04 Mar 2018 09:31:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/using-emacs-org-mode-on-ios-device/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 BeOrg 2 Drafts 3 Dropbox   
+I use two APPs BeOrg and Drafts as Org&amp;rsquo;s extension on my iOS device. Oh, almost foget it. Another one: dropbox. Beorg and Drafts stores the captures of ideas into dropbox. I retrive them when I am home on Windows 10 using my Surface Pro.
+The relationship among all the APPs I mentioned above is like</description>
+    </item>
+    
+    <item>
+      <title>Take a Diary Using Emacs Org</title>
+      <link>https://zcl.space/tools/take-a-diary-using-emacs-org/</link>
+      <pubDate>Sun, 25 Feb 2018 19:47:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/take-a-diary-using-emacs-org/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Introduction 2 Set up   
+1 Introduction There is one diary system built in Emacs. When you are in the Calendar buffer, press i will bring you a menu to select what kind of diary you want to take. However, as a loyal fan of Emacs Org, I want to take diary using Org.</description>
+    </item>
+    
+    <item>
+      <title>Journal your life Using Emacs Org</title>
+      <link>https://zcl.space/tools/journal-your-life-using-emacs-org/</link>
+      <pubDate>Tue, 20 Feb 2018 22:21:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/journal-your-life-using-emacs-org/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Introduction 2 Install 3 Keys  3.1 Global Bindings 3.2 Major Mode Bindings 3.3 Calendar Mode Bindings  4 Take a Journal 5 Browse Your Journal 6 Search Your Journal 7 After a Period    1 Introduction Long time ago, I read a post about taking daily journal using Emacs. Until recently, I realized that I need to take journals on my work.</description>
+    </item>
+    
+    <item>
+      <title>Version Control Using Magit in Spacemacs</title>
+      <link>https://zcl.space/tools/version-control-emacs-magit/</link>
+      <pubDate>Tue, 20 Feb 2018 22:14:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/version-control-emacs-magit/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Commit Your Changes    There is an official layer called gitbuiltin spacemacs. The git layer is based on magit . Actually, on the magit website, you can always find what you want. This post is a summary of How I use magit in spacemacs.
+I like the magit website because of the beautiful font and pleasing color combination.</description>
+    </item>
+    
+    <item>
+      <title>Write in Emacs</title>
+      <link>https://zcl.space/tools/write-in-emacs/</link>
+      <pubDate>Tue, 20 Feb 2018 22:13:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/write-in-emacs/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 writing a book in Emacs 2 Extensions that facilitate writing  2.1 Working Environment 2.2 Org 2.3 Spell Checking 2.4 Moving around 2.5 count words 2.6 focus on current section  3 Reference    1 writing a book in Emacs I am not going to preach the powerful tool, Org. In this post, I want to write something on the tools which facilitate the literature writing.</description>
+    </item>
+    
+    <item>
+      <title>Using Emacs as a calculator through Cals</title>
+      <link>https://zcl.space/tools/calc-in-emacs/</link>
+      <pubDate>Tue, 20 Feb 2018 17:13:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/calc-in-emacs/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Introduction 2 Main Features 3 switch between the algebraic and RPN mode 4 adding two numbers 5 reference    1 Introduction In Emacs, execute M-x calc and you are in a Calc buffer. At first time, perhaps you will be confused how begin. Press ? you will get a help manual.
+Normally, Calc uses the RPN (Reverse Polish Notation) notation, which is not the natation what I am familiar with.</description>
+    </item>
+    
+    <item>
+      <title>Organize you life in Emacs Org</title>
+      <link>https://zcl.space/tools/organize-you-life-in-org/</link>
+      <pubDate>Sun, 11 Feb 2018 21:52:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/organize-you-life-in-org/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 introduction 2 My GTD workflow 3 some preparations  3.1 set the agenda file 3.2 set the refile targets 3.3 set the org capture templates 3.4 set the org agenda custom commands  4 One day based on my workflow  4.1 Punch In 4.2 check out the agenda 4.3 focus on certain project 4.4 change the state of one task 4.</description>
+    </item>
+    
+    <item>
+      <title>Blogging with Emacs Org</title>
+      <link>https://zcl.space/tools/my-blog-workflow/</link>
+      <pubDate>Sun, 28 Jan 2018 18:01:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/my-blog-workflow/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Writing with Emacs Org publish 2 Writing with Hugo  2.1 architecture of the site  3 Settings for ox-hugo  3.1 settings for each section based on ox-hugo 3.2 settings for each article based on ox-hugo  4 Settings for Hugo themes    Right Now, I use two blog systems to post articles.</description>
+    </item>
+    
+  </channel>
+</rss>

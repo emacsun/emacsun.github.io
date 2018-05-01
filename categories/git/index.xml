@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on ZCL.SPACE</title>
+    <link>https://zcl.space/categories/git/</link>
+    <description>Recent content in Git on ZCL.SPACE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 ZCL</copyright>
+    <lastBuildDate>Tue, 20 Feb 2018 22:14:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://zcl.space/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Version Control Using Magit in Spacemacs</title>
+      <link>https://zcl.space/tools/version-control-emacs-magit/</link>
+      <pubDate>Tue, 20 Feb 2018 22:14:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/version-control-emacs-magit/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Commit Your Changes    There is an official layer called gitbuiltin spacemacs. The git layer is based on magit . Actually, on the magit website, you can always find what you want. This post is a summary of How I use magit in spacemacs.
+I like the magit website because of the beautiful font and pleasing color combination.</description>
+    </item>
+    
+  </channel>
+</rss>

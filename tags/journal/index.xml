@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Journal on ZCL.SPACE</title>
+    <link>https://zcl.space/tags/journal/</link>
+    <description>Recent content in Journal on ZCL.SPACE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 ZCL</copyright>
+    <lastBuildDate>Tue, 20 Feb 2018 22:21:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://zcl.space/tags/journal/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Journal your life Using Emacs Org</title>
+      <link>https://zcl.space/tools/journal-your-life-using-emacs-org/</link>
+      <pubDate>Tue, 20 Feb 2018 22:21:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/journal-your-life-using-emacs-org/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Introduction 2 Install 3 Keys  3.1 Global Bindings 3.2 Major Mode Bindings 3.3 Calendar Mode Bindings  4 Take a Journal 5 Browse Your Journal 6 Search Your Journal 7 After a Period    1 Introduction Long time ago, I read a post about taking daily journal using Emacs. Until recently, I realized that I need to take journals on my work.</description>
+    </item>
+    
+  </channel>
+</rss>

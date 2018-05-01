@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LDPC on ZCL.SPACE</title>
+    <link>https://zcl.space/tags/ldpc/</link>
+    <description>Recent content in LDPC on ZCL.SPACE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 ZCL</copyright>
+    <lastBuildDate>Wed, 07 Feb 2018 20:02:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://zcl.space/tags/ldpc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Density Evolution</title>
+      <link>https://zcl.space/telecommunication/density-evolution/</link>
+      <pubDate>Wed, 07 Feb 2018 20:02:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/telecommunication/density-evolution/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Introduction 2 Density evolution on the BEC  2.1 Regular LDPC codes 2.2 Irregular LDPC codes  3 threshold and stability of density evolution on BEC 4 Density evolution on general memoryless channels  4.1 get an excellent degree distribution  5 Summary   
+1 Introduction For a given Tanner graph, it is still an open question to tell for which channel noise level the message passing algorithm will be able to reach a reliable transmission.</description>
+    </item>
+    
+  </channel>
+</rss>

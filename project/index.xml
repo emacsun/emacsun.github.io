@@ -8,7 +8,9 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2018 ZCL</copyright>
     <lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/project/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://zcl.space/project/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>.spacemacs.d</title>
@@ -25,8 +27,7 @@
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://zcl.space/project/reading/</guid>
-      <description>&lt;p&gt;the test of project.&lt;/p&gt;
-</description>
+      <description>the test of project.</description>
     </item>
     
     <item>
@@ -35,8 +36,7 @@
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://zcl.space/project/search/</guid>
-      <description>&lt;p&gt;the test of project2.&lt;/p&gt;
-</description>
+      <description>the test of project2.</description>
     </item>
     
     <item>
@@ -45,8 +45,7 @@
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://zcl.space/project/sort/</guid>
-      <description>&lt;p&gt;the test of project.&lt;/p&gt;
-</description>
+      <description>the test of project.</description>
     </item>
     
   </channel>

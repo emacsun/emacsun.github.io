@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Math on ZCL.SPACE</title>
+    <link>https://zcl.space/tags/math/</link>
+    <description>Recent content in Math on ZCL.SPACE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 ZCL</copyright>
+    <lastBuildDate>Sat, 28 Apr 2018 22:00:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://zcl.space/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>linear algebra done right</title>
+      <link>https://zcl.space/math/linear-algebra-done-right/</link>
+      <pubDate>Sat, 28 Apr 2018 22:00:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/math/linear-algebra-done-right/</guid>
+      <description>During the study of linear algebra, several asistant materials are referenced:
+ The opencourse 18.06 from Gilbert Strang. From Strang&amp;rsquo;s home, many valuable materials are available. The textbook Introduction to Linear Algebra by Gilbert Strang. The textbook Linear Algebra Done Right by Sheldon Axler. You can get an abridged version of Linear Algebra Done Right from Axler&amp;rsquo;s homepage. The textbook Matrix Analysis and Applied Linear Algebra by Carl D. Meyer.  By following Professor Strang, I got an overview of the four spaces of one matrix.</description>
+    </item>
+    
+    <item>
+      <title>toeplitz matrix</title>
+      <link>https://zcl.space/math/toeplitz-matrix/</link>
+      <pubDate>Wed, 14 Mar 2018 19:53:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/math/toeplitz-matrix/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Toeplitz Matrices 2 Some Asymptotic Properties of Matrices  2.1 Eigenvalues 2.2 Matrix Norms    
+For such a long time, I have it on my list to write something for Toeplitz matrix. I want to derive the fundamental theorems on the asymptotic behavvior of eigenvalues, inverses, and products of banded Toeplitz matrices. To achieve this goal, I read the famous paper Toeplitz and Circulant Matrices: A review by Robert M.</description>
+    </item>
+    
+  </channel>
+</rss>

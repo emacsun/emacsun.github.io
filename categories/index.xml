@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on ZCL.SPACE</title>
+    <link>https://zcl.space/categories/</link>
+    <description>Recent content in Categories on ZCL.SPACE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 ZCL</copyright>
+    
+	<atom:link href="https://zcl.space/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Emacs</title>
+      <link>https://zcl.space/categories/emacs/</link>
+      <pubDate>Sun, 04 Mar 2018 09:32:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/categories/emacs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://zcl.space/categories/git/</link>
+      <pubDate>Tue, 20 Feb 2018 22:14:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/categories/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Life</title>
+      <link>https://zcl.space/categories/life/</link>
+      <pubDate>Mon, 19 Feb 2018 11:02:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/categories/life/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reading</title>
+      <link>https://zcl.space/categories/reading/</link>
+      <pubDate>Mon, 19 Feb 2018 14:39:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/categories/reading/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Telecommunication</title>
+      <link>https://zcl.space/categories/telecommunication/</link>
+      <pubDate>Wed, 07 Feb 2018 20:02:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/categories/telecommunication/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>https://zcl.space/categories/tools/</link>
+      <pubDate>Sun, 04 Mar 2018 09:32:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/categories/tools/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithm on ZCL.SPACE</title>
+    <link>https://zcl.space/tags/algorithm/</link>
+    <description>Recent content in Algorithm on ZCL.SPACE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 ZCL</copyright>
+    <lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://zcl.space/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Search</title>
+      <link>https://zcl.space/project/search/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zcl.space/project/search/</guid>
+      <description>the test of project2.</description>
+    </item>
+    
+    <item>
+      <title>Sort</title>
+      <link>https://zcl.space/project/sort/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zcl.space/project/sort/</guid>
+      <description>the test of project.</description>
+    </item>
+    
+  </channel>
+</rss>

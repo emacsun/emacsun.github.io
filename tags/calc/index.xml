@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Calc on ZCL.SPACE</title>
+    <link>https://zcl.space/tags/calc/</link>
+    <description>Recent content in Calc on ZCL.SPACE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 ZCL</copyright>
+    <lastBuildDate>Tue, 20 Feb 2018 17:13:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://zcl.space/tags/calc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Emacs as a calculator through Cals</title>
+      <link>https://zcl.space/tools/calc-in-emacs/</link>
+      <pubDate>Tue, 20 Feb 2018 17:13:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/calc-in-emacs/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Introduction 2 Main Features 3 switch between the algebraic and RPN mode 4 adding two numbers 5 reference    1 Introduction In Emacs, execute M-x calc and you are in a Calc buffer. At first time, perhaps you will be confused how begin. Press ? you will get a help manual.
+Normally, Calc uses the RPN (Reverse Polish Notation) notation, which is not the natation what I am familiar with.</description>
+    </item>
+    
+  </channel>
+</rss>

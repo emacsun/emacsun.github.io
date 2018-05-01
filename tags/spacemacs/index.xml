@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spacemacs on ZCL.SPACE</title>
+    <link>https://zcl.space/tags/spacemacs/</link>
+    <description>Recent content in Spacemacs on ZCL.SPACE</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2018 ZCL</copyright>
+    <lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://zcl.space/tags/spacemacs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>.spacemacs.d</title>
+      <link>https://zcl.space/project/spacemacs_external/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://zcl.space/project/spacemacs_external/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

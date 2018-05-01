@@ -16,7 +16,23 @@
       <pubDate>Sat, 28 Apr 2018 22:00:00 +0800</pubDate>
       
       <guid>https://zcl.space/math/linear-algebra-done-right/</guid>
-      <description>&lt;p&gt;By far, the best tutorial I read on linear algebra.&lt;/p&gt;
+      <description>&lt;p&gt;During the study of linear algebra, several asistant materials are
+referenced:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The opencourse 18.06 from &lt;a href=&#34;http://www-math.mit.edu/~gs/&#34; target=&#34;_blank&#34;&gt;Gilbert Strang&lt;/a&gt;. From Strang&amp;rsquo;s home, many
+valuable materials are available.&lt;/li&gt;
+&lt;li&gt;The textbook &lt;em&gt;Introduction to Linear Algebra&lt;/em&gt; by Gilbert Strang.&lt;/li&gt;
+&lt;li&gt;The textbook &lt;em&gt;Linear Algebra Done Right&lt;/em&gt; by &lt;a href=&#34;http://www.axler.net/&#34; target=&#34;_blank&#34;&gt;Sheldon Axler&lt;/a&gt;. You can
+get an abridged version of &lt;em&gt;Linear Algebra Done Right&lt;/em&gt; from Axler&amp;rsquo;s
+homepage.&lt;/li&gt;
+&lt;li&gt;The textbook &lt;em&gt;Matrix Analysis and Applied Linear Algebra&lt;/em&gt; by &lt;a href=&#34;http://meyer.math.ncsu.edu/&#34; target=&#34;_blank&#34;&gt;Carl D. Meyer&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;By following Professor Strang, I got an overview of the four spaces of
+one matrix. Actually, I learnt the 18.06 from the MIT OCW more than
+one time. After each time, my understanding of linear algebra was
+deepened.&lt;/p&gt;
 </description>
     </item>
     
@@ -127,7 +143,7 @@ eigenvalues is the variational description given by the
 Courant-Fischer theorem.&lt;/p&gt;
 
 &lt;div class=&#34;corollary&#34;&gt;
-&lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
 
 &lt;p&gt;Define the Rayleigh quotient of an Hermitian matrix \(X\) and a vector
 (complex \(n\)-tuple ) \(x\) by&lt;/p&gt;
@@ -146,8 +162,9 @@ eigenvalues of \(H\), respectively.&lt;/p&gt;
 \label{eq:5}
 \eta_{m}&amp;amp;=&amp;amp; \min_{x} R_{H}(x) = \min_{x:x^{*}x = 1} x^{*}Hx \\&lt;br /&gt;
 \eta_{M}&amp;amp;=&amp;amp; \max_{x} R_{H}(x) = \max_{x:x^{* }x = 1} x^{*}Hx
-\end{eqnarray}
-&lt;/div&gt;&lt;/p&gt;
+\end{eqnarray}&lt;/p&gt;
+
+&lt;p&gt;&lt;/div&gt;&lt;/p&gt;
 
 &lt;p&gt;This corollary will be useful in specifying the interval containing
 the eigenvalues of an Hermitian matrix.&lt;/p&gt;
@@ -401,7 +418,7 @@ Windows 10 using my Surface Pro.&lt;/p&gt;
 &lt;p&gt;&lt;a id=&#34;org719fbfe&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/tools/20180225orgmobile.png&#34; alt=&#34;Figure 1: My using of Org mode through mobile device&#34; width=&#34;600&#34; /&gt;
     
@@ -431,7 +448,7 @@ which is good at notes.&lt;/p&gt;
 &lt;p&gt;One screenshot of Beorg is shown as:&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/tools/20180225beorg.png&#34; /&gt;
     
@@ -467,7 +484,7 @@ directory of Drafts&lt;/a&gt;.&lt;/p&gt;
 screenshot is like:&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/tools/20180225drafts.png&#34; /&gt;
     
@@ -884,7 +901,7 @@ bring me to a magit buffer like this:&lt;/p&gt;
 
 &lt;p&gt;&lt;a id=&#34;org5295721&#34;&gt;&lt;/a&gt;
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/tools/20180219magitbuffer1.png&#34; alt=&#34;Figure 1: magit buffer of my .spacemacs.d&#34; width=&#34;400&#34; /&gt;
     
@@ -920,7 +937,7 @@ commit, just press &lt;code&gt;c&lt;/code&gt;, you will get a menu.&lt;/p&gt;
 
 &lt;p&gt;&lt;a id=&#34;orgd124ad0&#34;&gt;&lt;/a&gt;
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/tools/20180219magitbuffer3.png&#34; alt=&#34;Figure 3: press `c`  to commit&#34; width=&#34;400&#34; /&gt;
     
@@ -945,7 +962,7 @@ the commit.&lt;/p&gt;
 
 &lt;p&gt;&lt;a id=&#34;org9fdf700&#34;&gt;&lt;/a&gt;
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/tools/20180219magitbuffer4.png&#34; alt=&#34;Figure 4: press `c` to commit&#34; width=&#34;400&#34; /&gt;
     
@@ -967,7 +984,7 @@ are in a buffer showing the current state of the project.&lt;/p&gt;
 
 &lt;p&gt;&lt;a id=&#34;org6d0c626&#34;&gt;&lt;/a&gt;
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/tools/20180219magitbuffer5.png&#34; alt=&#34;Figure 5: after commit&#34; width=&#34;400&#34; /&gt;
     
@@ -990,7 +1007,7 @@ will popup for you to choose where to push.&lt;/p&gt;
 
 &lt;p&gt;&lt;a id=&#34;org25db75a&#34;&gt;&lt;/a&gt;
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/tools/20180219magitbuffer6.png&#34; alt=&#34;Figure 6: press `u`  to push&#34; width=&#34;400&#34; /&gt;
     
@@ -1011,7 +1028,7 @@ will popup for you to choose where to push.&lt;/p&gt;
 
 &lt;p&gt;&lt;a id=&#34;org34e0b94&#34;&gt;&lt;/a&gt;
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/tools/20180219magitbuffer7.png&#34; alt=&#34;Figure 7: after pushing to the origin/master&#34; width=&#34;400&#34; /&gt;
     
@@ -1532,7 +1549,7 @@ way.&lt;/p&gt;
 &lt;p&gt;&lt;a id=&#34;org71a2e15&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/life/20180219hybrideurope.png&#34; alt=&#34;Figure 1: 欧洲古典时期混合体&#34; width=&#34;400&#34; /&gt;
     
@@ -1589,7 +1606,7 @@ way.&lt;/p&gt;
 &lt;p&gt;&lt;a id=&#34;orga06af4b&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/life/20180219after1000years.png&#34; alt=&#34;Figure 2: 19世纪的形态&#34; width=&#34;400&#34; /&gt;
     
@@ -1922,7 +1939,7 @@ conditions:&lt;/p&gt;
 
 &lt;p&gt;&lt;a id=&#34;org6e81c32&#34;&gt;&lt;/a&gt;
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/tools/20180210myworkflow.png&#34; alt=&#34;Figure 1: state transitions for a task in my workflow&#34; width=&#34;400&#34; /&gt;
     
@@ -2125,7 +2142,7 @@ like:&lt;/p&gt;
 
 &lt;p&gt;&lt;a id=&#34;orgb6363e7&#34;&gt;&lt;/a&gt;
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda.png&#34; alt=&#34;Figure 2: my org agenda sample&#34; width=&#34;900&#34; /&gt;
     
@@ -2175,7 +2192,7 @@ started next.&lt;/p&gt;
 
 &lt;p&gt;&lt;a id=&#34;orgb1042c6&#34;&gt;&lt;/a&gt;
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda2.png&#34; alt=&#34;Figure 3: my org agenda overview&#34; width=&#34;900&#34; /&gt;
     
@@ -2230,7 +2247,7 @@ focus, then press &lt;code&gt;^&lt;/code&gt; . If you want to focus on another p
 
 &lt;p&gt;&lt;a id=&#34;org88f3fa1&#34;&gt;&lt;/a&gt;
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda3.png&#34; alt=&#34;Figure 4: focus on certain project&#34; width=&#34;900&#34; /&gt;
     
@@ -2770,7 +2787,7 @@ of the shade.&lt;/p&gt;
 &lt;p&gt;&lt;a id=&#34;orgea4b30b&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/img/telecommunication/20180205gaussian.png&#34; alt=&#34;Figure 1: a Gaussian PDF&#34; width=&#34;400&#34; /&gt;
     
@@ -2976,7 +2993,7 @@ so that after exporting, the markdown file will be put in the subdirectory
 
 &lt;p&gt;&lt;a id=&#34;org799910a&#34;&gt;&lt;/a&gt;
 
-&lt;figure &gt;
+&lt;figure&gt;
     
         &lt;img src=&#34;https://zcl.space/tools/20180126HugoArchitecture.png&#34; alt=&#34;Figure 1: architecture of Hugo project&#34; width=&#34;400&#34; /&gt;
     

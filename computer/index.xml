@@ -8,7 +8,9 @@
     <language>en-us</language>
     <copyright>&amp;copy; 2018 ZCL</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0800</lastBuildDate>
-    <atom:link href="/computer/" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://zcl.space/computer/index.xml" rel="self" type="application/rss+xml" />
+    
     
   </channel>
 </rss>
