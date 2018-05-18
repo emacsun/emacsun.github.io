@@ -11,6 +11,191 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>write and evaluate python in Emacs and maybe Org mode</title>
+      <link>https://zcl.space/tools/write-and-evaluate-python-code-in-org-mode/</link>
+      <pubDate>Sun, 13 May 2018 11:22:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/write-and-evaluate-python-code-in-org-mode/</guid>
+      <description>
+
+&lt;p&gt;&lt;style&gt;
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+&lt;/style&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#edit-the-source-code-in-python-mode&#34;&gt;edit the source code in python mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#set-the-command-for-evaluating-the-python-code&#34;&gt;set the command for evaluating the python code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#delete-the-dot-elc-files&#34;&gt;delete the *.elc files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; &lt;a href=&#34;#export-with-the-result&#34;&gt;export with the result&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; &lt;a href=&#34;#change-the-systematic&#34;&gt;change the systematic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;6&lt;/span&gt; &lt;a href=&#34;#install-the-distutils-packages&#34;&gt;install the distutils packages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;7&lt;/span&gt; &lt;a href=&#34;#debug-python-in-emacs&#34;&gt;debug python in Emacs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/p&gt;
+
+&lt;p&gt;I write this post during reading the book &lt;em&gt;Learn Python3 the Hard Way&lt;/em&gt;. This is
+the first python book I read from page to page.&lt;/p&gt;
+
+&lt;h2 id=&#34;edit-the-source-code-in-python-mode&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; edit the source code in python mode&lt;/h2&gt;
+
+&lt;p&gt;In Emacs Org mode, you can insert the source code using &lt;code&gt;&amp;lt;s&lt;/code&gt; then &lt;code&gt;&amp;lt;tab&amp;gt;&lt;/code&gt; . If
+you want to edit the source code, you can hit &lt;code&gt;C-c &#39;&lt;/code&gt; then you will be switched
+to a buffer in python mode and all the features of python mode can be
+utilitized. After finishing the modification, &lt;code&gt;, c&lt;/code&gt; will save the changes and
+switch you back to the Org file and &lt;code&gt;, k&lt;/code&gt; will give up the changes and switch
+you back to the Org file.&lt;/p&gt;
+
+&lt;h2 id=&#34;set-the-command-for-evaluating-the-python-code&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; set the command for evaluating the python code&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;(setq org-babel-python-command &amp;quot;python3&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;delete-the-dot-elc-files&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; delete the *.elc files&lt;/h2&gt;
+
+&lt;p&gt;After org mode version 9, it is buggy to evaluate python code in Org mode and
+the error message is :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;Evaluation of this python code is disabled
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After some google, I find the solution at &lt;a href=&#34;https://github.com/syl20bnr/spacemacs/issues/7641&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt; . The solution is easy: deleting
+the .elc files under the .emacs.d/elpa/org-plus-contrib-XXXXXX/ directory.&lt;/p&gt;
+
+&lt;h2 id=&#34;export-with-the-result&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; export with the result&lt;/h2&gt;
+
+&lt;p&gt;Take the following code snippet for example.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;12
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;13
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;14
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;cars &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;
+space_in_a_car &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+drivers &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;30&lt;/span&gt;
+passengers &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;90&lt;/span&gt;
+cars_not_driven &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cars &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; drivers
+cars_driven &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; drivers
+carpool_capacity &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cars_driven &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; space_in_a_car
+average_passengers_per_car &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; passengers &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; cars_driven
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;There are&amp;#34;&lt;/span&gt;,cars,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cars available.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;There are only&amp;#34;&lt;/span&gt;,drivers,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;drivers avaiable.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;There will be&amp;#34;&lt;/span&gt;, cars_not_driven,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;empty cars today.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;We can transport&amp;#34;&lt;/span&gt;,carpool_capacity,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;people today.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;We have&amp;#34;&lt;/span&gt;,passengers,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;to carpool today.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;We need to put ablout&amp;#34;&lt;/span&gt;,average_passengers_per_car,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;in each car&amp;#34;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After the above debugging and config, you can evalute the code snippet using
+&lt;code&gt;C-c C-c&lt;/code&gt; inside the code. and after that the result will appear below the code
+as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;#+RESULTS:
+: There are 100 cars available.
+: There are only 30 drivers avaiable.
+: There will be 70 empty cars today.
+: We can transport 120 people today.
+: We have 90 to carpool today.
+: We need to put ablout 3.0 in each car
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However, when I call the org export dispatcher using &lt;code&gt;C-c C-e h o&lt;/code&gt; . The result
+part is not displayed as the code snippet does. After checking the Org manual,
+there is a variable &lt;code&gt;org-export-use-babel&lt;/code&gt; controing whether evaluate the code
+snippet or not during exporting. Evan the variable is set to be &lt;code&gt;t&lt;/code&gt;, the code is
+not evaluated. To control export the code, results or both, the &lt;code&gt;:export&lt;/code&gt; header
+arguments should be set to &lt;code&gt;code&lt;/code&gt;, &lt;code&gt;results&lt;/code&gt;  or &lt;code&gt;both&lt;/code&gt; .&lt;/p&gt;
+
+&lt;p&gt;In summary, in order to control the evaluation and export, &lt;code&gt;results&lt;/code&gt; and
+&lt;code&gt;export&lt;/code&gt; header arguments are necessary.&lt;/p&gt;
+
+&lt;h2 id=&#34;change-the-systematic&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; change the systematic&lt;/h2&gt;
+
+&lt;p&gt;If you install several versions of Python in your system, you have to
+choose one as the default.  Execute the following to set the priority list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.5 2
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you want to switch to a different version of Python, just execute the
+following comand :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo update-alternatives --config python
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then choose the right number from the popup menu.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-the-distutils-packages&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;6&lt;/span&gt; install the distutils packages&lt;/h2&gt;
+
+&lt;p&gt;After updating the python from 3.5 to 3.6, anaconda-mode does not work. In the
+minibuffer, it says:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;InternalError: The subprocess /usr/bin/python3.6 has crashed.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It takes me much time to begin to read the anaconda-mode buffer the find the
+error message. what a stupid guy. The error message is&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;&amp;lt;module&amp;gt;
+    from distutils.spawn import find_executable
+ModuleNotFoundError: No module named &#39;distutils.spawn&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After several google, I install the &lt;code&gt;python3-distutils&lt;/code&gt; using:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo apt-get install python3-distutils
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that it is &lt;code&gt;python3-distutils&lt;/code&gt; , not &lt;code&gt;python-distutils&lt;/code&gt; .&lt;/p&gt;
+
+&lt;p&gt;After this, the auto-completion is live again.&lt;/p&gt;
+
+&lt;h2 id=&#34;debug-python-in-emacs&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;7&lt;/span&gt; debug python in Emacs&lt;/h2&gt;
+
+&lt;p&gt;During working on ex23.py, I have an idea to debug python in Emacs.&lt;/p&gt;
+
+&lt;p&gt;I know it is &lt;code&gt;pdb&lt;/code&gt; that call the python debugger. However, when I use python3.6.
+I have to modify it to:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;python3.6 -m pdb ex23.py utf-8 strict
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, I found that there is an extension &lt;a href=&#34;https://github.com/realgud/realgud/&#34; target=&#34;_blank&#34;&gt;realgud&lt;/a&gt; , which even allow you use the
+&lt;code&gt;F10&lt;/code&gt; to next, &lt;code&gt;F11&lt;/code&gt; to step in, &lt;code&gt;shift F11&lt;/code&gt; to step out, &lt;code&gt;F5&lt;/code&gt; to run/continue.
+More important all the shortcut are effective in the source code buffer, pretty
+handy.&lt;/p&gt;
+
+&lt;p&gt;You even can you mouse to set and clear breakpoints.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>linear algebra done right</title>
       <link>https://zcl.space/math/linear-algebra-done-right/</link>
       <pubDate>Sat, 28 Apr 2018 22:00:00 +0800</pubDate>
@@ -3144,16 +3329,6 @@ In the Kickstart way, Academic is installed as a Git sub-module.&lt;/p&gt;
 
 &lt;p&gt;Also, for different methods of updating the theme, you can check &lt;a href=&#34;https://sourcethemes.com/academic/docs/update/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Example Talk</title>
-      <link>https://zcl.space/talk/example-talk/</link>
-      <pubDate>Sun, 01 Jan 2017 00:00:00 +0800</pubDate>
-      
-      <guid>https://zcl.space/talk/example-talk/</guid>
-      <description>&lt;p&gt;Embed your slides or video here using &lt;a href=&#34;https://sourcethemes.com/academic/post/writing-markdown-latex/&#34; target=&#34;_blank&#34;&gt;shortcodes&lt;/a&gt;. Further details can easily be added using &lt;em&gt;Markdown&lt;/em&gt; and $\rm \LaTeX$ math code.&lt;/p&gt;
 </description>
     </item>
     
