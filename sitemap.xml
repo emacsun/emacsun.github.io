@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://zcl.space/computer/learn-python-the-hard-way/</loc>
+      <lastmod>2018-05-27T20:49:00+08:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://zcl.space/tools/write-and-evaluate-python-code-in-org-mode/</loc>
       <lastmod>2018-05-13T11:31:00+08:00</lastmod>
     </url>
@@ -315,6 +324,16 @@
     
     <url>
     
+      <loc>https://zcl.space/tags/computer/</loc>
+      <lastmod>2018-05-27T20:49:00+08:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://zcl.space/tags/diary/</loc>
       <lastmod>2018-03-04T09:34:00+08:00</lastmod>
       <priority>0</priority>
@@ -477,6 +496,16 @@
     
       <loc>https://zcl.space/publication_types/</loc>
       <lastmod>2013-07-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://zcl.space/tags/python/</loc>
+      <lastmod>2018-05-27T20:49:00+08:00</lastmod>
       <priority>0</priority>
     </url>
     

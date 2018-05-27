@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.40.2" />
+  <meta name="author" content="Eason Zhang">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content=".ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 a small surprise in ex4.py 2 imcompatiblility between python 3.5 and 3.6 3 default end is enter 4 the multiline string 5 help in Ipython 6 call a script with more inputs 7 open a file 8 call function recursively 9 the input of a function 10 variable in the for loop 11 the range function 12 variable in the for loop and range 13 a project skeleton">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://zcl.space/computer/learn-python-the-hard-way/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7cMerriweather%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+
+  
+  <link rel="alternate" href="https://zcl.space/index.xml" type="application/rss+xml" title="ZCL.SPACE">
+  <link rel="feed" href="https://zcl.space/index.xml" type="application/rss+xml" title="ZCL.SPACE">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://zcl.space/computer/learn-python-the-hard-way/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="ZCL.SPACE">
+  <meta property="og:url" content="https://zcl.space/computer/learn-python-the-hard-way/">
+  <meta property="og:title" content="learn python the hard way | ZCL.SPACE">
+  <meta property="og:description" content=".ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 a small surprise in ex4.py 2 imcompatiblility between python 3.5 and 3.6 3 default end is enter 4 the multiline string 5 help in Ipython 6 call a script with more inputs 7 open a file 8 call function recursively 9 the input of a function 10 variable in the for loop 11 the range function 12 variable in the for loop and range 13 a project skeleton">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-05-27T20:43:00&#43;08:00">
+  
+  <meta property="article:modified_time" content="2018-05-27T20:49:00&#43;08:00">
+  
+
+  
+
+  <title>learn python the hard way | ZCL.SPACE</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">ZCL.SPACE</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#math">
+            
+            <span>Math</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#computer">
+            
+            <span>Computer</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#telecommunication">
+            
+            <span>Telecommunication</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#tools">
+            
+            <span>Tools</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="https://zlearning.netlify.com/" target="_blank" rel="noopener">
+            
+            <span>中文</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">learn python the hard way</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+        Last updated on
+    
+    <time datetime="2018-05-27 20:43:00 &#43;0800 CST" itemprop="datePublished dateModified">
+      May 27, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Eason Zhang">
+  </span>
+
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="https://zcl.space/computer/learn-python-the-hard-way/#disqus_thread"></a>
+  
+
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=learn%20python%20the%20hard%20way&amp;url=https%3a%2f%2fzcl.space%2fcomputer%2flearn-python-the-hard-way%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fzcl.space%2fcomputer%2flearn-python-the-hard-way%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fzcl.space%2fcomputer%2flearn-python-the-hard-way%2f&amp;title=learn%20python%20the%20hard%20way"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fzcl.space%2fcomputer%2flearn-python-the-hard-way%2f&amp;title=learn%20python%20the%20hard%20way"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=learn%20python%20the%20hard%20way&amp;body=https%3a%2f%2fzcl.space%2fcomputer%2flearn-python-the-hard-way%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p><style>
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+</style>
+<div class="ox-hugo-toc toc">
+<div></div></p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+<li><span class="section-num">1</span> <a href="#a-small-surprise-in-ex4-dot-py">a small surprise in ex4.py</a></li>
+<li><span class="section-num">2</span> <a href="#imcompatiblility-between-python-3-dot-5-and-3-dot-6">imcompatiblility  between python 3.5 and 3.6</a></li>
+<li><span class="section-num">3</span> <a href="#default-end-is-enter">default end is enter</a></li>
+<li><span class="section-num">4</span> <a href="#the-multiline-string">the multiline string</a></li>
+<li><span class="section-num">5</span> <a href="#help-in-ipython">help in Ipython</a></li>
+<li><span class="section-num">6</span> <a href="#call-a-script-with-more-inputs">call a script with more inputs</a></li>
+<li><span class="section-num">7</span> <a href="#open-a-file">open a file</a></li>
+<li><span class="section-num">8</span> <a href="#call-function-recursively">call function recursively</a></li>
+<li><span class="section-num">9</span> <a href="#the-input-of-a-function">the input of a function</a></li>
+<li><span class="section-num">10</span> <a href="#variable-in-the-for-loop">variable in the for loop</a></li>
+<li><span class="section-num">11</span> <a href="#the-range-function">the <code>range</code> function</a></li>
+<li><span class="section-num">12</span> <a href="#variable-in-the-for-loop-and-range">variable in the for loop and range</a></li>
+<li><span class="section-num">13</span> <a href="#a-project-skeleton">a project skeleton</a></li>
+</ul>
+
+<p></div>
+<!--endtoc--></p>
+
+<p>For a long time, I have been planning to learn Python. However, because I never
+use Python in my work, the plan was delayed again and again. Today, it is
+raining cats and dogs outside. Why not do something I have planned long time ago
+in this perfect mode? So I picked up the book <em>Learning Python the Hard Way</em> by
+Zed Shaw. During the learning, I use Emacs as my Editor, running the programming
+on my old Thinkpad with Ubuntu 16.04 and Python3.5. I am going to learn Python
+in the hard way. However, I believe it will be the clever and efficient way.</p>
+
+<h2 id="a-small-surprise-in-ex4-dot-py"><span class="section-num">1</span> a small surprise in ex4.py</h2>
+
+<p>Everything goes fine until I am doing exercise 4. The python code is:</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">cars <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+space_in_a_car <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>
+drivers <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>
+passengers <span style="color:#f92672">=</span> <span style="color:#ae81ff">90</span>
+cars_not_driven <span style="color:#f92672">=</span> cars <span style="color:#f92672">-</span> drivers
+cars_driven <span style="color:#f92672">=</span> drivers
+carpool_capacity <span style="color:#f92672">=</span> cars_driven <span style="color:#f92672">*</span> space_in_a_car
+average_passengers_per_car <span style="color:#f92672">=</span> passengers <span style="color:#f92672">/</span> cars_driven
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;There are&#34;</span>,cars,<span style="color:#e6db74">&#34;cars available.&#34;</span>)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;There are only&#34;</span>,drivers,<span style="color:#e6db74">&#34;drivers avaiable.&#34;</span>)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;There will be&#34;</span>, cars_not_driven,<span style="color:#e6db74">&#34;empty cars today.&#34;</span>)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;We can transport&#34;</span>,carpool_capacity,<span style="color:#e6db74">&#34;people today.&#34;</span>)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;We have&#34;</span>,passengers,<span style="color:#e6db74">&#34;to carpool today.&#34;</span>)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;We need to put ablout&#34;</span>,average_passengers_per_car,<span style="color:#e6db74">&#34;in each car&#34;</span>)</code></pre></td></tr></table>
+</div>
+</div>
+
+<pre><code class="language-text">There are 100 cars available.
+There are only 30 drivers avaiable.
+There will be 70 empty cars today.
+We can transport 120 people today.
+We have 90 to carpool today.
+We need to put ablout 3.0 in each car
+</code></pre>
+
+<p>and the result is shown belowing the code.</p>
+
+<p>Notice that in the source, the first line concerning print is:</p>
+
+<pre><code class="language-python">print(&quot;There are&quot;,cars,&quot;cars available.&quot;)
+</code></pre>
+
+<p>instead of</p>
+
+<pre><code class="language-python">print(&quot;There are &quot;,cars,&quot; cars available.&quot;)
+</code></pre>
+
+<p>Notice the difference? the whitespace. In Python, the whitespace is inserted
+around the results automatically which is kind of a surprise for a programmer
+familiar with <code>C/C++</code> .</p>
+
+<h2 id="imcompatiblility-between-python-3-dot-5-and-3-dot-6"><span class="section-num">2</span> imcompatiblility  between python 3.5 and 3.6</h2>
+
+<p>I have python3.5 installed on my Ubuntu 16.04 hoping it will help me go through
+the book <em>Learning Python the Hard Way</em> . However, when it comes to ex5.py, the
+dream is waken up.</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">my_name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Zed A. Shaw&#39;</span>
+my_age <span style="color:#f92672">=</span> <span style="color:#ae81ff">35</span>
+my_height <span style="color:#f92672">=</span> <span style="color:#ae81ff">74</span>
+my_weight <span style="color:#f92672">=</span> <span style="color:#ae81ff">180</span>
+my_eyes <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Blue&#39;</span>
+my_teeth <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;White&#39;</span>
+my_hair <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Brown&#39;</span>
+
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;Let&#39;s talk about {my_name}.&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;He&#39;s {my_height} inches tall.&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;He&#39;s {my_weight} pounds heavy.&#34;</span>)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Actually that&#39;s not too heavy.&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;He&#39;s got {my_eyes} eyes and {my_hair} hair.&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;His teeth are usually {my_teeth} depending on the coffee.&#34;</span>)
+
+<span style="color:#75715e"># this line is tricky, try to get it exact right</span>
+total <span style="color:#f92672">=</span> my_age <span style="color:#f92672">+</span> my_height <span style="color:#f92672">+</span> my_weight
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;If I add {my_age}, {my_height}, and {my_weight} I get {total}.&#34;</span>)</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>When I execute <code>python3.5 ex5.py</code> in terminal. SyntaxError is triggered and it
+says:</p>
+
+<pre><code class="language-text">  File &quot;ex5.py&quot;, line 9
+    print(f&quot;Let's talk about {my_name}.&quot;)
+                                       ^
+SyntaxError: invalid syntax
+</code></pre>
+
+<p>After carefully comparison with the code in the book, I found no mistakes. So
+maybe it is the interpreter that raise the error. So python 3.6 is installed.</p>
+
+<pre><code class="language-shell">sudo add-apt-repository ppa:jonathonf/python-3.6
+sudo apt-get update
+sudo apt-get install python3.6
+</code></pre>
+
+<p>Then I execute <code>python3.6 ex5.py</code>, hooray, it works with output:</p>
+
+<pre><code class="language-text">Let's talk about Zed A. Shaw.
+He's 74 inches tall.
+He's 180 pounds heavy.
+Actually that's not too heavy.
+He's got Blue eyes and Brown hair.
+His teeth are usually White depending on the coffee.
+If I add 35, 74, and 180 I get 289.
+</code></pre>
+
+<p>After this, I began to worry python for its incompatibility even after python3.
+Even this little <code>print</code> function shows difference, what about other features?</p>
+
+<h2 id="default-end-is-enter"><span class="section-num">3</span> default end is enter</h2>
+
+<p>In ex7.py</p>
+
+<pre><code class="language-python">print(&quot;Mary had a little lamb.&quot;)
+print(&quot;Its fleece was white as {}.&quot;.format('snow'))
+print(&quot;And everywhere that Mary went.&quot;)
+print(&quot;.&quot;*10)
+
+end1 = &quot;C&quot;
+end2 = &quot;h&quot;
+end3 = &quot;e&quot;
+end4 = &quot;e&quot;
+end5 = &quot;s&quot;
+end6 = &quot;e&quot;
+end7 = &quot;B&quot;
+end8 = &quot;u&quot;
+end9 = &quot;r&quot;
+end10 = &quot;g&quot;
+end11 = &quot;e&quot;
+end12 = &quot;r&quot;
+# watch end = '' at the end. try removing it to see what happens
+print(end1 + end2 + end3 + end4 + end5 + end6 , end=' ')
+print(end7 + end8 + end9 + end10 + end11 + end12)
+</code></pre>
+
+<p>The output is:</p>
+
+<pre><code class="language-text">Mary had a little lamb.
+Its fleece was white as snow.
+And everywhere that Mary went.
+..........
+Cheese Burger
+</code></pre>
+
+<p>Notice the line:</p>
+
+<pre><code class="language-python">print(end1 + end2 + end3 + end4 + end5 + end6 , end=' ')
+</code></pre>
+
+<p>This line change the default <code>end</code> as whitespace. By default, the <code>end</code> will be
+<code>enter</code></p>
+
+<h2 id="the-multiline-string"><span class="section-num">4</span> the multiline string</h2>
+
+<p>There are two ways to generate multiline string. first is using the escape
+sequence; second is to use three double-quotes pair. Today, I found that three
+single-quotes pair is also ok. see the example below.</p>
+
+<pre><code class="language-python">fat_cat ='''
+I'll do a list:
+\t* Cat food
+\t* Fishies
+\t* Catnip\n\t* Grass
+'''
+
+thin_mouse ='''
+I'll do another list:
+\t* mouse food
+\t* Rice
+\t* Catnip\n\t* Grass
+'''
+print(fat_cat)
+print(thin_mouse)
+</code></pre>
+
+<p>also don&rsquo;t foget that the string can be format by prefix a <code>f</code> to be a f-string.</p>
+
+<h2 id="help-in-ipython"><span class="section-num">5</span> help in Ipython</h2>
+
+<p>I like Ipython because of its REPL style. To get help of a function just follow
+the function with a ? or ??, then hit the return.</p>
+
+<p>For example, I want to read the help for the builtin function <code>input</code></p>
+
+<pre><code class="language-text">In [1]: input?
+Type:        builtin_function_or_method
+String form: &lt;built-in function input&gt;
+Namespace:   Python builtin
+Definition:  input(prompt)
+Docstring:
+Read a string from standard input.  The trailing newline is stripped.
+
+The prompt string, if given, is printed to standard output without a
+trailing newline before reading input.
+
+If the user hits EOF (*nix: Ctrl-D, Windows: Ctrl-Z+Return), raise EOFError.
+On *nix systems, readline is used if available.
+</code></pre>
+
+<p>Maybe, ? and ?? will be the most frequenct symbol I use during using python.</p>
+
+<h2 id="call-a-script-with-more-inputs"><span class="section-num">6</span> call a script with more inputs</h2>
+
+<p>You can call a script with more inputs using the <code>argv</code> module</p>
+
+<pre><code class="language-python">from sys import argv
+# read the WYSS section for how to run this
+script, first, second ,third = argv
+
+print(&quot;The script is called:&quot;,script)
+print(&quot;Your first variable is:&quot;,first)
+print(&quot;Your second variable is:&quot;,second)
+print(&quot;Your third variable is:&quot;,third)
+</code></pre>
+
+<p>when save the above code as ex13.py, then call it from the shell:</p>
+
+<pre><code class="language-text">python3.6 ex13.py 1st 2nd 3rd
+</code></pre>
+
+<p>Then the <code>argv</code> will contains the <code>ex13.py</code> <code>1st</code> <code>2nd</code> <code>3rd</code> . The first line
+of the code:</p>
+
+<pre><code class="language-python">script, first, second, third = argv
+</code></pre>
+
+<p>unpack the <code>argv</code> . Then, <code>script ='ex13.py'</code>  <code>first = '1st'</code>  <code>second = '2nd'</code>
+and so on.</p>
+
+<p>Another way allowing the user to input is using the function <code>input</code> .</p>
+
+<h2 id="open-a-file"><span class="section-num">7</span> open a file</h2>
+
+<pre><code class="language-python">txt = open(filename)
+</code></pre>
+
+<p>The <code>txt</code> is not the contents of the file. It is a file object. By this object,
+you can move around and read the file. Actually, we can open the file twice and
+use two different file objects pointing to the same file.</p>
+
+<p>A file opject also has the following function:</p>
+
+<p><a id="orgd804b12"></a></p>
+
+<div class="table-caption">
+  <span class="table-number">Table 1:</span>
+  functions that a file object can call
+</div>
+
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>close</td>
+<td>close the file</td>
+</tr>
+
+<tr>
+<td>read</td>
+<td>read the contents of the file</td>
+</tr>
+
+<tr>
+<td>readline</td>
+<td>reads just one line of a text file</td>
+</tr>
+
+<tr>
+<td>truncate</td>
+<td>empties the file</td>
+</tr>
+
+<tr>
+<td>write(&lsquo;stuff&rsquo;)</td>
+<td>writes &ldquo;stuff&rdquo; into the file</td>
+</tr>
+
+<tr>
+<td>seek(0)</td>
+<td>move the read/write location to the beginning of the file</td>
+</tr>
+</tbody>
+</table>
+
+<p>By default, the file is opened for reading. If you want to open a file and
+writing something into it, use:</p>
+
+<pre><code class="language-python">txt = open(filename,'w')
+</code></pre>
+
+<p>If you want to open a file, read the contents, then write something into it.</p>
+
+<pre><code class="language-python">txt = open(filename,'r+')
+</code></pre>
+
+<p>Actually, there is another option for reading and writing <code>w+</code>, and the
+difference is :</p>
+
+<ol>
+<li><code>r+</code> Open for reading and writing.  The stream is positioned at the beginning
+of the file.</li>
+<li><code>w+</code> Open for reading and writing.  The file is created if it does not exist,
+otherwise it is truncated.  The stream is positioned at the beginning of the
+file.</li>
+</ol>
+
+<p>Notice that the <code>w+</code> option will truncate the file if it exists. Also, the <code>w</code>
+option will truncate the file if exists. So the <code>target.truncate()</code> is not
+necessary if you open a file with <code>w</code> or <code>w+</code> .</p>
+
+<p>On <code>close</code> your file, you will find that most of the time it is ok not close it
+because Cpython will do it for you. However, when you forget to close the file,
+the contents aimed to be written into the file is actually stored in a buffer.
+until you close the file, the contents will not be saved to the file.</p>
+
+<h2 id="call-function-recursively"><span class="section-num">8</span> call function recursively</h2>
+
+<p>Look at the code below:</p>
+
+<pre><code class="language-python"># this one is like your scripts with argv
+def print_two(*args):
+    arg1,arg2,arg3 = args
+    print(f&quot;arg1: {arg1},arg2: {arg2}, arg3: {arg3}&quot;)
+    print_none()
+# ok, that *args is actually pointless, we can just do this
+def print_two_again(arg1,arg2):
+    print(f&quot;arg1: {arg1},arg2: {arg2}&quot;)
+
+# this just takes one argument
+def print_one(arg1):
+    print(f&quot;arg1: {arg1}&quot;)
+
+# this one takes no arguments
+def print_none():
+    print(&quot;I got nothin'.&quot;)
+    print_two(&quot;Zhang&quot;,&quot;Chao&quot;,&quot;long&quot;)
+
+print_two_again(&quot;Zed&quot;,&quot;Shaw&quot;)
+print_one(&quot;First!&quot;)
+print_none()
+</code></pre>
+
+<p>Notice that <code>print_two</code> calls <code>print_none</code> and vice versa. This will raise the
+RecursionError :</p>
+
+<pre><code class="language-text">RecursionError: maximum recursion depth exceeded while calling a Python object
+</code></pre>
+
+<p>I am just curious what will happen if I let two functions call each other
+recursively. :)</p>
+
+<h2 id="the-input-of-a-function"><span class="section-num">9</span> the input of a function</h2>
+
+<p>Input to a function is just like <code>argv</code> to a script. I found that duirng the
+input of a function can also be a function:</p>
+
+<pre><code class="language-python">print(&quot;input the argument:&quot;)
+cheese_and_crackers(input(&quot;arg1:&quot;),input(&quot;arg2:&quot;))
+</code></pre>
+
+<p>Drill more on the <code>input(&quot;arg1:&quot;)</code> , I found that the return of <code>input(&quot;arg1:&quot;)</code>
+is a str, so there must be an automatic convert from str to int for the
+<code>cheese_and_crackers</code> .</p>
+
+<pre><code class="language-python">cheese_and_crackers(input(&quot;arg1:&quot;)+10,input(&quot;arg2:&quot;))
+</code></pre>
+
+<p>will raise a TypeError. So:</p>
+
+<pre><code class="language-python">cheese_and_crackers(int(input(&quot;arg1:&quot;))+10,input(&quot;arg2:&quot;))
+</code></pre>
+
+<p>will work as I wish. Furthermore, maybe the <code>int</code> should be <code>float</code> to accept
+float number.</p>
+
+<h2 id="variable-in-the-for-loop"><span class="section-num">10</span> variable in the for loop</h2>
+
+<p>In a <code>for</code> loop, python can use a variable that isn&rsquo;t defined yet. This is because
+that the <code>for</code> loop defines the variable and initialize it to the current
+element of the loop iteration each time through.</p>
+
+<p>Now, we give an example:</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">20
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># we can also build lists, first start with an empty one</span>
+<span style="color:#75715e"># you have to define this variable before you use it.</span>
+elements <span style="color:#f92672">=</span> []
+
+<span style="color:#75715e"># then use the range function to do 0 to 5 counts</span>
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">16</span>):
+    <span style="color:#75715e"># you don&#39;t have to define i before you use it.</span>
+    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;Adding {i} to the list.&#34;</span>)
+    <span style="color:#75715e"># append is a function that lists understand</span>
+    elements<span style="color:#f92672">.</span>append(i)
+
+
+i <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;i is {i}&#34;</span>)
+<span style="color:#75715e"># now we can print them out too</span>
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> elements:
+    <span style="color:#75715e">#even you define i = 6, i will be overwritten in the for statement</span>
+    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;Element was: {i}&#34;</span>)
+
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;i is {i}&#34;</span>)</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>At first, we define an empty list <code>elements</code> , then we fill the list with
+<code>range(3,100,16)</code> . After that we print the elements of the list. Notice that
+even we define a variable <code>i=20</code> , the statement <code>for i in elements:</code> will
+define a new variable <code>i</code> and overwrite the value of <code>20</code> . The value of the new
+<code>i</code> is the value of the first element of the list. After each loop, the <code>i</code>
+steps through the list.</p>
+
+<p>The result is:</p>
+
+<pre><code class="language-text">Adding 4 to the list.
+Adding 20 to the list.
+Adding 36 to the list.
+Adding 52 to the list.
+Adding 68 to the list.
+Adding 84 to the list.
+i is 20
+Element was: 4
+Element was: 20
+Element was: 36
+Element was: 52
+Element was: 68
+Element was: 84
+i is 84
+</code></pre>
+
+<p>Notice that before the <code>for</code> loop, <code>i=20</code> . Once the <code>for</code> loop begins, <code>i</code>
+will be recreated and be asigned value <code>4</code> which is the first element of the
+list. After the <code>for</code> loop, <code>i=84</code> .</p>
+
+<h2 id="the-range-function"><span class="section-num">11</span> the <code>range</code> function</h2>
+
+<p>In ex32, there appears a builtin function <code>range</code>. <code>range</code> is used to generate a
+sequence of integers, and its help doc is:</p>
+
+<pre><code class="language-text">Type:            type
+String form:     &lt;class 'range'&gt;
+Namespace:       Python builtin
+Init definition: range(self, *args, **kwargs)
+Docstring:
+range(stop) -&gt; range object
+range(start, stop[, step]) -&gt; range object
+
+Return an object that produces a sequence of integers from start (inclusive)
+to stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.
+start defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.
+These are exactly the valid indices for a list of 4 elements.
+When step is given, it specifies the increment (or decrement).
+</code></pre>
+
+<p>Notice that:</p>
+
+<pre><code class="language-python">range(start,stop,step)
+</code></pre>
+
+<p>will generate the sequence of integers including the <code>start</code> and excluding the
+<code>stop</code> . This is different from Matlab, in which <code>start:step:stop</code> will include
+both the <code>start</code> and the <code>stop</code> .</p>
+
+<h2 id="variable-in-the-for-loop-and-range"><span class="section-num">12</span> variable in the for loop and range</h2>
+
+<p>Check the following code:</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">loopnumber</span>(variable,step):
+    numbers <span style="color:#f92672">=</span> []
+    i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(i,variable,step):
+        numbers<span style="color:#f92672">.</span>append(i)
+    <span style="color:#66d9ef">return</span> numbers
+
+variable <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>
+step     <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;The numbers: &#34;</span>)
+<span style="color:#66d9ef">for</span> num <span style="color:#f92672">in</span> loopnumber(variable,step):
+    <span style="color:#66d9ef">print</span>(num)</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>Notice the <code>i</code> in the line 4, the first <code>i</code> will be created at the start of the
+loop while the second <code>i</code> will take the value from line 3. So the contents of
+<code>numbers</code> will be <code>[2,4,6,8]</code></p>
+
+<h2 id="a-project-skeleton"><span class="section-num">13</span> a project skeleton</h2>
+
+<p>Because of the issue of python multi-version, it will be safe to
+start your project with <code>virtualenv</code> . Using <code>virtualenv</code> , your python
+environment is safe even if you install multiple python on your computer.
+This section will help you create a skeleton directory which you can use to
+start a new project up easily. The skeleton directory will have your project
+layout, automated tests, modules, and install scripts. When a new project is to
+be created, you just copy this directory ,rename it and everything is ready for
+you to start coding.</p>
+
+<p>As mentioned before, <code>virtualenv</code> will be needed. so install it:</p>
+
+<pre><code class="language-text">sudo pip3 install virtualenv
+</code></pre>
+
+<p>Sometimes, the pip will crash. If you want to reinstall your pip, goto the
+<a href="https://pypi.org/project/pip/#files" target="_blank">website</a> , download and extract the source, then install it using:</p>
+
+<pre><code class="language-text">sudo python3 setup.py install
+</code></pre>
+
+<p>During my installation of <code>virtualenv</code>, there is an error <code>Missing dependencies
+for SOCKS support</code> . You need the following commands:</p>
+
+<pre><code class="language-text">unset all_proxy
+unset ALL_PROXY
+pip install pysocks
+source .bashrc
+</code></pre>
+
+<p>and <code>pip</code> works again with socks proxy. want more please check <a href="https://stackoverflow.com/questions/40926018/pip-install-doesnt-work-invalidschema-missing-dependencies-for-socks-support/43135798" target="_blank">here</a>.</p>
+
+<p>If <code>virtualenv</code> is ready, then you can create a python installation, which is
+handy to manage versions of your package for different projects. The following
+commands will create the virtual environment.</p>
+
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir ~/.venvs
+virtualenv ~/.venvs/lpthw
+. ~/.venvs/lpthw/bin/activate</code></pre></td></tr></table>
+</div>
+</div>
+
+<p>then you will find the shell symbol changing from <code>$</code> to <code>(lpthw) $</code> . After
+that you will find there is a <code>python</code> under <code>/lpthw/bin</code> . The final step is to
+install <code>nose</code> , which is a testing framework we&rsquo;ll use.</p>
+
+<pre><code class="language-text">pip install nose
+</code></pre>
+
+<p>Notice that the <code>nose</code> will appear at directory <code>~/.venvs/lpthw/bin</code> . This let
+you install different versions of python packages for different projects without
+infecting the main system environment.</p>
+
+<p>Note that when in shell you should have <code>(lpthw)</code> at the very beginning of the
+line with <code>$</code>.</p>
+
+<pre><code class="language-text">. ~/.venvs/lpthw/bin/activate
+</code></pre>
+
+<p>will tell the shell that the virtual environment use python installed at
+<code>~/.venvs/lpthw/bin/</code></p>
+
+<p>This project skeleton is useful when you want to create a module based on
+certain vertion of python.</p>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/tags/computer">computer</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/python">python</a>
+  
+</div>
+
+
+
+
+    
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zclspace" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 ZCL &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script id="dsq-count-scr" src="//zclspace.disqus.com/count.js" async></script>
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lisp.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c&#43;&#43;.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/matlab.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/emacs-lisp.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+      <script type="text/x-mathjax-config">
+       MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] },
+                            TeX: { equationNumbers: {autoNumber: "AMS"},
+                                   MultLineWidth: "85%",
+                                   TagSide: "right",
+                                   TagIndent: ".8em"
+                            }
+       });
+      </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

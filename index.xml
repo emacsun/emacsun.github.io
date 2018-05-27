@@ -11,6 +11,695 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>learn python the hard way</title>
+      <link>https://zcl.space/computer/learn-python-the-hard-way/</link>
+      <pubDate>Sun, 27 May 2018 20:43:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/computer/learn-python-the-hard-way/</guid>
+      <description>
+
+&lt;p&gt;&lt;style&gt;
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+&lt;/style&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#a-small-surprise-in-ex4-dot-py&#34;&gt;a small surprise in ex4.py&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#imcompatiblility-between-python-3-dot-5-and-3-dot-6&#34;&gt;imcompatiblility  between python 3.5 and 3.6&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#default-end-is-enter&#34;&gt;default end is enter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; &lt;a href=&#34;#the-multiline-string&#34;&gt;the multiline string&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; &lt;a href=&#34;#help-in-ipython&#34;&gt;help in Ipython&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;6&lt;/span&gt; &lt;a href=&#34;#call-a-script-with-more-inputs&#34;&gt;call a script with more inputs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;7&lt;/span&gt; &lt;a href=&#34;#open-a-file&#34;&gt;open a file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;8&lt;/span&gt; &lt;a href=&#34;#call-function-recursively&#34;&gt;call function recursively&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;9&lt;/span&gt; &lt;a href=&#34;#the-input-of-a-function&#34;&gt;the input of a function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;10&lt;/span&gt; &lt;a href=&#34;#variable-in-the-for-loop&#34;&gt;variable in the for loop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;11&lt;/span&gt; &lt;a href=&#34;#the-range-function&#34;&gt;the &lt;code&gt;range&lt;/code&gt; function&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;12&lt;/span&gt; &lt;a href=&#34;#variable-in-the-for-loop-and-range&#34;&gt;variable in the for loop and range&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;13&lt;/span&gt; &lt;a href=&#34;#a-project-skeleton&#34;&gt;a project skeleton&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/p&gt;
+
+&lt;p&gt;For a long time, I have been planning to learn Python. However, because I never
+use Python in my work, the plan was delayed again and again. Today, it is
+raining cats and dogs outside. Why not do something I have planned long time ago
+in this perfect mode? So I picked up the book &lt;em&gt;Learning Python the Hard Way&lt;/em&gt; by
+Zed Shaw. During the learning, I use Emacs as my Editor, running the programming
+on my old Thinkpad with Ubuntu 16.04 and Python3.5. I am going to learn Python
+in the hard way. However, I believe it will be the clever and efficient way.&lt;/p&gt;
+
+&lt;h2 id=&#34;a-small-surprise-in-ex4-dot-py&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; a small surprise in ex4.py&lt;/h2&gt;
+
+&lt;p&gt;Everything goes fine until I am doing exercise 4. The python code is:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;12
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;13
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;14
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;cars &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;
+space_in_a_car &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+drivers &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;30&lt;/span&gt;
+passengers &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;90&lt;/span&gt;
+cars_not_driven &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cars &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; drivers
+cars_driven &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; drivers
+carpool_capacity &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cars_driven &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; space_in_a_car
+average_passengers_per_car &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; passengers &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; cars_driven
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;There are&amp;#34;&lt;/span&gt;,cars,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cars available.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;There are only&amp;#34;&lt;/span&gt;,drivers,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;drivers avaiable.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;There will be&amp;#34;&lt;/span&gt;, cars_not_driven,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;empty cars today.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;We can transport&amp;#34;&lt;/span&gt;,carpool_capacity,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;people today.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;We have&amp;#34;&lt;/span&gt;,passengers,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;to carpool today.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;We need to put ablout&amp;#34;&lt;/span&gt;,average_passengers_per_car,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;in each car&amp;#34;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;There are 100 cars available.
+There are only 30 drivers avaiable.
+There will be 70 empty cars today.
+We can transport 120 people today.
+We have 90 to carpool today.
+We need to put ablout 3.0 in each car
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and the result is shown belowing the code.&lt;/p&gt;
+
+&lt;p&gt;Notice that in the source, the first line concerning print is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;There are&amp;quot;,cars,&amp;quot;cars available.&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;instead of&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;There are &amp;quot;,cars,&amp;quot; cars available.&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice the difference? the whitespace. In Python, the whitespace is inserted
+around the results automatically which is kind of a surprise for a programmer
+familiar with &lt;code&gt;C/C++&lt;/code&gt; .&lt;/p&gt;
+
+&lt;h2 id=&#34;imcompatiblility-between-python-3-dot-5-and-3-dot-6&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; imcompatiblility  between python 3.5 and 3.6&lt;/h2&gt;
+
+&lt;p&gt;I have python3.5 installed on my Ubuntu 16.04 hoping it will help me go through
+the book &lt;em&gt;Learning Python the Hard Way&lt;/em&gt; . However, when it comes to ex5.py, the
+dream is waken up.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;12
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;13
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;14
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;15
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;16
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;17
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;18
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;my_name &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Zed A. Shaw&amp;#39;&lt;/span&gt;
+my_age &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;35&lt;/span&gt;
+my_height &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;74&lt;/span&gt;
+my_weight &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;180&lt;/span&gt;
+my_eyes &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Blue&amp;#39;&lt;/span&gt;
+my_teeth &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;White&amp;#39;&lt;/span&gt;
+my_hair &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;Brown&amp;#39;&lt;/span&gt;
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Let&amp;#39;s talk about {my_name}.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;He&amp;#39;s {my_height} inches tall.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;He&amp;#39;s {my_weight} pounds heavy.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Actually that&amp;#39;s not too heavy.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;He&amp;#39;s got {my_eyes} eyes and {my_hair} hair.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;His teeth are usually {my_teeth} depending on the coffee.&amp;#34;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# this line is tricky, try to get it exact right&lt;/span&gt;
+total &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; my_age &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; my_height &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; my_weight
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;If I add {my_age}, {my_height}, and {my_weight} I get {total}.&amp;#34;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;When I execute &lt;code&gt;python3.5 ex5.py&lt;/code&gt; in terminal. SyntaxError is triggered and it
+says:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;  File &amp;quot;ex5.py&amp;quot;, line 9
+    print(f&amp;quot;Let&#39;s talk about {my_name}.&amp;quot;)
+                                       ^
+SyntaxError: invalid syntax
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After carefully comparison with the code in the book, I found no mistakes. So
+maybe it is the interpreter that raise the error. So python 3.6 is installed.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo add-apt-repository ppa:jonathonf/python-3.6
+sudo apt-get update
+sudo apt-get install python3.6
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then I execute &lt;code&gt;python3.6 ex5.py&lt;/code&gt;, hooray, it works with output:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;Let&#39;s talk about Zed A. Shaw.
+He&#39;s 74 inches tall.
+He&#39;s 180 pounds heavy.
+Actually that&#39;s not too heavy.
+He&#39;s got Blue eyes and Brown hair.
+His teeth are usually White depending on the coffee.
+If I add 35, 74, and 180 I get 289.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After this, I began to worry python for its incompatibility even after python3.
+Even this little &lt;code&gt;print&lt;/code&gt; function shows difference, what about other features?&lt;/p&gt;
+
+&lt;h2 id=&#34;default-end-is-enter&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; default end is enter&lt;/h2&gt;
+
+&lt;p&gt;In ex7.py&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;Mary had a little lamb.&amp;quot;)
+print(&amp;quot;Its fleece was white as {}.&amp;quot;.format(&#39;snow&#39;))
+print(&amp;quot;And everywhere that Mary went.&amp;quot;)
+print(&amp;quot;.&amp;quot;*10)
+
+end1 = &amp;quot;C&amp;quot;
+end2 = &amp;quot;h&amp;quot;
+end3 = &amp;quot;e&amp;quot;
+end4 = &amp;quot;e&amp;quot;
+end5 = &amp;quot;s&amp;quot;
+end6 = &amp;quot;e&amp;quot;
+end7 = &amp;quot;B&amp;quot;
+end8 = &amp;quot;u&amp;quot;
+end9 = &amp;quot;r&amp;quot;
+end10 = &amp;quot;g&amp;quot;
+end11 = &amp;quot;e&amp;quot;
+end12 = &amp;quot;r&amp;quot;
+# watch end = &#39;&#39; at the end. try removing it to see what happens
+print(end1 + end2 + end3 + end4 + end5 + end6 , end=&#39; &#39;)
+print(end7 + end8 + end9 + end10 + end11 + end12)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The output is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;Mary had a little lamb.
+Its fleece was white as snow.
+And everywhere that Mary went.
+..........
+Cheese Burger
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice the line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(end1 + end2 + end3 + end4 + end5 + end6 , end=&#39; &#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This line change the default &lt;code&gt;end&lt;/code&gt; as whitespace. By default, the &lt;code&gt;end&lt;/code&gt; will be
+&lt;code&gt;enter&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;the-multiline-string&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; the multiline string&lt;/h2&gt;
+
+&lt;p&gt;There are two ways to generate multiline string. first is using the escape
+sequence; second is to use three double-quotes pair. Today, I found that three
+single-quotes pair is also ok. see the example below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;fat_cat =&#39;&#39;&#39;
+I&#39;ll do a list:
+\t* Cat food
+\t* Fishies
+\t* Catnip\n\t* Grass
+&#39;&#39;&#39;
+
+thin_mouse =&#39;&#39;&#39;
+I&#39;ll do another list:
+\t* mouse food
+\t* Rice
+\t* Catnip\n\t* Grass
+&#39;&#39;&#39;
+print(fat_cat)
+print(thin_mouse)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;also don&amp;rsquo;t foget that the string can be format by prefix a &lt;code&gt;f&lt;/code&gt; to be a f-string.&lt;/p&gt;
+
+&lt;h2 id=&#34;help-in-ipython&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; help in Ipython&lt;/h2&gt;
+
+&lt;p&gt;I like Ipython because of its REPL style. To get help of a function just follow
+the function with a ? or ??, then hit the return.&lt;/p&gt;
+
+&lt;p&gt;For example, I want to read the help for the builtin function &lt;code&gt;input&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;In [1]: input?
+Type:        builtin_function_or_method
+String form: &amp;lt;built-in function input&amp;gt;
+Namespace:   Python builtin
+Definition:  input(prompt)
+Docstring:
+Read a string from standard input.  The trailing newline is stripped.
+
+The prompt string, if given, is printed to standard output without a
+trailing newline before reading input.
+
+If the user hits EOF (*nix: Ctrl-D, Windows: Ctrl-Z+Return), raise EOFError.
+On *nix systems, readline is used if available.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Maybe, ? and ?? will be the most frequenct symbol I use during using python.&lt;/p&gt;
+
+&lt;h2 id=&#34;call-a-script-with-more-inputs&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;6&lt;/span&gt; call a script with more inputs&lt;/h2&gt;
+
+&lt;p&gt;You can call a script with more inputs using the &lt;code&gt;argv&lt;/code&gt; module&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from sys import argv
+# read the WYSS section for how to run this
+script, first, second ,third = argv
+
+print(&amp;quot;The script is called:&amp;quot;,script)
+print(&amp;quot;Your first variable is:&amp;quot;,first)
+print(&amp;quot;Your second variable is:&amp;quot;,second)
+print(&amp;quot;Your third variable is:&amp;quot;,third)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;when save the above code as ex13.py, then call it from the shell:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;python3.6 ex13.py 1st 2nd 3rd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then the &lt;code&gt;argv&lt;/code&gt; will contains the &lt;code&gt;ex13.py&lt;/code&gt; &lt;code&gt;1st&lt;/code&gt; &lt;code&gt;2nd&lt;/code&gt; &lt;code&gt;3rd&lt;/code&gt; . The first line
+of the code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;script, first, second, third = argv
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;unpack the &lt;code&gt;argv&lt;/code&gt; . Then, &lt;code&gt;script =&#39;ex13.py&#39;&lt;/code&gt;  &lt;code&gt;first = &#39;1st&#39;&lt;/code&gt;  &lt;code&gt;second = &#39;2nd&#39;&lt;/code&gt;
+and so on.&lt;/p&gt;
+
+&lt;p&gt;Another way allowing the user to input is using the function &lt;code&gt;input&lt;/code&gt; .&lt;/p&gt;
+
+&lt;h2 id=&#34;open-a-file&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;7&lt;/span&gt; open a file&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;txt = open(filename)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;txt&lt;/code&gt; is not the contents of the file. It is a file object. By this object,
+you can move around and read the file. Actually, we can open the file twice and
+use two different file objects pointing to the same file.&lt;/p&gt;
+
+&lt;p&gt;A file opject also has the following function:&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&#34;orgd804b12&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&#34;table-caption&#34;&gt;
+  &lt;span class=&#34;table-number&#34;&gt;Table 1:&lt;/span&gt;
+  functions that a file object can call
+&lt;/div&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;name&lt;/th&gt;
+&lt;th&gt;description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;close&lt;/td&gt;
+&lt;td&gt;close the file&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;read&lt;/td&gt;
+&lt;td&gt;read the contents of the file&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;readline&lt;/td&gt;
+&lt;td&gt;reads just one line of a text file&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;truncate&lt;/td&gt;
+&lt;td&gt;empties the file&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;write(&amp;lsquo;stuff&amp;rsquo;)&lt;/td&gt;
+&lt;td&gt;writes &amp;ldquo;stuff&amp;rdquo; into the file&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;seek(0)&lt;/td&gt;
+&lt;td&gt;move the read/write location to the beginning of the file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;By default, the file is opened for reading. If you want to open a file and
+writing something into it, use:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;txt = open(filename,&#39;w&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you want to open a file, read the contents, then write something into it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;txt = open(filename,&#39;r+&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Actually, there is another option for reading and writing &lt;code&gt;w+&lt;/code&gt;, and the
+difference is :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;r+&lt;/code&gt; Open for reading and writing.  The stream is positioned at the beginning
+of the file.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;w+&lt;/code&gt; Open for reading and writing.  The file is created if it does not exist,
+otherwise it is truncated.  The stream is positioned at the beginning of the
+file.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Notice that the &lt;code&gt;w+&lt;/code&gt; option will truncate the file if it exists. Also, the &lt;code&gt;w&lt;/code&gt;
+option will truncate the file if exists. So the &lt;code&gt;target.truncate()&lt;/code&gt; is not
+necessary if you open a file with &lt;code&gt;w&lt;/code&gt; or &lt;code&gt;w+&lt;/code&gt; .&lt;/p&gt;
+
+&lt;p&gt;On &lt;code&gt;close&lt;/code&gt; your file, you will find that most of the time it is ok not close it
+because Cpython will do it for you. However, when you forget to close the file,
+the contents aimed to be written into the file is actually stored in a buffer.
+until you close the file, the contents will not be saved to the file.&lt;/p&gt;
+
+&lt;h2 id=&#34;call-function-recursively&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;8&lt;/span&gt; call function recursively&lt;/h2&gt;
+
+&lt;p&gt;Look at the code below:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# this one is like your scripts with argv
+def print_two(*args):
+    arg1,arg2,arg3 = args
+    print(f&amp;quot;arg1: {arg1},arg2: {arg2}, arg3: {arg3}&amp;quot;)
+    print_none()
+# ok, that *args is actually pointless, we can just do this
+def print_two_again(arg1,arg2):
+    print(f&amp;quot;arg1: {arg1},arg2: {arg2}&amp;quot;)
+
+# this just takes one argument
+def print_one(arg1):
+    print(f&amp;quot;arg1: {arg1}&amp;quot;)
+
+# this one takes no arguments
+def print_none():
+    print(&amp;quot;I got nothin&#39;.&amp;quot;)
+    print_two(&amp;quot;Zhang&amp;quot;,&amp;quot;Chao&amp;quot;,&amp;quot;long&amp;quot;)
+
+print_two_again(&amp;quot;Zed&amp;quot;,&amp;quot;Shaw&amp;quot;)
+print_one(&amp;quot;First!&amp;quot;)
+print_none()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that &lt;code&gt;print_two&lt;/code&gt; calls &lt;code&gt;print_none&lt;/code&gt; and vice versa. This will raise the
+RecursionError :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;RecursionError: maximum recursion depth exceeded while calling a Python object
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I am just curious what will happen if I let two functions call each other
+recursively. :)&lt;/p&gt;
+
+&lt;h2 id=&#34;the-input-of-a-function&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;9&lt;/span&gt; the input of a function&lt;/h2&gt;
+
+&lt;p&gt;Input to a function is just like &lt;code&gt;argv&lt;/code&gt; to a script. I found that duirng the
+input of a function can also be a function:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;input the argument:&amp;quot;)
+cheese_and_crackers(input(&amp;quot;arg1:&amp;quot;),input(&amp;quot;arg2:&amp;quot;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Drill more on the &lt;code&gt;input(&amp;quot;arg1:&amp;quot;)&lt;/code&gt; , I found that the return of &lt;code&gt;input(&amp;quot;arg1:&amp;quot;)&lt;/code&gt;
+is a str, so there must be an automatic convert from str to int for the
+&lt;code&gt;cheese_and_crackers&lt;/code&gt; .&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;cheese_and_crackers(input(&amp;quot;arg1:&amp;quot;)+10,input(&amp;quot;arg2:&amp;quot;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;will raise a TypeError. So:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;cheese_and_crackers(int(input(&amp;quot;arg1:&amp;quot;))+10,input(&amp;quot;arg2:&amp;quot;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;will work as I wish. Furthermore, maybe the &lt;code&gt;int&lt;/code&gt; should be &lt;code&gt;float&lt;/code&gt; to accept
+float number.&lt;/p&gt;
+
+&lt;h2 id=&#34;variable-in-the-for-loop&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;10&lt;/span&gt; variable in the for loop&lt;/h2&gt;
+
+&lt;p&gt;In a &lt;code&gt;for&lt;/code&gt; loop, python can use a variable that isn&amp;rsquo;t defined yet. This is because
+that the &lt;code&gt;for&lt;/code&gt; loop defines the variable and initialize it to the current
+element of the loop iteration each time through.&lt;/p&gt;
+
+&lt;p&gt;Now, we give an example:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;12
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;13
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;14
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;15
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;16
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;17
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;18
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;19
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# we can also build lists, first start with an empty one&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# you have to define this variable before you use it.&lt;/span&gt;
+elements &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# then use the range function to do 0 to 5 counts&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt;):
+    &lt;span style=&#34;color:#75715e&#34;&gt;# you don&amp;#39;t have to define i before you use it.&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Adding {i} to the list.&amp;#34;&lt;/span&gt;)
+    &lt;span style=&#34;color:#75715e&#34;&gt;# append is a function that lists understand&lt;/span&gt;
+    elements&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(i)
+
+
+i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;i is {i}&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#75715e&#34;&gt;# now we can print them out too&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; elements:
+    &lt;span style=&#34;color:#75715e&#34;&gt;#even you define i = 6, i will be overwritten in the for statement&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Element was: {i}&amp;#34;&lt;/span&gt;)
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(f&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;i is {i}&amp;#34;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;At first, we define an empty list &lt;code&gt;elements&lt;/code&gt; , then we fill the list with
+&lt;code&gt;range(3,100,16)&lt;/code&gt; . After that we print the elements of the list. Notice that
+even we define a variable &lt;code&gt;i=20&lt;/code&gt; , the statement &lt;code&gt;for i in elements:&lt;/code&gt; will
+define a new variable &lt;code&gt;i&lt;/code&gt; and overwrite the value of &lt;code&gt;20&lt;/code&gt; . The value of the new
+&lt;code&gt;i&lt;/code&gt; is the value of the first element of the list. After each loop, the &lt;code&gt;i&lt;/code&gt;
+steps through the list.&lt;/p&gt;
+
+&lt;p&gt;The result is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;Adding 4 to the list.
+Adding 20 to the list.
+Adding 36 to the list.
+Adding 52 to the list.
+Adding 68 to the list.
+Adding 84 to the list.
+i is 20
+Element was: 4
+Element was: 20
+Element was: 36
+Element was: 52
+Element was: 68
+Element was: 84
+i is 84
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that before the &lt;code&gt;for&lt;/code&gt; loop, &lt;code&gt;i=20&lt;/code&gt; . Once the &lt;code&gt;for&lt;/code&gt; loop begins, &lt;code&gt;i&lt;/code&gt;
+will be recreated and be asigned value &lt;code&gt;4&lt;/code&gt; which is the first element of the
+list. After the &lt;code&gt;for&lt;/code&gt; loop, &lt;code&gt;i=84&lt;/code&gt; .&lt;/p&gt;
+
+&lt;h2 id=&#34;the-range-function&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;11&lt;/span&gt; the &lt;code&gt;range&lt;/code&gt; function&lt;/h2&gt;
+
+&lt;p&gt;In ex32, there appears a builtin function &lt;code&gt;range&lt;/code&gt;. &lt;code&gt;range&lt;/code&gt; is used to generate a
+sequence of integers, and its help doc is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;Type:            type
+String form:     &amp;lt;class &#39;range&#39;&amp;gt;
+Namespace:       Python builtin
+Init definition: range(self, *args, **kwargs)
+Docstring:
+range(stop) -&amp;gt; range object
+range(start, stop[, step]) -&amp;gt; range object
+
+Return an object that produces a sequence of integers from start (inclusive)
+to stop (exclusive) by step.  range(i, j) produces i, i+1, i+2, ..., j-1.
+start defaults to 0, and stop is omitted!  range(4) produces 0, 1, 2, 3.
+These are exactly the valid indices for a list of 4 elements.
+When step is given, it specifies the increment (or decrement).
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;range(start,stop,step)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;will generate the sequence of integers including the &lt;code&gt;start&lt;/code&gt; and excluding the
+&lt;code&gt;stop&lt;/code&gt; . This is different from Matlab, in which &lt;code&gt;start:step:stop&lt;/code&gt; will include
+both the &lt;code&gt;start&lt;/code&gt; and the &lt;code&gt;stop&lt;/code&gt; .&lt;/p&gt;
+
+&lt;h2 id=&#34;variable-in-the-for-loop-and-range&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;12&lt;/span&gt; variable in the for loop and range&lt;/h2&gt;
+
+&lt;p&gt;Check the following code:&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;12
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;loopnumber&lt;/span&gt;(variable,step):
+    numbers &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
+    i &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(i,variable,step):
+        numbers&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(i)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; numbers
+
+variable &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;
+step     &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;The numbers: &amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; num &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; loopnumber(variable,step):
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(num)&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Notice the &lt;code&gt;i&lt;/code&gt; in the line 4, the first &lt;code&gt;i&lt;/code&gt; will be created at the start of the
+loop while the second &lt;code&gt;i&lt;/code&gt; will take the value from line 3. So the contents of
+&lt;code&gt;numbers&lt;/code&gt; will be &lt;code&gt;[2,4,6,8]&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;a-project-skeleton&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;13&lt;/span&gt; a project skeleton&lt;/h2&gt;
+
+&lt;p&gt;Because of the issue of python multi-version, it will be safe to
+start your project with &lt;code&gt;virtualenv&lt;/code&gt; . Using &lt;code&gt;virtualenv&lt;/code&gt; , your python
+environment is safe even if you install multiple python on your computer.
+This section will help you create a skeleton directory which you can use to
+start a new project up easily. The skeleton directory will have your project
+layout, automated tests, modules, and install scripts. When a new project is to
+be created, you just copy this directory ,rename it and everything is ready for
+you to start coding.&lt;/p&gt;
+
+&lt;p&gt;As mentioned before, &lt;code&gt;virtualenv&lt;/code&gt; will be needed. so install it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;sudo pip3 install virtualenv
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Sometimes, the pip will crash. If you want to reinstall your pip, goto the
+&lt;a href=&#34;https://pypi.org/project/pip/#files&#34; target=&#34;_blank&#34;&gt;website&lt;/a&gt; , download and extract the source, then install it using:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;sudo python3 setup.py install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;During my installation of &lt;code&gt;virtualenv&lt;/code&gt;, there is an error &lt;code&gt;Missing dependencies
+for SOCKS support&lt;/code&gt; . You need the following commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;unset all_proxy
+unset ALL_PROXY
+pip install pysocks
+source .bashrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and &lt;code&gt;pip&lt;/code&gt; works again with socks proxy. want more please check &lt;a href=&#34;https://stackoverflow.com/questions/40926018/pip-install-doesnt-work-invalidschema-missing-dependencies-for-socks-support/43135798&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If &lt;code&gt;virtualenv&lt;/code&gt; is ready, then you can create a python installation, which is
+handy to manage versions of your package for different projects. The following
+commands will create the virtual environment.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;mkdir ~/.venvs
+virtualenv ~/.venvs/lpthw
+. ~/.venvs/lpthw/bin/activate&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;then you will find the shell symbol changing from &lt;code&gt;$&lt;/code&gt; to &lt;code&gt;(lpthw) $&lt;/code&gt; . After
+that you will find there is a &lt;code&gt;python&lt;/code&gt; under &lt;code&gt;/lpthw/bin&lt;/code&gt; . The final step is to
+install &lt;code&gt;nose&lt;/code&gt; , which is a testing framework we&amp;rsquo;ll use.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;pip install nose
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that the &lt;code&gt;nose&lt;/code&gt; will appear at directory &lt;code&gt;~/.venvs/lpthw/bin&lt;/code&gt; . This let
+you install different versions of python packages for different projects without
+infecting the main system environment.&lt;/p&gt;
+
+&lt;p&gt;Note that when in shell you should have &lt;code&gt;(lpthw)&lt;/code&gt; at the very beginning of the
+line with &lt;code&gt;$&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;. ~/.venvs/lpthw/bin/activate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;will tell the shell that the virtual environment use python installed at
+&lt;code&gt;~/.venvs/lpthw/bin/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This project skeleton is useful when you want to create a module based on
+certain vertion of python.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>write and evaluate python in Emacs and maybe Org mode</title>
       <link>https://zcl.space/tools/write-and-evaluate-python-code-in-org-mode/</link>
       <pubDate>Sun, 13 May 2018 11:22:00 +0800</pubDate>
@@ -3082,253 +3771,6 @@ hard to use and results in many simplied and effective alternatives
 which are out of this post&amp;rsquo;s scope.&lt;/p&gt;
 
 &lt;p&gt;We will meet density evolution again!!!&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Blogging with Emacs Org</title>
-      <link>https://zcl.space/tools/my-blog-workflow/</link>
-      <pubDate>Sun, 28 Jan 2018 18:01:00 +0800</pubDate>
-      
-      <guid>https://zcl.space/tools/my-blog-workflow/</guid>
-      <description>
-
-&lt;p&gt;&lt;style&gt;
-  .ox-hugo-toc ul {
-    list-style: none;
-  }
-&lt;/style&gt;
-&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
-&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#writing-with-emacs-org-publish&#34;&gt;Writing with Emacs Org publish&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#writing-with-hugo&#34;&gt;Writing with Hugo&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.1&lt;/span&gt; &lt;a href=&#34;#architecture-of-the-site&#34;&gt;architecture of the site&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#settings-for-ox-hugo&#34;&gt;Settings for ox-hugo&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.1&lt;/span&gt; &lt;a href=&#34;#settings-for-each-section-based-on-ox-hugo&#34;&gt;settings for each section based on ox-hugo&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.2&lt;/span&gt; &lt;a href=&#34;#settings-for-each-article-based-on-ox-hugo&#34;&gt;settings for each article based on ox-hugo&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; &lt;a href=&#34;#settings-for-hugo-themes&#34;&gt;Settings for Hugo themes&lt;/a&gt;
-&lt;/div&gt;
-&lt;!--endtoc--&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Right Now, I use two blog systems to post articles. First, I use the Emacs
-built-in Org to record my learning on math, computer and wireless
-communication. For me, the built-in publishing system is obsolete (I am not
-saying Org is obsolete. My life rely heavily on Org.) because I find the
-second one is more interesting and flexible to config. The second one is
-Hugo. Naturally, the Hugo support markdown format. However, I want to use
-Emacs Org to maintain a tools consistency. Fortunately, there is &lt;a href=&#34;https://ox-hugo.scripter.co/&#34; target=&#34;_blank&#34;&gt;ox-hugo&lt;/a&gt;, a
-project bridging Emacs org and Hugo markdown. Ox-hugo allows you to write
-your blog using Emacs Org then publish them in the markdwon format
-automatically.&lt;/p&gt;
-
-&lt;h2 id=&#34;writing-with-emacs-org-publish&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; Writing with Emacs Org publish&lt;/h2&gt;
-
-&lt;p&gt;It&amp;rsquo;s easy to build a static website using &lt;a href=&#34;https://orgmode.org/manual/Publishing.html&#34; target=&#34;_blank&#34;&gt;Emacs Org&lt;/a&gt;. &lt;a href=&#34;https://orgmode.org/worg/&#34; target=&#34;_blank&#34;&gt;Worg&lt;/a&gt;, the Org-mode
-community, also have comprehensive tutorials about using Org to build your
-own static site. To be honest, worg should be every serious Org users&amp;rsquo;
-starting point. So many Org experts contribute their summary of Org in
-high-quality articles on the Worg.&lt;/p&gt;
-
-&lt;p&gt;In general, through Emacs Org mode, all you need is to set the variable
-&lt;code&gt;org-publish-project-alist&lt;/code&gt; . Of course, if you want your site beautiful,
-some knowledge about CSS and JavaScript is necessary.&lt;/p&gt;
-
-&lt;h2 id=&#34;writing-with-hugo&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; Writing with Hugo&lt;/h2&gt;
-
-&lt;p&gt;Now, I moved from the Emacs built-in publishing system to Hugo because of
-Hugo&amp;rsquo;s efficiency and flexibility. You can build your static site in just a
-few minutues. One major problem of the built-in publishing system is that
-you have to wait for a long time as your site gets larger and larger. When
-you have only several posts, there is no problem. However, when you have more
-than one hundred posts, you want to kill yourself during waiting the
-publishing.&lt;/p&gt;
-
-&lt;p&gt;Using Hugo, everything is easy. Post an article is at the fingure.However,
-if you want to write a post, it is prioritized to finished it in the github
-format markdown. For a guy who rarely use markdown and is familiar with
-Emacs Org, this constraint is not human. Fortunately, &lt;a href=&#34;https://github.com/kaushalmodi/ox-hugo&#34; target=&#34;_blank&#34;&gt;Ox-hugo&lt;/a&gt;, a carefuly
-crafted Org exporter backend for Hugo, is definitely worth a try. Ox-hugo
-bridge the Emacs Org and Hugo and make the workflow at a fly. Even though,
-Hugo supports to write the posts in Org format, Ox-hugo still is a sharp
-tool which I will not give up and highly recommend it.&lt;/p&gt;
-
-&lt;p&gt;Especially, there is tons of themes for you. Also, you can set up your own
-theme.&lt;/p&gt;
-
-&lt;h3 id=&#34;architecture-of-the-site&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.1&lt;/span&gt; architecture of the site&lt;/h3&gt;
-
-&lt;p&gt;Using &lt;code&gt;hugo&lt;/code&gt; , there is a default architecture. Using &lt;code&gt;ox-hugo&lt;/code&gt; , I store
-the Org file in the subdirectory &lt;code&gt;content-org&lt;/code&gt; . There are several sections
-for my static site such &lt;code&gt;math&lt;/code&gt; , &lt;code&gt;computer&lt;/code&gt; and &lt;code&gt;communication&lt;/code&gt; . I store
-the articles in the corresponding category. For example I will put an
-article on &lt;em&gt;mathematical analysis&lt;/em&gt; in the file named &lt;code&gt;content-org/math.org&lt;/code&gt;
-so that after exporting, the markdown file will be put in the subdirectory
-&lt;code&gt;content/math/&lt;/code&gt; .&lt;/p&gt;
-
-&lt;p&gt;&lt;a id=&#34;org799910a&#34;&gt;&lt;/a&gt;
-
-&lt;figure&gt;
-    
-        &lt;img src=&#34;https://zcl.space/tools/20180126HugoArchitecture.png&#34; alt=&#34;Figure 1: architecture of Hugo project&#34; width=&#34;400&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;p&gt;
-        Figure 1: architecture of Hugo project
-        
-            
-        
-        &lt;/p&gt; 
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;h2 id=&#34;settings-for-ox-hugo&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; Settings for ox-hugo&lt;/h2&gt;
-
-&lt;h3 id=&#34;settings-for-each-section-based-on-ox-hugo&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3.1&lt;/span&gt; settings for each section based on ox-hugo&lt;/h3&gt;
-
-&lt;p&gt;As mentioned before, there are several sections for my site and I use
-ox-hugo to handle articles for this sections. In the subdirectory
-&lt;code&gt;content-org/&lt;/code&gt; , there are several &lt;code&gt;*.org&lt;/code&gt; files such as &lt;code&gt;math.org&lt;/code&gt; ,
-&lt;code&gt;computer.org&lt;/code&gt; , &lt;code&gt;communications.org&lt;/code&gt; and &lt;code&gt;tools.org&lt;/code&gt; . All these &lt;code&gt;.org&lt;/code&gt;
-files have multiple level-1 headlines. for each level-1 headline, there is
-one article. I use one-post-per-Org-subtree style preferred in the ox-hugo
-&lt;a href=&#34;https://ox-hugo.scripter.co/&#34; target=&#34;_blank&#34;&gt;document&lt;/a&gt; but one-section-per-Org-file style for each section. The
-one-section-per-Org-file style is kind of like one-post-per-Org-file
-mentioned in the ox-hugo &lt;a href=&#34;https://ox-hugo.scripter.co/&#34; target=&#34;_blank&#34;&gt;document&lt;/a&gt;. So I have a hybrid style.&lt;/p&gt;
-
-&lt;p&gt;For each section, I have to set some parameters properly so that the
-articles goes to the right postion. Take &lt;code&gt;math.org&lt;/code&gt; for example, the
-beginning of this file is like:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;#+HUGO_BASE_DIR: ../
-#+HUGO_SECTION: math
-#+SEQ_TODO: TODO NEXT DRAFT DONE
-#+FILETAGS: math
-#+OPTIONS:   *:t &amp;lt;:nil timestamp:nil toc:t
-#+HUGO_AUTO_SET_LASTMOD: t
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ol&gt;
-&lt;li&gt;the first line tells &lt;code&gt;ox-hugo&lt;/code&gt; the targeting directory is &lt;code&gt;../content/&lt;/code&gt; .&lt;/li&gt;
-&lt;li&gt;the second line tells &lt;code&gt;ox-hugo&lt;/code&gt; the article goes to &lt;code&gt;../content/math&lt;/code&gt; .&lt;/li&gt;
-&lt;li&gt;the third line is the Org state of the article, &lt;code&gt;TODO&lt;/code&gt; will render the
-article a draft while &lt;code&gt;DONE&lt;/code&gt; a finished post.&lt;/li&gt;
-&lt;li&gt;the fourth line will tell the Org all the headlines of this file has the
-tag &lt;code&gt;math&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;at the fifth line. &lt;code&gt;*:t&lt;/code&gt; will toggle emphasized text. &lt;code&gt;&amp;lt;:nil&lt;/code&gt; means the
-timestamp will not be exported. &lt;code&gt;timestamp:nil&lt;/code&gt; means the creation time
-will not be exported. &lt;code&gt;toc:t&lt;/code&gt; means for the articles table of content is
-generated. More settings like these will be detailed in the &lt;code&gt;Org&lt;/code&gt;
-manual. (You can open the Org manual by &lt;code&gt;C-h i&lt;/code&gt; ,then seclect the Org
-section.) On table of contents, ox-hugo has an &lt;a href=&#34;https://ox-hugo.scripter.co/doc/org-toc&#34; target=&#34;_blank&#34;&gt;article&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;the sixth line tells ox-hugo to export the latest time when the article
-is modified.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;settings-for-each-article-based-on-ox-hugo&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3.2&lt;/span&gt; settings for each article based on ox-hugo&lt;/h3&gt;
-
-&lt;p&gt;I use the &lt;code&gt;org-capture&lt;/code&gt; to start a article. The emacs-lisp:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(setq org-capture-templates
-      &#39;(
-        (&amp;quot;t&amp;quot; &amp;quot;todo&amp;quot; entry (file &amp;quot;~/zorg/Dropbox/base/zrefile.org&amp;quot;)
-         &amp;quot;* TODO %? :TODO: \n Added:%T\n&amp;quot;
-         :clock-in t :clock-resume t)
-        (&amp;quot;h&amp;quot; &amp;quot;Hugo post&amp;quot;)
-        (&amp;quot;hm&amp;quot; &amp;quot;Math&amp;quot;
-         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/math.org&amp;quot; &amp;quot;Math&amp;quot;)
-         (function org-hugo-new-subtree-post-capture-template)
-         &amp;quot;:math:&amp;quot;
-         :clock-in t :clock-resume t)
-        (&amp;quot;hc&amp;quot; &amp;quot;Computer&amp;quot;
-         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/computer.org&amp;quot; &amp;quot;Computer&amp;quot;)
-         (function org-hugo-new-subtree-post-capture-template)
-         :clock-in t :clock-resume t)
-        (&amp;quot;ht&amp;quot; &amp;quot;Telecommunication&amp;quot;
-         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/telecommunication.org&amp;quot; &amp;quot;Telecommunication&amp;quot;)
-         (function org-hugo-new-subtree-post-capture-template)
-         :clock-in t :clock-resume t)
-        (&amp;quot;hl&amp;quot; &amp;quot;Life&amp;quot;
-         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/life.org&amp;quot; &amp;quot;Life&amp;quot;)
-         (function org-hugo-new-subtree-post-capture-template)
-         :clock-in t :clock-resume t)
-        (&amp;quot;ho&amp;quot; &amp;quot;Tools&amp;quot;
-         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/tools.org&amp;quot; &amp;quot;Tools&amp;quot;)
-         (function org-hugo-new-subtree-post-capture-template)
-         :clock-in t :clock-resume t)
-        ))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;From the above code, you can see that I rely heavily on ox-hugo. there is one
-function named &lt;code&gt;org-hugo-new-subtree-post-capture-template&lt;/code&gt; which is shown
-as below:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;  (defun org-hugo-new-subtree-post-capture-template ()
-    &amp;quot;Returns `org-capture&#39; template string for new Hugo post.
-See `org-capture-templates&#39; for more information.&amp;quot;
-    (let* (;; http://www.holgerschurig.de/en/emacs-blog-from-org-to-hugo/
-           (date (format-time-string (org-time-stamp-format  :inactive) (org-current-time)))
-           (title (read-from-minibuffer &amp;quot;Post Title: &amp;quot;)) ;Prompt to enter the post title
-           (fname (org-hugo-slug title)))
-      (mapconcat #&#39;identity
-                 `(
-                   ,(concat &amp;quot;* TODO &amp;quot; title)
-                   &amp;quot;:PROPERTIES:&amp;quot;
-                   ,(concat &amp;quot;:EXPORT_FILE_NAME: &amp;quot; fname)
-                   ,(concat &amp;quot;:EXPORT_DATE: &amp;quot; date) ;Enter current date and time
-                   ,(concat &amp;quot;:EXPORT_HUGO_CUSTOM_FRONT_MATTER+: &amp;quot;  &amp;quot;:summary \&amp;quot;summary\&amp;quot;&amp;quot;)
-                   &amp;quot;:END:&amp;quot;
-                   &amp;quot;%?\n&amp;quot;)          ;Place the cursor here finally
-                 &amp;quot;\n&amp;quot;)))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;One more point, it is awesome to preview each article after saveing it.
-Yes! you can do it according &lt;a href=&#34;https://ox-hugo.scripter.co/doc/auto-export-on-saving&#34; target=&#34;_blank&#34;&gt;this article&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;settings-for-hugo-themes&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; Settings for Hugo themes&lt;/h2&gt;
-
-&lt;p&gt;Now, there are more than 190+ &lt;a href=&#34;https://themes.gohugo.io/&#34; target=&#34;_blank&#34;&gt;themes&lt;/a&gt; for Hugo. It is pretty straightforward
-to &lt;a href=&#34;https://gohugo.io/themes/&#34; target=&#34;_blank&#34;&gt;install and config&lt;/a&gt; a theme as you wish. I prefer the &lt;a href=&#34;https://sourcethemes.com/academic/&#34; target=&#34;_blank&#34;&gt;Academic theme&lt;/a&gt; which I
-adopt for the following reasons:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;It is easy manage my post according to different categories.&lt;/li&gt;
-&lt;li&gt;I love the widget most.&lt;/li&gt;
-&lt;li&gt;support of \(\mathrm{\LaTeX}\) so I can with the mathematical expressions
-fluently.&lt;/li&gt;
-&lt;li&gt;Responsive and mobile friendly.&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;easy to update.&lt;/p&gt;
-
-&lt;p&gt;There are &lt;a href=&#34;https://sourcethemes.com/academic/docs/install/&#34; target=&#34;_blank&#34;&gt;several ways&lt;/a&gt; to install the Academic theme. I use the Academic
-Kickstart way:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;git clone https://github.com/sourcethemes/academic-kickstart.git My_Website
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The very reason I use the Kickstart way lies in the updatation of Academic.
-In the Kickstart way, Academic is installed as a Git sub-module.&lt;/p&gt;
-
-&lt;p&gt;If you want to update the theme,all you have to do is:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;git submodule update --remote --merge
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Also, for different methods of updating the theme, you can check &lt;a href=&#34;https://sourcethemes.com/academic/docs/update/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
 </description>
     </item>
     
