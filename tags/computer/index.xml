@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2018 ZCL</copyright>
-    <lastBuildDate>Sun, 27 May 2018 20:43:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jun 2018 21:16:00 +0800</lastBuildDate>
     
 	<atom:link href="https://zcl.space/tags/computer/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>copy and deep copy in python</title>
+      <link>https://zcl.space/computer/copy-and-deep-copy-in-python/</link>
+      <pubDate>Fri, 01 Jun 2018 21:16:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/computer/copy-and-deep-copy-in-python/</guid>
+      <description>.ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 No Copy at All 2 view or Shallow Copy 3 Deep Copy 4 only happened in array   
+In the tutorial of Numpy, there a section called Copies and Views, as a newbie of Python, I was shocked. In particular, some priori information of Matlab aggravate the feeling even more. Let&amp;rsquo;s take a look at what happened in Python when I want to copy the value of one variable to another one.</description>
+    </item>
     
     <item>
       <title>learn python the hard way</title>
