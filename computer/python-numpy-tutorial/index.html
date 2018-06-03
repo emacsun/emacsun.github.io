@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme" content="hugo-academic">
+  <meta name="generator" content="Hugo 0.40.2" />
+  <meta name="author" content="Eason Zhang">
+
+  
+  
+  
+  
+    
+      
+    
+  
+  <meta name="description" content=".ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Python  1.1 Basic data types  1.1.1 numbers 1.1.2 Booleans 1.1.3 Strings  1.2 Containers  1.2.1 lists 1.2.2 Dictionaries 1.2.3 Sets 1.2.4 Tuples  1.3 Functions  2 Numpy  2.1 Arrays 2.2 Array indexing  2.2.1 slicing indexing 2.2.2 integer array indexing 2.2.3 boolean array indexing  2.3 Datatypes 2.4 Array math 2.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://zcl.space/computer/python-numpy-tutorial/">
+
+  
+
+
+  
+
+  
+  
+  <meta name="theme-color" content="#0095eb">
+  
+  
+  
+  
+    
+  
+  
+    
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/solarized-dark.min.css">
+    
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+  
+  
+  
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,700%7cMerriweather%7cRoboto&#43;Mono">
+  
+  <link rel="stylesheet" href="/styles.css">
+  
+
+  
+
+  
+  <link rel="alternate" href="https://zcl.space/index.xml" type="application/rss+xml" title="ZCL.SPACE">
+  <link rel="feed" href="https://zcl.space/index.xml" type="application/rss+xml" title="ZCL.SPACE">
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://zcl.space/computer/python-numpy-tutorial/">
+
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="ZCL.SPACE">
+  <meta property="og:url" content="https://zcl.space/computer/python-numpy-tutorial/">
+  <meta property="og:title" content="Python numpy tutorial | ZCL.SPACE">
+  <meta property="og:description" content=".ox-hugo-toc ul { list-style: none; }  
+Table of Contents  1 Python  1.1 Basic data types  1.1.1 numbers 1.1.2 Booleans 1.1.3 Strings  1.2 Containers  1.2.1 lists 1.2.2 Dictionaries 1.2.3 Sets 1.2.4 Tuples  1.3 Functions  2 Numpy  2.1 Arrays 2.2 Array indexing  2.2.1 slicing indexing 2.2.2 integer array indexing 2.2.3 boolean array indexing  2.3 Datatypes 2.4 Array math 2.">
+  <meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2018-06-03T17:35:00&#43;08:00">
+  
+  <meta property="article:modified_time" content="2018-06-03T17:36:00&#43;08:00">
+  
+
+  
+
+  <title>Python numpy tutorial | ZCL.SPACE</title>
+
+</head>
+<body id="top" data-spy="scroll" data-target="#toc" data-offset="71" >
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="navbar-header">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target=".navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a class="navbar-brand" href="/">ZCL.SPACE</a>
+    </div>
+
+    
+    <div class="collapse navbar-collapse">
+
+      
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#math">
+            
+            <span>Math</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#computer">
+            
+            <span>Computer</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#telecommunication">
+            
+            <span>Telecommunication</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#projects">
+            
+            <span>Projects</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+        
+
+        <li class="nav-item">
+          <a href="/#tools">
+            
+            <span>Tools</span>
+            
+          </a>
+        </li>
+
+        
+        
+
+        
+        
+        
+        
+        
+          
+            
+          
+        
+
+        <li class="nav-item">
+          <a href="https://zlearning.netlify.com/" target="_blank" rel="noopener">
+            
+            <span>中文</span>
+            
+          </a>
+        </li>
+
+        
+        
+      
+
+      
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+  <div class="article-container">
+    <h1 itemprop="name">Python numpy tutorial</h1>
+
+    
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+        Last updated on
+    
+    <time datetime="2018-06-03 17:35:00 &#43;0800 CST" itemprop="datePublished dateModified">
+      Jun 3, 2018
+    </time>
+  </span>
+  <span itemscope itemprop="author publisher" itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Eason Zhang">
+  </span>
+
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <a href="https://zcl.space/computer/python-numpy-tutorial/#disqus_thread"></a>
+  
+
+  
+
+  
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Python%20numpy%20tutorial&amp;url=https%3a%2f%2fzcl.space%2fcomputer%2fpython-numpy-tutorial%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fzcl.space%2fcomputer%2fpython-numpy-tutorial%2f"
+         target="_blank" rel="noopener">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fzcl.space%2fcomputer%2fpython-numpy-tutorial%2f&amp;title=Python%20numpy%20tutorial"
+         target="_blank" rel="noopener">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fzcl.space%2fcomputer%2fpython-numpy-tutorial%2f&amp;title=Python%20numpy%20tutorial"
+         target="_blank" rel="noopener">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Python%20numpy%20tutorial&amp;body=https%3a%2f%2fzcl.space%2fcomputer%2fpython-numpy-tutorial%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p><style>
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+</style>
+<div class="ox-hugo-toc toc">
+<div></div></p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+<li><span class="section-num">1</span> <a href="#python">Python</a>
+
+<ul>
+<li><span class="section-num">1.1</span> <a href="#basic-data-types">Basic data types</a>
+
+<ul>
+<li><span class="section-num">1.1.1</span> <a href="#numbers">numbers</a></li>
+<li><span class="section-num">1.1.2</span> <a href="#booleans">Booleans</a></li>
+<li><span class="section-num">1.1.3</span> <a href="#strings">Strings</a></li>
+</ul></li>
+<li><span class="section-num">1.2</span> <a href="#containers">Containers</a>
+
+<ul>
+<li><span class="section-num">1.2.1</span> <a href="#lists">lists</a></li>
+<li><span class="section-num">1.2.2</span> <a href="#dictionaries">Dictionaries</a></li>
+<li><span class="section-num">1.2.3</span> <a href="#sets">Sets</a></li>
+<li><span class="section-num">1.2.4</span> <a href="#tuples">Tuples</a></li>
+</ul></li>
+<li><span class="section-num">1.3</span> <a href="#functions">Functions</a></li>
+</ul></li>
+<li><span class="section-num">2</span> <a href="#numpy">Numpy</a>
+
+<ul>
+<li><span class="section-num">2.1</span> <a href="#arrays">Arrays</a></li>
+<li><span class="section-num">2.2</span> <a href="#array-indexing">Array indexing</a>
+
+<ul>
+<li><span class="section-num">2.2.1</span> <a href="#slicing-indexing">slicing indexing</a></li>
+<li><span class="section-num">2.2.2</span> <a href="#integer-array-indexing">integer array indexing</a></li>
+<li><span class="section-num">2.2.3</span> <a href="#boolean-array-indexing">boolean array indexing</a></li>
+</ul></li>
+<li><span class="section-num">2.3</span> <a href="#datatypes">Datatypes</a></li>
+<li><span class="section-num">2.4</span> <a href="#array-math">Array math</a></li>
+<li><span class="section-num">2.5</span> <a href="#broadcasting">Broadcasting</a></li>
+</ul></li>
+<li><span class="section-num">3</span> <a href="#summary">summary</a></li>
+</ul>
+
+<p></div>
+<!--endtoc--></p>
+
+<h2 id="python"><span class="section-num">1</span> Python</h2>
+
+<p>As a high-level dynamically typed multiparadigm programming language, python
+is attracts more and more attensions. Because of its strict indentation
+requirement, python code has some beauty in it.</p>
+
+<p>Using Emacs and IPython, I finished the <a href="http://cs231n.github.io/python-numpy-tutorial/" target="_blank">tutorial</a> written by <a href="https://cs.stanford.edu/people/jcjohns/" target="_blank">Justin Johnson</a> .
+The following sections share the same architecture as in the tutorial.
+However, for the sake of learning, I input all the code and add my
+understanding. Because I learn Matlab beforehand, some differencec between
+Matlab and Python are mentioned. During the learning, I use python 3.6
+instead of python 3.5 in the tutorial.</p>
+
+<h3 id="basic-data-types"><span class="section-num">1.1</span> Basic data types</h3>
+
+<p>Like most languages, Python has a number of basic types including integers,
+floats, booleans, and strings.</p>
+
+<h4 id="numbers"><span class="section-num">1.1.1</span> numbers</h4>
+
+<p>Numbers include integer and float types and work as in other language.</p>
+
+<pre><code class="language-python">x = 3
+print(type(x)) # Prints &quot;&lt;class 'int'&gt;&quot;
+print(x)       # Prints &quot;3&quot;
+print(x+1)     # Addition; prints &quot;4&quot;
+print(x-1)     # Subtraction; print &quot;2&quot;
+print(x*2)     # Multiplication; prints &quot;6&quot;
+print(x**2)    # Exponentiation; print &quot;9&quot;
+x += 1
+print(x)       # Print &quot;4&quot;
+x *= 2
+print(x)       # Print &quot;8&quot;
+y = 2.5
+print(type(y)) # Print &quot;&lt;class 'float'&gt;&quot;
+print(y, y+1, y*2, y**2) # Prints &quot;2.5 3.5 5.0 6.25&quot;
+</code></pre>
+
+<p>Python has <code>+=</code>  , <code>*=</code> , <code>-=</code> , <code>/=</code>  operators. However <code>a++</code> and <code>a--</code>
+are not supported in Python.</p>
+
+<h4 id="booleans"><span class="section-num">1.1.2</span> Booleans</h4>
+
+<p>Different from Matlab, Python use <code>and</code> , <code>or</code> to implement Booleans
+logic. In Matlab, which was implemented using <code>&amp;&amp;</code> and <code>||</code> .</p>
+
+<pre><code class="language-python">t = True
+f = False
+print(type(t)) # Prints &quot;&lt;class 'bool'&gt;&quot;
+print(t and f) # logical AND; prints &quot;False&quot;
+print(t or f)  # logical or; prints &quot;True&quot;
+print(not t)   # logical NOT; print &quot;False&quot;
+print(t != f)  # logical XOR; prints &quot;True&quot;
+</code></pre>
+
+<p>In matlab &ldquo;not equal&rdquo; was symbolized by <code>~=</code> instead of <code>!=</code> .</p>
+
+<h4 id="strings"><span class="section-num">1.1.3</span> Strings</h4>
+
+<p>I think Python support more on strings.</p>
+
+<pre><code class="language-python">hello = 'hello' # String lterals can use single quotes
+world = &quot;world&quot; # double quotes; has the same effects as single ones
+print(hello)    # Prints hello
+print(len(hello)) #String length; prints &quot;5&quot;
+hw = hello + ' ' + world # String concatenation
+print(hw) # prints &quot;hello world&quot;
+hw12 = '%s %s %d' % (hello,world,12)
+print(hw12) # Prints &quot;hello world 12&quot;
+</code></pre>
+
+<p>In Python3.6, there is a handy sting called f-string. The last two lines
+code above can be written as:</p>
+
+<pre><code class="language-python">print(f'{hello} {world} 12')
+</code></pre>
+
+<p>Quite a lot of methods are provided for strings:</p>
+
+<pre><code class="language-python">s = &quot;hello&quot;
+print(s.capitalize())   # Capitalize a string; prints &quot;Hello&quot;
+print(s.upper()) # Print &quot;HELLO&quot;
+print(s.rjust(7)) # right-justify a string, padding with spaces;
+print(s.center(7)) # center a string, padding with space;
+print(s.replace('l','(ell)')) # replace all instances of one substring
+#with another
+</code></pre>
+
+<p>More methods can be found <a href="https://docs.python.org/3.5/library/stdtypes.html#string-methods" target="_blank">in the document</a>.</p>
+
+<h3 id="containers"><span class="section-num">1.2</span> Containers</h3>
+
+<p>There are four built-in container types: lists, dictionaries, sets and
+tuples.</p>
+
+<h4 id="lists"><span class="section-num">1.2.1</span> lists</h4>
+
+<p>A list is the Python equivalent of an array, but is resizeable and can
+contain element of different types.</p>
+
+<pre><code class="language-python">xs = [3,1,2] # Create a list
+print(xs,xs[2]) # prints &quot;[3,1,2] 2&quot;
+print(xs[-1]) # print the last element; print &quot;2&quot;
+xs[2] = 'foo' # different  types
+print(xs) # print &quot;[3,1,'foo']&quot;
+xs.append('bar')
+print(xs) # print &quot;[3,1,'foo','bar']&quot;
+x = xs.pop()
+print(x,xs) # prints &quot;bar [3,1,'foo']&quot;
+</code></pre>
+
+<p>As usual, you can find all the gory details about lists <a href="https://docs.python.org/3.5/tutorial/datastructures.html#more-on-lists" target="_blank">in the document</a>.</p>
+
+<p>If you are impatient to access list elements one at a time, slicing is an
+excellent choice to access more than one elements in a list.</p>
+
+<pre><code class="language-python">nums = list(range(5)) # range is a built-in function that create a list of integers
+print(nums) # print &quot;[0,1,2,3,4]&quot;
+print(nums[2:4]) # get a slice from index 2 to 4 (exclusive);print &quot;[2,3]&quot;
+print(nums[2:]) # prints &quot;[2,3,]&quot;
+print(nums[:2]) # get a slice from the start to index 2(exclusive). prints &quot;[0,1]&quot;
+print(nums[:]) # the whole list
+print(nums[:-1]) # slice indices can be negative; prints &quot;[0,1,2,3]&quot;
+nums[2:4] = [8,9]
+print(nums) # Prints &quot;[0,1,8,9,4]&quot;
+</code></pre>
+
+<p>You can also loop over the elements of a list like this:</p>
+
+<pre><code class="language-python">animals = ['cat', 'dog','monkey']
+for animal in animals:
+    print(animal)
+</code></pre>
+
+<p>If you want access to the index of each element within the body of a loop,
+use the built-in <code>enumerate</code> function</p>
+
+<pre><code class="language-python">animals = ['cat','dog','monkey']
+for idx,animal in enumerate(animals):
+    print('#%d: %s' % (idx + 1,animal))
+</code></pre>
+
+<p>Next, I want to show a point which does not exists in Matlab: list
+comprehensions. Consider the following code:</p>
+
+<pre><code class="language-python">nums = [0,1,2,3,4]
+squares = []
+for x in nums:
+    squares.append(x ** 2)
+print(squares)
+</code></pre>
+
+<p>Using the list comprehensions, we implement the above with extremely short
+code.</p>
+
+<pre><code class="language-python">nums = [0,1,2,3,4]
+squares = [x ** 2 for x in nums]
+print(squares)
+</code></pre>
+
+<p>You do not have to define <code>square</code> before you use it. list comprehensions
+can also contain conditions:</p>
+
+<pre><code class="language-python">nums = [0,1,2,3,4]
+even_squares = [x ** 2 for x in nums if x % 2 == 0]
+print(even_squares)
+</code></pre>
+
+<h4 id="dictionaries"><span class="section-num">1.2.2</span> Dictionaries</h4>
+
+<p>The values in a dictionary are pairs of <code>(key,value)</code> . You can access the
+value through the key just like what you do when you look up a dictionary.</p>
+
+<p>Dictionary type use <code>{}</code> as the limiters.</p>
+
+<pre><code class="language-python">d = {'cat':'cute','dot':'furry'} # Create a new dictionary with some data
+print(d['cat']) # Get an entry from a dictionary using the key 'cat'
+print('cat' in d) # Prints &quot;True&quot;; check if a dictionary has a given entry
+d['fish'] = 'wet' # set a new entry in a dictionary
+print(d['fish'])  # print &quot;wet&quot;
+print(d.get('monkey','N/A')) # get an element with a default; print &quot;N/A&quot;
+print(d.get('fish','N/A')) # Print &quot;wet&quot;
+del d['fish'] # remove an element from a dictionary
+print(d.get('fish','N/A')) # Print &quot;N/A&quot;
+</code></pre>
+
+<p>More methods for dictionary can be found <a href="https://docs.python.org/3.5/library/stdtypes.html#dict" target="_blank">in the document.</a></p>
+
+<p>Like in list, you can also loop in a dictionary. The different is that in
+a dictionary, you loop using the keys.</p>
+
+<pre><code class="language-python">d = {'person':2, 'cat':4,'spider':8}
+for animal in d:
+    legs = d[animal]
+    print(f'a {animal} has  {legs} legs')
+</code></pre>
+
+<p>The output will be:</p>
+
+<pre><code class="language-text">a person has  2 legs
+a cat has  4 legs
+a spider has  8 legs
+</code></pre>
+
+<p>Also, there is dictionary comprehensions, which are similar to list
+comprehensions, but allow you to easily construct dictionaries.</p>
+
+<pre><code class="language-python">nums = [0,1,2,3,4]
+even_num_to_square = {x: x**2 for x in nums if x % 2 == 0}
+print(even_num_to_square)
+</code></pre>
+
+<p>Notice that you can even print a dictionary directly using the <code>print</code>
+function.</p>
+
+<h4 id="sets"><span class="section-num">1.2.3</span> Sets</h4>
+
+<p>A set is a collection of distinct elements. Notice the world <strong>distinct</strong>. A
+set has the same meaning what a mathematician mean. In particular, in a
+set there are not two identical elements. Set use <code>{}</code> as the limiter the
+same as dictionary.</p>
+
+<pre><code class="language-python">animals = {'cat','dog'}
+print('cat' in animals) # True
+print('fish' in animals) # False
+animals.add('fish') # add 'fish' in the set
+print('fish' in animals) # True
+print(len(animals)) # 3
+animals.add('cat') # add 'cat' second time, nothing happen
+print(len(animals)) # 3
+animals.remove('cat') # remove 'cat' from the set
+print(len(animals)) # 2
+</code></pre>
+
+<p>You can find more about set <a href="http://cs231n.github.io/python-numpy-tutorial/#python-sets" target="_blank">in the document</a>.</p>
+
+<p>You can also iterate over a set. Since sets are unordered, you cannot make
+assumptions about the order in which you visit the elements of the set.</p>
+
+<pre><code class="language-python">animals = {'cat','dog','fish'}
+for idx,animal in enumerate(animals):
+    print(f'# {idx} : {animal}')
+</code></pre>
+
+<p>And the output will be:</p>
+
+<pre><code class="language-text"># 0 : fish
+# 1 : cat
+# 2 : dog
+</code></pre>
+
+<p>Like lists and dictionarier, sets can be constructed by set
+comprehensions.</p>
+
+<pre><code class="language-python">from math import sqrt
+nums = {int(sqrt(x)) for x in range(20)}
+print(nums)
+</code></pre>
+
+<p>The output will be:</p>
+
+<pre><code class="language-text">{0,1,2,3,4}
+</code></pre>
+
+<h4 id="tuples"><span class="section-num">1.2.4</span> Tuples</h4>
+
+<p>Tuple is the fourth container in Python. A tuple is an immutable ordered
+list of values. A tuple is in many ways similiar to a list. One of the
+most important differences is that tuples can be used as keys in
+dictionaries and as elements of sets, while lists cannot. Let&rsquo;s take a
+look at a trivial example.</p>
+
+<p>A tuple is enclosed in parentheses. It is not possible to assign to the
+individual items of a tuple. However, it is possible to create tuples
+which contain mutable objects, such as lists.</p>
+
+<pre><code class="language-python">d = {(x,x+1):x for x in range(10)} # create a dictionary
+t = (5,6) # create a tuple
+print(type(t)) # &lt;class 'tuple'&gt;
+print(d[t]) # 5
+print(d[(1,2)]) # 1
+</code></pre>
+
+<p>You can find more about tuples <a href="https://docs.python.org/3.5/tutorial/datastructures.html#tuples-and-sequences" target="_blank">in the document.</a></p>
+
+<h3 id="functions"><span class="section-num">1.3</span> Functions</h3>
+
+<p>Python function are defined using the <code>def</code> keyword. For example:</p>
+
+<pre><code class="language-python">def fib(n):
+    &quot;&quot;&quot;Print a fibonacci series up to n&quot;&quot;&quot;
+    a,b = 0,1
+    while a &lt; n:
+        print(a,end = ' ')
+        a,b = b,a+b
+    print()
+</code></pre>
+
+<p>The keyword <code>def</code> introducs a function definition which must be followed
+by the function name and the parenthesized list of formal parameters. The
+statements that form the body of the function start at the next line, and
+must be indented.</p>
+
+<p>Sometimes, we want to define functions that have default arguments, like
+this:</p>
+
+<pre><code class="language-python">def hello(name, loud=False):
+    if loud:
+        print(f'HELLO, {name.upper()}')
+    else:
+        print(f'Hello, {name}')
+</code></pre>
+
+<p>Notice that <code>loud</code> will be <code>False</code> by default. If you call the function
+<code>hello</code> with asignning any value to <code>loud</code>, it will be <code>False</code>.  Of
+course, you can call <code>hello</code> using <code>hello('Bob',True)</code> . You can also call
+<code>hello</code> using <code>hello('Bob',loud=True)</code> .</p>
+
+<p>You can find more about define a function <a href="https://docs.python.org/3.5/tutorial/controlflow.html#defining-functions" target="_blank">in the document.</a></p>
+
+<h2 id="numpy"><span class="section-num">2</span> Numpy</h2>
+
+<p>As the core library of scientific computing in Python, Numpy make Python a
+replacement of Matlab even when there are quite a lot of differences
+between Numpy and Matlab. Because of open course, Numpy gets quite a lots
+of features to support scientific computation.</p>
+
+<h3 id="arrays"><span class="section-num">2.1</span> Arrays</h3>
+
+<p>A numpy array is a grid of values. All the values share the same type. A
+numpy array can be indexed by a tuple of nonnegative integers. The number of
+dimensions is the rank of the array. The shape of an array is a tuple of
+integers giving the size of the array along each dimension.</p>
+
+<p>We can create a numpy arrays from nested Python lists, and access elements
+using square brackets.</p>
+
+<pre><code class="language-python">import numpy as np
+a = np.array([1,2,3])
+print(type(a))
+print(a.shape)
+print(a[0],a[1],a[2])
+a[0] = 5
+print(a)
+
+b = np.array([[1,2,3],[4,5,6]])
+print(b.shape)
+print(b[0,0],b[0,1],b[1,0])
+print(b.ndim)
+</code></pre>
+
+<p>As in Matlab, numpy also provides many functions to create special arrays:</p>
+
+<pre><code class="language-python">import numpy as np
+
+a = np.zeros((4,4))
+print(a)
+
+b = np.ones((2,2))
+print(b)
+
+c = np.full((2,2),9)
+print(c)
+
+d = np.eye(2)
+print(d)
+
+e = np.random.random((2,2))
+print(e)
+</code></pre>
+
+<p>Another two useful methods are <code>arange</code> and <code>linspace</code></p>
+
+<pre><code class="language-python">import numpy as np
+
+a = np.arange(10) #exclude 10
+print(a)
+
+b = np.linspace(1,4,6) #include 4
+print(b)
+</code></pre>
+
+<p>More methods can be found <a href="https://docs.scipy.org/doc/numpy/user/basics.creation.html#arrays-creation" target="_blank">in the document</a>.</p>
+
+<h3 id="array-indexing"><span class="section-num">2.2</span> Array indexing</h3>
+
+<p>You can access the element of an array one by one or more than one at a
+time. I like slicing very much. Because it is an effective way to access
+more than one elements at a time.</p>
+
+<h4 id="slicing-indexing"><span class="section-num">2.2.1</span> slicing indexing</h4>
+
+<pre><code class="language-python">import numpy as np
+
+a = np.array([[1,2,3,4],
+              [5,6,7,8],
+              [9,10,11,12]])
+b = a[:2,1:3]
+print(b)
+c = a[::2,0::2]
+print(c)
+
+</code></pre>
+
+<p>The output will be:</p>
+
+<pre><code class="language-text">[[2 3]
+ [6 7]]
+[[ 1  3]
+ [ 9 11]]
+</code></pre>
+
+<p>Notice that:</p>
+
+<ol>
+<li>In python, index starts from zero instead of one. (In Matlab, index
+starts from one)</li>
+<li>the slicing has the form <code>start:stop:step</code> , which mean start from the
+<code>start</code> and stop at <code>stop</code> (exclusive) with step as <code>step</code></li>
+</ol>
+
+<p>In Python, negative integer can also be used as index which provides
+flexibility for accessing the elements in an array.</p>
+
+<p>One important thing about slicing is that the origin one and the sliced
+result are closely related. please take a look at <a href="https://www.zcl.space/computer/copy-and-deep-copy-in-python/" target="_blank">this post</a>.</p>
+
+<p>Let&rsquo;s follow the above example.</p>
+
+<pre><code class="language-python">b[0,0] = 99
+print(b)
+print(a)
+</code></pre>
+
+<p>And the output will be:</p>
+
+<pre><code class="language-text">[[99  3]
+ [ 6  7]]
+
+[[ 1 99  3  4]
+ [ 5  6  7  8]
+ [ 9 10 11 12]]
+</code></pre>
+
+<p>Notice that the <code>99</code> appears at <code>b[0,0]</code> and <code>a[0,1]</code> . I did not set
+<code>a[0,1]</code> explicitly, but it was changed.</p>
+
+<p>When you index the numply arrays using slicing, the resulting array view
+will always be a subarray of the original way. If you change the subarray,
+the origin array will be changed too. This is pretty weird for engineer
+coming from Matlab.</p>
+
+<h4 id="integer-array-indexing"><span class="section-num">2.2.2</span> integer array indexing</h4>
+
+<p>Another way of indexing array is integer array indexing. For example:</p>
+
+<pre><code class="language-python">import numpy as np
+a = np.array([[1,2],
+              [3,4],
+              [5,6]])
+
+print(a[[0,1,2],[0,1,0]])
+</code></pre>
+
+<p>Notice that integer array indexing does not have the effect of &ldquo;view&rdquo;. You
+can change the new array resulting from integer array indexing without
+worry about changing the origin array.</p>
+
+<p>Another advantage of integer array indexing is that you can modify certain
+positions of an array at a time. For example:</p>
+
+<pre><code class="language-python">import numpy as np
+
+a = np.array([[1,2,3],
+              [4,5,6],
+              [7,8,9],
+              [10,11,12]])
+
+print(a)
+
+#Create an array of indices
+b = np.array([0,2,0,1])
+# Select one element from each row of the array
+# using the indices in b
+
+print(a[np.arange(4),b])
+
+a[np.arange(4),b] += 10
+
+print(a)
+</code></pre>
+
+<p>Notice that only some positions of the array <code>a</code> are added 10. The
+positions are represented by <code>np.arange(4),b</code> . I think this is of high
+efficiency.</p>
+
+<h4 id="boolean-array-indexing"><span class="section-num">2.2.3</span> boolean array indexing</h4>
+
+<p>Boolean array indexing is another method of indexing an array. In matlab,
+there is boolean array indexing too. According to my experience, boolean
+array indexing is used to pick up certain elements of an array satisfying
+cerntain conditions.</p>
+
+<pre><code class="language-python">import numpy as np
+a = np.array([[1,2],
+              [3,4],
+              [5,6]])
+# bool_idx are positions where
+# the elements are greater than 2
+bool_idx = (a &gt; 2)
+
+print(bool_idx)
+
+print(a[bool_idx])
+print(a[a&gt;2])
+</code></pre>
+
+<p>The shape of <code>bool_idx</code> is the same as <code>a</code> . The value of <code>bool_idx</code> is
+<code>True</code> where <code>a&gt;2</code> satisfies. The last line tells us that we can finish
+the finding of positions and picking up the elements in one concise
+statement.</p>
+
+<p>You can find more on indexing <a href="https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html" target="_blank">in the document.</a></p>
+
+<h3 id="datatypes"><span class="section-num">2.3</span> Datatypes</h3>
+
+<p>Every numpy array is a grid of elements of the same type. Numpy provides a
+large set of numeric datatypes that you can use to construct arrays. Numpy
+tries to guess a datatype when you create an array, but functions that
+construct arrays usually also include an optional argument to explicitly
+specify the datatype. For example:</p>
+
+<pre><code class="language-python">import numpy as np
+x = np.array([1,2])
+print(x.dtype)
+
+x = np.array([1.0,2.0])
+print(x.dtype)
+
+x = np.array([1,2],dtype=np.int64)
+print(x.dtype)
+
+x = np.random.random((1,2))
+print(x.dtype)
+
+x = np.array([1+5j,2 + 4j])
+print(x.dtype)
+</code></pre>
+
+<p>The output is :</p>
+
+<pre><code class="language-text">int64
+float64
+int64
+float64
+complex128
+</code></pre>
+
+<p>Notice that for a complex number, numpy use the <code>complex128</code> to
+indicate the datetype.</p>
+
+<h3 id="array-math"><span class="section-num">2.4</span> Array math</h3>
+
+<p>It is always more efficient to do algebra in vector mode so that the
+computation is expected to be finished in a parallel way. Because
+everything in python is object, the operators can be overloaded.</p>
+
+<pre><code class="language-python">import numpy as np
+
+x = np.array([[1,2],[3,4]],dtype=np.float64)
+y = np.array([[5,6],[7,8]],dtype=np.float64)
+
+
+print(x+y)
+print(np.add(x,y))
+</code></pre>
+
+<p>One point that needs our attention is the matrix multiplication. There are
+two types of multiplication between matrices: one is elementwise
+multiplication and the other one is matrix multiplication. In Matlab, we
+use <code>*</code> to implement the matrix multiplication and <code>.*</code> to implement the
+elementwise multiplication. In Python, things are different. <code>*</code> is use to
+implement elementwise multiplication and <code>dot</code> is used to compute matrix
+multiplication.</p>
+
+<pre><code class="language-python">import numpy as np
+
+x = np.array([[1,2],[3,4]])
+y = np.array([[5,6],[7,8]])
+
+v = np.array([9,10])
+w = np.array([11,12])
+
+# all the following 4 statements produce 219
+print(v.dot(w))
+print(w.dot(v))
+print(np.dot(v,w))
+print(np.dot(w,v))
+
+# matrix multiplication
+
+print(x.dot(y))
+print(np.dot(x,y))
+
+# AB != BA
+print(y.dot(x))
+print(np.dot(y,x))
+</code></pre>
+
+<p>Like in Matlab, we can sum up the matrix along one axis.</p>
+
+<pre><code class="language-python">import numpy as np
+
+x = np.array([ [1,2],[3,4] ])
+
+# sum all the elements of x
+print(np.sum(x))
+
+# sum along the column
+print(np.sum(x,axis=0))
+# sum along the row
+print(np.sum(x,axis=1))
+</code></pre>
+
+<p>Changing the shape of an array is also one frequent operation. The most
+used operation is transposing a matrix.</p>
+
+<pre><code class="language-python">import numpy as np
+
+x = np.array([[1,2],[3,4]])
+
+print(x)
+print(x.T)
+</code></pre>
+
+<p>If you want to reshape an array, <code>shape</code> is used.</p>
+
+<pre><code class="language-python">import numpy as np
+
+a = np.arange(12)
+print(a)
+
+b = a.reshape((3,4))
+print(b)
+</code></pre>
+
+<p>The output will be:</p>
+
+<pre><code class="language-text">[ 0  1  2  3  4  5  6  7  8  9 10 11]
+
+[[ 0  1  2  3]
+[ 4  5  6  7]
+[ 8  9 10 11]]
+</code></pre>
+
+<p>Notice that <code>np.arange(n)</code> will exclude the <code>n</code>. and from shape <code>(12,)</code> to
+shape <code>(3,4)</code>, Python write the <code>(3,4)</code> row first. However, in Matlab, it
+is column first.</p>
+
+<h3 id="broadcasting"><span class="section-num">2.5</span> Broadcasting</h3>
+
+<p>In Matlab, if you want to add two  matrices, they must have the same
+dimension, or an error will be throwed out.  However, in Python there is a
+mechanism called &ldquo;Broadcasting&rdquo; which allow you to work with arrays with
+different shapes.</p>
+
+<p>Suppose we want to add a constant vector to each row of a matrix. We would
+like this:</p>
+
+<pre><code class="language-python">import numpy as np
+
+x = np.array([[1,2,3],
+              [4,5,6],
+              [7,8,9],
+              [10,11,12]])
+
+v = np.array([1,0,1])
+
+#create an empty matrix with the same shape as x
+y = np.empty_like(x)
+
+for i in range(4):
+    y[i,:] = x[i,:] + v
+
+print(y)
+</code></pre>
+
+<p>The above code implement what we want. However, from the eye of Python, it
+is not concise. You have to iterate over <code>x</code> . Python allows you broadcast
+the <code>v</code> to each row of <code>x</code></p>
+
+<pre><code class="language-python">import numpy as np
+
+x = np.array([[1,2,3],
+              [4,5,6],
+              [7,8,9],
+              [10,11,12]])
+v = np.array([1,0,1])
+y = x + v
+print(y)
+</code></pre>
+
+<p>It is so easy. It works even <code>x</code> has shape <code>(4,3)</code> and <code>v</code> has shape <code>(3,)</code>
+due to broadcasting.</p>
+
+<p>Broadcasting two arrays together follows thses rules:</p>
+
+<ol>
+<li>if the arrays do not have the same shape, prepend the shape of the lower
+array with 1s until both shapes have the same length.</li>
+<li>The two arrays are said to be compatible in a dimension if they have the
+same size in the dimension, of if one of the arrays has size 1 in that
+dimension.</li>
+<li>The arrays can be broadcast together if they are compatible in all
+dimensions.</li>
+<li>After broadcasting, each array behaves as if it had shape equal to the
+elementwise maximum of shapes of the two input arrays.</li>
+<li>In any dimension where one array had size 1 and the other array had size
+greater than 1, the first array behaves as if it were copied along that
+dimension.</li>
+</ol>
+
+<p>Please check <a href="http://scipy.github.io/old-wiki/pages/EricsBroadcastingDoc" target="_blank">this document</a> and <a href="https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html" target="_blank">this document</a> for more explainations.
+Functions that support broadcasting is called the universal function. You
+can find all the available universal function in <a href="https://docs.scipy.org/doc/numpy/reference/ufuncs.html#available-ufuncs" target="_blank">this document</a>.</p>
+
+<h2 id="summary"><span class="section-num">3</span> summary</h2>
+
+<p>This post summrize some important aspects of Numpy. However, it is far to
+be like the <a href="https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html" target="_blank">numpy refernence</a>. You should check the numpy reference
+frequently when you are not sure what you are using.</p>
+
+    </div>
+
+    
+
+
+<div class="article-tags">
+  
+  <a class="btn btn-primary btn-outline" href="/tags/computer">computer</a>
+  
+  <a class="btn btn-primary btn-outline" href="/tags/python">python</a>
+  
+</div>
+
+
+
+
+    
+    
+    <div class="article-widget">
+      <div class="hr-light"></div>
+      <h3>Related</h3>
+      <ul>
+        
+        <li><a href="/computer/copy-and-deep-copy-in-python/">copy and deep copy in python</a></li>
+        
+        <li><a href="/computer/learn-python-the-hard-way/">learn python the hard way</a></li>
+        
+        <li><a href="/tools/write-and-evaluate-python-code-in-org-mode/">write and evaluate python in Emacs and maybe Org mode</a></li>
+        
+        <li><a href="/tools/python-in-org-mode/">write Python in Emacs and Org mode</a></li>
+        
+      </ul>
+    </div>
+    
+
+    
+
+    
+<section id="comments">
+  <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "zclspace" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+  </div>
+</article>
+
+<footer class="site-footer">
+  <div class="container">
+    <p class="powered-by">
+
+      &copy; 2018 ZCL &middot; 
+
+      Powered by the
+      <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+      <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+      <span class="pull-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fa fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span>
+
+    </p>
+  </div>
+</footer>
+
+
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close btn-large" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cite</h4>
+      </div>
+      <div>
+        <pre><code class="modal-body tex"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-primary btn-outline js-copy-cite" href="#" target="_blank">
+          <i class="fa fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-primary btn-outline js-download-cite" href="#" target="_blank">
+          <i class="fa fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+    
+    <script id="dsq-count-scr" src="//zclspace.disqus.com/count.js" async></script>
+    
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha512-3P8rXCuGJdNZOnUx/03c1jOTnMn3rP63nBip5gOP2qmUh5YAdVAvFZ1E+QLZZbC1rtMrQb+mah3AfYW11RUrWA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.3/imagesloaded.pkgd.min.js" integrity="sha512-umsR78NN0D23AzgoZ11K7raBD+R6hqKojyBZs1w8WvYlsI+QuKRGBx3LFCwhatzBunCjDuJpDHwxD13sLMbpRA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha512-iztkobsvnjKfAtTNdHkGVjAYTrrtlC7mGp/54c40wowO7LhURYl3gVzzcEqGl/qKXQltJ2HwMrdLcNUdo+N/RQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.4/isotope.pkgd.min.js" integrity="sha512-VDBOIlDbuC4VWxGJNmuFRQ0Li0SKkDpmGyuhAG5LTDLd/dJ/S0WMVxriR2Y+CyPL5gzjpN4f/6iqWVBJlht0tQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+    
+    
+    <script src="/js/hugo-academic.js"></script>
+    
+
+    
+    
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
+
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/lisp.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c&#43;&#43;.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/matlab.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/emacs-lisp.min.js"></script>
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+      <script type="text/x-mathjax-config">
+       MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] },
+                            TeX: { equationNumbers: {autoNumber: "AMS"},
+                                   MultLineWidth: "85%",
+                                   TagSide: "right",
+                                   TagIndent: ".8em"
+                            }
+       });
+      </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
+    
+    
+
+  </body>
+</html>
+

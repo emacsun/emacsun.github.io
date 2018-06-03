@@ -11,6 +11,800 @@
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Python numpy tutorial</title>
+      <link>https://zcl.space/computer/python-numpy-tutorial/</link>
+      <pubDate>Sun, 03 Jun 2018 17:35:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/computer/python-numpy-tutorial/</guid>
+      <description>
+
+&lt;p&gt;&lt;style&gt;
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+&lt;/style&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#python&#34;&gt;Python&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1.1&lt;/span&gt; &lt;a href=&#34;#basic-data-types&#34;&gt;Basic data types&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1.1.1&lt;/span&gt; &lt;a href=&#34;#numbers&#34;&gt;numbers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1.1.2&lt;/span&gt; &lt;a href=&#34;#booleans&#34;&gt;Booleans&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1.1.3&lt;/span&gt; &lt;a href=&#34;#strings&#34;&gt;Strings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1.2&lt;/span&gt; &lt;a href=&#34;#containers&#34;&gt;Containers&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1.2.1&lt;/span&gt; &lt;a href=&#34;#lists&#34;&gt;lists&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1.2.2&lt;/span&gt; &lt;a href=&#34;#dictionaries&#34;&gt;Dictionaries&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1.2.3&lt;/span&gt; &lt;a href=&#34;#sets&#34;&gt;Sets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1.2.4&lt;/span&gt; &lt;a href=&#34;#tuples&#34;&gt;Tuples&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1.3&lt;/span&gt; &lt;a href=&#34;#functions&#34;&gt;Functions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#numpy&#34;&gt;Numpy&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.1&lt;/span&gt; &lt;a href=&#34;#arrays&#34;&gt;Arrays&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.2&lt;/span&gt; &lt;a href=&#34;#array-indexing&#34;&gt;Array indexing&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.2.1&lt;/span&gt; &lt;a href=&#34;#slicing-indexing&#34;&gt;slicing indexing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.2.2&lt;/span&gt; &lt;a href=&#34;#integer-array-indexing&#34;&gt;integer array indexing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.2.3&lt;/span&gt; &lt;a href=&#34;#boolean-array-indexing&#34;&gt;boolean array indexing&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.3&lt;/span&gt; &lt;a href=&#34;#datatypes&#34;&gt;Datatypes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.4&lt;/span&gt; &lt;a href=&#34;#array-math&#34;&gt;Array math&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.5&lt;/span&gt; &lt;a href=&#34;#broadcasting&#34;&gt;Broadcasting&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#summary&#34;&gt;summary&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;python&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; Python&lt;/h2&gt;
+
+&lt;p&gt;As a high-level dynamically typed multiparadigm programming language, python
+is attracts more and more attensions. Because of its strict indentation
+requirement, python code has some beauty in it.&lt;/p&gt;
+
+&lt;p&gt;Using Emacs and IPython, I finished the &lt;a href=&#34;http://cs231n.github.io/python-numpy-tutorial/&#34; target=&#34;_blank&#34;&gt;tutorial&lt;/a&gt; written by &lt;a href=&#34;https://cs.stanford.edu/people/jcjohns/&#34; target=&#34;_blank&#34;&gt;Justin Johnson&lt;/a&gt; .
+The following sections share the same architecture as in the tutorial.
+However, for the sake of learning, I input all the code and add my
+understanding. Because I learn Matlab beforehand, some differencec between
+Matlab and Python are mentioned. During the learning, I use python 3.6
+instead of python 3.5 in the tutorial.&lt;/p&gt;
+
+&lt;h3 id=&#34;basic-data-types&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1.1&lt;/span&gt; Basic data types&lt;/h3&gt;
+
+&lt;p&gt;Like most languages, Python has a number of basic types including integers,
+floats, booleans, and strings.&lt;/p&gt;
+
+&lt;h4 id=&#34;numbers&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1.1.1&lt;/span&gt; numbers&lt;/h4&gt;
+
+&lt;p&gt;Numbers include integer and float types and work as in other language.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = 3
+print(type(x)) # Prints &amp;quot;&amp;lt;class &#39;int&#39;&amp;gt;&amp;quot;
+print(x)       # Prints &amp;quot;3&amp;quot;
+print(x+1)     # Addition; prints &amp;quot;4&amp;quot;
+print(x-1)     # Subtraction; print &amp;quot;2&amp;quot;
+print(x*2)     # Multiplication; prints &amp;quot;6&amp;quot;
+print(x**2)    # Exponentiation; print &amp;quot;9&amp;quot;
+x += 1
+print(x)       # Print &amp;quot;4&amp;quot;
+x *= 2
+print(x)       # Print &amp;quot;8&amp;quot;
+y = 2.5
+print(type(y)) # Print &amp;quot;&amp;lt;class &#39;float&#39;&amp;gt;&amp;quot;
+print(y, y+1, y*2, y**2) # Prints &amp;quot;2.5 3.5 5.0 6.25&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Python has &lt;code&gt;+=&lt;/code&gt;  , &lt;code&gt;*=&lt;/code&gt; , &lt;code&gt;-=&lt;/code&gt; , &lt;code&gt;/=&lt;/code&gt;  operators. However &lt;code&gt;a++&lt;/code&gt; and &lt;code&gt;a--&lt;/code&gt;
+are not supported in Python.&lt;/p&gt;
+
+&lt;h4 id=&#34;booleans&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1.1.2&lt;/span&gt; Booleans&lt;/h4&gt;
+
+&lt;p&gt;Different from Matlab, Python use &lt;code&gt;and&lt;/code&gt; , &lt;code&gt;or&lt;/code&gt; to implement Booleans
+logic. In Matlab, which was implemented using &lt;code&gt;&amp;amp;&amp;amp;&lt;/code&gt; and &lt;code&gt;||&lt;/code&gt; .&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;t = True
+f = False
+print(type(t)) # Prints &amp;quot;&amp;lt;class &#39;bool&#39;&amp;gt;&amp;quot;
+print(t and f) # logical AND; prints &amp;quot;False&amp;quot;
+print(t or f)  # logical or; prints &amp;quot;True&amp;quot;
+print(not t)   # logical NOT; print &amp;quot;False&amp;quot;
+print(t != f)  # logical XOR; prints &amp;quot;True&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In matlab &amp;ldquo;not equal&amp;rdquo; was symbolized by &lt;code&gt;~=&lt;/code&gt; instead of &lt;code&gt;!=&lt;/code&gt; .&lt;/p&gt;
+
+&lt;h4 id=&#34;strings&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1.1.3&lt;/span&gt; Strings&lt;/h4&gt;
+
+&lt;p&gt;I think Python support more on strings.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;hello = &#39;hello&#39; # String lterals can use single quotes
+world = &amp;quot;world&amp;quot; # double quotes; has the same effects as single ones
+print(hello)    # Prints hello
+print(len(hello)) #String length; prints &amp;quot;5&amp;quot;
+hw = hello + &#39; &#39; + world # String concatenation
+print(hw) # prints &amp;quot;hello world&amp;quot;
+hw12 = &#39;%s %s %d&#39; % (hello,world,12)
+print(hw12) # Prints &amp;quot;hello world 12&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In Python3.6, there is a handy sting called f-string. The last two lines
+code above can be written as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(f&#39;{hello} {world} 12&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Quite a lot of methods are provided for strings:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;s = &amp;quot;hello&amp;quot;
+print(s.capitalize())   # Capitalize a string; prints &amp;quot;Hello&amp;quot;
+print(s.upper()) # Print &amp;quot;HELLO&amp;quot;
+print(s.rjust(7)) # right-justify a string, padding with spaces;
+print(s.center(7)) # center a string, padding with space;
+print(s.replace(&#39;l&#39;,&#39;(ell)&#39;)) # replace all instances of one substring
+#with another
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More methods can be found &lt;a href=&#34;https://docs.python.org/3.5/library/stdtypes.html#string-methods&#34; target=&#34;_blank&#34;&gt;in the document&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;containers&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1.2&lt;/span&gt; Containers&lt;/h3&gt;
+
+&lt;p&gt;There are four built-in container types: lists, dictionaries, sets and
+tuples.&lt;/p&gt;
+
+&lt;h4 id=&#34;lists&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1.2.1&lt;/span&gt; lists&lt;/h4&gt;
+
+&lt;p&gt;A list is the Python equivalent of an array, but is resizeable and can
+contain element of different types.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;xs = [3,1,2] # Create a list
+print(xs,xs[2]) # prints &amp;quot;[3,1,2] 2&amp;quot;
+print(xs[-1]) # print the last element; print &amp;quot;2&amp;quot;
+xs[2] = &#39;foo&#39; # different  types
+print(xs) # print &amp;quot;[3,1,&#39;foo&#39;]&amp;quot;
+xs.append(&#39;bar&#39;)
+print(xs) # print &amp;quot;[3,1,&#39;foo&#39;,&#39;bar&#39;]&amp;quot;
+x = xs.pop()
+print(x,xs) # prints &amp;quot;bar [3,1,&#39;foo&#39;]&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As usual, you can find all the gory details about lists &lt;a href=&#34;https://docs.python.org/3.5/tutorial/datastructures.html#more-on-lists&#34; target=&#34;_blank&#34;&gt;in the document&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you are impatient to access list elements one at a time, slicing is an
+excellent choice to access more than one elements in a list.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nums = list(range(5)) # range is a built-in function that create a list of integers
+print(nums) # print &amp;quot;[0,1,2,3,4]&amp;quot;
+print(nums[2:4]) # get a slice from index 2 to 4 (exclusive);print &amp;quot;[2,3]&amp;quot;
+print(nums[2:]) # prints &amp;quot;[2,3,]&amp;quot;
+print(nums[:2]) # get a slice from the start to index 2(exclusive). prints &amp;quot;[0,1]&amp;quot;
+print(nums[:]) # the whole list
+print(nums[:-1]) # slice indices can be negative; prints &amp;quot;[0,1,2,3]&amp;quot;
+nums[2:4] = [8,9]
+print(nums) # Prints &amp;quot;[0,1,8,9,4]&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can also loop over the elements of a list like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;animals = [&#39;cat&#39;, &#39;dog&#39;,&#39;monkey&#39;]
+for animal in animals:
+    print(animal)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you want access to the index of each element within the body of a loop,
+use the built-in &lt;code&gt;enumerate&lt;/code&gt; function&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;animals = [&#39;cat&#39;,&#39;dog&#39;,&#39;monkey&#39;]
+for idx,animal in enumerate(animals):
+    print(&#39;#%d: %s&#39; % (idx + 1,animal))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next, I want to show a point which does not exists in Matlab: list
+comprehensions. Consider the following code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nums = [0,1,2,3,4]
+squares = []
+for x in nums:
+    squares.append(x ** 2)
+print(squares)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Using the list comprehensions, we implement the above with extremely short
+code.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nums = [0,1,2,3,4]
+squares = [x ** 2 for x in nums]
+print(squares)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You do not have to define &lt;code&gt;square&lt;/code&gt; before you use it. list comprehensions
+can also contain conditions:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nums = [0,1,2,3,4]
+even_squares = [x ** 2 for x in nums if x % 2 == 0]
+print(even_squares)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;dictionaries&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1.2.2&lt;/span&gt; Dictionaries&lt;/h4&gt;
+
+&lt;p&gt;The values in a dictionary are pairs of &lt;code&gt;(key,value)&lt;/code&gt; . You can access the
+value through the key just like what you do when you look up a dictionary.&lt;/p&gt;
+
+&lt;p&gt;Dictionary type use &lt;code&gt;{}&lt;/code&gt; as the limiters.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;d = {&#39;cat&#39;:&#39;cute&#39;,&#39;dot&#39;:&#39;furry&#39;} # Create a new dictionary with some data
+print(d[&#39;cat&#39;]) # Get an entry from a dictionary using the key &#39;cat&#39;
+print(&#39;cat&#39; in d) # Prints &amp;quot;True&amp;quot;; check if a dictionary has a given entry
+d[&#39;fish&#39;] = &#39;wet&#39; # set a new entry in a dictionary
+print(d[&#39;fish&#39;])  # print &amp;quot;wet&amp;quot;
+print(d.get(&#39;monkey&#39;,&#39;N/A&#39;)) # get an element with a default; print &amp;quot;N/A&amp;quot;
+print(d.get(&#39;fish&#39;,&#39;N/A&#39;)) # Print &amp;quot;wet&amp;quot;
+del d[&#39;fish&#39;] # remove an element from a dictionary
+print(d.get(&#39;fish&#39;,&#39;N/A&#39;)) # Print &amp;quot;N/A&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More methods for dictionary can be found &lt;a href=&#34;https://docs.python.org/3.5/library/stdtypes.html#dict&#34; target=&#34;_blank&#34;&gt;in the document.&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Like in list, you can also loop in a dictionary. The different is that in
+a dictionary, you loop using the keys.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;d = {&#39;person&#39;:2, &#39;cat&#39;:4,&#39;spider&#39;:8}
+for animal in d:
+    legs = d[animal]
+    print(f&#39;a {animal} has  {legs} legs&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The output will be:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;a person has  2 legs
+a cat has  4 legs
+a spider has  8 legs
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Also, there is dictionary comprehensions, which are similar to list
+comprehensions, but allow you to easily construct dictionaries.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;nums = [0,1,2,3,4]
+even_num_to_square = {x: x**2 for x in nums if x % 2 == 0}
+print(even_num_to_square)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that you can even print a dictionary directly using the &lt;code&gt;print&lt;/code&gt;
+function.&lt;/p&gt;
+
+&lt;h4 id=&#34;sets&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1.2.3&lt;/span&gt; Sets&lt;/h4&gt;
+
+&lt;p&gt;A set is a collection of distinct elements. Notice the world &lt;strong&gt;distinct&lt;/strong&gt;. A
+set has the same meaning what a mathematician mean. In particular, in a
+set there are not two identical elements. Set use &lt;code&gt;{}&lt;/code&gt; as the limiter the
+same as dictionary.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;animals = {&#39;cat&#39;,&#39;dog&#39;}
+print(&#39;cat&#39; in animals) # True
+print(&#39;fish&#39; in animals) # False
+animals.add(&#39;fish&#39;) # add &#39;fish&#39; in the set
+print(&#39;fish&#39; in animals) # True
+print(len(animals)) # 3
+animals.add(&#39;cat&#39;) # add &#39;cat&#39; second time, nothing happen
+print(len(animals)) # 3
+animals.remove(&#39;cat&#39;) # remove &#39;cat&#39; from the set
+print(len(animals)) # 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can find more about set &lt;a href=&#34;http://cs231n.github.io/python-numpy-tutorial/#python-sets&#34; target=&#34;_blank&#34;&gt;in the document&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;You can also iterate over a set. Since sets are unordered, you cannot make
+assumptions about the order in which you visit the elements of the set.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;animals = {&#39;cat&#39;,&#39;dog&#39;,&#39;fish&#39;}
+for idx,animal in enumerate(animals):
+    print(f&#39;# {idx} : {animal}&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And the output will be:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;# 0 : fish
+# 1 : cat
+# 2 : dog
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Like lists and dictionarier, sets can be constructed by set
+comprehensions.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from math import sqrt
+nums = {int(sqrt(x)) for x in range(20)}
+print(nums)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The output will be:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;{0,1,2,3,4}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;tuples&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1.2.4&lt;/span&gt; Tuples&lt;/h4&gt;
+
+&lt;p&gt;Tuple is the fourth container in Python. A tuple is an immutable ordered
+list of values. A tuple is in many ways similiar to a list. One of the
+most important differences is that tuples can be used as keys in
+dictionaries and as elements of sets, while lists cannot. Let&amp;rsquo;s take a
+look at a trivial example.&lt;/p&gt;
+
+&lt;p&gt;A tuple is enclosed in parentheses. It is not possible to assign to the
+individual items of a tuple. However, it is possible to create tuples
+which contain mutable objects, such as lists.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;d = {(x,x+1):x for x in range(10)} # create a dictionary
+t = (5,6) # create a tuple
+print(type(t)) # &amp;lt;class &#39;tuple&#39;&amp;gt;
+print(d[t]) # 5
+print(d[(1,2)]) # 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can find more about tuples &lt;a href=&#34;https://docs.python.org/3.5/tutorial/datastructures.html#tuples-and-sequences&#34; target=&#34;_blank&#34;&gt;in the document.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;functions&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1.3&lt;/span&gt; Functions&lt;/h3&gt;
+
+&lt;p&gt;Python function are defined using the &lt;code&gt;def&lt;/code&gt; keyword. For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def fib(n):
+    &amp;quot;&amp;quot;&amp;quot;Print a fibonacci series up to n&amp;quot;&amp;quot;&amp;quot;
+    a,b = 0,1
+    while a &amp;lt; n:
+        print(a,end = &#39; &#39;)
+        a,b = b,a+b
+    print()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The keyword &lt;code&gt;def&lt;/code&gt; introducs a function definition which must be followed
+by the function name and the parenthesized list of formal parameters. The
+statements that form the body of the function start at the next line, and
+must be indented.&lt;/p&gt;
+
+&lt;p&gt;Sometimes, we want to define functions that have default arguments, like
+this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;def hello(name, loud=False):
+    if loud:
+        print(f&#39;HELLO, {name.upper()}&#39;)
+    else:
+        print(f&#39;Hello, {name}&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that &lt;code&gt;loud&lt;/code&gt; will be &lt;code&gt;False&lt;/code&gt; by default. If you call the function
+&lt;code&gt;hello&lt;/code&gt; with asignning any value to &lt;code&gt;loud&lt;/code&gt;, it will be &lt;code&gt;False&lt;/code&gt;.  Of
+course, you can call &lt;code&gt;hello&lt;/code&gt; using &lt;code&gt;hello(&#39;Bob&#39;,True)&lt;/code&gt; . You can also call
+&lt;code&gt;hello&lt;/code&gt; using &lt;code&gt;hello(&#39;Bob&#39;,loud=True)&lt;/code&gt; .&lt;/p&gt;
+
+&lt;p&gt;You can find more about define a function &lt;a href=&#34;https://docs.python.org/3.5/tutorial/controlflow.html#defining-functions&#34; target=&#34;_blank&#34;&gt;in the document.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;numpy&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; Numpy&lt;/h2&gt;
+
+&lt;p&gt;As the core library of scientific computing in Python, Numpy make Python a
+replacement of Matlab even when there are quite a lot of differences
+between Numpy and Matlab. Because of open course, Numpy gets quite a lots
+of features to support scientific computation.&lt;/p&gt;
+
+&lt;h3 id=&#34;arrays&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.1&lt;/span&gt; Arrays&lt;/h3&gt;
+
+&lt;p&gt;A numpy array is a grid of values. All the values share the same type. A
+numpy array can be indexed by a tuple of nonnegative integers. The number of
+dimensions is the rank of the array. The shape of an array is a tuple of
+integers giving the size of the array along each dimension.&lt;/p&gt;
+
+&lt;p&gt;We can create a numpy arrays from nested Python lists, and access elements
+using square brackets.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+a = np.array([1,2,3])
+print(type(a))
+print(a.shape)
+print(a[0],a[1],a[2])
+a[0] = 5
+print(a)
+
+b = np.array([[1,2,3],[4,5,6]])
+print(b.shape)
+print(b[0,0],b[0,1],b[1,0])
+print(b.ndim)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As in Matlab, numpy also provides many functions to create special arrays:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+
+a = np.zeros((4,4))
+print(a)
+
+b = np.ones((2,2))
+print(b)
+
+c = np.full((2,2),9)
+print(c)
+
+d = np.eye(2)
+print(d)
+
+e = np.random.random((2,2))
+print(e)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Another two useful methods are &lt;code&gt;arange&lt;/code&gt; and &lt;code&gt;linspace&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+
+a = np.arange(10) #exclude 10
+print(a)
+
+b = np.linspace(1,4,6) #include 4
+print(b)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More methods can be found &lt;a href=&#34;https://docs.scipy.org/doc/numpy/user/basics.creation.html#arrays-creation&#34; target=&#34;_blank&#34;&gt;in the document&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&#34;array-indexing&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.2&lt;/span&gt; Array indexing&lt;/h3&gt;
+
+&lt;p&gt;You can access the element of an array one by one or more than one at a
+time. I like slicing very much. Because it is an effective way to access
+more than one elements at a time.&lt;/p&gt;
+
+&lt;h4 id=&#34;slicing-indexing&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.2.1&lt;/span&gt; slicing indexing&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+
+a = np.array([[1,2,3,4],
+              [5,6,7,8],
+              [9,10,11,12]])
+b = a[:2,1:3]
+print(b)
+c = a[::2,0::2]
+print(c)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The output will be:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;[[2 3]
+ [6 7]]
+[[ 1  3]
+ [ 9 11]]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;In python, index starts from zero instead of one. (In Matlab, index
+starts from one)&lt;/li&gt;
+&lt;li&gt;the slicing has the form &lt;code&gt;start:stop:step&lt;/code&gt; , which mean start from the
+&lt;code&gt;start&lt;/code&gt; and stop at &lt;code&gt;stop&lt;/code&gt; (exclusive) with step as &lt;code&gt;step&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In Python, negative integer can also be used as index which provides
+flexibility for accessing the elements in an array.&lt;/p&gt;
+
+&lt;p&gt;One important thing about slicing is that the origin one and the sliced
+result are closely related. please take a look at &lt;a href=&#34;https://www.zcl.space/computer/copy-and-deep-copy-in-python/&#34; target=&#34;_blank&#34;&gt;this post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s follow the above example.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;b[0,0] = 99
+print(b)
+print(a)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And the output will be:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;[[99  3]
+ [ 6  7]]
+
+[[ 1 99  3  4]
+ [ 5  6  7  8]
+ [ 9 10 11 12]]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that the &lt;code&gt;99&lt;/code&gt; appears at &lt;code&gt;b[0,0]&lt;/code&gt; and &lt;code&gt;a[0,1]&lt;/code&gt; . I did not set
+&lt;code&gt;a[0,1]&lt;/code&gt; explicitly, but it was changed.&lt;/p&gt;
+
+&lt;p&gt;When you index the numply arrays using slicing, the resulting array view
+will always be a subarray of the original way. If you change the subarray,
+the origin array will be changed too. This is pretty weird for engineer
+coming from Matlab.&lt;/p&gt;
+
+&lt;h4 id=&#34;integer-array-indexing&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.2.2&lt;/span&gt; integer array indexing&lt;/h4&gt;
+
+&lt;p&gt;Another way of indexing array is integer array indexing. For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+a = np.array([[1,2],
+              [3,4],
+              [5,6]])
+
+print(a[[0,1,2],[0,1,0]])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that integer array indexing does not have the effect of &amp;ldquo;view&amp;rdquo;. You
+can change the new array resulting from integer array indexing without
+worry about changing the origin array.&lt;/p&gt;
+
+&lt;p&gt;Another advantage of integer array indexing is that you can modify certain
+positions of an array at a time. For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+
+a = np.array([[1,2,3],
+              [4,5,6],
+              [7,8,9],
+              [10,11,12]])
+
+print(a)
+
+#Create an array of indices
+b = np.array([0,2,0,1])
+# Select one element from each row of the array
+# using the indices in b
+
+print(a[np.arange(4),b])
+
+a[np.arange(4),b] += 10
+
+print(a)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that only some positions of the array &lt;code&gt;a&lt;/code&gt; are added 10. The
+positions are represented by &lt;code&gt;np.arange(4),b&lt;/code&gt; . I think this is of high
+efficiency.&lt;/p&gt;
+
+&lt;h4 id=&#34;boolean-array-indexing&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.2.3&lt;/span&gt; boolean array indexing&lt;/h4&gt;
+
+&lt;p&gt;Boolean array indexing is another method of indexing an array. In matlab,
+there is boolean array indexing too. According to my experience, boolean
+array indexing is used to pick up certain elements of an array satisfying
+cerntain conditions.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+a = np.array([[1,2],
+              [3,4],
+              [5,6]])
+# bool_idx are positions where
+# the elements are greater than 2
+bool_idx = (a &amp;gt; 2)
+
+print(bool_idx)
+
+print(a[bool_idx])
+print(a[a&amp;gt;2])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The shape of &lt;code&gt;bool_idx&lt;/code&gt; is the same as &lt;code&gt;a&lt;/code&gt; . The value of &lt;code&gt;bool_idx&lt;/code&gt; is
+&lt;code&gt;True&lt;/code&gt; where &lt;code&gt;a&amp;gt;2&lt;/code&gt; satisfies. The last line tells us that we can finish
+the finding of positions and picking up the elements in one concise
+statement.&lt;/p&gt;
+
+&lt;p&gt;You can find more on indexing &lt;a href=&#34;https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html&#34; target=&#34;_blank&#34;&gt;in the document.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;datatypes&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.3&lt;/span&gt; Datatypes&lt;/h3&gt;
+
+&lt;p&gt;Every numpy array is a grid of elements of the same type. Numpy provides a
+large set of numeric datatypes that you can use to construct arrays. Numpy
+tries to guess a datatype when you create an array, but functions that
+construct arrays usually also include an optional argument to explicitly
+specify the datatype. For example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+x = np.array([1,2])
+print(x.dtype)
+
+x = np.array([1.0,2.0])
+print(x.dtype)
+
+x = np.array([1,2],dtype=np.int64)
+print(x.dtype)
+
+x = np.random.random((1,2))
+print(x.dtype)
+
+x = np.array([1+5j,2 + 4j])
+print(x.dtype)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The output is :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;int64
+float64
+int64
+float64
+complex128
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that for a complex number, numpy use the &lt;code&gt;complex128&lt;/code&gt; to
+indicate the datetype.&lt;/p&gt;
+
+&lt;h3 id=&#34;array-math&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.4&lt;/span&gt; Array math&lt;/h3&gt;
+
+&lt;p&gt;It is always more efficient to do algebra in vector mode so that the
+computation is expected to be finished in a parallel way. Because
+everything in python is object, the operators can be overloaded.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+
+x = np.array([[1,2],[3,4]],dtype=np.float64)
+y = np.array([[5,6],[7,8]],dtype=np.float64)
+
+
+print(x+y)
+print(np.add(x,y))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;One point that needs our attention is the matrix multiplication. There are
+two types of multiplication between matrices: one is elementwise
+multiplication and the other one is matrix multiplication. In Matlab, we
+use &lt;code&gt;*&lt;/code&gt; to implement the matrix multiplication and &lt;code&gt;.*&lt;/code&gt; to implement the
+elementwise multiplication. In Python, things are different. &lt;code&gt;*&lt;/code&gt; is use to
+implement elementwise multiplication and &lt;code&gt;dot&lt;/code&gt; is used to compute matrix
+multiplication.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+
+x = np.array([[1,2],[3,4]])
+y = np.array([[5,6],[7,8]])
+
+v = np.array([9,10])
+w = np.array([11,12])
+
+# all the following 4 statements produce 219
+print(v.dot(w))
+print(w.dot(v))
+print(np.dot(v,w))
+print(np.dot(w,v))
+
+# matrix multiplication
+
+print(x.dot(y))
+print(np.dot(x,y))
+
+# AB != BA
+print(y.dot(x))
+print(np.dot(y,x))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Like in Matlab, we can sum up the matrix along one axis.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+
+x = np.array([ [1,2],[3,4] ])
+
+# sum all the elements of x
+print(np.sum(x))
+
+# sum along the column
+print(np.sum(x,axis=0))
+# sum along the row
+print(np.sum(x,axis=1))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Changing the shape of an array is also one frequent operation. The most
+used operation is transposing a matrix.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+
+x = np.array([[1,2],[3,4]])
+
+print(x)
+print(x.T)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you want to reshape an array, &lt;code&gt;shape&lt;/code&gt; is used.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+
+a = np.arange(12)
+print(a)
+
+b = a.reshape((3,4))
+print(b)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The output will be:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;[ 0  1  2  3  4  5  6  7  8  9 10 11]
+
+[[ 0  1  2  3]
+[ 4  5  6  7]
+[ 8  9 10 11]]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that &lt;code&gt;np.arange(n)&lt;/code&gt; will exclude the &lt;code&gt;n&lt;/code&gt;. and from shape &lt;code&gt;(12,)&lt;/code&gt; to
+shape &lt;code&gt;(3,4)&lt;/code&gt;, Python write the &lt;code&gt;(3,4)&lt;/code&gt; row first. However, in Matlab, it
+is column first.&lt;/p&gt;
+
+&lt;h3 id=&#34;broadcasting&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.5&lt;/span&gt; Broadcasting&lt;/h3&gt;
+
+&lt;p&gt;In Matlab, if you want to add two  matrices, they must have the same
+dimension, or an error will be throwed out.  However, in Python there is a
+mechanism called &amp;ldquo;Broadcasting&amp;rdquo; which allow you to work with arrays with
+different shapes.&lt;/p&gt;
+
+&lt;p&gt;Suppose we want to add a constant vector to each row of a matrix. We would
+like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+
+x = np.array([[1,2,3],
+              [4,5,6],
+              [7,8,9],
+              [10,11,12]])
+
+v = np.array([1,0,1])
+
+#create an empty matrix with the same shape as x
+y = np.empty_like(x)
+
+for i in range(4):
+    y[i,:] = x[i,:] + v
+
+print(y)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above code implement what we want. However, from the eye of Python, it
+is not concise. You have to iterate over &lt;code&gt;x&lt;/code&gt; . Python allows you broadcast
+the &lt;code&gt;v&lt;/code&gt; to each row of &lt;code&gt;x&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np
+
+x = np.array([[1,2,3],
+              [4,5,6],
+              [7,8,9],
+              [10,11,12]])
+v = np.array([1,0,1])
+y = x + v
+print(y)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It is so easy. It works even &lt;code&gt;x&lt;/code&gt; has shape &lt;code&gt;(4,3)&lt;/code&gt; and &lt;code&gt;v&lt;/code&gt; has shape &lt;code&gt;(3,)&lt;/code&gt;
+due to broadcasting.&lt;/p&gt;
+
+&lt;p&gt;Broadcasting two arrays together follows thses rules:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;if the arrays do not have the same shape, prepend the shape of the lower
+array with 1s until both shapes have the same length.&lt;/li&gt;
+&lt;li&gt;The two arrays are said to be compatible in a dimension if they have the
+same size in the dimension, of if one of the arrays has size 1 in that
+dimension.&lt;/li&gt;
+&lt;li&gt;The arrays can be broadcast together if they are compatible in all
+dimensions.&lt;/li&gt;
+&lt;li&gt;After broadcasting, each array behaves as if it had shape equal to the
+elementwise maximum of shapes of the two input arrays.&lt;/li&gt;
+&lt;li&gt;In any dimension where one array had size 1 and the other array had size
+greater than 1, the first array behaves as if it were copied along that
+dimension.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Please check &lt;a href=&#34;http://scipy.github.io/old-wiki/pages/EricsBroadcastingDoc&#34; target=&#34;_blank&#34;&gt;this document&lt;/a&gt; and &lt;a href=&#34;https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html&#34; target=&#34;_blank&#34;&gt;this document&lt;/a&gt; for more explainations.
+Functions that support broadcasting is called the universal function. You
+can find all the available universal function in &lt;a href=&#34;https://docs.scipy.org/doc/numpy/reference/ufuncs.html#available-ufuncs&#34; target=&#34;_blank&#34;&gt;this document&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;summary&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; summary&lt;/h2&gt;
+
+&lt;p&gt;This post summrize some important aspects of Numpy. However, it is far to
+be like the &lt;a href=&#34;https://docs.scipy.org/doc/numpy/reference/arrays.indexing.html&#34; target=&#34;_blank&#34;&gt;numpy refernence&lt;/a&gt;. You should check the numpy reference
+frequently when you are not sure what you are using.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>copy and deep copy in python</title>
       <link>https://zcl.space/computer/copy-and-deep-copy-in-python/</link>
       <pubDate>Fri, 01 Jun 2018 21:16:00 +0800</pubDate>
@@ -815,6 +1609,191 @@ certain vertion of python.&lt;/p&gt;
     </item>
     
     <item>
+      <title>write Python in Emacs and Org mode</title>
+      <link>https://zcl.space/tools/python-in-org-mode/</link>
+      <pubDate>Sun, 13 May 2018 11:22:00 +0800</pubDate>
+      
+      <guid>https://zcl.space/tools/python-in-org-mode/</guid>
+      <description>
+
+&lt;p&gt;&lt;style&gt;
+  .ox-hugo-toc ul {
+    list-style: none;
+  }
+&lt;/style&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#edit-the-source-code-in-python-mode&#34;&gt;edit the source code in python mode&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#set-the-command-for-evaluating-the-python-code&#34;&gt;set the command for evaluating the python code&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#delete-the-dot-elc-files&#34;&gt;delete the *.elc files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; &lt;a href=&#34;#export-with-the-result&#34;&gt;export with the result&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; &lt;a href=&#34;#change-the-systematic&#34;&gt;change the systematic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;6&lt;/span&gt; &lt;a href=&#34;#install-the-distutils-packages&#34;&gt;install the distutils packages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;7&lt;/span&gt; &lt;a href=&#34;#debug-python-in-emacs&#34;&gt;debug python in Emacs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/p&gt;
+
+&lt;p&gt;I write this post during reading the book &lt;em&gt;Learn Python3 the Hard Way&lt;/em&gt;. This is
+the first python book I read from page to page.&lt;/p&gt;
+
+&lt;h2 id=&#34;edit-the-source-code-in-python-mode&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; edit the source code in python mode&lt;/h2&gt;
+
+&lt;p&gt;In Emacs Org mode, you can insert the source code using &lt;code&gt;&amp;lt;s&lt;/code&gt; then &lt;code&gt;&amp;lt;tab&amp;gt;&lt;/code&gt; . If
+you want to edit the source code, you can hit &lt;code&gt;C-c &#39;&lt;/code&gt; then you will be switched
+to a buffer in python mode and all the features of python mode can be
+utilitized. After finishing the modification, &lt;code&gt;, c&lt;/code&gt; will save the changes and
+switch you back to the Org file and &lt;code&gt;, k&lt;/code&gt; will give up the changes and switch
+you back to the Org file.&lt;/p&gt;
+
+&lt;h2 id=&#34;set-the-command-for-evaluating-the-python-code&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; set the command for evaluating the python code&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-emacs-lisp&#34;&gt;(setq org-babel-python-command &amp;quot;python3&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;delete-the-dot-elc-files&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; delete the *.elc files&lt;/h2&gt;
+
+&lt;p&gt;After org mode version 9, it is buggy to evaluate python code in Org mode and
+the error message is :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;Evaluation of this python code is disabled
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After some google, I find the solution at &lt;a href=&#34;https://github.com/syl20bnr/spacemacs/issues/7641&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt; . The solution is easy: deleting
+the .elc files under the .emacs.d/elpa/org-plus-contrib-XXXXXX/ directory.&lt;/p&gt;
+
+&lt;h2 id=&#34;export-with-the-result&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; export with the result&lt;/h2&gt;
+
+&lt;p&gt;Take the following code snippet for example.&lt;/p&gt;
+
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;12
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;13
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;14
+&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7c7c79&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;cars &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;
+space_in_a_car &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;
+drivers &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;30&lt;/span&gt;
+passengers &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;90&lt;/span&gt;
+cars_not_driven &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cars &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; drivers
+cars_driven &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; drivers
+carpool_capacity &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; cars_driven &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; space_in_a_car
+average_passengers_per_car &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; passengers &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; cars_driven
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;There are&amp;#34;&lt;/span&gt;,cars,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;cars available.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;There are only&amp;#34;&lt;/span&gt;,drivers,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;drivers avaiable.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;There will be&amp;#34;&lt;/span&gt;, cars_not_driven,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;empty cars today.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;We can transport&amp;#34;&lt;/span&gt;,carpool_capacity,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;people today.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;We have&amp;#34;&lt;/span&gt;,passengers,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;to carpool today.&amp;#34;&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;print&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;We need to put ablout&amp;#34;&lt;/span&gt;,average_passengers_per_car,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;in each car&amp;#34;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After the above debugging and config, you can evalute the code snippet using
+&lt;code&gt;C-c C-c&lt;/code&gt; inside the code. and after that the result will appear below the code
+as:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;#+RESULTS:
+: There are 100 cars available.
+: There are only 30 drivers avaiable.
+: There will be 70 empty cars today.
+: We can transport 120 people today.
+: We have 90 to carpool today.
+: We need to put ablout 3.0 in each car
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However, when I call the org export dispatcher using &lt;code&gt;C-c C-e h o&lt;/code&gt; . The result
+part is not displayed as the code snippet does. After checking the Org manual,
+there is a variable &lt;code&gt;org-export-use-babel&lt;/code&gt; controing whether evaluate the code
+snippet or not during exporting. Evan the variable is set to be &lt;code&gt;t&lt;/code&gt;, the code is
+not evaluated. To control export the code, results or both, the &lt;code&gt;:export&lt;/code&gt; header
+arguments should be set to &lt;code&gt;code&lt;/code&gt;, &lt;code&gt;results&lt;/code&gt;  or &lt;code&gt;both&lt;/code&gt; .&lt;/p&gt;
+
+&lt;p&gt;In summary, in order to control the evaluation and export, &lt;code&gt;results&lt;/code&gt; and
+&lt;code&gt;export&lt;/code&gt; header arguments are necessary.&lt;/p&gt;
+
+&lt;h2 id=&#34;change-the-systematic&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; change the systematic&lt;/h2&gt;
+
+&lt;p&gt;If you install several versions of Python in your system, you have to
+choose one as the default.  Execute the following to set the priority list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.5 2
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6 3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you want to switch to a different version of Python, just execute the
+following comand :&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo update-alternatives --config python
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then choose the right number from the popup menu.&lt;/p&gt;
+
+&lt;h2 id=&#34;install-the-distutils-packages&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;6&lt;/span&gt; install the distutils packages&lt;/h2&gt;
+
+&lt;p&gt;After updating the python from 3.5 to 3.6, anaconda-mode does not work. In the
+minibuffer, it says:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;InternalError: The subprocess /usr/bin/python3.6 has crashed.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It takes me much time to begin to read the anaconda-mode buffer the find the
+error message. what a stupid guy. The error message is&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;&amp;lt;module&amp;gt;
+    from distutils.spawn import find_executable
+ModuleNotFoundError: No module named &#39;distutils.spawn&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After several google, I install the &lt;code&gt;python3-distutils&lt;/code&gt; using:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;sudo apt-get install python3-distutils
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Notice that it is &lt;code&gt;python3-distutils&lt;/code&gt; , not &lt;code&gt;python-distutils&lt;/code&gt; .&lt;/p&gt;
+
+&lt;p&gt;After this, the auto-completion is live again.&lt;/p&gt;
+
+&lt;h2 id=&#34;debug-python-in-emacs&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;7&lt;/span&gt; debug python in Emacs&lt;/h2&gt;
+
+&lt;p&gt;During working on ex23.py, I have an idea to debug python in Emacs.&lt;/p&gt;
+
+&lt;p&gt;I know it is &lt;code&gt;pdb&lt;/code&gt; that call the python debugger. However, when I use python3.6.
+I have to modify it to:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;python3.6 -m pdb ex23.py utf-8 strict
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, I found that there is an extension &lt;a href=&#34;https://github.com/realgud/realgud/&#34; target=&#34;_blank&#34;&gt;realgud&lt;/a&gt; , which even allows you use the
+&lt;code&gt;F10&lt;/code&gt; to next, &lt;code&gt;F11&lt;/code&gt; to step in, &lt;code&gt;shift F11&lt;/code&gt; to step out, &lt;code&gt;F5&lt;/code&gt; to run/continue.
+More important all the shortcuts are effective in the source code buffer, pretty
+handy.&lt;/p&gt;
+
+&lt;p&gt;You even can you mouse to set and clear breakpoints.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>write and evaluate python in Emacs and maybe Org mode</title>
       <link>https://zcl.space/tools/write-and-evaluate-python-code-in-org-mode/</link>
       <pubDate>Sun, 13 May 2018 11:22:00 +0800</pubDate>
@@ -990,9 +1969,9 @@ I have to modify it to:&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-text&#34;&gt;python3.6 -m pdb ex23.py utf-8 strict
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Then, I found that there is an extension &lt;a href=&#34;https://github.com/realgud/realgud/&#34; target=&#34;_blank&#34;&gt;realgud&lt;/a&gt; , which even allow you use the
+&lt;p&gt;Then, I found that there is an extension &lt;a href=&#34;https://github.com/realgud/realgud/&#34; target=&#34;_blank&#34;&gt;realgud&lt;/a&gt; , which even allows you use the
 &lt;code&gt;F10&lt;/code&gt; to next, &lt;code&gt;F11&lt;/code&gt; to step in, &lt;code&gt;shift F11&lt;/code&gt; to step out, &lt;code&gt;F5&lt;/code&gt; to run/continue.
-More important all the shortcut are effective in the source code buffer, pretty
+More important all the shortcuts are effective in the source code buffer, pretty
 handy.&lt;/p&gt;
 
 &lt;p&gt;You even can you mouse to set and clear breakpoints.&lt;/p&gt;
@@ -2665,679 +3644,6 @@ way.&lt;/p&gt;
 了。啊？中世纪？什么时候？&lt;/p&gt;
 
 &lt;p&gt;之后可以再看《耶路撒冷三千年》和《罗马人的故事》。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>上帝掷骰子么?</title>
-      <link>https://zcl.space/life/quantum-physics-gossip/</link>
-      <pubDate>Mon, 19 Feb 2018 11:02:00 +0800</pubDate>
-      
-      <guid>https://zcl.space/life/quantum-physics-gossip/</guid>
-      <description>
-
-&lt;p&gt;&lt;style&gt;
-  .ox-hugo-toc ul {
-    list-style: none;
-  }
-&lt;/style&gt;
-&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
-&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#简介&#34;&gt;简介&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#三次波粒世界大战&#34;&gt;三次波粒世界大战&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.1&lt;/span&gt; &lt;a href=&#34;#第一次波粒世界大战&#34;&gt;第一次波粒世界大战&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.2&lt;/span&gt; &lt;a href=&#34;#第二次波粒世界大战&#34;&gt;第二次波粒世界大战&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2.3&lt;/span&gt; &lt;a href=&#34;#第三次波粒世界大战&#34;&gt;第三次波粒世界大战&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#杂记&#34;&gt;杂记&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;/div&gt;
-&lt;!--endtoc--&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;简介&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; 简介&lt;/h2&gt;
-
-&lt;p&gt;很早的时候，在我的多看书架上，就有了这本书。今天得空，一睹为快。一直以
-来我觉得一本书能不能让读者手不释卷，有一半的责任在作者。本书作者曹天元
-出色的完成了自己的那一半。对于我这种有工科背景的读者，借助此书一窥量子
-物理的发展史，这本书可以堪此大任。从可读性来讲，比霍金的《时间简史》读
-起来更令人愉悦。读书，不愉悦，毋宁死。&lt;/p&gt;
-
-&lt;p&gt;本文是这本书的阅读笔记。&lt;a href=&#34;https://www.evernote.com/shard/s250/sh/d2a0e433-65f5-42dc-9f9e-f32d40b4a93c/7cf47c27b606cb104ece49b8e413b6f1&#34; target=&#34;_blank&#34;&gt;这里&lt;/a&gt;是我的阅读书摘。&lt;/p&gt;
-
-&lt;h2 id=&#34;三次波粒世界大战&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; 三次波粒世界大战&lt;/h2&gt;
-
-&lt;p&gt;这本书最精彩的部分在波粒二象性的三次世界。关于光的本质，作者用其高超的
-故事技能，娓娓道来300年的波粒战争史。三百年来，兴废存亡，朝代更迭，沧
-海桑田。无数物理大家你方唱罢我登场，犹如在演绎量子物理精彩绝伦的舞台剧。&lt;/p&gt;
-
-&lt;p&gt;全书从赫兹发现电磁波开始讲起，在讲述赫兹发现电磁波的实验过程中，作者提
-了一笔：赫兹在实验报告中提及当他把铜缆线圈放到光照下时发现电火花出现的
-更强烈。若非赫兹英年早逝，赫兹应该会同时发现光的波粒二象性。历史没有假
-设，从那时起，关于光的本质引无数物理英雄尽折腰。&lt;/p&gt;
-
-&lt;h3 id=&#34;第一次波粒世界大战&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.1&lt;/span&gt; 第一次波粒世界大战&lt;/h3&gt;
-
-&lt;p&gt;波动说军团的弹药库里有：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;格里马第的光衍射试验（有以太这个累赘）；&lt;/li&gt;
-&lt;li&gt;胡克重复了格里马第的工作，断定光必定是某种快速的脉冲。撰写《显微术》
-明确支持波动说。&lt;/li&gt;
-&lt;li&gt;惠更斯继承胡克学说，认为光是一种在以太里传播的纵波。出版了著作《光
-环》&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;微粒说军团的弹药库里有：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;牛顿光环。牛顿解释光色散试验说明光是由不同颜色的微粒构成。牛顿开始
-还在波粒之间摇摆不定，后来跟胡克干上了，“赌气”似的一边倒支持微粒说。&lt;/li&gt;
-&lt;li&gt;1665年，牛顿发现了牛顿环。&lt;/li&gt;
-&lt;li&gt;1704年，牛顿发表煌煌巨著《光学》。把波的一些概念（如振动和周期）引
-入微粒，巧妙的回答了牛顿环的问题。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;鉴于牛顿光环，波动学说一溃千里，微粒学说占尽风头。惠更斯去世，波动说群
-龙无首，几乎丧失所有阵地。第一次波粒世界大战的结果是波粒说占据了物理学
-界的主流，波动转入地下，开始了长达一个世纪的忍辱负重。&lt;/p&gt;
-
-&lt;h3 id=&#34;第二次波粒世界大战&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.2&lt;/span&gt; 第二次波粒世界大战&lt;/h3&gt;
-
-&lt;p&gt;波动说军团的弹药库里有：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;托马斯杨的双缝干涉试验。用光的干涉效应解释牛顿环和衍射现象。发表
-《自然哲学讲义》；&lt;/li&gt;
-&lt;li&gt;菲涅尔提出了光是横波；严密的数学推理解释了光的衍射；在1818年论文大
-奖赛上，当场打脸泊松。泊松提出按照菲涅尔的理论，在圆盘衍射实验中，
-应该有个亮斑出现在阴影中间。菲涅尔的助手阿拉果坚持当场试验检测，结
-果泊松被打脸。人们还命名这个亮斑为“泊松亮斑”，心疼泊松五秒钟。&lt;/li&gt;
-&lt;li&gt;傅科测定光速。&lt;/li&gt;
-&lt;li&gt;美的令人窒息的麦克斯韦方程组，统领整个电磁世界。击碎了微粒说的所有
-幻想，预言光是一种电磁波，赫兹证明了这个预言。&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;微粒说军团的弹药库里有：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;牛顿的粒子学说早已深入人心，这些人包括扩比奥，拉普拉斯和泊松；&lt;/li&gt;
-&lt;li&gt;1809年马吕斯发现偏振现象和已有的波动学说相抵触；&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;第二次波粒世界大战以微粒学说惨败告终。物理学迎来了黄金时代。人们认为物
-理学已经尽善尽美，后人只需要在这个架构上修修补补就可以去海边晒太阳了。
-但是赫兹的那个实验中还有一个奇怪的现象：当有光照射到那个铜缆线圈的缺口
-上时，似乎火花就出现的更容易一些。&lt;/p&gt;
-
-&lt;h3 id=&#34;第三次波粒世界大战&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2.3&lt;/span&gt; 第三次波粒世界大战&lt;/h3&gt;
-
-&lt;p&gt;两朵乌云开始出现在物理学大厦上空，随时引发狂风暴雨。这两朵乌云是：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;迈克尔逊-莫雷试验中“以太”假设的存在与实验结果大相径庭；&lt;/li&gt;
-&lt;li&gt;“黑体辐射实验和理论的不一致”；&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;开尔文在一次演讲中提到了这两朵乌云，但是在场的所有人都没有意识到这两朵
-乌云的意义。一场风暴就要来了。&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;第一朵乌云导致了相对论革命的爆发；&lt;/li&gt;
-&lt;li&gt;第二朵乌云导致了量子论革命的爆发；&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;波动说军团的弹药库里有：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;黑体辐射从类波的角度推导，就得到适用于长波的瑞利-金斯公式；&lt;/li&gt;
-&lt;li&gt;麦克斯韦方程组；&lt;/li&gt;
-&lt;li&gt;光的双缝干涉试验；&lt;/li&gt;
-&lt;li&gt;泊松亮斑；&lt;/li&gt;
-&lt;li&gt;德布罗意波的发现；&lt;/li&gt;
-&lt;li&gt;薛定谔方程的发明；&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;微粒说军团的弹药库里有：&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;黑体辐射从粒子的角度推导，就得到适用于短波的维恩公式；&lt;/li&gt;
-&lt;li&gt;普朗克（量子物理奠基人）打开了潘多拉盒子，普朗克黑体公式适合所有波
-长。普朗克认为： &lt;strong&gt;必须假定能量在发射和吸收的时候，不是连续不断的而是
-分成一份一份的&lt;/strong&gt; 。开启了全新的物理学研究&lt;/li&gt;
-&lt;li&gt;1905年，爱因斯坦发现光电效应 \(E=hv\)，提出光子概念；&lt;/li&gt;
-&lt;li&gt;康普顿效应，发现x射线是一种量子现象。上帝制造了光，爱因斯坦指出什么
-是光，康普顿看到了光；&lt;/li&gt;
-&lt;li&gt;海森堡的矩阵力学；狄拉克推进了数学表达；&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;第三次波粒世界大战引发了量子革命，光的波粒二象性被发现。波尔到了卢瑟福
-开的诺贝尔幼儿园之后就一发不可收拾，创建了哥本哈根学派，并一直统领量子
-物理的研究。不确定原理被发现，人们试图创建一个大一统的理论去描述这个世
-界。&lt;/p&gt;
-
-&lt;p&gt;虽然光的波粒二象性被发现，但是关于如何认识解释二象性，如何认识世界，诸
-多物理学家还在苦苦的解释；目前针对物理世界的解释出现了众多纷繁的观点最
-有名的是哥本哈根解释和多世界解释。在此就不再展开了。&lt;/p&gt;
-
-&lt;h2 id=&#34;杂记&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; 杂记&lt;/h2&gt;
-
-&lt;p&gt;看到知乎上有人评价说曹天元写了《量子物理史话》之后应该再接再厉。去做传
-媒和理财规划完全是浪费人才。这绝对不会是我的留言风格。我尊重别人的选择，
-并认为自己无权过问和评论别人的选择。与我而言，感受到的只是读书时的畅快
-淋漓和击节而叹。余光中老先生说得对，你只需要知道鸡蛋好吃，何必在意那只
-下蛋的母鸡长什么样？同样，我也不会去评论余光中的生活和为人，我只知道他
-的诗文简直帅到极点。&lt;/p&gt;
-
-&lt;p&gt;扯得有点远了，还是那句话：读书，不愉悦，毋宁死。《量子物理史话》，读起
-来令人愉悦。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Organize you life in Emacs Org</title>
-      <link>https://zcl.space/tools/organize-you-life-in-org/</link>
-      <pubDate>Sun, 11 Feb 2018 21:52:00 +0800</pubDate>
-      
-      <guid>https://zcl.space/tools/organize-you-life-in-org/</guid>
-      <description>
-
-&lt;p&gt;&lt;style&gt;
-  .ox-hugo-toc ul {
-    list-style: none;
-  }
-&lt;/style&gt;
-&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
-&lt;div&gt;&lt;/div&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; &lt;a href=&#34;#introduction&#34;&gt;introduction&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; &lt;a href=&#34;#my-gtd-workflow&#34;&gt;My GTD workflow&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; &lt;a href=&#34;#some-preparations&#34;&gt;some preparations&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.1&lt;/span&gt; &lt;a href=&#34;#set-the-agenda-file&#34;&gt;set the agenda file&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.2&lt;/span&gt; &lt;a href=&#34;#set-the-refile-targets&#34;&gt;set the refile targets&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.3&lt;/span&gt; &lt;a href=&#34;#set-the-org-capture-templates&#34;&gt;set the org capture templates&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;3.4&lt;/span&gt; &lt;a href=&#34;#set-the-org-agenda-custom-commands&#34;&gt;set the org agenda custom commands&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; &lt;a href=&#34;#one-day-based-on-my-workflow&#34;&gt;One day based on my workflow&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4.1&lt;/span&gt; &lt;a href=&#34;#punch-in&#34;&gt;Punch In&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4.2&lt;/span&gt; &lt;a href=&#34;#check-out-the-agenda&#34;&gt;check out the agenda&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4.3&lt;/span&gt; &lt;a href=&#34;#focus-on-certain-project&#34;&gt;focus on certain project&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4.4&lt;/span&gt; &lt;a href=&#34;#change-the-state-of-one-task&#34;&gt;change the state of one task&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;4.5&lt;/span&gt; &lt;a href=&#34;#using-the-mobile-phone-to-take-capture&#34;&gt;using the mobile phone to take capture&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; &lt;a href=&#34;#conclusion&#34;&gt;conclusion&lt;/a&gt;
-&lt;/div&gt;
-&lt;!--endtoc--&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;introduction&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;1&lt;/span&gt; introduction&lt;/h2&gt;
-
-&lt;p&gt;Using &lt;a href=&#34;http://spacemacs.org/&#34; target=&#34;_blank&#34;&gt;spacemacs&lt;/a&gt; I divide my Org config into servel private layers for
-the sake of easy maintenance and flexibility. You can check my
-&lt;a href=&#34;https://github.com/emacsun/.spacemacs.d&#34; target=&#34;_blank&#34;&gt;.spacemacs.d&lt;/a&gt; on github. I suggest you excerpt some of my config
-instead of copying all of them because some of them maybe not what you
-want.&lt;/p&gt;
-
-&lt;p&gt;Based on the comprehensive tutorial &lt;a href=&#34;http://doc.norang.ca/org-mode.html&#34; target=&#34;_blank&#34;&gt;Organize Your Life In Plain Text&lt;/a&gt;,
-I build my own GTD system using Org. Actually, there exists quite a
-few posts on building personal GTD system through Emacs Org. Some
-excellent ones are listed as below:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://doc.norang.ca/org-mode.html&#34; target=&#34;_blank&#34;&gt;Organize Your Life In Plain Text&lt;/a&gt; . This article is the starting
-point of my serious using of Emacs Org as GTD tool. It is quite
-long, but deserves spending time to read it. It pays off.
-Furthermore, reading just one time is not enough. Perhaps you
-will visit this post several times before your GTD system is
-handy.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://newartisans.com/2007/08/using-org-mode-as-a-day-planner/&#34; target=&#34;_blank&#34;&gt;Using org-mode as a Day Planner&lt;/a&gt; . This article describe how the
-author replace pen-and-paper day planner with the Emacs Org.
-After trying many software available, the author choose Emacs
-Org.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://members.optusnet.com.au/~charles57/GTD/gtd_workflow.html&#34; target=&#34;_blank&#34;&gt;How I use Emacs and Org-mode to implement GTD&lt;/a&gt; . The author&amp;rsquo;s job
-is developing classroom training materials and E-Learning
-solutions for a software company based in North Sydney. It&amp;rsquo;s
-also worthwhile to give the article a shot.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;I am not interested in listing all the articles. What I want to say
-is that you need to define your need first. After that you can
-excerpt the config from other&amp;rsquo;s implement. Most of the time you
-will modify other&amp;rsquo;s config before Org is handy for you. So some
-knowledge of Elisp is desirable.&lt;/p&gt;
-
-&lt;h2 id=&#34;my-gtd-workflow&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;2&lt;/span&gt; My GTD workflow&lt;/h2&gt;
-
-&lt;p&gt;First let me introduce my GTD workflow. In general, a task in my GTD
-workflow will go the road shown as below whick is the same as show in
-&lt;a href=&#34;http://doc.norang.ca/org-mode.html&#34; target=&#34;_blank&#34;&gt;Organize Your Life In Plain Text&lt;/a&gt; but with different triggering
-conditions:&lt;/p&gt;
-
-&lt;p&gt;&lt;a id=&#34;org6e81c32&#34;&gt;&lt;/a&gt;
-
-&lt;figure&gt;
-    
-        &lt;img src=&#34;https://zcl.space/img/tools/20180210myworkflow.png&#34; alt=&#34;Figure 1: state transitions for a task in my workflow&#34; width=&#34;400&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;p&gt;
-        Figure 1: state transitions for a task in my workflow
-        
-            
-        
-        &lt;/p&gt; 
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;p&gt;The main features are listed below.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Every moment, for the sake of clearing my head, I capture all the
-ideas or some todos jumping into my head during my handling one
-event. I will handle the capture later.&lt;/li&gt;
-&lt;li&gt;Every morning, I check the my agenda which is generated by a
-combination of ten commends.&lt;/li&gt;
-&lt;li&gt;I check the scheduled tasks and the tasks which is near the
-deadline.&lt;/li&gt;
-&lt;li&gt;After the scheduled one and the deadlined one, I take a &lt;code&gt;NEXT&lt;/code&gt;
-task, which is in &lt;code&gt;NEXT&lt;/code&gt; status. Also, I start a clock under such
-task.&lt;/li&gt;
-&lt;li&gt;After finishing the &lt;code&gt;NEXT&lt;/code&gt; tasks, the &lt;code&gt;NEXT&lt;/code&gt; status will be changed
-to &lt;code&gt;DONE&lt;/code&gt; automatically. Then I pick a new task in the &lt;code&gt;TODO&lt;/code&gt; lists
-and change the &lt;code&gt;TODO&lt;/code&gt; status into &lt;code&gt;NEXT&lt;/code&gt;. Everytime I change a
-&lt;code&gt;TODO&lt;/code&gt;  task into a &lt;code&gt;NEXT&lt;/code&gt; task, clock is running under that task
-automatically.&lt;/li&gt;
-&lt;li&gt;After finishing all the &lt;code&gt;TODO&lt;/code&gt; tasks, I check the &lt;code&gt;DONE&lt;/code&gt; list to see
-if there is any tasks need to be archived.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;some-preparations&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3&lt;/span&gt; some preparations&lt;/h2&gt;
-
-&lt;p&gt;In order to run the GTD, some preparations are needed.&lt;/p&gt;
-
-&lt;h3 id=&#34;set-the-agenda-file&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3.1&lt;/span&gt; set the agenda file&lt;/h3&gt;
-
-&lt;p&gt;To use Org as a GTD tool, the first thing is to setup the
-&lt;code&gt;org-agenda-files&lt;/code&gt; ;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;;;set up the agenda files
-(setq org-agenda-files (list &amp;quot;~/zorg/Dropbox/base/zlife.org&amp;quot;
-                             &amp;quot;~/zorg/Dropbox/base/zwork.org&amp;quot;
-                             &amp;quot;~/zorg/Dropbox/base/zrefile.org&amp;quot;
-                             &amp;quot;~/zorg/Dropbox/base/zdiary.org&amp;quot;
-                             &amp;quot;~/zorg/Dropbox/base/ztimelog.org&amp;quot;))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;As you can see, I put my configs into the Dropbox directory, so that
-my config will never lose even if I delete them from the local
-carelessly.&lt;/p&gt;
-
-&lt;p&gt;Notice that there is a file named &amp;ldquo;zrefile.org&amp;rdquo; which is the entrance
-of all my todos and some other captures. It plays as an inbox.
-Everytime I check this file and take actions to clean it. All this can
-be done in the agenda buffer, which I will explain later. To refile
-the items in the refile.org, I need to set up the refile targets.&lt;/p&gt;
-
-&lt;h3 id=&#34;set-the-refile-targets&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3.2&lt;/span&gt; set the refile targets&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(setq org-refile-targets (quote (
-          (&amp;quot;~/zorg/Dropbox/base/zwork.org&amp;quot; :maxlevel . 6)
-          (&amp;quot;~/zorg/Dropbox/base/zlife.org&amp;quot; :maxlevel . 6)
-          (&amp;quot;~/zorg/zcl.space/content_org/math.org&amp;quot; :maxlevel . 6)
-          (&amp;quot;~/zorg/zcl.space/content_org/computer.org&amp;quot; :maxlevel . 6)
-          (&amp;quot;~/zorg/zcl.space/content_org/telecommunication.org&amp;quot; :maxlevel . 6)
-          (&amp;quot;~/zorg/zcl.space/content_org/life.org&amp;quot; :maxlevel . 6)
-          (&amp;quot;~/zorg/zcl.space/content_org/tools.org&amp;quot; :maxlevel . 6))))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Notice that, besides the zwork.org and zlife.org which are the agenda
-files, there are other five org files. These five org files are for my
-personal blog. Sometime, I capture a draft or outline of a new post in
-the zrefile.org, so I need to refile these drafts into the right
-category.&lt;/p&gt;
-
-&lt;p&gt;To understand why I add these extra five org files as the refile
-targets, you need to see my &lt;code&gt;org-capture-templates&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;set-the-org-capture-templates&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3.3&lt;/span&gt; set the org capture templates&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(setq org-capture-templates
-      &#39;(
-        (&amp;quot;t&amp;quot; &amp;quot;todo&amp;quot; entry (file &amp;quot;~/zorg/Dropbox/base/zrefile.org&amp;quot;)
-         &amp;quot;* TODO %? :TODO: \n Added:%T\n&amp;quot;
-         :clock-in t :clock-resume t)
-        (&amp;quot;h&amp;quot; &amp;quot;Hugo post&amp;quot;)
-        (&amp;quot;hm&amp;quot; &amp;quot;Math&amp;quot;
-         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/math.org&amp;quot; &amp;quot;Math&amp;quot;)
-         (function org-hugo-new-subtree-post-capture-template)
-         &amp;quot;:math:&amp;quot;
-         :clock-in t :clock-resume t)
-        (&amp;quot;hc&amp;quot; &amp;quot;Computer&amp;quot;
-         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/computer.org&amp;quot; &amp;quot;Computer&amp;quot;)
-         (function org-hugo-new-subtree-post-capture-template)
-         :clock-in t :clock-resume t)
-        (&amp;quot;ht&amp;quot; &amp;quot;Telecommunication&amp;quot;
-         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/telecommunication.org&amp;quot; &amp;quot;Telecommunication&amp;quot;)
-         (function org-hugo-new-subtree-post-capture-template)
-         :clock-in t :clock-resume t)
-        (&amp;quot;hl&amp;quot; &amp;quot;Life&amp;quot;
-         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/life.org&amp;quot; &amp;quot;Life&amp;quot;)
-         (function org-hugo-new-subtree-post-capture-template)
-         :clock-in t :clock-resume t)
-        (&amp;quot;ho&amp;quot; &amp;quot;Tools&amp;quot;
-         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/tools.org&amp;quot; &amp;quot;Tools&amp;quot;)
-         (function org-hugo-new-subtree-post-capture-template)
-         :clock-in t :clock-resume t)
-        (&amp;quot;hm&amp;quot; &amp;quot;movie&amp;quot;
-         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/all-posts.org&amp;quot; &amp;quot;Movie&amp;quot;)
-         (function org-hugo-new-subtree-post-capture-template)
-         :clock-in t :clock-resume t)
-        (&amp;quot;hl&amp;quot; &amp;quot;life&amp;quot;
-         entry (file+olp &amp;quot;~/zorg/zcl.space/content_org/all-posts.org&amp;quot; &amp;quot;Life&amp;quot;)
-         (function org-hugo-new-subtree-post-capture-template)
-         :clock-in t :clock-resume t)
-         (&amp;quot;l&amp;quot; &amp;quot;my Log Time&amp;quot; entry (file+datetree &amp;quot;~/zorg/Dropbox/base/ztimelog.org&amp;quot; ) &amp;quot;** %T - %?  :timelog:&amp;quot; :clock-in t :clock-resume t)
-        (&amp;quot;d&amp;quot; &amp;quot;diary&amp;quot; entry (file+datetree &amp;quot;~/zorg/Dropbox/base/zdiary.org&amp;quot; ) &amp;quot;* %t - %?  :diary:&amp;quot; :clock-in t :clock-resume t)
-        (&amp;quot;x&amp;quot; &amp;quot;org-protocol&amp;quot; entry (file &amp;quot;~/zorg/Dropbox/base/zrefile.org&amp;quot;)
-         &amp;quot;* TODO Review %c \n Added:%T\n&amp;quot;)
-        ))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;I have a template for &lt;code&gt;zrefile.org&lt;/code&gt; which is :&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(&amp;quot;t&amp;quot; &amp;quot;todo&amp;quot; entry (file &amp;quot;~/zorg/Dropbox/base/zrefile.org&amp;quot;)
- &amp;quot;* TODO %? :TODO: \n Added:%T\n&amp;quot;
- :clock-in t :clock-resume t)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To understand the meaning of this template, you need to read the doc
-for variable &lt;code&gt;org-capture-templates&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;whenever I check the org-agenda, I will see a block contains all the
-need-to-refile tasks. So you may curious about my set of
-&lt;code&gt;org-agenda-custom-commands&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;set-the-org-agenda-custom-commands&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;3.4&lt;/span&gt; set the org agenda custom commands&lt;/h3&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(setq org-agenda-custom-commands
-        (quote (
-                (&amp;quot; &amp;quot; &amp;quot;Agenda&amp;quot;
-                 ((agenda &amp;quot;&amp;quot; )
-                  (tags &amp;quot;NOTES&amp;quot;
-                        ((org-agenda-overriding-header &amp;quot;NOTES to Refile&amp;quot;)
-                         (org-tags-match-list-sublevels nil)))
-                  (tags &amp;quot;REFILE&amp;quot;
-                        ((org-agenda-overriding-header &amp;quot;Tasks to Refile&amp;quot;)
-                         (org-tags-match-list-sublevels nil)))
-                  (tags-todo &amp;quot;-CANCELLED/!&amp;quot;
-                             ((org-agenda-overriding-header &amp;quot;Stuck Projects&amp;quot;)
-                              (org-agenda-skip-function &#39;bh/skip-non-stuck-projects)
-                              (org-agenda-sorting-strategy
-                               &#39;(priority-down category-keep))))
-                  (tags-todo &amp;quot;-HOLD-CANCELLED/!&amp;quot;
-                             ((org-agenda-overriding-header &amp;quot;Projects&amp;quot;)
-                              (org-agenda-skip-function &#39;bh/skip-non-projects)
-                              (org-agenda-sorting-strategy
-                               &#39;(priority-down category-keep))))
-                  (tags-todo &amp;quot;-CANCELLED/!NEXT&amp;quot;
-                             ((org-agenda-overriding-header &amp;quot;Project NEXT Tasks&amp;quot;)
-                              (org-agenda-skip-function &#39;bh/skip-projects-and-habits-and-single-tasks)
-                              (org-tags-match-list-sublevels t)
-                              (org-agenda-sorting-strategy
-                               &#39;(priority-down todo-state-down effort-up category-keep))))
-                  (todo &amp;quot;TODO&amp;quot;
-                        ((org-agenda-overriding-header &amp;quot;Project Subtasks TODO&amp;quot;)
-                         (org-tags-match-list-sublevels t)))
-                  (todo &amp;quot;DONE&amp;quot;
-                        ((org-agenda-overriding-header &amp;quot;Project Subtasks DONE&amp;quot;)
-                         (org-tags-match-list-sublevels t)))
-                  ;;;;(tags-todo &amp;quot;-CANCELLED+WAITING+HOLD/!&amp;quot;
-                  (todo &amp;quot;HOLD&amp;quot;
-                        ((org-agenda-overriding-header &amp;quot;Waiting and Postponed Tasks&amp;quot;)
-                         (org-agenda-skip-function &#39;bh/skip-stuck-projects)
-                         (org-tags-match-list-sublevels nil)
-                         (org-agenda-todo-ignore-scheduled &#39;future)
-                         (org-agenda-todo-ignore-deadlines &#39;future)))
-                  (tags &amp;quot;-REFILE/&amp;quot;
-                        ((org-agenda-overriding-header &amp;quot;Tasks to Archive&amp;quot;)
-                         (org-agenda-skip-function &#39;bh/skip-non-archivable-tasks)
-                         (org-tags-match-list-sublevels nil))))
-                 nil))))
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;You should never copy the above snippet, because there are some
-functions whose definitions are not contained in the snippet.
-Actually, you should go to my Github page to get the repository if you
-are interested in my .spacemacs.d&lt;/p&gt;
-
-&lt;p&gt;According to the command, one of the sample of my org agenda may look
-like:&lt;/p&gt;
-
-&lt;p&gt;&lt;a id=&#34;orgb6363e7&#34;&gt;&lt;/a&gt;
-
-&lt;figure&gt;
-    
-        &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda.png&#34; alt=&#34;Figure 2: my org agenda sample&#34; width=&#34;900&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;p&gt;
-        Figure 2: my org agenda sample
-        
-            
-        
-        &lt;/p&gt; 
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;p&gt;I have three projects: math,computer and communication
-(telecommunication). For each projects, there are some tasks. All the
-projects appear as level-1 headlines in the org file and the tasks
-appear as sub-level headlines. If all the tasks under one project are
-in &lt;code&gt;TODO&lt;/code&gt; state, the project is stuck. If at least one of the task
-under one project is in &lt;code&gt;NEXT&lt;/code&gt; state, the project is running.&lt;/p&gt;
-
-&lt;p&gt;I think the structure of my agenda buffer is straightforward. you can
-define your own &lt;code&gt;org-agenda-custom-commands&lt;/code&gt; by reading the manual and
-&lt;a href=&#34;https://orgmode.org/worg/org-tutorials/org-custom-agenda-commands.html&#34; target=&#34;_blank&#34;&gt;this post&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;one-day-based-on-my-workflow&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4&lt;/span&gt; One day based on my workflow&lt;/h2&gt;
-
-&lt;h3 id=&#34;punch-in&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4.1&lt;/span&gt; Punch In&lt;/h3&gt;
-
-&lt;p&gt;At the beginning of every day, I use &lt;code&gt;F8 I&lt;/code&gt; to punch in, which starts
-a clock under a task called Organization:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-lisp&#34;&gt;(defvar bh/organization-task-id &amp;quot;eb155a82-92b2-4f25-a3c6-0304591af2f9&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;check-out-the-agenda&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4.2&lt;/span&gt; check out the agenda&lt;/h3&gt;
-
-&lt;p&gt;Check out the agenda, using &lt;code&gt;org-agenda&lt;/code&gt; which is bound to &lt;code&gt;SPC a o o
-SPC&lt;/code&gt; or &lt;code&gt;SPC o a SPC&lt;/code&gt; or &lt;code&gt;F5 SPC&lt;/code&gt; . Because the &lt;code&gt;org-agenda&lt;/code&gt; buffer
-will be visited quite a few times, I bind this command to several
-shortcuts. Using the customed command &lt;code&gt;SPC&lt;/code&gt; , I collect all the
-projects,  tasks with &lt;code&gt;TODO&lt;/code&gt; and &lt;code&gt;NEXT&lt;/code&gt; states in the project which
-give me an overview of what should be done next and what should be
-started next.&lt;/p&gt;
-
-&lt;p&gt;&lt;a id=&#34;orgb1042c6&#34;&gt;&lt;/a&gt;
-
-&lt;figure&gt;
-    
-        &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda2.png&#34; alt=&#34;Figure 3: my org agenda overview&#34; width=&#34;900&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;p&gt;
-        Figure 3: my org agenda overview
-        
-            
-        
-        &lt;/p&gt; 
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;p&gt;As we can see from the screenshot, the agenda of today is listed at
-the beginning with scheduled task and deadline task.&lt;/p&gt;
-
-&lt;p&gt;Following today&amp;rsquo;s agenda, several blocks are displayed with each
-headline in green color and large font size. Those blocks shows:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Notes to Refile&lt;/strong&gt;, which is the draft of a post which should be
-refile to math.org computer.org or telecommunication.org.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Tasks to Refile&lt;/strong&gt;, which is the Ideas or tasks hitting my head
-during handling one tasks. I store these tasks in zrefile.org then
-process them later after finishing current tasks.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Stuck Projects&lt;/strong&gt;, which are the projects have no sub-tasks in
-&lt;code&gt;NEXT&lt;/code&gt; state.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Projects&lt;/strong&gt;, which are the projects have at least one sub-tasks in
-&lt;code&gt;NEXT&lt;/code&gt; state.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Project Next Tasks&lt;/strong&gt;, which are &lt;code&gt;NEXT&lt;/code&gt; sub-tasks in all Projects.
-In particular, you can filter out the &lt;code&gt;NEXT&lt;/code&gt; tasks belonging to
-certain project.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Project Subtasks TODO&lt;/strong&gt;, which are all the &lt;code&gt;TODO&lt;/code&gt; sub-tasks
-belonging to all projects.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Project Subtasks DONE&lt;/strong&gt;, which are all the &lt;code&gt;DONE&lt;/code&gt; sub-tasks
-belonging to all projects.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Waiting and Postponed Tasks&lt;/strong&gt;, which are all the tasks in &lt;code&gt;WAITING&lt;/code&gt;
-and &lt;code&gt;HOLD&lt;/code&gt; state.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Tasks to Archive&lt;/strong&gt;, which are the tasks being tagged as &lt;code&gt;DONE&lt;/code&gt; for
-a period and need to be archived.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&#34;focus-on-certain-project&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4.3&lt;/span&gt; focus on certain project&lt;/h3&gt;
-
-&lt;p&gt;If you have many &lt;code&gt;TODO&lt;/code&gt; tasks, it is desirable to focus on certain
-project at one time. Just move the cursor on the Project you want to
-focus, then press &lt;code&gt;^&lt;/code&gt; . If you want to focus on another project, press
-&lt;code&gt;^&lt;/code&gt; again then select another project, press &lt;code&gt;^&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a id=&#34;org88f3fa1&#34;&gt;&lt;/a&gt;
-
-&lt;figure&gt;
-    
-        &lt;img src=&#34;https://zcl.space/img/tools/20180210orgagenda3.png&#34; alt=&#34;Figure 4: focus on certain project&#34; width=&#34;900&#34; /&gt;
-    
-    
-    &lt;figcaption&gt;
-        &lt;p&gt;
-        Figure 4: focus on certain project
-        
-            
-        
-        &lt;/p&gt; 
-    &lt;/figcaption&gt;
-    
-&lt;/figure&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Actually, there are quite a few commands helping you coin your own
-view of the agenda buffer. some handy are listed below:&lt;/p&gt;
-
-&lt;p&gt;&lt;a id=&#34;org2b4b0ac&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&#34;table-caption&#34;&gt;
-  &lt;span class=&#34;table-number&#34;&gt;Table 1:&lt;/span&gt;
-  some handy agenda commands
-&lt;/div&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;shortcuts&lt;/th&gt;
-&lt;th&gt;command&lt;/th&gt;
-&lt;th&gt;description&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;/&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;org-agenda-filter-by-tag&lt;/td&gt;
-&lt;td&gt;Filter the agenda view with respect to a tag&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;org-agenda-filter-by-category&lt;/td&gt;
-&lt;td&gt;Filter the current agenda view with respect to the category of the item at point&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;^&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;org-agenda-filter-by-top-headline&lt;/td&gt;
-&lt;td&gt;Filter the current agenda view and only display the siblings and the parent headline of the one at point&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;=&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;org-agenda-filter-by-regexp&lt;/td&gt;
-&lt;td&gt;Filter the agenda view by a regular expression&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;_&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;org-agenda-filter-by-effort&lt;/td&gt;
-&lt;td&gt;filter the agenda view with respect to effort estimates&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;You can find more agenda commands by reading &lt;code&gt;Agenda views&lt;/code&gt; part of
-the Org manual which is built in the Emacs.&lt;/p&gt;
-
-&lt;h3 id=&#34;change-the-state-of-one-task&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4.4&lt;/span&gt; change the state of one task&lt;/h3&gt;
-
-&lt;p&gt;It is quite easy to change the state of one task. By default, the
-state is in &lt;code&gt;TODO&lt;/code&gt; state. After start clocking the task, the task will
-be in &lt;code&gt;NEXT&lt;/code&gt; state automatically.&lt;/p&gt;
-
-&lt;p&gt;From &lt;code&gt;NEXT&lt;/code&gt; to other state, you just use &lt;code&gt;C-c C-t&lt;/code&gt; . If you are in the
-org agenda buffer, press &lt;code&gt;t&lt;/code&gt; one the line of the task.&lt;/p&gt;
-
-&lt;p&gt;Once the task is set as &lt;code&gt;DONE&lt;/code&gt; , a temporary buffer will jump out and
-let you take some note to record the task.&lt;/p&gt;
-
-&lt;h3 id=&#34;using-the-mobile-phone-to-take-capture&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;4.5&lt;/span&gt; using the mobile phone to take capture&lt;/h3&gt;
-
-&lt;p&gt;In general, there are two app one is &lt;code&gt;Org-mobile&lt;/code&gt; and the another one
-is &lt;code&gt;BeOrg&lt;/code&gt;. I prefer to the later because of is easy to use. All you
-have to do is put your agenda files in a Dropbox directory.&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;Org-mobile&lt;/code&gt; is kind of complex, and need to config both on the phone
-and the PC. I finally make it run on both my iPhone and Surface pro 4.
-However, I resort to &lt;code&gt;BeOrg&lt;/code&gt; because you will never forget how to use
-&lt;code&gt;BeOrg&lt;/code&gt; . Unfortunately, I forget how to use &lt;code&gt;Org-mobile&lt;/code&gt; after I did
-not use it for a month.&lt;/p&gt;
-
-&lt;h2 id=&#34;conclusion&#34;&gt;&lt;span class=&#34;section-num&#34;&gt;5&lt;/span&gt; conclusion&lt;/h2&gt;
-
-&lt;p&gt;My GTD workflow based on Org is summarized. To be honest, I change my
-workflow quite often. So the configuration will change subsequently
-which is the source of joy using Emacs. You can always config it as
-handy as possible.&lt;/p&gt;
 </description>
     </item>
     
